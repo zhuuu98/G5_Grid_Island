@@ -1,4 +1,10 @@
 <template>
+  <div class="product">
+    <h1>This is a product page</h1>
+  </div>
+</template>
+
+<template>
     <div class="product">
       <h1>This is a product page</h1>
       <h2>可惡 吵死了</h2>
