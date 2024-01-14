@@ -1,6 +1,7 @@
 <template>
     <div class="product">
       <h1>This is an product page</h1>
+      <p>zhuuu test</p>
     </div>
   </template>
   
