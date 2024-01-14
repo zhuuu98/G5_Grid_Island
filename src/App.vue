@@ -5,7 +5,7 @@ import HelloWorld from './components/HelloWorld.vue'
 
 <script>
 // import TheWelcome from '../components/TheWelcome.vue'
-const imgUrl = new URL('../assets/images/seacoast.jpg', import.meta.url).href
+const imgUrl = new URL('../src/assets/images/seacoast.jpg', import.meta.url).href
 export default {
   data() {
     return {
@@ -25,7 +25,7 @@ export default {
   <header>
     <img alt="Vue logo" class="logo" src="@/assets/logo.svg" width="125" height="125" />
 
-    <img :src="imgUrl" alt="">
+    <img :src="imgUrl" alt="" class="seacoast">
 
     <div class="wrapper">
       <HelloWorld msg="You did it!" />
@@ -103,5 +103,10 @@ nav a:first-of-type {
     padding: 1rem 0;
     margin-top: 1rem;
   }
+
+  .seacoast{
+    width: 200px;
+  }
+
 }
 </style>
