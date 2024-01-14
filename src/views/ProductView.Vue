@@ -3,6 +3,7 @@
       <h1>This is a product page</h1>
       <p>zhuuu test</p>
       <span>hui test</span>
+      <p>zhu aaa</p>
     </div>
   </template>
   
