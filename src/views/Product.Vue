@@ -2,6 +2,7 @@
     <div class="product">
       <h1>This is an product page</h1>
       <p>zhuuu test</p>
+      <span>hui test</span>
     </div>
   </template>
   
