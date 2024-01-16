@@ -18,11 +18,8 @@
   </div>
 </template>
 
-<style lang="scss">
-@import "@/assets/sass/base/_color.scss";
-.product {
-  color: $lightblue;
-}
+<style lang="scss" scoped>
+@import "@/assets/scss/style.scss";
 @media (min-width: 1024px) {
   .about {
     min-height: 100vh;

@@ -4,7 +4,8 @@
   </div>
 </template>
 
-<style>
+<style lang="scss" scoped>
+@import "@/assets/scss/style.scss";
 @media (min-width: 1024px) {
   .about {
     min-height: 100vh;
