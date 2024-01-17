@@ -1,11 +1,15 @@
 //變數
-@import "base/reset";
 @import "base/var";
 @import "base/color";
 @import "base/font";
+@import "base/reset";
 
 //函數
 @import "mixin/mixin";
+
+//layout
+@import "layout/header";
+@import "layout/footer";
 
 // page
 @import "page/about";
