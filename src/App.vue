@@ -1,31 +1,35 @@
 <script setup>
-import { RouterLink, RouterView } from 'vue-router'
-import HelloWorld from './components/HelloWorld.vue'
+import { RouterLink, RouterView } from "vue-router";
+import HelloWorld from "./components/HelloWorld.vue";
 </script>
 
 <script>
 // import TheWelcome from '../components/TheWelcome.vue'
-const imgUrl = new URL('../src/assets/images/seacoast.jpg', import.meta.url).href
+const imgUrl = new URL("../src/assets/images/seacoast.jpg", import.meta.url)
+  .href;
 export default {
   data() {
     return {
-      rawHtml: '<p>1</p>',
-      imgUrl: imgUrl
-    }
+      rawHtml: "<p>1</p>",
+      imgUrl: imgUrl,
+    };
   },
   // components:{
   //   TheWelcome
   // },
-  mounted() {
-  }
-}
+  mounted() {},
+};
 </script>
 
 <template>
   <header>
-    <img alt="Vue logo" class="logo" src="@/assets/logo.svg" width="125" height="125" />
-
-    <img :src="imgUrl" alt="" class="seacoast">
+    <img
+      alt="Vue logo"
+      class="logo"
+      src="@/assets/logo.svg"
+      width="125"
+      height="125"
+    />
 
     <div class="wrapper">
       <HelloWorld msg="You did it!" />
@@ -104,9 +108,8 @@ nav a:first-of-type {
     margin-top: 1rem;
   }
 
-  .seacoast{
+  .seacoast {
     width: 200px;
   }
-
 }
 </style>

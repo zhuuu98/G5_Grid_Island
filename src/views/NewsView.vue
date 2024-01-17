@@ -1,7 +1,8 @@
 <template>
-    <div class="news">
-      <h1>This is news page</h1>
-    </div>
-  </template>
-
-  
+  <div class="news">
+    <h1>This is news page</h1>
+  </div>
+</template>
+<style lang="scss">
+// @import "@/assets/scss/page/news.scss";
+</style>

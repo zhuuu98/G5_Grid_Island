@@ -1,13 +1,13 @@
 //變數
-@use "sass:math";
+@import "base/reset";
 @import "base/var";
 @import "base/color";
 @import "base/font";
-@import "base/reset";
 
-//函式
+//函數
 @import "mixin/mixin";
 
 // page
 @import "page/about";
-// @import "page/product";
+@import "page/product";
+@import "page/news";
