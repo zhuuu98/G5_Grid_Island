@@ -1,49 +1,25 @@
-<script setup>
-import { RouterLink, RouterView } from "vue-router";
-import HelloWorld from "./components/HelloWorld.vue";
-</script>
+<script setup></script>
 
 <script>
-// import TheWelcome from '../components/TheWelcome.vue'
-const imgUrl = new URL("../src/assets/images/seacoast.jpg", import.meta.url)
-  .href;
+import { RouterLink, RouterView } from "vue-router";
+import MainHeader from "./components/MainHeader.vue";
+import MainFooter from "./components/MainFooter.vue";
 export default {
   data() {
-    return {
-      rawHtml: "<p>1</p>",
-      imgUrl: imgUrl,
-    };
+    return {};
   },
-  // components:{
-  //   TheWelcome
-  // },
+  components: {
+    MainHeader,
+    MainFooter,
+  },
   mounted() {},
 };
 </script>
 
 <template>
-  <header>
-    <img
-      alt="Vue logo"
-      class="logo"
-      src="@/assets/logo.svg"
-      width="125"
-      height="125"
-    />
-
-    <div class="wrapper">
-      <HelloWorld msg="You did it!" />
-
-      <nav>
-        <RouterLink to="/">Home</RouterLink>
-        <RouterLink to="/about">About</RouterLink>
-        <RouterLink to="/product">Product</RouterLink>
-        <RouterLink to="/News">News</RouterLink>
-      </nav>
-    </div>
-  </header>
-
+  <MainHeader />
   <RouterView />
+  <MainFooter />
 </template>
 
 <style scoped>
