@@ -14,7 +14,12 @@
   width: 100%;
   max-width: 1084px;
   gap: 68px;
-  h1 {
-    color: $blue-1;
-  }
+}
+.hotTitle{
+  display: flex;
+  gap: 20px;
+  font-size: $PC-h3;
+  justify-content: center;
+  align-items: center;
+  margin: 20px;
 }
