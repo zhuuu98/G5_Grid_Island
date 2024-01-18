@@ -9,10 +9,7 @@
                 <RouterLink to="#" class="login_forget_password">忘記密碼？</RouterLink>
                 <!-- <Icon type="logo-google" /> -->
                 <input type="submit" value="登入" class="btn_default">
-                <input type="submit" value="入燈" class="btn_lg">
-                <input type="submit" value="小燈" class="btn_sm_1">
-                <p class="login_signUp_text">還不是會員嗎？<RouterLink to="#">點我註冊</RouterLink>
-                </p>
+                <p class="login_signUp_text">還不是會員嗎？<RouterLink to ="./Signup">點我註冊</RouterLink></p>
             </form>
         </div>
     </div>
