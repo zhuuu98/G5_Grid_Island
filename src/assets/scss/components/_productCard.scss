@@ -1,0 +1,66 @@
+// @import "@/assets/scss/base/_reset.scss";
+// @import "@/assets/scss/base/_font.scss";
+// @import "@/assets/scss/base/_color.scss";
+// @import "@/assets/scss/base/_var.scss";
+.productCard{
+    .productInfo{
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+        background-color: $blue-3;
+        color: $white-1;
+        width: 100%;
+        max-width: 305px;
+        border-radius: 0 0 $PC-card-radius $PC-card-radius;
+        padding: $M-spaceing;
+    }
+    .productPic{
+        position: relative;
+    }
+    
+    .productPic img{
+        vertical-align: top;
+        width: 100%;
+        max-width: 305px;
+        border-radius:$PC-card-radius $PC-card-radius 0 0;
+    }
+    .productPic_Mask{
+        width: 100%;
+        max-width: 305px;
+        padding-bottom: 305px;
+        position: absolute;
+        background-color: $blue-3;
+        top: 0;
+        opacity: 0;
+        border-radius:$PC-card-radius $PC-card-radius 0 0;
+    }
+    .productPic_Mask:hover{
+        opacity: 0.7;
+    }
+
+    .productTag{
+        display: flex;
+        gap: 14px;
+    }
+    .productTag span{
+        width: 80px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: $S-spaceing;
+        background-color: $white-1;
+        color: $black;
+        border-radius:10px;
+    }
+    .productCard h3{
+        width: 100%;
+        max-width: 305px;
+        background-color: $blue-3;
+        color: $white-1;
+        font-size: $PC-h3;
+    }
+    .price{
+        font-size: $PC-h3;
+    }
+    
+}
