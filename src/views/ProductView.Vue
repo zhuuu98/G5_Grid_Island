@@ -29,14 +29,18 @@ export default {
 };
 </script>
 <template>
-  <div class="product">
-    <ProductCard
-      v-for="item in displayData"
-      :productTitle="item.prod_name"
-      :imgUrl="`https://tibamef2e.com/chd103/g5/img/${item.prod_img1}`"
-      :productPrice="item.prod_price"
-    />
+  <div class="productBackground">
+    <div class="product">
+      <ProductCard
+        v-for="item in displayData"
+        :productTitle="item.prod_name"
+        :imgUrl="`https://tibamef2e.com/chd103/g5/img/${item.prod_img1}`"
+        :productPrice="item.prod_price"
+      />
+    </div>
   </div>
 </template>
 
-<style lang="scss"></style>
+<style lang="scss">
+//
+</style>
