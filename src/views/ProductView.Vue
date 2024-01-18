@@ -29,6 +29,22 @@ export default {
 };
 </script>
 <template>
+  <div class="hotProductBackground">
+    <div class="hotProduct">
+      <div class="hotTitle">
+        <div class="hotTitleDash">——————</div>
+        <div class="hotTitleText">熱銷商品</div>
+        <div class="hotTitleDash">——————</div>
+      </div>
+      <div class="hotProductBody">
+        <div class="hotProductImg">
+          
+        </div>
+
+
+      </div>
+    </div>
+  </div>
   <div class="productBackground">
     <div class="product">
       <ProductCard
