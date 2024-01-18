@@ -1,0 +1,49 @@
+
+//btn bgc
+@mixin btnColor($bgc , $border: false) {
+    @if $border {
+      border: 1px solid $bgc;
+      color: $bgc;
+      &:hover {
+        background-color: $bgc;
+        color: #fff
+      }
+    } @else {
+      background-color: $bgc;
+      color: #fff;
+      &:hover {
+        background-color: darken($bgc, 10);
+      }
+    }
+  }
+  
+// RWD
+@mixin PC() {
+  @media all and (min-width: $PC) {
+    //PC
+    @content;
+  }
+}
+@mixin T() {
+  @media all and (min-width: $T) {
+    //Tablet
+    @content;
+  }
+}
+
+//格線系統
+@mixin grid($col, $b: null) {
+  @if $b == null {
+    @for $i from 1 through $col {
+      .col-#{$i} {
+        width: calc(100% / $col) * $i;
+      }
+    }
+  } @else {
+    @for $i from 1 through $col {
+      .col-#{$b}-#{$i} {
+        width: calc(100% / $col) * $i;
+      }
+    }
+  }
+}

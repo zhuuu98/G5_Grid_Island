@@ -7,11 +7,18 @@
 //函數
 @import "mixin/mixin";
 
+//
+@import "components/productCard";
+
 //layout
 @import "layout/header";
 @import "layout/footer";
+
+//組件
+@import "components/grid";
 
 // page
 @import "page/about";
 @import "page/product";
 @import "page/news";
+@import "page/login";

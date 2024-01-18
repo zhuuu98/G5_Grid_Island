@@ -1,0 +1,22 @@
+.container {
+  --column-gap: 10px;
+  max-width: $max-width;
+  margin: auto;
+  padding-left: var(--column-gap);
+  padding-right: var(--column-gap);
+}
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  margin-left: calc(var(--column-gap) * -1);
+  margin-right: calc(var(--column-gap) * -1);
+}
+
+@include grid(12);
+
+@include T() {
+  @include grid(12, T);
+}
+@include PC() {
+  @include grid(12, PC);
+}

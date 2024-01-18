@@ -1,5 +1,19 @@
-@import "@/assets/scss/base/_color.scss";
+.productBackground {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: $yellow;
+  width: 100%;
+}
 .product {
+  background-color: $white-1;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  max-width: 1084px;
+  gap: 68px;
   h1 {
     color: $blue-1;
   }

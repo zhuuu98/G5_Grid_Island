@@ -1,33 +1,29 @@
 <template>
+  <!-- header -->
   <header>
     <div class="wrapper">
 
-      <!-- <nav>
-        <RouterLink to="/">Home</RouterLink>
-        <RouterLink to="/about">About</RouterLink>
-        <RouterLink to="/product">Product</RouterLink>
-        <RouterLink to="/News">News</RouterLink>
-        <img src="../assets/images/header-logo.png" alt="header-logo">
-      </nav> -->
-
-      <div class="header-logo">
+      <div class="header_logo">
         <a href="#">
           <img src="../assets/images/header-logo.png" alt="header_logo">
         </a>
       </div>
+
       <div class="title">
         <nav>
           <ul>
-            <li><a href="#">預約場地</a></li>
-            <li><a href="#">
+            <RouterLink to="#">預約場地</RouterLink>
+            <RouterLink to="#">
               <img src="../assets/images/header-cart.svg" alt="header-cart">
-            </a></li>
-            <li><a href="#">
-              <img src="../assets/images/header-member.svg" alt="header-member">
-            </a></li>
+            </RouterLink>
+
+            <RouterLink to="/login"><img src="../assets/images/header-member.svg" alt="header-member"></RouterLink>
+
+
           </ul>
         </nav>
-            
+
+        <!-- 漢堡 -->
         <input type="checkbox" id="hamburger">
         <label class="ham" id="ham" for="hamburger">
             <span class="ham-bar" id="hamBar1"></span>
@@ -38,9 +34,9 @@
         <nav class="ham-menu">
           <ul class="ham-menu-nav">
 
-            <li><a href="#">預約場地</a></li>
-            <li><a href="#">所有商品</a></li>
-            <li><a href="#">最新消息</a></li>
+            <RouterLink to="#">預約場地</RouterLink>
+            <RouterLink to="#">所有商品</RouterLink>
+            <RouterLink to="#">最新消息</RouterLink>
 
             <li class="products-li">
               <a href="#">玩家社群</a>
@@ -54,9 +50,9 @@
                 </ul>
             </li>
 
-            <li><a href="#">關於我們</a></li>
-            <li><a href="#">購物車</a></li>
-            <li><a href="#">會員中心</a></li>
+            <RouterLink to="#">關於我們</RouterLink>
+            <RouterLink to="#">購物車</RouterLink>
+            <RouterLink to="#">會員中心</RouterLink>
           </ul>
         </nav>
         

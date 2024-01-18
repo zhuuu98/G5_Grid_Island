@@ -1,0 +1,38 @@
+//btn基本結構
+.btn {
+    cursor: pointer;
+    display: inline-flex !important;
+    align-items: center;
+    justify-content: center;
+    letter-spacing: 0.43px;
+}
+
+
+//btn寬高
+
+.btn_sm {
+    // width: 100px;
+    height: 31px
+}
+
+.btn_default {
+    // width: 150px;
+    height: 47px
+}
+
+.btn_xl {
+    width: 200px;
+    height: 54px
+}
+
+ //btn顏色
+.btn_primary {
+    @include btnColor( $btn-pri-bgc, true);
+  }
+    
+  .btn_fail {
+     @include btnColor( $btn-fail-bgc, true);
+  }
+
+  
+  
