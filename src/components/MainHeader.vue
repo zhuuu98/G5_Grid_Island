@@ -6,6 +6,7 @@
         <RouterLink to="/about">About</RouterLink>
         <RouterLink to="/product">Product</RouterLink>
         <RouterLink to="/News">News</RouterLink>
+        <RouterLink to="/login">Login</RouterLink>
       </nav>
     </div>
   </header>
