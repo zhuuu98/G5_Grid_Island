@@ -13,9 +13,9 @@
   justify-content: center;
   width: 100%;
   max-width: $max-width;
-  gap: $XL-spacing;
+  gap: $L-spacing;
   margin: $XL-spacing;
-  padding: $XL-spacing $M-spacing;
+  padding: $XL-spacing 0;
   border-radius: $PC-card-radius;
   h1 {
     color: $blue-1;
