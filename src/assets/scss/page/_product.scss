@@ -1,11 +1,9 @@
-@import "@/assets/scss/base/_color.scss";
-.productBackground{
+.productBackground {
   display: flex;
   align-items: center;
   justify-content: center;
   background-color: $yellow;
   width: 100%;
-
 }
 .product {
   background-color: $white-1;

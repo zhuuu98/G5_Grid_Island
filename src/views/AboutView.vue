@@ -1,10 +1,16 @@
 <template>
   <div class="about">
-    <h1>This is an about page</h1>
-    <Button type="info">Info</Button>
+    <div class="container">
+      <div class="row">
+        <div class="box col-PC-6 col-T-1 col-12"></div>
+      </div>
+    </div>
   </div>
 </template>
 
 <style lang="scss">
-//
+.box {
+  background-color: green;
+  height: 200px;
+}
 </style>
