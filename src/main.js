@@ -3,7 +3,7 @@ import { createApp } from "vue";
 import { createPinia } from "pinia";
 
 // 樣式
-import "./assets/main.css";
+// import "./assets/main.css";
 
 // 引入主程式
 import App from "./App.vue";
