@@ -1,6 +1,6 @@
 .container {
   --column-gap: 10px;
-  max-width: 1200px;
+  max-width: $max-width;
   margin: auto;
   padding-left: var(--column-gap);
   padding-right: var(--column-gap);
