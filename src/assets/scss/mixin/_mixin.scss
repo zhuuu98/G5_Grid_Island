@@ -1,3 +1,10 @@
+//btn basic
+@mixin btnBasic(){
+    cursor: pointer;
+    display: inline-flex !important;
+    align-items: center;
+    justify-content: center;
+}
 
 //btn bgc
 @mixin btnColor($bgc , $border: false) {
