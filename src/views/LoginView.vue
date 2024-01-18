@@ -10,9 +10,7 @@
                 <input type="password" placeholder="請輸入密碼">
                 <a href="" class="login_forget_password">忘記密碼？</a>
                 <input type="submit" value="登入" class="btn_default">
-                <input type="submit" value="入燈" class="btn_lg">
-                <input type="submit" value="小燈" class="btn_sm_1">
-                <p class="login_signUp_text">還不是會員嗎？<a href="">點我註冊</a></p>
+                <p class="login_signUp_text">還不是會員嗎？<a href="./Signup">點我註冊</a></p>
             </form>
         </div>
     </div>
