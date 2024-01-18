@@ -12,9 +12,32 @@
   align-items: center;
   justify-content: center;
   width: 100%;
-  max-width: 1084px;
-  gap: 68px;
+  max-width: $max-width;
+  gap: $L-spacing;
+  margin: $XL-spacing;
+  padding: $XL-spacing 0;
+  border-radius: $PC-card-radius;
   h1 {
     color: $blue-1;
   }
+}
+.hotTitle{
+  display: flex;
+  gap: 20px;
+  font-size: $PC-h3;
+  justify-content: center;
+  align-items: center;
+  margin: 20px;
+}
+.hotProductBody{
+  display: flex;
+  gap: $L-spacing;
+  max-width: 900px;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  margin: 20px;
+}
+.hotProductImg img{
+  border-radius: $PC-card-radius 0 $PC-card-radius 0;
 }

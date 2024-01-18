@@ -6,6 +6,7 @@ export default {
     return {
       respondData: [],
       displayData: [],
+      value:0
     };
   },
   components: {
@@ -29,6 +30,79 @@ export default {
 };
 </script>
 <template>
+  <div class="hotProductBackground">
+    <div class="hotProduct">
+      <div class="hotTitle">
+        <div class="hotTitleDash">——————</div>
+        <div class="hotTitleText">熱銷商品</div>
+        <div class="hotTitleDash">——————</div>
+      </div>
+      
+        <Carousel v-model="value" loop>
+        <CarouselItem>
+            <div class="hotProductBody">
+              <div class="hotProductImg">
+                <img src="https://fakeimg.pl/415x355/200">
+              </div>
+              <div class="hotproductInfo">
+                <a href="#">
+                  <h3>阿瓦蟲</h3>
+                </a>
+                <div class="hotproductTag">
+                  <span>1-5人</span>
+                  <span>益智遊戲</span>
+                  <span>團隊合作</span>
+                </div>
+                <div class="hotProductPrice">
+                  <span>$500</span>
+                </div>
+              </div>
+            </div>
+        </CarouselItem>
+        <CarouselItem>
+            <div class="hotProductBody">
+              <div class="hotProductImg">
+                <img src="https://fakeimg.pl/415x355/200">
+              </div>
+              <div class="hotproductInfo">
+                <a href="#">
+                  <h3>阿瓦蟲</h3>
+                </a>
+                <div class="hotproductTag">
+                  <span>1-5人</span>
+                  <span>益智遊戲</span>
+                  <span>團隊合作</span>
+                </div>
+                <div class="hotProductPrice">
+                  <span>$500</span>
+                </div>
+              </div>
+            </div>
+        </CarouselItem>
+        <CarouselItem>
+            <div class="hotProductBody">
+              <div class="hotProductImg">
+                <img src="https://fakeimg.pl/415x355/200">
+              </div>
+              <div class="hotproductInfo">
+                <a href="#">
+                  <h3>阿瓦蟲</h3>
+                </a>
+                <div class="hotproductTag">
+                  <span>1-5人</span>
+                  <span>益智遊戲</span>
+                  <span>團隊合作</span>
+                </div>
+                <div class="hotProductPrice">
+                  <span>$500</span>
+                </div>
+              </div>
+            </div>
+        </CarouselItem>
+      </Carousel>
+      </div>
+    </div>
+  
   <div class="productBackground">
     <div class="product">
       <ProductCard
