@@ -2,7 +2,7 @@
   <div class="about">
     <div class="container">
       <div class="row">
-        <div class="box col-PC-6 col-T-1 col-12"></div>
+        <div class="box col-PC-12 col-T-6 col-12"></div>
       </div>
     </div>
   </div>
