@@ -21,8 +21,7 @@
         height: 123px;
         border-radius: 500px;
         position: absolute;
-        left: 32%;
-        top: -20%;
+        top: -14%;
         background: no-repeat center url("@/assets/images/griddy_orange.png"), $bgc-1;
     }
     h2{
@@ -39,9 +38,8 @@
             border-radius: $input-radius;
             height: 40px;
             margin-top: 20px;
-        }
-        input::placeholder{
             padding: 6px;
+            width: 230px;
         }
         .login_forget_password{
             display: block;
