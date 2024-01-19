@@ -19,12 +19,20 @@ import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 // 引入需要的FontAwesome圖標
 import { library, config  } from '@fortawesome/fontawesome-svg-core';
 
-import { faCoffee} from '@fortawesome/free-solid-svg-icons';
-import {faInstagram, faLine} from '@fortawesome/free-brands-svg-icons';
+import { fas } from '@fortawesome/free-solid-svg-icons'
+import { far } from '@fortawesome/free-regular-svg-icons'
+import { fab } from '@fortawesome/free-brands-svg-icons'
+
+// Add all icons to the library so you can use it in your page
+library.add(fas, far, fab)
 
 
-// 在FontAwesome庫中添加圖標
-library.add(faCoffee, faInstagram, faLine);
+// import { faCoffee} from '@fortawesome/free-solid-svg-icons';
+// import {faInstagram, faLine} from '@fortawesome/free-brands-svg-icons';
+
+
+// // 在FontAwesome庫中添加圖標
+// library.add(faCoffee, faInstagram, faLine);
 
 // 设置 FontAwesome 默认样式，如果需要的话
 config.autoAddCss = false;
