@@ -10,13 +10,16 @@
       display: flex;
       flex-wrap: wrap;
       align-items: center;
-      justify-content: center;
+      justify-content: space-between;
       width: 100%;
       max-width: $max-width;
-      gap: $L-spacing;
+      // gap: $L-spacing;
       margin: $XL-spacing;
-      padding: $XL-spacing 0;
+      padding: $XL-spacing $XXL-spacing;
       border-radius: $PC-card-radius;
+      .productCard {
+        margin: $XL-spacing 0;
+      }
     }
   }
 
