@@ -1,4 +1,45 @@
+<script>
+export default {
+  data() {
+    return {
+      value: 0,
+      signupButton:[{
+        title:'使用Gmail登入',
+        link:'https://www.google.com/',
+        icon:'',
+    },{
+        title:'使用Line登入',
+        link:'https://www.line.com/',
+        icon:'',
+    },{
+        title:'使用Email登入',
+        link:'./signup2',
+        icon:'',
+    }],
+    };
+  },
+  created() {
+  },
+  methods: {
+    mounted() {},
+  },
+};
+</script>
+
+
 <template>
+    <Breadcrumb separator=">">
+        <BreadcrumbItem to="./Home">首頁</BreadcrumbItem>
+        <BreadcrumbItem to="/components/breadcrumb">Components</BreadcrumbItem>
+        <BreadcrumbItem>註冊會員</BreadcrumbItem>
+    </Breadcrumb>
+
+    <Breadcrumb separator="<b class='demo-breadcrumb-separator'>=></b>">
+        <BreadcrumbItem to="/">Home</BreadcrumbItem>
+        <BreadcrumbItem to="/components/breadcrumb">Components</BreadcrumbItem>
+        <BreadcrumbItem>Breadcrumb</BreadcrumbItem>
+    </Breadcrumb>
+
     <div class="signup" id="app">
         <div class="signup_main">
             <div class="signup_main_griddy">
@@ -20,34 +61,6 @@
         </div>
     </div>
 </template>
-
-<script>
-export default {
-  data() {
-    return {
-      value: 0,
-      signupButton:[{
-        title:'使用Gmail登入',
-        link:'https://www.google.com/',
-        icon:'',
-    },{
-        title:'使用Line登入',
-        link:'https://www.line.com/',
-        icon:'',
-    },{
-        title:'使用Email登入',
-        link:'./signup2',
-        icon:'',
-    }],
-    };
-  },
-  methods: {},
-  mounted() {},
-  
-}
-</script>
-
-
 
 <style lang="scss">
 //
