@@ -40,7 +40,29 @@ export default {
         </div>
 
         <Carousel v-model="value" loop>
-          <CarouselItem>
+          <CarouselItem v-for="item in displayData">
+            <div class="hotProductBody">
+              <div class="hotProductImg">
+                <img
+                  :src="`https://tibamef2e.com/chd103/g5/img/${item.prod_img1}`"
+                />
+              </div>
+              <div class="hotproductInfo">
+                <a href="#">
+                  <h3>{{ item.prod_name }}</h3>
+                </a>
+                <div class="hotproductTag">
+                  <span>1-5人</span>
+                  <span>益智遊戲</span>
+                  <span>團隊合作</span>
+                </div>
+                <div class="hotProductPrice">
+                  <span>${{ item.prod_price }}</span>
+                </div>
+              </div>
+            </div>
+          </CarouselItem>
+          <!-- <CarouselItem>
             <div class="hotProductBody">
               <div class="hotProductImg">
                 <img src="https://fakeimg.pl/415x355/200" />
@@ -79,27 +101,7 @@ export default {
                 </div>
               </div>
             </div>
-          </CarouselItem>
-          <CarouselItem>
-            <div class="hotProductBody">
-              <div class="hotProductImg">
-                <img src="https://fakeimg.pl/415x355/200" />
-              </div>
-              <div class="hotproductInfo">
-                <a href="#">
-                  <h3>阿瓦蟲</h3>
-                </a>
-                <div class="hotproductTag">
-                  <span>1-5人</span>
-                  <span>益智遊戲</span>
-                  <span>團隊合作</span>
-                </div>
-                <div class="hotProductPrice">
-                  <span>$500</span>
-                </div>
-              </div>
-            </div>
-          </CarouselItem>
+          </CarouselItem> -->
         </Carousel>
       </div>
     </div>
