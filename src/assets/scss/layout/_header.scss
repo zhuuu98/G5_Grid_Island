@@ -46,6 +46,11 @@ header{
     } //header_icons
 
     .ham_menu{
+      left: 0;
+      right: 70px;
+      bottom: 0;
+      top: 0;
+      position: fixed;
       display: block;
       background-color: #daa;
       .ham-menu-nav{
