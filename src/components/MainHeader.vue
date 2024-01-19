@@ -8,7 +8,7 @@
         </RouterLink>
       </div>
 
-      <RouterLink to="/product" class="nav_link">商品</RouterLink>
+      <!-- <RouterLink to="/product" class="nav_link">商品</RouterLink> -->
 
       <div class="header_icons">
         <nav>
@@ -31,7 +31,9 @@
 
           </ul>
         </nav>
+      </div>
 
+      
         <!-- 漢堡 -->
         <input type="checkbox" id="hamburger">
         <label class="ham" id="ham" for="hamburger">
@@ -39,6 +41,8 @@
             <span class="ham-bar" id="hamBar2"></span>
             <span class="ham-bar" id="hamBar3"></span>
         </label>
+
+      
 
         <!-- 漢堡內頁 -->
         <nav class="ham-menu">
@@ -74,7 +78,7 @@
           </ul>
         </nav>
         
-      </div>
+
 
     </div>
   </header>
