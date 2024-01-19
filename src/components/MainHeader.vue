@@ -3,23 +3,31 @@
   <header>
     <div class="wrapper">
       <div class="header_logo">
-        <a href="#">
+        <RouterLink to="/" class="nav_link">
           <img src="../assets/images/header-logo.png" alt="header_logo">
-        </a>
+        </RouterLink>
       </div>
+
+      <RouterLink to="/product" class="nav_link">商品</RouterLink>
 
       <div class="header_icons">
         <nav>
           <ul>
-            <RouterLink to="#" class="nav_link">預約場地</RouterLink>
+            <li>
+              <RouterLink to="#" class="nav_link">預約場地</RouterLink>
+            </li>
             
-            <RouterLink to="#" class="nav_link">
-              <div class="header_icon"><img src="../assets/images/header-cart.svg" alt="header-cart"></div>
-            </RouterLink>
+            <li>
+              <RouterLink to="#" class="nav_link">
+                <div class="header_icon"><img src="../assets/images/header-cart.svg" alt="header-cart"></div>
+              </RouterLink>
+            </li>
 
-            <RouterLink to="/login" class="nav_link">
-              <div class="header_icon"><img src="../assets/images/header-member.svg" alt="header-member"></div>
-            </RouterLink>
+            <li>
+              <RouterLink to="/login" class="nav_link">
+                <div class="header_icon"><img src="../assets/images/header-member.svg" alt="header-member"></div>
+              </RouterLink>
+            </li>
 
           </ul>
         </nav>
@@ -36,20 +44,28 @@
         <nav class="ham-menu">
           <ul class="ham-menu-nav">
 
-            <RouterLink to="#">預約場地</RouterLink>
-            <RouterLink to="#">所有商品</RouterLink>
-            <RouterLink to="#">最新消息</RouterLink>
+            <li>
+              <RouterLink to="#">預約場地</RouterLink>
+            </li>
+            <li>
+              <RouterLink to="#">所有商品</RouterLink>
+            </li>
+            <li>
+              <RouterLink to="#">最新消息</RouterLink>
+            </li>
 
             <li class="products-li">
-              <a href="#">玩家社群</a>
-              <input type="checkbox"  id="sub-switch">
+              <input type="checkbox" id="sub-switch">
+              <RouterLink to="#">
                 <label for="sub-switch" class="icon">
-                  <img src="../assets/images/header-ham-bug.png" alt="header-ham-bug">
+                  玩家社群
                 </label>
-                <ul class="ham-dropdown">
-                    <li><a href="#">留言區</a></li>
-                    <li><a href="#">報隊區</a></li>
-                </ul>
+                <img src="../assets/images/header-ham-bug.png" alt="header-ham-bug">
+                  <ul class="ham-dropdown">
+                      <li><a href="#">留言區</a></li>
+                      <li><a href="#">報隊區</a></li>
+                  </ul>
+              </RouterLink>
             </li>
 
             <RouterLink to="#">關於我們</RouterLink>

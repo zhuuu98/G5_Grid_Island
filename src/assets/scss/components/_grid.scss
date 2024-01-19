@@ -12,11 +12,15 @@
   margin-right: calc(var(--column-gap) * -1);
 }
 
+// class 名格式 col-12
 @include grid(12);
 
+// class 名格式 col-T-12
 @include T() {
   @include grid(12, T);
 }
+
+// class 名格式 col-PC-12
 @include PC() {
   @include grid(12, PC);
 }

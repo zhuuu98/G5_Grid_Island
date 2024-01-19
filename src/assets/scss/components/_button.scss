@@ -17,7 +17,7 @@
     //因為字距關係,左右padding不同才能對齊
     padding: 0 20px 0 25px;
     letter-spacing: $PC-btn-lg-spacing;
-    box-sizing: border-box;
+    font-size:$PC-btn-md-font;
     
 }
 //小按鈕
@@ -28,6 +28,7 @@
     border-radius: $S-button-radius;
     padding: 0 10px 0 12px;
     letter-spacing: $PC-btn-sl-spacing;
+    font-size:$PC-btn-sl-font;
 }
 
 
@@ -38,7 +39,7 @@
     height: 54px;
     padding: 0 20px 0 23px;
     border-radius:$L-button-radius;
-    font-size: $PC-btn-lg-font;
     letter-spacing: $PC-btn-lg-spacing;
+    font-size: $PC-btn-lg-font;
 
 }

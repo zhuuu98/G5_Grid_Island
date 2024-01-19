@@ -1,10 +1,10 @@
 @import "@/assets/scss/base/_font.scss";
 @import "@/assets/scss/components/_button.scss";
-.login{
+.signup{
     background-color: $bgc-2;
     padding: 20px;
 }
-.login_main{
+.signup_main{
     width: 100%;
     max-width: 353px;
     margin: 100px auto;
@@ -16,12 +16,13 @@
     border-radius: $PC-card-radius;
     padding: 80px 0;
 
-    .login_main_griddy{
+    .signup_main_griddy{
         width: 123px;
         height: 123px;
         border-radius: 500px;
         position: absolute;
-        top: -14%;
+        left: 32%;
+        top: -20%;
         background: no-repeat center url("@/assets/images/griddy_orange.png"), $bgc-1;
     }
     h2{
@@ -34,20 +35,7 @@
         a{
             color: $blue-3;
         }
-        input[type="email"], input[type="password"]{
-            border-radius: $input-radius;
-            height: 40px;
-            margin-top: 20px;
-            padding: 6px;
-            width: 230px;
-        }
-        .login_forget_password{
-            display: block;
-            font-size: $small;
-            align-self: end;
-            text-decoration: none;
-        }
-        .login_signUp_text{
+        .signup_signUp_text{
             font-size: $small;
             a{
                 text-decoration:underline;
