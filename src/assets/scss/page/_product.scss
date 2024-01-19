@@ -1,43 +1,43 @@
-.productBackground {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: $yellow;
-  width: 100%;
-}
 .product {
-  background-color: $white-1;
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-  max-width: $max-width;
-  gap: $L-spacing;
-  margin: $XL-spacing;
-  padding: $XL-spacing 0;
-  border-radius: $PC-card-radius;
-  h1 {
-    color: $blue-1;
+  .productBackground {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: $yellow;
+    width: 100%;
+    .product {
+      background-color: $white-1;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      max-width: $max-width;
+      gap: $L-spacing;
+      margin: $XL-spacing;
+      padding: $XL-spacing 0;
+      border-radius: $PC-card-radius;
+    }
   }
-}
-.hotTitle{
-  display: flex;
-  gap: 20px;
-  font-size: $PC-h3;
-  justify-content: center;
-  align-items: center;
-  margin: 20px;
-}
-.hotProductBody{
-  display: flex;
-  gap: $L-spacing;
-  max-width: 900px;
-  width: 100%;
-  justify-content: center;
-  align-items: center;
-  margin: 20px;
-}
-.hotProductImg img{
-  border-radius: $PC-card-radius 0 $PC-card-radius 0;
+
+  .hotTitle {
+    display: flex;
+    gap: 20px;
+    font-size: $PC-h3;
+    justify-content: center;
+    align-items: center;
+    margin: 20px;
+  }
+  .hotProductBody {
+    display: flex;
+    gap: $L-spacing;
+    max-width: 900px;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    margin: 20px;
+  }
+  .hotProductImg img {
+    border-radius: $PC-card-radius 0 $PC-card-radius 0;
+  }
 }

@@ -6,7 +6,7 @@ export default {
     return {
       respondData: [],
       displayData: [],
-      value:0
+      value: 0,
     };
   },
   components: {
@@ -30,19 +30,20 @@ export default {
 };
 </script>
 <template>
-  <div class="hotProductBackground">
-    <div class="hotProduct">
-      <div class="hotTitle">
-        <div class="hotTitleDash">——————</div>
-        <div class="hotTitleText">熱銷商品</div>
-        <div class="hotTitleDash">——————</div>
-      </div>
-      
+  <div class="product">
+    <div class="hotProductBackground">
+      <div class="hotProduct">
+        <div class="hotTitle">
+          <div class="hotTitleDash">——————</div>
+          <div class="hotTitleText">熱銷商品</div>
+          <div class="hotTitleDash">——————</div>
+        </div>
+
         <Carousel v-model="value" loop>
-        <CarouselItem>
+          <CarouselItem>
             <div class="hotProductBody">
               <div class="hotProductImg">
-                <img src="https://fakeimg.pl/415x355/200">
+                <img src="https://fakeimg.pl/415x355/200" />
               </div>
               <div class="hotproductInfo">
                 <a href="#">
@@ -58,11 +59,11 @@ export default {
                 </div>
               </div>
             </div>
-        </CarouselItem>
-        <CarouselItem>
+          </CarouselItem>
+          <CarouselItem>
             <div class="hotProductBody">
               <div class="hotProductImg">
-                <img src="https://fakeimg.pl/415x355/200">
+                <img src="https://fakeimg.pl/415x355/200" />
               </div>
               <div class="hotproductInfo">
                 <a href="#">
@@ -78,11 +79,11 @@ export default {
                 </div>
               </div>
             </div>
-        </CarouselItem>
-        <CarouselItem>
+          </CarouselItem>
+          <CarouselItem>
             <div class="hotProductBody">
               <div class="hotProductImg">
-                <img src="https://fakeimg.pl/415x355/200">
+                <img src="https://fakeimg.pl/415x355/200" />
               </div>
               <div class="hotproductInfo">
                 <a href="#">
@@ -98,19 +99,20 @@ export default {
                 </div>
               </div>
             </div>
-        </CarouselItem>
-      </Carousel>
+          </CarouselItem>
+        </Carousel>
       </div>
     </div>
-  
-  <div class="productBackground">
-    <div class="product">
-      <ProductCard
-        v-for="item in displayData"
-        :productTitle="item.prod_name"
-        :imgUrl="`https://tibamef2e.com/chd103/g5/img/${item.prod_img1}`"
-        :productPrice="item.prod_price"
-      />
+
+    <div class="productBackground">
+      <div class="product">
+        <ProductCard
+          v-for="item in displayData"
+          :productTitle="item.prod_name"
+          :imgUrl="`https://tibamef2e.com/chd103/g5/img/${item.prod_img1}`"
+          :productPrice="item.prod_price"
+        />
+      </div>
     </div>
   </div>
 </template>
