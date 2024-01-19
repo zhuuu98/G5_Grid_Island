@@ -7,9 +7,9 @@
             <h2>註冊會員</h2>
             <form action="">
                 <font-awesome-icon icon="instagram" />
-                <font-awesome-icon icon="faline" />
-                <font-awesome-icon icon="coffee" />
-                <RouterLink v-for="item in signupButton" :to ="item.link" class="btn_lg">{{item.title}}</RouterLink>
+                <font-awesome-icon icon="line" />
+                <!-- <font-awesome-icon icon="coffee" /> -->
+                <RouterLink v-for="item in signupButton" :to ="item.link" class="signBtn">{{item.title}}</RouterLink>
                 <p class="signup_signUp_text">
                     已經是會員了?
                     <RouterLink to ="./login">點我登入</RouterLink>
@@ -35,7 +35,7 @@ export default {
         link:'https://www.line.com/',
         icon:'',
     },{
-        title:'使用email登入',
+        title:'使用Email登入',
         link:'./signup2',
         icon:'',
     }],
