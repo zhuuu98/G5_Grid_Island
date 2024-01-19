@@ -12,6 +12,10 @@ import router from "./router";
 import { Button, Carousel, CarouselItem, Icon } from "view-ui-plus";
 import "view-ui-plus/dist/styles/viewuiplus.css";
 
+
+// 引入Vue-fontawesome
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
+
 // 引入需要的FontAwesome圖標
 import { library, config  } from '@fortawesome/fontawesome-svg-core';
 
@@ -25,8 +29,7 @@ library.add(faCoffee, faInstagram, faLine);
 // 设置 FontAwesome 默认样式，如果需要的话
 config.autoAddCss = false;
 
-// 引入Vue-fontawesome
-import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
+
 
 
 
