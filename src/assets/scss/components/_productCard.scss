@@ -6,57 +6,55 @@
     background-color: $blue-3;
     color: $white-1;
     width: 100%;
-    max-width: 305px;
+    max-width: 280px;
     border-radius: 0 0 $PC-card-radius $PC-card-radius;
     padding: $M-spacing;
+    .productTag {
+      display: flex;
+      justify-content: space-between;
+      span {
+        width: 65px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: $XS-spacing;
+        background-color: $white-1;
+        color: $black;
+        border-radius: 10px;
+      }
+    }
+    h3 {
+      width: 100%;
+      max-width: 280px;
+      background-color: $blue-3;
+      color: $white-1;
+      font-size: $PC-h3;
+    }
+    .price {
+      font-size: $PC-h3;
+    }
   }
   .productPic {
     position: relative;
-  }
-
-  .productPic img {
-    vertical-align: top;
-    width: 100%;
-    max-width: 305px;
-    border-radius: $PC-card-radius $PC-card-radius 0 0;
+    img {
+      vertical-align: top;
+      width: 100%;
+      max-width: 280px;
+      border-radius: $PC-card-radius $PC-card-radius 0 0;
+    }
   }
   .productPic_Mask {
     width: 100%;
-    max-width: 305px;
-    padding-bottom: 305px;
+    max-width: 280px;
+    padding-bottom: 280px;
     position: absolute;
     background-color: $blue-3;
     top: 0;
     opacity: 0;
     border-radius: $PC-card-radius $PC-card-radius 0 0;
     transition: all 0.3s ease-in-out;
-  }
-  .productPic_Mask:hover {
-    opacity: 0.7;
-  }
-
-  .productTag {
-    display: flex;
-    gap: 14px;
-  }
-  .productTag span {
-    width: 80px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: $S-spacing;
-    background-color: $white-1;
-    color: $black;
-    border-radius: 10px;
-  }
-  .productCard h3 {
-    width: 100%;
-    max-width: 305px;
-    background-color: $blue-3;
-    color: $white-1;
-    font-size: $PC-h3;
-  }
-  .price {
-    font-size: $PC-h3;
+    &:hover {
+      opacity: 0.7;
+    }
   }
 }
