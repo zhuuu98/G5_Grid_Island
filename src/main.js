@@ -13,11 +13,17 @@ import { Button, Carousel, CarouselItem } from "view-ui-plus";
 import "view-ui-plus/dist/styles/viewuiplus.css";
 
 // 引入需要的FontAwesome圖標
-import { library } from '@fortawesome/fontawesome-svg-core';
-import { faCoffee } from '@fortawesome/free-solid-svg-icons';
+import { library, config  } from '@fortawesome/fontawesome-svg-core';
+
+import { faCoffee} from '@fortawesome/free-solid-svg-icons';
+import {faInstagram, faLine} from '@fortawesome/free-brands-svg-icons';
+
 
 // 在FontAwesome庫中添加圖標
-library.add(faCoffee);
+library.add(faCoffee, faInstagram, faLine);
+
+// 设置 FontAwesome 默认样式，如果需要的话
+config.autoAddCss = false;
 
 // 引入Vue-fontawesome
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';

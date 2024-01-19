@@ -6,10 +6,10 @@
             </div>
             <h2>註冊會員</h2>
             <form action="">
+                <font-awesome-icon icon="instagram" />
+                <font-awesome-icon icon="faline" />
                 <font-awesome-icon icon="coffee" />
                 <RouterLink v-for="item in signupButton" :to ="item.link" class="btn_lg">{{item.title}}</RouterLink>
-                <!-- <a href="https://www.google.com/" title="請至手機裝置操作">使用Line註冊</a>
-                <a href="">使用Email註冊</a> -->
                 <p class="signup_signUp_text">
                     已經是會員了?
                     <RouterLink to ="./login">點我登入</RouterLink>
