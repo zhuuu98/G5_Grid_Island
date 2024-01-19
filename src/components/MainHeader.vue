@@ -2,23 +2,24 @@
   <!-- header -->
   <header>
     <div class="wrapper">
-
       <div class="header_logo">
         <a href="#">
           <img src="../assets/images/header-logo.png" alt="header_logo">
         </a>
       </div>
 
-      <div class="title">
+      <div class="header_icons">
         <nav>
           <ul>
-            <RouterLink to="#">預約場地</RouterLink>
-            <RouterLink to="#">
-              <img src="../assets/images/header-cart.svg" alt="header-cart">
+            <RouterLink to="#" class="nav_link">預約場地</RouterLink>
+            
+            <RouterLink to="#" class="nav_link">
+              <div class="header_icon"><img src="../assets/images/header-cart.svg" alt="header-cart"></div>
             </RouterLink>
 
-            <RouterLink to="/login"><img src="../assets/images/header-member.svg" alt="header-member"></RouterLink>
-
+            <RouterLink to="/login" class="nav_link">
+              <div class="header_icon"><img src="../assets/images/header-member.svg" alt="header-member"></div>
+            </RouterLink>
 
           </ul>
         </nav>
@@ -31,6 +32,7 @@
             <span class="ham-bar" id="hamBar3"></span>
         </label>
 
+        <!-- 漢堡內頁 -->
         <nav class="ham-menu">
           <ul class="ham-menu-nav">
 
