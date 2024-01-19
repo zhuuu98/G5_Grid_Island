@@ -4,6 +4,7 @@ import ProductCard from "../components/ProductCard.vue";
 export default {
   data() {
     return {
+      search: "",
       respondData: [],
       displayData: [],
       value: 0,
@@ -11,6 +12,11 @@ export default {
   },
   components: {
     ProductCard,
+  },
+  computed: {
+    nodata() {
+      return this.displayData.length == 0;
+    },
   },
   created() {
     this.axiosGetData();
@@ -25,8 +31,13 @@ export default {
           this.displayData = res.data;
         });
     },
-    mounted() {},
+    handleSearch() {
+      this.displayData = this.respondData.filter((item) => {
+        return item.prod_name.includes(this.search);
+      });
+    },
   },
+  mounted() {},
 };
 </script>
 <template>
@@ -70,46 +81,6 @@ export default {
               </div>
             </div>
           </CarouselItem>
-          <!-- <CarouselItem>
-            <div class="hotProductBody">
-              <div class="hotProductImg">
-                <img src="https://fakeimg.pl/415x355/200" />
-              </div>
-              <div class="hotproductInfo">
-                <a href="#">
-                  <h3>阿瓦蟲</h3>
-                </a>
-                <div class="hotproductTag">
-                  <span>1-5人</span>
-                  <span>益智遊戲</span>
-                  <span>團隊合作</span>
-                </div>
-                <div class="hotProductPrice">
-                  <span>$500</span>
-                </div>
-              </div>
-            </div>
-          </CarouselItem>
-          <CarouselItem>
-            <div class="hotProductBody">
-              <div class="hotProductImg">
-                <img src="https://fakeimg.pl/415x355/200" />
-              </div>
-              <div class="hotproductInfo">
-                <a href="#">
-                  <h3>阿瓦蟲</h3>
-                </a>
-                <div class="hotproductTag">
-                  <span>1-5人</span>
-                  <span>益智遊戲</span>
-                  <span>團隊合作</span>
-                </div>
-                <div class="hotProductPrice">
-                  <span>$500</span>
-                </div>
-              </div>
-            </div>
-          </CarouselItem> -->
         </Carousel>
       </div>
     </div>
@@ -117,8 +88,8 @@ export default {
     <section class="productList">
       <div class="searchCatBar">
         <div class="searchBar">
-          <input type="text" id="" />
-          <button>搜尋</button>
+          <input type="text" id="" v-model="search" />
+          <button @click="handleSearch">搜尋</button>
         </div>
         <button>按分類篩選</button>
       </div>
@@ -129,6 +100,9 @@ export default {
         <div class="productTitleDash">——————</div>
       </div>
       <div class="productBackgruond">
+        <div class="noDataWarning" v-if="nodata">
+          <p>無資料，請輸入正確的資料</p>
+        </div>
         <div class="productListContent">
           <div class="productSelect">
             <select id="Select">
