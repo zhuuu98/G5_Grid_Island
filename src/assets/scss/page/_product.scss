@@ -1,48 +1,125 @@
 .product {
-  .productBackground {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  .productList {
     background-color: $yellow;
     width: 100%;
-    .product {
-      background-color: $white-1;
+    padding: $XL-spacing 0;
+    .productTitle {
       display: flex;
-      flex-wrap: wrap;
+      gap: 20px;
+      font-size: $PC-h3;
+      justify-content: center;
       align-items: center;
-      justify-content: space-between;
-      width: 100%;
-      max-width: $max-width;
-      // gap: $L-spacing;
-      margin: $XL-spacing;
-      padding: $XL-spacing $XXL-spacing;
-      border-radius: $PC-card-radius;
-      .productCard {
-        margin: $XL-spacing 0;
+      margin: 20px;
+      @include PC() {
+        display: none;
       }
     }
-  }
 
-  .hotTitle {
-    display: flex;
-    gap: 20px;
-    font-size: $PC-h3;
-    justify-content: center;
-    align-items: center;
-    margin: 20px;
+    .productBackgruond {
+      background-color: $white-1;
+      width: 90%;
+      max-width: $max-width;
+      margin: $XL-spacing auto;
+      border-radius: $PC-card-radius;
+      @include PC() {
+        width: 100%;
+      }
+      .productListContent {
+        padding: $M-spacing $M-spacing;
+        @include PC() {
+          padding: $XL-spacing $XXL-spacing;
+        }
+        .productSelect {
+          display: none;
+          @include PC() {
+            display: flex;
+            justify-content: end;
+          }
+        }
+        .productItem {
+          display: flex;
+          flex-flow: row wrap;
+          align-items: center;
+          justify-content: center;
+          column-gap: $XL-spacing;
+          @include PC() {
+            justify-content: space-between;
+          }
+          .productCard {
+            margin: $XL-spacing 0;
+          }
+        }
+      }
+    }
+    .searchCatBar {
+      max-width: $max-width;
+      margin: auto;
+      display: flex;
+    }
   }
-  .hotProductBody {
-    display: flex;
-    gap: $L-spacing;
-    max-width: 900px;
-    width: 100%;
-    justify-content: center;
-    align-items: center;
-    margin: 20px;
-  }
-  .hotProductImg img {
-    width: 305px;
-    height: 305px;
-    border-radius: $PC-card-radius 0 $PC-card-radius 0;
+  .hotProductBackground {
+    background-color: $orange-1;
+    padding: $XXXL-spacing 0;
+    color: $black;
+    .hotProduct {
+      max-width: $max-width;
+      margin: auto;
+      .hotTitle {
+        display: flex;
+        gap: 20px;
+        font-size: $PC-h3;
+        justify-content: center;
+        align-items: center;
+        margin: 20px;
+      }
+      .hotProductBody {
+        width: 100%;
+        margin: $L-spacing 0;
+        .top {
+          font-size: $PC-h3;
+          text-align: center;
+          margin: $L-spacing 0;
+        }
+        .hotProductGroup {
+          gap: $XL-spacing;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          .hotproductInfo {
+            max-width: 350px;
+            display: flex;
+            flex-direction: column;
+            gap: $L-spacing;
+
+            a {
+              h3 {
+                font-size: $PC-h3;
+                color: $black;
+              }
+            }
+            .hotproductTag {
+              display: flex;
+              gap: $M-spacing;
+              span {
+                padding: $S-spacing $M-spacing;
+                background-color: $white-1;
+                border-radius: 10px;
+              }
+            }
+            .hotProductIntro {
+              font-size: $PC-text;
+            }
+            .hotProductPrice {
+              font-size: $PC-h3;
+            }
+          }
+          .hotProductImg img {
+            width: 350px;
+            height: 300px;
+            border-radius: $PC-card-radius 0 $PC-card-radius 0;
+          }
+        }
+      }
+    }
   }
 }
