@@ -14,7 +14,7 @@
     background-color: $bgc-8;
     position: relative;
     border-radius: $PC-card-radius;
-    padding: 80px 0;
+    padding: 80px 0 40px;
 
     .login_main_griddy{
         width: 123px;
@@ -47,8 +47,12 @@
             align-self: end;
             text-decoration: none;
         }
+        .login_Icon{
+            margin: 40px 0 20px;
+        }
         .login_signUp_text{
             font-size: $small;
+            margin-top: 20px;
             a{
                 text-decoration:underline;
             }

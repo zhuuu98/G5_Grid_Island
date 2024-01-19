@@ -52,13 +52,23 @@ header{
       z-index: 950;
       width: 100vh;
       height: 100vh;
-      border: 1px solid yellow;
-      // display: none;
+      background-color: #fa0;
+      display: none;
     }
 
   }
 }
 
+.hamburger-line {
+  background-color: #fa0;
+  width: 20px;
+  height: 4px;
+  margin: 4px 4px;
+}
+.menu-content {
+  display: block;
+  /* 其他選單樣式 */
+}
 
 
 
