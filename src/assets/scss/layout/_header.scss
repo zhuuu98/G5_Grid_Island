@@ -67,6 +67,7 @@ header {
         align-items: center;
         justify-content: space-between;
         width: 18px;
+        cursor: pointer;
 
         .ham_btn_line {
           background-color: $black;
@@ -93,31 +94,77 @@ header {
       position: fixed;
       z-index: 950;
       background-color: $white-2;
+      // background-color: aquamarine;
       box-sizing: border-box;
       padding: 80px;
       gap: 20px;
       font-size: $PC-h4;
-
+      //還沒成功的彈跳效果
+      // animation: bounceIn 1s cubic-bezier(.65,-0.3,.93,-0.03);
     }
 
 
 
   }
 
-  //wrapper
+  
+}//wrapper
+/* 滑動-淡出效果 */
+
+.ham_menu-leave-active {
+  transition: all .4s ease;
 }
-/* 滑動-淡入效果 */
-.slide-fade-enter-active, .slide-fade-leave-active {
-  transition: all 0.3s ease;
-}
-.slide-fade-enter, .slide-fade-leave-active {
+
+.ham_menu-leave-active {
   transform: translateY(-100%);
-
 }
-.slide-fade-enter-to, .slide-fade-leave {
+
+.ham_menu-leave {
   transform: translateY(0);
-
 }
+
+/* 還沒成功的彈跳點 */
+@keyframes bounceIn {
+  0%{
+    bottom: 0;
+  }
+  25%{
+    bottom: 180px;
+  }
+  50%{
+    bottom: 0;
+  }
+  75%{
+    bottom: 80px;
+    }
+  100%{
+    bottom: 0;
+  }
+}
+
+
+/* 定義從上方滑進來的動畫 */
+@keyframes slideInFromTop {
+  from {
+    transform: translateY(-100%); /* 初始位置在上方屏幕外 */
+  }
+  to {
+    transform: translateY(0); /* 最終位置在屏幕內 */
+  }
+}
+
+/* 過渡效果 */
+.ham_menu-enter {
+  opacity: 0; /* 初始透明度為0 */
+}
+
+.ham_menu-enter-active {
+  transition: opacity 0.6s ease-out, transform 0.3s cubic-bezier(0.68, -0.55, 0.27, 1.55); /* 設置淡入和從上方滑進來的動畫 */
+  opacity: 1; /* 最終透明度為1 */
+  animation: slideInFromTop 0.3s ease-out; /* 應用從上方滑進來的動畫 */
+}
+
+
 
 
 //header

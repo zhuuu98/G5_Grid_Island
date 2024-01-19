@@ -39,7 +39,7 @@
             </ul>
           </nav>
         </div>
-        <transition name="slide-fade">
+        <transition name="ham_menu">
           <!-- 選單內容 -->
           <div v-if="menuOpen" class="ham_menu">
             <!-- 選單項目 -->
@@ -91,7 +91,11 @@ export default {
       this.subMenuOpen = !this.subMenuOpen;
     },
   },
-  mounted() { },
+  mounted() {
+    this.$router.afterEach(() => {
+    this.menuOpen = false; // 關閉漢堡選單
+  });
+  },
 };
 </script>
 
