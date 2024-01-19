@@ -3,10 +3,10 @@
   <header>
     <div>
       <div class="wrapper">
-        <div class="header_logo">
-          <RouterLink to="/" class="nav_link">
-            <img src="../assets/images/header-logo.png" alt="header_logo">
-          </RouterLink>
+        <div class="logo_box">
+              <RouterLink to="/" class="nav_link">
+              <img src="../assets/images/header/gdidlogobox.svg" alt="header_logo">
+            </RouterLink>
         </div>
         <div class="header_icons">
           <nav>
@@ -17,24 +17,27 @@
       
               <li>
                 <RouterLink to="#" class="nav_link">
-                  <div class="header_icon"><img src="../assets/images/header-cart.svg" alt="header-cart"></div>
+                  <div class="nav_cart"><img src="../assets/images/header/header-cart.svg" alt="header-cart"></div>
                 </RouterLink>
               </li>
               <li>
-                <RouterLink to="/login" class="nav_link">
-                  <div class="header_icon"><img src="../assets/images/header-member.svg" alt="header-member"></div>
+                <RouterLink to="/login" class="nav_link ">
+                  <div class="nav_member"><img src="../assets/images/header/header-member.svg" alt="header-member"></div>
                 </RouterLink>
               </li>
-            </ul>
-          </nav>
+
+
           
           <!-- 漢堡圖標 -->
-          <!-- 漢堡圖標 -->
-          <button @click="toggleMenu" class="ham_btn">
-            <div class="ham_btn_line"></div>
-            <div class="ham_btn_line"></div>
-            <div class="ham_btn_line"></div>
-          </button>
+          <li>
+            <button @click="toggleMenu" class="ham_btn">
+              <div class="ham_btn_line"></div>
+              <div class="ham_btn_line"></div>
+              <div class="ham_btn_line"></div>
+            </button>
+          </li>
+        </ul>
+        </nav>
         </div>
           
         <!-- 選單內容 -->
@@ -72,9 +75,8 @@ export default {
   },
   data() {
     return {
-      menuOpen: false, // 添加這個屬性
-      subMenuOpen: false,
-      value: 0,
+      menuOpen: false, //漢堡開關
+      subMenuOpen: false, //玩家社群子階層
     };
   },
   methods: {
