@@ -16,6 +16,7 @@
     }
 
     .productBackgruond {
+      position: relative;
       background-color: $white-1;
       width: 90%;
       max-width: $max-width;
@@ -23,6 +24,15 @@
       border-radius: $PC-card-radius;
       @include PC() {
         width: 100%;
+      }
+      .noDataWarning {
+        p {
+          font-size: $PC-h3;
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+        }
       }
       .productListContent {
         padding: $M-spacing $M-spacing;
@@ -43,7 +53,7 @@
           justify-content: center;
           column-gap: $XL-spacing;
           @include PC() {
-            justify-content: space-between;
+            justify-content: center;
           }
           .productCard {
             margin: $XL-spacing 0;
@@ -62,7 +72,7 @@
     padding: $XXXL-spacing 0;
     color: $black;
     .hotProduct {
-      max-width: $max-width;
+      // max-width: $max-width;
       margin: auto;
       .hotTitle {
         display: flex;
@@ -71,6 +81,17 @@
         justify-content: center;
         align-items: center;
         margin: 20px;
+      }
+      .ivu-carousel-arrow-hover {
+        background-color: $white-1;
+        border: 1px solid $black;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        .ivu-icon {
+          color: black;
+          font-size: 30px;
+        }
       }
       .hotProductBody {
         width: 100%;
@@ -83,8 +104,12 @@
         .hotProductGroup {
           gap: $XL-spacing;
           display: flex;
+          flex-direction: column;
           justify-content: center;
           align-items: center;
+          @include PC() {
+            flex-direction: row;
+          }
           .hotproductInfo {
             max-width: 350px;
             display: flex;
@@ -101,6 +126,10 @@
               display: flex;
               gap: $M-spacing;
               span {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                width: 100px;
                 padding: $S-spacing $M-spacing;
                 background-color: $white-1;
                 border-radius: 10px;
@@ -115,7 +144,7 @@
           }
           .hotProductImg img {
             width: 350px;
-            height: 300px;
+            height: 280px;
             border-radius: $PC-card-radius 0 $PC-card-radius 0;
           }
         }

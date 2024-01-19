@@ -9,7 +9,7 @@ import "./assets/scss/style.scss";
 import App from "./App.vue";
 import router from "./router";
 
-import { Button, Carousel, CarouselItem, Icon } from "view-ui-plus";
+import { Button, Carousel, CarouselItem, Icon, Breadcrumb, BreadcrumbItem } from "view-ui-plus";
 import "view-ui-plus/dist/styles/viewuiplus.css";
 
 
@@ -19,12 +19,12 @@ import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 // 引入需要的FontAwesome圖標
 import { library, config  } from '@fortawesome/fontawesome-svg-core';
 
-import { faCoffee} from '@fortawesome/free-solid-svg-icons';
-import {faInstagram, faLine} from '@fortawesome/free-brands-svg-icons';
+import { fas } from '@fortawesome/free-solid-svg-icons'
+import { far } from '@fortawesome/free-regular-svg-icons'
+import { fab } from '@fortawesome/free-brands-svg-icons'
 
-
-// 在FontAwesome庫中添加圖標
-library.add(faCoffee, faInstagram, faLine);
+// Add all icons to the library so you can use it in your page
+library.add(fas, far, fab)
 
 // 设置 FontAwesome 默认样式，如果需要的话
 config.autoAddCss = false;
@@ -41,6 +41,8 @@ app.component("Button", Button);
 app.component("Carousel", Carousel)
 app.component("CarouselItem", CarouselItem)
 app.component("Icon", Icon)
+app.component("Breadcrumb", Breadcrumb)
+app.component("BreadcrumbItem", BreadcrumbItem)
 
 // 在全局註冊FontAwesomeIcon組件，這樣你就可以在整個應用中使用
 app.component('font-awesome-icon', FontAwesomeIcon);
