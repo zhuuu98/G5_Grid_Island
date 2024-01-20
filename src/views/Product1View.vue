@@ -1,6 +1,6 @@
 <template>
-  <div class="product">
-    <div class="hotProductBackground">
+  <main class="product">
+    <section class="hotProductBackground">
       <div class="hotProduct">
         <div class="hotTitle">
           <div class="hotTitleDash">——————</div>
@@ -9,21 +9,36 @@
         </div>
 
         <Carousel v-model="value" loop>
-          <CarouselItem v-for="(item, index) in displayData">
+          <CarouselItem
+            v-for="(item, index) in displayData"
+            :key="item.prod_id"
+          >
             <div class="hotProductBody">
               <div class="top">
                 <p>Top {{ index + 1 }}</p>
               </div>
               <div class="hotProductGroup">
-                <div class="hotProductImg">
-                  <img
-                    :src="`https://tibamef2e.com/chd103/g5/img/${item.prod_img1}`"
-                  />
-                </div>
+                <router-link
+                  :to="{
+                    name: 'productInfo',
+                    params: { id: item.prod_id },
+                  }"
+                >
+                  <div class="hotProductImg">
+                    <img
+                      :src="`https://tibamef2e.com/chd103/g5/img/${item.prod_img1}`"
+                    />
+                  </div>
+                </router-link>
                 <div class="hotproductInfo">
-                  <a href="#">
+                  <router-link
+                    :to="{
+                      name: 'productInfo',
+                      params: { id: item.prod_id },
+                    }"
+                  >
                     <h3>{{ item.prod_name }}</h3>
-                  </a>
+                  </router-link>
                   <!-- <div class="hotproductTag">
                     <span>1-5人</span>
                     <span>益智遊戲</span>
@@ -41,7 +56,7 @@
           </CarouselItem>
         </Carousel>
       </div>
-    </div>
+    </section>
 
     <section class="productList">
       <div class="searchCatBar">
@@ -71,15 +86,17 @@
           <div class="productItem">
             <ProductCard
               v-for="item in displayData"
+              :key="item.prod_id"
               :productTitle="item.prod_name"
               :imgUrl="`https://tibamef2e.com/chd103/g5/img/${item.prod_img1}`"
               :productPrice="item.prod_price"
+              :productId="item.prod_id"
             />
           </div>
         </div>
       </div>
     </section>
-  </div>
+  </main>
 </template>
 
 <script>
@@ -121,10 +138,23 @@ export default {
       });
     },
   },
+  watch: {
+    search(newSearch, oldSearch) {
+      // console.log("new:" + newSearch);
+      // console.log("old:" + oldSearch);
+      // 可以調用 methods
+    },
+    respondData(newData) {
+      // console.log(newData.length);
+    },
+    // 如果畫面一開始要監聽要設成 true
+    // immediate: true,
+    // 如果要監聽陣列或物件要設稱 true
+    // deep: true,
+  },
   mounted() {},
 };
 </script>
-
 
 <style lang="scss">
 //
