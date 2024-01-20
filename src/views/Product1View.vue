@@ -62,9 +62,9 @@
       <div class="searchCatBar">
         <div class="searchBar">
           <input type="text" id="" v-model="search" />
-          <button @click="handleSearch">搜尋</button>
+          <button @click="handleSearch" class="btn_sm_1">搜尋</button>
         </div>
-        <button>按分類篩選</button>
+        <button class="btn_sm_1">按分類篩選</button>
       </div>
 
       <div class="productTitle">

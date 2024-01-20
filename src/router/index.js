@@ -47,6 +47,11 @@ const router = createRouter({
       name: "prebook",
       component: () => import("../views/PreBookView.vue"),
     },
+    {
+      path: "/:pathMatch(.*)*",
+      name: "NotFound",
+      component: () => import("../views/NotFoundView.vue"),
+    },
   ],
 });
 
