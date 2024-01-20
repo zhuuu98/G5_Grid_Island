@@ -1,45 +1,3 @@
-<script>
-import axios from "axios";
-import ProductCard from "../components/ProductCard.vue";
-export default {
-  data() {
-    return {
-      search: "",
-      respondData: [],
-      displayData: [],
-      value: 0,
-    };
-  },
-  components: {
-    ProductCard,
-  },
-  computed: {
-    nodata() {
-      return this.displayData.length == 0;
-    },
-  },
-  created() {
-    this.axiosGetData();
-  },
-  methods: {
-    axiosGetData() {
-      axios
-        .get("https://tibamef2e.com/chd103/g5/phps/ProductM.php")
-        .then((res) => {
-          console.log(res.data);
-          this.respondData = res.data;
-          this.displayData = res.data;
-        });
-    },
-    handleSearch() {
-      this.displayData = this.respondData.filter((item) => {
-        return item.prod_name.includes(this.search);
-      });
-    },
-  },
-  mounted() {},
-};
-</script>
 <template>
   <div class="product">
     <div class="hotProductBackground">
@@ -66,11 +24,11 @@ export default {
                   <a href="#">
                     <h3>{{ item.prod_name }}</h3>
                   </a>
-                  <div class="hotproductTag">
+                  <!-- <div class="hotproductTag">
                     <span>1-5人</span>
                     <span>益智遊戲</span>
                     <span>團隊合作</span>
-                  </div>
+                  </div> -->
                   <div class="hotproductIntro">
                     {{ item.prod_des1 }}
                   </div>
@@ -123,6 +81,50 @@ export default {
     </section>
   </div>
 </template>
+
+<script>
+import axios from "axios";
+import ProductCard from "../components/ProductCard.vue";
+export default {
+  data() {
+    return {
+      search: "",
+      respondData: [],
+      displayData: [],
+      value: 0,
+    };
+  },
+  components: {
+    ProductCard,
+  },
+  computed: {
+    nodata() {
+      return this.displayData.length == 0;
+    },
+  },
+  created() {
+    this.axiosGetData();
+  },
+  methods: {
+    axiosGetData() {
+      axios
+        .get("https://tibamef2e.com/chd103/g5/phps/ProductM.php")
+        .then((res) => {
+          console.log(res.data);
+          this.respondData = res.data;
+          this.displayData = res.data;
+        });
+    },
+    handleSearch() {
+      this.displayData = this.respondData.filter((item) => {
+        return item.prod_name.includes(this.search);
+      });
+    },
+  },
+  mounted() {},
+};
+</script>
+
 
 <style lang="scss">
 //
