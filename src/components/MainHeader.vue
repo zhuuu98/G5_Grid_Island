@@ -42,27 +42,35 @@
         <transition name="ham_menu">
           <!-- 選單內容 -->
           <div v-if="menuOpen" class="ham_menu">
-            <!-- 選單項目 -->
-            <RouterLink to="/reserve" class="ham_link">預約場地</RouterLink>
-            <RouterLink to="/product" class="ham_link">所有商品</RouterLink>
-            <RouterLink to="/news" class="ham_link">最新消息</RouterLink>
 
-            <!-- 玩家社群，含子階層 -->
-            <div class="ham_link" @click="togglesubMenuOpen">
-              玩家社群
-              <ul class="submenu" v-show="subMenuOpen">
-                <li>
-                  <RouterLink to="#">留言區</RouterLink>
-                </li>
-                <li>
-                  <RouterLink to="#">報隊區</RouterLink>
-                </li>
-              </ul>
+            <div class="ham_logo">
+              <img src="../assets/images/header/gdidlogobox.svg" alt="">
             </div>
 
-            <RouterLink to="/about" class="ham_link">關於我們</RouterLink>
-            <RouterLink to="/cart" class="ham_link">購物車</RouterLink>
-            <RouterLink to="/member" class="ham_link">會員中心</RouterLink>
+            <!-- 選單項目 -->
+            <div class="ham_links">
+              <RouterLink to="/reserve" class="ham_link">預約場地</RouterLink>
+              <RouterLink to="/product" class="ham_link">所有商品</RouterLink>
+              <RouterLink to="/news" class="ham_link">最新消息</RouterLink>
+              <!-- 玩家社群，含子階層 -->
+              <div class="ham_link ham_comm" @click="togglesubMenuOpen">
+                玩家社群
+                <ul class="submenu" v-show="subMenuOpen">
+                  <li class="ham_sub_bug">
+                    <img src="../assets/images//header/griddy_orange.png" alt="am_sub_bug">
+                  </li>
+                  <li class="ham_sub_comm">
+                    <RouterLink to="#">留言區</RouterLink>
+                  </li>
+                  <li class="ham_sub_comm">
+                    <RouterLink to="#">報隊區</RouterLink>
+                  </li>
+                </ul>
+              </div>
+              <RouterLink to="/about" class="ham_link">關於我們</RouterLink>
+              <RouterLink to="/cart" class="ham_link">購物車</RouterLink>
+              <RouterLink to="/member" class="ham_link">會員中心</RouterLink>
+            </div>
           </div>
         </transition>
 
