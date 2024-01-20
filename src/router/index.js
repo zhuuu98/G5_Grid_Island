@@ -8,6 +8,9 @@ const router = createRouter({
       path: "/",
       name: "home",
       component: HomeView,
+      meta: {
+        title: "首頁",
+      },
     },
     {
       path: "/about",
@@ -53,6 +56,15 @@ const router = createRouter({
       component: () => import("../views/NotFoundView.vue"),
     },
   ],
+  scrollBehavior(to, from, savedPosition) {
+    // 始終滾動到頂部
+    return { top: 0 };
+  },
 });
 
+router.beforeEach(async (to, from) => {
+  if (to.meta && to.meta.title) {
+    document.title = to.meta.title;
+  }
+});
 export default router;
