@@ -6,11 +6,14 @@
             <p v-for="paragraph in bookFee.content">{{ paragraph }}</p>
             <div class="fee_detail">
                 <div class="fee_detail_grid" v-for="item in feeDetails">
+                    <!-- 平日、假日 -->
                     <div class="fee_detail_weekday" ><p>{{ item.day }}</p></div>
                     <div class="fee_content" v-for="item in item.times">
+                        <!-- 上、中、晚 -->
                         <div class="fee_detail_time" >
                             <p>{{ item.period }}</p>
                         </div>
+                        <!-- 價格 -->
                         <div class="fee_detail_price" >
                             <p>{{ item.fee }}</p>
                         </div>
