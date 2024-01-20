@@ -16,7 +16,6 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    // align-items: center;
     margin:  auto;
     background-color: $white-1;
     border-radius: $PC-card-radius;
@@ -25,18 +24,16 @@
 }
 .fee_detail{
     display: grid;
-    grid-template-columns:repeat(1,294px);
+    grid-template-columns:repeat(1,1fr);
     gap: 20px;
     margin: $L-spacing 0;
 }
-
+.fee_detail_weekday{
+}
 .fee_content{
     display: grid;
-    grid-template-columns:88px 198px;
-    grid-template-rows: repeat(1,1fr);
-    row-gap: 10px;
-    gap:$S-spacing;
-
+    grid-template-columns:1fr 2fr;
+    gap: $S-spacing;
 }
 .fee_detail_weekday,.fee_content{
     text-align: center;
