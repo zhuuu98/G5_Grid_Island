@@ -1,5 +1,11 @@
 .product {
   box-sizing: border-box;
+  position: relative;
+  .breadcrumb {
+    position: absolute;
+    top: 50px;
+    left: 50px;
+  }
   .productList {
     background-color: $yellow;
     width: 100%;
@@ -70,7 +76,7 @@
   }
   .hotProductBackground {
     background-color: $orange-1;
-    padding: $XXXL-spacing 0;
+    padding: $XXL-spacing 0 $XXXL-spacing 0;
     color: $black;
     .hotProduct {
       // max-width: $max-width;

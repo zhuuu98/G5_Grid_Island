@@ -1,5 +1,11 @@
 <template>
   <main class="product">
+    <div class="breadcrumb">
+      <Breadcrumb separator="<b class='breadcrumb-separator'>></b>">
+        <BreadcrumbItem to="/">首頁</BreadcrumbItem>
+        <BreadcrumbItem>所有商品</BreadcrumbItem>
+      </Breadcrumb>
+    </div>
     <section class="hotProductBackground">
       <div class="hotProduct">
         <div class="hotTitle">
