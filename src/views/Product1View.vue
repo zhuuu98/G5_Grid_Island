@@ -97,6 +97,7 @@
               :imgUrl="`https://tibamef2e.com/chd103/g5/img/${item.prod_img1}`"
               :productPrice="item.prod_price"
               :productId="item.prod_id"
+              @addCartData="addCart(item)"
             />
           </div>
         </div>
@@ -114,6 +115,7 @@ export default {
       search: "",
       respondData: [],
       displayData: [],
+      cartData: [],
       value: 0,
     };
   },
@@ -142,6 +144,23 @@ export default {
       this.displayData = this.respondData.filter((item) => {
         return item.prod_name.includes(this.search);
       });
+    },
+    addCart(product) {
+      const result = this.cartData.findIndex((item) => item.id == product.id);
+      if (result >= 0) {
+        this.cartData[result] = {
+          ...this.cartData[result],
+          count: this.cartData[result]["count"] + 1,
+        };
+      } else {
+        this.cartData.push({
+          id: product.prod_id,
+          title: product.prod_name,
+          price: product.prod_price,
+          count: 1,
+        });
+      }
+      console.log(this.cartData);
     },
   },
   watch: {

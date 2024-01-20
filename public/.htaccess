@@ -1,0 +1,7 @@
+<IfModule mod_rewrite.c>
+  RewriteEngine On 
+  RewriteBase /chd104/g5/front 
+  RewriteCond %{REQUEST_FILENAME} !-f 
+  RewriteCond %{REQUEST_FILENAME} !-d 
+  RewriteRule ^(.*)$ /chd104/g5/front/index.html [L]
+</IfModule>

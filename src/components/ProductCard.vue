@@ -27,7 +27,7 @@
       <div class="price">
         <span>${{ productPrice }}</span>
       </div>
-      <div class="addCart">
+      <div class="addCart" @click="addCart">
         <font-awesome-icon icon="cart-shopping" class="cart" />
       </div>
     </div>
@@ -42,7 +42,11 @@ export default {
     };
   },
   props: ["imgUrl", "productTitle", "productPrice", "productId"],
-  methods: {},
+  methods: {
+    addCart() {
+      this.$emit("addCartData");
+    },
+  },
   mounted() {},
 };
 </script>
