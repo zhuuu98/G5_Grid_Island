@@ -1,5 +1,6 @@
 .productCard {
   .productInfo {
+    position: relative;
     display: flex;
     flex-direction: column;
     gap: 8px;
@@ -37,15 +38,11 @@
       font-size: $PC-h3;
     }
     .addCart {
-      align-self: center;
-      button {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        gap: $S-spacing;
-        .cart {
-          width: 20px;
-        }
+      .cart {
+        position: absolute;
+        width: 30px;
+        bottom: 30px;
+        right: 20px;
       }
     }
   }

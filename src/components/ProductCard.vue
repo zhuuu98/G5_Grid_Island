@@ -28,9 +28,7 @@
         <span>${{ productPrice }}</span>
       </div>
       <div class="addCart">
-        <button class="btn_sm_1">
-          <font-awesome-icon icon="cart-shopping" class="cart" />加入購物車
-        </button>
+        <font-awesome-icon icon="cart-shopping" class="cart" />
       </div>
     </div>
   </div>
