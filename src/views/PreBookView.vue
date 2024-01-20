@@ -1,22 +1,44 @@
 <template>
-    <div class="preBook">
-        <h3>{{ bookFee.title }}</h3>
-        <p v-for="paragraph in bookFee.content">{{ paragraph }}</p>
-        <div class="fee_detail">
-            <div class="fee_detail_grid">
-                <div class="fee_detail_weekday">平日</div>
-                <div class="fee_detail_morning">上午</div>
-                <div class="fee_detail_afternoon">下午</div>
-                <div class="fee_detail_night">晚上</div>
-                <div class="fee_detail_morning_fee">100 元 / 人</div>
-                <div class="fee_detail_afternoon_fee">120 元 / 人</div>
-                <div class="fee_detail_night_fee">130 元 / 人</div>
+    <div class="preWrapper">
+        <div class="preBook">
+            <h3 class="preTitle">預約前請詳閱以下事項</h3>
+            <h3>{{ bookFee.title }}</h3>
+            <p v-for="paragraph in bookFee.content">{{ paragraph }}</p>
+            <!-- <div class="fee_detail">
+                <div class="fee_detail_grid">
+                    <div class="fee_detail_weekday">平日</div>
+                    <div class="fee_am">
+                        <div class="fee_detail_morning">上午</div>
+                        <div class="fee_detail_morning_fee">100 元 / 人</div>
+                    </div>
+                    <div class="fee_pm">
+                        <div class="fee_detail_afternoon">下午</div>
+                        <div class="fee_detail_afternoon_fee">120 元 / 人</div>
+                    </div>
+                    <div class="fee_night">
+                        <div class="fee_detail_night">晚上</div>
+                        <div class="fee_detail_night_fee">130 元 / 人</div>
+                    </div>
+                </div>
+            </div> -->
+            <div class="fee_detail">
+                <div class="fee_detail_grid" v-for="item in feeDetails">
+                    <div class="fee_detail_weekday" >{{ item.day }}</div>
+                    <div class="fee_content" v-for="item in item.times">
+                        <div class="fee_detail_time" >
+                            {{ item.period }}
+                        </div>
+                        <div class="fee_detail_price" >
+                            {{ item.fee }}
+                        </div>
+                    </div>
+                </div>
             </div>
+            <h3>{{ bookDirection.title }}</h3>
+            <p v-for="paragraph in bookDirection.content">{{ paragraph }}</p>
+            <h3>{{ bookNotice.title }}</h3>
+            <p v-for="paragraph in bookNotice.content">{{ paragraph }}</p>
         </div>
-        <h3>{{ bookDirection.title }}</h3>
-        <p v-for="paragraph in bookDirection.content">{{ paragraph }}</p>
-        <h3>{{ bookNotice.title }}</h3>
-        <p v-for="paragraph in bookNotice.content">{{ paragraph }}</p>
     </div>
 </template>
 <script>
@@ -34,7 +56,25 @@
                 bookNotice: {
                     title: '注意事項',
                     content: ['場域均為自助模式。若需要教學服務，請向LINE客服或現場服務人員詢問。', '有額外需求，請詢問LINE客服，可額外定制服務。', '禁止烹飪、點燃明火、吸菸、毒品、妨礙風化、攜帶寵物 (導盲犬不在此限)、危險物品，以及賭博等違反法令規定、公共秩序或善良風俗的行為。']
-                }
+                },
+                feeDetails:[
+                    {
+                        day: '平日',
+                        times: [
+                        { period: '上午', fee: '100 元 / 人' },
+                        { period: '下午', fee: '120 元 / 人' },
+                        { period: '晚上', fee: '130 元 / 人' }
+                        ]
+                    },
+                    {
+                        day: '假日',
+                        times: [
+                        { period: '上午', fee: '120 元 / 人' },
+                        { period: '下午', fee: '150 元 / 人' },
+                        { period: '晚上', fee: '160 元 / 人' }
+                        ]
+                    }
+                ]
             }
         },
         mounted() {

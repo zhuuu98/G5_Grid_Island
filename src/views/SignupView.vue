@@ -28,16 +28,10 @@ export default {
 
 
 <template>
-    <Breadcrumb separator=">">
+    <Breadcrumb separator="<b class='breadcrumb-separator'>></b>">
         <BreadcrumbItem to="./Home">首頁</BreadcrumbItem>
         <BreadcrumbItem to="/components/breadcrumb">Components</BreadcrumbItem>
         <BreadcrumbItem>註冊會員</BreadcrumbItem>
-    </Breadcrumb>
-
-    <Breadcrumb separator="<b class='demo-breadcrumb-separator'>=></b>">
-        <BreadcrumbItem to="/">Home</BreadcrumbItem>
-        <BreadcrumbItem to="/components/breadcrumb">Components</BreadcrumbItem>
-        <BreadcrumbItem>Breadcrumb</BreadcrumbItem>
     </Breadcrumb>
 
     <div class="signup" id="app">
@@ -64,4 +58,5 @@ export default {
 
 <style lang="scss">
 //
+
 </style>

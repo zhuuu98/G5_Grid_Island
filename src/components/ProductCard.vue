@@ -1,21 +1,36 @@
 <template>
   <div class="productCard">
-    <a href="#">
+    <router-link
+      :to="{
+        name: 'productInfo',
+        params: { id: productId },
+      }"
+    >
       <div class="productPic">
         <img :src="imgUrl" :alt="productTitle" />
         <div class="productPic_Mask"></div></div
-    ></a>
+    ></router-link>
     <div class="productInfo">
       <div class="productTag">
         <span>1-5人</span>
         <span>益智遊戲</span>
         <span>團隊合作</span>
       </div>
-      <a href="#">
+      <router-link
+        :to="{
+          name: 'productInfo',
+          params: { id: productId },
+        }"
+      >
         <h3>{{ productTitle }}</h3>
-      </a>
+      </router-link>
       <div class="price">
         <span>${{ productPrice }}</span>
+      </div>
+      <div class="addCart">
+        <button class="btn_sm_1">
+          <font-awesome-icon icon="cart-shopping" class="cart" />加入購物車
+        </button>
       </div>
     </div>
   </div>
@@ -28,7 +43,7 @@ export default {
       value: 0,
     };
   },
-  props: ["imgUrl", "productTitle", "productPrice"],
+  props: ["imgUrl", "productTitle", "productPrice", "productId"],
   methods: {},
   mounted() {},
 };

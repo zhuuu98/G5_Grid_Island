@@ -29,9 +29,24 @@
       background-color: $blue-3;
       color: $white-1;
       font-size: $PC-h3;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
     }
     .price {
       font-size: $PC-h3;
+    }
+    .addCart {
+      align-self: center;
+      button {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: $S-spacing;
+        .cart {
+          width: 20px;
+        }
+      }
     }
   }
   .productPic {
