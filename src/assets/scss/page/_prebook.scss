@@ -3,6 +3,12 @@
 .preWrapper{
     background-color: $orange-1;
     width: 100%;
+    letter-spacing: 2px;
+    padding: $XXL-spacing;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 .preBook{
     max-width: 1064px;
@@ -14,14 +20,14 @@
     margin:  auto;
     background-color: $white-1;
     border-radius: $PC-card-radius;
-    padding: $L-spacing;
+    padding: $XXL-spacing;
+    margin: $L-spacing;
 }
 .fee_detail{
     display: grid;
-    grid-template-columns:repeat(2,306px);
+    grid-template-columns:repeat(1,294px);
     gap: 20px;
     margin: $L-spacing 0;
-    
 }
 
 .fee_content{
@@ -29,20 +35,24 @@
     grid-template-columns:88px 198px;
     grid-template-rows: repeat(1,1fr);
     row-gap: 10px;
-    gap:$M-spacing;
+    gap:$S-spacing;
 
 }
 .fee_detail_weekday,.fee_content{
     text-align: center;
+    margin: $S-spacing 0;
 }
 .fee_detail_time,.fee_detail_price{
     background-color: $gray-1;
-
 }
 .fee_detail_weekday{
     background-color: $blue-3;
     color: $white-1;
 }
+.fee_detail_weekday p,.fee_content p,.fee_detail_price p{
+    margin: $S-spacing;
+}
+
 .preTitle{
     text-align: center;
     margin: $M-spacing 0;
@@ -50,4 +60,12 @@
 }
 .preBook h3{
     margin: $M-spacing 0;
+}
+.preCheck{
+    display: flex;
+    font-size: $PC-text;
+    gap: 10px;
+}
+.preCheck,.preBtn{
+    margin:$M-spacing ;
 }

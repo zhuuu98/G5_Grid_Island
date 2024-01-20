@@ -4,32 +4,15 @@
             <h3 class="preTitle">預約前請詳閱以下事項</h3>
             <h3>{{ bookFee.title }}</h3>
             <p v-for="paragraph in bookFee.content">{{ paragraph }}</p>
-            <!-- <div class="fee_detail">
-                <div class="fee_detail_grid">
-                    <div class="fee_detail_weekday">平日</div>
-                    <div class="fee_am">
-                        <div class="fee_detail_morning">上午</div>
-                        <div class="fee_detail_morning_fee">100 元 / 人</div>
-                    </div>
-                    <div class="fee_pm">
-                        <div class="fee_detail_afternoon">下午</div>
-                        <div class="fee_detail_afternoon_fee">120 元 / 人</div>
-                    </div>
-                    <div class="fee_night">
-                        <div class="fee_detail_night">晚上</div>
-                        <div class="fee_detail_night_fee">130 元 / 人</div>
-                    </div>
-                </div>
-            </div> -->
             <div class="fee_detail">
                 <div class="fee_detail_grid" v-for="item in feeDetails">
-                    <div class="fee_detail_weekday" >{{ item.day }}</div>
+                    <div class="fee_detail_weekday" ><p>{{ item.day }}</p></div>
                     <div class="fee_content" v-for="item in item.times">
                         <div class="fee_detail_time" >
-                            {{ item.period }}
+                            <p>{{ item.period }}</p>
                         </div>
                         <div class="fee_detail_price" >
-                            {{ item.fee }}
+                            <p>{{ item.fee }}</p>
                         </div>
                     </div>
                 </div>
@@ -39,6 +22,12 @@
             <h3>{{ bookNotice.title }}</h3>
             <p v-for="paragraph in bookNotice.content">{{ paragraph }}</p>
         </div>
+        <div class="preCheck">
+            <input type="checkbox" id="agree">
+            <label for="agree">本人已詳閱並同意遵守以上事項
+            </label>
+        </div>
+        <button class="btn_sm_1 preBtn">前往預約</button>
     </div>
 </template>
 <script>
