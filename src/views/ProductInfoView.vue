@@ -1,11 +1,67 @@
 <template>
   <main class="productInfo">
-    <h1>產品</h1>
-    <h3>{{ $route.params.id }}</h3>
-    <div v-if="!nodata">noData</div>
-    <div v-else>
-      {{ respondData }}
+    <!-- <h3>{{ $route.params.id }}</h3> -->
+    <div class="breadcrumb">
+      <Breadcrumb separator="<b class='breadcrumb-separator'>></b>">
+        <BreadcrumbItem to="/">首頁</BreadcrumbItem>
+        <BreadcrumbItem to="/product">所有商品</BreadcrumbItem>
+        <BreadcrumbItem>{{ respondData.prod_name }}</BreadcrumbItem>
+      </Breadcrumb>
     </div>
+    <div v-if="!nodata">noData</div>
+    <section class="productInfoArea" v-else>
+      <div class="productInfoBackground">
+        <div class="productPicArea">
+          <div class="productMainPic">
+            <img
+              :src="`https://tibamef2e.com/chd103/g5/img/${respondData.prod_img1}`"
+              :alt="respondData.prod_name"
+            />
+          </div>
+          <div class="productPicList">
+            <div v-for="num in 4" class="productPic">
+              <img
+                v-if="respondData['prod_img' + num]"
+                :src="`https://tibamef2e.com/chd103/g5/img/${
+                  respondData['prod_img' + num]
+                }`"
+                :alt="respondData.prod_name"
+              />
+            </div>
+          </div>
+        </div>
+        <div class="productBuyingArea">
+          <div class="productName">
+            <h3>{{ respondData.prod_name }}</h3>
+          </div>
+          <div class="productTag">
+            <span>1-5人</span>
+            <span>益智遊戲</span>
+            <span>團隊合作</span>
+          </div>
+          <div class="productBrief">
+            <p>{{ respondData.prod_des1 }}</p>
+          </div>
+          <div class="productPriceQuantity">
+            <div class="productPrice">
+              <h3>{{ respondData.prod_price }}</h3>
+            </div>
+            <div class="productQuantity">
+              <button>+</button>
+              <input type="number" />
+              <button>-</button>
+            </div>
+            <div class="productBuyingArea">
+              <button>直接購買</button>
+              <button>加入購物車</button>
+            </div>
+            <div class="productBook">
+              <button>預約遊玩</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
   </main>
 </template>
 

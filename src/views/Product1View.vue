@@ -79,7 +79,10 @@
         <div class="productTitleDash">——————</div>
       </div>
       <div class="productBackgruond">
-        <div class="noDataWarning" v-if="nodata">
+        <div class="loadingData displayInfoText" v-if="loading">
+          <p>載入中，請稍等</p>
+        </div>
+        <div class="noDataWarning displayInfoText" v-else-if="nodata">
           <p>無資料，請輸入正確的資料</p>
         </div>
         <div class="productListContent">
@@ -123,6 +126,9 @@ export default {
     ProductCard,
   },
   computed: {
+    loading() {
+      return this.respondData.length == 0;
+    },
     nodata() {
       return this.displayData.length == 0;
     },

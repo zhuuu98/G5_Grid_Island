@@ -1,0 +1,23 @@
+.productInfo {
+  .productInfoArea {
+    .productInfoBackground {
+      .productPicArea {
+        .productMainPic {
+          img {
+            width: 300px;
+          }
+        }
+        .productPicList {
+          display: flex;
+          width: 300px;
+          overflow-x: scroll;
+          .productPic {
+            img {
+              width: 100px;
+            }
+          }
+        }
+      }
+    }
+  }
+}
