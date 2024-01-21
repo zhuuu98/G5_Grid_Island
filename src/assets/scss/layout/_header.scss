@@ -22,12 +22,8 @@ header {
         vertical-align: bottom;
         // width: 100%;
         height: 45px;
-
-
       }
     }
-
-
 
     .header_icons {
       display: flex;
@@ -73,17 +69,54 @@ header {
         width: 18px;
         cursor: pointer;
         z-index: 990;
+        outline: none;
+        // border: 1px solid red;
 
-        .ham_btn_line {
+        // 漢堡線
+        .ham_btn_line1 {
+          /* 初始樣式 */
+          transform: translateY(0) rotate(0deg);
+          transition: transform 0.3s ease;
           background-color: $black;
           width: 18px;
           height: 2.2px;
+          border-radius: 5px;
         }
+        
         .ham_btn_line2 { // 漢堡按鈕中間的線
+          /* 初始樣式 */
+          opacity: 1;
+          transition: opacity 0.3s ease;
           background-color: $black;
           width: 16px;
           height: 2.2px;
+          border-radius: 5px;
         }
+        
+        .ham_btn_line3 {
+          /* 初始樣式 */
+          transform: translateY(0) rotate(0deg);
+          transition: transform 0.3s ease;
+          background-color: $black;
+          width: 18px;
+          height: 2.2px;
+          border-radius: 5px;
+        }
+        
+        /* 按鈕激活狀態下的樣式 */
+        .active-line1 {
+          transform: translateY(8px) rotate(45deg);
+        }
+        
+        .active-line2 {
+          opacity: 0;
+        }
+        
+        .active-line3 {
+          transform: translateY(-7.8px) rotate(-45deg);
+          }
+
+        
       }
     }
 
@@ -113,11 +146,14 @@ header {
 
       .ham_logo{
         position: absolute;
-        top: -60px;
+        top: -57px;
         left: 45%;
         right: 45%;
-        // background-color: aqua;
+        width: 130px;
         img{
+        vertical-align: bottom;
+        margin: auto;
+        width: 100%;
           // background-color: #fa0;
         }
         
@@ -125,44 +161,61 @@ header {
 
       .ham_links{
         .ham_link{
-          padding: 10px 0px;
+          border-radius: 20px;
+          width: 162px;
+          padding: 10px 30px;
           margin: 4px 0px;
           color: $blue-2;
           display: flex;
-          // background-color: antiquewhite;
-          .submenu{
-            display: flex;
-            height: 30px;
-            background-color: aquamarine;
-          .ham_sub_bug{
-            border: 1px solid red;
-            height: 30px;
-            margin: 0px 30px;
-              width: 26px;
-              img{
-                width: 100%;
-                  }
+          text-align: center;
+          &:hover{
+          background-color: $green-1;
+          font-weight: bold;
           }
-          }
+
+          
         }
 
         .ham_comm{
+          display: flex;
           cursor: pointer;
-          .ham_sub_comm{
-            margin: 6px 0px;
-            a{
-              color: $purple;
-              font-size: 16px;
-              margin: 0px 6px;
-              background-color: red;
-              text-align: center;
+          align-items: center;
+          .submenu{
+            display: flex;
+            height: 30px;
+            .ham_sub_bug{
+              height: 30px;
+              width: 70px;
+              height: 16px;
+              align-items: end;
+              img{
+                animation: gogo 1.3s ease-in-out infinite;
+                height: 190%;
+              }
             }
+            .ham_sub_comm{
+              a{
+                color: $purple;
+                font-size: 16px;
+                padding: 0;
+                margin: 0;
+                &:hover{
+                  color: #9e6fcd;
+                  font-weight: bold;
+                }
+              }
+            }
+          }
+          .ham_angle_right{
+            width: 10px;
+            margin: 0px 6px;
           }
         }
       }
 
 
     }//ham_menu
+
 
 
 
@@ -209,6 +262,17 @@ header {
 .ham_menu-leave {
   transform: translateY(0);
 }
+
+// Griddy跑步
+@keyframes gogo{
+  0% {
+    transform: translateX(0px);
+  }
+  100% {
+    transform: translateX(45px);
+  }
+}
+
 
 
 
