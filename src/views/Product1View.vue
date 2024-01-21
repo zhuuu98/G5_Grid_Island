@@ -152,7 +152,9 @@ export default {
       });
     },
     addCart(product) {
-      const result = this.cartData.findIndex((item) => item.id == product.id);
+      const result = this.cartData.findIndex(
+        (item) => item.id == product.prod_id
+      );
       if (result >= 0) {
         this.cartData[result] = {
           ...this.cartData[result],
