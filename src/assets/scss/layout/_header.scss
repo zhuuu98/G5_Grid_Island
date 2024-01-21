@@ -137,18 +137,24 @@ header {
       border: 16px solid $blue-1;
       border-top: 60px solid $blue-1;
       box-sizing: border-box;
-      padding: 80px;
+      padding: 20px;
       gap: 20px;
       font-size: $PC-h4;
       //還沒成功的彈跳效果
       // animation: bounceIn 1s cubic-bezier(.8,-0.3,.7,.1);
       // animation: bounceIn 1s cubic-bezier(.68, -0.55, 0.27, 1.55);
+      @include T(){
+        padding: 40px;
+      }
+      @include PC(){
+        padding: 80px;
+      }
 
       .ham_logo{
         position: absolute;
         top: -57px;
-        left: 45%;
-        right: 45%;
+        left: 50%;
+        transform: translateX(-50%);
         width: 130px;
         img{
         vertical-align: bottom;
@@ -169,11 +175,43 @@ header {
           display: flex;
           text-align: center;
           &:hover{
-          background-color: $green-1;
-          font-weight: bold;
+            background-color: $green-1;
+            font-weight: bold;
           }
+            
+            
+        }
 
-          
+        // hover效果在TC和M消失
+        .ham_hover_news,.ham_hover_all{
+          display: none;
+        }
+        @include PC(){
+          .ham_hover{
+            font-size: 240px;
+            color: $blue-1;
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            display: none;
+          }
+          // news hover效果
+          .ham_news{
+            &:hover{
+              +.ham_hover_news{
+                display: block;
+              }
+            }
+          }
+          // products hover效果
+          .ham_products{
+            &:hover{
+              +.ham_hover_products{
+                display: block;
+                font-size: 180px;
+              }
+            }
+          }
         }
 
         .ham_comm{
@@ -212,6 +250,7 @@ header {
           }
         }
       }
+      
 
 
     }//ham_menu

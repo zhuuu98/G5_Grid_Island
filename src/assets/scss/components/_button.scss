@@ -56,3 +56,17 @@
 
 }
 
+//次要按鈕
+.btn_secondary{
+    @include btnBasic;
+    @include btnColor( $btn-sec-bgc, false);
+    height: 47px;
+    border-radius: $S-button-radius;
+    padding: 12px 20px;
+    letter-spacing: $PC-btn-sl-spacing;
+    font-size:$PC-btn-sl-font;
+    &:hover{
+        color: $white-1;
+    }
+}
+

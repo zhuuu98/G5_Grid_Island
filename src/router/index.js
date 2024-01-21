@@ -55,6 +55,16 @@ const router = createRouter({
       name: "NotFound",
       component: () => import("../views/NotFoundView.vue"),
     },
+    {
+      path: "/board",
+      name: "board",
+      component: () => import("../views/BoardView.vue"),
+    },
+    {
+      path: "/team",
+      name: "team",
+      component: () => import("../views/TeamView.vue"),
+    },
   ],
   scrollBehavior(to, from, savedPosition) {
     // 始終滾動到頂部

@@ -1,0 +1,199 @@
+.board{
+  background-color: $blue-2;
+  .col-PC-10, .col-T-10, .col-12{
+    margin: auto;
+  }
+
+  // 牙齒區
+  .board_tag{
+    // display: flex;
+    padding: 8px 20px;
+    @include T(){
+      display: flex;
+    }
+    @include PC(){
+      display: flex;
+    }
+    .board_tag_btn{
+      // width: 50%;
+      align-items: end;
+      display: flex;
+      @include T(){
+        width: 50%;
+      }
+      @include PC(){
+        width: 50%;
+      }
+      a{
+        margin-right: 8px;
+      }
+    }
+
+    .board_article{
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      width: 50%;
+      // outline: 1px solid red;
+        .btn_lg{
+          width: 54px;
+          margin-bottom: 8px;
+          background-color: $orange-2;
+        @include T(){
+          width: 50%;
+        }
+        @include PC(){
+          width: 50%;
+        }
+        }
+        select{
+          width: 100px;
+          border: 1px solid $black;
+          border-radius: 20px;
+          padding: 8px 2px;
+          font-size: $small;
+          outline: none;
+          background-color: $white-1;
+          cursor: pointer;
+        }
+      }
+    
+  }
+  // 內容區
+  &_area{
+    margin: 0;
+    padding: 0;
+  }
+  &_card{
+    margin: 0;
+    padding: 0;
+    border: 10px solid $green-1;
+    margin: 8px;
+    padding: 16px;
+    background-color: $white-1;
+    border-radius: 20px;
+    @include T(){
+      width: 47%;
+      transform: translateX(1%);
+      float: left;
+    }
+    @include PC(){
+      width: 48%;
+      transform: translateX(1%);
+      float: left;
+    }
+    
+    
+  }
+  //文章區
+  &_info{
+    position: relative;
+  }
+  &_id{
+    display: flex;
+    &_img{
+      img{
+        width: 100%;
+        vertical-align: bottom;
+      }
+    }
+    &_info{
+      // border: 1px solid red;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      margin-left: 8px;
+      .board_memId{
+        font-size: $M-h3;
+        @include T(){
+          // font-size: $PC-h3;
+        }
+        @include PC(){
+          font-size: $PC-h3;
+
+        }
+        
+      }
+      .board_time{
+        font-size: $small;
+      }
+    }
+  }
+  &_msg{
+    font-size: $M-text;
+    margin: 8px 0;
+    @include PC(){
+      font-size: $PC-text;
+    }
+  }
+  &_re_type{
+    p{
+      margin: 8px 0;
+      font-size: $M-h4;
+    }
+    input{
+      width: 100%;
+    }
+  }
+  &_all_re{
+    cursor: pointer;
+    display: flex;
+    justify-content: flex-end;
+    svg{
+      width: 14px;
+      // height: 10px;
+    }
+  }
+  &_report{
+    width: 20px;
+    position: absolute;
+    right: 0;
+    top: 0;
+    cursor: pointer;
+    svg{
+      width: 100%;
+      color: $red;
+    }
+  }
+
+  // 留言區
+
+}
+
+// 發文燈箱
+.light_box{
+  position: fixed;
+  z-index: 1000;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  // overflow: hidden;
+  .overlay{
+    width: 100%;
+    height: 100vh;
+    background: #000;
+    opacity: .5;
+  }
+  .box{
+    background-color: azure;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    padding: 20px;
+    form{
+      position: relative;
+    }
+    svg{
+      width: 20px;
+      position: absolute;
+      top: 0;
+      right: 0;
+    }
+  }
+}
+
+.hide{
+  display: none!important;
+}

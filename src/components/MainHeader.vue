@@ -12,7 +12,7 @@
           <nav>
             <ul>
               <li>
-                <RouterLink to="#" class="nav_link">預約場地</RouterLink>
+                <RouterLink to="/prebook" class="nav_link">預約場地</RouterLink>
               </li>
 
               <li>
@@ -52,9 +52,11 @@
 
             <!-- 選單項目 -->
             <div class="ham_links">
-              <RouterLink to="/reserve" class="ham_link">預約場地</RouterLink>
-              <RouterLink to="/product" class="ham_link">所有商品</RouterLink>
-              <RouterLink to="/news" class="ham_link">最新消息</RouterLink>
+              <RouterLink to="/prebook" class="ham_link">預約場地</RouterLink>
+              <RouterLink to="/product" class="ham_link ham_products">所有商品</RouterLink>
+              <p class="ham_hover_products ham_hover">Products</p>
+              <RouterLink to="/news" class="ham_link ham_news">最新消息</RouterLink>
+              <p class="ham_hover_news ham_hover">NEWS</p>
               <!-- 玩家社群，含子階層 -->
               <div class="ham_comm" @click="toggleSubMenuOpen">
                 <div class="ham_link">玩家社群
@@ -66,10 +68,10 @@
                   </li>
                   <div>
                     <li class="ham_sub_comm">
-                      <RouterLink to="#">留言區</RouterLink>
+                      <RouterLink to="/board">留言區</RouterLink>
                     </li>
                     <li class="ham_sub_comm">
-                      <RouterLink to="#">報隊區</RouterLink>
+                      <RouterLink to="/team">報隊區</RouterLink>
                     </li>
                   </div>
                 </ul>
