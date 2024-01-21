@@ -103,10 +103,15 @@ export default {
   },
   methods: {
     toggleMenu() {
+      // 切換 menuOpen 的值
       this.menuOpen = !this.menuOpen;
+      // 如果 toggleMenu 為 true，同步將 subMenuOpen 設為 false
+      if (this.toggleMenu) {
+        this.subMenuOpen = false;
+      }
     },
     toggleSubMenuOpen() {
-      this.subMenuOpen = !this.subMenuOpen;
+    this.subMenuOpen = !this.subMenuOpen;
     },
   },
   mounted() {
