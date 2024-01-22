@@ -183,23 +183,36 @@ header {
         }
 
         // hover效果在TC和M消失
-        .ham_hover_news,.ham_hover_all{
+        .ham_hover_news,.ham_hover{
           display: none;
         }
         @include PC(){
           .ham_hover{
-            font-size: 240px;
+            // font-size: 240px;
             color: $blue-1;
             position: absolute;
             bottom: 0;
             right: 0;
             display: none;
           }
+            // prebook hover效果
+            .ham_prebook{
+              &:hover{
+                +.ham_hover_prebook{
+                  display: block;
+                  font-size: 240px;
+                  opacity: .5;
+                  z-index: -1;
+                }
+              }
+            }
+          
           // news hover效果
           .ham_news{
             &:hover{
               +.ham_hover_news{
                 display: block;
+                font-size: 180px;
               }
             }
           }
@@ -212,7 +225,45 @@ header {
               }
             }
           }
+          // comm hover效果
+          .ham_comm{
+            &:hover{
+              +.ham_hover_comm{
+                display: block;
+                font-size: 180px;
+              }
+            }
+          }
+          // about hover效果
+          .ham_about{
+            &:hover{
+              +.ham_hover_about{
+                display: block;
+                font-size: 180px;
+              }
+            }
+          }
+          // cart hover效果
+          .ham_cart{
+            &:hover{
+              +.ham_hover_cart{
+                display: block;
+                font-size: 180px;
+              }
+            }
+          }
+          // member hover效果
+          .ham_member{
+            &:hover{
+              +.ham_hover_member{
+                display: block;
+                font-size: 180px;
+              }
+            }
+          }
         }
+          
+          
 
         .ham_comm{
           display: flex;
