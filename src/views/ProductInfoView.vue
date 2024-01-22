@@ -1,6 +1,16 @@
 <template>
   <main class="productInfo">
     <!-- <h3>{{ $route.params.id }}</h3> -->
+    <transition name="fade">
+      <div class="loadingMask" v-if="!nodata" name="fade">
+        <div class="lds-ring">
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+        </div>
+      </div>
+    </transition>
     <div class="breadcrumb">
       <Breadcrumb separator="<b class='breadcrumb-separator'>></b>">
         <BreadcrumbItem to="/">首頁</BreadcrumbItem>
@@ -8,8 +18,7 @@
         <BreadcrumbItem>{{ respondData.prod_name }}</BreadcrumbItem>
       </Breadcrumb>
     </div>
-    <div v-if="!nodata">noData</div>
-    <div class="productAllInfo" v-else>
+    <div class="productAllInfo">
       <section class="productInfoArea">
         <div class="productInfoBackground">
           <div class="productPicInfoArea">
@@ -69,14 +78,21 @@
                     </button>
                   </div>
                 </div>
-                <div class="productBuyingButton">
-                  <button class="btn_default">直接購買</button>
-                  <button class="btn_default">加入購物車</button>
+                <!-- <div class="productBuyingButton">
+                  <button class="buyingBtn">直接購買</button>
+                  <button class="cartBookBtn">加入購物車</button>
                 </div>
                 <div class="productBook">
-                  <router-link class="btn_default" to="/prebook"
+                  <router-link class="cartBookBtn" to="/prebook"
                     >預約遊玩</router-link
                   >
+                </div> -->
+                <div class="productBuyingButton">
+                  <button class="cartBtn">加入購物車</button>
+                  <button class="bookBtn" @click="prebookPlay">預約遊玩</button>
+                  <!-- <router-link class="bookBtn" to="/prebook"
+                    >預約遊玩</router-link
+                  > -->
                 </div>
               </div>
             </div>
@@ -114,11 +130,17 @@
       </section>
     </div>
   </main>
+  <!-- 如果這邊可以理解的話可以把prebookView的.vue和route刪掉 -->
+  <PreBook 
+    v-if="prebookModel"
+    @close="prebookModel = false"
+  />
 </template>
 
 <script>
 import axios from "axios";
 import ProductCard from "../components/ProductCard.vue";
+import PreBook from "@/components/PreBook.vue";
 export default {
   data() {
     return {
@@ -129,10 +151,12 @@ export default {
       desc: 1,
       mainPic: 1,
       productQuantity: 1,
+      prebookModel:false
     };
   },
   components: {
     ProductCard,
+    PreBook
   },
   computed: {
     nodata() {
@@ -171,6 +195,9 @@ export default {
         }
       }
     },
+    prebookPlay(){
+      this.prebookModel = true
+    }
   },
   watch: {
     search(newSearch, oldSearch) {
@@ -190,6 +217,4 @@ export default {
 };
 </script>
 
-<style lang="scss">
-//
-</style>
+<style lang="scss"></style>

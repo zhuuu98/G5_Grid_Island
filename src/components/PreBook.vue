@@ -72,9 +72,18 @@
         mounted() {
         },
         methods:{
+            goReserve(){
+                // 1. 判斷有沒有同意->本人已詳閱並同意遵守以上事項
+                // 2. 將資料存在pinia中，或是將商品id放在網址路徑(query的方式)
+                // 後續流程
+                this.$emit('close')
+            }
         }
     }
 </script>
-<style lang="scss">
-//
+<style lang="scss" scoped>
+.preWrapper{
+    position: absolute;
+    top: 0;
+}
 </style>

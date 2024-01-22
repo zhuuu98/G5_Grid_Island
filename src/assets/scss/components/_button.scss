@@ -5,68 +5,97 @@
 // @include btnColor( $btn-pri-bgc, false);
 // @include btnColor( $btn-pri-bgc, true);
 
-
 //尚未處理顏色部分
 
 //基本按鈕
 .btn_default {
-    @include btnBasic;
-    @include btnColor( $btn-pri-bgc, false);
-    height: 47px;
-    border-radius: $S-button-radius;
-    //因為字距關係,左右padding不同才能對齊
-    padding: 0 20px 0 25px;
-    letter-spacing: $PC-btn-lg-spacing;
-    font-size:$PC-btn-md-font;
-    
+  @include btnBasic;
+  @include btnColor($btn-pri-bgc, false);
+  height: 47px;
+  border-radius: $S-button-radius;
+  //因為字距關係,左右padding不同才能對齊
+  padding: 0 20px 0 25px;
+  letter-spacing: $PC-btn-lg-spacing;
+  font-size: $PC-btn-md-font;
 }
 //小按鈕
 .btn_sm_1 {
-    @include btnBasic;
-    @include btnColor( $btn-pri-bgc, false);
-    height: 31px;
-    border-radius: $S-button-radius;
-    padding: 0 10px 0 12px;
-    letter-spacing: $PC-btn-sl-spacing;
-    font-size:$PC-btn-sl-font;
+  @include btnBasic;
+  @include btnColor($btn-pri-bgc, false);
+  height: 31px;
+  border-radius: $S-button-radius;
+  padding: 0 10px 0 12px;
+  letter-spacing: $PC-btn-sl-spacing;
+  font-size: $PC-btn-sl-font;
 }
-
 
 //大按鈕
 .btn_lg {
-    @include btnBasic;
-    @include btnColor( $btn-pri-bgc, false);
-    height: 54px;
-    padding: 0 20px 0 23px;
-    border-radius:$L-button-radius;
-    letter-spacing: $PC-btn-lg-spacing;
-    font-size: $PC-btn-lg-font;
-
+  @include btnBasic;
+  @include btnColor($btn-pri-bgc, false);
+  height: 54px;
+  padding: 0 20px 0 23px;
+  border-radius: $L-button-radius;
+  letter-spacing: $PC-btn-lg-spacing;
+  font-size: $PC-btn-lg-font;
 }
+
 
 //註冊按鈕
 .signBtn {
-    @include btnBasic;
-    @include btnColor( $btn-pri-bgc, false);
-    height: 54px;
+    @include btnBasiccc;
+    @include btnColor( $btn-sec-bgc, false);
+    height: 45px;
     padding: 0 20px 0 23px;
     border-radius:$L-button-radius;
     // letter-spacing: $PC-btn-lg-spacing;
     font-size: $PC-btn-lg-font;
-
+    .svg-inline--fa{
+        width: 30px;
+      }
 }
+
+
 
 //次要按鈕
-.btn_secondary{
-    @include btnBasic;
-    @include btnColor( $btn-sec-bgc, false);
-    height: 47px;
-    border-radius: $S-button-radius;
-    padding: 12px 20px;
-    letter-spacing: $PC-btn-sl-spacing;
-    font-size:$PC-btn-sl-font;
-    &:hover{
-        color: $white-1;
-    }
+.btn_secondary {
+  @include btnBasic;
+  @include btnColor($btn-sec-bgc, false);
+  height: 47px;
+  border-radius: $S-button-radius;
+  padding: 12px 20px;
+  letter-spacing: $PC-btn-sl-spacing;
+  font-size: $PC-btn-sl-font;
+  &:hover {
+    color: $white-1;
+  }
 }
 
+.bookBtn {
+  @include btnBasic;
+  @include btnColor($btn-cart-bgc, false);
+  height: 47px;
+  border-radius: $S-button-radius;
+  padding: 0 20px 0 25px;
+  letter-spacing: $PC-btn-lg-spacing;
+  font-size: $PC-btn-md-font;
+}
+.cartBtn {
+  @include btnBasic;
+  @include btnColor($btn-cart-bgc, true);
+  height: 47px;
+  border-radius: $S-button-radius;
+  padding: 0 20px 0 25px;
+  letter-spacing: $PC-btn-lg-spacing;
+  font-size: $PC-btn-md-font;
+}
+.searchBtn {
+  @include btnBasic;
+  @include btnColor($btn-search-bgc, false);
+  height: 40px;
+  border: none;
+  border-radius: $S-button-radius;
+  padding: 0 20px 0 25px;
+  letter-spacing: $PC-btn-lg-spacing;
+  font-size: $PC-btn-md-font;
+}

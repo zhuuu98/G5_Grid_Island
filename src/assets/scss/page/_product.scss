@@ -1,15 +1,160 @@
 .product {
   box-sizing: border-box;
   position: relative;
-  .breadcrumb {
-    position: absolute;
-    top: 50px;
-    left: 50px;
+  .loadingMask {
+    z-index: 1000;
+    background-color: $black;
+    height: 100vh;
+    width: 100vw;
+    position: fixed;
+    .fade-leave-active {
+      transition: opacity 0.5s;
+    }
+    .fade-leave-to {
+      opacity: 0;
+    }
+    .lds-ring {
+      display: inline-block;
+      position: absolute;
+      width: 80px;
+      height: 80px;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+
+      div {
+        box-sizing: border-box;
+        display: block;
+        position: absolute;
+        width: 64px;
+        height: 64px;
+        margin: 8px;
+        border: 8px solid #fff;
+        border-radius: 50%;
+        animation: lds-ring 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+        border-color: #fff transparent transparent transparent;
+
+        &:nth-child(1) {
+          animation-delay: -0.45s;
+        }
+
+        &:nth-child(2) {
+          animation-delay: -0.3s;
+        }
+
+        &:nth-child(3) {
+          animation-delay: -0.15s;
+        }
+      }
+    }
+
+    @keyframes lds-ring {
+      0% {
+        transform: rotate(0deg);
+      }
+
+      100% {
+        transform: rotate(360deg);
+      }
+    }
   }
+  .productTopBackground {
+    background-color: $orange-1;
+    .breadcrumb {
+      position: relative;
+      max-width: $max-width;
+      margin: auto;
+      top: 50px;
+    }
+    .hotProductBackground {
+      padding: $XXL-spacing 0 $XXXL-spacing 0;
+      color: $black;
+      .hotProduct {
+        // max-width: $max-width;
+        margin: auto;
+        .hotTitle {
+          display: flex;
+          gap: 20px;
+          font-size: $PC-h3;
+          justify-content: center;
+          align-items: center;
+          margin: 20px;
+        }
+        .ivu-carousel-arrow-hover {
+          background-color: $white-1;
+          border: 1px solid $black;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          .ivu-icon {
+            color: black;
+            font-size: 30px;
+          }
+        }
+        .hotProductBody {
+          width: 100%;
+          margin: $L-spacing 0;
+          .top {
+            font-size: $PC-h3;
+            text-align: center;
+            margin: $L-spacing 0;
+          }
+          .hotProductGroup {
+            gap: $XL-spacing;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            @include PC() {
+              flex-direction: row;
+            }
+            .hotproductInfo {
+              max-width: 350px;
+              display: flex;
+              flex-direction: column;
+              gap: $L-spacing;
+
+              a {
+                h3 {
+                  font-size: $PC-h3;
+                  color: $black;
+                }
+              }
+              .hotproductTag {
+                display: flex;
+                gap: $M-spacing;
+                span {
+                  display: flex;
+                  justify-content: center;
+                  align-items: center;
+                  width: 100px;
+                  padding: $S-spacing $M-spacing;
+                  background-color: $white-1;
+                  border-radius: 10px;
+                }
+              }
+              .hotProductIntro {
+                font-size: $PC-text;
+              }
+              .hotProductPrice {
+                font-size: $PC-h3;
+              }
+            }
+            .hotProductImg img {
+              width: 350px;
+              height: 280px;
+              border-radius: $PC-card-radius 0 $PC-card-radius 0;
+            }
+          }
+        }
+      }
+    }
+  }
+
   .productList {
     background-color: $yellow;
     width: 100%;
-    padding: $XL-spacing 0;
+    padding: $XXXL-spacing 0 $XL-spacing 0;
     .productTitle {
       display: flex;
       gap: 20px;
@@ -51,6 +196,16 @@
           @include PC() {
             display: flex;
             justify-content: end;
+            #select {
+              width: 150px;
+              height: 50px;
+              font-size: $PC-text;
+              padding: 10px;
+              border-radius: 4px; /* 設定圓角 */
+              background-color: #fff; /* 設定背景顏色 */
+              outline: none;
+              cursor: pointer;
+            }
           }
         }
         .productItem {
@@ -72,87 +227,26 @@
       max-width: $max-width;
       margin: auto;
       display: flex;
-    }
-  }
-  .hotProductBackground {
-    background-color: $orange-1;
-    padding: $XXL-spacing 0 $XXXL-spacing 0;
-    color: $black;
-    .hotProduct {
-      // max-width: $max-width;
-      margin: auto;
-      .hotTitle {
+      align-items: center;
+      justify-content: space-between;
+      .searchBar {
         display: flex;
-        gap: 20px;
-        font-size: $PC-h3;
-        justify-content: center;
+        column-gap: $S-spacing;
         align-items: center;
-        margin: 20px;
-      }
-      .ivu-carousel-arrow-hover {
-        background-color: $white-1;
-        border: 1px solid $black;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        .ivu-icon {
-          color: black;
-          font-size: 30px;
-        }
-      }
-      .hotProductBody {
-        width: 100%;
-        margin: $L-spacing 0;
-        .top {
-          font-size: $PC-h3;
-          text-align: center;
-          margin: $L-spacing 0;
-        }
-        .hotProductGroup {
-          gap: $XL-spacing;
-          display: flex;
-          flex-direction: column;
-          justify-content: center;
-          align-items: center;
-          @include PC() {
-            flex-direction: row;
-          }
-          .hotproductInfo {
-            max-width: 350px;
-            display: flex;
-            flex-direction: column;
-            gap: $L-spacing;
-
-            a {
-              h3 {
-                font-size: $PC-h3;
-                color: $black;
-              }
-            }
-            .hotproductTag {
-              display: flex;
-              gap: $M-spacing;
-              span {
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                width: 100px;
-                padding: $S-spacing $M-spacing;
-                background-color: $white-1;
-                border-radius: 10px;
-              }
-            }
-            .hotProductIntro {
-              font-size: $PC-text;
-            }
-            .hotProductPrice {
-              font-size: $PC-h3;
-            }
-          }
-          .hotProductImg img {
-            width: 350px;
-            height: 280px;
-            border-radius: $PC-card-radius 0 $PC-card-radius 0;
+        input {
+          background-color: transparent;
+          border: 1px solid $black;
+          width: 200px;
+          height: 40px;
+          border-radius: $input-radius;
+          background-image: url("@/assets/images/product/magnifying-glass-solid.svg");
+          background-size: 20px 20px;
+          background-position: 10px 10px;
+          background-repeat: no-repeat;
+          padding-left: $L-spacing;
+          font-size: $PC-text;
+          &::placeholder {
+            color: gray-2;
           }
         }
       }
