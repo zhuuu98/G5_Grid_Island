@@ -186,10 +186,13 @@ export default {
     },
     sort() {
       // console.log(this.sortMethod);
+      // 幫我和同學講一下怎麼寫排序
       if (this.sortMethod == "priceAsc") {
-        alert("低到高");
+        this.displayData = this.displayData.sort((a, b) => a.prod_price - b.prod_price)
+        // alert("低到高");
       } else if (this.sortMethod == "priceDesc") {
-        alert("高到低");
+        this.displayData = this.displayData.sort((a, b) => b.prod_price - a.prod_price)
+        // alert("高到低");
       }
     },
   },
@@ -198,6 +201,7 @@ export default {
       // console.log("new:" + newSearch);
       // console.log("old:" + oldSearch);
       // 可以調用 methods
+      this.handleSearch()
     },
     respondData(newData) {
       // console.log(newData.length);

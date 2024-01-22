@@ -56,11 +56,6 @@ const router = createRouter({
       component: () => import("../views/BookView.vue"),
     },
     {
-      path: "/:pathMatch(.*)*",
-      name: "NotFound",
-      component: () => import("../views/NotFoundView.vue"),
-    },
-    {
       path: "/board",
       name: "board",
       component: () => import("../views/BoardView.vue"),
@@ -69,6 +64,12 @@ const router = createRouter({
       path: "/team",
       name: "team",
       component: () => import("../views/TeamView.vue"),
+    },
+    // 404要寫在最下面
+    {
+      path: "/:pathMatch(.*)*",
+      name: "NotFound",
+      component: () => import("../views/NotFoundView.vue"),
     },
   ],
   scrollBehavior(to, from, savedPosition) {

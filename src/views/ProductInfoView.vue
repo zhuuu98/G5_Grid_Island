@@ -89,9 +89,10 @@
                 </div> -->
                 <div class="productBuyingButton">
                   <button class="cartBtn">加入購物車</button>
-                  <router-link class="bookBtn" to="/prebook"
+                  <button class="bookBtn" @click="prebookPlay">預約遊玩</button>
+                  <!-- <router-link class="bookBtn" to="/prebook"
                     >預約遊玩</router-link
-                  >
+                  > -->
                 </div>
               </div>
             </div>
@@ -129,11 +130,17 @@
       </section>
     </div>
   </main>
+  <!-- 如果這邊可以理解的話可以把prebookView的.vue和route刪掉 -->
+  <PreBook 
+    v-if="prebookModel"
+    @close="prebookModel = false"
+  />
 </template>
 
 <script>
 import axios from "axios";
 import ProductCard from "../components/ProductCard.vue";
+import PreBook from "@/components/PreBook.vue";
 export default {
   data() {
     return {
@@ -144,10 +151,12 @@ export default {
       desc: 1,
       mainPic: 1,
       productQuantity: 1,
+      prebookModel:false
     };
   },
   components: {
     ProductCard,
+    PreBook
   },
   computed: {
     nodata() {
@@ -186,6 +195,9 @@ export default {
         }
       }
     },
+    prebookPlay(){
+      this.prebookModel = true
+    }
   },
   watch: {
     search(newSearch, oldSearch) {

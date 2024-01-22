@@ -34,16 +34,15 @@ export default {
             </div>
             <h2>註冊會員</h2>
             <form action="">
+                <!-- 這邊不用v-for，第三方登入用button且不要包在form裏面(註冊和登入相同) -->
                 <RouterLink v-for="item in signupButton" :to ="item.link" class="signBtn">
                     <font-awesome-icon :icon="['fab', 'line']" />
                     {{item.title}}
                 </RouterLink>
                 <p class="signup_signUp_text">
                     已經是會員了?
-                    <RouterLink to ="./login">點我登入</RouterLink>
+                    <RouterLink to ="/login">點我登入</RouterLink>
                 </p>
-                
-
             </form>
         </div>
     </div>
