@@ -58,11 +58,100 @@
       }
     }
   }
-  .breadcrumb {
-    position: absolute;
-    top: 50px;
-    left: 50px;
+  .productTopBackground {
+    background-color: $orange-1;
+    height: 100vh;
+    .breadcrumb {
+      position: relative;
+      max-width: $max-width;
+      margin: auto;
+      top: 50px;
+    }
+    .hotProductBackground {
+      padding: $XXL-spacing 0 $XXXL-spacing 0;
+      color: $black;
+      .hotProduct {
+        // max-width: $max-width;
+        margin: auto;
+        .hotTitle {
+          display: flex;
+          gap: 20px;
+          font-size: $PC-h3;
+          justify-content: center;
+          align-items: center;
+          margin: 20px;
+        }
+        .ivu-carousel-arrow-hover {
+          background-color: $white-1;
+          border: 1px solid $black;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          .ivu-icon {
+            color: black;
+            font-size: 30px;
+          }
+        }
+        .hotProductBody {
+          width: 100%;
+          margin: $L-spacing 0;
+          .top {
+            font-size: $PC-h3;
+            text-align: center;
+            margin: $L-spacing 0;
+          }
+          .hotProductGroup {
+            gap: $XL-spacing;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            @include PC() {
+              flex-direction: row;
+            }
+            .hotproductInfo {
+              max-width: 350px;
+              display: flex;
+              flex-direction: column;
+              gap: $L-spacing;
+
+              a {
+                h3 {
+                  font-size: $PC-h3;
+                  color: $black;
+                }
+              }
+              .hotproductTag {
+                display: flex;
+                gap: $M-spacing;
+                span {
+                  display: flex;
+                  justify-content: center;
+                  align-items: center;
+                  width: 100px;
+                  padding: $S-spacing $M-spacing;
+                  background-color: $white-1;
+                  border-radius: 10px;
+                }
+              }
+              .hotProductIntro {
+                font-size: $PC-text;
+              }
+              .hotProductPrice {
+                font-size: $PC-h3;
+              }
+            }
+            .hotProductImg img {
+              width: 350px;
+              height: 280px;
+              border-radius: $PC-card-radius 0 $PC-card-radius 0;
+            }
+          }
+        }
+      }
+    }
   }
+
   .productList {
     background-color: $yellow;
     width: 100%;
@@ -129,90 +218,6 @@
       max-width: $max-width;
       margin: auto;
       display: flex;
-    }
-  }
-  .hotProductBackground {
-    background-color: $orange-1;
-    padding: $XXL-spacing 0 $XXXL-spacing 0;
-    color: $black;
-    .hotProduct {
-      // max-width: $max-width;
-      margin: auto;
-      .hotTitle {
-        display: flex;
-        gap: 20px;
-        font-size: $PC-h3;
-        justify-content: center;
-        align-items: center;
-        margin: 20px;
-      }
-      .ivu-carousel-arrow-hover {
-        background-color: $white-1;
-        border: 1px solid $black;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        .ivu-icon {
-          color: black;
-          font-size: 30px;
-        }
-      }
-      .hotProductBody {
-        width: 100%;
-        margin: $L-spacing 0;
-        .top {
-          font-size: $PC-h3;
-          text-align: center;
-          margin: $L-spacing 0;
-        }
-        .hotProductGroup {
-          gap: $XL-spacing;
-          display: flex;
-          flex-direction: column;
-          justify-content: center;
-          align-items: center;
-          @include PC() {
-            flex-direction: row;
-          }
-          .hotproductInfo {
-            max-width: 350px;
-            display: flex;
-            flex-direction: column;
-            gap: $L-spacing;
-
-            a {
-              h3 {
-                font-size: $PC-h3;
-                color: $black;
-              }
-            }
-            .hotproductTag {
-              display: flex;
-              gap: $M-spacing;
-              span {
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                width: 100px;
-                padding: $S-spacing $M-spacing;
-                background-color: $white-1;
-                border-radius: 10px;
-              }
-            }
-            .hotProductIntro {
-              font-size: $PC-text;
-            }
-            .hotProductPrice {
-              font-size: $PC-h3;
-            }
-          }
-          .hotProductImg img {
-            width: 350px;
-            height: 280px;
-            border-radius: $PC-card-radius 0 $PC-card-radius 0;
-          }
-        }
-      }
     }
   }
 }

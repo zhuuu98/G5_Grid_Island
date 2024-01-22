@@ -10,69 +10,70 @@
         </div>
       </div>
     </transition>
-    <div class="breadcrumb">
-      <Breadcrumb separator="<b class='breadcrumb-separator'>></b>">
-        <BreadcrumbItem to="/">首頁</BreadcrumbItem>
-        <BreadcrumbItem>所有商品</BreadcrumbItem>
-      </Breadcrumb>
-    </div>
-    <section class="hotProductBackground">
-      <div class="hotProduct">
-        <div class="hotTitle">
-          <div class="hotTitleDash">——————</div>
-          <div class="hotTitleText">熱銷商品</div>
-          <div class="hotTitleDash">——————</div>
-        </div>
-
-        <Carousel v-model="value" loop>
-          <CarouselItem
-            v-for="(item, index) in displayData"
-            :key="item.prod_id"
-          >
-            <div class="hotProductBody">
-              <div class="top">
-                <p>Top {{ index + 1 }}</p>
-              </div>
-              <div class="hotProductGroup">
-                <router-link
-                  :to="{
-                    name: 'productInfo',
-                    params: { id: item.prod_id },
-                  }"
-                >
-                  <div class="hotProductImg">
-                    <img
-                      :src="`https://tibamef2e.com/chd103/g5/img/${item.prod_img1}`"
-                    />
-                  </div>
-                </router-link>
-                <div class="hotproductInfo">
+    <div class="productTopBackground">
+      <div class="breadcrumb">
+        <Breadcrumb separator="<b class='breadcrumb-separator'>></b>">
+          <BreadcrumbItem to="/">首頁</BreadcrumbItem>
+          <BreadcrumbItem>所有商品</BreadcrumbItem>
+        </Breadcrumb>
+      </div>
+      <section class="hotProductBackground">
+        <div class="hotProduct">
+          <div class="hotTitle">
+            <div class="hotTitleDash">——————</div>
+            <div class="hotTitleText">熱銷商品</div>
+            <div class="hotTitleDash">——————</div>
+          </div>
+          <Carousel v-model="value" loop>
+            <CarouselItem
+              v-for="(item, index) in displayData"
+              :key="item.prod_id"
+            >
+              <div class="hotProductBody">
+                <div class="top">
+                  <p>Top {{ index + 1 }}</p>
+                </div>
+                <div class="hotProductGroup">
                   <router-link
                     :to="{
                       name: 'productInfo',
                       params: { id: item.prod_id },
                     }"
                   >
-                    <h3>{{ item.prod_name }}</h3>
+                    <div class="hotProductImg">
+                      <img
+                        :src="`https://tibamef2e.com/chd103/g5/img/${item.prod_img1}`"
+                      />
+                    </div>
                   </router-link>
-                  <!-- <div class="hotproductTag">
-                    <span>1-5人</span>
-                    <span>益智遊戲</span>
-                    <span>團隊合作</span>
-                  </div> -->
-                  <div class="hotproductIntro">
-                    {{ item.prod_des1 }}
-                  </div>
-                  <div class="hotProductPrice">
-                    <span>$ {{ item.prod_price }}</span>
+                  <div class="hotproductInfo">
+                    <router-link
+                      :to="{
+                        name: 'productInfo',
+                        params: { id: item.prod_id },
+                      }"
+                    >
+                      <h3>{{ item.prod_name }}</h3>
+                    </router-link>
+                    <!-- <div class="hotproductTag">
+                      <span>1-5人</span>
+                      <span>益智遊戲</span>
+                      <span>團隊合作</span>
+                    </div> -->
+                    <div class="hotproductIntro">
+                      {{ item.prod_des1 }}
+                    </div>
+                    <div class="hotProductPrice">
+                      <span>$ {{ item.prod_price }}</span>
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
-          </CarouselItem>
-        </Carousel>
-      </div>
-    </section>
+            </CarouselItem>
+          </Carousel>
+        </div>
+      </section>
+    </div>
 
     <section class="productList">
       <div class="searchCatBar">

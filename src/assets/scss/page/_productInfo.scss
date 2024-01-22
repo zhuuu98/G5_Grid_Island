@@ -111,7 +111,7 @@
               height: 100%;
               img {
                 width: 100%;
-                height: 100%;
+                height: auto;
               }
             }
             .productPicList {
@@ -133,13 +133,13 @@
             }
           }
           .productBuyingArea {
-            height: 500px;
             display: flex;
             flex-direction: column;
             row-gap: $M-spacing;
             width: 90%;
             @include PC() {
               height: 611px;
+              width: 50%;
             }
             .productName {
               border-bottom: 1px solid $black;
