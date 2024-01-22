@@ -79,11 +79,11 @@
                   </div>
                 </div>
                 <div class="productBuyingButton">
-                  <button class="btn_default">直接購買</button>
-                  <button class="btn_default">加入購物車</button>
+                  <button class="buyingBtn">直接購買</button>
+                  <button class="cartBookBtn">加入購物車</button>
                 </div>
                 <div class="productBook">
-                  <router-link class="btn_default" to="/prebook"
+                  <router-link class="cartBookBtn" to="/prebook"
                     >預約遊玩</router-link
                   >
                 </div>

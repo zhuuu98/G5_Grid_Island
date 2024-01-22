@@ -1,29 +1,30 @@
 //btn basic
-@mixin btnBasic(){
-    cursor: pointer;
-    display: inline-flex !important;
-    align-items: center;
-    justify-content: center;
+@mixin btnBasic() {
+  cursor: pointer;
+  display: inline-flex !important;
+  align-items: center;
+  justify-content: center;
 }
 
 //btn bgc
-@mixin btnColor($bgc , $border: false) {
-    @if $border {
-      border: 1px solid $bgc;
-      color: $bgc;
-      &:hover {
-        background-color: $bgc;
-        color: #fff
-      }
-    } @else {
+@mixin btnColor($bgc, $border: false) {
+  @if $border {
+    border: 1px solid $bgc;
+    background-color: transparent;
+    color: $bgc;
+    &:hover {
       background-color: $bgc;
-      color: #fff;
-      &:hover {
-        background-color: darken($bgc, 10);
-      }
+      color: $white-1;
+    }
+  } @else {
+    background-color: $bgc;
+    color: $white-1;
+    &:hover {
+      background-color: darken($bgc, 10);
     }
   }
-  
+}
+
 // RWD
 @mixin PC() {
   @media all and (min-width: $PC) {
