@@ -8,7 +8,12 @@
     >
       <div class="productPic">
         <img :src="imgUrl" :alt="productTitle" />
-        <div class="productPic_Mask"></div></div
+        <div class="productPic_Mask">
+          <font-awesome-icon
+            class="searchIcon"
+            :icon="['fas', 'magnifying-glass']"
+          />
+        </div></div
     ></router-link>
     <div class="productInfo">
       <div class="productTag">

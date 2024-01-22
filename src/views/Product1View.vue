@@ -55,11 +55,11 @@
                     >
                       <h3>{{ item.prod_name }}</h3>
                     </router-link>
-                    <!-- <div class="hotproductTag">
+                    <div class="hotproductTag">
                       <span>1-5人</span>
                       <span>益智遊戲</span>
                       <span>團隊合作</span>
-                    </div> -->
+                    </div>
                     <div class="hotproductIntro">
                       {{ item.prod_des1 }}
                     </div>
