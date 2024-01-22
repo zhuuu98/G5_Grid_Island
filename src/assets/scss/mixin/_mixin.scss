@@ -6,6 +6,13 @@
   justify-content: center;
 }
 
+@mixin btnBasiccc() {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 //btn bgc
 @mixin btnColor($bgc, $border: false) {
   @if $border {

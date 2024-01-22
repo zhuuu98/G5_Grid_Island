@@ -3,6 +3,9 @@
 @import "@/assets/scss/components/_grid.scss";
 .signup {
   // background-color: $bgc-2;
+  @include PC() {
+    @include grid(12, PC);
+  }
 }
 .signup_main {
   width: 100%;
