@@ -34,10 +34,10 @@ export default {
             </div>
             <h2>註冊會員</h2>
             <form action="">
-                <font-awesome-icon icon="instagram" />
-                <font-awesome-icon icon="line" />
-                <!-- <font-awesome-icon icon="coffee" /> -->
-                <RouterLink v-for="item in signupButton" :to ="item.link" class="signBtn">{{item.title}}</RouterLink>
+                <RouterLink v-for="item in signupButton" :to ="item.link" class="signBtn">
+                    <font-awesome-icon :icon="['fab', 'line']" />
+                    {{item.title}}
+                </RouterLink>
                 <p class="signup_signUp_text">
                     已經是會員了?
                     <RouterLink to ="./login">點我登入</RouterLink>
