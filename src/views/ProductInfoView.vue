@@ -88,8 +88,8 @@
                   >
                 </div> -->
                 <div class="productBuyingButton">
-                  <button class="cartBookBtn">加入購物車</button>
-                  <router-link class="cartBookBtn" to="/prebook"
+                  <button class="cartBtn">加入購物車</button>
+                  <router-link class="bookBtn" to="/prebook"
                     >預約遊玩</router-link
                   >
                 </div>

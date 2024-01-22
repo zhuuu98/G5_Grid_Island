@@ -230,14 +230,26 @@
             }
             .productBuyingButton {
               display: flex;
-              justify-content: space-between;
-              column-gap: $S-spacing;
+              flex-direction: column;
+              row-gap: $S-spacing;
+              @include PC() {
+                justify-content: space-between;
+                column-gap: $S-spacing;
+                flex-direction: row;
+              }
               button {
-                width: 48%;
-                border: none;
+                width: 100%;
+
+                @include PC() {
+                  width: 48%;
+                }
               }
               a {
-                width: 48%;
+                width: 100%;
+
+                @include PC() {
+                  width: 48%;
+                }
                 &:hover {
                   color: $white-1;
                 }

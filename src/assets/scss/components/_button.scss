@@ -42,14 +42,13 @@
 
 //註冊按鈕
 .signBtn {
-    @include btnBasic;
-    @include btnColor( $btn-sec-bgc, false);
-    height: 45px;
-    padding: 0 20px 0 23px;
-    border-radius:$L-button-radius;
-    // letter-spacing: $PC-btn-lg-spacing;
-    font-size: $PC-btn-lg-font;
-
+  @include btnBasic;
+  @include btnColor($btn-sec-bgc, false);
+  height: 45px;
+  padding: 0 20px 0 23px;
+  border-radius: $L-button-radius;
+  // letter-spacing: $PC-btn-lg-spacing;
+  font-size: $PC-btn-lg-font;
 }
 
 //次要按鈕
@@ -66,7 +65,7 @@
   }
 }
 
-.cartBookBtn {
+.bookBtn {
   @include btnBasic;
   @include btnColor($btn-cart-bgc, false);
   height: 47px;
@@ -75,7 +74,7 @@
   letter-spacing: $PC-btn-lg-spacing;
   font-size: $PC-btn-md-font;
 }
-.buyingBtn {
+.cartBtn {
   @include btnBasic;
   @include btnColor($btn-cart-bgc, true);
   height: 47px;
