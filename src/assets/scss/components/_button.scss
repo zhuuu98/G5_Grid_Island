@@ -40,16 +40,22 @@
   font-size: $PC-btn-lg-font;
 }
 
+
 //註冊按鈕
 .signBtn {
-  @include btnBasic;
-  @include btnColor($btn-sec-bgc, false);
-  height: 45px;
-  padding: 0 20px 0 23px;
-  border-radius: $L-button-radius;
-  // letter-spacing: $PC-btn-lg-spacing;
-  font-size: $PC-btn-lg-font;
+    @include btnBasiccc;
+    @include btnColor( $btn-sec-bgc, false);
+    height: 45px;
+    padding: 0 20px 0 23px;
+    border-radius:$L-button-radius;
+    // letter-spacing: $PC-btn-lg-spacing;
+    font-size: $PC-btn-lg-font;
+    .svg-inline--fa{
+        width: 30px;
+      }
 }
+
+
 
 //次要按鈕
 .btn_secondary {
