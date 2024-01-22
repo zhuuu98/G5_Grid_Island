@@ -1,5 +1,15 @@
 <template>
   <main class="product">
+    <transition name="fade">
+      <div class="loadingMask" v-if="loading" name="fade">
+        <div class="lds-ring">
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+        </div>
+      </div>
+    </transition>
     <div class="breadcrumb">
       <Breadcrumb separator="<b class='breadcrumb-separator'>></b>">
         <BreadcrumbItem to="/">首頁</BreadcrumbItem>
@@ -79,10 +89,7 @@
         <div class="productTitleDash">——————</div>
       </div>
       <div class="productBackgruond">
-        <div class="loadingData displayInfoText" v-if="loading">
-          <p>載入中，請稍等</p>
-        </div>
-        <div class="noDataWarning displayInfoText" v-else-if="nodata">
+        <div class="noDataWarning displayInfoText" v-if="nodata">
           <p>無資料，請輸入正確的資料</p>
         </div>
         <div class="productListContent">

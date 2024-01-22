@@ -1,6 +1,16 @@
 <template>
   <main class="productInfo">
     <!-- <h3>{{ $route.params.id }}</h3> -->
+    <transition name="fade">
+      <div class="loadingMask" v-if="!nodata" name="fade">
+        <div class="lds-ring">
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+        </div>
+      </div>
+    </transition>
     <div class="breadcrumb">
       <Breadcrumb separator="<b class='breadcrumb-separator'>></b>">
         <BreadcrumbItem to="/">首頁</BreadcrumbItem>
@@ -8,8 +18,7 @@
         <BreadcrumbItem>{{ respondData.prod_name }}</BreadcrumbItem>
       </Breadcrumb>
     </div>
-    <div v-if="!nodata">noData</div>
-    <div class="productAllInfo" v-else>
+    <div class="productAllInfo">
       <section class="productInfoArea">
         <div class="productInfoBackground">
           <div class="productPicInfoArea">
