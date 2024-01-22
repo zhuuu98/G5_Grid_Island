@@ -9,7 +9,7 @@ import "./assets/scss/style.scss";
 import App from "./App.vue";
 import router from "./router";
 
-import { Button, Carousel, CarouselItem, Icon, Breadcrumb, BreadcrumbItem } from "view-ui-plus";
+import { Button, Carousel, CarouselItem, Icon, Breadcrumb, BreadcrumbItem, Page } from "view-ui-plus";
 import "view-ui-plus/dist/styles/viewuiplus.css";
 
 
@@ -43,6 +43,7 @@ app.component("CarouselItem", CarouselItem)
 app.component("Icon", Icon)
 app.component("Breadcrumb", Breadcrumb)
 app.component("BreadcrumbItem", BreadcrumbItem)
+app.component("Page", Page)
 
 // 在全局註冊FontAwesomeIcon組件，這樣你就可以在整個應用中使用
 app.component('font-awesome-icon', FontAwesomeIcon);
