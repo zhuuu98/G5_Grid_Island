@@ -78,26 +78,31 @@
     <section class="productList">
       <div class="searchCatBar">
         <div class="searchBar">
-          <input type="text" id="" v-model="search" />
-          <button @click="handleSearch" class="btn_sm_1">搜尋</button>
+          <input
+            type="text"
+            id=""
+            v-model="search"
+            placeholder="請輸入關鍵字"
+          />
+          <button @click="handleSearch" class="searchBtn">搜尋</button>
         </div>
-        <button class="btn_sm_1">按分類篩選</button>
+        <button class="searchBtn catBtn">按分類篩選</button>
       </div>
 
       <div class="productTitle">
-        <div class="productTitleDash">——————</div>
+        <div class="productTitleDash">———</div>
         <div class="productTitleText">所有商品</div>
-        <div class="productTitleDash">——————</div>
+        <div class="productTitleDash">———</div>
       </div>
       <div class="productBackgruond">
         <div class="noDataWarning displayInfoText" v-if="nodata">
           <p>無資料，請輸入正確的資料</p>
         </div>
         <div class="productListContent">
-          <div class="productSelect">
-            <select id="Select">
-              <option value="">-請選擇-</option>
-              <option value="">價格由高至低</option>
+          <div class="productSelect" v-if="!nodata">
+            <select id="select" v-model="sortMethod" @change="sort">
+              <option value="priceAsc">價格由低至高</option>
+              <option value="priceDesc">價格由高至低</option>
             </select>
           </div>
           <div class="productItem">
@@ -127,6 +132,7 @@ export default {
       respondData: [],
       displayData: [],
       cartData: [],
+      sortMethod: "-請選擇-",
       value: 0,
     };
   },
@@ -178,6 +184,14 @@ export default {
       }
       console.log(this.cartData);
     },
+    sort() {
+      // console.log(this.sortMethod);
+      if (this.sortMethod == "priceAsc") {
+        alert("低到高");
+      } else if (this.sortMethod == "priceDesc") {
+        alert("高到低");
+      }
+    },
   },
   watch: {
     search(newSearch, oldSearch) {
@@ -197,6 +211,6 @@ export default {
 };
 </script>
 
-<style lang="scss">
+<!-- <style lang="scss">
 //
-</style>
+</style> -->

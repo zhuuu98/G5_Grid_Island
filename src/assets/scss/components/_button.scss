@@ -83,3 +83,13 @@
   letter-spacing: $PC-btn-lg-spacing;
   font-size: $PC-btn-md-font;
 }
+.searchBtn {
+  @include btnBasic;
+  @include btnColor($btn-search-bgc, false);
+  height: 40px;
+  border: none;
+  border-radius: $S-button-radius;
+  padding: 0 20px 0 25px;
+  letter-spacing: $PC-btn-lg-spacing;
+  font-size: $PC-btn-md-font;
+}
