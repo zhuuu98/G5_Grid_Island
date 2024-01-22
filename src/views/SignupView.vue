@@ -28,16 +28,9 @@ export default {
 
 
 <template>
-    <Breadcrumb separator="<b class='breadcrumb-separator'>></b>">
-        <BreadcrumbItem to="./Home">首頁</BreadcrumbItem>
-        <BreadcrumbItem to="/components/breadcrumb">Components</BreadcrumbItem>
-        <BreadcrumbItem>註冊會員</BreadcrumbItem>
-    </Breadcrumb>
-
-    <div class="signup" id="app">
+    <div class="signup container">
         <div class="signup_main">
             <div class="signup_main_griddy">
-                <!-- <img src="../assets/images/griddy_orange.png"> -->
             </div>
             <h2>註冊會員</h2>
             <form action="">
