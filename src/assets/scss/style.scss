@@ -7,16 +7,15 @@
 //函數
 @import "mixin/mixin";
 
-//
+//組件
 @import "components/productCard";
 @import "components/breadcrumb";
+@import "components/grid";
+@import "components/cartItem";
 
 //layout
 @import "layout/header";
 @import "layout/footer";
-
-//組件
-@import "components/grid";
 
 // page
 @import "page/about";
@@ -27,3 +26,4 @@
 @import "page/prebook";
 @import "page/productInfo";
 @import "page/board";
+@import "page/cart";

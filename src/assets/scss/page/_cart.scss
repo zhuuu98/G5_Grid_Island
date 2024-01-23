@@ -1,0 +1,187 @@
+.cart {
+  color: $black;
+  @include PC() {
+    max-width: $max-width;
+    margin: auto;
+  }
+  .cartInfoArea {
+    @include PC() {
+      display: flex;
+    }
+    .cartContent {
+      border-bottom: 1px solid $black;
+
+      padding-bottom: $S-spacing;
+      margin: 0 $S-spacing;
+      @include PC() {
+        padding-right: $XXL-spacing;
+        width: 60%;
+        border-bottom: none;
+        border-right: 1px solid $black;
+      }
+      .cartItemContent {
+        padding: $S-spacing;
+        .cartItemTitle {
+          h3 {
+            font-size: $M-h3;
+          }
+        }
+        .cartItemArea {
+          .cartItemBlock {
+            padding: $S-spacing 0;
+            width: 100%;
+          }
+          .continueShopping {
+            a {
+              color: $black;
+              display: flex;
+              .leftArrow {
+                width: 10px;
+              }
+            }
+          }
+        }
+      }
+      .buyingSelectArea {
+        padding: $S-spacing;
+        .discountCode {
+          display: flex;
+          flex-direction: column;
+          row-gap: $S-spacing;
+          .discountCodeTitle {
+            h3 {
+              font-size: $M-h3;
+            }
+          }
+          .discountCodeInputBtn {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            .discountCodeInput {
+              width: 60%;
+              input {
+                height: 30px;
+                width: 100%;
+                border-radius: 10px;
+              }
+            }
+          }
+        }
+        .deliveryMethod {
+          display: flex;
+          flex-direction: column;
+          row-gap: $S-spacing;
+          .deliveryMethodTitle {
+            h3 {
+              font-size: $M-spacing;
+            }
+          }
+          .deliveryMethodSelect {
+            width: 100%;
+            select {
+              width: 100%;
+              height: 30px;
+              border-radius: 10px;
+            }
+          }
+        }
+      }
+    }
+    .priceContent {
+      margin: 0 $S-spacing;
+      padding: $S-spacing 0;
+
+      @include PC() {
+        width: 40%;
+      }
+      .priceArea {
+        @include PC() {
+          margin-top: $XL-spacing;
+          position: sticky;
+          top: 80px;
+          right: 0px;
+        }
+        display: flex;
+        flex-direction: column;
+        row-gap: $S-spacing;
+        .subtotal {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          .subtotalTitle {
+            p {
+              font-size: $M-text;
+            }
+          }
+          .subtotalAmount {
+            p {
+              font-size: $M-text;
+            }
+          }
+        }
+        .deliveryPrice {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          .deliveryPriceTitle {
+            p {
+              font-size: $M-text;
+            }
+            .deliveryPriceAmount {
+              p {
+                font-size: $M-text;
+              }
+            }
+          }
+        }
+        .discount {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          .discountTitle {
+            p {
+              font-size: $M-text;
+            }
+          }
+          .discountAmount {
+            display: flex;
+            font-size: $M-text;
+          }
+        }
+        .totalPrice {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          font-size: $M-h3;
+          margin-top: $S-spacing;
+        }
+        .checkOutBtn {
+          button {
+            width: 100%;
+            border: none;
+          }
+        }
+      }
+    }
+  }
+  .recProduct {
+    padding: $L-spacing 0;
+    display: flex;
+    flex-direction: column;
+    row-gap: $M-spacing;
+    .recProductTitle {
+      text-align: center;
+    }
+    .recProductList {
+      display: flex;
+      column-gap: $M-spacing;
+      overflow: auto;
+      .recProductPic {
+        img {
+          width: calc(1200px / 4 - $M-spacing);
+          height: calc(1200px / 4 - $M-spacing);
+        }
+      }
+    }
+  }
+}
