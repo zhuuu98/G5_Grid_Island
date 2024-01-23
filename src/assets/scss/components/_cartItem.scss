@@ -1,0 +1,102 @@
+.cartItem {
+  color: $black;
+  .cartItemBackground {
+    background-color: $gray-1;
+    position: relative;
+    border-radius: $Mob-card-radius;
+    width: 100%;
+    .deleteBtn {
+      cursor: pointer;
+      width: 30px;
+      height: 30px;
+      background-color: #d9d9d9;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: absolute;
+      border-radius: 50%;
+      right: 10px;
+      top: 10px;
+      .xMark {
+        width: 20px;
+      }
+    }
+    .cartItemContent {
+      display: flex;
+      padding: $M-spacing;
+      column-gap: $M-spacing;
+      align-items: center;
+      .cartItemPic {
+        width: 100px;
+        border-radius: $Mob-card-radius;
+        overflow: hidden;
+        img {
+          width: 100%;
+        }
+      }
+      .cartItemInfo {
+        display: flex;
+        flex-direction: column;
+        row-gap: $S-spacing;
+        @include PC() {
+          width: 75%;
+          row-gap: $M-spacing;
+        }
+        .cartItemName {
+          h3 {
+            font-size: $M-h3;
+            color: $black;
+          }
+        }
+        .cartItemPriceQuantity {
+          display: flex;
+          flex-direction: column;
+          row-gap: $S-spacing;
+          @include PC() {
+            flex-direction: row;
+            justify-content: space-between;
+          }
+          .cartItemPrice {
+            h3 {
+              font-size: $M-h3;
+            }
+          }
+          .cartItemQuantity {
+            width: 100px;
+            border: 1px solid $black;
+            border-radius: $S-button-radius;
+            display: flex;
+            input[type="number"] {
+              width: 50px;
+              text-align: center;
+              border: none;
+              font-size: $M-text;
+              background-color: transparent;
+              @include PC() {
+                font-size: $PC-text;
+              }
+            }
+            input[type="number"]::-webkit-inner-spin-button,
+            input[type="number"]::-webkit-outer-spin-button {
+              -webkit-appearance: none;
+              margin: 0;
+            }
+            button {
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              background-color: transparent;
+              border: none;
+              width: 30px;
+              height: 30px;
+              cursor: pointer;
+              span {
+                font-size: $PC-h3;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
