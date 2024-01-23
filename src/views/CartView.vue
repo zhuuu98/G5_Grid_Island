@@ -19,7 +19,7 @@
           <div class="cartItemArea">
             <div
               class="cartItemBlock"
-              v-for="item in displayData"
+              v-for="item in displayData.slice(0, 6)"
               :key="item.prod_id"
             >
               <CartItem
@@ -48,10 +48,17 @@
             </div>
             <div class="discountCodeInputBtn">
               <div class="discountCodeInput">
-                <input type="text" id="discountCode" />
+                <input
+                  type="text"
+                  id="discountCode"
+                  v-model="discountCode"
+                  @input="discountCodeCheck()"
+                />
               </div>
               <div class="discountCodeBtn">
-                <button class="searchBtn">使用折扣碼</button>
+                <button class="searchBtn" @click="discountCodeCheck">
+                  使用折扣碼
+                </button>
               </div>
             </div>
           </div>
@@ -60,7 +67,8 @@
               <h3>配送方式</h3>
             </div>
             <div class="deliveryMethodSelect">
-              <select v-model="deliveryMethod">
+              <select v-model="deliveryMethod" @change="deliveryMethodChange">
+                <option value="init">-請選擇-</option>
                 <option value="homeDelivery">宅配到府</option>
                 <option value="pickup">店內自取</option>
               </select>
@@ -75,7 +83,7 @@
               <p>小計</p>
             </div>
             <div class="subtotalAmount">
-              <p>$ 1300</p>
+              <p>$ {{ subTotalAmount }}</p>
             </div>
           </div>
           <div class="deliveryPrice">
@@ -83,7 +91,7 @@
               <p>運費</p>
             </div>
             <div class="deleiveryPriceAmount">
-              <p>$ 0</p>
+              <p>$ {{ deliveryAmount }}</p>
             </div>
           </div>
           <div class="discount">
@@ -91,8 +99,8 @@
               <p>折扣</p>
             </div>
             <div class="discountAmount">
-              <span>-</span>
-              <p>$ 0</p>
+              <span v-if="discountAmount != 0">-</span>
+              <p>$ {{ discountAmount }}</p>
             </div>
           </div>
           <div class="totalPrice">
@@ -100,7 +108,7 @@
               <h3>總價</h3>
             </div>
             <div class="totalPriceAmount">
-              <h3>$ 1300</h3>
+              <h3>$ {{ totalPriceAmount }}</h3>
             </div>
           </div>
           <div class="checkOutBtn">
@@ -116,8 +124,8 @@
       <div class="recProductList">
         <div
           class="recProductPic"
-          v-for="(item, index) in displayData"
-          :key="item.prod_id"
+          v-for="(item, index) in displayData.slice(0, 4)"
+          :key="index"
         >
           <router-link
             :to="{
@@ -153,7 +161,12 @@ export default {
       respondData: [],
       displayData: [],
       cartData: [],
-      deliveryMethod: "",
+      discountCode: "",
+      deliveryMethod: "init",
+      subTotalAmount: 1300,
+      deliveryAmount: 0,
+      discountAmount: 0,
+      totalPriceAmount: 0,
     };
   },
   components: {
@@ -206,6 +219,29 @@ export default {
           this.respondData = res.data;
           this.displayData = res.data;
         });
+    },
+    totalPriceCount() {
+      this.totalPriceAmount =
+        this.subTotalAmount + this.deliveryAmount - this.discountAmount;
+    },
+    deliveryMethodChange() {
+      if (this.deliveryMethod == "homeDelivery") {
+        this.deliveryAmount = 80;
+      } else if (this.deliveryMethod == "pickup") {
+        this.deliveryAmount = 0;
+      }
+      this.totalPriceCount();
+    },
+    discountCodeCheck() {
+      if (
+        this.discountCode == "GridIsland" ||
+        this.discountCode == "GridIsland2023"
+      ) {
+        this.discountAmount = 50;
+      } else {
+        this.discountAmount = 0;
+      }
+      this.totalPriceCount();
     },
   },
   mounted() {},

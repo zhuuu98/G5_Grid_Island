@@ -26,7 +26,7 @@
           </div>
           <Carousel v-model="value" loop>
             <CarouselItem
-              v-for="(item, index) in displayData"
+              v-for="(item, index) in displayData.slice(0, 3)"
               :key="item.prod_id"
             >
               <div class="hotProductBody">
