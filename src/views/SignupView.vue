@@ -28,11 +28,13 @@ export default {
 
 
 <template>
-    <div class="signup container">
+    <div class="signup">
         <div class="signup_main">
-            <div class="signup_main_griddy">
+            <div class="signup_title">
+                <h2>註冊會員</h2>
+                <div class="signup_main_griddy">
             </div>
-            <h2>註冊會員</h2>
+            </div>
             <form action="">
                 <RouterLink v-for="item in signupButton" :to ="item.link" class="signBtn">
                     <font-awesome-icon :icon="['fab', 'line']" />
