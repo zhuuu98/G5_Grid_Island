@@ -147,7 +147,15 @@
 <script>
 import axios from "axios";
 import CartItem from "../components/CartItem.vue";
+import useUserStore from "../stores/user";
+
 export default {
+  setup() {
+    const user = useUserStore();
+    return {
+      userStore: user,
+    };
+  },
   data() {
     return {
       respondData: [],
@@ -172,6 +180,33 @@ export default {
     },
     totalPriceCount() {
       return this.subTotalAmount + this.deliveryAmount - this.discountAmount;
+    },
+    userName2() {
+      return this.userStore.getUserName;
+    },
+    cart() {
+      return this.userStore.getCart;
+    },
+    cartDetail() {
+      const data = [
+        {
+          id: "111",
+          isFav: true,
+          imgUrl: `aaa/dd-aaa.jpg`,
+        },
+        {
+          id: "113",
+          isFav: false,
+          imgUrl: `aaa/01.jpg`,
+        },
+      ];
+      return this.cart.map((v, i) => {
+        const obj = data.find((u) => u.id === v.id);
+        return {
+          ...v,
+          ...obj,
+        };
+      });
     },
   },
   created() {

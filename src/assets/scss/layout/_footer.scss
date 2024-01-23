@@ -3,13 +3,23 @@ img{
     vertical-align: middle;
 }
 .mainFooter{
-    @include PC(){
-        
-    }
     .mOcean {
         margin: -2px 0;
+        @include PC(){
+            display: none;
+        }
+        
     }
-    // background-color: $blue-4;
+    .pcOcean{
+        display: none;
+        
+        @include PC(){
+            display: block;
+            margin: -2px 0;
+        }   
+    }
+
+
     span{
         color: $white-1;
     }
@@ -36,19 +46,23 @@ img{
                     flex-direction: column;
                     @include PC(){
                         flex-direction: row;
-
                     }
-
-        
                     .item {
                         color: $white-1;
                         font-size: $PC-btn-sl-font;
                         letter-spacing:$PC-btn-esl-spacing;
                         margin: $S-spacing 0;
+                        @include PC(){
+                            margin:$M-spacing  $M-spacing $S-spacing;
+                        }
+
                     }
                     .first{
-                        margin:calc($S-spacing + $S-spacing) 0 $S-spacing;
+                        margin:$M-spacing 0 $S-spacing;
+                        @include PC(){
+                            margin:$M-spacing  $M-spacing $S-spacing 0;
                         }
+                    }
                 }
             }
             .footer_logo {
