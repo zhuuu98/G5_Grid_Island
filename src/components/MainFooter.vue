@@ -1,7 +1,7 @@
 <template>
   <footer class="mainFooter">
     <img class="mOcean" src="../assets/images/footer/m_ocean.svg">
-    <!-- <img class="pcOcean" src="../assets/images/footer/pc_ocean.svg"> -->
+    <img class="pcOcean" src="../assets/images/footer/pc_ocean.svg">
     <div class="footer">
       <div class="footer_info">
         <div class="footer_menu">

@@ -1,0 +1,100 @@
+// .book_cal {
+//     background: #fff;
+//     color: #333;
+//     max-width: 40rem;
+//     margin: 0 auto;
+//     box-shadow: 0 0 1rem rgba(0, 0, 0, 0.2);
+//     border-radius: 1rem;
+
+//     button {
+//         width: 100%;
+//         height: 100%;
+//         font-size: inherit;
+//         font-weight: inherit;
+//         appearance: none;
+//         border: none;
+//         background: transparent;
+//         text-align: center;
+//         cursor: pointer;
+//         padding: 0;
+//     }
+
+//     [aria-disabled] {
+//         pointer-events: none;
+//         opacity: 0.5;
+//     }
+// }
+
+.book_cal_nav {
+    text-align: center;
+    display: flex;
+    gap: 1rem;
+    font-size: 1.25rem;
+
+//     select {
+//         border: 1px solid #ccc;
+//         background-color: transparent;
+//         border-radius: 0.25rem;
+//         font-size: inherit;
+//         font-weight: inherit;
+//         padding: 0.25rem 1rem;
+//     }
+
+//     [data-direction] {
+//         flex: 0 0 4rem;
+//         line-height: 4rem;
+//         transition: background-color 0.25s;
+
+//         &:hover {
+//             color: #0ba;
+//         }
+//     }
+}
+
+.book_cal_nav_title {
+    flex: 1 1 auto;
+    display: flex;
+    gap: 2rem;
+    justify-content: center;
+    align-items: center;
+}
+
+.book_cal_weekdays,
+.book_cal_grid {
+    width: 100%;
+    display: grid;
+    box-sizing: border-box;
+    padding: 0 1rem;
+    grid-template-columns: repeat(7, 1fr);
+}
+
+// .book_cal_weekdays>div {
+//     padding: 1rem 0;
+//     text-align: center;
+// }
+
+// .book_cal_day {
+//     line-height: 2.5rem;
+//     border-radius: 0.25em;
+//     overflow: hidden;
+
+//     &.today {
+//         box-shadow: inset 0 0 0 2px #ccc;
+//     }
+
+//     button {
+//         transition: background-color 0.25s, color 0.25s;
+
+//         &:not([aria-disabled]):hover {
+//             color: #fff;
+//             background: rgba(0, 0, 0, 0.7);
+//         }
+
+//         &[aria-current] {
+//             color: #fff;
+//             background: #0ba;
+//             pointer-events: none;
+//             font-weight: bold;
+//         }
+//     }
+// }
