@@ -3,6 +3,8 @@
 import { RouterView } from "vue-router";
 import MainHeader from "./components/MainHeader.vue";
 import MainFooter from "./components/MainFooter.vue";
+import ChatBot from "./components/ChatBot.vue";
+
 export default {
   data() {
     return {};
@@ -11,6 +13,7 @@ export default {
     MainHeader,
     RouterView,
     MainFooter,
+    ChatBot,
   },
   mounted() {},
 };
@@ -20,4 +23,5 @@ export default {
   <MainHeader />
   <RouterView />
   <MainFooter />
+  <ChatBot />
 </template>

@@ -1,0 +1,68 @@
+.chatbot{
+    .chatContent{
+        background-color: $blue-1;
+        width: 100%;
+        max-width: 300px;
+        border-radius: $PC-card-radius
+    }
+    .contentTop{
+        background-color: $blue-3;
+        border-radius: $PC-card-radius $PC-card-radius 0 0;
+        display: flex;
+        justify-content: center;
+    }
+    .contentTop img{
+        vertical-align: top;
+        width: 100%;
+        max-width: 90px;
+        margin: $S-spacing $M-spacing ;    
+    }
+    .chatApply span{
+        display: flex;
+        justify-content: space-evenly;
+
+        width: 100%;
+        max-width: 250px;
+        background-color: $white-1;
+        margin: $M-spacing $S-spacing;
+        padding: $S-spacing; 
+        border-radius: $Mob-card-radius $Mob-card-radius $Mob-card-radius 0;
+    }
+    .chatQuestion{
+        display: flex;
+        justify-content: end;
+    }
+    .chatQuestion span{
+        display: flex;
+        width: 30%;
+        // max-width: 250px;
+        justify-content: space-evenly;
+        background-color: $green-2;
+        color: $white-1;
+        margin: $M-spacing $S-spacing;
+        padding: $S-spacing; 
+        border-radius: $Mob-card-radius $Mob-card-radius 0 $Mob-card-radius ;
+    }
+
+    .contentChoose{
+        background-color: $blue-3;
+        border-radius:0 0 $PC-card-radius $PC-card-radius ;
+        display: flex;
+        justify-content: space-around;
+        padding: $M-spacing;
+    }
+    .FirstChoose{
+        display: flex;
+        width: 100%;
+
+        gap: 10px;
+    }
+
+
+
+
+
+
+
+
+}
