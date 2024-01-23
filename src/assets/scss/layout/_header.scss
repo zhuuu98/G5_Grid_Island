@@ -41,6 +41,9 @@ header {
           height: 40px;
           padding: 8px;
           align-items: center;
+          a{
+            color: $black;
+          }
           .nav_cart { // 購物車容器
             height: 20px;
             img { // 購物車圖片
@@ -188,11 +191,13 @@ header {
         }
         @include PC(){
           .ham_hover{
-            // font-size: 240px;
-            color: $blue-1;
+            font-size: 240px;
+            opacity: .3;
+            font-weight: bold;
+            // color: $blue-1;
             position: absolute;
-            bottom: 0;
-            right: 0;
+            bottom: -50px;
+            right: 0px;
             display: none;
           }
             // prebook hover效果
@@ -200,9 +205,10 @@ header {
               &:hover{
                 +.ham_hover_prebook{
                   display: block;
-                  font-size: 240px;
-                  opacity: .5;
+                  // font-size: 240px;
+                  // opacity: .5;
                   z-index: -1;
+                  color: $blue-1;
                 }
               }
             }
@@ -212,7 +218,9 @@ header {
             &:hover{
               +.ham_hover_news{
                 display: block;
-                font-size: 180px;
+                // font-size: 180px;
+                color: $yellow;
+
               }
             }
           }
@@ -221,7 +229,9 @@ header {
             &:hover{
               +.ham_hover_products{
                 display: block;
-                font-size: 180px;
+                // font-size: 180px;
+                color: $green-1;
+
               }
             }
           }
@@ -230,7 +240,9 @@ header {
             &:hover{
               +.ham_hover_comm{
                 display: block;
-                font-size: 180px;
+                // font-size: 180px;
+                color: $purple;
+
               }
             }
           }
@@ -239,7 +251,9 @@ header {
             &:hover{
               +.ham_hover_about{
                 display: block;
-                font-size: 180px;
+                // font-size: 180px;
+                color: $orange-1;
+
               }
             }
           }
@@ -248,7 +262,8 @@ header {
             &:hover{
               +.ham_hover_cart{
                 display: block;
-                font-size: 180px;
+                // font-size: 180px;
+                color: $red;
               }
             }
           }
@@ -257,7 +272,8 @@ header {
             &:hover{
               +.ham_hover_member{
                 display: block;
-                font-size: 180px;
+                // font-size: 180px;
+                color: $gray-2;
               }
             }
           }
@@ -361,6 +377,12 @@ header {
   100% {
     transform: translateX(45px);
   }
+}
+
+
+/* 樣式修改：在開啟燈箱時禁止滾動頁面 */
+.body-overflow-hidden {
+  overflow: hidden;
 }
 
 

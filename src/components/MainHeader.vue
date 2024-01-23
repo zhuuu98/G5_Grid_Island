@@ -121,6 +121,12 @@ export default {
       // 如果 toggleMenu 為 true，同步將 subMenuOpen 設為 false
       if (this.toggleMenu) {
         this.subMenuOpen = false;
+      };
+      //打開漢堡選單後，隱藏卷軸。
+      if(this.menuOpen === true){
+        document.body.classList.add('body-overflow-hidden');
+      }else{
+        document.body.classList.remove('body-overflow-hidden');
       }
     },
     toggleSubMenuOpen() {
