@@ -1,0 +1,24 @@
+span{
+    color: $white-1;
+}
+.mainFooter{
+    background-color: $blue-4;
+
+    .footer_menu{
+        display: flex;
+        flex-direction: column;
+
+        .title{
+            font-size: $PC-btn-lg-font;
+            letter-spacing: $PC-btn-sl-spacing;
+
+            
+        }
+        span:not(:first-child){
+            font-size: $PC-btn-sl-font;
+            letter-spacing:$PC-btn-esl-spacing;
+            margin: $S-spacing;
+        }
+    }
+}
+
