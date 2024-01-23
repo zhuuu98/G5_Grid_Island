@@ -101,8 +101,11 @@
         <div class="productListContent">
           <div class="productSelect" v-if="!nodata">
             <select id="select" v-model="sortMethod" @change="sort">
+              <option value="init">-請選擇-</option>
               <option value="priceAsc">價格由低至高</option>
               <option value="priceDesc">價格由高至低</option>
+              <option value="idAsc">商品編號由低至高</option>
+              <option value="idDesc">商品編號由高至低</option>
             </select>
           </div>
           <div class="productItem">
@@ -132,7 +135,7 @@ export default {
       respondData: [],
       displayData: [],
       cartData: [],
-      sortMethod: "-請選擇-",
+      sortMethod: "init",
       value: 0,
     };
   },
@@ -185,14 +188,28 @@ export default {
       console.log(this.cartData);
     },
     sort() {
-      // console.log(this.sortMethod);
       // 幫我和同學講一下怎麼寫排序
-      if (this.sortMethod == "priceAsc") {
-        this.displayData = this.displayData.sort((a, b) => a.prod_price - b.prod_price)
-        // alert("低到高");
-      } else if (this.sortMethod == "priceDesc") {
-        this.displayData = this.displayData.sort((a, b) => b.prod_price - a.prod_price)
-        // alert("高到低");
+      switch (this.sortMethod) {
+        case "priceAsc":
+          this.displayData = this.displayData.sort(
+            (a, b) => a.prod_price - b.prod_price
+          );
+          break;
+        case "priceDesc":
+          this.displayData = this.displayData.sort(
+            (a, b) => b.prod_price - a.prod_price
+          );
+          break;
+        case "idAsc":
+          this.displayData = this.displayData.sort(
+            (a, b) => a.prod_id - b.prod_id
+          );
+          break;
+        case "idDesc":
+          this.displayData = this.displayData.sort(
+            (a, b) => b.prod_id - a.prod_id
+          );
+          break;
       }
     },
   },
@@ -201,7 +218,7 @@ export default {
       // console.log("new:" + newSearch);
       // console.log("old:" + oldSearch);
       // 可以調用 methods
-      this.handleSearch()
+      this.handleSearch();
     },
     respondData(newData) {
       // console.log(newData.length);
