@@ -12,7 +12,6 @@
               <RouterLink to="/team" class="btn_secondary">報隊區</RouterLink>
             </div>
             <div class="board_article">
-              <!-- <div class="board_article_btn" @click="open_light_box">我要發文</div> -->
               <div class="btn_lg" @click="open_light_box">我要發文</div>
               <select>
                 <option value="" selected>從新至舊</option>
@@ -43,6 +42,10 @@
                   <input type="text" placeholder="輸入回覆內容...">
                 </div>
                 <div class="board_all_re">
+                <!-- <div class="board_all_re" @click="toggleReply"> -->
+                <!-- <div class="board_all_re" @click="openReply(e)"> -->
+                <!-- <div class="board_all_re" @click="toggleReply(item.id)"> -->
+                <!-- <div class="board_all_re" @click="open_reply"> -->
                   共有{{item.re_amount}}則回覆
                   <font-awesome-icon icon="angle-down" />
                 </div>
@@ -51,6 +54,9 @@
                 </div>
               </div>
               <!-- 留言區 -->
+              <!-- <div class="board_re" v-if="open_reply_text"> -->
+              <!-- <div class="board_re" v-show="open_reply_text"> -->
+              <!-- <div class="board_re" v-show="openReplyMap[item.id]"> -->
               <div class="board_re">
 
                 <div class="board_re_card" v-for="reItem in item.re" :key="reItem.id">
@@ -124,7 +130,7 @@
           </div>
         </form>
         </div>
-    </div> //board_lb_re_box
+    </div>
     
       
     
@@ -229,11 +235,75 @@ export default {
             }
           ]
         },
+        {
+          id: 4,
+          id_img:'/src/assets/images/board/board_id_img.svg',
+          id_img_alt:'board_id_img',
+          memId:'大傑',
+          time:'2023/12/30 20:25',
+          msg:'有人看到我爸嗎？',
+          re_amount:2,
+          re:[
+            {
+              id:1,
+              img:'/src/assets/images/board/board_id_img.svg',
+              alt:'board_id_img',
+              memId:'灰傑克',
+              time:'2023/12/30 20:25',
+              msg:'皮諾渴，這個直接電死。',
+            },
+            {
+              id:2,
+              img:'/src/assets/images/board/board_id_img.svg',
+              alt:'board_id_img',
+              memId:'皮諾渴',
+              time:'2023/12/30 20:25',
+              msg:'是的醫生！',
+            },
+            {
+              id:3,
+              img:'/src/assets/images/board/board_id_img.svg',
+              alt:'board_id_img',
+              memId:'奇牙',
+              time:'2023/12/30 20:25',
+              msg:'我們一定會找到的。',
+            }
+          ]
+        },
+        {
+          id: 5,
+          id_img:'/src/assets/images/board/board_id_img.svg',
+          id_img_alt:'board_id_img',
+          memId:'酷B',
+          time:'2023/12/30 20:25',
+          msg:'使用同行，前往瑪莎多啦。',
+          re_amount:2,
+          re:[
+            {
+              id:1,
+              img:'/src/assets/images/board/board_id_img.svg',
+              alt:'board_id_img',
+              memId:'酷喇皮卡',
+              time:'2023/12/30 20:25',
+              msg:'我快下船了。',
+            },
+            {
+              id:2,
+              img:'/src/assets/images/board/board_id_img.svg',
+              alt:'board_id_img',
+              memId:'明人',
+              time:'2023/12/30 20:25',
+              msg:'樓上也有血輪眼？',
+            }
+          ]
+        },
       ],
       board_light_box_open: false,
       board_light_box_report: false,
       open_re_text: false,
       selectedOption: "",
+      open_reply_text: false,
+      // openReplyMap: {}, // 使用对象来跟踪每个对象的可见性状态
     };
   },
   components: {
@@ -264,6 +334,17 @@ export default {
     updateReTextVisibility() {
       this.open_re_text = this.selectedOption === "lb_re_other";
     },
+    toggleReply(e){
+      this.open_reply_text = !this.open_reply_text;
+    },
+    // open_reply(){
+      
+    // },
+
+    // toggleReply(item) {
+    //   // 使用 item 的唯一标识符（可能是 item.id）作为 key 来跟踪每个对象的可见性
+    //   this.$set(this.openReplyMap, item.id, !this.openReplyMap[item.id]);
+    // },
   },
 
 

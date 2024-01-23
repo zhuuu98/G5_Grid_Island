@@ -19,12 +19,20 @@
       display: none;
       align-items: end;
       @include T(){
-        display: block;
+        display: flex;
         width: 50%;
         margin-top: auto;
       }
       a{
+        font-size: $small;
+        text-align: center;
         margin-right: 8px;
+        @include T(){
+          font-size: 14px;
+        }
+        @include PC(){
+          font-size: $PC-btn-sl-font;
+        }
       }
     }
 
@@ -32,7 +40,7 @@
       flex-direction: column;
       align-items: flex-end;
       width: 100%;
-      margin: 16px auto;
+      margin: 16px 0px auto;
       display: flex;
         .btn_lg{
           width: 100%;
@@ -51,10 +59,19 @@
           border: 1px solid $black;
           border-radius: 20px;
           padding: 8px;
-          font-size: $small;
+          font-size: $M-text;
+          // font-size: $small;
+          // font-size: $PC-text;
           outline: none;
           background-color: $white-1;
           cursor: pointer;
+          option{
+            // font-size: $small;
+            font-size: $M-text;
+            padding: 8px;
+            margin: 4px;
+            // height: 30px;
+          }
         }
       }
   }
