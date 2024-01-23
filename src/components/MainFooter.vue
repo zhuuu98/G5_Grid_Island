@@ -1,11 +1,14 @@
 <template>
   <footer class="mainFooter">
-    <img src="../assets/images/footer/m_ocean.svg">
+    <img class="mOcean" src="../assets/images/footer/m_ocean.svg">
+    <!-- <img class="pcOcean" src="../assets/images/footer/pc_ocean.svg"> -->
     <div class="footer">
       <div class="footer_info">
         <div class="footer_menu">
           <span class="title">格線之島</span>
-          <a v-for="(item, index) in menu" :class="{first: index === 0}" class="item" :href="item.link">{{item.title}}</a>
+          <div class="menu">
+            <RouterLink :to="item.link" v-for="(item, index) in menu" :class="{first: index === 0}" class="item">{{item.title}}</RouterLink>
+          </div>
         </div>
         <div class="footer_logo">
           <img class="img" src="../assets/images/footer/footer_logo.svg">
@@ -18,8 +21,6 @@
         <div class="footer_officeInfo">
           <span class="title">聯絡資訊</span>
           <span v-for="item in officeInfo">{{ item.content }}</span>
-          <!-- <span>客服時間：週一至五 9:00-20:00, 週六日9:00-18:00</span>
-          <span>電子信箱：service.taiwan@gridisland.com</span> -->
         </div>
       </div>
       <div class="copyright">

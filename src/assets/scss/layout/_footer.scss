@@ -3,7 +3,10 @@ img{
     vertical-align: middle;
 }
 .mainFooter{
-    img {
+    @include PC(){
+        
+    }
+    .mOcean {
         margin: -2px 0;
     }
     // background-color: $blue-4;
@@ -27,16 +30,26 @@ img{
                     font-size: $PC-btn-lg-font;
                     letter-spacing: $PC-btn-sl-spacing;
                 }
-    
-                .item {
-                    color: $white-1;
-                    font-size: $PC-btn-sl-font;
-                    letter-spacing:$PC-btn-esl-spacing;
-                    margin: $S-spacing 0;
-                }
-                .first{
-                    margin:calc($S-spacing + $S-spacing) 0 $S-spacing;
+
+                .menu {
+                    display: flex;
+                    flex-direction: column;
+                    @include PC(){
+                        flex-direction: row;
+
                     }
+
+        
+                    .item {
+                        color: $white-1;
+                        font-size: $PC-btn-sl-font;
+                        letter-spacing:$PC-btn-esl-spacing;
+                        margin: $S-spacing 0;
+                    }
+                    .first{
+                        margin:calc($S-spacing + $S-spacing) 0 $S-spacing;
+                        }
+                }
             }
             .footer_logo {
                 width: 100px;
@@ -67,6 +80,7 @@ img{
             .footer_officeInfo {
                 display: flex;
                 flex-direction: column;
+                
 
                 .title{
                     font-size: $PC-btn-lg-font;
@@ -77,7 +91,11 @@ img{
     
                 span:not(:first-child) {
                     font-size: $small;
-                    letter-spacing: $PC-btn-exsl-spacing
+                    letter-spacing: $PC-btn-exsl-spacing;
+                    
+                    @include PC(){
+                        margin: $XS-spacing;
+                    }
                 }
             }
     
