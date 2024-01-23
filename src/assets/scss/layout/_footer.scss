@@ -1,24 +1,104 @@
-span{
-    color: $white-1;
+img{
+    width: 100%;
+    vertical-align: middle;
 }
 .mainFooter{
-    background-color: $blue-4;
-
-    .footer_menu{
-        display: flex;
-        flex-direction: column;
-
-        .title{
-            font-size: $PC-btn-lg-font;
-            letter-spacing: $PC-btn-sl-spacing;
-
-            
-        }
-        span:not(:first-child){
-            font-size: $PC-btn-sl-font;
-            letter-spacing:$PC-btn-esl-spacing;
-            margin: $S-spacing;
-        }
+    img {
+        margin: -2px 0;
     }
+    // background-color: $blue-4;
+    span{
+        color: $white-1;
+    }
+    
+    .footer {
+        background-color: $blue-4;
+
+        .footer_info {
+            padding: $L-spacing $L-spacing;
+            position: relative;
+    
+            .footer_menu{
+                display: flex;
+                flex-direction: column;
+                padding: 0 0 $M-spacing;
+
+                .title{
+                    font-size: $PC-btn-lg-font;
+                    letter-spacing: $PC-btn-sl-spacing;
+                }
+    
+                .item {
+                    color: $white-1;
+                    font-size: $PC-btn-sl-font;
+                    letter-spacing:$PC-btn-esl-spacing;
+                    margin: $S-spacing 0;
+                }
+                .first{
+                    margin:calc($S-spacing + $S-spacing) 0 $S-spacing;
+                    }
+            }
+            .footer_logo {
+                width: 100px;
+                position: absolute;
+                top: 20%;
+                right: 15%;
+    
+                .img{
+                    width: 100px;
+                    display: flex;
+                    justify-content: center;
+                }
+    
+                .socail_logo {
+                    width: 25px;
+                    color: $white-1;
+                    display: flex;
+                    justify-content: space-around;
+                    margin:$M-spacing 0;
+                }
+                .logo{
+                    width: 25px;
+                }
+    
+                
+                
+            }
+            .footer_officeInfo {
+                display: flex;
+                flex-direction: column;
+
+                .title{
+                    font-size: $PC-btn-lg-font;
+                    letter-spacing: $PC-btn-sl-spacing;
+                    margin: 0 0 $M-spacing;
+
+                }
+    
+                span:not(:first-child) {
+                    font-size: $small;
+                    letter-spacing: $PC-btn-exsl-spacing
+                }
+            }
+    
+        }
+    
+        .copyright {
+            display: flex;
+            flex-direction: column;
+            padding:$M-spacing $L-spacing $L-spacing;
+            border-top: 1px solid $gray-2;
+            
+            .statement {
+                font-size: $small;
+                letter-spacing:     $PC-btn-exsl-spacing;
+            }
+            .first {
+                padding:0 0 $M-spacing;
+            }
+        }
+
+    }
+    
 }
 
