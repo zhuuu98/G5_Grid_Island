@@ -10,17 +10,11 @@ header {
     border-bottom: 1px solid $gray-2;
 
     .logo_box {
-      // height: 30px;
       display: flex;
-      // align-items: center;
       margin: 4px 0px 4px 20px;
-
-      // border: 1px solid red;
       img {
-        // background-color: aqua;
         margin: 5px;
         vertical-align: bottom;
-        // width: 100%;
         height: 45px;
       }
     }
@@ -31,18 +25,23 @@ header {
       font-size: 16px;
       letter-spacing: 2px;
       align-items: center;
-
+      // background-color: #9e6fcd;
       ul {
         // align-items: center;
-        align-content: center;
+        // text-align: center;
+        // align-content: center;
+        justify-content: center;
         display: flex;
+        // outline: 1px solid red;
         li {
           display: flex;
           height: 40px;
           padding: 8px;
           align-items: center;
+          // background-color: antiquewhite;
           a{
             color: $black;
+            // background-color: aquamarine;
           }
           .nav_cart { // 購物車容器
             height: 20px;
@@ -191,7 +190,7 @@ header {
         }
         @include PC(){
           .ham_hover{
-            font-size: 240px;
+            font-size: 220px;
             opacity: .3;
             font-weight: bold;
             // color: $blue-1;
@@ -289,13 +288,13 @@ header {
             display: flex;
             height: 30px;
             .ham_sub_bug{
-              height: 30px;
               width: 70px;
               height: 16px;
               align-items: end;
               img{
                 animation: gogo 1.3s ease-in-out infinite;
-                height: 190%;
+                width: 46%;
+                // height: 100%;
               }
             }
             .ham_sub_comm{
@@ -375,7 +374,7 @@ header {
     transform: translateX(0px);
   }
   100% {
-    transform: translateX(45px);
+    transform: translateX(35px);
   }
 }
 

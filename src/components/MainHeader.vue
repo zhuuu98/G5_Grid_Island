@@ -122,10 +122,16 @@ export default {
       if (this.toggleMenu) {
         this.subMenuOpen = false;
       };
-      //打開漢堡選單後，隱藏卷軸。
-      if(this.menuOpen === true){
+      // 打開漢堡選單後，隱藏卷軸。
+      // if(this.menuOpen === true){
+      //   document.body.classList.add('body-overflow-hidden');
+      // }else if(this.menuOpen === false){
+      //   document.body.classList.remove('body-overflow-hidden');
+      // }
+
+      if (this.menuOpen) {
         document.body.classList.add('body-overflow-hidden');
-      }else{
+      } else {
         document.body.classList.remove('body-overflow-hidden');
       }
     },
@@ -137,6 +143,15 @@ export default {
     this.$router.afterEach(() => {
     this.menuOpen = false; // 關閉漢堡選單
   });
+
+   // 在路由切換後執行的邏輯
+    this.$router.afterEach(() => {
+      // 關閉漢堡選單
+      this.menuOpen = false;
+      // 恢復卷軸
+      document.body.classList.remove('body-overflow-hidden');
+    });
+  
   },
 };
 </script>
