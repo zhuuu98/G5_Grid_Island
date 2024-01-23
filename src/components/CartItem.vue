@@ -32,7 +32,7 @@
                 <h3>{{ itemDiscountPrice }}</h3>
               </div>
               <div class="cartItemPrice">
-                <h3>{{ itemPrice }}</h3>
+                <h3>$ {{ itemPrice }}</h3>
               </div>
             </div>
             <div class="cartItemQuantity">
