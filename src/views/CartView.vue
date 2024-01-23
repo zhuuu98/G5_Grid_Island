@@ -108,7 +108,7 @@
               <h3>總價</h3>
             </div>
             <div class="totalPriceAmount">
-              <h3>$ {{ totalPriceAmount }}</h3>
+              <h3>$ {{ totalPriceCount }}</h3>
             </div>
           </div>
           <div class="checkOutBtn">
@@ -158,7 +158,6 @@ export default {
       subTotalAmount: 1300,
       deliveryAmount: 0,
       discountAmount: 0,
-      totalPriceAmount: 0,
     };
   },
   components: {
@@ -170,6 +169,9 @@ export default {
     },
     nodata() {
       return this.displayData.length == 0;
+    },
+    totalPriceCount() {
+      return this.subTotalAmount + this.deliveryAmount - this.discountAmount;
     },
   },
   created() {
@@ -185,17 +187,13 @@ export default {
           this.displayData = res.data;
         });
     },
-    totalPriceCount() {
-      this.totalPriceAmount =
-        this.subTotalAmount + this.deliveryAmount - this.discountAmount;
-    },
+
     deliveryMethodChange() {
       if (this.deliveryMethod == "homeDelivery") {
         this.deliveryAmount = 80;
       } else if (this.deliveryMethod == "pickup") {
         this.deliveryAmount = 0;
       }
-      this.totalPriceCount();
     },
     discountCodeCheck() {
       if (
@@ -206,7 +204,6 @@ export default {
       } else {
         this.discountAmount = 0;
       }
-      this.totalPriceCount();
     },
   },
   mounted() {},
