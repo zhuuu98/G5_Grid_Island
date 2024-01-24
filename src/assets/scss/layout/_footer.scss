@@ -1,10 +1,14 @@
 img{
     width: 100%;
-    vertical-align: middle;
+    vertical-align: bottom;
 }
 .mainFooter{
+    position: relative;
     .mOcean {
-        margin: -2px 0;
+        position: absolute;
+        top: 0;
+        transform: translateY(-90%);
+        right: 0;
         @include PC(){
             display: none;
         }
@@ -12,10 +16,12 @@ img{
     }
     .pcOcean{
         display: none;
-        
         @include PC(){
             display: block;
             margin: -2px 0;
+            position: absolute;
+            top: -10%;
+            right: 0;
         }   
     }
 
