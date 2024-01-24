@@ -1,9 +1,13 @@
 .chatbot{
+    display: flex;
     .chatContent{
         background-color: $blue-1;
         width: 100%;
         max-width: 300px;
-        border-radius: $PC-card-radius
+        height: 100%;
+        max-height: 300px;
+        border-radius: $PC-card-radius;
+        overflow: scroll;
     }
     .contentTop{
         background-color: $blue-3;
