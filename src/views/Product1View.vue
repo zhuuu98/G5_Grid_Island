@@ -11,7 +11,7 @@
       </div>
     </transition>
     <PageTitle :pageTitle="'所有商品'" />
-    <div class="productTopBackground">
+    <section class="productTopBackground">
       <div class="breadcrumb">
         <Breadcrumb separator="<b class='breadcrumb-separator'>></b>">
           <BreadcrumbItem to="/">首頁</BreadcrumbItem>
@@ -74,8 +74,12 @@
           </Carousel>
         </div>
       </section>
-    </div>
-
+    </section>
+    <section class="wave">
+      <div class="waveImg">
+        <img src="@/assets/images/product/wave.svg" alt="wave" />
+      </div>
+    </section>
     <section class="productList">
       <div class="searchCatBar">
         <div class="searchBar">

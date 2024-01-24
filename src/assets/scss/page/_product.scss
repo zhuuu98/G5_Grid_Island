@@ -155,7 +155,17 @@
       }
     }
   }
-
+  .wave {
+    .waveImg {
+      position: absolute;
+      transform: translateY(-45px);
+      width: 100%;
+      img {
+        width: 100%;
+        vertical-align: top;
+      }
+    }
+  }
   .productList {
     background-color: $yellow;
     width: 100%;
