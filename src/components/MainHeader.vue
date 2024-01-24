@@ -20,13 +20,12 @@
                   <div class="nav_cart"><img src="../assets/images/header/header-cart.svg" alt="header-cart"></div>
                 </RouterLink>
               </li>
+
               <li>
                 <RouterLink to="/login" class="nav_link ">
                   <div class="nav_member"><img src="../assets/images/header/header-member.svg" alt="header-member"></div>
                 </RouterLink>
               </li>
-
-
 
               <!-- 漢堡圖標 -->
               <li>
@@ -37,6 +36,7 @@
                 </button>
               </li>
             </ul>
+            
           </nav>
         </div>
         <transition name="ham_menu">

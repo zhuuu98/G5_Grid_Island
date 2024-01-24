@@ -83,16 +83,35 @@
     padding: 0;
     display: flex;
     flex-wrap: wrap;
+    // gap: 10px;
+    align-items: flex-start;
+    
+    // column-count: 2;
+    // column-gap: 10px;
   }
   &_card{
-    margin: 0;
-    padding: 0;
+    // float: left;
+    // display: inline-block;
     border: 10px solid $green-1;
     margin: 8px;
     padding: 16px;
     background-color: $white-1;
     border-radius: 20px;
     width: 100%;
+
+    margin-bottom: 10px;
+    width: 100%;
+
+    // &:after {
+    //   content: "";
+    //   display: table;
+    //   clear: both;
+    // }
+
+    // &:nth-child(odd) {
+    //   flex-basis: 100%;
+    // }
+
     @include T(){
       transform: translateX(1%);
       width: 47%;
@@ -300,6 +319,7 @@
         padding: 8px;
         outline: none;
         margin: auto;
+        border: 1px solid $gray-2;
         @include T(){
           width: 100%;
         }
@@ -445,6 +465,14 @@
     }
     
   }
+}
+
+.hide{
+  display: none;
+}
+
+.active{
+  display:block!important;
 }
 
 /* 樣式修改：在開啟燈箱時禁止滾動頁面 */
