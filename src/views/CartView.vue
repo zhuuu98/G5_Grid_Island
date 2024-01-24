@@ -108,7 +108,7 @@
               <h3>總價</h3>
             </div>
             <div class="totalPriceAmount">
-              <h3>$ {{ totalPriceAmount }}</h3>
+              <h3>$ {{ totalPriceCount }}</h3>
             </div>
           </div>
           <div class="checkOutBtn">
@@ -147,14 +147,14 @@
 <script>
 import axios from "axios";
 import CartItem from "../components/CartItem.vue";
-import useUserStore from '../stores/user'
+import useUserStore from "../stores/user";
 
 export default {
   setup() {
-    const user = useUserStore()
+    const user = useUserStore();
     return {
-      userStore: user
-    }
+      userStore: user,
+    };
   },
   data() {
     return {
@@ -166,7 +166,6 @@ export default {
       subTotalAmount: 1300,
       deliveryAmount: 0,
       discountAmount: 0,
-      totalPriceAmount: 0,
     };
   },
   components: {
@@ -179,32 +178,35 @@ export default {
     nodata() {
       return this.displayData.length == 0;
     },
+    totalPriceCount() {
+      return this.subTotalAmount + this.deliveryAmount - this.discountAmount;
+    },
     userName2() {
-      return this.userStore.getUserName
+      return this.userStore.getUserName;
     },
     cart() {
-      return this.userStore.getCart
+      return this.userStore.getCart;
     },
     cartDetail() {
       const data = [
-      {
-        id: '111',
-        isFav: true,
-        imgUrl: `aaa/dd-aaa.jpg`
-      },
-      {
-        id: '113',
-        isFav: false,
-        imgUrl: `aaa/01.jpg`
-      }
-      ]
+        {
+          id: "111",
+          isFav: true,
+          imgUrl: `aaa/dd-aaa.jpg`,
+        },
+        {
+          id: "113",
+          isFav: false,
+          imgUrl: `aaa/01.jpg`,
+        },
+      ];
       return this.cart.map((v, i) => {
-        const obj = data.find(u => u.id === v.id)
+        const obj = data.find((u) => u.id === v.id);
         return {
           ...v,
-          ...obj
-        }
-      })
+          ...obj,
+        };
+      });
     },
   },
   created() {
@@ -220,17 +222,13 @@ export default {
           this.displayData = res.data;
         });
     },
-    totalPriceCount() {
-      this.totalPriceAmount =
-        this.subTotalAmount + this.deliveryAmount - this.discountAmount;
-    },
+
     deliveryMethodChange() {
       if (this.deliveryMethod == "homeDelivery") {
         this.deliveryAmount = 80;
       } else if (this.deliveryMethod == "pickup") {
         this.deliveryAmount = 0;
       }
-      this.totalPriceCount();
     },
     discountCodeCheck() {
       if (
@@ -241,7 +239,6 @@ export default {
       } else {
         this.discountAmount = 0;
       }
-      this.totalPriceCount();
     },
   },
   mounted() {},

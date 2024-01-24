@@ -16,7 +16,7 @@
               </li>
 
               <li>
-                <RouterLink to="#" class="nav_link">
+                <RouterLink to="/cart" class="nav_link">
                   <div class="nav_cart"><img src="../assets/images/header/header-cart.svg" alt="header-cart"></div>
                 </RouterLink>
               </li>
@@ -31,9 +31,6 @@
               <!-- 漢堡圖標 -->
               <li>
                 <button @click="toggleMenu" class="ham_btn">
-                  <!-- <div class="ham_btn_line1"></div>
-                  <div class="ham_btn_line2"></div>
-                  <div class="ham_btn_line3"></div> -->
                   <div :class="{ 'active-line1': menuOpen }" class="ham_btn_line1"></div>
                   <div :class="{ 'active-line2': menuOpen }" class="ham_btn_line2"></div>
                   <div :class="{ 'active-line3': menuOpen }" class="ham_btn_line3"></div>
@@ -122,21 +119,30 @@ export default {
       if (this.toggleMenu) {
         this.subMenuOpen = false;
       };
-      //打開漢堡選單後，隱藏卷軸。
-      if(this.menuOpen === true){
+
+      if (this.menuOpen) {
         document.body.classList.add('body-overflow-hidden');
-      }else{
+      } else {
         document.body.classList.remove('body-overflow-hidden');
       }
-    },
-    toggleSubMenuOpen() {
-    this.subMenuOpen = !this.subMenuOpen;
-    },
+      },
+      toggleSubMenuOpen() {
+      this.subMenuOpen = !this.subMenuOpen;
+      },
   },
   mounted() {
     this.$router.afterEach(() => {
     this.menuOpen = false; // 關閉漢堡選單
   });
+
+   // 在路由切換後執行的邏輯
+    this.$router.afterEach(() => {
+      // 關閉漢堡選單
+      this.menuOpen = false;
+      // 恢復卷軸
+      document.body.classList.remove('body-overflow-hidden');
+    });
+  
   },
 };
 </script>
