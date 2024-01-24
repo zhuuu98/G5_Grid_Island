@@ -1,70 +1,84 @@
 <template>
     <div class="book">
+        <PageTitle :pageTitle="'現場預約'" />
+        <div class="breadcrumb">
+            <Breadcrumb separator="<b class='breadcrumb-separator'>></b>">
+            <BreadcrumbItem to="/">首頁</BreadcrumbItem>
+            <BreadcrumbItem to="/prebook">預約須知</BreadcrumbItem>
+            <BreadcrumbItem>現場預約</BreadcrumbItem>
+            </Breadcrumb>
+        </div>
         <div class="book_notice">
-            <p>可預訂日期為不含預訂當日之十五日內。</p>
-            <p>請依序選擇日期、桌型、時段及人次。</p>
-            <p>若日期、桌型或時段無法選擇，代表當日、該桌型、或該時段預約已額滿。</p>
+            <h3>請依序選擇日期、桌型、時段及人次。</h3>
+            <h3>若日期、桌型或時段無法選擇，代表當日、該桌型、或該時段預約已額滿。</h3>
         </div>
         <form action="">
-            <h2>請選擇日期</h2>
-            <input type="date"  v-model="dateChosen" @input="tableAble" required="required">
+            <div class="book_date_select">
+                <h2>請選擇日期</h2>
+                <input type="date" v-model="dateChosen" @input="tableAble" required="required">
+            </div>
 
             <!--以下是月曆-->
             <div class="book_cal">
-            <div class="book_cal_nav">
-                <button data-direction="prev" @click.prevent="prevMonth" :disabled="isCurrentMonth">
-                    &larr;
-                </button>
-                <div class="book_cal_nav_title">
-                    <div>{{ selectedYear }} 年</div>
-                    <div>{{ selectedMonth + 1 }} 月</div>
-                </div>
-                <button data-direction="next" @click.prevent="nextMonth" :disabled="isMaxMonth">
-                    &rarr;
-                </button>
-            </div>
-            <div class="book_cal_weekdays">
-                <div v-for="name in dayNames">{{ name }}</div>
-            </div>
-            <div class="book_cal_grid">
-                <div v-for="num in days" class="book_cal_day" :class="{
-                    blank: !num,
-                    today: isCurrentMonth && num && num == today.getDate()
-                }">
-                    <button v-if="num" :disabled="isCurrentMonth && num <= today.getDate() || num > today.getDate() + 5" :current="selectedDate &&
-                            selectedDate.toLocaleDateString() ==
-                            new Date(selectedYear, selectedMonth, num).toLocaleDateString()
-                            ? 'date'
-                            : false
-                        " @click.prevent="selectDay(num), tableAble()">
-                        {{ num }}
+                <div class="book_cal_nav">
+                    <button data-direction="prev" @click.prevent="prevMonth" :disabled="isCurrentMonth">
+                        <font-awesome-icon :icon="['fas', 'chevron-left']" size="2xs" />
+                    </button>
+                    <div class="book_cal_nav_title">
+                        <div>{{ selectedYear }} 年</div>
+                        <div>{{ selectedMonth + 1 }} 月</div>
+                    </div>
+                    <button data-direction="next" @click.prevent="nextMonth" :disabled="isMaxMonth">
+                        <font-awesome-icon :icon="['fas', 'chevron-right']" size="2xs" />
                     </button>
                 </div>
+                <div class="book_cal_weekdays">
+                    <div v-for="name in dayNames">{{ name }}</div>
+                </div>
+                <div class="book_cal_grid">
+                    <div v-for="num in days" class="book_cal_day" :class="{
+                        blank: !num,
+                        today: isCurrentMonth && num && num == today.getDate()
+                    }">
+                        <button v-if="num" 
+                        :disabled="isDisabled(num)"
+                        :current="selectedDate && selectedDate.toLocaleDateString() ==
+                            new Date(selectedYear, selectedMonth, num).toLocaleDateString()
+                            ? 'date' : false" @click.prevent="selectDay(num), tableAble()">
+                            {{ num }}
+                        </button>
+                    </div>
+                </div>
             </div>
-        </div>
             <!--以上是月曆-->
 
-            <h2>請選擇桌型</h2>
-            <div class="book_table_option">
-                <div class="book_options" v-for="table in tableType">
-                    <input type="radio" name="table" :value="table.value" :id="table.typeId" :disabled="tableTypeStatus"
-                        v-model="tableChosen" @input="timeAble" required>
-                    <label :for="table.typeId">{{ table.label }}</label>
+            <div class="book_table_select">
+                <h2>請選擇桌型</h2>
+                <div class="book_table_option">
+                    <div class="book_options" v-for="table in tableType">
+                        <input type="radio" name="table" :value="table.value" :id="table.typeId" :disabled="tableTypeStatus"
+                            v-model="tableChosen" @input="timeAble" required>
+                        <label :for="table.typeId">{{ table.label }}</label>
+                    </div>
                 </div>
             </div>
-            <h2>請選擇時段</h2>
-            <div class="book_time_option">
-                <div class="book_options" v-for="time in timePeriod">
-                    <input type="radio" name="time" :value="time.value" :id="time.timeId" :disabled="timeStatus"
-                        v-model="timeChosen" required>
-                    <label :for="time.timeId">{{ time.period }}<br>{{ time.time }}</label>
+            <div class="book_time_select">
+                <h2>請選擇時段</h2>
+                <div class="book_time_option">
+                    <div class="book_options" v-for="time in timePeriod">
+                        <input type="radio" name="time" :value="time.value" :id="time.timeId" :disabled="timeStatus"
+                            v-model="timeChosen" required>
+                        <label :for="time.timeId">{{ time.period }}<br>{{ time.time }}</label>
+                    </div>
                 </div>
             </div>
-            <h2>預定人數</h2>
-            <div>
-                人數<button @click.prevent="minusPer">-</button>
-                <input type="number" v-model="count" disabled>
-                <button @click.prevent="plusPer">+</button>
+            <div class="book_select_NumOfPeo">
+                <h2>預定人數</h2>
+                <div>
+                    人數<button @click.prevent="minusPer">-</button>
+                    <input type="number" v-model="count" disabled>
+                    <button @click.prevent="plusPer">+</button>
+                </div>
             </div>
             <div class="book_submit">
                 <input type="submit" name="" id="" value="確認預約" @click.prevent="handleInput">
@@ -73,6 +87,7 @@
     </div>
 </template>
 <script>
+import PageTitle from "../components/PageTitle.vue";
 export default {
     data() {
         return {
@@ -122,8 +137,12 @@ export default {
             selectedMonth: new Date().getMonth(),
             selectedYear: new Date().getFullYear(),
             selectedDate: null,
+            dateDisabled: false,
             // 以上是日曆用
         }
+    },
+    components:{
+        PageTitle
     },
     computed: {
         //以下是日曆用
@@ -136,11 +155,14 @@ export default {
         isCurrentMonth() {
             return this.selectedMonth == new Date().getMonth() && this.isCurrentYear;
         },
-        isMaxMonth(){
+        isMaxMonth() {
             return this.selectedMonth == new Date().getMonth() + 1 && this.isCurrentYear;
         },
         daysInMonth() {
             return new Date(this.selectedYear, this.selectedMonth + 1, 0).getDate();
+        },
+        daysInLastMonth() {
+            return new Date(this.selectedYear, this.selectedMonth, 0).getDate();
         },
         firstDayOffset() {
             return new Date(this.selectedYear, this.selectedMonth, 1).getDay();
@@ -158,7 +180,7 @@ export default {
     methods: {
         minusPer() {
             if (this.count > 1) {
-                this.count --
+                this.count--
             } else {
                 this.count = 1
             }
@@ -166,11 +188,10 @@ export default {
         },
         plusPer() {
             if (this.count < 12) {
-                this.count ++
+                this.count++
             } else {
                 this.count = 12
             }
-            console.log(this.count)
         },
         tableAble() {
             this.tableTypeStatus = false;
@@ -191,17 +212,17 @@ export default {
         prevMonth() {
             if (this.selectedMonth == 0) {
                 this.selectedMonth = 11;
-                this.selectedYear --;
+                this.selectedYear--;
             } else {
-                this.selectedMonth --;
+                this.selectedMonth--;
             }
         },
         nextMonth() {
             if (this.selectedMonth == 11) {
                 this.selectedMonth = 0;
-                this.selectedYear ++;
+                this.selectedYear++;
             } else {
-                this.selectedMonth ++;
+                this.selectedMonth++;
             }
         },
         selectDay(day) {
@@ -209,18 +230,20 @@ export default {
             this.selectedDate = new Date(this.selectedYear, this.selectedMonth, day);
             this.$emit("dateSelected", this.selectedDate);
             this.dateChosen = this.selectedDate.toLocaleDateString("zh-Hans-CN", {
-                            year: "numeric",
-                            month: '2-digit',
-                            day: '2-digit'
-                        }).replaceAll('/', '-')
+                year: "numeric",
+                month: '2-digit',
+                day: '2-digit'
+            }).replaceAll('/', '-')
         },
-        // isDisable(num){
-        //     if(daysInMonth)
-        // }
+        isDisabled(num) {
+            let restDay = 15 - (this.daysInLastMonth - this.today.getDate())
+            return (
+                (this.isCurrentMonth && num <= this.today.getDate())
+                || (!this.isCurrentMonth && num > restDay)
+                );
+        },
         // 以上是日曆用
     }
 }
 </script>
-<style lang="scss">
-
-</style>
+<style lang="scss"></style>

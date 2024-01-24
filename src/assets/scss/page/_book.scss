@@ -1,3 +1,79 @@
+@mixin bookContent(){
+    width: fit-content;
+    margin: auto;
+}
+.book{
+    background-color: $bgc-2;
+    h2{
+        text-align: center;
+    }
+    .breadcrumb{
+        position: relative;
+        max-width: $max-width;
+        width: 90%;
+        margin: auto;
+        top: 50px;
+        @include PC() {
+            top: 100px;
+        }
+    }
+}
+.book_notice{
+    background-color: $black;
+    color: $white-1;
+    width: 90%;
+    max-width: 360px;
+    margin: $XXL-spacing auto;
+    border-radius: $Mob-card-radius;
+    padding: $M-spacing;
+    text-align: center;
+    @include PC() {
+        margin: $XXXL-spacing auto $XXL-spacing;
+    }
+}
+form{
+    .book_date_select, .book_table_select, .book_time_select, .book_select_NumOfPeo, .book_submit{
+        width: fit-content;
+        margin: auto;
+    }
+    input[type="date"]{
+        margin: auto;
+        // visibility: hidden;
+    }
+}
+
+.book_cal{
+    border-radius: $input-radius;
+    background-color: $bgc-1;
+    color: $blue-4;
+    max-width: 800px;
+    width: 90%;
+    margin: auto;
+    .book_cal_nav{
+        text-align: center;
+        display: flex;
+    }
+    button{
+        flex: 0 0 4rem;
+        line-height: 4rem;
+        transition: background-color 0.25s;
+        background-color: transparent;
+        border: 0;
+        &:hover {
+            color: $orange-2;
+        }
+        &:disabled{
+            color: $gray-1;
+        }
+    }
+    .book_cal_nav_title{
+        display: flex;
+        gap: $S-spacing;
+        justify-content: center;
+        align-items: center;
+    }
+}
+
 // .book_cal {
 //     background: #fff;
 //     color: #333;
@@ -26,10 +102,10 @@
 // }
 
 .book_cal_nav {
-    text-align: center;
-    display: flex;
-    gap: 1rem;
-    font-size: 1.25rem;
+    // text-align: center;
+    // display: flex;
+    // gap: 1rem;
+    // font-size: 1.25rem;
 
 //     select {
 //         border: 1px solid #ccc;
