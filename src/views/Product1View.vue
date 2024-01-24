@@ -10,6 +10,7 @@
         </div>
       </div>
     </transition>
+    <PageTitle :pageTitle="'所有商品'" />
     <div class="productTopBackground">
       <div class="breadcrumb">
         <Breadcrumb separator="<b class='breadcrumb-separator'>></b>">
@@ -128,6 +129,7 @@
 <script>
 import axios from "axios";
 import ProductCard from "../components/ProductCard.vue";
+import PageTitle from "../components/PageTitle.vue";
 export default {
   data() {
     return {
@@ -141,6 +143,7 @@ export default {
   },
   components: {
     ProductCard,
+    PageTitle,
   },
   computed: {
     loading() {
