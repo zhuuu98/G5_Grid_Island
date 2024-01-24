@@ -12,7 +12,7 @@
             <h3>請依序選擇日期、桌型、時段及人次。</h3>
             <h3>若日期、桌型或時段無法選擇，代表當日、該桌型、或該時段預約已額滿。</h3>
         </div>
-        <form action="">
+        <form action="" class="bookTableForm">
             <div class="book_date_select">
                 <h2>請選擇日期</h2>
                 <input type="date" v-model="dateChosen" @input="tableAble" required="required">
@@ -74,14 +74,18 @@
             </div>
             <div class="book_select_NumOfPeo">
                 <h2>預定人數</h2>
-                <div>
-                    人數<button @click.prevent="minusPer">-</button>
-                    <input type="number" v-model="count" disabled>
-                    <button @click.prevent="plusPer">+</button>
+                <div class="bookPeople">
+                    <p>人數</p>
+                    <div class="minusPlus">
+                        <button @click.prevent="minusPer" class="btnMinus">-</button>
+                        <input type="number" v-model="count" disabled>
+                        <button @click.prevent="plusPer" class="btnPlus">+</button>
+                    </div>
                 </div>
             </div>
+            <!-- 預約按鈕 -->
             <div class="book_submit">
-                <input type="submit" name="" id="" value="確認預約" @click.prevent="handleInput">
+                <input type="submit" class="btn_sm_1" id="" value="確認預約" @click.prevent="handleInput">
             </div>
         </form>
     </div>

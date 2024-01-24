@@ -174,3 +174,69 @@ form{
 //         }
 //     }
 // }
+
+//桌型
+.book_table_option,.book_time_option{
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    gap: 20px;
+    margin: $L-spacing 0;
+}
+.book_options label{
+    display: block;
+    width: fit-content;
+    padding: $S-spacing $M-spacing;
+    background-color: $white-1;
+    border-radius: $input-radius;
+    cursor: pointer;
+}
+.book_options input{
+    display: none;
+}
+.bookTableForm{
+    display: flex;
+    flex-direction: column;
+    gap: $L-spacing;
+}
+.book_options label:hover{
+    background-color: $orange-2;
+    color: $white-1;
+
+}
+.book_options input[type="radio"]:checked + label {
+    color: $white-1;
+    background-color: $orange-2;
+}
+//人數
+
+.bookPeople{
+    background-color: $white-1;
+    border-radius: $input-radius;
+    padding: $M-spacing ;
+    display: flex;
+    align-items: center;
+    gap: $L-spacing;
+    width: fit-content;
+    margin: $L-spacing 0;
+}
+.minusPlus{
+    border: 1px solid $black ;
+    border-radius: $input-radius;
+    display: flex;
+}
+.btnMinus,.btnPlus{
+    padding:$S-spacing $M-spacing;
+    border: 0;
+    background-color: $white-1;
+    border-radius: $input-radius;
+}
+.minusPlus input[type="number"]{
+    background-color: $white-1;
+    border: 0;
+    display: flex;
+    text-align: center;
+}
+.book_submit{
+    margin:$M-spacing auto ;
+}
