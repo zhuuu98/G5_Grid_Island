@@ -5,7 +5,7 @@
     <div class="footer">
       <div class="footer_info">
         <div class="footer_menu">
-          <span class="title">格線之島</span>
+          <span class="title">格線島</span>
           <div class="menu">
             <RouterLink :to="item.link" v-for="(item, index) in menu" :class="{first: index === 0}" class="item">{{item.title}}</RouterLink>
           </div>

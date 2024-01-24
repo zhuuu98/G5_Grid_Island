@@ -10,7 +10,8 @@
         </div>
       </div>
     </transition>
-    <div class="productTopBackground">
+    <PageTitle :pageTitle="'所有商品'" />
+    <section class="productTopBackground">
       <div class="breadcrumb">
         <Breadcrumb separator="<b class='breadcrumb-separator'>></b>">
           <BreadcrumbItem to="/">首頁</BreadcrumbItem>
@@ -20,9 +21,9 @@
       <section class="hotProductBackground">
         <div class="hotProduct">
           <div class="hotTitle">
-            <div class="hotTitleDash">——————</div>
+            <div class="hotTitleDash">———</div>
             <div class="hotTitleText">熱銷商品</div>
-            <div class="hotTitleDash">——————</div>
+            <div class="hotTitleDash">———</div>
           </div>
           <Carousel v-model="value" loop>
             <CarouselItem
@@ -73,8 +74,12 @@
           </Carousel>
         </div>
       </section>
-    </div>
-
+    </section>
+    <section class="wave">
+      <div class="waveImg">
+        <img src="@/assets/images/product/wave.svg" alt="wave" />
+      </div>
+    </section>
     <section class="productList">
       <div class="searchCatBar">
         <div class="searchBar">
@@ -86,8 +91,81 @@
           />
           <button @click="handleSearch" class="searchBtn">搜尋</button>
         </div>
-        <button class="searchBtn catBtn">按分類篩選</button>
+        <div class="innerSearch">
+          <button class="searchBtn catBtn" @click="catExpand">
+            按分類篩選
+          </button>
+          <div class="productSelect">
+            <select class="select" v-model="sortMethod" @change="sort">
+              <option value="init">-請選擇-</option>
+              <option value="priceAsc">價格由低至高</option>
+              <option value="priceDesc">價格由高至低</option>
+              <option value="idAsc">商品編號由低至高</option>
+              <option value="idDesc">商品編號由高至低</option>
+            </select>
+          </div>
+        </div>
       </div>
+      <transition name="expand">
+        <div class="productCat" v-if="productCat">
+          <div class="productCatBackground">
+            <div class="resetCat">
+              <p>清除搜尋條件</p>
+            </div>
+            <div class="gameType">
+              <div class="catGroup">
+                <div class="gameTypeTitle catTitle" @click="tagToggle('type')">
+                  <h4>類別</h4>
+                </div>
+                <transition name="expand">
+                  <div class="gameTypeTags catTags" v-if="gameType">
+                    <span>策略</span>
+                    <span>紙牌</span>
+                    <span>經營</span>
+                  </div>
+                </transition>
+              </div>
+            </div>
+            <div class="playerCount">
+              <div class="catGroup">
+                <div
+                  class="playerCountTitle catTitle"
+                  @click="tagToggle('count')"
+                >
+                  <h4>人數</h4>
+                </div>
+                <transition name="expand">
+                  <div class="playerCountTags catTags" v-if="playerCount">
+                    <span>2-4人</span>
+                    <span>5-8人</span>
+                    <span>>8人</span>
+                  </div>
+                </transition>
+              </div>
+            </div>
+            <div class="difficulty">
+              <div class="catGroup">
+                <div
+                  class="difficultyTitle catTitle"
+                  @click="tagToggle('difficulty')"
+                >
+                  <h4>難易度</h4>
+                </div>
+                <transition name="expand">
+                  <div class="difficultyTags catTags" v-if="difficulty">
+                    <span>簡單</span>
+                    <span>中等</span>
+                    <span>困難</span>
+                  </div>
+                </transition>
+              </div>
+            </div>
+            <div class="enterBtn" @click="catExpand">
+              <p>送出</p>
+            </div>
+          </div>
+        </div>
+      </transition>
 
       <div class="productTitle">
         <div class="productTitleDash">———</div>
@@ -128,6 +206,7 @@
 <script>
 import axios from "axios";
 import ProductCard from "../components/ProductCard.vue";
+import PageTitle from "../components/PageTitle.vue";
 export default {
   data() {
     return {
@@ -137,10 +216,15 @@ export default {
       cartData: [],
       sortMethod: "init",
       value: 0,
+      productCat: false,
+      gameType: false,
+      playerCount: false,
+      difficulty: false,
     };
   },
   components: {
     ProductCard,
+    PageTitle,
   },
   computed: {
     loading() {
@@ -209,6 +293,25 @@ export default {
           this.displayData = this.displayData.sort(
             (a, b) => b.prod_id - a.prod_id
           );
+          break;
+      }
+    },
+    catExpand() {
+      this.productCat = !this.productCat;
+      this.gameType = false;
+      this.playerCount = false;
+      this.difficulty = false;
+    },
+    tagToggle(tagtype) {
+      switch (tagtype) {
+        case "type":
+          this.gameType = !this.gameType;
+          break;
+        case "count":
+          this.playerCount = !this.playerCount;
+          break;
+        case "difficulty":
+          this.difficulty = !this.difficulty;
           break;
       }
     },
