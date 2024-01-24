@@ -6,7 +6,6 @@
 
   // 牙齒區
   .board_tag{
-    // display: flex;
     padding: 8px 20px;
     @include T(){
       display: flex;
@@ -15,28 +14,36 @@
       display: flex;
     }
     .board_tag_btn{
-      // width: 50%;
-      align-items: end;
+      width: 100%;
       display: flex;
+      display: none;
+      align-items: end;
       @include T(){
+        display: flex;
         width: 50%;
-      }
-      @include PC(){
-        width: 50%;
+        margin-top: auto;
       }
       a{
+        font-size: $small;
+        text-align: center;
         margin-right: 8px;
+        @include T(){
+          font-size: 14px;
+        }
+        @include PC(){
+          font-size: $PC-btn-sl-font;
+        }
       }
     }
 
     .board_article{
-      display: flex;
       flex-direction: column;
       align-items: flex-end;
-      width: 50%;
-      // outline: 1px solid red;
+      width: 100%;
+      margin: 16px 0px auto;
+      display: flex;
         .btn_lg{
-          width: 54px;
+          width: 100%;
           margin-bottom: 8px;
           background-color: $orange-2;
         @include T(){
@@ -47,22 +54,35 @@
         }
         }
         select{
-          width: 100px;
+          width: 130px;
+          height: 40px;
           border: 1px solid $black;
           border-radius: 20px;
-          padding: 8px 2px;
-          font-size: $small;
+          padding: 8px;
+          font-size: $M-text;
+          // font-size: $small;
+          // font-size: $PC-text;
           outline: none;
           background-color: $white-1;
           cursor: pointer;
+          option{
+            // font-size: $small;
+            font-size: $M-text;
+            padding: 8px;
+            margin: 4px;
+            // height: 30px;
+          }
         }
       }
-    
   }
+
+
   // 內容區
   &_area{
     margin: 0;
     padding: 0;
+    display: flex;
+    flex-wrap: wrap;
   }
   &_card{
     margin: 0;
@@ -72,18 +92,15 @@
     padding: 16px;
     background-color: $white-1;
     border-radius: 20px;
+    width: 100%;
     @include T(){
-      width: 47%;
       transform: translateX(1%);
-      float: left;
+      width: 47%;
     }
     @include PC(){
       width: 48%;
       transform: translateX(1%);
-      float: left;
     }
-    
-    
   }
   //文章區
   &_info{
@@ -92,13 +109,13 @@
   &_id{
     display: flex;
     &_img{
+      width: 40px;
       img{
         width: 100%;
         vertical-align: bottom;
       }
     }
     &_info{
-      // border: 1px solid red;
       display: flex;
       flex-direction: column;
       justify-content: center;
@@ -106,16 +123,16 @@
       .board_memId{
         font-size: $M-h3;
         @include T(){
-          // font-size: $PC-h3;
+          font-size: $PC-h4;
         }
         @include PC(){
-          font-size: $PC-h3;
-
+          font-size: $PC-h4;
         }
         
       }
       .board_time{
         font-size: $small;
+        color: $gray-2;
       }
     }
   }
@@ -129,19 +146,26 @@
   &_re_type{
     p{
       margin: 8px 0;
-      font-size: $M-h4;
+      font-size: $M-text;
+      color: #aaa;
     }
     input{
       width: 100%;
+      outline: none;
+      border: 1px solid $black;
+      border-radius: 5px;
+      width: 100%;
+      height: 30px;
+      padding: 8px;
     }
   }
   &_all_re{
+    margin: 8px 0;
     cursor: pointer;
     display: flex;
     justify-content: flex-end;
     svg{
       width: 14px;
-      // height: 10px;
     }
   }
   &_report{
@@ -150,15 +174,84 @@
     right: 0;
     top: 0;
     cursor: pointer;
+    
     svg{
       width: 100%;
       color: $red;
+      :hover{
+        color: red;
+      }
     }
   }
 
   // 留言區
+  &_re{
+    // display: none;
+    margin-top: 8px;
+    padding-top: 8px;
+    border-top: 1px solid #aaa;
+    height: 180px;
+    overflow-y: auto;
+    // background-color: #ccc;
+    &_card{
+      border: 1px solid solid red;
+      margin: 8px 0px 8px 0px;
+      padding-left: 15%;
 
-}
+      .board_re_id{
+        margin: 8px 0 4px 0;
+        display: flex;
+        &_img{
+          width: 32px;
+          margin: 4px;
+          img{
+            width: 100%;
+            vertical-align: bottom;
+          }
+        }
+
+        .board_re_id_info{
+          // margin: 0px 8px;
+          // background-color: deeppink;
+          .board_re_memId{
+            font-size: $M-h4;
+            // background-color: lightblue;
+          }
+          .board_re_time{
+            font-size: $small;
+            // background-color: tan;
+          }
+          
+        }
+      }
+    
+      .board_re_msg{
+        margin-left: 11%;
+        p{
+          font-size: $M-text;
+        }
+
+      }
+
+
+    }
+
+    // 留言分隔線
+    .board_re_card + .board_re_card::before {
+      content: "";
+      display: block;
+      border-top: 1px solid #aaa;
+      margin-top: 8px;
+    }
+    
+    
+    
+    
+    
+  }
+  
+
+} //board
 
 // 發文燈箱
 .light_box{
@@ -168,7 +261,7 @@
   left: 0;
   bottom: 0;
   right: 0;
-  // overflow: hidden;
+  overflow: hidden;
   .overlay{
     width: 100%;
     height: 100vh;
@@ -176,24 +269,190 @@
     opacity: .5;
   }
   .box{
-    background-color: azure;
+    background-color: $green-1;
+    border: 10px solid $green-2;
+    border-radius: 20px;
     position: fixed;
     top: 50%;
     left: 50%;
     transform: translate(-50%,-50%);
     padding: 20px;
+    width: 340px;
+    @include T(){
+      width: 400px;
+    }
+    @include PC(){
+      width: 500px;
+    }
     form{
       position: relative;
+      .board_lb_title{
+        font-size: $M-h3;
+        color: $black;
+        margin-bottom: 8px;
+      }
+      .board_lb_subTitle {
+        color: #5e5e5e;
+        font-size: $M-h4;
+        margin-bottom: 8px;
+      }
+      textarea{
+        padding: 8px;
+        outline: none;
+        margin: auto;
+        @include T(){
+          width: 100%;
+        }
+        @include PC(){
+          width: 100%;
+        }
+      }
+      .board_light_box_send{
+        display: flex;
+        flex-direction: column;
+        >div>label{
+          cursor: pointer;
+
+        }
+        label{
+          margin: 8px 0;
+          padding: 0 4px;
+          font-size: $small;
+        }
+        button{
+          margin-top: 16px;
+          background-color: $orange-2;
+          border: none;
+          outline: none;
+          &:hover{
+            background-color: #ff9514;
+          }
+        }
+      }
     }
     svg{
-      width: 20px;
+      background-color: $white-1;
+      border-radius: 50px;
+      width: 24px;
+      height: 24px;
       position: absolute;
       top: 0;
       right: 0;
+      vertical-align: bottom;
+      cursor: pointer;
+      &:hover{
+        color: $red;
+      }
     }
   }
 }
 
-.hide{
-  display: none!important;
+//檢舉燈箱
+.board_lb_re{
+  position: fixed;
+  z-index: 1000;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  overflow: hidden;
+  .board_lb_re_overlay{
+    width: 100%;
+    height: 100vh;
+    background: #000;
+    opacity: .5;
+  }
+  .board_lb_re_box{
+    z-index: 1000;
+    background-color: $yellow;
+    // border: 10px solid $orange-2;
+    border: 10px solid $red;
+    border-radius: 20px;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    padding: 20px;
+    width: 80%;
+    @include T(){
+      width: 40%;
+    }
+    @include PC(){
+      width: 30%;
+    }
+    form{ 
+      display: flex;
+      flex-direction: column;
+      .board_lb_re_title{
+        margin: 8px;
+        text-align: center;
+        // background-color: #e3993e;
+        // margin: auto;
+        p{
+          font-size: $M-h4;
+          color: $black;
+
+        }
+      }
+
+      select{
+        outline: none;
+        border: 1px solid $gray-2;
+        border-radius: 5px;
+        height: 30px;
+        margin: 16px;
+        padding: 0px 8px;
+      }
+
+      textarea{
+        outline: none;
+        border: 1px solid $gray-2;
+        border-radius: 5px;
+        margin: 0px 16px 16px;
+        padding: 0px 8px;
+
+      }
+
+      button{
+        margin: 16px 16px 0px 16px;
+        background-color: $orange-2;
+        outline: none;
+        border: none;
+        &:hover{
+          background-color: #ff9514;
+          
+        }
+      }
+
+      .board_close_light_box{
+        width: 20px;
+
+        svg{
+          background-color: $white-1;
+          border-radius: 50px;
+          width: 24px;
+          height: 24px;
+          position: absolute;
+          top: 5px;
+          right: 8px;
+          vertical-align: bottom;
+          cursor: pointer;
+          &:hover{
+            color: $red;
+          }
+        }
+      }
+    }
+    
+  }
 }
+
+/* 樣式修改：在開啟燈箱時禁止滾動頁面 */
+.body-overflow-hidden {
+  overflow: hidden;
+}
+
+/* 樣式修改：在關閉燈箱時恢復滾動頁面 */
+// .body-overflow-auto {
+//   overflow: auto;
+// }

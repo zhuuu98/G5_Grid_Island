@@ -63,8 +63,12 @@
     .breadcrumb {
       position: relative;
       max-width: $max-width;
+      width: 90%;
       margin: auto;
       top: 50px;
+      @include PC() {
+        top: 100px;
+      }
     }
     .hotProductBackground {
       padding: $XXL-spacing 0 $XXXL-spacing 0;
@@ -141,6 +145,7 @@
               }
             }
             .hotProductImg img {
+              vertical-align: top;
               width: 350px;
               height: 280px;
               border-radius: $PC-card-radius 0 $PC-card-radius 0;
@@ -150,7 +155,17 @@
       }
     }
   }
-
+  .wave {
+    .waveImg {
+      position: absolute;
+      transform: translateY(-45px);
+      width: 100%;
+      img {
+        width: 100%;
+        vertical-align: top;
+      }
+    }
+  }
   .productList {
     background-color: $yellow;
     width: 100%;

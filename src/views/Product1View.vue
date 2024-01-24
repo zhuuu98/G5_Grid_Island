@@ -10,7 +10,8 @@
         </div>
       </div>
     </transition>
-    <div class="productTopBackground">
+    <PageTitle :pageTitle="'所有商品'" />
+    <section class="productTopBackground">
       <div class="breadcrumb">
         <Breadcrumb separator="<b class='breadcrumb-separator'>></b>">
           <BreadcrumbItem to="/">首頁</BreadcrumbItem>
@@ -26,7 +27,7 @@
           </div>
           <Carousel v-model="value" loop>
             <CarouselItem
-              v-for="(item, index) in displayData"
+              v-for="(item, index) in displayData.slice(0, 3)"
               :key="item.prod_id"
             >
               <div class="hotProductBody">
@@ -73,8 +74,12 @@
           </Carousel>
         </div>
       </section>
-    </div>
-
+    </section>
+    <section class="wave">
+      <div class="waveImg">
+        <img src="@/assets/images/product/wave.svg" alt="wave" />
+      </div>
+    </section>
     <section class="productList">
       <div class="searchCatBar">
         <div class="searchBar">
@@ -128,6 +133,7 @@
 <script>
 import axios from "axios";
 import ProductCard from "../components/ProductCard.vue";
+import PageTitle from "../components/PageTitle.vue";
 export default {
   data() {
     return {
@@ -141,6 +147,7 @@ export default {
   },
   components: {
     ProductCard,
+    PageTitle,
   },
   computed: {
     loading() {

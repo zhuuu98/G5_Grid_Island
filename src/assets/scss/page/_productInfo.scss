@@ -86,8 +86,11 @@
         max-width: $max-width;
         margin: auto;
         background-color: $white-1;
-        padding: $L-spacing;
+        padding: 20px 15px;
         border-radius: $PC-card-radius;
+        @include T() {
+          padding: $L-spacing;
+        }
         .productPicInfoArea {
           display: flex;
           flex-direction: column;
@@ -100,6 +103,7 @@
           .productPicArea {
             display: flex;
             flex-direction: column;
+            row-gap: $S-spacing;
             justify-content: center;
             align-items: center;
             width: 100%;
@@ -110,6 +114,7 @@
               width: 100%;
               height: 100%;
               img {
+                vertical-align: top;
                 width: 100%;
                 height: auto;
               }
@@ -122,6 +127,7 @@
               .productPic {
                 cursor: pointer;
                 img {
+                  vertical-align: top;
                   width: 100px;
                   height: 100px;
                   @include PC() {

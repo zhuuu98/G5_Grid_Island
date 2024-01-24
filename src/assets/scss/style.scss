@@ -8,13 +8,12 @@
 @import "mixin/mixin";
 
 //組件
-//
-
 @import "components/ChatBot";
 @import "components/productCard";
 @import "components/breadcrumb";
 @import "components/grid";
 @import "components/cartItem";
+@import "components/pageTitle";
 
 //layout
 @import "layout/header";
@@ -29,4 +28,5 @@
 @import "page/prebook";
 @import "page/productInfo";
 @import "page/board";
+@import "page/book";
 @import "page/cart";
