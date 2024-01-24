@@ -181,7 +181,88 @@
         display: none;
       }
     }
-
+    .expand-enter-active,
+    .expand-leave-active {
+      transition: all 1s;
+      max-height: 350px;
+    }
+    .expand-enter-from,
+    .expand-leave-to {
+      max-height: 0;
+    }
+    .productCat {
+      color: $white-1;
+      overflow: hidden;
+      margin: $S-spacing 0;
+      width: 90%;
+      margin: $M-spacing auto;
+      @include PC() {
+        max-width: $max-width;
+        margin: $M-spacing auto 0 auto;
+      }
+      .productCatBackground {
+        background-color: $black;
+        border-radius: $PC-card-radius;
+        padding: $M-spacing $L-spacing;
+        display: flex;
+        flex-direction: column;
+        row-gap: $M-spacing;
+        .resetCat {
+          align-self: end;
+          cursor: pointer;
+          &:hover {
+            p {
+              text-decoration: underline;
+            }
+          }
+        }
+        .catGroup {
+          color: $black;
+          display: flex;
+          flex-direction: column;
+          row-gap: $M-spacing;
+          .catTitle {
+            background-color: $white-1;
+            border-radius: 100px;
+            padding: $S-spacing;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            h4 {
+              font-size: $M-h4;
+            }
+          }
+          .catTags {
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            span {
+              width: 90px;
+              padding: $S-spacing $M-spacing;
+              background-color: $white-1;
+              border-radius: 10px;
+              text-align: center;
+              font-size: $M-text;
+              @include PC() {
+                width: 300px;
+              }
+            }
+          }
+        }
+        .enterBtn {
+          align-self: end;
+          cursor: pointer;
+          p {
+            color: $black;
+            background-color: $white-1;
+            border-radius: $S-button-radius;
+            padding: $S-spacing $M-spacing;
+          }
+        }
+      }
+    }
     .productBackgruond {
       position: relative;
       background-color: $white-1;
@@ -189,16 +270,20 @@
       max-width: $max-width;
       margin: $XL-spacing auto;
       border-radius: $PC-card-radius;
+      min-height: 100px;
       @include PC() {
         width: 100%;
       }
       .displayInfoText {
         p {
-          font-size: $PC-h3;
+          font-size: $M-h3;
           position: absolute;
           top: 50%;
           left: 50%;
           transform: translate(-50%, -50%);
+          @include PC() {
+            font-size: $PC-h3;
+          }
         }
       }
       .productListContent {
@@ -239,15 +324,30 @@
       }
     }
     .searchCatBar {
-      max-width: $max-width;
+      width: 90%;
       margin: auto;
       display: flex;
+      flex-direction: column;
       align-items: center;
       justify-content: space-between;
+      row-gap: $M-spacing;
+      @include PC() {
+        max-width: $max-width;
+        margin: auto;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+      }
       .searchBar {
         display: flex;
         column-gap: $S-spacing;
         align-items: center;
+        width: 100%;
+        justify-content: space-between;
+        @include PC() {
+          justify-content: start;
+        }
         input {
           background-color: transparent;
           border: 1px solid $black;
@@ -262,6 +362,31 @@
           font-size: $PC-text;
           &::placeholder {
             color: gray-2;
+          }
+        }
+      }
+      .innerSearch {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 100%;
+        margin: auto;
+        @include PC() {
+          justify-content: end;
+        }
+        .productSelect {
+          @include PC() {
+            display: none;
+          }
+          .select {
+            width: 150px;
+            height: 50px;
+            font-size: $M-text;
+            padding: 10px;
+            border-radius: 4px; /* 設定圓角 */
+            background-color: #fff; /* 設定背景顏色 */
+            outline: none;
+            cursor: pointer;
           }
         }
       }
