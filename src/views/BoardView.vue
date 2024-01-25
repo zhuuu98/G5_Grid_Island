@@ -1,6 +1,7 @@
 <template>
   <div class="board">
-    <div class="banner"></div>
+    <PageTitle :pageTitle="'玩家社群'" />
+    <!-- <div class="banner"></div> -->
     <div class="container">
       <div class="row">
         <div class="col-PC-10 col-T-10 col-10">
@@ -136,6 +137,7 @@
 <script>
 import axios from "axios";
 import BoardTag from "../components/BoardTag.vue";
+import PageTitle from "../components/PageTitle.vue";
 export default {
   data() {
     return { 

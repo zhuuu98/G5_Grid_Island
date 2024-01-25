@@ -43,6 +43,15 @@
           <!-- 選單內容 -->
           <div v-if="menuOpen" class="ham_menu">
 
+            <!-- 漢堡內圖標 -->
+            <li class="inside_ham_btn">
+              <button @click="toggleMenu" class="ham_btn2">
+                <div :class="{ 'active-line1': menuOpen }" class="ham_btn2_line1"></div>
+
+                <div :class="{ 'active-line3': menuOpen }" class="ham_btn2_line3"></div>
+              </button>
+            </li> 
+
             <RouterLink to="/" class="ham_logo">
               <img src="../assets/images/header/gdidlogobox.svg" alt="">
             </RouterLink>
