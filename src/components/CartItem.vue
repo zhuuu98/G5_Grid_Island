@@ -40,7 +40,7 @@
               <button @click="quantityChange('minus')">
                 <span>-</span>
               </button>
-              <input type="number" :value="productQuantity" />
+              <input type="number" :value="itemCount" />
               <button @click="quantityChange('plus')">
                 <span>+</span>
               </button>
@@ -59,7 +59,14 @@ export default {
       productQuantity: 1,
     };
   },
-  props: ["itemPicUrl", "itemName", "itemDiscountPrice", "itemPrice", "itemId"],
+  props: [
+    "itemPicUrl",
+    "itemName",
+    "itemDiscountPrice",
+    "itemPrice",
+    "itemId",
+    "itemCount",
+  ],
   methods: {
     quantityChange(method) {
       if (method == "plus") {

@@ -253,13 +253,16 @@
 import axios from "axios";
 import ProductCard from "../components/ProductCard.vue";
 import PageTitle from "../components/PageTitle.vue";
+// 引入stores
+import { mapState, mapActions } from "pinia";
+import cartStore from "@/stores/cart";
 export default {
   data() {
     return {
       search: "",
       respondData: [],
       displayData: [],
-      cartData: [],
+      // cartData: [],
       sortMethod: "init",
       value: 0,
       gameTypeTags: ["策略", "紙牌", "經營"],
@@ -278,6 +281,9 @@ export default {
     PageTitle,
   },
   computed: {
+    //使用 mapState 輔助函數將/src/stores/cart裡的state/data 映射在這裡
+    // !!!要寫在computed
+    ...mapState(cartStore, ["cartData"]),
     loading() {
       return this.respondData.length == 0;
     },
@@ -297,6 +303,8 @@ export default {
     this.axiosGetData();
   },
   methods: {
+    //使用 mapActions 輔助函數將/src/stores/cart裡的methods 映射在這裡
+    ...mapActions(cartStore, ["addCartData"]),
     axiosGetData() {
       axios
         .get("https://tibamef2e.com/chd103/g5/phps/ProductM.php")
@@ -312,25 +320,25 @@ export default {
       });
       this.currentPage = 1;
     },
-    addCart(product) {
-      const result = this.cartData.findIndex(
-        (item) => item.id == product.prod_id
-      );
-      if (result >= 0) {
-        this.cartData[result] = {
-          ...this.cartData[result],
-          count: this.cartData[result]["count"] + 1,
-        };
-      } else {
-        this.cartData.push({
-          id: product.prod_id,
-          title: product.prod_name,
-          price: product.prod_price,
-          count: 1,
-        });
-      }
-      console.log(this.cartData);
-    },
+    // addCart(product) {
+    //   const result = this.cartData.findIndex(
+    //     (item) => item.id == product.prod_id
+    //   );
+    //   if (result >= 0) {
+    //     this.cartData[result] = {
+    //       ...this.cartData[result],
+    //       count: this.cartData[result]["count"] + 1,
+    //     };
+    //   } else {
+    //     this.cartData.push({
+    //       id: product.prod_id,
+    //       title: product.prod_name,
+    //       price: product.prod_price,
+    //       count: 1,
+    //     });
+    //   }
+    //   console.log(this.cartData);
+    // },
     sort() {
       // 幫我和同學講一下怎麼寫排序
       switch (this.sortMethod) {
@@ -425,6 +433,9 @@ export default {
           behavior: "smooth", // 讓滾動具有平滑效果
         });
       }
+    },
+    addCart(product) {
+      this.addCartData(product);
     },
   },
   watch: {
