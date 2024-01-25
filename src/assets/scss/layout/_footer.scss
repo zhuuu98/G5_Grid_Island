@@ -20,7 +20,8 @@ img{
             display: block;
             margin: -2px 0;
             position: absolute;
-            top: -10%;
+            top: 0;
+            transform: translateY(-95%);
             right: 0;
         }   
     }

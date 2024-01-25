@@ -40,6 +40,16 @@
   font-size: $PC-btn-lg-font;
 }
 
+.btn_lg_orange{
+  @include btnBasic;
+  @include btnColor($btn-cart-bgc, false);
+  height: 54px;
+  padding: 0 20px 0 23px;
+  border-radius: $L-button-radius;
+  letter-spacing: $PC-btn-lg-spacing;
+  font-size: $PC-btn-lg-font;
+}
+
 
 //註冊按鈕
 .signBtn {
