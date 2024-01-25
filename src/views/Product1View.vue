@@ -228,8 +228,11 @@
             class="pageBtn"
             v-for="page in totalPages"
             :key="page"
-            @click="changePage(page)"
-            :class="{ pageBtncursor: currentPage != page }"
+            @click="currentPage !== page ? changePage(page) : null"
+            :class="{
+              pageBtncursor: currentPage != page,
+              currPageBtn: currentPage == page,
+            }"
           >
             {{ page }}
           </button>
