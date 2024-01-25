@@ -33,18 +33,28 @@
 }
 
 // RWD
-@mixin PC() {
-  @media all and (min-width: $PC) {
-    //PC
+//原則上是由小寫到大，但有寫反的可以用這個補救。
+@mixin M(){
+  @media all and (min-width: $M) {
+    //Mobile 480px;
     @content;
   }
 }
+
 @mixin T() {
   @media all and (min-width: $T) {
-    //Tablet
+    //Tablet 768px;
     @content;
   }
 }
+
+@mixin PC() {
+  @media all and (min-width: $PC) {
+    //PC 1024px
+    @content;
+  }
+}
+
 
 //格線系統
 @mixin grid($col, $b: null) {
