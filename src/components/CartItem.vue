@@ -16,16 +16,17 @@
           </div>
         </router-link>
         <div class="cartItemInfo">
-          <router-link
-            :to="{
-              name: 'productInfo',
-              params: { id: itemId },
-            }"
-          >
-            <div class="cartItemName">
+          <div class="cartItemName">
+            <router-link
+              :to="{
+                name: 'productInfo',
+                params: { id: itemId },
+              }"
+            >
               <h3>{{ itemName }}</h3>
-            </div>
-          </router-link>
+            </router-link>
+          </div>
+
           <div class="cartItemPriceQuantity">
             <div class="cartItemPrice">
               <div class="cartItemDiscountPrice" v-if="itemDiscountPrice">
