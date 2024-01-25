@@ -22,7 +22,8 @@
 
           <!-- 內容區 -->
           <div class="board_area">
-            <div class="board_card" v-for="item in card" :key="item.id">
+            <!-- <div class="board_card" v-for="item in card" :key="item.id"> -->
+            <div class="board_card" v-for="item in card" :key="item.id" :class="'card-' + item.id">
               <!-- 文章區 -->
               <div class="board_info">
                 <div class="board_id">
@@ -41,11 +42,7 @@
                   <p>回覆留言</p>
                   <input type="text" placeholder="輸入回覆內容...">
                 </div>
-                <div class="board_all_re">
-                <!-- <div class="board_all_re" @click="toggleReply"> -->
-                <!-- <div class="board_all_re" @click="openReply(e)"> -->
-                <!-- <div class="board_all_re" @click="toggleReply(item.id)"> -->
-                <!-- <div class="board_all_re" @click="open_reply"> -->
+                <div class="board_all_re" @click="toggleReply(item.id)">
                   共有{{item.re_amount}}則回覆
                   <font-awesome-icon icon="angle-down" />
                 </div>
@@ -54,10 +51,7 @@
                 </div>
               </div>
               <!-- 留言區 -->
-              <!-- <div class="board_re" v-if="open_reply_text"> -->
-              <!-- <div class="board_re" v-show="open_reply_text"> -->
-              <!-- <div class="board_re" v-show="openReplyMap[item.id]"> -->
-              <div class="board_re">
+              <div class="board_re hide" :class="'card-' + item.id">
 
                 <div class="board_re_card" v-for="reItem in item.re" :key="reItem.id">
                   <div class="board_re_id">
@@ -150,7 +144,7 @@ export default {
           id: 1,
           id_img:'/src/assets/images/board/board_id_img.svg',
           id_img_alt:'board_id_img',
-          memId:'啊人家家就笨壓',
+          memId:'1啊人家家就笨壓',
           time:'2023/12/30 20:25',
           msg:'在遊戲貪婪之島中，只要在問答大賽中答對最多問題，就能獲得統治者的祝福。',
           re_amount:2,
@@ -177,10 +171,10 @@ export default {
           id: 2,
           id_img:'/src/assets/images/board/board_id_img.svg',
           id_img_alt:'board_id_img',
-          memId:'大傑',
+          memId:'2大傑',
           time:'2023/12/30 20:25',
           msg:'有人看到我爸嗎？',
-          re_amount:2,
+          re_amount: 2,
           re:[
             {
               id:1,
@@ -212,7 +206,7 @@ export default {
           id: 3,
           id_img:'/src/assets/images/board/board_id_img.svg',
           id_img_alt:'board_id_img',
-          memId:'酷B',
+          memId:'3酷B',
           time:'2023/12/30 20:25',
           msg:'使用同行，前往瑪莎多啦。',
           re_amount:2,
@@ -302,9 +296,14 @@ export default {
       board_light_box_report: false,
       open_re_text: false,
       selectedOption: "",
-      open_reply_text: false,
-      // openReplyMap: {}, // 使用对象来跟踪每个对象的可见性状态
+      // open_reply_text: false,
     };
+  },
+  computed: {
+    re_amount() {
+      return this.card[1].re.length;
+    }
+    
   },
   components: {
     
@@ -334,17 +333,28 @@ export default {
     updateReTextVisibility() {
       this.open_re_text = this.selectedOption === "lb_re_other";
     },
-    toggleReply(e){
+    toggleReply(){
       this.open_reply_text = !this.open_reply_text;
     },
-    // open_reply(){
-      
-    // },
+    // 控制展開留言區
+    toggleReply(itemId){
+      //jquery
+      // var cardli = $('.card-' + x);
+      // cardli.find('.down').toggle();
 
-    // toggleReply(item) {
-    //   // 使用 item 的唯一标识符（可能是 item.id）作为 key 来跟踪每个对象的可见性
-    //   this.$set(this.openReplyMap, item.id, !this.openReplyMap[item.id]);
-    // },
+      //js
+      var cardli = document.querySelector('.card-' + itemId);
+      var downElements = cardli.getElementsByClassName('board_re');
+
+      for (var i = 0; i < downElements.length; i++) {
+        if (downElements[i].classList.contains('hide')) {
+            downElements[i].classList.remove('hide');
+        } else {
+            downElements[i].classList.add('hide');
+        }
+      }
+    },
+
   },
 
 
