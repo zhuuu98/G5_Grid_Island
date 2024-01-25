@@ -1,3 +1,13 @@
+body {
+  ::selection {
+    background-color: rgba($color: $orange-2, $alpha: 0.5);
+  }
+  /* Firefox */
+  ::-moz-selection {
+    background-color: $orange-2;
+    background-color: rgba($color: $orange-2, $alpha: 0.5);
+  }
+}
 .product {
   box-sizing: border-box;
   position: relative;
@@ -181,13 +191,22 @@
         display: none;
       }
     }
-    .expand-enter-active,
-    .expand-leave-active {
+    .expandLg-enter-active,
+    .expandLg-leave-active {
       transition: all 1s;
       max-height: 350px;
     }
-    .expand-enter-from,
-    .expand-leave-to {
+    .expandLg-enter-from,
+    .expandLg-leave-to {
+      max-height: 0;
+    }
+    .expandSm-enter-active,
+    .expandSm-leave-active {
+      transition: all 1s;
+      max-height: 50px;
+    }
+    .expandSm-enter-from,
+    .expandSm-leave-to {
       max-height: 0;
     }
     .productCat {
@@ -222,7 +241,7 @@
           flex-direction: column;
           row-gap: $M-spacing;
           .catTitle {
-            background-color: $white-1;
+            background-color: $gray-1;
             border-radius: 100px;
             padding: $S-spacing;
             display: flex;
@@ -245,16 +264,17 @@
               }
             }
             label {
+              transition: all 0.2s ease-in-out;
               cursor: pointer;
               display: block;
-              width: 90px;
+              width: 80px;
               padding: $S-spacing $M-spacing;
-              background-color: $white-1;
+              background-color: $gray-1;
               border-radius: 10px;
               text-align: center;
               font-size: $M-text;
               @include PC() {
-                width: 300px;
+                width: 230px;
               }
             }
           }
@@ -281,6 +301,30 @@
       min-height: 100px;
       @include PC() {
         width: 100%;
+      }
+      .pageBtnList {
+        display: flex;
+        justify-content: end;
+        padding: $M-spacing $XXL-spacing $XL-spacing $XXL-spacing;
+        column-gap: $S-spacing;
+        .pageBtncursor {
+          cursor: pointer;
+        }
+        .pageBtn {
+          font-size: $M-text;
+          background-color: transparent;
+          border: none;
+          width: 50px;
+          height: 50px;
+          border-radius: 100px;
+          transition: all 0.2s ease-in-out;
+          &:hover {
+            background-color: $gray-1;
+          }
+        }
+        .currPageBtn {
+          background-color: $gray-1;
+        }
       }
       .displayInfoText {
         p {

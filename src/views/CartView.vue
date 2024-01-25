@@ -19,15 +19,15 @@
           <div class="cartItemArea">
             <div
               class="cartItemBlock"
-              v-for="item in displayData.slice(0, 6)"
+              v-for="item in cartData"
               :key="item.prod_id"
             >
               <CartItem
-                :itemPicUrl="`https://tibamef2e.com/chd103/g5/img/${item.prod_img1}`"
-                :itemName="item.prod_name"
-                :itemDiscountPrice="item.prod_discount_price"
-                :itemPrice="item.prod_price"
-                :itemId="item.prod_id"
+                :itemPicUrl="`https://tibamef2e.com/chd103/g5/img/${item.img}`"
+                :itemName="item.name"
+                :itemPrice="item.price"
+                :itemId="item.id"
+                :itemCount="item.count"
               />
             </div>
             <div class="continueShopping">
@@ -148,7 +148,8 @@
 import axios from "axios";
 import CartItem from "../components/CartItem.vue";
 import useUserStore from "../stores/user";
-
+import { mapState, mapActions } from "pinia";
+import cartStore from "@/stores/cart";
 export default {
   setup() {
     const user = useUserStore();
@@ -160,7 +161,6 @@ export default {
     return {
       respondData: [],
       displayData: [],
-      cartData: [],
       discountCode: "",
       deliveryMethod: "init",
       subTotalAmount: 1300,
@@ -172,6 +172,9 @@ export default {
     CartItem,
   },
   computed: {
+    //使用 mapState 輔助函數將/src/stores/cart裡的state/data 映射在這裡
+    // !!!要寫在computed
+    ...mapState(cartStore, ["cartData"]),
     loading() {
       return this.respondData.length == 0;
     },

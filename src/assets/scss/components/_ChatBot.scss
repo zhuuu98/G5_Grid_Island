@@ -1,19 +1,41 @@
+
+
 .chatbot{
     display: flex;
+    gap: $S-spacing;
+    //聊天機器人開關按鈕
+    .openChatBtn{
+        border: 0px solid;
+        background-color: rgba(255, 255, 255, 0);
+        border-radius: 100%;
+        width:100%;
+        max-width: 100px;
+        position: fixed;
+        bottom: 10%;
+        right: 1%;
+        z-index: 999;
+    }
+
     .chatContent{
         background-color: $blue-1;
         width: 100%;
         max-width: 300px;
-        height: 100%;
-        max-height: 300px;
+        // height: 100%;
+        // max-height: 100vh;
         border-radius: $PC-card-radius;
-        overflow: scroll;
+        position: fixed;
+        bottom: 10%;
+        right: 8%;
+        z-index: 999;
+
     }
     .contentTop{
         background-color: $blue-3;
         border-radius: $PC-card-radius $PC-card-radius 0 0;
         display: flex;
         justify-content: center;
+        position: sticky;
+        top: 0;
     }
     .contentTop img{
         vertical-align: top;
@@ -21,51 +43,79 @@
         max-width: 90px;
         margin: $S-spacing $M-spacing ;    
     }
-    .chatApply span{
-        display: flex;
-        justify-content: space-evenly;
-
-        width: 100%;
-        max-width: 250px;
-        background-color: $white-1;
-        margin: $M-spacing $S-spacing;
-        padding: $S-spacing; 
-        border-radius: $Mob-card-radius $Mob-card-radius $Mob-card-radius 0;
-    }
-    .chatQuestion{
-        display: flex;
-        justify-content: end;
-    }
-    .chatQuestion span{
-        display: flex;
-        width: 30%;
-        // max-width: 250px;
-        justify-content: space-evenly;
-        background-color: $green-2;
-        color: $white-1;
-        margin: $M-spacing $S-spacing;
-        padding: $S-spacing; 
-        border-radius: $Mob-card-radius $Mob-card-radius 0 $Mob-card-radius ;
-    }
-
     .contentChoose{
         background-color: $blue-3;
         border-radius:0 0 $PC-card-radius $PC-card-radius ;
-        display: flex;
-        justify-content: space-around;
         padding: $M-spacing;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        
+        // gap: $S-spacing;
+        // overflow-y: scroll;
+        // height: 200px;
+    }
+    //聊天內容
+    .contentBody{
+        overflow-y: scroll;
+        height: 250px;
+    }
+    //左邊
+    .chatLeft{
+        width: fit-content;
+        max-width: 80%;
+        background-color: $blue-3;
+        color: $white-1;
+        margin: $S-spacing;
+        padding:  $S-spacing;
+        border-radius: $input-radius;
+    }
+    //右邊
+    .chatRight{
+        width: fit-content;
+        max-width: 80%;
+        display: flex;
+        margin:$S-spacing $S-spacing $S-spacing auto;
+        background-color: $green-2;
+        color: $white-1;
+        padding:  $S-spacing;
+        border-radius: $input-radius;
+    }
+    //按鈕
+    .contentChoose button{
+        width: 250px;
+        max-width: 95%;
+        padding:  $S-spacing ;
+        border: 1px solid $white-1;
+        border-radius: $PC-card-radius;
+        cursor: pointer;
+        background-color: $blue-3;
+        color: $white-1;
+    }
+    .contentChoose button:hover{
+        background-color: $white-1;
+        color: $blue-3;
+
     }
     .FirstChoose{
         display: flex;
-        width: 100%;
-
+        flex-wrap: wrap;
+        justify-content: center;
         gap: 10px;
     }
-
-
-
-
-
+    .SecondDiv{
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+        gap: $S-spacing;
+    }
+    .reChoose{
+        margin: $S-spacing;
+    }
+    
 
 
 

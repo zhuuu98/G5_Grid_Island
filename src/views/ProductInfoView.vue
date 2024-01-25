@@ -89,10 +89,10 @@
                 </div> -->
                 <div class="productBuyingButton">
                   <button class="cartBtn">加入購物車</button>
-                  <button class="bookBtn" @click="prebookPlay">預約遊玩</button>
-                  <!-- <router-link class="bookBtn" to="/prebook"
+                  <!-- <button class="bookBtn" @click="prebookPlay">預約遊玩</button> -->
+                  <router-link class="bookBtn" to="/prebook"
                     >預約遊玩</router-link
-                  > -->
+                  >
                 </div>
               </div>
             </div>
@@ -131,10 +131,7 @@
     </div>
   </main>
   <!-- 如果這邊可以理解的話可以把prebookView的.vue和route刪掉 -->
-  <PreBook 
-    v-if="prebookModel"
-    @close="prebookModel = false"
-  />
+  <PreBook v-if="prebookModel" @close="prebookModel = false" />
 </template>
 
 <script>
@@ -151,12 +148,12 @@ export default {
       desc: 1,
       mainPic: 1,
       productQuantity: 1,
-      prebookModel:false
+      prebookModel: false,
     };
   },
   components: {
     ProductCard,
-    PreBook
+    PreBook,
   },
   computed: {
     nodata() {
@@ -195,9 +192,9 @@ export default {
         }
       }
     },
-    prebookPlay(){
-      this.prebookModel = true
-    }
+    prebookPlay() {
+      this.prebookModel = true;
+    },
   },
   watch: {
     search(newSearch, oldSearch) {
