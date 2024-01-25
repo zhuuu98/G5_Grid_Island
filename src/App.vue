@@ -22,6 +22,6 @@ export default {
 <template>
   <MainHeader />
   <RouterView />
-  <MainFooter />
   <ChatBot />
+  <MainFooter />
 </template>
