@@ -50,6 +50,7 @@ export default {
   methods: {
     addCart(info) {
       this.$emit("addCartData", info);
+      alert("已增加至購物車");
     },
   },
   mounted() {},
