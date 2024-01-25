@@ -1,10 +1,144 @@
 .orderInfo {
   color: $black;
 
+  h2{
+    display: inline-block;
+  }
+
+  .svg-inline--fa{
+    width: 20px;
+  }
+  .orderItem {
+    display: flex;
+    position: relative;
+    .orderItemImg{
+      width: 85px;
+      vertical-align: middle;
+      background-color: #fa0;
+    }
+    .orderItemInfo {
+    display: flex;
+    
+      .orderItemArea {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        padding: 8px 20px;
+
+        .orderItemName {
+        
+        }
+      
+      }
+
+      .orderItemAmount {
+        transform: translate(-100px, 47px);
+        position: absolute;
+        top: 0;
+        right: 0;
+      
+      }
+
+
+
+
+    }
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  .priceContent {
+    margin: 0 $S-spacing;
+    padding: $S-spacing 0;
+
+    @include PC() {
+      width: 40%;
+    }
+    .priceArea {
+      @include PC() {
+        margin-top: $XL-spacing;
+        position: sticky;
+        top: 80px;
+        right: 0px;
+      }
+      display: flex;
+      flex-direction: column;
+      row-gap: $S-spacing;
+      .subtotal {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        .subtotalTitle {
+          p {
+            font-size: $M-text;
+          }
+        }
+        .subtotalAmount {
+          p {
+            font-size: $M-text;
+          }
+        }
+      }
+      .deliveryPrice {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        .deliveryPriceTitle {
+          p {
+            font-size: $M-text;
+          }
+          .deliveryPriceAmount {
+            p {
+              font-size: $M-text;
+            }
+          }
+        }
+      }
+      .discount {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        .discountTitle {
+          p {
+            font-size: $M-text;
+          }
+        }
+        .discountAmount {
+          display: flex;
+          font-size: $M-text;
+        }
+      }
+      .totalPrice {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        font-size: $M-h3;
+        margin-top: $S-spacing;
+      }
+    }
+  }
+  .checkOutBtn {
+    button {
+      width: 100%;
+      border: none;
+    }
+  }
+  
+
   @include PC() {
-    max-width: $max-width;
-    margin: auto;
-    margin: 0 0 300px;
 
   }
   .cartInfoArea {
@@ -91,82 +225,7 @@
         }
       }
     }
-    .priceContent {
-      margin: 0 $S-spacing;
-      padding: $S-spacing 0;
-
-      @include PC() {
-        width: 40%;
-      }
-      .priceArea {
-        @include PC() {
-          margin-top: $XL-spacing;
-          position: sticky;
-          top: 80px;
-          right: 0px;
-        }
-        display: flex;
-        flex-direction: column;
-        row-gap: $S-spacing;
-        .subtotal {
-          display: flex;
-          align-items: center;
-          justify-content: space-between;
-          .subtotalTitle {
-            p {
-              font-size: $M-text;
-            }
-          }
-          .subtotalAmount {
-            p {
-              font-size: $M-text;
-            }
-          }
-        }
-        .deliveryPrice {
-          display: flex;
-          align-items: center;
-          justify-content: space-between;
-          .deliveryPriceTitle {
-            p {
-              font-size: $M-text;
-            }
-            .deliveryPriceAmount {
-              p {
-                font-size: $M-text;
-              }
-            }
-          }
-        }
-        .discount {
-          display: flex;
-          align-items: center;
-          justify-content: space-between;
-          .discountTitle {
-            p {
-              font-size: $M-text;
-            }
-          }
-          .discountAmount {
-            display: flex;
-            font-size: $M-text;
-          }
-        }
-        .totalPrice {
-          display: flex;
-          align-items: center;
-          justify-content: space-between;
-          font-size: $M-h3;
-          margin-top: $S-spacing;
-        }
-        .checkOutBtn {
-          button {
-            width: 100%;
-            border: none;
-          }
-        }
-      }
-    }
+    
   }
   .recProduct {
     padding: $L-spacing 0 $XXL-spacing 0;

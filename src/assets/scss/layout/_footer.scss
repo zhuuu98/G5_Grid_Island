@@ -11,6 +11,7 @@ img{
         right: 0;
         @include PC(){
             display: none;
+
         }
         
     }
@@ -18,11 +19,13 @@ img{
         display: none;
         @include PC(){
             display: block;
-            margin: -2px 0;
+            margin: -2px auto;
             position: absolute;
             top: 0;
             transform: translateY(-95%);
+            // transform: translateX(-1%);
             right: 0;
+            width: 100%;
         }   
     }
 
@@ -33,6 +36,7 @@ img{
     
     .footer {
         background-color: $blue-4;
+
 
         .footer_info {
             padding: $L-spacing $L-spacing;
@@ -53,6 +57,7 @@ img{
                     flex-direction: column;
                     @include PC(){
                         flex-direction: row;
+                        
                     }
                     .item {
                         color: $white-1;
