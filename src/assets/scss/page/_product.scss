@@ -238,7 +238,15 @@
             display: flex;
             align-items: center;
             justify-content: space-between;
-            span {
+            input[type="checkbox"] {
+              display: none;
+              &:checked + label {
+                background-color: $orange-1;
+              }
+            }
+            label {
+              cursor: pointer;
+              display: block;
               width: 90px;
               padding: $S-spacing $M-spacing;
               background-color: $white-1;

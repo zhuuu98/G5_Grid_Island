@@ -107,9 +107,9 @@
         </div>
       </div>
       <transition name="expand">
-        <div class="productCat" v-if="productCat">
+        <div class="productCat" v-show="productCat">
           <div class="productCatBackground">
-            <div class="resetCat">
+            <div class="resetCat" @click="resetFilter">
               <p>清除搜尋條件</p>
             </div>
             <div class="gameType">
@@ -118,10 +118,16 @@
                   <h4>類別</h4>
                 </div>
                 <transition name="expand">
-                  <div class="gameTypeTags catTags" v-if="gameType">
-                    <span>策略</span>
-                    <span>紙牌</span>
-                    <span>經營</span>
+                  <div class="gameTypeTags catTags" v-show="gameType">
+                    <div class="tagGroup" v-for="item in gameTypeTags">
+                      <input
+                        type="checkbox"
+                        :name="item"
+                        :id="item"
+                        :ref="item"
+                      />
+                      <label :for="item">{{ item }}</label>
+                    </div>
                   </div>
                 </transition>
               </div>
@@ -135,10 +141,16 @@
                   <h4>人數</h4>
                 </div>
                 <transition name="expand">
-                  <div class="playerCountTags catTags" v-if="playerCount">
-                    <span>2-4人</span>
-                    <span>5-8人</span>
-                    <span>>8人</span>
+                  <div class="playerCountTags catTags" v-show="playerCount">
+                    <div class="tagGroup" v-for="item in playerCountTags">
+                      <input
+                        type="checkbox"
+                        :name="item"
+                        :id="item"
+                        :ref="item"
+                      />
+                      <label :for="item">{{ item }}</label>
+                    </div>
                   </div>
                 </transition>
               </div>
@@ -152,15 +164,21 @@
                   <h4>難易度</h4>
                 </div>
                 <transition name="expand">
-                  <div class="difficultyTags catTags" v-if="difficulty">
-                    <span>簡單</span>
-                    <span>中等</span>
-                    <span>困難</span>
+                  <div class="difficultyTags catTags" v-show="difficulty">
+                    <div class="tagGroup" v-for="item in difficultyTags">
+                      <input
+                        type="checkbox"
+                        :name="item"
+                        :id="item"
+                        :ref="item"
+                      />
+                      <label :for="item">{{ item }}</label>
+                    </div>
                   </div>
                 </transition>
               </div>
             </div>
-            <div class="enterBtn" @click="catExpand">
+            <div class="enterBtn">
               <p>送出</p>
             </div>
           </div>
@@ -216,6 +234,9 @@ export default {
       cartData: [],
       sortMethod: "init",
       value: 0,
+      gameTypeTags: ["策略", "紙牌", "經營"],
+      playerCountTags: ["2-4人", "5-8人", ">8人"],
+      difficultyTags: ["簡單", "中等", "困難"],
       productCat: false,
       gameType: false,
       playerCount: false,
@@ -314,6 +335,40 @@ export default {
           this.difficulty = !this.difficulty;
           break;
       }
+    },
+    resetFilter() {
+      this.gameTypeTags.forEach((item) => {
+        const checkboxes = this.$refs[item];
+        if (checkboxes && checkboxes.length > 0) {
+          checkboxes.forEach((checkboxRef) => {
+            if (checkboxRef) {
+              checkboxRef.checked = false;
+            }
+          });
+        }
+      });
+
+      this.playerCountTags.forEach((item) => {
+        const checkboxes = this.$refs[item];
+        if (checkboxes && checkboxes.length > 0) {
+          checkboxes.forEach((checkboxRef) => {
+            if (checkboxRef) {
+              checkboxRef.checked = false;
+            }
+          });
+        }
+      });
+
+      this.difficultyTags.forEach((item) => {
+        const checkboxes = this.$refs[item];
+        if (checkboxes && checkboxes.length > 0) {
+          checkboxes.forEach((checkboxRef) => {
+            if (checkboxRef) {
+              checkboxRef.checked = false;
+            }
+          });
+        }
+      });
     },
   },
   watch: {
