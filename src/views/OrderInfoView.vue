@@ -1,5 +1,6 @@
 <template>
-  <div class="orderInfo">
+  <main class="orderInfo">
+    <transition name="fade"></transition>
     訂單資訊
     商品名稱
     數量
@@ -9,8 +10,12 @@
     
     總金額
 
+    訂購人資料
+    
+    <label><input type="checkbox">同會員資料</label>
+
     <form action="">
-      <input class="cartBtn" type="submit">
+      <input class="btn_lg_orange" type="submit">
 
 
     </form>
@@ -18,9 +23,10 @@
       <div class="row">
       </div>
     </div>
-  </div>
+  </main>
 </template>
 
 <style lang="scss">
+//
 
 </style>

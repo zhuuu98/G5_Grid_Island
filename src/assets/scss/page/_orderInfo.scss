@@ -1,5 +1,7 @@
-.about {
-  h1 {
-    color: $orange-1;
-  }
+@import "@/assets/scss/base/_font.scss";
+@import "@/assets/scss/components/_button.scss";
+@import "@/assets/scss/components/_grid.scss";
+
+.orderInfo {
+  margin: 0 0 300px;
 }
