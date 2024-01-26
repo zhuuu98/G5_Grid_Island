@@ -9,60 +9,74 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-}
-.preBook{
-    max-width: 1064px;
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    margin:  auto;
-    background-color: $white-1;
-    border-radius: $PC-card-radius;
-    padding: $XXL-spacing;
-    margin: $L-spacing;
-}
-.fee_detail{
-    display: grid;
-    grid-template-columns:repeat(1,1fr);
-    gap: 20px;
-    margin: $L-spacing 0;
-}
-.fee_detail_weekday{
-}
-.fee_content{
-    display: grid;
-    grid-template-columns:1fr 2fr;
-    gap: $S-spacing;
-}
-.fee_detail_weekday,.fee_content{
-    text-align: center;
-    margin: $S-spacing 0;
-}
-.fee_detail_time,.fee_detail_price{
-    background-color: $gray-1;
-}
-.fee_detail_weekday{
-    background-color: $blue-3;
-    color: $white-1;
-}
-.fee_detail_weekday p,.fee_content p,.fee_detail_price p{
-    margin: $S-spacing;
-}
 
-.preTitle{
-    text-align: center;
-    margin: $M-spacing 0;
+    .preBook{
+        max-width: 1064px;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        margin:  auto;
+        background-color: $white-1;
+        border-radius: $PC-card-radius;
+        padding: $XXL-spacing;
+        margin: $L-spacing;
+    }
+    .fee_detail{
+        display: grid;
+        grid-template-columns:repeat(1,1fr);
+        gap: 20px;
+        margin: $L-spacing 0;
+    }
+    .fee_detail_weekday{
+    }
+    .fee_content{
+        display: grid;
+        grid-template-columns:1fr 2fr;
+        gap: $S-spacing;
+    }
+    .fee_detail_weekday,.fee_content{
+        text-align: center;
+        margin: $S-spacing 0;
+    }
+    .fee_detail_time,.fee_detail_price{
+        background-color: $gray-1;
+    }
+    .fee_detail_weekday{
+        background-color: $blue-3;
+        color: $white-1;
+    }
+    .fee_detail_weekday p,.fee_content p,.fee_detail_price p{
+        margin: $S-spacing;
+    }
 
-}
-.preBook h3{
-    margin: $M-spacing 0;
-}
-.preCheck{
-    display: flex;
-    font-size: $PC-text;
-    gap: 10px;
-}
-.preCheck,.preBtn{
-    margin:$M-spacing ;
+    .preTitle{
+        text-align: center;
+        margin: $M-spacing 0;
+
+    }
+    .preBook h3{
+        margin: $M-spacing 0;
+    }
+    .preCheck{
+        display: flex;
+        font-size: $PC-text;
+        gap: 10px;
+    }
+    .preCheck,.preBtn{
+        margin:$M-spacing ;
+    }
+    input[type="checkbox"] {
+        display: inline-block;
+        background-color: #aaa;
+        padding: 3px 6px;
+        border: 1px solid gray;
+        color: #444;
+        user-select: none; /* 防止文字被滑鼠選取反白 */
+    }
+
+    input[type="checkbox"]:checked {
+        color: yellow;
+        background-color: #444;
+    }
 }

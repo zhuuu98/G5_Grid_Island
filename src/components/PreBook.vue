@@ -26,7 +26,7 @@
             <p v-for="paragraph in bookNotice.content">{{ paragraph }}</p>
         </div>
         <div class="preCheck">
-            <input type="checkbox" id="agree">
+            <input type="checkbox" id="agree"><i class="fas fa-check-square"></i>
             <label for="agree">本人已詳閱並同意遵守以上事項
             </label>
         </div>
