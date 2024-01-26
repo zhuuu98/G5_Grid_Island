@@ -1,0 +1,41 @@
+body{
+
+}
+.memberCard{
+    width: 100%;
+    background-color: $blue-1;
+    padding-bottom: 50%;
+    .container{
+        margin-top: 10%;
+    }
+    .memAside{
+        position: relative;
+        display: flex;
+        justify-content: center;
+        background-color: $white-1;
+        // max-width: 25%;
+        // left: 8.33%;
+        border-radius: $PC-card-radius;
+        // margin: $L-spacing;
+        @include PC() {
+            position: relative;
+            // top: 100px;
+        }
+    }
+    .memID{
+        display: flex;
+        align-items: center;
+        gap: $M-spacing;
+    }
+    .memID img{
+        vertical-align: top;
+        width: 100%;
+        max-width: 60px;
+    }
+    .memAside{
+        display: flex;
+        flex-direction: column;
+    }
+
+
+}

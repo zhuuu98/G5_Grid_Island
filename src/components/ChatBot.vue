@@ -1,11 +1,11 @@
 <template>
     <div class="chatbot">
 
-        <div class="chatContent" v-if="openChatContent">
+        <div class="chatContent" v-if="openChatContent" >
             <div class="contentTop">
                 <img src="../assets/images/chatbot/chatboxIcon.svg" alt="線上客服">
             </div>
-            <div class="contentBody">
+            <div class="contentBody" ref="chatContent">
                 <div v-for="chat in chatList" :class="chat.sendFrom">{{ chat.text }}</div>
             </div>
 
@@ -45,13 +45,13 @@ export default {
             ],
             questionType: ['訂位相關','會員相關','購物相關','其他問題'],
             question: [
-            ['請問如何預約遊玩？','有提供生日派對或特殊活動包場服務嗎？','預約現場需要訂金嗎？店內有消費限制嗎？','一次可以預訂幾個時段？','我已經預約現場座位，臨時有事無法到，或人數有更動怎麼辦？'],
+            ['請問如何預約遊玩？','預約現場需要訂金嗎？','一次可以預訂幾個時段？'],
             ['如何註冊成為會員？','如何更新我的會員資料？','如何更新我的Griddy頭像？'],
             ['有哪些支付方式可供選擇？','是否提供禮品包裝服務？','如何追蹤我的訂單？'],
             ['我可以在網站上提供遊戲評論嗎？','是否有定期舉辦桌遊活動或比賽？','如何成為桌遊店的合作夥伴？']
             ],
             answer: [
-            ['請到預約頁面進行訂位唷！','有的，請再提前聯絡店員需要包場服務。','預約並不需要訂金，我們有最低消費一小時的金額限制唷！','一次只能預約一個時段唷！若需訂位多時段請分兩筆以上訂位。','請先電話通知我們，我們會為您處理。'],
+            ['請到預約頁面進行訂位唷！','預約並不需要訂金唷！','一次只能預約一個時段唷！若需訂位多時段請分兩筆以上訂位。'],
             ['請按此進行註冊','請至會員中心進行更改','請至會員中心，選擇Griddy造型屋進行更改'],
             ['目前提供信用卡支付以及轉帳支付唷！','當然，我們會幫您包裝的漂漂亮亮，讓您送人自用沒煩惱！','請到會員中心查看您的訂單明細'],
             ['當然可以，請到社群中心裡的留言板提供您的想法','是的，我們會不定期舉辦各種桌遊活動和比賽。歡迎到我們的最新消息頁面來看看。','如果您有合作意向，請通過我們的聯繫方式與我們取得聯繫，我們的合作團隊將與您進行進一步的討論。']
@@ -61,6 +61,7 @@ export default {
     methods: {
         openChat(){
             this.openChatContent=!this.openChatContent
+            this.scrollToBottom();
         },
         SelectTypeClick(index){
             this.isFirstLabelShow = false;
@@ -74,6 +75,7 @@ export default {
                 text: `好的，您想詢問什麼問題呢？`,
                 sendFrom: 'chatLeft'
             })
+                this.scrollToBottom();
                 this.count -= 1;
                 if(this.count == 0){
                 clearInterval(delay)
@@ -83,6 +85,7 @@ export default {
 
             this.typeIndex = index
             console.log(this.typeIndex)
+            this.scrollToBottom();
         },
         showAnswer(index){
             this.chatList.push({
@@ -95,17 +98,29 @@ export default {
                 text: `${this.answer[this.typeIndex][index]}`,
                 sendFrom: 'chatLeft'
             })
+                this.scrollToBottom();
                 this.count -= 1;
                 if(this.count == 0){
                 clearInterval(delay)
                 this.count = 1
             }
             },1000)
+            this.scrollToBottom();
         },
         reChoose(){
             this.typeIndex = -1
             this.isFirstLabelShow = true
-        }
+        },
+        scrollToBottom() { //讓訊息會一直在最下面
+        // 使用 $nextTick 確保在 DOM 更新後執行
+        this.$nextTick(() => {
+            // 取得對話框的 DOM 元素
+            const chatContent = this.$refs.chatContent;
+            
+            // 捲動到最底部
+            chatContent.scrollTop = chatContent.scrollHeight;
+        });
+    },
     }
 }
 </script>

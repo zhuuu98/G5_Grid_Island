@@ -18,11 +18,6 @@
       <img :src="bar" alt="Banner Bar" id="bar" />
       <img :src="cart" alt="Banner Cart" id="cart" />
     </div>
-<<<<<<< HEAD
-    <div class="griddy_design_banner">
-      
-    </div>
-=======
 
     <!-- header + 波浪圖 -->
 
@@ -30,15 +25,18 @@
     <!-- 內容 -->
     <div class="container">
       <div class="row">
-        <div class="col-PC-10 col-T-10 col-12">
+        <div class="col-PC-12 col-T-12 col-12">
 
           <!-- 所有商品 -->
           <div class="index_products">
-
+            <p>所有商品</p>
+          </div>
+          <div class="wave">
+            <img :src="wave" alt="bgcwave" id="wave1" />
           </div>
           <!-- 服務項目 -->
           <div class="index_service">
-            
+            <p>服務項目</p>
           </div>
           <!-- 預約方式 -->
           <div class="index_reserve">
@@ -57,7 +55,7 @@
 
           </div>
           <!-- Grid Island 關於我們 -->
-          <div class="about">
+          <div class="index_about">
 
           </div>
 
@@ -66,7 +64,6 @@
     </div>
 
     
->>>>>>> db0e0a0ab9e2ebd3f6590733063c32df996141c8
   </main>
   
 </template>
@@ -83,6 +80,7 @@
   import cart from '../assets/images/banner/cart.svg';
   import bar from '../assets/images/banner/bar.svg';
   import bug from '../assets/images/banner/bug.svg';
+  import wave from '../assets/images/wave/wave.svg'
 
   export default {
     name: 'HomeView',
@@ -101,12 +99,13 @@
         bar: bar,
         bug: bug,
         showTreeCard: false,
+        wave: wave,
       };
     },
   };
 </script>
 
-<style lang="scss">
+<!-- <style lang="scss">
   .header_banner {
     width: 100%;
     background-color: blue;
@@ -223,5 +222,10 @@
       top: 33.2%;
 
     }
+    .index_products{
+      width: 100%;
+      height: 600px;
+      background-color: aqua;
+    }
   }
-</style>
+</style> -->

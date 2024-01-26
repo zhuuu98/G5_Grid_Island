@@ -1,5 +1,30 @@
 .about {
-  h1 {
-    color: $orange-1;
+  background-color: aquamarine;
+
+  &_gi{
+    background-color: $orange-2;
+    width: 100vh;
+    .teeth{}
+    .about_gi_intro{
+      height: 300px;
+      margin-top: 100px;
+      // background-color: antiquewhite;
+    }
+
   }
-}
+
+  &_en{
+
+  }
+  &_griddy{
+
+  }
+  &_info{
+
+  }
+
+
+
+
+
+} //about

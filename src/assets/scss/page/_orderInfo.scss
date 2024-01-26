@@ -1,48 +1,112 @@
+img {
+  width: 100%;
+  vertical-align: middle;
+}
 .orderInfo {
-  color: $black;
+  color: $blue-4;
 
-  h2{
-    display: inline-block;
-  }
-
-  .svg-inline--fa{
-    width: 20px;
-  }
-  .orderItem {
+  .orderInfoTitle {
+    box-sizing: content-box;
     display: flex;
-    position: relative;
-    .orderItemImg{
-      width: 85px;
-      vertical-align: middle;
-      background-color: #fa0;
-    }
-    .orderItemInfo {
-    display: flex;
+    justify-content: space-between;
+    margin-top: $M-spacing;
+    padding: 0 $M-spacing;
     
-      .orderItemArea {
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-        padding: 8px 20px;
-
-        .orderItemName {
-        
-        }
+    @include M(){
+      padding: 0 $L-spacing;
       
-      }
-
-      .orderItemAmount {
-        transform: translate(-100px, 47px);
-        position: absolute;
-        top: 0;
-        right: 0;
-      
-      }
-
-
-
+    }
+    @include T(){
+      margin-top: $L-spacing;
+      padding: 0 $XXL-spacing;
 
     }
+    @include PC(){
+      margin-top: $L-spacing;
+      padding: 0 $XXXL-spacing;
+
+    }
+
+    h2{
+      display: inline-block;
+    }
+
+    .svg-inline--fa{
+      width: 20px;
+      margin: 0 $S-spacing 0 0;
+      
+      @include PC(){
+        margin: 0 $L-spacing 0 0;
+        
+  
+      }
+    }
+
+
+  }
+
+
+
+
+
+  table {
+    display: none;
+    width: 80%;
+    border-collapse: collapse;
+    margin: 20px auto 0;
+    @include PC(){
+      display: block;
+
+    }
+
+
+  }
+  
+  th{
+    border-bottom: 1px solid #ddd;
+    padding: $S-spacing;
+    text-align: left;
+    font-size:$PC-h4;
+    margin: auto;
+    font-weight: 500;
+
+  }
+  
+  td{
+    border-bottom: 1px solid #ddd;
+    padding: $S-spacing;
+    text-align: left;
+    vertical-align: middle;
+    
+
+    img {
+      width: 80px;
+    }
+    h3{
+      font-size: $PC-h3;
+    }
+
+  }
+  .prod_img {
+    width: 100px;
+    // margin-left: $L-spacing;
+    padding-left: $XXL-spacing;
+  }
+  .prod_name {
+    width: 500px;
+    
+  }
+  .prod_status {
+    font-size:$PC-h4;
+    padding: $M-spacing;
+  }
+  .prod_price {
+    font-size:$PC-h4;
+    font-weight: 600;
+  }
+  
+  th {
+    // background-color: #f2f2f2;
   }
 
 
@@ -133,118 +197,6 @@
   .checkOutBtn {
     button {
       width: 100%;
-      border: none;
-    }
-  }
-  
-
-  @include PC() {
-
-  }
-  .cartInfoArea {
-    @include PC() {
-      display: flex;
-    }
-    .cartContent {
-      border-bottom: 1px solid $black;
-
-      padding-bottom: $S-spacing;
-      margin: 0 $S-spacing;
-      @include PC() {
-        padding-right: $XXL-spacing;
-        width: 60%;
-        border-bottom: none;
-        border-right: 1px solid $black;
-      }
-      .cartItemContent {
-        padding: $S-spacing;
-        .cartItemTitle {
-          h3 {
-            font-size: $M-h3;
-          }
-        }
-        .cartItemArea {
-          .cartItemBlock {
-            padding: $S-spacing 0;
-            width: 100%;
-          }
-          .continueShopping {
-            a {
-              color: $black;
-              display: flex;
-              .leftArrow {
-                width: 10px;
-              }
-            }
-          }
-        }
-      }
-      .buyingSelectArea {
-        padding: $S-spacing;
-        .discountCode {
-          display: flex;
-          flex-direction: column;
-          row-gap: $S-spacing;
-          .discountCodeTitle {
-            h3 {
-              font-size: $M-h3;
-            }
-          }
-          .discountCodeInputBtn {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            .discountCodeInput {
-              width: 60%;
-              input {
-                padding: $S-spacing;
-                height: 30px;
-                width: 100%;
-                border-radius: 10px;
-              }
-            }
-          }
-        }
-        .deliveryMethod {
-          display: flex;
-          flex-direction: column;
-          row-gap: $S-spacing;
-          .deliveryMethodTitle {
-            h3 {
-              font-size: $M-spacing;
-            }
-          }
-          .deliveryMethodSelect {
-            width: 100%;
-            select {
-              width: 100%;
-              height: 30px;
-              border-radius: 10px;
-            }
-          }
-        }
-      }
-    }
-    
-  }
-  .recProduct {
-    padding: $L-spacing 0 $XXL-spacing 0;
-    display: flex;
-    flex-direction: column;
-    row-gap: $M-spacing;
-    .recProductTitle {
-      text-align: center;
-    }
-    .recProductList {
-      display: flex;
-      column-gap: $M-spacing;
-      overflow: auto;
-      .recProductPic {
-        img {
-          width: calc(1200px / 4 - $M-spacing);
-          height: calc(1200px / 4 - $M-spacing);
-        }
-      }
     }
   }
 }
