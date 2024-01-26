@@ -21,6 +21,7 @@
       }
       .cartItemContent {
         padding: $S-spacing;
+
         .cartItemTitle {
           h3 {
             font-size: $M-h3;
@@ -37,6 +38,39 @@
               display: flex;
               .leftArrow {
                 width: 10px;
+              }
+            }
+          }
+          .emptyCart {
+            position: relative;
+
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            row-gap: $S-spacing;
+            @include PC() {
+              top: 40px;
+            }
+            .emptyCartIconArea {
+              .emptyCartIcon {
+                width: 60px;
+                color: $orange-1;
+              }
+            }
+            .promptGroup {
+              display: flex;
+              flex-direction: column;
+              justify-content: center;
+              align-items: center;
+              row-gap: $S-spacing;
+              .promptText {
+                p {
+                  font-size: $M-h3;
+                  @include PC() {
+                    font-size: $PC-h3;
+                  }
+                }
               }
             }
           }
