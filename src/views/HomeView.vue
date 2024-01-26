@@ -18,11 +18,6 @@
       <img :src="bar" alt="Banner Bar" id="bar" />
       <img :src="cart" alt="Banner Cart" id="cart" />
     </div>
-<<<<<<< HEAD
-    <div class="griddy_design_banner">
-      
-    </div>
-=======
 
     <!-- header + 波浪圖 -->
 
@@ -66,7 +61,6 @@
     </div>
 
     
->>>>>>> db0e0a0ab9e2ebd3f6590733063c32df996141c8
   </main>
   
 </template>
