@@ -29,7 +29,7 @@
               <div class="board_info">
                 <div class="board_id">
                   <div class="board_id_img">
-                    <img :src="`https://tibamef2e.com/chd103/g5/img/${item.id_img}`" :alt="item.id_img_alt">
+                    <img :src="item.id_img" :alt="item.id_img_alt">
                   </div>
                   <div class="board_id_info">
                     <div class="board_memId">{{item.memId}}</div>
@@ -143,7 +143,7 @@ export default {
       card:[
         {
           id: 1,
-          id_img:'../assets/images/board/board_id_img.svg',
+          id_img:'../../static/img/board_id_img.svg',
           id_img_alt:'board_id_img',
           memId:'1啊人家家就笨壓',
           time:'2023/12/30 20:25',
@@ -152,7 +152,7 @@ export default {
           re:[
             {
               id:1,
-              img:'../assets/images/board/board_id_img.svg',
+              img:'../../static/img/board_id_img.svg',
               alt:'board_id_img',
               memId:'萵金',
               time:'2023/12/30 20:25',
@@ -160,7 +160,7 @@ export default {
             },
             {
               id:2,
-              img:'../assets/images/board/board_id_img.svg',
+              img:'../../static/img/board_id_img.svg',
               alt:'board_id_img',
               memId:'金',
               time:'2023/12/30 20:25',
