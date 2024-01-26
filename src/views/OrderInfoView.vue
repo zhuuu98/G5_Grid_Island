@@ -1,48 +1,36 @@
 <template>
   <main class="orderInfo">
 
-    <h2>訂單資訊</h2>
-    <font-awesome-icon :icon="['fas', 'chevron-down']" />
-
-
-    <div class="orderItem">
-      <img class="orderItemImg" src="../assets/images/footer/footer_logo.svg">
-      <div class="orderItemInfo">
-        <div class="orderItemArea">
-          <div class="orderItemName">
-            <h2>阿瓦蟲</h2>
-          </div>
-          <div class="orderItemPrice">
-            <h2>$500</h2>
-          </div>
-        </div>
-        <span class="orderItemAmount">
-          x 1
-        </span>
-      </div>
-      
-
-
+    <div class="orderInfoTitle">
+      <h2>訂單資訊</h2>
+      <font-awesome-icon :icon="['fas', 'chevron-down']" />
     </div>
-    <div class="orderItem">
-      <img class="orderItemImg" src="../assets/images/footer/footer_logo.svg">
-      <div class="orderItemInfo">
-        <div class="orderItemArea">
-          <div class="orderItemName">
-            <h2>一瓶的海岸線</h2>
-          </div>
-          <div class="orderItemPrice">
-            <h2>$500</h2>
-          </div>
-        </div>
-        <span class="orderItemAmount">
-          x 1
-        </span>
-      </div>
-      
+
+    <div>
+    <table>
+      <thead>
+        <tr>
+          <th></th>
+          <th>商品名稱</th>
+          <th>數量</th>
+          <th>單價</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr v-for="(item, index) in respondData" :key="item.prod_id">
+          <td class="prod_img">
+            <img :src="`https://tibamef2e.com/chd103/g5/img/${item.prod_img1}`"  :alt="item.prod_name"/>
+          </td>
+          <td class="prod_name"><h3>{{ item.prod_name }}</h3></td>
+          <td class="prod_status">{{ item.prod_status }}</td>
+          <td class="prod_price">$ {{ item.prod_price }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 
 
-    </div>
+
     
 
     <div class="priceContent">
@@ -87,106 +75,11 @@
           </div>
 
 
-
-
-    
-    <div class="cartInfoArea">
-      <div class="cartContent">
-        <div class="cartItemContent">
-          <div class="cartItemTitle">
-          </div>
-          <div class="cartItemArea">
-            <div
-              class="cartItemBlock"
-              v-for="item in displayData.slice(0, 6)"
-              :key="item.prod_id"
-            >
-              <CartItem
-                :itemPicUrl="`https://tibamef2e.com/chd103/g5/img/${item.prod_img1}`"
-                :itemName="item.prod_name"
-                :itemDiscountPrice="item.prod_discount_price"
-                :itemPrice="item.prod_price"
-                :itemId="item.prod_id"
-              />
-            </div>
-            <div class="continueShopping">
-              <router-link to="/product">
-                <font-awesome-icon
-                  :icon="['fas', 'angle-left']"
-                  class="leftArrow"
-                />
-                <p>繼續購物</p>
-              </router-link>
-            </div>
-          </div>
-        </div>
-        <div class="buyingSelectArea">
-          <div class="discountCode">
-            <div class="discountCodeTitle">
-              <h3>輸入折扣碼</h3>
-            </div>
-            <div class="discountCodeInputBtn">
-              <div class="discountCodeInput">
-                <input
-                  type="text"
-                  id="discountCode"
-                  v-model="discountCode"
-                  @input="discountCodeCheck()"
-                />
-              </div>
-              <div class="discountCodeBtn">
-                <button class="searchBtn" @click="discountCodeCheck">
-                  使用折扣碼
-                </button>
-              </div>
-            </div>
-          </div>
-          <div class="deliveryMethod">
-            <div class="deliveryMethodTitle">
-              <h3>配送方式</h3>
-            </div>
-            <div class="deliveryMethodSelect">
-              <select v-model="deliveryMethod" @change="deliveryMethodChange">
-                <option value="init">-請選擇-</option>
-                <option value="homeDelivery">宅配到府</option>
-                <option value="pickup">店內自取</option>
-              </select>
-            </div>
-          </div>
-        </div>
-      </div>
-      
-    </div>
-    <div class="recProduct">
-      <div class="recProductTitle">
-        <h3>您可能也會喜歡...</h3>
-      </div>
-      <div class="recProductList">
-        <div
-          class="recProductPic"
-          v-for="(item, index) in displayData.slice(0, 4)"
-          :key="index"
-        >
-          <router-link
-            :to="{
-              name: 'productInfo',
-              params: { id: item.prod_id },
-            }"
-          >
-            <img
-              :src="`https://tibamef2e.com/chd103/g5/img/${item.prod_img1}`"
-              :alt="item.prod_name"
-            />
-          </router-link>
-        </div>
-      </div>
-    </div>
   </main>
 </template>
 
 <script>
 import axios from "axios";
-import CartItem from "../components/CartItem.vue";
 import useUserStore from "../stores/user";
 
 export default {
@@ -199,7 +92,6 @@ export default {
   data() {
     return {
       respondData: [],
-      displayData: [],
       cartData: [],
       discountCode: "",
       deliveryMethod: "init",
@@ -207,9 +99,6 @@ export default {
       deliveryAmount: 0,
       discountAmount: 0,
     };
-  },
-  components: {
-    CartItem,
   },
   computed: {
     loading() {
@@ -259,7 +148,6 @@ export default {
         .then((res) => {
           console.log(res.data);
           this.respondData = res.data;
-          this.displayData = res.data;
         });
     },
 

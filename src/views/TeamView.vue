@@ -30,7 +30,6 @@
 
 <script>
 import axios from "axios";
-import BoardTag from "../components/BoardTag.vue";
 import PageTitle from "../components/PageTitle.vue";
 export default {
   data() {
