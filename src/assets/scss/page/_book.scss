@@ -17,226 +17,227 @@
             top: 100px;
         }
     }
-}
-.book_notice{
-    background-color: $black;
-    color: $white-1;
-    width: 90%;
-    max-width: 360px;
-    margin: $XXL-spacing auto;
-    border-radius: $Mob-card-radius;
-    padding: $M-spacing;
-    text-align: center;
-    @include PC() {
-        margin: $XXXL-spacing auto $XXL-spacing;
-    }
-}
-form{
-    .book_date_select, .book_table_select, .book_time_select, .book_select_NumOfPeo, .book_submit{
-        width: fit-content;
-        margin: auto;
-    }
-    input[type="date"]{
-        margin: auto;
-        // visibility: hidden;
-    }
-}
 
-.book_cal{
-    border-radius: $input-radius;
-    background-color: $bgc-1;
-    color: $blue-4;
-    max-width: 800px;
-    width: 90%;
-    margin: auto;
-    .book_cal_nav{
+    .book_notice{
+        background-color: $black;
+        color: $white-1;
+        width: 90%;
+        max-width: 360px;
+        margin: $XXL-spacing auto;
+        border-radius: $Mob-card-radius;
+        padding: $M-spacing;
         text-align: center;
-        display: flex;
-    }
-    button{
-        flex: 0 0 4rem;
-        line-height: 4rem;
-        transition: background-color 0.25s;
-        background-color: transparent;
-        border: 0;
-        &:hover {
-            color: $orange-2;
-        }
-        &:disabled{
-            color: $gray-1;
+        @include PC() {
+            margin: $XXXL-spacing auto $XXL-spacing;
         }
     }
-    .book_cal_nav_title{
+    form{
+        .book_date_select, .book_table_select, .book_time_select, .book_select_NumOfPeo, .book_submit{
+            width: fit-content;
+            margin: auto;
+        }
+        input[type="date"]{
+            margin: auto;
+            // visibility: hidden;
+        }
+    }
+
+    .book_cal{
+        border-radius: $input-radius;
+        background-color: $bgc-1;
+        color: $blue-4;
+        max-width: 800px;
+        width: 90%;
+        margin: auto;
+        .book_cal_nav{
+            text-align: center;
+            display: flex;
+        }
+        button{
+            flex: 0 0 4rem;
+            line-height: 4rem;
+            transition: background-color 0.25s;
+            background-color: transparent;
+            border: 0;
+            &:hover {
+                color: $orange-2;
+            }
+            &:disabled{
+                color: $gray-1;
+            }
+        }
+        .book_cal_nav_title{
+            display: flex;
+            gap: $S-spacing;
+            justify-content: center;
+            align-items: center;
+        }
+    }
+
+    // .book_cal {
+    //     background: #fff;
+    //     color: #333;
+    //     max-width: 40rem;
+    //     margin: 0 auto;
+    //     box-shadow: 0 0 1rem rgba(0, 0, 0, 0.2);
+    //     border-radius: 1rem;
+
+    //     button {
+    //         width: 100%;
+    //         height: 100%;
+    //         font-size: inherit;
+    //         font-weight: inherit;
+    //         appearance: none;
+    //         border: none;
+    //         background: transparent;
+    //         text-align: center;
+    //         cursor: pointer;
+    //         padding: 0;
+    //     }
+
+    //     [aria-disabled] {
+    //         pointer-events: none;
+    //         opacity: 0.5;
+    //     }
+    // }
+
+    .book_cal_nav {
+        // text-align: center;
+        // display: flex;
+        // gap: 1rem;
+        // font-size: 1.25rem;
+
+    //     select {
+    //         border: 1px solid #ccc;
+    //         background-color: transparent;
+    //         border-radius: 0.25rem;
+    //         font-size: inherit;
+    //         font-weight: inherit;
+    //         padding: 0.25rem 1rem;
+    //     }
+
+    //     [data-direction] {
+    //         flex: 0 0 4rem;
+    //         line-height: 4rem;
+    //         transition: background-color 0.25s;
+
+    //         &:hover {
+    //             color: #0ba;
+    //         }
+    //     }
+    }
+
+    .book_cal_nav_title {
+        flex: 1 1 auto;
         display: flex;
-        gap: $S-spacing;
+        gap: 2rem;
         justify-content: center;
         align-items: center;
     }
-}
 
-// .book_cal {
-//     background: #fff;
-//     color: #333;
-//     max-width: 40rem;
-//     margin: 0 auto;
-//     box-shadow: 0 0 1rem rgba(0, 0, 0, 0.2);
-//     border-radius: 1rem;
+    .book_cal_weekdays,
+    .book_cal_grid {
+        width: 100%;
+        display: grid;
+        box-sizing: border-box;
+        padding: 0 1rem;
+        grid-template-columns: repeat(7, 1fr);
+    }
 
-//     button {
-//         width: 100%;
-//         height: 100%;
-//         font-size: inherit;
-//         font-weight: inherit;
-//         appearance: none;
-//         border: none;
-//         background: transparent;
-//         text-align: center;
-//         cursor: pointer;
-//         padding: 0;
-//     }
+    // .book_cal_weekdays>div {
+    //     padding: 1rem 0;
+    //     text-align: center;
+    // }
 
-//     [aria-disabled] {
-//         pointer-events: none;
-//         opacity: 0.5;
-//     }
-// }
+    // .book_cal_day {
+    //     line-height: 2.5rem;
+    //     border-radius: 0.25em;
+    //     overflow: hidden;
 
-.book_cal_nav {
-    // text-align: center;
-    // display: flex;
-    // gap: 1rem;
-    // font-size: 1.25rem;
+    //     &.today {
+    //         box-shadow: inset 0 0 0 2px #ccc;
+    //     }
 
-//     select {
-//         border: 1px solid #ccc;
-//         background-color: transparent;
-//         border-radius: 0.25rem;
-//         font-size: inherit;
-//         font-weight: inherit;
-//         padding: 0.25rem 1rem;
-//     }
+    //     button {
+    //         transition: background-color 0.25s, color 0.25s;
 
-//     [data-direction] {
-//         flex: 0 0 4rem;
-//         line-height: 4rem;
-//         transition: background-color 0.25s;
+    //         &:not([aria-disabled]):hover {
+    //             color: #fff;
+    //             background: rgba(0, 0, 0, 0.7);
+    //         }
 
-//         &:hover {
-//             color: #0ba;
-//         }
-//     }
-}
+    //         &[aria-current] {
+    //             color: #fff;
+    //             background: #0ba;
+    //             pointer-events: none;
+    //             font-weight: bold;
+    //         }
+    //     }
+    // }
 
-.book_cal_nav_title {
-    flex: 1 1 auto;
-    display: flex;
-    gap: 2rem;
-    justify-content: center;
-    align-items: center;
-}
+    //桌型
+    .book_table_option,.book_time_option{
+        display: flex;
+        justify-content: center;
+        text-align: center;
+        gap: 20px;
+        margin: $L-spacing 0;
+    }
+    .book_options label{
+        display: block;
+        width: fit-content;
+        padding: $S-spacing $M-spacing;
+        background-color: $white-1;
+        border-radius: $input-radius;
+        cursor: pointer;
+    }
+    .book_options input{
+        display: none;
+    }
+    .bookTableForm{
+        display: flex;
+        flex-direction: column;
+        gap: $L-spacing;
+    }
+    .book_options label:hover{
+        background-color: $orange-2;
+        color: $white-1;
 
-.book_cal_weekdays,
-.book_cal_grid {
-    width: 100%;
-    display: grid;
-    box-sizing: border-box;
-    padding: 0 1rem;
-    grid-template-columns: repeat(7, 1fr);
-}
+    }
+    .book_options input[type="radio"]:checked + label {
+        color: $white-1;
+        background-color: $orange-2;
+    }
+    //人數
 
-// .book_cal_weekdays>div {
-//     padding: 1rem 0;
-//     text-align: center;
-// }
-
-// .book_cal_day {
-//     line-height: 2.5rem;
-//     border-radius: 0.25em;
-//     overflow: hidden;
-
-//     &.today {
-//         box-shadow: inset 0 0 0 2px #ccc;
-//     }
-
-//     button {
-//         transition: background-color 0.25s, color 0.25s;
-
-//         &:not([aria-disabled]):hover {
-//             color: #fff;
-//             background: rgba(0, 0, 0, 0.7);
-//         }
-
-//         &[aria-current] {
-//             color: #fff;
-//             background: #0ba;
-//             pointer-events: none;
-//             font-weight: bold;
-//         }
-//     }
-// }
-
-//桌型
-.book_table_option,.book_time_option{
-    display: flex;
-    justify-content: center;
-    text-align: center;
-    gap: 20px;
-    margin: $L-spacing 0;
-}
-.book_options label{
-    display: block;
-    width: fit-content;
-    padding: $S-spacing $M-spacing;
-    background-color: $white-1;
-    border-radius: $input-radius;
-    cursor: pointer;
-}
-.book_options input{
-    display: none;
-}
-.bookTableForm{
-    display: flex;
-    flex-direction: column;
-    gap: $L-spacing;
-}
-.book_options label:hover{
-    background-color: $orange-2;
-    color: $white-1;
-
-}
-.book_options input[type="radio"]:checked + label {
-    color: $white-1;
-    background-color: $orange-2;
-}
-//人數
-
-.bookPeople{
-    background-color: $white-1;
-    border-radius: $input-radius;
-    padding: $M-spacing ;
-    display: flex;
-    align-items: center;
-    gap: $L-spacing;
-    width: fit-content;
-    margin: $L-spacing 0;
-}
-.minusPlus{
-    border: 1px solid $black ;
-    border-radius: $input-radius;
-    display: flex;
-}
-.btnMinus,.btnPlus{
-    padding:$S-spacing $M-spacing;
-    border: 0;
-    background-color: $white-1;
-    border-radius: $input-radius;
-}
-.minusPlus input[type="number"]{
-    background-color: $white-1;
-    border: 0;
-    display: flex;
-    text-align: center;
-}
-.book_submit{
-    margin:$M-spacing auto ;
+    .bookPeople{
+        background-color: $white-1;
+        border-radius: $input-radius;
+        padding: $M-spacing ;
+        display: flex;
+        align-items: center;
+        gap: $L-spacing;
+        width: fit-content;
+        margin: $L-spacing 0;
+    }
+    .minusPlus{
+        border: 1px solid $black ;
+        border-radius: $input-radius;
+        display: flex;
+    }
+    .btnMinus,.btnPlus{
+        padding:$S-spacing $M-spacing;
+        border: 0;
+        background-color: $white-1;
+        border-radius: $input-radius;
+    }
+    .minusPlus input[type="number"]{
+        background-color: $white-1;
+        border: 0;
+        display: flex;
+        text-align: center;
+    }
+    .book_submit{
+        margin:$M-spacing auto ;
+    }
 }

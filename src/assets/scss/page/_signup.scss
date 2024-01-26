@@ -4,113 +4,114 @@
     @include grid(12, PC);
   }
   padding-bottom: 100px;
-}
-.signup_main {
-  width: 100%;
-  max-width: 353px;
-  margin: 120px auto 0;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  background-color: $bgc-8;
-  position: relative;
-  border-radius: $PC-card-radius;
-  padding: 80px 0 40px;
 
-  h2{
-    font-size: $M-h2;
-  }
-}
-.signup_main_griddy {
-  width: 123px;
-  height: 123px;
-  border-radius: 500px;
-  position: absolute;
-  top: -14%;
-  left: 33%;
-  background: no-repeat center url("@/assets/images/login/griddy_red.svg"),
-    $bgc-1;
-}
+  .signup_main {
+    width: 100%;
+    max-width: 353px;
+    margin: 120px auto 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: $bgc-8;
+    position: relative;
+    border-radius: $PC-card-radius;
+    padding: 80px 0 40px;
 
-.signup_form{
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-
-  input:not(.signBtn){
-    border-radius: $input-radius;
-    height: 40px;
-    margin-top: 20px;
-    padding: 6px;
-    width: 230px;
-    border: 1px solid $gray-2;
-  }
-  input:focus{
-    outline: 1px solid $orange-1;
-    border: none;
-    &::placeholder{
-      color: transparent;
+    h2{
+      font-size: $M-h2;
     }
   }
-  .signBtn{
-    margin-top: 20px;
-  }
-}
-
-.alert_bg{
-  background-color: #0006;
-  position: fixed;
-  top: 0;
-  width: 100vw;
-  height: 100vh;
-  z-index: 991;
-}
-
-$alertBoxHeight: 40vh;
-$alertCrossHeight: 50px;
-.alert_main{
-  background-color: #fff;
-  min-width: 300px;
-  width: 90vw;
-  display: flex;
-  flex-direction: column;
-  height: $alertBoxHeight;
-  position: absolute;
-  top: 33%;
-  left: 5%;
-  border-radius: $Mob-card-radius;
-  user-select: none;
-  @include T(){
-    width: 60vw;
-    left: 20%;
-    border-radius:$PC-card-radius;
-  }
-  @include PC(){
-    width: 40vw;
-    left: 30%;
-    border-radius:$PC-card-radius;
+  .signup_main_griddy {
+    width: 123px;
+    height: 123px;
+    border-radius: 500px;
+    position: absolute;
+    top: -14%;
+    left: 33%;
+    background: no-repeat center url("@/assets/images/login/griddy_red.svg"),
+      $bgc-1;
   }
 
+  .signup_form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 
-  button{
-    align-self: flex-end;
-    width: $alertCrossHeight;
-    height: $alertCrossHeight;
-    background-color: transparent;
-    border: none;
-    cursor: pointer;
+    input:not(.signBtn){
+      border-radius: $input-radius;
+      height: 40px;
+      margin-top: 20px;
+      padding: 6px;
+      width: 230px;
+      border: 1px solid $gray-2;
+    }
+    input:focus{
+      outline: 1px solid $orange-1;
+      border: none;
+      &::placeholder{
+        color: transparent;
+      }
+    }
+    .signBtn{
+      margin-top: 20px;
+    }
   }
 
-  p{
-    // border-top: 1px solid;
-    text-align: center;
-    vertical-align: middle;
-    font-size: $PC-h3;
-    justify-self: center;
-    height: calc(#{$alertBoxHeight} - #{$alertCrossHeight});
-    line-height: calc(#{$alertBoxHeight} / 1.6);
+  .alert_bg{
+    background-color: #0006;
+    position: fixed;
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 991;
   }
-}
-.body-overflow-hidden{
-  overflow: hidden;
+
+  $alertBoxHeight: 40vh;
+  $alertCrossHeight: 50px;
+  .alert_main{
+    background-color: #fff;
+    min-width: 300px;
+    width: 90vw;
+    display: flex;
+    flex-direction: column;
+    height: $alertBoxHeight;
+    position: absolute;
+    top: 33%;
+    left: 5%;
+    border-radius: $Mob-card-radius;
+    user-select: none;
+    @include T(){
+      width: 60vw;
+      left: 20%;
+      border-radius:$PC-card-radius;
+    }
+    @include PC(){
+      width: 40vw;
+      left: 30%;
+      border-radius:$PC-card-radius;
+    }
+
+
+    button{
+      align-self: flex-end;
+      width: $alertCrossHeight;
+      height: $alertCrossHeight;
+      background-color: transparent;
+      border: none;
+      cursor: pointer;
+    }
+
+    p{
+      // border-top: 1px solid;
+      text-align: center;
+      vertical-align: middle;
+      font-size: $PC-h3;
+      justify-self: center;
+      height: calc(#{$alertBoxHeight} - #{$alertCrossHeight});
+      line-height: calc(#{$alertBoxHeight} / 1.6);
+    }
+  }
+  .body-overflow-hidden{
+    overflow: hidden;
+  }
 }
