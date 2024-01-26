@@ -1,11 +1,11 @@
 <template>
     <div class="chatbot">
 
-        <div class="chatContent" v-if="openChatContent">
+        <div class="chatContent" v-if="openChatContent" >
             <div class="contentTop">
                 <img src="../assets/images/chatbot/chatboxIcon.svg" alt="線上客服">
             </div>
-            <div class="contentBody">
+            <div class="contentBody" ref="chatContent">
                 <div v-for="chat in chatList" :class="chat.sendFrom">{{ chat.text }}</div>
             </div>
 
@@ -61,6 +61,7 @@ export default {
     methods: {
         openChat(){
             this.openChatContent=!this.openChatContent
+            this.scrollToBottom();
         },
         SelectTypeClick(index){
             this.isFirstLabelShow = false;
@@ -74,6 +75,7 @@ export default {
                 text: `好的，您想詢問什麼問題呢？`,
                 sendFrom: 'chatLeft'
             })
+                this.scrollToBottom();
                 this.count -= 1;
                 if(this.count == 0){
                 clearInterval(delay)
@@ -83,6 +85,7 @@ export default {
 
             this.typeIndex = index
             console.log(this.typeIndex)
+            this.scrollToBottom();
         },
         showAnswer(index){
             this.chatList.push({
@@ -95,17 +98,29 @@ export default {
                 text: `${this.answer[this.typeIndex][index]}`,
                 sendFrom: 'chatLeft'
             })
+                this.scrollToBottom();
                 this.count -= 1;
                 if(this.count == 0){
                 clearInterval(delay)
                 this.count = 1
             }
             },1000)
+            this.scrollToBottom();
         },
         reChoose(){
             this.typeIndex = -1
             this.isFirstLabelShow = true
-        }
+        },
+        scrollToBottom() { //讓訊息會一直在最下面
+        // 使用 $nextTick 確保在 DOM 更新後執行
+        this.$nextTick(() => {
+            // 取得對話框的 DOM 元素
+            const chatContent = this.$refs.chatContent;
+            
+            // 捲動到最底部
+            chatContent.scrollTop = chatContent.scrollHeight;
+        });
+    },
     }
 }
 </script>
