@@ -6,7 +6,7 @@
       </div>
     </div>
     <div class="pageTitleWaveImg">
-      <img src="@/assets/images/pageTitle/Wave.png" alt="" />
+      <img src="@/assets/images/pageTitle/Wave.svg" alt="" />
     </div>
   </main>
 </template>

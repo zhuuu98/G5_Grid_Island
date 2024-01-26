@@ -1,5 +1,6 @@
 <template>
   <main>
+    <!-- banner -->
     <div class="header_banner">
       <img :src="bannerImage" alt="Home Banner" id="main-banner" />
       <img :src="games" alt="Banner games" id="games" />
@@ -17,7 +18,57 @@
       <img :src="bar" alt="Banner Bar" id="bar" />
       <img :src="cart" alt="Banner Cart" id="cart" />
     </div>
+<<<<<<< HEAD
+    <div class="griddy_design_banner">
+      
+    </div>
+=======
+
+    <!-- header + 波浪圖 -->
+
+
+    <!-- 內容 -->
+    <div class="container">
+      <div class="row">
+        <div class="col-PC-10 col-T-10 col-12">
+
+          <!-- 所有商品 -->
+          <div class="index_products">
+
+          </div>
+          <!-- 服務項目 -->
+          <div class="index_service">
+            
+          </div>
+          <!-- 預約方式 -->
+          <div class="index_reserve">
+
+          </div>
+          <!-- Griddy造型屋 -->
+          <div class="index_griddy">
+
+          </div>
+          <!-- 最新消息 -->
+          <div class="index_news">
+
+          </div>
+          <!-- 一起遊樂 IG API -->
+          <div class="index_insta">
+
+          </div>
+          <!-- Grid Island 關於我們 -->
+          <div class="about">
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    
+>>>>>>> db0e0a0ab9e2ebd3f6590733063c32df996141c8
   </main>
+  
 </template>
 
 <script>
