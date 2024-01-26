@@ -4,8 +4,17 @@ export default defineStore("cartStore", {
   state: () => ({
     cartData: [],
   }),
+  getters: {
+    totalPrice() {
+      // 使用 computed 屬性計算總價
+      return this.cartData.reduce(
+        (total, item) => total + item.price * item.count,
+        0
+      );
+    },
+  },
   actions: {
-    addCartData(product) {
+    addCartData(product, addCount = 1) {
       const resultIndex = this.cartData.findIndex((item) => {
         // 如果報錯需要確認資料來源的key是什麼
         return item.id == product.prod_id;
@@ -17,7 +26,7 @@ export default defineStore("cartStore", {
           name: product.prod_name,
           price: product.prod_price,
           img: product.prod_img1,
-          count: 1,
+          count: addCount,
         });
       } else {
         console.log("Hello");
@@ -25,7 +34,7 @@ export default defineStore("cartStore", {
         const oldCount = this.cartData[resultIndex]["count"];
         this.cartData[resultIndex] = {
           ...this.cartData[resultIndex],
-          count: oldCount + 1,
+          count: oldCount + addCount,
         };
       }
       console.log(this.cartData);

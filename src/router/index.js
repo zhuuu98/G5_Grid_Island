@@ -75,6 +75,11 @@ const router = createRouter({
       name: "team",
       component: () => import("../views/TeamView.vue"),
     },
+    {
+      path: "/member",
+      name: "member",
+      component: () => import("../views/MemberView.vue"),
+    },
     // 404要寫在最下面
     {
       path: "/:pathMatch(.*)*",
