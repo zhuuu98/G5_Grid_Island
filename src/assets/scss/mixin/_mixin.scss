@@ -4,6 +4,7 @@
   display: inline-flex !important;
   align-items: center;
   justify-content: center;
+  border:none;
 }
 
 @mixin btnBasiccc() {
@@ -11,6 +12,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  border:none;
 }
 
 //btn bgc

@@ -16,17 +16,16 @@
           </div>
         </router-link>
         <div class="cartItemInfo">
-          <div class="cartItemName">
-            <router-link
-              :to="{
-                name: 'productInfo',
-                params: { id: itemId },
-              }"
-            >
+          <router-link
+            :to="{
+              name: 'productInfo',
+              params: { id: itemId },
+            }"
+          >
+            <div class="cartItemName">
               <h3>{{ itemName }}</h3>
-            </router-link>
-          </div>
-
+            </div>
+          </router-link>
           <div class="cartItemPriceQuantity">
             <div class="cartItemPrice">
               <div class="cartItemDiscountPrice" v-if="itemDiscountPrice">
@@ -40,7 +39,7 @@
               <button @click="quantityChange('minus')">
                 <span>-</span>
               </button>
-              <input type="number" :value="itemCount" />
+              <input type="number" :value="productQuantity" />
               <button @click="quantityChange('plus')">
                 <span>+</span>
               </button>
@@ -59,14 +58,7 @@ export default {
       productQuantity: 1,
     };
   },
-  props: [
-    "itemPicUrl",
-    "itemName",
-    "itemDiscountPrice",
-    "itemPrice",
-    "itemId",
-    "itemCount",
-  ],
+  props: ["itemPicUrl", "itemName", "itemDiscountPrice", "itemPrice", "itemId"],
   methods: {
     quantityChange(method) {
       if (method == "plus") {

@@ -1,10 +1,5 @@
 <template>
     <div class="chatbot">
-        <div class="openChat">
-            <button class="openChatBtn" @click="openChat" >
-                <img src="../assets/images/chatbot/chatbot_btn.svg" alt="線上客服">
-            </button>
-        </div>
 
         <div class="chatContent" v-if="openChatContent">
             <div class="contentTop">
@@ -19,13 +14,18 @@
                     <button v-for="(choice, index) in questionType" @click="SelectTypeClick(index)" v-show="isFirstLabelShow">{{ choice }}</button>
                 </div>
                 <div class="SecondChoose" v-for="(item, index) in question" >
-                    <div class="" v-if="index == typeIndex ">
+                    <div class="SecondDiv" v-if="index == typeIndex ">
                         <button v-for="(detail, index) in item" @click="showAnswer(index)">{{ detail }}</button>
                     </div>
                 </div>
-                <button v-show="!isFirstLabelShow" @click="reChoose">重新選擇問題類型</button>
+                <button v-show="!isFirstLabelShow" @click="reChoose" class="reChoose">重新選擇問題類型</button>
             </div>
         </div>
+
+        <div class="openChat">
+            <img src="../assets/images/chatbot/chatbot_btn.svg" alt="線上客服" @click="openChat" class="openChatBtn">
+        </div>
+
     </div>
 </template>
 
@@ -52,7 +52,7 @@ export default {
             ],
             answer: [
             ['請到預約頁面進行訂位唷！','有的，請再提前聯絡店員需要包場服務。','預約並不需要訂金，我們有最低消費一小時的金額限制唷！','一次只能預約一個時段唷！若需訂位多時段請分兩筆以上訂位。','請先電話通知我們，我們會為您處理。'],
-            ['<a href="#">請按此進行註冊</a>','請至會員中心進行更改','請至會員中心，選擇Griddy造型屋進行更改'],
+            ['請按此進行註冊','請至會員中心進行更改','請至會員中心，選擇Griddy造型屋進行更改'],
             ['目前提供信用卡支付以及轉帳支付唷！','當然，我們會幫您包裝的漂漂亮亮，讓您送人自用沒煩惱！','請到會員中心查看您的訂單明細'],
             ['當然可以，請到社群中心裡的留言板提供您的想法','是的，我們會不定期舉辦各種桌遊活動和比賽。歡迎到我們的最新消息頁面來看看。','如果您有合作意向，請通過我們的聯繫方式與我們取得聯繫，我們的合作團隊將與您進行進一步的討論。']
             ]
@@ -111,17 +111,4 @@ export default {
 </script>
 <style lang="scss" scoped>
 //
-.chatLeft, .chatRight{
-    background-color: #000;
-    max-width: 80%;
-    width: fit-content;
-    color: #fff;
-    padding: 8px;
-    border-radius: 8px;
-    margin: 8px;
-}
-.chatRight{
-    text-align: right;
-    margin-left: auto;
-}
 </style>

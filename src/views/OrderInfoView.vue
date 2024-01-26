@@ -1,20 +1,99 @@
 <template>
   <main class="orderInfo">
-    <transition name="fade">
-      <div class="loadingMask" v-if="loading" name="fade">
-        <div class="lds-ring">
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
+
+    <h2>訂單資訊</h2>
+    <font-awesome-icon :icon="['fas', 'chevron-down']" />
+
+
+    <div class="orderItem">
+      <img class="orderItemImg" src="../assets/images/footer/footer_logo.svg">
+      <div class="orderItemInfo">
+        <div class="orderItemArea">
+          <div class="orderItemName">
+            <h2>阿瓦蟲</h2>
+          </div>
+          <div class="orderItemPrice">
+            <h2>$500</h2>
+          </div>
+        </div>
+        <span class="orderItemAmount">
+          x 1
+        </span>
+      </div>
+      
+
+
+    </div>
+    <div class="orderItem">
+      <img class="orderItemImg" src="../assets/images/footer/footer_logo.svg">
+      <div class="orderItemInfo">
+        <div class="orderItemArea">
+          <div class="orderItemName">
+            <h2>一瓶的海岸線</h2>
+          </div>
+          <div class="orderItemPrice">
+            <h2>$500</h2>
+          </div>
+        </div>
+        <span class="orderItemAmount">
+          x 1
+        </span>
+      </div>
+      
+
+
+    </div>
+    
+
+    <div class="priceContent">
+        <div class="priceArea">
+          <div class="subtotal">
+            <div class="subtotalTitle">
+              <p>小計</p>
+            </div>
+            <div class="subtotalAmount">
+              <p>$ {{ subTotalAmount }}</p>
+            </div>
+          </div>
+          <div class="deliveryPrice">
+            <div class="deliveryPriceTitle">
+              <p>運費</p>
+            </div>
+            <div class="deleiveryPriceAmount">
+              <p>$ {{ deliveryAmount }}</p>
+            </div>
+          </div>
+          <div class="discount">
+            <div class="discountTitle">
+              <p>折扣</p>
+            </div>
+            <div class="discountAmount">
+              <span v-if="discountAmount != 0">-</span>
+              <p>$ {{ discountAmount }}</p>
+            </div>
+          </div>
+          <div class="totalPrice">
+            <div class="totalPriceTitle">
+              <h3>總金額</h3>
+            </div>
+            <div class="totalPriceAmount">
+              <h3>$ {{ totalPriceCount }}</h3>
+            </div>
+          </div>
         </div>
       </div>
-    </transition>
+      <div class="checkOutBtn">
+            <button class="bookBtn">送出訂單</button>
+          </div>
+
+
+
+
+    
     <div class="cartInfoArea">
       <div class="cartContent">
         <div class="cartItemContent">
           <div class="cartItemTitle">
-            <h2>購物車</h2>
           </div>
           <div class="cartItemArea">
             <div
@@ -76,46 +155,7 @@
           </div>
         </div>
       </div>
-      <div class="priceContent">
-        <div class="priceArea">
-          <div class="subtotal">
-            <div class="subtotalTitle">
-              <p>小計</p>
-            </div>
-            <div class="subtotalAmount">
-              <p>$ {{ subTotalAmount }}</p>
-            </div>
-          </div>
-          <div class="deliveryPrice">
-            <div class="deliveryPriceTitle">
-              <p>運費</p>
-            </div>
-            <div class="deleiveryPriceAmount">
-              <p>$ {{ deliveryAmount }}</p>
-            </div>
-          </div>
-          <div class="discount">
-            <div class="discountTitle">
-              <p>折扣</p>
-            </div>
-            <div class="discountAmount">
-              <span v-if="discountAmount != 0">-</span>
-              <p>$ {{ discountAmount }}</p>
-            </div>
-          </div>
-          <div class="totalPrice">
-            <div class="totalPriceTitle">
-              <h3>總價</h3>
-            </div>
-            <div class="totalPriceAmount">
-              <h3>$ {{ totalPriceCount }}</h3>
-            </div>
-          </div>
-          <div class="checkOutBtn">
-            <button class="bookBtn">前往結帳</button>
-          </div>
-        </div>
-      </div>
+      
     </div>
     <div class="recProduct">
       <div class="recProductTitle">

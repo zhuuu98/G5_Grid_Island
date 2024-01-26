@@ -48,8 +48,9 @@ export default {
   },
   props: ["imgUrl", "productTitle", "productPrice", "productId"],
   methods: {
-    addCart() {
-      this.$emit("addCartData");
+    addCart(info) {
+      this.$emit("addCartData", info);
+      alert("已增加至購物車");
     },
   },
   mounted() {},
