@@ -29,7 +29,7 @@
               <div class="board_info">
                 <div class="board_id">
                   <div class="board_id_img">
-                    <img :src="item.id_img" :alt="item.id_img_alt">
+                    <img :src="`https://tibamef2e.com/chd103/g5/img/${item.id_img}`" :alt="item.id_img_alt">
                   </div>
                   <div class="board_id_info">
                     <div class="board_memId">{{item.memId}}</div>
