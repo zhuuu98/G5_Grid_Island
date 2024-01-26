@@ -1,3 +1,26 @@
+
+h1 {
+  font-size: $PC-h1;
+  letter-spacing: $PC-btn-lg-spacing;
+}
+h2 {
+  font-size: $PC-h2;
+  letter-spacing: $PC-btn-esl-spacing;
+}
+
+h3 {
+  font-size: $PC-h3;
+  letter-spacing: $PC-btn-esl-spacing;
+}
+
+h4 {
+  font-size: $PC-h4;
+  letter-spacing: $PC-btn-exsl-spacing;
+}
+
+
+
+
 //btn basic
 @mixin btnBasic() {
   cursor: pointer;

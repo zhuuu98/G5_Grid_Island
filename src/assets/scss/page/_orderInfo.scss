@@ -2,7 +2,7 @@ img {
   width: 100%;
   vertical-align: middle;
 }
-.orderInfo {
+.orderItemInfo {
   color: $blue-4;
 
   .orderInfoTitle {
@@ -29,6 +29,7 @@ img {
 
     h2{
       display: inline-block;
+      letter-spacing: $PC-btn-esl-spacing;
     }
 
     .svg-inline--fa{
@@ -51,14 +52,21 @@ img {
 
   table {
     display: none;
-    width: 80%;
     border-collapse: collapse;
     margin: 20px auto 0;
-    @include PC(){
+    width: 80%;
+
+    @include T(){
+      margin: 0 auto;
       display: block;
 
+      
     }
+    @include PC(){
+      max-width: $max-width;
 
+    }
+    
 
   }
   
@@ -84,6 +92,7 @@ img {
     }
     h3{
       font-size: $PC-h3;
+      letter-spacing: $PC-btn-esl-spacing;
     }
 
   }
@@ -93,22 +102,80 @@ img {
     padding-left: $XXL-spacing;
   }
   .prod_name {
-    width: 500px;
+    
+    @include T(){
+      width: 400px;
+
+    }
+    @include PC(){
+      width: 470px;
+
+    }
     
   }
   .prod_status {
     font-size:$PC-h4;
     padding: $M-spacing;
+
+    @include T(){
+      width: 100px;
+
+    }
+    @include PC(){
+      width: 200px;
+
+    }
   }
   .prod_price {
     font-size:$PC-h4;
     font-weight: 600;
+    @include T(){
+      width: 200px;
+
+    }
+    @include PC(){
+      width: 100px;
+
+    }
   }
   
   th {
     // background-color: #f2f2f2;
   }
 
+  .orderInfo {
+    box-sizing: content-box;
+    padding: $M-spacing;
+
+    h2 {
+      letter-spacing: $PC-btn-esl-spacing;
+    }
+
+    .name {
+      padding-top: $S-spacing;
+      padding-top: $M-spacing;
+    }
+    .phone, .adress, .email {
+      padding-top: $S-spacing;
+    }
+
+    span {
+      letter-spacing: $PC-btn-esl-spacing;
+    }
+
+    input {
+      display: block;
+      border-radius: $S-button-radius;
+      border: .5px solid $gray-2;
+      padding: $S-spacing $S-spacing ;
+      width: 100%;
+      height: 30px;
+      line-height: 30px;
+      color: $gray-2;
+      letter-spacing: $PC-btn-esl-spacing;
+    }
+
+  }
 
 
 
@@ -126,17 +193,20 @@ img {
 
   .priceContent {
     margin: 0 $S-spacing;
-    padding: $S-spacing 0;
+    // padding: $S-spacing 0;
+    padding: $M-spacing $L-spacing;
 
     @include PC() {
-      width: 40%;
+      width: 30%;
+      margin-left: auto;
+      margin-right: 200px;
+      max-width: $max-width;
     }
     .priceArea {
+      
       @include PC() {
-        margin-top: $XL-spacing;
-        position: sticky;
-        top: 80px;
-        right: 0px;
+        margin-top: $S-spacing;
+
       }
       display: flex;
       flex-direction: column;
@@ -191,6 +261,13 @@ img {
         justify-content: space-between;
         font-size: $M-h3;
         margin-top: $S-spacing;
+        padding-top: $S-spacing;
+        @include T(){
+          border-top: 1px solid $gray-2;
+        }
+        h3 {
+          letter-spacing: $PC-btn-esl-spacing;
+        }
       }
     }
   }

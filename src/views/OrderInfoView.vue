@@ -1,5 +1,5 @@
 <template>
-  <main class="orderInfo">
+  <main class="orderItemInfo">
 
     <div class="orderInfoTitle">
       <h2>訂單資訊</h2>
@@ -69,10 +69,31 @@
             </div>
           </div>
         </div>
+    </div>
+
+    <div class="orderInfo">
+      <h2>訂購人資料</h2>
+      <div class="name">
+        <span>姓名</span>
+        <input type="text" name="mem_name" id="memName" value="古迪錐" readonly>
       </div>
-      <div class="checkOutBtn">
-            <button class="bookBtn">送出訂單</button>
-          </div>
+      <div class="phone">
+        <span>手機號碼</span>
+        <input type="tel" name="mem_tel" id="memTel" value="0912345678" readonly>
+      </div>
+      <div class="adress">
+        <span>地址</span>
+        <input type="text" name="mem_addr" id="memAddr" value="桃園市中壢區古迪路123號" readonly>
+      </div>
+      <div class="email">
+        <span>電子信箱</span>
+        <input type="email" name="mem_email" id="memEmail" value="griddy@griddy.com" readonly>
+      </div>
+    </div>
+
+    <div class="checkOutBtn">
+      <button class="bookBtn">送出訂單</button>
+    </div>
 
 
   </main>
