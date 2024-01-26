@@ -29,11 +29,14 @@
 
           <!-- 所有商品 -->
           <div class="index_products">
-            <p>123</p>
+            <p>所有商品</p>
+          </div>
+          <div class="wave">
+            <img :src="wave" alt="bgcwave" id="wave1" />
           </div>
           <!-- 服務項目 -->
           <div class="index_service">
-            
+            <p>服務項目</p>
           </div>
           <!-- 預約方式 -->
           <div class="index_reserve">
@@ -77,6 +80,7 @@
   import cart from '../assets/images/banner/cart.svg';
   import bar from '../assets/images/banner/bar.svg';
   import bug from '../assets/images/banner/bug.svg';
+  import wave from '../assets/images/wave/wave.svg'
 
   export default {
     name: 'HomeView',
@@ -95,6 +99,7 @@
         bar: bar,
         bug: bug,
         showTreeCard: false,
+        wave: wave,
       };
     },
   };
