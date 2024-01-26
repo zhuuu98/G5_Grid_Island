@@ -122,7 +122,7 @@
               <p>折扣</p>
             </div>
             <div class="discountAmount">
-              <span v-if="discountAmount != 0">-</span>
+              <span v-show="discountAmount != 0">-</span>
               <p>$ {{ discountAmount }}</p>
             </div>
           </div>
@@ -134,7 +134,7 @@
               <h3>$ {{ totalPrice }}</h3>
             </div>
           </div>
-          <div class="checkOutBtn">
+          <div class="checkOutBtn" v-show="cartData.length != 0">
             <button class="bookBtn">前往結帳</button>
           </div>
         </div>
