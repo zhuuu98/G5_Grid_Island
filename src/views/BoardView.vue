@@ -308,7 +308,7 @@ export default {
     
   },
   components: {
-    
+    PageTitle,
   },
   created() {},
   mounted() {},

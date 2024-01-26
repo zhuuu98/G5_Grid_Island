@@ -26,17 +26,18 @@
             <p v-for="paragraph in bookNotice.content">{{ paragraph }}</p>
         </div>
         <div class="preCheck">
-            <input type="checkbox" id="agree">
+            <input type="checkbox" id="agree" v-model="ischecked">
             <label for="agree">本人已詳閱並同意遵守以上事項
             </label>
         </div>
-        <button class="btn_sm_1 preBtn" @click="goReserve()">前往預約</button>
+        <button class="btn_sm_1 preBtn" @click="goReserve()" >前往預約</button>
     </div>
 </template>
 <script>
     export default {
         data() {
             return {
+                ischecked: false,
                 bookFee: {
                     title: '收費方式',
                     content: ['預約時段分為上午、下午及晚上，以人數計費，費用有平假日之分，請參下表。', '時段說明：上午(09:00-12:00)、下午(12:00-15:00及15:00-18:00)、晚上(18:00-21:00)。', '本店提供餐點及飲料，全面禁止攜帶外食。', '3歲以下不另行收費，請勿使用桌遊；12歲以下，須由大人陪同入場。', '提供包場服務，請直接洽詢LINE客服。', '若需取消預約，請於預約開始12小時前取消，預約兩次未到將停權六個月。']
@@ -72,6 +73,13 @@
         mounted() {
         },
         methods:{
+            goReserve(){
+                if (this.ischecked == true) {
+                    this.$router.push('/book')
+                }else{
+                    alert('請同意預約須知')
+                }
+            }
         }
     }
 </script>

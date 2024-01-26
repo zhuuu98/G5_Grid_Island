@@ -1,0 +1,151 @@
+main{
+  //banner
+  .header_banner {
+    width: 100%;
+    background-color: $blue-1;
+    display: flex;
+
+    position: relative;
+
+    #main-banner {
+      width: 72%;
+      margin: auto;
+    }
+
+    #tree-svg {
+      width: 13.84%;
+      position: absolute;
+      left: 28.15%;
+      top: 3.5%;
+      /* display: none; */
+    }
+
+    #tree-svg:hover {
+      filter: drop-shadow(0px 0px 4px #fff)
+      drop-shadow(0px 0px 12px #fff);
+    }
+    .card {
+    position: absolute;
+    left: 30%; /* 根據需要調整位置 */
+    top: 10%;  /* 根據需要調整位置 */
+    background-color: white;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+    /* 添加更多樣式以適應您的設計 */
+    }
+
+    #news {
+      width: 8.43%;
+      position: absolute;
+      left: 33.9%;
+      top: 43.28%;
+    }
+    
+    #news:hover {
+      filter: drop-shadow(0px 0px 4px #fff)
+      drop-shadow(0px 0px 12px #fff);
+    }
+
+    #comment {
+      width: 8.26%;
+      position: absolute;
+      left: 37.62%;
+      top: 34.2%;
+    }
+    #comment:hover {
+      filter: drop-shadow(0px 0px 4px #fff)
+      drop-shadow(0px 0px 12px #fff);
+    }
+    #roof {
+      width: 24.3%;
+      position: absolute;
+      left: 38.4%;
+      top: 19.5%;
+    }
+    #sign {
+      width: 15.88%;
+      position: absolute;
+      left: 43.8%;
+      top: 15%;
+    }
+    #sign:hover {
+      filter: drop-shadow(0px 0px 4px #fff)
+      drop-shadow(0px 0px 12px #fff);
+    }
+    #games {
+      width: 12.2%;
+      position: absolute;
+      left: 53.8%;
+      top: 32.55%;
+    }
+    #games:hover {
+      filter: drop-shadow(0px 0px 4px #fff)
+      drop-shadow(0px 0px 12px #fff);
+    }
+    #reserve {
+      width: 10.715%;
+      position: absolute;
+      left: 64.2%;
+      top: 43.2%;
+    }
+    #reserve:hover {
+      filter: drop-shadow(0px 0px 4px #fff)
+      drop-shadow(0px 0px 12px #fff);
+    }
+    #cart {
+      width: 7.75%;
+      position: absolute;
+      left: 41.7%;
+      top: 62%;
+    }
+    #cart:hover {
+      filter: drop-shadow(0px 0px 4px #fff)
+      drop-shadow(0px 0px 12px #fff);
+    }
+    #bar {
+      width: 9.57%;
+      position: absolute;
+      left: 44.33%;
+      top: 54.55%;
+    }
+    #bug {
+      width: 9.65%;
+      position: absolute;
+      left: 45.32%;
+      top: 33.2%;
+
+    }
+  }
+    
+  // header + 波浪圖
+
+  //內容
+
+  // 所有商品
+  .index_products{
+    width: 100%;
+    height: 600px;
+    background-color: aqua;
+  }  
+
+  // 服務項目
+  .index_service{}
+
+  //預約方式
+  .index_reserve{}
+
+  // Griddy造型屋
+  .index_griddy{}
+
+  // 最新消息
+  .index_news{}
+
+  // 一起遊樂 IG API
+  .index_insta{}
+
+  // Grid Island 關於我們
+  .index_about{}
+
+
+} //main
