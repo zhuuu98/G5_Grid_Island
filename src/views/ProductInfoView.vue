@@ -88,7 +88,9 @@
                   >
                 </div> -->
                 <div class="productBuyingButton">
-                  <button class="cartBtn">加入購物車</button>
+                  <button class="cartBtn" @click="addCart(respondData)">
+                    加入購物車
+                  </button>
                   <!-- <button class="bookBtn" @click="prebookPlay">預約遊玩</button> -->
                   <router-link class="bookBtn" to="/prebook"
                     >預約遊玩</router-link
@@ -138,6 +140,9 @@
 import axios from "axios";
 import ProductCard from "../components/ProductCard.vue";
 import PreBook from "@/components/PreBook.vue";
+// 引入stores
+import { mapState, mapActions } from "pinia";
+import cartStore from "@/stores/cart";
 export default {
   data() {
     return {
@@ -164,6 +169,7 @@ export default {
     this.axiosGetData();
   },
   methods: {
+    ...mapActions(cartStore, ["addCartData"]),
     axiosGetData() {
       const pageId = this.$route.params.id;
       axios
@@ -192,8 +198,9 @@ export default {
         }
       }
     },
-    prebookPlay() {
-      this.prebookModel = true;
+    addCart(product) {
+      this.addCartData(product, this.productQuantity);
+      alert("已加入購物車");
     },
   },
   watch: {

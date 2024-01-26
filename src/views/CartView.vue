@@ -83,7 +83,7 @@
               <p>小計</p>
             </div>
             <div class="subtotalAmount">
-              <p>$ {{ subTotalAmount }}</p>
+              <p>$ {{ totalPrice }}</p>
             </div>
           </div>
           <div class="deliveryPrice">
@@ -163,7 +163,6 @@ export default {
       displayData: [],
       discountCode: "",
       deliveryMethod: "init",
-      subTotalAmount: 1300,
       deliveryAmount: 0,
       discountAmount: 0,
     };
@@ -174,7 +173,7 @@ export default {
   computed: {
     //使用 mapState 輔助函數將/src/stores/cart裡的state/data 映射在這裡
     // !!!要寫在computed
-    ...mapState(cartStore, ["cartData"]),
+    ...mapState(cartStore, ["cartData", "totalPrice"]),
     loading() {
       return this.respondData.length == 0;
     },
@@ -182,7 +181,7 @@ export default {
       return this.displayData.length == 0;
     },
     totalPriceCount() {
-      return this.subTotalAmount + this.deliveryAmount - this.discountAmount;
+      return this.totalPrice + this.deliveryAmount - this.discountAmount;
     },
     userName2() {
       return this.userStore.getUserName;

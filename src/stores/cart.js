@@ -4,6 +4,15 @@ export default defineStore("cartStore", {
   state: () => ({
     cartData: [],
   }),
+  getters: {
+    totalPrice() {
+      // 使用 computed 屬性計算總價
+      return this.cartData.reduce(
+        (total, item) => total + item.price * item.count,
+        0
+      );
+    },
+  },
   actions: {
     addCartData(product, addCount = 1) {
       const resultIndex = this.cartData.findIndex((item) => {
