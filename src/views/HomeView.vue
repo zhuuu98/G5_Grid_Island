@@ -11,7 +11,11 @@
       <img :src="reserve" alt="Banner Reserve" id="reserve" />
       <img :src="cart" alt="Banner Cart" id="cart" />
     </div>
+    <div class="griddy_design_banner">
+      
+    </div>
   </main>
+  
 </template>
 
 <script>
