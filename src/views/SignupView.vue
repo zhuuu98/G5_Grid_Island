@@ -1,56 +1,103 @@
-<script>
-export default {
-  data() {
-    return {
-      value: 0,
-      signupButton:[{
-        title:'使用Gmail登入',
-        link:'https://www.google.com/',
-        icon:'',
-    },{
-        title:'使用Line登入',
-        link:'https://www.line.com/',
-        icon:'',
-    },{
-        title:'使用Email登入',
-        link:'./signup2',
-        icon:'',
-    }],
-    };
-  },
-  created() {
-  },
-  methods: {
-    mounted() {},
-  },
-};
-</script>
-
-
 <template>
     <div class="signup">
+        <PageTitle :pageTitle="'註冊會員'" />
         <div class="signup_main">
             <div class="signup_title">
+                <div class="signup_main_griddy"></div>
                 <h2>註冊會員</h2>
-                <div class="signup_main_griddy">
-            </div>
             </div>
             <form action="">
-                <!-- 這邊不用v-for，第三方登入用button且不要包在form裏面(註冊和登入相同) -->
-                <RouterLink v-for="item in signupButton" :to ="item.link" class="signBtn">
-                    <font-awesome-icon :icon="['fab', 'line']" />
-                    {{item.title}}
-                </RouterLink>
-                <p class="signup_signUp_text">
-                    已經是會員了?
-                    <RouterLink to ="/login">點我登入</RouterLink>
-                </p>
+                <input type="text" v-model="memName" placeholder="姓名">
+                <input type="email" v-model="memEmail" placeholder="電子信箱（作為帳號使用）">
+                <input type="password" v-model="a83au4" placeholder="密碼" minlength="8" maxlength="20">
+                <input type="password" v-model="a83au5" placeholder="再次輸入密碼" minlength="8" maxlength="20">
+                <input type="submit" value="註冊" class="signBtn" @click.prevent="handleSignUp">
             </form>
         </div>
+
+        <!-- 燈箱 -->
+        <div class="alert_bg" v-show="showAlert">
+            
+            <div class="alert_main">
+                <button @click="closeAlert">
+                    <i class="fa-solid fa-xmark fa-2x"></i>
+                </button>
+                <p>{{ alertContent }}</p>
+            </div>
+        </div>
+
     </div>
 </template>
 
+<script>
+import PageTitle from "../components/PageTitle.vue";
+export default {
+    data() {
+        return {
+            memName: '',
+            memEmail: '',
+            a83au4: '',
+            a83au5: '',
+            showAlert: false,
+            alertContent: '',
+        };
+    },
+    components:{
+        PageTitle
+    },
+    created() {
+    },
+    methods: {
+        handleSignUp(){
+            //電子信箱驗證
+            if(this.memEmail == "") {
+                document.body.classList.add('body-overflow-hidden');
+                this.alertContent = '請填寫正確的電子信箱'
+                this.showAlert = true;
+                return; 
+            };
+            
+            // 姓名是否為空
+            let hasnum;
+            for(let i=0; i<this.memName.length; i++){
+                let char = this.memName.charAt(i);
+                if (char>='0' && char<='9'){
+                    hasnum = true;
+                }
+            }
+            if(this.memName == "" || hasnum == true) {
+                this.alertContent = '請輸入正確姓名'
+                this.showAlert = true;
+                return;
+            }
+
+            // 比對密碼
+            if(this.a83au4.length < 6 || this.a83au5.length < 6){
+                this.alertContent = '密碼長度至少六碼'
+                this.showAlert = true;
+                return;
+            }
+            else if(this.a83au4 != this.a83au5){
+                this.alertContent = '密碼不一致，請重新輸入'
+                this.showAlert = true;
+                return;
+            }
+            this.alertContent = '註冊成功，即將前往會員中心'
+            this.showAlert = true;
+            //跳轉回會員中心
+            setTimeout(()=>{
+                this.$router.push('/member')
+            }, 2000)
+        },
+        closeAlert(){
+            this.showAlert = false;
+            this.alertContent = '';
+            document.body.classList.remove('body-overflow-hidden');
+        }
+    },
+};
+</script>
+
 <style lang="scss">
 //
-
 </style>

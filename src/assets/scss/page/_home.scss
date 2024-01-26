@@ -1,4 +1,5 @@
-
+main{
+  //banner
   .header_banner {
     width: 100%;
     background-color: $blue-1;
@@ -32,7 +33,7 @@
     border-radius: 5px;
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
     /* 添加更多樣式以適應您的設計 */
-  }
+    }
 
     #news {
       width: 8.43%;
@@ -116,3 +117,35 @@
 
     }
   }
+    
+  // header + 波浪圖
+
+  //內容
+
+  // 所有商品
+  .index_products{
+    width: 100%;
+    height: 600px;
+    background-color: aqua;
+  }  
+
+  // 服務項目
+  .index_service{}
+
+  //預約方式
+  .index_reserve{}
+
+  // Griddy造型屋
+  .index_griddy{}
+
+  // 最新消息
+  .index_news{}
+
+  // 一起遊樂 IG API
+  .index_insta{}
+
+  // Grid Island 關於我們
+  .index_about{}
+
+
+} //main
