@@ -25,11 +25,11 @@
     <!-- 內容 -->
     <div class="container">
       <div class="row">
-        <div class="col-PC-10 col-T-10 col-12">
+        <div class="col-PC-12 col-T-12 col-12">
 
           <!-- 所有商品 -->
           <div class="index_products">
-
+            <p>123</p>
           </div>
           <!-- 服務項目 -->
           <div class="index_service">
@@ -52,7 +52,7 @@
 
           </div>
           <!-- Grid Island 關於我們 -->
-          <div class="about">
+          <div class="index_about">
 
           </div>
 
@@ -100,7 +100,7 @@
   };
 </script>
 
-<style lang="scss">
+<!-- <style lang="scss">
   .header_banner {
     width: 100%;
     background-color: blue;
@@ -217,5 +217,10 @@
       top: 33.2%;
 
     }
+    .index_products{
+      width: 100%;
+      height: 600px;
+      background-color: aqua;
+    }
   }
-</style>
+</style> -->
