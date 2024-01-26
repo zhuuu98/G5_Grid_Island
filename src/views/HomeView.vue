@@ -58,7 +58,7 @@
 <style lang="scss">
   .header_banner {
     width: 100%;
-    background-color: aqua;
+    background-color: blue;
     display: flex;
 
     position: relative;
