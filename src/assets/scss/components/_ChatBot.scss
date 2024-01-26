@@ -5,6 +5,7 @@
     gap: $S-spacing;
     //聊天機器人開關按鈕
     .openChatBtn{
+        cursor: pointer;
         border: 0px solid;
         background-color: rgba(255, 255, 255, 0);
         border-radius: 100%;
