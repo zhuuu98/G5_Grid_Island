@@ -66,3 +66,16 @@
 .preCheck,.preBtn{
     margin:$M-spacing ;
 }
+input[type="checkbox"] {
+    display: inline-block;
+    background-color: #aaa;
+    padding: 3px 6px;
+    border: 1px solid gray;
+    color: #444;
+    user-select: none; /* 防止文字被滑鼠選取反白 */
+}
+
+input[type="checkbox"]:checked {
+    color: yellow;
+    background-color: #444;
+}

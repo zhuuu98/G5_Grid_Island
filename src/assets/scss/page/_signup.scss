@@ -16,6 +16,10 @@
   position: relative;
   border-radius: $PC-card-radius;
   padding: 80px 0 40px;
+
+  h2{
+    font-size: $M-h2;
+  }
 }
 .signup_main_griddy {
   width: 123px;
@@ -24,13 +28,11 @@
   position: absolute;
   top: -14%;
   left: 33%;
-  background: no-repeat center url("@/assets/images/header/griddy_orange.png"),
+  background: no-repeat center url("@/assets/images/login/griddy_red.svg"),
     $bgc-1;
 }
-h2{
-  font-size: $M-h2;
-}
-form{
+
+.signup_form{
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -45,6 +47,7 @@ form{
   }
   input:focus{
     outline: 1px solid $orange-1;
+    border: none;
     &::placeholder{
       color: transparent;
     }
@@ -71,11 +74,12 @@ $alertCrossHeight: 50px;
   width: 90vw;
   display: flex;
   flex-direction: column;
-  height: alertBoxHeight;
+  height: $alertBoxHeight;
   position: absolute;
   top: 33%;
   left: 5%;
   border-radius: $Mob-card-radius;
+  user-select: none;
   @include T(){
     width: 60vw;
     left: 20%;
@@ -98,13 +102,13 @@ $alertCrossHeight: 50px;
   }
 
   p{
-    border-top: 1px solid;
+    // border-top: 1px solid;
     text-align: center;
     vertical-align: middle;
     font-size: $PC-h3;
     justify-self: center;
     height: calc(#{$alertBoxHeight} - #{$alertCrossHeight});
-    line-height: calc(#{$alertBoxHeight} - #{$alertCrossHeight});
+    line-height: calc(#{$alertBoxHeight} / 1.6);
   }
 }
 .body-overflow-hidden{

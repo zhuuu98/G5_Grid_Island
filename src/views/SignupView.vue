@@ -6,7 +6,7 @@
                 <div class="signup_main_griddy"></div>
                 <h2>註冊會員</h2>
             </div>
-            <form action="">
+            <form action="" class="signup_form">
                 <input type="text" v-model="memName" placeholder="姓名">
                 <input type="email" v-model="memEmail" placeholder="電子信箱（作為帳號使用）">
                 <input type="password" v-model="a83au4" placeholder="密碼" minlength="8" maxlength="20">
