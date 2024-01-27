@@ -1,4 +1,5 @@
-main{
+main {
+
   //banner
   .header_banner {
     width: 100%;
@@ -21,20 +22,76 @@ main{
     }
 
     #tree-svg:hover {
-      filter: drop-shadow(0px 0px 4px #fff)
-      drop-shadow(0px 0px 12px #fff);
+      filter: drop-shadow(0px 0px 4px #fff) drop-shadow(0px 0px 12px #fff);
     }
-    #treeCard { 
-    position: absolute;
-    left: 8%; /* 根據需要調整位置 */
-    top: 10%;  /* 根據需要調整位置 */
-    background-color: white;
-    padding: 10px;
-    border: 6px solid blue;
-    background-color: orange;
-    outline: 10px solid green;
-    outline-offset: 5px ;
 
+    .showCard {
+      //卡片統一樣式
+      padding: $M-spacing;
+      background-color: $white-1;
+      outline: 2px solid $black;
+      box-shadow: 
+      0 0 0 4px #fff;
+      width: 20%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: $S-spacing;
+      color: $black;
+      .card-title {
+        font-size: $PC-h2;
+        font-family: Zen Maru Gothic;
+      }
+      .card-line {
+        width: calc(100% - 8px);
+        height: 1px;
+        background-color: $orange-1;
+      }
+      .card-text {
+        font-size: $PC-text;
+      }
+    }
+    #treeCard { //會員中心，樹
+      position: absolute;
+      left: 40px;
+      top: 10%;
+      border: $M-spacing solid $blue-1;
+    }
+    #commentCard { //留言板，留言板
+      position: absolute;
+      left: 40px;
+      top: 20%;
+      border: $M-spacing solid $orange-1;
+    }
+    #newsCard { //最新消息
+      position: absolute;
+      left: 40px;
+      top: 30%;
+      border: $M-spacing solid $green-1;
+    }
+    #cartCard { //購物車
+      position: absolute;
+      left: 40px;
+      top: 40%;
+      border: $M-spacing solid $red;
+    }
+    #signCard { //關於我們，招牌
+      position: absolute;
+      right: 40px;
+      top: 10%;
+      border: $M-spacing solid $yellow;
+    }
+    #gamesCard { //所有商品
+      position: absolute;
+      right: 40px;
+      top: 25%;
+      border: $M-spacing solid $purple;
+    }
+    #reserveCard { //場地預約
+      position: absolute;
+      right: 40px;
+      top: 40%;
+      border: $M-spacing solid $green-2;
     }
 
     #news {
@@ -43,10 +100,9 @@ main{
       left: 33.9%;
       top: 43.28%;
     }
-    
+
     #news:hover {
-      filter: drop-shadow(0px 0px 4px #fff)
-      drop-shadow(0px 0px 12px #fff);
+      filter: drop-shadow(0px 0px 4px #fff) drop-shadow(0px 0px 12px #fff);
     }
 
     #comment {
@@ -55,62 +111,69 @@ main{
       left: 37.62%;
       top: 34.2%;
     }
+
     #comment:hover {
-      filter: drop-shadow(0px 0px 4px #fff)
-      drop-shadow(0px 0px 12px #fff);
+      filter: drop-shadow(0px 0px 4px #fff) drop-shadow(0px 0px 12px #fff);
     }
+
     #roof {
       width: 24.3%;
       position: absolute;
       left: 38.4%;
       top: 19.5%;
     }
+
     #sign {
       width: 15.88%;
       position: absolute;
       left: 43.8%;
       top: 15%;
     }
+
     #sign:hover {
-      filter: drop-shadow(0px 0px 4px #fff)
-      drop-shadow(0px 0px 12px #fff);
+      filter: drop-shadow(0px 0px 4px #fff) drop-shadow(0px 0px 12px #fff);
     }
+
     #games {
       width: 12.2%;
       position: absolute;
       left: 53.8%;
       top: 32.55%;
     }
+
     #games:hover {
-      filter: drop-shadow(0px 0px 4px #fff)
-      drop-shadow(0px 0px 12px #fff);
+      filter: drop-shadow(0px 0px 4px #fff) drop-shadow(0px 0px 12px #fff);
     }
+
     #reserve {
       width: 10.715%;
       position: absolute;
       left: 64.2%;
       top: 43.2%;
     }
+
     #reserve:hover {
-      filter: drop-shadow(0px 0px 4px #fff)
-      drop-shadow(0px 0px 12px #fff);
+      filter: drop-shadow(0px 0px 4px #fff) drop-shadow(0px 0px 12px #fff);
     }
+
     #cart {
       width: 7.75%;
       position: absolute;
       left: 41.7%;
       top: 62%;
     }
+
     #cart:hover {
-      filter: drop-shadow(0px 0px 4px #fff)
-      drop-shadow(0px 0px 12px #fff);
+      filter: drop-shadow(0px 0px 4px #fff) drop-shadow(0px 0px 12px #fff);
     }
+
     #bar {
       width: 9.57%;
       position: absolute;
       left: 44.33%;
       top: 54.55%;
     }
+
     #bug {
       width: 9.65%;
       position: absolute;
@@ -119,39 +182,41 @@ main{
 
     }
   }
-    
+
   // header + 波浪圖
 
   //內容
 
   // 所有商品
-  .index_products{
+  .index_products {
     width: 100%;
     height: 200px;
     background-color: $red;
-  }  
+  }
 
   // 服務項目
-  .index_service{
+  .index_service {
     width: 100%;
     height: 200px;
     background-color: $blue-2;
   }
 
   //預約方式
-  .index_reserve{}
+  .index_reserve {}
 
   // Griddy造型屋
-  .index_griddy{}
+  .index_griddy {}
 
   // 最新消息
-  .index_news{}
+  .index_news {}
 
   // 一起遊樂 IG API
-  .index_insta{}
+  .index_insta {}
 
   // Grid Island 關於我們
-  .index_about{}
+  .index_about {}
 
 
-} //main
+}
+
+//main
