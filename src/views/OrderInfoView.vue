@@ -3,8 +3,7 @@
 
     <div class="orderInfoTitle" @click="toggleContent">
       <h2 class="pc-h3">訂單資訊</h2>
-
-      <font-awesome-icon :icon="['fas', 'chevron-down']" />
+      <font-awesome-icon :icon="['fas', 'chevron-down']" :style="{ transform: rotateIcon, transition: 'transform 0.5s' }"/>
     </div>
 
     <transition name="fade">
@@ -97,15 +96,8 @@
       </div>
     </transition>
       
-
-
-
     
-
-   
-    
-    
-    <form action="">
+    <form action="" method="post">
       
       <div class="orderPayment">
         <div class="orderInfo">
@@ -130,21 +122,28 @@
         <div class="paymentInfo">
           <h2 class="pc-h3">付款資料</h2>
           <div class="payment">
-            <label for="ordPayment">付款方式</label>
-            <select name="ord_payment" id="ordPayment">
-              <option value="">--請選擇--</option>
-              <option value="">線上刷卡</option>
-              <option value="">匯款轉帳</option>
-              <option value="">貨到付款</option>
+            <div class="text">
+              <label for="ordPayment">付款方式</label >
+              <div v-if="showWarning" class="warning">*請選擇一個有效的選項</div>
+            </div>
+            <select name="ord_payment" id="ordPayment" v-model="selectedValue" @change="handleSelectChange"
+            @focus="handlePaymentFocus" @blur="handlePaymentBlur">
+              <option value="0">--請選擇--</option>
+              <option value="option1">線上刷卡</option>
+              <option value="option2">匯款轉帳</option>
+              <option value="option3">貨到付款</option>
             </select>
           </div>
           <div class="bill">
-            <lable for="memBill">發票</lable>
-            <select type="tel" name="mem_bill" id="memBill">
-              <option value="">--請選擇--</option>
-              <option value="">電子發票</option>
-              <option value="">紙本發票</option>
-              <option value="">捐出發票</option>
+            <div class="text">
+              <label for="memBill">發票</label>
+              <div v-if="showWarning1" class="warning">*請選擇一個有效的選項</div>
+            </div>
+            <select type="tel" name="mem_bill" id="memBill" v-model="selectedValue1" @change="handleSelectChange1" @focus="handlePaymentFocus1" @blur="handlePaymentBlur1">
+              <option value="0">--請選擇--</option>
+              <option value="option1">電子發票</option>
+              <option value="option2">紙本發票</option>
+              <option value="option3">捐出發票</option>
             </select>
           </div>
         </div>
@@ -155,7 +154,7 @@
         </button>
       </div>
       <div class="checkOutBtn_pc">
-        <button class="btn_lg_orange" type="submit">
+        <button class="btn_lg_orange" type="submit"> 
           送出訂單
         </button>
       </div>
@@ -187,6 +186,11 @@ export default {
       deliveryAmount: 0,
       discountAmount: 0,
       showContent: true,
+      isRotated: true,
+      selectedValue: "0",
+      selectedValue1: "0",
+      showWarning: false,
+      showWarning1: false,
     };
   },
   computed: {
@@ -202,6 +206,9 @@ export default {
     cart() {
       return this.userStore.getCart;
     },
+    rotateIcon() {
+      return this.isRotated ? 'rotate(-180deg)' : '';
+    },
   },
   created() {
     this.axiosGetData();
@@ -215,27 +222,51 @@ export default {
           this.respondData = res.data;
         });
     },
-
-    deliveryMethodChange() {  
-      if (this.deliveryMethod == "homeDelivery") {
-        this.deliveryAmount = 80;
-      } else if (this.deliveryMethod == "pickup") {
-        this.deliveryAmount = 0;
-      }
-    },
-    discountCodeCheck() {
-      if (
-        this.discountCode == "GridIsland" ||
-        this.discountCode == "GridIsland2023"
-      ) {
-        this.discountAmount = 50;
-      } else {
-        this.discountAmount = 0;
-      }
-    },
     toggleContent(e) {
       this.showContent = !this.showContent;
+      this.isRotated = !this.isRotated;
     },
+    handlePaymentFocus() {
+        // 在 select 元素被聚焦時，將 showWarning 設為 false
+        this.showWarning = false;
+    },
+    handlePaymentBlur() {
+        // 在 select 元素失去焦點時，檢查選擇的值，根據需要更新 showWarning
+        if (this.selectedValue === "0") {
+            this.showWarning = true;
+        } else {
+            this.showWarning = false;
+        }
+    },
+    handleSelectChange() {
+        // 在選擇發生變化時檢查選擇的值，根據需要更新 showWarning
+        if (this.selectedValue === "0") {
+            this.showWarning = true;
+        } else {
+            this.showWarning = false;
+        }
+    },
+    handlePaymentFocus1() {
+        // 在 select 元素被聚焦時，將 showWarning 設為 false
+        this.showWarning1 = false;
+    },
+    handlePaymentBlur1() {
+    // 在 select 元素失去焦點時，檢查選擇的值，根據需要更新 showWarning1
+    if (!this.selectedValue1 || this.selectedValue1 === "0") {
+      this.showWarning1 = true;
+    } else {
+      this.showWarning1 = false;
+    }
+  },
+
+  handleSelectChange1() {
+    // 在選擇發生變化時檢查選擇的值，根據需要更新 showWarning1
+    if (!this.selectedValue1 || this.selectedValue1 === "0") {
+      this.showWarning1 = true;
+    } else {
+      this.showWarning1 = false;
+    }
+  },
 
   },
   mounted() {},

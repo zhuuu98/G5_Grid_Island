@@ -6,12 +6,16 @@
     display: flex;
     justify-content: space-between;
     margin-top: $M-spacing;
-    padding: 0 $L-spacing $M-spacing;;
+    padding: 0 $L-spacing $M-spacing;
+
+    &:hover {
+      cursor: pointer;
+    }
 
 
     
     @include M(){
-      padding: 0 $L-spacing;
+      // padding: 0 $L-spacing;
       
     }
     @include T(){
@@ -372,11 +376,23 @@
         @include T(){
           width: 374px;
         }
+        
+
+
+
+
+        
       }
       .bill {
         padding-top: $S-spacing;
       }
-  
+      .text {
+        display: flex;
+        justify-content: space-between;
+        .warning {
+          color: $red;
+        }
+      }
       label {
         letter-spacing: $PC-btn-esl-spacing;
       }
@@ -409,7 +425,7 @@
   }
 
   .checkOutBtn_m {
-    padding: $M-spacing;
+    padding: $M-spacing $L-spacing;
     @include T(){
       display: none;
     }
@@ -434,5 +450,8 @@
   }
 
 
+}
+select:focus {
+  outline-color: $orange-2;
 }
 
