@@ -19,6 +19,9 @@
       display: flex;
       display: none;
       align-items: end;
+      .btn_secondary:first-child{
+        background-color: #ff7a00;
+      }
       @include T(){
         display: flex;
         width: 50%;
@@ -43,16 +46,8 @@
       width: 100%;
       margin: 16px 0px auto;
       display: flex;
-        .btn_lg{
-          width: 100%;
+        .btn_lg_orange{
           margin-bottom: 8px;
-          background-color: $orange-2;
-        @include T(){
-          width: 50%;
-        }
-        @include PC(){
-          width: 50%;
-        }
         }
         select{
           width: 130px;
@@ -297,7 +292,7 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%,-50%);
-    padding: 20px;
+    padding: 30px;
     width: 340px;
     @include T(){
       width: 400px;
@@ -306,7 +301,6 @@
       width: 500px;
     }
     form{
-      position: relative;
       .board_lb_title{
         font-size: $M-h3;
         color: $black;
@@ -358,12 +352,22 @@
       width: 24px;
       height: 24px;
       position: absolute;
-      top: 0;
-      right: 0;
+      top: 5px;
+      right: 6px;
       vertical-align: bottom;
       cursor: pointer;
       &:hover{
         color: $red;
+      }
+    }
+    >div{
+      h3{
+        text-align: center;
+        margin-bottom: 60px;
+      }
+      button{
+        display: block!important;
+        margin: auto;
       }
     }
   }
@@ -450,20 +454,31 @@
     }
     .board_close_light_box{
       width: 20px;
-
+      
       svg{
+        position: absolute;
+        top: 4px;
+        right: 5px;
         background-color: $white-1;
         border-radius: 50px;
         width: 24px;
         height: 24px;
-        position: absolute;
-        top: 5px;
-        right: 8px;
         vertical-align: bottom;
         cursor: pointer;
         &:hover{
           color: $red;
         }
+      }
+    }
+    >div{
+      h3{
+        text-align: center;
+        margin-bottom: 60px;
+      }
+      button{
+        display: block!important;
+        margin: auto;
+
       }
     }
   }

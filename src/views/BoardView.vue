@@ -13,7 +13,7 @@
               <RouterLink to="/team" class="btn_secondary">報隊區</RouterLink>
             </div>
             <div class="board_article">
-              <div class="btn_lg" @click="open_light_box">我要發文</div>
+              <div class="btn_lg_orange" @click="open_light_box">我要發文</div>
               <select>
                 <option value="" selected>從新至舊</option>
                 <option value="">從舊至新</option>
@@ -82,7 +82,7 @@
       <div class="overlay" @click="light_box_close"></div>
       <div class="box">
         <form action="post" v-if="article_send_succ">
-          <p class="board_lb_title">我要發文</p>
+          <p class="board_lb_title ">我要發文</p>
           <div>
             <p class="board_lb_subTitle">留言內容</p>
             <textarea name="" id="" cols="35" rows="10" placeholder="輸入文章內容..." @keyup="article_send"></textarea>
@@ -97,7 +97,7 @@
           </div>
         </form>
         <div v-else>
-          <p>已成功送出文章！</p>
+          <h3>已成功送出文章！</h3>
           <button class="btn_sm_1" @click="light_box_close">關閉</button>
         </div>
         <div class="board_close_light_box" @click="light_box_close">
@@ -129,7 +129,7 @@
           <button class="btn_sm_1" v-else @click.prevent="re_submit">送出</button>
         </form>
         <div v-else>
-          <p>已成功檢舉，謝謝您！</p>
+          <h3>已成功檢舉，謝謝您！</h3>
           <button @click="light_box_re_close" class="btn_sm_1">關閉</button>
         </div>
         <div class="board_close_light_box" @click="light_box_re_close">
@@ -154,7 +154,7 @@ export default {
       card:[
         {
           id: 1,
-          id_img:'@/assets/images/board/board_id_img.svg',
+          id_img:'./src/assets/images/board/board_id_img.svg',
           id_img_alt:'board_id_img',
           memId:'1啊人家家就笨壓',
           time:'2023/12/30 20:25',
@@ -163,7 +163,7 @@ export default {
           re:[
             {
               id:1,
-              img:'@/assets/images/board/board_id_img.svg',
+              img:'./src/assets/images/board/board_id_img.svg',
               alt:'board_id_img',
               memId:'萵金',
               time:'2023/12/30 20:25',

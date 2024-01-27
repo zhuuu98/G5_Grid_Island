@@ -212,6 +212,7 @@ header {
         vertical-align: bottom;
         margin: auto;
         width: 100%;
+        border: none;
         }
         
       }
@@ -283,10 +284,10 @@ header {
               +.ham_hover_comm{
                 display: block;
                 color: $purple;
-
               }
             }
           }
+        
           // about hover效果
           .ham_about{
             &:hover{
@@ -322,6 +323,16 @@ header {
           display: flex;
           cursor: pointer;
           align-items: center;
+          &:hover{
+            &.ham_hover_comm{
+                display: block;
+                color: $purple;
+              }
+            .ham_comm{
+              background-color: $green-1;
+              font-weight: bold;
+            }
+          }
           .submenu{
             display: flex;
             height: 30px;
