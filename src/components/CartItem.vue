@@ -1,7 +1,7 @@
 <template>
   <main class="cartItem">
     <div class="cartItemBackground">
-      <div class="deleteBtn">
+      <div class="deleteBtn" @click="itemChangeDel">
         <font-awesome-icon :icon="['fas', 'xmark']" class="xMark" />
       </div>
       <div class="cartItemContent">
@@ -37,11 +37,11 @@
               </div>
             </div>
             <div class="cartItemQuantity">
-              <button @click="quantityChange('minus')">
+              <button @click="quantityChangeMinus">
                 <span>-</span>
               </button>
               <input type="number" :value="itemCount" />
-              <button @click="quantityChange('plus')">
+              <button @click="quantityChangePlus">
                 <span>+</span>
               </button>
             </div>
@@ -68,14 +68,15 @@ export default {
     "itemCount",
   ],
   methods: {
-    quantityChange(method) {
-      if (method == "plus") {
-        this.productQuantity += 1;
-      } else {
-        if (this.productQuantity > 1) {
-          this.productQuantity -= 1;
-        }
-      }
+    quantityChangePlus() {
+      this.$emit("quantityPlus");
+    },
+    quantityChangeMinus() {
+      this.$emit("quantityMinus");
+    },
+    itemChangeDel() {
+      console.log("del");
+      this.$emit("itemDel");
     },
   },
   mounted() {},
