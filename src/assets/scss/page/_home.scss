@@ -2,7 +2,7 @@ main{
   //banner
   .header_banner {
     width: 100%;
-    background-color: $blue-1;
+    background-color: $blue-2;
     display: flex;
 
     position: relative;
@@ -24,15 +24,17 @@ main{
       filter: drop-shadow(0px 0px 4px #fff)
       drop-shadow(0px 0px 12px #fff);
     }
-    .card {
+    #treeCard { 
     position: absolute;
-    left: 30%; /* 根據需要調整位置 */
+    left: 8%; /* 根據需要調整位置 */
     top: 10%;  /* 根據需要調整位置 */
     background-color: white;
     padding: 10px;
-    border-radius: 5px;
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
-    /* 添加更多樣式以適應您的設計 */
+    border: 6px solid blue;
+    background-color: orange;
+    outline: 10px solid green;
+    outline-offset: 5px ;
+
     }
 
     #news {
