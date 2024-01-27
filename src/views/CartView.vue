@@ -153,7 +153,7 @@
       <div class="recProductList">
         <div
           class="recProductPic"
-          v-for="(item, index) in displayData.slice(0, 4)"
+          v-for="(item, index) in recProduct"
           :key="index"
         >
           <router-link
@@ -192,8 +192,7 @@ export default {
       displayData: [],
       discountCode: "",
       deliveryMethod: "init",
-      // deliveryAmount: 0,
-      // discountAmount: 0,
+      recProduct: [],
     };
   },
   components: {
@@ -261,9 +260,9 @@ export default {
       axios
         .get("https://tibamef2e.com/chd103/g5/phps/ProductM.php")
         .then((res) => {
-          console.log(res.data);
           this.respondData = res.data;
           this.displayData = res.data;
+          this.shuffleAndPick();
         });
     },
     deliveryMethodChangeMethod() {
@@ -280,6 +279,10 @@ export default {
     },
     itemChangeDel(product) {
       this.itemDelFormCart(product);
+    },
+    shuffleAndPick() {
+      const shuffled = this.displayData.sort(() => 0.5 - Math.random());
+      this.recProduct = shuffled.slice(0, 4);
     },
   },
   mounted() {},

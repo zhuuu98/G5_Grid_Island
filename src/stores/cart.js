@@ -52,7 +52,7 @@ export default defineStore("cartStore", {
     deliveryMethodChange(method) {
       if (method === "homeDelivery") {
         this.deliveryPrice = 80;
-      } else if (method === "pickup") {
+      } else if (method === "pickup" || method === "init") {
         this.deliveryPrice = 0;
       }
     },
