@@ -28,6 +28,9 @@
                 :itemPrice="item.price"
                 :itemId="item.id"
                 :itemCount="item.count"
+                @quantityPlus="quantityChangePlus(item)"
+                @quantityMinus="quantityChangeMinus(item)"
+                @itemDel="itemChangeDel(item)"
               />
             </div>
             <div class="emptyCart" v-show="cartData.length == 0">
@@ -134,7 +137,10 @@
               <h3>$ {{ totalPrice }}</h3>
             </div>
           </div>
-          <div class="checkOutBtn" v-show="cartData.length != 0">
+          <div
+            class="checkOutBtn"
+            v-show="cartData.length != 0 && deliveryMethod != 'init'"
+          >
             <button class="bookBtn">前往結帳</button>
           </div>
         </div>
@@ -147,7 +153,7 @@
       <div class="recProductList">
         <div
           class="recProductPic"
-          v-for="(item, index) in displayData.slice(0, 4)"
+          v-for="(item, index) in recProduct"
           :key="index"
         >
           <router-link
@@ -186,8 +192,7 @@ export default {
       displayData: [],
       discountCode: "",
       deliveryMethod: "init",
-      // deliveryAmount: 0,
-      // discountAmount: 0,
+      recProduct: [],
     };
   },
   components: {
@@ -244,22 +249,40 @@ export default {
     this.axiosGetData();
   },
   methods: {
-    ...mapActions(cartStore, ["deliveryMethodChange", "discountCodeCheck"]),
+    ...mapActions(cartStore, [
+      "deliveryMethodChange",
+      "discountCodeCheck",
+      "reduceFromCart",
+      "increaseFromCart",
+      "itemDelFormCart",
+    ]),
     axiosGetData() {
       axios
         .get("https://tibamef2e.com/chd103/g5/phps/ProductM.php")
         .then((res) => {
-          console.log(res.data);
           this.respondData = res.data;
           this.displayData = res.data;
+          this.shuffleAndPick();
         });
     },
-
     deliveryMethodChangeMethod() {
       this.deliveryMethodChange(this.deliveryMethod);
     },
     discountCodeCheckMethod() {
       this.discountCodeCheck(this.discountCode);
+    },
+    quantityChangePlus(product) {
+      this.increaseFromCart(product);
+    },
+    quantityChangeMinus(product) {
+      this.reduceFromCart(product);
+    },
+    itemChangeDel(product) {
+      this.itemDelFormCart(product);
+    },
+    shuffleAndPick() {
+      const shuffled = this.displayData.sort(() => 0.5 - Math.random());
+      this.recProduct = shuffled.slice(0, 4);
     },
   },
   mounted() {},

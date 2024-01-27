@@ -52,7 +52,7 @@
                 </div>
               </div>
               <!-- 留言區 -->
-              <div class="board_re hide" :class="'card-' + item.id">
+              <div class="board_re hide">
 
                 <div class="board_re_card" v-for="reItem in item.re" :key="reItem.id">
                   <div class="board_re_id">
@@ -81,23 +81,28 @@
     <div class="light_box" v-show="board_light_box_open">
       <div class="overlay" @click="light_box_close"></div>
       <div class="box">
-        <form action="post">
+        <form action="post" v-if="article_send_succ">
           <p class="board_lb_title">我要發文</p>
           <div>
             <p class="board_lb_subTitle">留言內容</p>
-            <textarea name="" id="" cols="35" rows="10" placeholder="輸入文章內容..."></textarea>
+            <textarea name="" id="" cols="35" rows="10" placeholder="輸入文章內容..." @keyup="article_send"></textarea>
           </div>
           <div class="board_light_box_send">
             <div>
-              <input type="checkbox" name="" id="check">
+              <input type="checkbox" name="" id="check" v-model="cb_check" @change="article_send">
               <label for="check">我已確認文章內容不包含不當內文及攻擊字眼。</label>
             </div>
-            <button class="btn_sm_1">送出</button>
-          </div>
-          <div class="board_close_light_box" @click="light_box_close">
-            <font-awesome-icon :icon="['fas', 'xmark']" />
+            <button class="btn_sm_1" v-if="!cb_submit" disabled>送出</button>
+            <button class="btn_sm_1" v-else @click="article_send_btn">送出</button>
           </div>
         </form>
+        <div v-else>
+          <p>已成功送出文章！</p>
+          <button class="btn_sm_1" @click="light_box_close">關閉</button>
+        </div>
+        <div class="board_close_light_box" @click="light_box_close">
+          <font-awesome-icon :icon="['fas', 'xmark']" />
+        </div>
       </div>
     </div>
 
@@ -105,26 +110,32 @@
     <div class="board_lb_re" v-show="board_light_box_report">
       <div class="board_lb_re_overlay" @click="light_box_re_close"></div>
       <div class="board_lb_re_box">
-        <form action="">
+        <form action="" v-if="re_submit_show">
           <div class="board_lb_re_title">
             <p>請問您要檢舉的項目是...</p>
           </div>
           <select id="re_option" v-model="selectedOption" @change="updateReTextVisibility">
-            <option selected>廣告</option>
+            <option v-for="(report,index) in reports" :key="index" :value="report.value" :disabled="report.disabled" :selected="report.selected">{{ report.reason }}</option>
+            <!-- <option>廣告</option>
             <option>帶有攻擊性言論</option>
             <option>暴力或危險組織</option>
             <option>我就是不喜歡</option>
             <option>仇恨言論或象徵符號</option>
             <option>不實資訊</option>
-            <option value="lb_re_other">其他</option>
+            <option value="lb_re_other">其他</option> -->
           </select>
-          <textarea cols="30" rows="10" v-show="open_re_text" placeholder="請敘述檢舉理由"></textarea>
-          <button class="btn_sm_1">送出</button>
-          <div class="board_close_light_box" @click="light_box_re_close">
-            <font-awesome-icon :icon="['fas', 'xmark']" />
-          </div>
+          <textarea cols="30" rows="10" v-show="open_re_text" placeholder="請敘述檢舉理由" @keyup="updateReTextVisibility"></textarea>
+          <button class="btn_sm_1" v-if="!re_submit_disable" disabled>送出</button>
+          <button class="btn_sm_1" v-else @click.prevent="re_submit">送出</button>
         </form>
+        <div v-else>
+          <p>已成功檢舉，謝謝您！</p>
+          <button @click="light_box_re_close" class="btn_sm_1">關閉</button>
         </div>
+        <div class="board_close_light_box" @click="light_box_re_close">
+          <font-awesome-icon :icon="['fas', 'xmark']" />
+        </div>
+      </div>
     </div>
     
       
@@ -298,6 +309,38 @@ export default {
       open_re_text: false,
       selectedOption: "",
       // open_reply_text: false,
+      reports:[{
+        reason: '-請選擇檢舉項目-',
+        value: '',
+        disabled: true,
+        selected: true
+      },{
+        reason: '廣告',
+        value: 'ad'
+      },{
+        reason: '帶有攻擊性言論',
+        value: 'violent'
+      },{
+        reason: '暴力或危險組織',
+        value: 'danger'
+      },{
+        reason: '我就是不喜歡',
+        value: 'dislike'
+      },{
+        reason: '仇恨言論或象徵符號',
+        value: 'hate'
+      },{
+        reason: '不實資訊',
+        value: 'fake'
+      },{
+        reason: '其他',
+        value: 'lb_re_other'
+      }],
+      re_submit_disable: false,
+      re_submit_show: true,
+      cb_submit: false,
+      cb_check: false,
+      article_send_succ: true,
     };
   },
   computed: {
@@ -313,6 +356,9 @@ export default {
   mounted() {},
   methods: {
     open_light_box(){
+      this.article_send_succ = true;
+      this.cb_check = false;
+      this.cb_submit = false;
       this.board_light_box_open = true;
       document.body.classList.add('body-overflow-hidden');
     },
@@ -322,9 +368,12 @@ export default {
       document.body.classList.remove('body-overflow-hidden');
     },
     open_light_box_report(){
+      this.re_submit_show = true;
+      this.selectedOption = this.reports[0].value;
+      this.re_submit_disable = false;
+      this.open_re_text = false;
       this.board_light_box_report = true;
       document.body.classList.add('body-overflow-hidden');
-
     },
     light_box_re_close(){
       this.board_light_box_report = false;
@@ -333,6 +382,15 @@ export default {
     },
     updateReTextVisibility() {
       this.open_re_text = this.selectedOption === "lb_re_other";
+
+      if((this.selectedOption === "lb_re_other" && document.querySelector('.board_lb_re_box textarea').value == '') || this.selectedOption == ""){
+        this.re_submit_disable = false;
+      }else if(this.selectedOption === "lb_re_other" && document.querySelector('.board_lb_re_box textarea').value != ''){
+        this.re_submit_disable = true;
+      }else{
+        this.re_submit_disable = true;
+      }
+
     },
     toggleReply(){
       this.open_reply_text = !this.open_reply_text;
@@ -340,7 +398,7 @@ export default {
     // 控制展開留言區
     toggleReply(itemId){
       //jquery
-      // var cardli = $('.card-' + x);
+      // var cardli = $('.card-' + itemId);
       // cardli.find('.down').toggle();
 
       //js
@@ -355,6 +413,23 @@ export default {
         }
       }
     },
+    //送出檢舉彈窗
+    re_submit(){
+      this.re_submit_show = false;
+    },
+    article_send(){
+      if(this.cb_check == true && document.querySelector('.light_box textarea').value != ''){
+        this.cb_submit = true;
+      }else{
+        this.cb_submit = false;
+
+      }
+    },
+    article_send_btn(){
+      this.article_send_succ = false;
+
+    },
+    
 
   },
 
@@ -370,6 +445,10 @@ export default {
     width: 100%;
     background-color: #ccc;
     height: 300px;
+  }
+  [disabled]{
+    cursor: no-drop;
+    // background: gray;
   }
 
 </style>

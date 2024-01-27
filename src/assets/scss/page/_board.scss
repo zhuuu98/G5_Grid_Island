@@ -446,26 +446,26 @@
         }
       }
 
-      .board_close_light_box{
-        width: 20px;
+      
+    }
+    .board_close_light_box{
+      width: 20px;
 
-        svg{
-          background-color: $white-1;
-          border-radius: 50px;
-          width: 24px;
-          height: 24px;
-          position: absolute;
-          top: 5px;
-          right: 8px;
-          vertical-align: bottom;
-          cursor: pointer;
-          &:hover{
-            color: $red;
-          }
+      svg{
+        background-color: $white-1;
+        border-radius: 50px;
+        width: 24px;
+        height: 24px;
+        position: absolute;
+        top: 5px;
+        right: 8px;
+        vertical-align: bottom;
+        cursor: pointer;
+        &:hover{
+          color: $red;
         }
       }
     }
-    
   }
 }
 
