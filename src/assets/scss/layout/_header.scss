@@ -11,7 +11,7 @@ header {
 
     .logo_box {
       display: flex;
-      margin: 4px 0px 4px 10px;
+      margin: 4px 0px 4px 5px;
       @include PC(){
         margin: 4px 0px 4px 20px;
       }

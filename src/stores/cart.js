@@ -3,14 +3,26 @@ export default defineStore("cartStore", {
   // 對應 data
   state: () => ({
     cartData: [],
+    deliveryPrice: 0,
+    discountPrice: 0,
+    validDiscountCodes: ["GridIsland", "GridIsland2023"],
   }),
   getters: {
-    totalPrice() {
+    subTotalPrice() {
       // 使用 computed 屬性計算總價
       return this.cartData.reduce(
         (total, item) => total + item.price * item.count,
         0
       );
+    },
+    deliveryAmount() {
+      return this.deliveryPrice;
+    },
+    discountAmount() {
+      return this.discountPrice;
+    },
+    totalPrice() {
+      return this.subTotalPrice + this.deliveryAmount - this.discountAmount;
     },
   },
   actions: {
@@ -30,7 +42,7 @@ export default defineStore("cartStore", {
         });
       } else {
         console.log("Hello");
-        // 購物車裡面有這筆資料，要把count+1
+        // 購物車裡面有這筆資料，要把count+addcount
         const oldCount = this.cartData[resultIndex]["count"];
         this.cartData[resultIndex] = {
           ...this.cartData[resultIndex],
@@ -38,6 +50,23 @@ export default defineStore("cartStore", {
         };
       }
       console.log(this.cartData);
+    },
+    deliveryMethodChange(method) {
+      if (method === "homeDelivery") {
+        console.log("HI");
+        this.deliveryPrice = 80;
+      } else if (method === "pickup") {
+        console.log("hello");
+        this.deliveryPrice = 0;
+      }
+    },
+    discountCodeCheck(discountCode) {
+      if (this.validDiscountCodes.includes(discountCode)) {
+        this.discountPrice = 50;
+      } else {
+        console.log("hi");
+        this.discountPrice = 0;
+      }
     },
   },
 });

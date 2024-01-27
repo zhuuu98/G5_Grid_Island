@@ -30,7 +30,26 @@
                 :itemCount="item.count"
               />
             </div>
-            <div class="continueShopping">
+            <div class="emptyCart" v-show="cartData.length == 0">
+              <div class="emptyCartIconArea">
+                <font-awesome-icon
+                  :icon="['fas', 'cart-arrow-down']"
+                  class="emptyCartIcon"
+                />
+              </div>
+              <div class="promptGroup">
+                <div class="promptText">
+                  <p>購物籃是空的</p>
+                </div>
+                <div class="goToShopBtn">
+                  <router-link to="/product" class="cartBtn"
+                    >前往購物</router-link
+                  >
+                </div>
+              </div>
+            </div>
+
+            <div class="continueShopping" v-show="cartData.length != 0">
               <router-link to="/product">
                 <font-awesome-icon
                   :icon="['fas', 'angle-left']"
@@ -41,7 +60,7 @@
             </div>
           </div>
         </div>
-        <div class="buyingSelectArea">
+        <div class="buyingSelectArea" v-show="cartData.length != 0">
           <div class="discountCode">
             <div class="discountCodeTitle">
               <h3>輸入折扣碼</h3>
@@ -51,8 +70,9 @@
                 <input
                   type="text"
                   id="discountCode"
+                  placeholder="請輸入折扣碼"
                   v-model="discountCode"
-                  @input="discountCodeCheck()"
+                  @input="discountCodeCheckMethod()"
                 />
               </div>
               <div class="discountCodeBtn">
@@ -67,7 +87,10 @@
               <h3>配送方式</h3>
             </div>
             <div class="deliveryMethodSelect">
-              <select v-model="deliveryMethod" @change="deliveryMethodChange">
+              <select
+                v-model="deliveryMethod"
+                @change="deliveryMethodChangeMethod"
+              >
                 <option value="init">-請選擇-</option>
                 <option value="homeDelivery">宅配到府</option>
                 <option value="pickup">店內自取</option>
@@ -83,7 +106,7 @@
               <p>小計</p>
             </div>
             <div class="subtotalAmount">
-              <p>$ {{ totalPrice }}</p>
+              <p>$ {{ subTotalPrice }}</p>
             </div>
           </div>
           <div class="deliveryPrice">
@@ -99,7 +122,7 @@
               <p>折扣</p>
             </div>
             <div class="discountAmount">
-              <span v-if="discountAmount != 0">-</span>
+              <span v-show="discountAmount != 0">-</span>
               <p>$ {{ discountAmount }}</p>
             </div>
           </div>
@@ -108,10 +131,10 @@
               <h3>總價</h3>
             </div>
             <div class="totalPriceAmount">
-              <h3>$ {{ totalPriceCount }}</h3>
+              <h3>$ {{ totalPrice }}</h3>
             </div>
           </div>
-          <div class="checkOutBtn">
+          <div class="checkOutBtn" v-show="cartData.length != 0">
             <button class="bookBtn">前往結帳</button>
           </div>
         </div>
@@ -163,8 +186,8 @@ export default {
       displayData: [],
       discountCode: "",
       deliveryMethod: "init",
-      deliveryAmount: 0,
-      discountAmount: 0,
+      // deliveryAmount: 0,
+      // discountAmount: 0,
     };
   },
   components: {
@@ -173,7 +196,13 @@ export default {
   computed: {
     //使用 mapState 輔助函數將/src/stores/cart裡的state/data 映射在這裡
     // !!!要寫在computed
-    ...mapState(cartStore, ["cartData", "totalPrice"]),
+    ...mapState(cartStore, [
+      "cartData",
+      "subTotalPrice",
+      "deliveryAmount",
+      "discountAmount",
+      "totalPrice",
+    ]),
     loading() {
       return this.respondData.length == 0;
     },
@@ -181,7 +210,7 @@ export default {
       return this.displayData.length == 0;
     },
     totalPriceCount() {
-      return this.totalPrice + this.deliveryAmount - this.discountAmount;
+      return this.subTotalPrice + this.deliveryAmount - this.discountAmount;
     },
     userName2() {
       return this.userStore.getUserName;
@@ -215,6 +244,7 @@ export default {
     this.axiosGetData();
   },
   methods: {
+    ...mapActions(cartStore, ["deliveryMethodChange", "discountCodeCheck"]),
     axiosGetData() {
       axios
         .get("https://tibamef2e.com/chd103/g5/phps/ProductM.php")
@@ -225,22 +255,11 @@ export default {
         });
     },
 
-    deliveryMethodChange() {
-      if (this.deliveryMethod == "homeDelivery") {
-        this.deliveryAmount = 80;
-      } else if (this.deliveryMethod == "pickup") {
-        this.deliveryAmount = 0;
-      }
+    deliveryMethodChangeMethod() {
+      this.deliveryMethodChange(this.deliveryMethod);
     },
-    discountCodeCheck() {
-      if (
-        this.discountCode == "GridIsland" ||
-        this.discountCode == "GridIsland2023"
-      ) {
-        this.discountAmount = 50;
-      } else {
-        this.discountAmount = 0;
-      }
+    discountCodeCheckMethod() {
+      this.discountCodeCheck(this.discountCode);
     },
   },
   mounted() {},
