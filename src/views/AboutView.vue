@@ -38,94 +38,104 @@
           </div>
           <!-- 環境介紹 -->
           <div class="about_en">
-            <div class="about_en_section">
-              <!-- 輪播圖 -->
-              <div class="about_en_imgs">
+            <div class="about_row">
+              <div class="about_en_section">
+                <!-- 輪播圖 -->
+                <div class="about_en_imgs">
 
-                <!-- <Form :model="setting" :label-width="100">
-                  <FormItem label="Automatic switching">
-                      <Switch v-model="setting.autoplay">
-                          <template #open>On</template>
-                          <template #close>Off</template>
-                      </Switch>
-                  </FormItem>
-                  <FormItem label="Circular indicator">
-                      <Switch v-model="setting.radiusDot">
-                          <template #open>On</template>
-                          <template #close>Off</template>
-                      </Switch>
-                  </FormItem>
-                  <FormItem label="Automatic switching speed">
-                      <Slider v-model="setting.autoplaySpeed" :min="300" :max="10000" :step="100"></Slider>
-                  </FormItem>
-                  <FormItem label="Indicator position">
-                      <RadioGroup v-model="setting.dots" type="button">
-                          <Radio label="inside">interior</Radio>
-                          <Radio label="outside">exterior</Radio>
-                          <Radio label="none">Don't show</Radio>
-                      </RadioGroup>
-                  </FormItem>
-                  <FormItem label="Switch the arrow">
-                      <RadioGroup v-model="setting.arrow" type="button">
-                          <Radio label="hover">Hover displayed when</Radio>
-                          <Radio label="always">Always show</Radio>
-                          <Radio label="never">Don't show</Radio>
-                      </RadioGroup>
-                  </FormItem>
-                  <FormItem label="Indicator trigger mode">
-                      <RadioGroup v-model="setting.trigger" type="button">
-                          <Radio label="click">Click</Radio>
-                          <Radio label="hover">Hover</Radio>
-                      </RadioGroup>
-                  </FormItem>
-                </Form> -->
-                <Carousel
-                  v-model="value"
-                  :autoplay="true"
-                  :autoplay-speed="2000"
-                  :dots="inside"
-                  :radius-dot="true"
-                  :trigger="click"
-                  :arrow="false">
-                  <CarouselItem>
-                      <div class="about_demo-carousel">
-                        
-                        <img src="../assets/images/about/about_en_1.jpg" alt="en_1">
-                      </div>
-                  </CarouselItem>
-                  <CarouselItem>
-                      <div class="about_demo-carousel">
-                        <img src="../assets/images/about/about_en_2.jpg" alt="en_2">
-                      </div>
-                  </CarouselItem>
-                  <CarouselItem>
-                      <div class="about_demo-carousel">
-                        <img src="../assets/images/about/about_en_3.jpg" alt="en_3">
-                      </div>
-                  </CarouselItem>
-                </Carousel>
+                  <!-- <Form :model="setting" :label-width="100">
+                    <FormItem label="Automatic switching">
+                        <Switch v-model="setting.autoplay">
+                            <template #open>On</template>
+                            <template #close>Off</template>
+                        </Switch>
+                    </FormItem>
+                    <FormItem label="Circular indicator">
+                        <Switch v-model="setting.radiusDot">
+                            <template #open>On</template>
+                            <template #close>Off</template>
+                        </Switch>
+                    </FormItem>
+                    <FormItem label="Automatic switching speed">
+                        <Slider v-model="setting.autoplaySpeed" :min="300" :max="10000" :step="100"></Slider>
+                    </FormItem>
+                    <FormItem label="Indicator position">
+                        <RadioGroup v-model="setting.dots" type="button">
+                            <Radio label="inside">interior</Radio>
+                            <Radio label="outside">exterior</Radio>
+                            <Radio label="none">Don't show</Radio>
+                        </RadioGroup>
+                    </FormItem>
+                    <FormItem label="Switch the arrow">
+                        <RadioGroup v-model="setting.arrow" type="button">
+                            <Radio label="hover">Hover displayed when</Radio>
+                            <Radio label="always">Always show</Radio>
+                            <Radio label="never">Don't show</Radio>
+                        </RadioGroup>
+                    </FormItem>
+                    <FormItem label="Indicator trigger mode">
+                        <RadioGroup v-model="setting.trigger" type="button">
+                            <Radio label="click">Click</Radio>
+                            <Radio label="hover">Hover</Radio>
+                        </RadioGroup>
+                    </FormItem>
+                  </Form> -->
+                  <Carousel
+                    v-model="value"
+                    :autoplay="true"
+                    :autoplay-speed="2000"
+                    :dots="outside"
+                    :radius-dot="true"
+                    :trigger="click"
+                    :arrow="false">
+                    <CarouselItem>
 
-              </div>
-              <!-- 環境敘述 -->
-              <div class="about_en_text">
-                <div class="about_en_text_title">
-                  <h3>店內環境</h3>
+                        <div class="about_demo-carousel">
+                          
+                          <img class="is_m" src="../assets/images/about/about_en_1_m.jpg" alt="en_1">
+                          <img class="is_d" src="../assets/images/about/about_en_1.jpg" alt="en_1">
+                        </div>
+                      </CarouselItem>
+                      
+                      <CarouselItem>
+                        <div class="about_demo-carousel">
+                          
+                          <img class="is_m" src="../assets/images/about/about_en_3_m.jpg" alt="en_3">
+                          <img class="is_d" src="../assets/images/about/about_en_3.jpg" alt="en_3">
+                        </div>
+                      </CarouselItem>
+                      
+                      <CarouselItem>
+                        <div class="about_demo-carousel">
+                          <img class="is_m" src="../assets/images/about/about_en_5_m.jpg" alt="en_5">
+                          <img class="is_d" src="../assets/images/about/about_en_5.jpg" alt="en_5">
+                        </div>
+                    </CarouselItem>
+
+                  </Carousel>
+
                 </div>
-                <div class="about_en_text_content">
-                  <p>
-                    歡迎來到Grid Island！我們擁有多種遊戲和豐富的場地設施，無論你是想和三五好友玩遊戲、舉辦大型派對，還是享受私密包廂，我們都能滿足你的需求。
-                  </p>
-                  <p>
-                    在這裡，你可以找到四人桌、八人桌和十二人包廂，適合各種不同大小的團體聚會。超過200款遊戲等著你來挑選，涵蓋策略、派對、家庭等各式各樣的遊戲，讓你盡情享受遊戲的樂趣。
-                  </p>
-                  <p>
-                    除了遊戲，我們還提供各種美食、飲料和酒精飲料，讓你在遊戲間隙能品嘗美味的炸物或餐飲，提振精神。
-                  </p>
-                  <p>
-                    此外，如果你計畫舉辦派對或特殊活動，我們也能提供場地包場服務，打造專屬於你的派對體驗。
-                  </p>
+                <!-- 環境敘述 -->
+                <div class="about_en_text">
+                  <div class="about_en_text_title">
+                    <h3>店內環境</h3>
+                  </div>
+                  <div class="about_en_text_content">
+                    <p>
+                      歡迎來到Grid Island！我們擁有多種遊戲和豐富的場地設施，無論你是想和三五好友玩遊戲、舉辦大型派對，還是享受私密包廂，我們都能滿足你的需求。
+                    </p>
+                    <p>
+                      在這裡，你可以找到四人桌、八人桌和十二人包廂，適合各種不同大小的團體聚會。超過200款遊戲等著你來挑選，涵蓋策略、派對、家庭等各式各樣的遊戲，讓你盡情享受遊戲的樂趣。
+                    </p>
+                    <p>
+                      除了遊戲，我們還提供各種美食、飲料和酒精飲料，讓你在遊戲間隙能品嘗美味的炸物或餐飲，提振精神。
+                    </p>
+                    <p>
+                      此外，如果你計畫舉辦派對或特殊活動，我們也能提供場地包場服務，打造專屬於你的派對體驗。
+                    </p>
+                  </div>
+                  <button class="btn_lg">立即預約</button>
                 </div>
-                <button class="btn_lg">立即預約</button>
               </div>
             </div>
           </div>

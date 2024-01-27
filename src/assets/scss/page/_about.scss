@@ -1,4 +1,32 @@
+.is_d{
+  display: none;
+  @include T(){
+    display: none;
+  }
+  @include PC(){
+    display: block;
+  }
+}
+.is_m{
+  @include T(){
+    display: block;
+  }
+  @include PC(){
+    display: none;
+  }
+}
 .about {
+
+  &_row{
+    width: 90%;
+    margin: auto;
+    @include T(){
+      width: 80%;
+    }
+    @include PC(){
+      max-width: 1140px;
+    }
+  }
   // background-color: aquamarine;
   // .row{
     // background-color: #ccc;
@@ -108,71 +136,85 @@
       margin-bottom: 100px;
 
       &_section{
-        width: 100%;
-        // margin: 50px;
-        padding: 20px;
-        @include T(){
-          padding: 80px;
-          display: flex;
-          // border: 1px solid red;
-
-        }
-
-        // 輪播圖
-        .about_en_imgs{
-          margin: 8px auto;
-          background-color: #aaa;
-          // width: 100%;
-          // width: 300px;
-          border-radius: 32px;
+        // width: 80%;
+        margin: 60px auto;
+        >div{
+          border-radius: 28px;
           overflow: hidden;
-          @include T(){
-            width: 50%;
-            margin: 20px;
-            // height: auto;
-            
-          }
-
-          // .about_demo-carousel_1{
-          //   background-image: url(../../images/about/about_en_1.jpg);
-          // }
-          
-          .about_demo-carousel{
-            height: 260px;
-            // width: 100%;
-            // height: 50%;
-            // overflow: hidden;
-            @include T(){
-              height: 450px;
-              // height: 50%;
-              // border: 1px solid blue;
-              // height: auto;
-              // height: 300px;
-              // width: 300px;
-              // width: 100%;
-              // height: 600px;
-            }
+          &:first-child{
+            max-height: 400px;
+            margin-bottom: 20px;
             img{
-              // border: 1px solid red;
-              width: 100%;
+              height: 100%;
               transform-origin: bottom;
               object-fit: cover;
             }
           }
+          &:nth-child(2){
+            padding: 16px;
+            h3{
+              margin-bottom: 20px;
+            }
+            button{
+              margin-top: 20px;
+              margin-bottom: 10px;
+            }
+          }
         }
 
-        .about_en_text{
-          margin: 8px auto;
-          padding: 20px;
-          border-radius: 28px;
-          background-color: $white-1;
+        @include PC(){
           width: 100%;
-          margin: auto;
-          @include T(){
-            min-height: 450px;
+          margin: 0px auto;
+          padding: 100px 0;
+          display: flex;
+          // border: 1px solid red;
+        
+          >div{
             width: 50%;
-            
+            &:first-child{
+              margin-bottom: 0px;
+              margin-right: 20px;
+              max-height: none;
+            }
+            &:nth-child(2){
+              padding: 50px 40px;
+              h3{
+                margin-bottom: 20px;
+              }
+              button{
+                margin-top: 40px;
+              }
+            }
           }
+        }
+
+        @media screen and (max-width:1064px) and (min-width:1024px) {
+          >div{
+            &:first-child{
+              img{
+                height: 583px;
+              }
+            }
+          }
+        }
+
+        // 輪播圖
+        .about_en_imgs{
+          
+        }
+        
+        .about_en_text{
+          // margin: 8px auto;
+          // padding: 20px;
+          // border-radius: 28px;
+          background-color: $white-1;
+          // width: 100%;
+          // margin: auto;
+          // @include T(){
+          //   min-height: 450px;
+          //   width: 50%;
+            
+          // }
           .about_en_text_title{
             margin: 8px auto;
             text-align: center;

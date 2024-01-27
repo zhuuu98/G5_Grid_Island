@@ -81,23 +81,28 @@
     <div class="light_box" v-show="board_light_box_open">
       <div class="overlay" @click="light_box_close"></div>
       <div class="box">
-        <form action="post">
+        <form action="post" v-if="article_send_succ">
           <p class="board_lb_title">我要發文</p>
           <div>
             <p class="board_lb_subTitle">留言內容</p>
-            <textarea name="" id="" cols="35" rows="10" placeholder="輸入文章內容..."></textarea>
+            <textarea name="" id="" cols="35" rows="10" placeholder="輸入文章內容..." @keyup="article_send"></textarea>
           </div>
           <div class="board_light_box_send">
             <div>
-              <input type="checkbox" name="" id="check">
+              <input type="checkbox" name="" id="check" v-model="cb_check" @change="article_send">
               <label for="check">我已確認文章內容不包含不當內文及攻擊字眼。</label>
             </div>
-            <button class="btn_sm_1">送出</button>
-          </div>
-          <div class="board_close_light_box" @click="light_box_close">
-            <font-awesome-icon :icon="['fas', 'xmark']" />
+            <button class="btn_sm_1" v-if="!cb_submit" disabled>送出</button>
+            <button class="btn_sm_1" v-else @click="article_send_btn">送出</button>
           </div>
         </form>
+        <div v-else>
+          <p>已成功送出文章！</p>
+          <button class="btn_sm_1" @click="light_box_close">關閉</button>
+        </div>
+        <div class="board_close_light_box" @click="light_box_close">
+          <font-awesome-icon :icon="['fas', 'xmark']" />
+        </div>
       </div>
     </div>
 
@@ -120,7 +125,7 @@
             <option value="lb_re_other">其他</option> -->
           </select>
           <textarea cols="30" rows="10" v-show="open_re_text" placeholder="請敘述檢舉理由" @keyup="updateReTextVisibility"></textarea>
-          <button class="btn_sm_1" v-if="!submit" disabled>送出</button>
+          <button class="btn_sm_1" v-if="!re_submit_disable" disabled>送出</button>
           <button class="btn_sm_1" v-else @click.prevent="re_submit">送出</button>
         </form>
         <div v-else>
@@ -311,28 +316,31 @@ export default {
         selected: true
       },{
         reason: '廣告',
-        value: 'a'
+        value: 'ad'
       },{
         reason: '帶有攻擊性言論',
-        value: 'x'
+        value: 'violent'
       },{
         reason: '暴力或危險組織',
-        value: 'f'
+        value: 'danger'
       },{
         reason: '我就是不喜歡',
-        value: 'd'
+        value: 'dislike'
       },{
         reason: '仇恨言論或象徵符號',
-        value: 'e'
+        value: 'hate'
       },{
         reason: '不實資訊',
-        value: 'w'
+        value: 'fake'
       },{
         reason: '其他',
         value: 'lb_re_other'
       }],
-      submit: false,
-      re_submit_show: true
+      re_submit_disable: false,
+      re_submit_show: true,
+      cb_submit: false,
+      cb_check: false,
+      article_send_succ: true,
     };
   },
   computed: {
@@ -348,6 +356,9 @@ export default {
   mounted() {},
   methods: {
     open_light_box(){
+      this.article_send_succ = true;
+      this.cb_check = false;
+      this.cb_submit = false;
       this.board_light_box_open = true;
       document.body.classList.add('body-overflow-hidden');
     },
@@ -359,7 +370,7 @@ export default {
     open_light_box_report(){
       this.re_submit_show = true;
       this.selectedOption = this.reports[0].value;
-      this.submit = false;
+      this.re_submit_disable = false;
       this.open_re_text = false;
       this.board_light_box_report = true;
       document.body.classList.add('body-overflow-hidden');
@@ -373,11 +384,11 @@ export default {
       this.open_re_text = this.selectedOption === "lb_re_other";
 
       if((this.selectedOption === "lb_re_other" && document.querySelector('.board_lb_re_box textarea').value == '') || this.selectedOption == ""){
-        this.submit = false;
+        this.re_submit_disable = false;
       }else if(this.selectedOption === "lb_re_other" && document.querySelector('.board_lb_re_box textarea').value != ''){
-        this.submit = true;
+        this.re_submit_disable = true;
       }else{
-        this.submit = true;
+        this.re_submit_disable = true;
       }
 
     },
@@ -405,7 +416,20 @@ export default {
     //送出檢舉彈窗
     re_submit(){
       this.re_submit_show = false;
-    }
+    },
+    article_send(){
+      if(this.cb_check == true && document.querySelector('.light_box textarea').value != ''){
+        this.cb_submit = true;
+      }else{
+        this.cb_submit = false;
+
+      }
+    },
+    article_send_btn(){
+      this.article_send_succ = false;
+
+    },
+    
 
   },
 
