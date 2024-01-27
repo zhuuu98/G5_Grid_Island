@@ -6,7 +6,7 @@
       <img :src="games" alt="Banner games" id="games" />
       <img :src="roof" alt="Banner roof" id="roof" />
       <img :src="treeSvg" alt="Banner Tree" id="tree-svg" @mouseenter="showTreeCard = true" @mouseleave="showTreeCard = false"/>
-      <div v-if="showTreeCard" class="card">
+      <div v-if="showTreeCard" id="treeCard">
         <p class="card-title">會員中心</p>
         <p>毛毛蟲之歸屬，於此粉墨衣裝、查看遊歷紀錄。</p>
       </div>
