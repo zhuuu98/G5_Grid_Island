@@ -28,6 +28,9 @@
                 :itemPrice="item.price"
                 :itemId="item.id"
                 :itemCount="item.count"
+                @quantityPlus="quantityChangePlus(item)"
+                @quantityMinus="quantityChangeMinus(item)"
+                @itemDel="itemChangeDel(item)"
               />
             </div>
             <div class="emptyCart" v-show="cartData.length == 0">
@@ -134,7 +137,10 @@
               <h3>$ {{ totalPrice }}</h3>
             </div>
           </div>
-          <div class="checkOutBtn" v-show="cartData.length != 0">
+          <div
+            class="checkOutBtn"
+            v-show="cartData.length != 0 && deliveryMethod != 'init'"
+          >
             <button class="bookBtn">前往結帳</button>
           </div>
         </div>
@@ -244,7 +250,13 @@ export default {
     this.axiosGetData();
   },
   methods: {
-    ...mapActions(cartStore, ["deliveryMethodChange", "discountCodeCheck"]),
+    ...mapActions(cartStore, [
+      "deliveryMethodChange",
+      "discountCodeCheck",
+      "reduceFromCart",
+      "increaseFromCart",
+      "itemDelFormCart",
+    ]),
     axiosGetData() {
       axios
         .get("https://tibamef2e.com/chd103/g5/phps/ProductM.php")
@@ -254,12 +266,20 @@ export default {
           this.displayData = res.data;
         });
     },
-
     deliveryMethodChangeMethod() {
       this.deliveryMethodChange(this.deliveryMethod);
     },
     discountCodeCheckMethod() {
       this.discountCodeCheck(this.discountCode);
+    },
+    quantityChangePlus(product) {
+      this.increaseFromCart(product);
+    },
+    quantityChangeMinus(product) {
+      this.reduceFromCart(product);
+    },
+    itemChangeDel(product) {
+      this.itemDelFormCart(product);
     },
   },
   mounted() {},
