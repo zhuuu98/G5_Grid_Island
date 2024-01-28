@@ -82,7 +82,7 @@
                   </div>
                   <div class="about_en_text_content">
                     <p>
-                      歡迎來到Grid Island！我們擁有多種遊戲和豐富的場地設施，無論你是想和三五好友玩遊戲、舉辦大型派對，還是享受私密包廂，我們都能滿足你的需求。
+                    我們擁有多種遊戲和豐富的場地設施，無論你是想和三五好友玩遊戲、舉辦大型派對，還是享受私密包廂，我們都能滿足你的需求。
                     </p>
                     <p>
                       在這裡，你可以找到四人桌、八人桌和十二人包廂，適合各種不同大小的團體聚會。超過200款遊戲等著你來挑選，涵蓋策略、派對、家庭等各式各樣的遊戲，讓你盡情享受遊戲的樂趣。
@@ -95,8 +95,9 @@
                     </p>
                   </div>
                 
-                  <div class="about_re_btn">
-                    <RouterLink to="/prebook" class="btn_lg">立即預約</RouterLink>
+                  <!-- <div class="about_re_btn"> -->
+                  <div class="btn_lg">
+                    <RouterLink to="/prebook">立即預約</RouterLink>
                   </div>
                 
                 </div>
@@ -120,8 +121,8 @@
                       這裡是Grid Island的可愛吉祥物 - 小蟲！活潑好動的他總是迎接每一位遊客，帶來歡樂和笑容。他是我們店裡的快樂使者，喜歡玩遊戲、結交新朋友。與小蟲一起，遊戲永遠充滿驚喜和趣味！
                     </p>
                   </div>
-                  <div class="about_griddy_btn">
-                    <RouterLink to="/login" class="btn_lg">
+                  <div class="btn_lg">
+                    <RouterLink to="/login">
                       創造專屬蟲蟲
                     </RouterLink>
                   </div>
@@ -131,7 +132,30 @@
           </div>
 
           <!-- 店鋪資訊 -->
-          <div class="about_info"></div>
+          <div class="about_info">
+            <div class="about_row">
+              <div class="about_info_section">
+                <div class="about_info_text">
+                  <div class="about_info_title">
+                    <h3>店鋪資訊</h3>
+                  </div>
+                  <div class="about_info_content">
+                    <p>
+                      Grid Island 座落在桃園市中壢區復興路46號9樓，是一個充滿活力的桌遊天堂。<br>
+                      營業時間自周一至周日，早上9點至晚上9點，絕對是發揮你遊戲技巧的最佳去處。無論是和好友輕鬆一局，還是舉辦派對聚會，我們都是你的最佳選擇。<br>
+                      有任何疑問或特殊需求，請隨時撥打我們的專線 03-4251108，我們隨時為您服務。
+                    </p>
+                  </div>
+                </div>
+                <div class="about_info_map">
+                  <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3617.2490359444596!2d121.22244777538359!3d24.957640341361998!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x346823ea50c732a5%3A0x1b5e6ee66e9fec49!2z57ev6IKyVGliYU1l6ZmE6Kit5Lit5aOi6IG36KiT5Lit5b-D!5e0!3m2!1szh-TW!2stw!4v1706431161266!5m2!1szh-TW!2stw"  allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                  <!-- width="600" height="450" style="border:0; -->
+                </div>
+              </div>
+            </div>
+
+
+          </div>
 
 
 
