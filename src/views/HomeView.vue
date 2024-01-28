@@ -47,7 +47,7 @@
       <div v-if="showSignCard" id="signCard" class="showCard">
         <p class="card-title">關於我們</p>
         <div class="card-line"></div>
-        <p class="card-text">格間交織於此，智者競技，譜寫桌遊新篇章。</p>
+        <p class="card-text">格間交織於此島，智者競技，譜寫桌遊新篇章。</p>
       </div>
       <router-link to="prebook">
         <img :src="reserve" alt="Banner Reserve" id="reserve" @mouseenter="showReserveCard = true"
@@ -56,7 +56,7 @@
       <div v-if="showReserveCard" id="reserveCard" class="showCard">
         <p class="card-title">預約場地</p>
         <div class="card-line"></div>
-        <p class="card-text">墨書登記，備以預約遊戲之地，選擇良辰與桌戲</p>
+        <p class="card-text">墨書登記，備以預約遊戲之地，選擇良辰與桌戲。ㄋ</p>
       </div>
       <!-- 蟲 -->
       <img :src="bug" alt="Banner Bug" id="bug" />
@@ -71,7 +71,7 @@
       <div v-if="showCartCard" id="cartCard" class="showCard">
         <p class="card-title">購物車</p>
         <div class="card-line"></div>
-        <p class="card-text">車中積載心繫之桌遊，準備啟程幻想之旅。</p>
+        <p class="card-text">車中積載心繫之桌遊，點金訂物，妙趣橫生隨囊歸。</p>
       </div>
       <img :src="headerWave" id="headerWave" />
     </div>
