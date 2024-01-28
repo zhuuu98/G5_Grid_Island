@@ -27,12 +27,7 @@ export default {
   },
   data() {
     return {
-      cartData: [],
-      discountCode: "",
-      deliveryMethod: "init",
-      subTotalAmount: 1300,
-      deliveryAmount: 0,
-      discountAmount: 0,
+
     };
   },
   computed: {
@@ -41,15 +36,6 @@ export default {
     },
     nodata() {
       return this.displayData.length == 0;
-    },
-    totalPriceCount() {
-      return this.subTotalAmount + this.deliveryAmount - this.discountAmount;
-    },
-    userName2() {
-      return this.userStore.getUserName;
-    },
-    cart() {
-      return this.userStore.getCart;
     },
   },
   created() {
