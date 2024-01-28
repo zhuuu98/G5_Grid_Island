@@ -1,9 +1,7 @@
-@mixin bookContent(){
-    width: fit-content;
-    margin: auto;
-}
+
 .book{
     background-color: $bgc-2;
+    padding-bottom: 100px;
     h2{
         text-align: center;
     }
@@ -38,154 +36,117 @@
         }
         input[type="date"]{
             margin: auto;
-            // visibility: hidden;
+            display: none;
         }
+
     }
 
     .book_cal{
         border-radius: $input-radius;
         background-color: $bgc-1;
         color: $blue-4;
-        max-width: 800px;
+        max-width: 600px;
         width: 90%;
         margin: auto;
+        display: flex;
+        flex-direction: column;
         .book_cal_nav{
             text-align: center;
             display: flex;
-        }
-        button{
-            flex: 0 0 4rem;
-            line-height: 4rem;
-            transition: background-color 0.25s;
-            background-color: transparent;
-            border: 0;
-            &:hover {
-                color: $orange-2;
+            button{
+                flex: 0 0 4rem;
+                line-height: 4rem;
+                background-color: transparent;
+                border: none;
+                &:hover {
+                    color: $orange-1;
+                }
             }
-            &:disabled{
-                color: $gray-1;
+            .book_cal_nav_title{
+                display: flex;
+                flex: 1 1 auto;
+                gap: $S-spacing;
+                justify-content: center;
+                align-items: center;
+                font-size: $M-h4;
+                gap: 2rem;
             }
         }
-        .book_cal_nav_title{
-            display: flex;
-            gap: $S-spacing;
-            justify-content: center;
-            align-items: center;
+        $buttonWidth: 30px;
+        .book_cal_weekdays{
+            width: 100%;
+            height: $buttonWidth;
+            display: grid;
+            box-sizing: border-box;
+            padding: 0 1rem;
+            grid-template-columns: repeat(7, 1fr);
+            text-align: center;
+        }
+        .book_cal_grid {
+            width: 100%;
+            display: grid;
+            box-sizing: border-box;
+            padding: 0 1rem;
+            grid-template-columns: repeat(7, 1fr);
+        }
+        .book_cal_day{
+            $buttonWidth: 30px;
+            $buttonPCWidth: 40px;
+            button{
+                display: block;
+                margin: 2px auto;
+                width: $buttonWidth;
+                height: $buttonWidth;
+                background-color: transparent;
+                border: 0;
+                cursor: pointer;
+                &:hover {
+                    color: $orange-2;
+                }
+                &:disabled{
+                    color: $gray-1;
+                }
+                &[current="date"] {
+                    border: none;
+                    background-color: $orange-2;
+                    color: $white-1;
+                    border-radius: 50%;
+                }
+            }
+            @include T() {
+                button{
+                    width: $buttonPCWidth;
+                    height: $buttonPCWidth;
+                }
+            }
         }
     }
-
-    // .book_cal {
-    //     background: #fff;
-    //     color: #333;
-    //     max-width: 40rem;
-    //     margin: 0 auto;
-    //     box-shadow: 0 0 1rem rgba(0, 0, 0, 0.2);
-    //     border-radius: 1rem;
-
-    //     button {
-    //         width: 100%;
-    //         height: 100%;
-    //         font-size: inherit;
-    //         font-weight: inherit;
-    //         appearance: none;
-    //         border: none;
-    //         background: transparent;
-    //         text-align: center;
-    //         cursor: pointer;
-    //         padding: 0;
-    //     }
-
-    //     [aria-disabled] {
-    //         pointer-events: none;
-    //         opacity: 0.5;
-    //     }
-    // }
-
-    .book_cal_nav {
-        // text-align: center;
-        // display: flex;
-        // gap: 1rem;
-        // font-size: 1.25rem;
-
-    //     select {
-    //         border: 1px solid #ccc;
-    //         background-color: transparent;
-    //         border-radius: 0.25rem;
-    //         font-size: inherit;
-    //         font-weight: inherit;
-    //         padding: 0.25rem 1rem;
-    //     }
-
-    //     [data-direction] {
-    //         flex: 0 0 4rem;
-    //         line-height: 4rem;
-    //         transition: background-color 0.25s;
-
-    //         &:hover {
-    //             color: #0ba;
-    //         }
-    //     }
-    }
-
-    .book_cal_nav_title {
-        flex: 1 1 auto;
-        display: flex;
-        gap: 2rem;
-        justify-content: center;
-        align-items: center;
-    }
-
-    .book_cal_weekdays,
-    .book_cal_grid {
-        width: 100%;
-        display: grid;
-        box-sizing: border-box;
-        padding: 0 1rem;
-        grid-template-columns: repeat(7, 1fr);
-    }
-
-    // .book_cal_weekdays>div {
-    //     padding: 1rem 0;
-    //     text-align: center;
-    // }
-
-    // .book_cal_day {
-    //     line-height: 2.5rem;
-    //     border-radius: 0.25em;
-    //     overflow: hidden;
-
-    //     &.today {
-    //         box-shadow: inset 0 0 0 2px #ccc;
-    //     }
-
-    //     button {
-    //         transition: background-color 0.25s, color 0.25s;
-
-    //         &:not([aria-disabled]):hover {
-    //             color: #fff;
-    //             background: rgba(0, 0, 0, 0.7);
-    //         }
-
-    //         &[aria-current] {
-    //             color: #fff;
-    //             background: #0ba;
-    //             pointer-events: none;
-    //             font-weight: bold;
-    //         }
-    //     }
-    // }
 
     //桌型
-    .book_table_option,.book_time_option{
+    .book_table_option, .book_time_option{
         display: flex;
         justify-content: center;
         text-align: center;
+        flex-direction: column;
         gap: 20px;
         margin: $L-spacing 0;
+        @include T(){
+            flex-direction: row;
+        }
     }
-    .book_options label{
+    .book_table_option .book_options label{
         display: block;
-        width: fit-content;
+        width: 120px;
+        height: 40px;
+        padding: $S-spacing $M-spacing;
+        background-color: $white-1;
+        border-radius: $input-radius;
+        cursor: pointer;
+    }
+    .book_time_option .book_options label{
+        display: block;
+        width: 120px;
+        height: 60px;
         padding: $S-spacing $M-spacing;
         background-color: $white-1;
         border-radius: $input-radius;
@@ -202,21 +163,27 @@
     .book_options label:hover{
         background-color: $orange-2;
         color: $white-1;
-
+    }
+    .book_options label[disabled="true"]{
+        color: $gray-1;
+        cursor: not-allowed;
+        &:hover{
+            color: $gray-1;
+            background-color: #fff;
+        }
     }
     .book_options input[type="radio"]:checked + label {
         color: $white-1;
         background-color: $orange-2;
     }
     //人數
-
     .bookPeople{
         background-color: $white-1;
         border-radius: $input-radius;
         padding: $M-spacing ;
         display: flex;
         align-items: center;
-        gap: $L-spacing;
+        gap: $XXL-spacing;
         width: fit-content;
         margin: $L-spacing 0;
     }
@@ -226,18 +193,81 @@
         display: flex;
     }
     .btnMinus,.btnPlus{
-        padding:$S-spacing $M-spacing;
         border: 0;
         background-color: $white-1;
         border-radius: $input-radius;
+        width: 30px;
+        height: 30px;
+        font-size: $PC-h3;
+        line-height: 0;
     }
     .minusPlus input[type="number"]{
         background-color: $white-1;
         border: 0;
         display: flex;
         text-align: center;
+        max-width: 50px;
+        padding-left: 20px;
     }
     .book_submit{
-        margin:$M-spacing auto ;
+        margin:$M-spacing auto $XXXL-spacing;
+    }
+
+
+    .alert_bg {
+        background-color: #0006;
+        position: fixed;
+        top: 0;
+        width: 100vw;
+        height: 100vh;
+        z-index: 991;
+    }
+
+    $alertBoxHeight: 40vh;
+    $alertCrossHeight: 50px;
+
+    .alert_main {
+        background-color: #fff;
+        max-width: 300px;
+        width: 90vw;
+        display: flex;
+        flex-direction: column;
+        height: $alertBoxHeight;
+        position: absolute;
+        top: 33%;
+        left: 5%;
+        border-radius: $Mob-card-radius;
+        user-select: none;
+
+        @include M() {
+            max-width: 600px;
+            width: 60vw;
+            left: 20%;
+            border-radius: $PC-card-radius;
+        }
+
+        @include PC() {
+            width: 40vw;
+            left: 30%;
+            border-radius: $PC-card-radius;
+        }
+
+
+        button {
+            align-self: flex-end;
+            width: $alertCrossHeight;
+            height: $alertCrossHeight;
+            background-color: transparent;
+            border: none;
+            cursor: pointer;
+        }
+
+        p {
+            text-align: center;
+            font-size: $PC-h4;
+            justify-self: center;
+            height: 40px;
+            margin-top: 4px;
+        }
     }
 }
