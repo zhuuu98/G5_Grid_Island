@@ -73,7 +73,10 @@
         <div class="card-line"></div>
         <p class="card-text">車中積載心繫之桌遊，準備啟程幻想之旅。</p>
       </div>
+      <img :src="headerWave" id="headerWave" />
     </div>
+    
+    <MainHeader />
     <!-- 內容 -->
     <div class="container">
       <div class="row">
@@ -136,11 +139,16 @@
   import rEye from '../assets/images/banner/rEye.svg';
   import wave from '../assets/images/wave/wave.svg';
   import { ref, onMounted, onUnmounted } from 'vue';
+  import MainHeader from '../components/MainHeader.vue';
+  import headerWave from '../assets/images/header/headerWave.svg'
+
 
 
   export default {
     name: 'HomeView',
-    components: {},
+    components: {
+      MainHeader,
+    },
     data() {
       return {
         bannerImage: bannerImage,
@@ -164,6 +172,7 @@
         wave: wave,
         lEye: lEye,
         rEye: rEye,
+        headerWave: headerWave,
       };
     },
     setup() {
@@ -192,9 +201,11 @@
       };
 
       const handleMouseMove = (event) => {
-        moveEye(leftEyeRef, event.clientX, event.clientY, 51.1, 42.55, 0.5, 1.55); // 水平移动最大 0.5%，垂直移动最大 2%
-        moveEye(rightEyeRef, event.clientX, event.clientY, 52.9, 41.7, 0.4, 1.35); // 水平移动最大 0.4%，垂直移动最大 2%
-      };
+  requestAnimationFrame(() => {
+    moveEye(leftEyeRef, event.clientX, event.clientY, 51.1, 38.6, 0.55, 1.45);
+    moveEye(rightEyeRef, event.clientX, event.clientY, 53, 38.05, 0.4, 1.15);
+  });
+};
 
       onMounted(() => {
         document.addEventListener('mousemove', handleMouseMove);

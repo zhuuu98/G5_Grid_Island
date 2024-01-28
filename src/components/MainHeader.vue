@@ -1,6 +1,6 @@
 <template>
   <!-- header -->
-  <header>
+  <header :class="headerClass">
     <div>
       <div class="wrapper">
         <div class="logo_box">
@@ -110,6 +110,8 @@
 
 <script>
   import { RouterLink } from "vue-router";
+  import { computed } from 'vue';
+  import { useRoute } from 'vue-router';
   export default {
     components: {
       RouterLink,
@@ -121,6 +123,14 @@
         hamX: false,
       };
     },
+    computed: {
+    headerClass() {
+      const route = useRoute();
+      return {
+        'sticky-header': route.path === '/' // 如果是首頁，添加 sticky-header
+      };
+    }
+  },
     methods: {
       toggleMenu() {
         // 切換 menuOpen 的值

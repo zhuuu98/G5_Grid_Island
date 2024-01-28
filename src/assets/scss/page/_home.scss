@@ -5,8 +5,8 @@ main {
     width: 100%;
     background-color: $blue-2;
     display: flex;
-
     position: relative;
+    padding: 0 0 4.8% 0;
 
     #main-banner {
       width: 72%;
@@ -14,10 +14,10 @@ main {
     }
 
     #tree-svg {
-      width: 13.84%;
+      width: 13.9%;
       position: absolute;
       left: 28.15%;
-      top: 3.5%;
+      top: 3.1%;
       /* display: none; */
     }
 
@@ -95,10 +95,10 @@ main {
     }
 
     #news {
-      width: 8.43%;
+      width: 8.37%;
       position: absolute;
-      left: 33.9%;
-      top: 43.28%;
+      left: 33.95%;
+      top: 39.5%;
     }
 
     #news:hover {
@@ -108,8 +108,9 @@ main {
     #comment {
       width: 8.26%;
       position: absolute;
-      left: 37.62%;
-      top: 34.2%;
+      left: 37.63%;
+      top: 31%;
+      // opacity: 20%;
     }
 
     #comment:hover {
@@ -117,17 +118,18 @@ main {
     }
 
     #roof {
-      width: 24.3%;
+      width: 24.4%;
       position: absolute;
-      left: 38.4%;
-      top: 19.5%;
+      left: 38.35%;
+      top: 17.58%;
+
     }
 
     #sign {
-      width: 15.88%;
+      width: 15.95%;
       position: absolute;
       left: 43.8%;
-      top: 15%;
+      top: 13.5%;
     }
 
     #sign:hover {
@@ -135,10 +137,10 @@ main {
     }
 
     #games {
-      width: 12.2%;
+      width: 12.25%;
       position: absolute;
       left: 53.8%;
-      top: 32.55%;
+      top: 29.75%;
     }
 
     #games:hover {
@@ -146,10 +148,11 @@ main {
     }
 
     #reserve {
-      width: 10.715%;
+      width: 10.8%;
       position: absolute;
-      left: 64.2%;
-      top: 43.2%;
+      left: 64.15%;
+      top: 39.15%;
+
     }
 
     #reserve:hover {
@@ -157,10 +160,10 @@ main {
     }
 
     #cart {
-      width: 7.75%;
+      width: 7.76%;
       position: absolute;
       left: 41.7%;
-      top: 62%;
+      top: 56.3%;
     }
 
     #cart:hover {
@@ -168,29 +171,37 @@ main {
     }
 
     #bar {
-      width: 9.57%;
+      width: 9.58%;
       position: absolute;
-      left: 44.33%;
-      top: 54.55%;
+      left: 44.3%;
+      top: 49.575%;
+      // opacity: 20%;
     }
 
     #bug { // 蟲蟲
-      width: 9.65%;
+      width: 9.67%;
       position: absolute;
-      left: 45.32%;
-      top: 33.2%;
+      left: 45.3%;
+      top: 30.18%;
+      // opacity: 20%;
     }
     #lEye {
-      width: 0.65%;
+      width: 0.68%;
       position: absolute;
       left: 51.5%;
-      top: 42.6%;
+      top: 38.5%;
+      transition: left 0.1s ease, top 0.1s ease;
     }
     #rEye {
-      width: 0.6%;
+      width: 0.63%;
       position: absolute;
-      left: 53.3%;
-      top: 42%;
+      left: 53.25%;
+      top: 38.05%;
+      transition: left 0.1s ease, top 0.1s ease;
+    }
+    #headerWave {
+      position: absolute;
+      bottom: -1px;
     }
 
   }
