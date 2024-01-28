@@ -167,49 +167,50 @@
       };
     },
     setup() {
-    const leftEyeRef = ref(null);
-    const rightEyeRef = ref(null);
+  const leftEyeRef = ref(null);
+  const rightEyeRef = ref(null);
 
-    const moveEye = (eye, mouseX, mouseY, initialLeft, initialTop, maxMovement) => {
-      if (!eye.value) return;
+  const moveEye = (eye, mouseX, mouseY, initialLeft, initialTop, maxMovementX, maxMovementY) => {
+    if (!eye.value) return;
 
-      const eyeRect = eye.value.getBoundingClientRect();
-      const eyeCenterX = eyeRect.left + eyeRect.width / 2;
-      const eyeCenterY = eyeRect.top + eyeRect.height / 2;
+    const eyeRect = eye.value.getBoundingClientRect();
+    const eyeCenterX = eyeRect.left + eyeRect.width / 2;
+    const eyeCenterY = eyeRect.top + eyeRect.height / 2;
 
-      const deltaX = ((mouseX - eyeCenterX) / window.innerWidth) * 100;
-      const deltaY = ((mouseY - eyeCenterY) / window.innerHeight) * 100;
+    let deltaX = ((mouseX - eyeCenterX) / window.innerWidth) * 100;
+    let deltaY = ((mouseY - eyeCenterY) / window.innerHeight) * 100;
 
-      const distance = Math.sqrt(deltaX * deltaX + deltaY * deltaY);
-      const maxDistance = maxMovement;
+    // 检查是否在椭圆形轨迹内
+    if ((deltaX * deltaX) / (maxMovementX * maxMovementX) + (deltaY * deltaY) / (maxMovementY * maxMovementY) > 1) {
+      const angle = Math.atan2(deltaY, deltaX);
+      deltaX = maxMovementX * Math.cos(angle);
+      deltaY = maxMovementY * Math.sin(angle);
+    }
 
-      if (distance < maxDistance) {
-        eye.value.style.left = `calc(${initialLeft}% + ${deltaX}%)`;
-        eye.value.style.top = `calc(${initialTop}% + ${deltaY}%)`;
-      } else {
-        const ratio = maxDistance / distance;
-        eye.value.style.left = `calc(${initialLeft}% + ${deltaX * ratio}%)`;
-        eye.value.style.top = `calc(${initialTop}% + ${deltaY * ratio}%)`;
-      }
-    };
+    eye.value.style.left = `calc(${initialLeft}% + ${deltaX}%)`;
+    eye.value.style.top = `calc(${initialTop}% + ${deltaY}%)`;
+  };
 
-    const handleMouseMove = (event) => {
-      moveEye(leftEyeRef, event.clientX, event.clientY, 51.1, 42.6, 0.5);
-      moveEye(rightEyeRef, event.clientX, event.clientY, 52.9, 42, 0.4);
-    };
+  const handleMouseMove = (event) => {
+    moveEye(leftEyeRef, event.clientX, event.clientY, 51.1, 42.55, 0.5, 1.55); // 水平移动最大 0.5%，垂直移动最大 2%
+    moveEye(rightEyeRef, event.clientX, event.clientY, 52.9, 41.7, 0.4, 1.35); // 水平移动最大 0.4%，垂直移动最大 2%
+  };
 
-    onMounted(() => {
-      document.addEventListener('mousemove', handleMouseMove);
-    });
+  onMounted(() => {
+    document.addEventListener('mousemove', handleMouseMove);
+  });
 
-    onUnmounted(() => {
-      document.removeEventListener('mousemove', handleMouseMove);
-    });
-// 123
-    return {
-      leftEyeRef,
-      rightEyeRef
-    };
-  }
+  onUnmounted(() => {
+    document.removeEventListener('mousemove', handleMouseMove);
+  });
+
+  return {
+    leftEyeRef,
+    rightEyeRef
+  };
+}
+
+
+
   };
 </script>
