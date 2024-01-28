@@ -1,10 +1,10 @@
 <template>
   <main>
     <!-- banner -->
-    <div class="header_banner">
+    <div class="header_banner" ref="bannerContainer">
       <img :src="bannerImage" alt="Home Banner" id="main-banner" />
       <router-link to="product">
-        <img :src="games" alt="Banner games" id="games" @mouseenter="showGamesCard = true"
+        <img :src="games" alt="Banner games" id="games" @mouseenter="showGamesCard = true" 
           @mouseleave="showGamesCard = false" />
       </router-link>
       <div v-if="showGamesCard" id="gamesCard" class="showCard">
@@ -14,7 +14,7 @@
       </div>
       <img :src="roof" alt="Banner roof" id="roof" />
       <router-link to="member">
-        <img :src="treeSvg" alt="Banner Tree" id="tree-svg" @mouseenter="showTreeCard = true"
+        <img :src="treeSvg" alt="Banner Tree" id="tree-svg" @mouseenter="showTreeCard = true" 
           @mouseleave="showTreeCard = false" />
       </router-link>
       <div v-if="showTreeCard" id="treeCard" class="showCard">
@@ -23,7 +23,7 @@
         <p class="card-text">毛毛蟲之歸屬，於此粉墨衣裝、查看遊歷紀錄。</p>
       </div>
       <router-link to="board">
-        <img :src="comment" alt="Banner comments" id="comment" @mouseenter="showCommentCard = true"
+        <img :src="comment" alt="Banner comments" id="comment" @mouseenter="showCommentCard = true" 
           @mouseleave="showCommentCard = false" />
       </router-link>
       <div v-if="showCommentCard" id="commentCard" class="showCard">
@@ -75,7 +75,7 @@
       </div>
       <img :src="headerWave" id="headerWave" />
     </div>
-    
+
     <MainHeader />
     <!-- 內容 -->
     <div class="container">
@@ -201,11 +201,11 @@
       };
 
       const handleMouseMove = (event) => {
-  requestAnimationFrame(() => {
-    moveEye(leftEyeRef, event.clientX, event.clientY, 51.1, 38.6, 0.55, 1.45);
-    moveEye(rightEyeRef, event.clientX, event.clientY, 53, 38.05, 0.4, 1.15);
-  });
-};
+        requestAnimationFrame(() => {
+          moveEye(leftEyeRef, event.clientX, event.clientY, 51.1, 38.6, 0.55, 1.45);
+          moveEye(rightEyeRef, event.clientX, event.clientY, 53, 38.05, 0.4, 1.15);
+        });
+      };
 
       onMounted(() => {
         document.addEventListener('mousemove', handleMouseMove);
@@ -220,6 +220,23 @@
         rightEyeRef
       };
     },
+    mounted() {
+    // 为整个容器添加事件监听器
+    this.$refs.bannerContainer.addEventListener('mousedown', this.preventDrag);
+  },
+  beforeDestroy() {
+    // 在组件销毁时移除事件监听器
+    this.$refs.bannerContainer.removeEventListener('mousedown', this.preventDrag);
+  },
+  methods: {
+    preventDrag(event) {
+      // 检查事件的目标是否是您想阻止拖拽的图像
+      if (event.target.tagName === 'IMG') {
+        event.preventDefault();
+      }
+    }
+  }
+    
 
 
 

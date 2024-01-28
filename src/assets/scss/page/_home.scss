@@ -8,6 +8,8 @@ main {
     position: relative;
     padding: 0 0 4.8% 0;
 
+
+
     #main-banner {
       width: 72%;
       margin: auto;
@@ -30,64 +32,91 @@ main {
       padding: $M-spacing;
       background-color: $white-1;
       outline: 2px solid $black;
-      box-shadow: 
-      0 0 0 4px #fff;
+      box-shadow:
+        0 0 0 4px #fff;
       width: 20%;
       display: flex;
       flex-direction: column;
       align-items: center;
       gap: $S-spacing;
       color: $black;
+
       .card-title {
         font-size: $PC-h2;
         font-family: Zen Maru Gothic;
       }
+
       .card-line {
         width: calc(100% - 8px);
         height: 1px;
         background-color: $orange-1;
       }
+
       .card-text {
         font-size: $PC-text;
       }
+
+      @include M() {
+        .card-title {
+          font-size: $M-h2;
+
+        }
+        .card-text {
+          font-size: $M-text;
+        }
+      }
     }
-    #treeCard { //會員中心，樹
+
+    #treeCard {
+      //會員中心，樹
       position: absolute;
       left: 40px;
       top: 10%;
       border: $M-spacing solid $blue-1;
     }
-    #commentCard { //留言板，留言板
+
+    #commentCard {
+      //留言板，留言板
       position: absolute;
       left: 40px;
       top: 20%;
       border: $M-spacing solid $orange-1;
     }
-    #newsCard { //最新消息
+
+    #newsCard {
+      //最新消息
       position: absolute;
       left: 40px;
       top: 30%;
       border: $M-spacing solid $green-1;
     }
-    #cartCard { //購物車
+
+    #cartCard {
+      //購物車
       position: absolute;
       left: 40px;
       top: 40%;
       border: $M-spacing solid $red;
     }
-    #signCard { //關於我們，招牌
+
+    #signCard {
+      //關於我們，招牌
       position: absolute;
       right: 40px;
       top: 10%;
       border: $M-spacing solid $yellow;
     }
-    #gamesCard { //所有商品
+
+    #gamesCard {
+      //所有商品
       position: absolute;
       right: 40px;
       top: 25%;
       border: $M-spacing solid $purple;
     }
-    #reserveCard { //場地預約
+
+    #reserveCard {
+      //場地預約
       position: absolute;
       right: 40px;
       top: 40%;
@@ -178,13 +207,15 @@ main {
       // opacity: 20%;
     }
 
-    #bug { // 蟲蟲
+    #bug {
+      // 蟲蟲
       width: 9.67%;
       position: absolute;
       left: 45.3%;
       top: 30.18%;
       // opacity: 20%;
     }
+
     #lEye {
       width: 0.68%;
       position: absolute;
@@ -192,6 +223,7 @@ main {
       top: 38.5%;
       transition: left 0.1s ease, top 0.1s ease;
     }
+
     #rEye {
       width: 0.63%;
       position: absolute;
@@ -199,9 +231,11 @@ main {
       top: 38.05%;
       transition: left 0.1s ease, top 0.1s ease;
     }
+
     #headerWave {
       position: absolute;
       bottom: -1px;
+      z-index: 950;
     }
 
   }
