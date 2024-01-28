@@ -10,6 +10,7 @@ const router = createRouter({
       component: HomeView,
       meta: {
         title: "首頁",
+        // showHeader: false //打開這個即可不顯示header
       },
     },
     {
