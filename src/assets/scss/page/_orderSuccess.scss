@@ -1,0 +1,45 @@
+.orderSuccess {
+  margin-bottom:$XXXL-spacing ;
+  margin-top:$L-spacing ;
+
+  .svg-inline--fa {
+    width: 200px;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    color: $orange-2;
+  }
+  
+  .text {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: $L-spacing 0 $XL-spacing 0;
+
+    span {
+      display: block;
+      font-weight: 700;
+      color: $blue-4;
+      padding: $M-spacing $L-spacing;
+      text-align: center;
+      @include T(){
+        padding: $M-spacing 0;
+
+      }
+    }
+  } 
+
+  .link {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: $M-spacing;
+
+    router-link {
+      margin: auto;
+     
+    }
+  }
+
+}

@@ -1,19 +1,21 @@
-img {
-  width: 100%;
-  vertical-align: middle;
-}
 .orderItemInfo {
   color: $blue-4;
-
+  margin-bottom:$XXXL-spacing;
   .orderInfoTitle {
     box-sizing: content-box;
     display: flex;
     justify-content: space-between;
     margin-top: $M-spacing;
-    padding: 0 $M-spacing;
+    padding: 0 $L-spacing $M-spacing;
+
+    &:hover {
+      cursor: pointer;
+    }
+
+
     
     @include M(){
-      padding: 0 $L-spacing;
+      // padding: 0 $L-spacing;
       
     }
     @include T(){
@@ -23,7 +25,7 @@ img {
     }
     @include PC(){
       margin-top: $L-spacing;
-      padding: 0 $XXXL-spacing;
+      padding: 0 $XXXL-spacing $L-spacing;
 
     }
 
@@ -44,6 +46,81 @@ img {
 
 
   }
+
+  .fade-enter-active,
+  .fade-leave-active {
+    transition: all 1s;
+    max-height: 100vh;
+  }
+  .fade-enter-from,
+  .fade-leave-to {
+    max-height: 0;
+    opacity: 0;
+  }
+  .content {
+    overflow: hidden;
+  }
+
+  .orderItem {
+    display: flex;
+    position: relative;
+    
+    @include T(){
+      display: none;
+    }
+    .itemImg{
+      max-width: 85px;
+      max-height: 85px;
+      overflow: hidden;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      img {
+        width: 100%;
+        vertical-align: middle;
+      }
+    }
+    .orderItemDetail {
+    display: flex;
+      .orderItemArea {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        padding: 8px 20px;
+        @include T(){
+          flex-direction: row;
+          align-items: center;
+          gap: 20px;
+        }
+        .name {
+          width: 210px;
+          text-wrap: nowrap;
+          text-overflow: ellipsis;
+          overflow: hidden;
+          // min-width: 200px;
+          h2 {
+            overflow: hidden;
+            text-overflow: ellipsis;
+
+          }
+        }
+        .price {}     
+      
+    }
+
+
+
+
+    }
+    .amount {
+      padding: $XS-spacing $L-spacing 0 0;
+      position: absolute;
+      top: 0;
+      right: 0;
+      transform: translate(-40px,45px);
+    }
+  }
+  
 
 
 
@@ -138,41 +215,10 @@ img {
     // background-color: #f2f2f2;
   }
 
-  .orderInfo {
-    box-sizing: content-box;
-    padding: $M-spacing;
-
-
-    .name {
-      padding-top: $S-spacing;
-      padding-top: $M-spacing;
-    }
-    .phone, .adress, .email {
-      padding-top: $S-spacing;
-    }
-
-    span {
-      letter-spacing: $PC-btn-esl-spacing;
-    }
-
-    input {
-      display: block;
-      border-radius: $S-button-radius;
-      border: .5px solid $gray-2;
-      padding: $S-spacing $S-spacing ;
-      width: 100%;
-      height: 30px;
-      line-height: 30px;
-      color: $gray-2;
-      letter-spacing: $PC-btn-esl-spacing;
-    }
-
-  }
-
   .priceContent {
     margin: 0 $S-spacing;
     // padding: $S-spacing 0;
-    padding: $M-spacing $L-spacing;
+    padding: $L-spacing $L-spacing $M-spacing;
 
     @include PC() {
       width: 30%;
@@ -239,17 +285,173 @@ img {
         justify-content: space-between;
         font-size: $M-h3;
         margin-top: $S-spacing;
-        padding-top: $S-spacing;
+        padding-top: $M-spacing;
         @include T(){
           border-top: 1px solid $gray-2;
         }
       }
     }
   }
-  .checkOutBtn {
-    button {
-      width: 100%;
+
+  .orderPayment {
+
+    @include T(){
+      display: flex;
+      border-top:1px solid $gray-2;
+      justify-content: center;
+      width: calc(100vw - $XXXL-spacing);
+      margin: auto;
+      padding: 0 0 $XL-spacing;
+
+    }
+
+    .orderInfo {
+      box-sizing: content-box;
+      padding: 0 $L-spacing $L-spacing;
+      
+      h2 {
+        border-top:1px solid $blue-4;
+        padding: $L-spacing 0 0;
+        @include T(){
+          border-top:none;
+  
+        }
+      }
+  
+  
+      .name {
+        padding-top: $S-spacing;
+        padding-top: $M-spacing;
+        @include T(){
+          width: 374px;
+          
+          
+
+        }
+      }
+      .phone, .adress, .email {
+        padding-top: $S-spacing;
+      }
+  
+      label {
+        letter-spacing: $PC-btn-esl-spacing;
+      }
+      
+      input {
+        cursor: not-allowed;
+        margin: $S-spacing 0 0;
+        display: block;
+        border-radius: $input-radius;
+        border: .5px solid $gray-2;
+        padding: $S-spacing $S-spacing ;
+        width: 100%;
+        height: 30px;
+        line-height: 30px;
+        color: $gray-2;
+        letter-spacing: $PC-btn-esl-spacing;
+      }
+  
+    }
+  
+    .paymentInfo {
+      box-sizing: content-box;
+      padding: 0 $L-spacing $M-spacing;
+      
+      h2 {
+        border-top:1px solid $blue-4;
+        padding: $L-spacing 0 0;
+        
+        @include T(){
+          border-top:none;
+          
+        
+        }
+      }
+  
+  
+      .payment {
+        padding-top: $S-spacing;
+        padding-top: $M-spacing;
+
+        @include T(){
+          width: 374px;
+        }
+        
+
+
+
+
+        
+      }
+      .bill {
+        padding-top: $S-spacing;
+      }
+      .text {
+        display: flex;
+        justify-content: space-between;
+        .warning {
+          color: $red;
+        }
+      }
+      label {
+        letter-spacing: $PC-btn-esl-spacing;
+      }
+  
+      select {
+        cursor: pointer;
+        display: block;
+        margin: $S-spacing 0 0;
+        border-radius: $input-radius;
+        border: .5px solid $gray-2;
+        padding: 0 0 0 $S-spacing ;
+        width: 100%;
+        height: 30px;
+        line-height: 30px;
+        color: $gray-2;
+        letter-spacing: $PC-btn-esl-spacing;
+
+        option:first-child {
+          color: $gray-2;
+        }
+
+  
+      }
+      select:focus {
+        color: $blue-4;
+        
+      }
+  
     }
   }
+
+  .checkOutBtn_m {
+    padding: $M-spacing $L-spacing;
+    @include T(){
+      display: none;
+    }
+    button {
+      width: 100%;     
+    }
+  }
+  .checkOutBtn_pc {
+    display: none;
+    @include T(){
+      display: block ;
+      display: flex;
+      justify-content: center;
+      border-top: 1px solid $gray-2; 
+      padding:$L-spacing 0; 
+      width: calc(100vw - $XXXL-spacing);
+      margin: auto;
+    }
+    button {
+      width: 200px;
+    }
+  }
+
+
+}
+select:focus {
+  outline-color: $orange-2;
 }
 

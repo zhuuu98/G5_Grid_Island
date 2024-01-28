@@ -18,6 +18,7 @@
   letter-spacing: $PC-btn-lg-spacing;
   font-size: $PC-btn-md-font;
 }
+
 //小按鈕
 .btn_sm_1 {
   @include btnBasic;
@@ -72,6 +73,19 @@
 .btn_secondary {
   @include btnBasic;
   @include btnColor($btn-sec-bgc, false);
+  height: 47px;
+  border-radius: $S-button-radius;
+  padding: 12px 20px;
+  letter-spacing: $PC-btn-sl-spacing;
+  font-size: $PC-btn-sl-font;
+  &:hover {
+    color: $white-1;
+  }
+}
+
+.btn_secondary_border {
+  @include btnBasic;
+  @include btnColor($btn-sec-bgc, true);
   height: 47px;
   border-radius: $S-button-radius;
   padding: 12px 20px;

@@ -32,7 +32,6 @@ export default defineStore("cartStore", {
         return item.id == product.prod_id;
       });
       if (resultIndex < 0) {
-        console.log("hi");
         this.cartData.push({
           id: product.prod_id,
           name: product.prod_name,
@@ -41,7 +40,6 @@ export default defineStore("cartStore", {
           count: addCount,
         });
       } else {
-        console.log("Hello");
         // 購物車裡面有這筆資料，要把count+addcount
         const oldCount = this.cartData[resultIndex]["count"];
         this.cartData[resultIndex] = {
@@ -53,10 +51,8 @@ export default defineStore("cartStore", {
     },
     deliveryMethodChange(method) {
       if (method === "homeDelivery") {
-        console.log("HI");
         this.deliveryPrice = 80;
-      } else if (method === "pickup") {
-        console.log("hello");
+      } else if (method === "pickup" || method === "init") {
         this.deliveryPrice = 0;
       }
     },
@@ -66,6 +62,38 @@ export default defineStore("cartStore", {
       } else {
         console.log("hi");
         this.discountPrice = 0;
+      }
+    },
+    reduceFromCart(product) {
+      const productIndex = this.cartData.findIndex(
+        (item) => item.id == product.id
+      );
+      if (this.cartData[productIndex]) {
+        if (this.cartData[productIndex]["count"] > 1) {
+          this.cartData[productIndex] = {
+            ...this.cartData[productIndex],
+            count: this.cartData[productIndex]["count"] - 1,
+          };
+        }
+      }
+    },
+    increaseFromCart(product) {
+      const productIndex = this.cartData.findIndex(
+        (item) => item.id == product.id
+      );
+      if (this.cartData[productIndex]) {
+        this.cartData[productIndex] = {
+          ...this.cartData[productIndex],
+          count: this.cartData[productIndex]["count"] + 1,
+        };
+      }
+    },
+    itemDelFormCart(product) {
+      const productIndex = this.cartData.findIndex(
+        (item) => item.id == product.id
+      );
+      if (this.cartData[productIndex]) {
+        this.cartData.splice(productIndex, 1);
       }
     },
   },

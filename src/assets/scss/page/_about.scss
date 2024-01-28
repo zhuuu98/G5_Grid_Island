@@ -1,42 +1,56 @@
+.is_d{
+  display: none;
+  @include T(){
+    display: none;
+  }
+  @include PC(){
+    display: block;
+  }
+}
+.is_m{
+  @include T(){
+    display: block;
+  }
+  @include PC(){
+    display: none;
+  }
+}
 .about {
-  // background-color: aquamarine;
-  // .row{
-    // background-color: #ccc;
-    
+
+  &_row{
+    width: 90%;
+    margin: auto;
+    @include T(){
+      width: 80%;
+    }
+    @include PC(){
+      max-width: 1140px;
+    }
+  }
+
+  // GridIsland簡介
+  .about_gi{
+    background-color: $orange-1;
+    width: 100%;
     // 麵包屑
-    .about_gi{
-      background-color: $orange-1;
-      width: 100%;
-      margin: auto;
       .breadcrumb {
-        // background-color: aliceblue;
         margin: 50px 0px 16px 0px;
-        // margin-left: 8px;
-        padding: 0 $M-spacing;
-        @include T() {
-          padding: 0 $L-spacing;
-        }
         @include PC() {
           margin-top: 100px;
         }
       }
       
       .about_gi_intro{
-        // padding-top: 30px;
         background-color: $white-1;
         border-radius: 28px;
         margin: 0px auto 54px auto;
-        width: 80%;
+        width: 100%;
         display: flex;
         flex-direction: column;
         @include T(){
-          width: 80%;
-          // border: 1px solid red;
           margin: 50px auto 50px auto;
           display: flex;
           flex-direction: row;
-          // margin-bottom: 0px;
-          // background-color: aqua;
         }
         // 手機版title
         .about_gi_text_title_m{
@@ -50,7 +64,6 @@
           }
         }
         .about_gi_text{
-          // background-color: aquamarine;
           order: 2;
           @include T(){
             order: -1;
@@ -67,12 +80,10 @@
               display: block;
               font-size: $PC-h2;
               color: $black;
-              // background-color: antiquewhite;
             }
           }
           &_content{
             width: 80%;
-            // outline: 1px solid red;
             margin: 0px auto 40px auto;
             font-size: $M-text;
             letter-spacing: .3px;
@@ -90,10 +101,8 @@
           margin: auto;
           @include T(){
             width: 35%;
-            // border: 1px solid red;
           }
           img{
-            // background-color: #fa0;
             width: 90%;
             vertical-align: bottom;
           }
@@ -101,119 +110,210 @@
       }
     }
 
-    // 環境介紹
-    &_en{
-      width: 100%;
-      background-color: $green-2;
-      margin-bottom: 100px;
+  // 環境介紹
+  &_en{
+    width: 100%;
+    background-color: $green-2;
 
-      &_section{
-        width: 100%;
-        // margin: 50px;
-        padding: 20px;
-        @include T(){
-          padding: 80px;
-          display: flex;
-          // border: 1px solid red;
-
-        }
-
-        // 輪播圖
-        .about_en_imgs{
-          margin: 8px auto;
-          background-color: #aaa;
-          // width: 100%;
-          // width: 300px;
-          border-radius: 32px;
-          overflow: hidden;
-          @include T(){
-            width: 50%;
-            margin: 20px;
-            // height: auto;
-            
-          }
-          
-          .about_demo-carousel{
-            height: 260px;
-            // width: 100%;
-            // height: 50%;
-            // overflow: hidden;
-            @include T(){
-              height: 450px;
-              // height: 50%;
-              // border: 1px solid blue;
-              // height: auto;
-              // height: 300px;
-              // width: 300px;
-              // width: 100%;
-              // height: 600px;
-            }
-            img{
-              // border: 1px solid red;
-              width: 100%;
-              transform-origin: bottom;
-              object-fit: cover;
-            }
+    &_section{
+      margin: 60px auto;
+      >div{
+        border-radius: 28px;
+        overflow: hidden;
+        &:first-child{
+          max-height: 400px;
+          margin-bottom: 20px;
+          img{
+            height: 100%;
+            transform-origin: bottom;
+            object-fit: cover;
           }
         }
-
-        .about_en_text{
-          margin: 8px auto;
-          padding: 20px;
-          border-radius: 28px;
-          background-color: $white-1;
-          width: 100%;
-          margin: auto;
-          @include T(){
-            min-height: 450px;
-            width: 50%;
-            
+        &:nth-child(2){
+          padding: 16px;
+          h3{
+            margin-bottom: 20px;
           }
-          .about_en_text_title{
-            margin: 8px auto;
-            text-align: center;
-            width: 100%;
-            h3{
-              font-size: $M-h3;
-              font-weight: bold;
-            }
-            
-          }
-          .about_en_text_content{
+          .about_re_btn{
             margin: auto;
-            width: 100%;
-            p{
-              margin-bottom: 16px;
-              width: 100%;
-              text-align: justify;
+            width: 150px;
+            .btn_lg{
+              color: $white-1;
             }
-
-          }
-  
-          button{
-            // border: 1px solid red;
-            margin: auto;
-            text-align: center;
           }
         }
-
       }
 
+      @include PC(){
+        width: 100%;
+        margin: 0px auto;
+        padding: 100px 0;
+        display: flex;        
+        >div{
+          width: 50%;
+          height: 500px;
+          // 輪播圖
+          &:first-child{
+            margin-bottom: 0px;
+            margin-right: 20px;
+            max-height: none;
+          }
+          // 說明文字
+          &:nth-child(2){
+            padding: 40px 40px;
+            h3{
+              margin-bottom: 20px;
+            }
+            button{
+              margin: 0 auto;
+              margin-top: 60px;
+            }
+          }
+        }
+      }
 
+      @media screen and (max-width:1064px) and (min-width:1024px) {
+        >div{
+          height: 480px;
+          &:first-child{
+            img{
+              height: 583px;
+            }
+          }
+          &:nth-child(2){
+            padding: 30px 40px;
+            h3{
+              margin-bottom: 10px;
+            }
+            button{
+              margin-top: 20px;
+            }
+          }
+        }
+      }
+      
+      .about_en_text{
+        background-color: $white-1;
+        .about_en_text_title{
+          margin: 8px auto;
+          text-align: center;
+          width: 100%;
+          h3{
+            font-size: $M-h3;
+            font-weight: bold;
+          }
+          
+        }
+        .about_en_text_content{
+          margin: auto;
+          width: 100%;
+          p{
+            margin-bottom: 16px;
+            width: 100%;
+            text-align: justify;
+          }
+        }
 
+        button{
+          margin: auto;
+          text-align: center;
+          display: block!important;
+        }
+      }
+    } 
+  }
+    
 
+  // griddy介紹
+  &_griddy{
+    background-color: $blue-2;
+    margin-bottom: 100px;
+    padding: 40px 0px;
+    width: 100%;
+    .about_griddy_section{
+      border: 1px solid yellow;
+      margin: auto;
+      // width: 90%;
+      // background-color: aliceblue;
+      @include PC(){
+        display: flex;
+        width: 100%;
+        >div{
+          align-items: center;
+          width: 50%;
+          margin: auto;
+          border: 1px solid red;
+          // padding: 200px;
+        }
+      }
+      .about_griddy_img{
+        width: 50%;
+        margin: 0px auto 20px auto;
+        // border: 1px solid red;
+        // background-color: #ccc;
+        @include PC(){
+          width: 260px;
+        }
+        img{
+          width: 100%;
+          vertical-align: bottom;
+        }
+      }
+      .about_griddy_text{
+        padding: 17px;
+        // width: 90%;
+        border-radius: 28px;
+        background: rgba(0, 0, 0, 0.32);
+        @include PC(){
+          // height: 50%;
+          width: 400px;
+          margin: auto;
+        }
+
+        .about_griddy_title{
+        // margin: auto;
+        text-align: center;
+        // padding-top: 27px;
+        // background-color: aquamarine;
+        
+        h3{
+          // margin-top: 38px;
+          color: $white-1;
+          font-size: $M-h2;
+        }
+      }
+      .about_griddy_content{
+        margin: 38px 0px;
+        p{
+          font-size: $M-text;
+          color: $white-1;
+          // letter-spacing: 0.3px;
+          text-align: center;
+
+          }
+        }
+      }
+      .about_griddy_btn{
+        width: 194px;
+        margin: auto;
+        // margin-bottom: 40px;
+
+        .btn_lg{
+          margin: auto;
+          color: $white-1;
+  
+        }
+      }
+      
 
     }
 
-    // griddy介紹
-    &_griddy{
-
-    }
+  }
 
     // 店鋪資訊
-    &_info{
+  &_info{
 
-    }
+  }
 
 
 

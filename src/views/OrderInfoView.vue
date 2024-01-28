@@ -1,13 +1,42 @@
 <template>
   <main class="orderItemInfo">
 
-    <div class="orderInfoTitle">
-      <h2>訂單資訊</h2>
-      <font-awesome-icon :icon="['fas', 'chevron-down']" />
+    <div class="orderInfoTitle" @click="toggleContent">
+      <h2 class="pc-h3">訂單資訊</h2>
+      <font-awesome-icon :icon="['fas', 'chevron-down']" :style="{ transform: rotateIcon, transition: 'transform 0.5s' }"/>
     </div>
 
-    <div>
-    <table>
+    <transition name="fade">
+      <div v-show="showContent" class="content">
+        <div v-for="(item, index) in respondData" :key="item.prod_id" class="orderItem">
+      <div class="itemImg">
+        <img :src="`https://tibamef2e.com/chd103/g5/img/${item.prod_img1}`">
+      </div>
+      <div class="orderItemDetail">
+        <div class="orderItemArea">
+          <div class="name">
+            <h2>{{ item.prod_name }}</h2>
+          </div>
+          <div class="price">
+            <h2>{{ item.prod_price }}</h2>
+          </div>
+        </div>
+      </div>
+      <span class="amount">
+        x
+        {{ item.prod_status }}
+      </span>
+    
+
+        </div>
+      </div>
+    </transition>
+    
+
+
+    <transition name="fade">
+      <div v-show="showContent" class="content">
+        <table>
       <thead>
         <tr>
           <th></th>
@@ -26,14 +55,8 @@
           <td class="prod_price">$ {{ item.prod_price }}</td>
         </tr>
       </tbody>
-    </table>
-  </div>
-
-
-
-    
-
-    <div class="priceContent">
+        </table>
+        <div class="priceContent">
         <div class="priceArea">
           <div class="subtotal">
             <div class="subtotalTitle">
@@ -62,38 +85,81 @@
           </div>
           <div class="totalPrice">
             <div class="totalPriceTitle">
-              <h3>總金額</h3>
+              <h3 class="pc-h3">總金額</h3>
             </div>
             <div class="totalPriceAmount">
-              <h3>$ {{ totalPriceCount }}</h3>
+              <h3 class="pc-h3">$ {{ totalPriceCount }}</h3>
             </div>
           </div>
         </div>
     </div>
-
-    <div class="orderInfo">
-      <h2>訂購人資料</h2>
-      <div class="name">
-        <span>姓名</span>
-        <input type="text" name="mem_name" id="memName" value="古迪錐" readonly>
       </div>
-      <div class="phone">
-        <span>手機號碼</span>
-        <input type="tel" name="mem_tel" id="memTel" value="0912345678" readonly>
+    </transition>
+      
+    
+    <form action="" method="post">
+      
+      <div class="orderPayment">
+        <div class="orderInfo">
+          <h2 class="pc-h3">訂購人資料</h2>
+          <div class="name">
+            <label for="memName">姓名</label>
+            <input type="text" name="mem_name" id="memName" value="古迪錐" readonly>
+          </div>
+          <div class="phone">
+            <label for="memTel">手機號碼</label>
+            <input type="tel" name="mem_tel" id="memTel" value="0912345678" readonly>
+          </div>
+          <div class="adress">
+            <label for="memAddr">地址</label>
+            <input type="text" name="mem_addr" id="memAddr" value="桃園市中壢區古迪路123號" readonly>
+          </div>
+          <div class="email">
+            <label for="memEmail">電子信箱</label>
+            <input type="email" name="mem_email" id="memEmail" value="griddy@griddy.com" readonly>
+          </div>
+        </div>
+        <div class="paymentInfo">
+          <h2 class="pc-h3">付款資料</h2>
+          <div class="payment">
+            <div class="text">
+              <label for="ordPayment">付款方式</label >
+              <div v-if="showWarning" class="warning">*請選擇一個有效的選項</div>
+            </div>
+            <select name="ord_payment" id="ordPayment" v-model="selectedValue" @change="handleSelectChange"
+            @focus="handlePaymentFocus" @blur="handlePaymentBlur">
+              <option value="0">--請選擇--</option>
+              <option value="option1">線上刷卡</option>
+              <option value="option2">匯款轉帳</option>
+              <option value="option3">貨到付款</option>
+            </select>
+          </div>
+          <div class="bill">
+            <div class="text">
+              <label for="memBill">發票</label>
+              <div v-if="showWarning1" class="warning">*請選擇一個有效的選項</div>
+            </div>
+            <select type="tel" name="mem_bill" id="memBill" v-model="selectedValue1" @change="handleSelectChange1" @focus="handlePaymentFocus1" @blur="handlePaymentBlur1">
+              <option value="0">--請選擇--</option>
+              <option value="option1">電子發票</option>
+              <option value="option2">紙本發票</option>
+              <option value="option3">捐出發票</option>
+            </select>
+          </div>
+        </div>
       </div>
-      <div class="adress">
-        <span>地址</span>
-        <input type="text" name="mem_addr" id="memAddr" value="桃園市中壢區古迪路123號" readonly>
+      <div class="checkOutBtn_m">
+        <button class="bookBtn" type="submit">
+          送出訂單
+        </button>
       </div>
-      <div class="email">
-        <span>電子信箱</span>
-        <input type="email" name="mem_email" id="memEmail" value="griddy@griddy.com" readonly>
+      <div class="checkOutBtn_pc">
+        <button class="btn_lg_orange" type="submit"> 
+          送出訂單
+        </button>
       </div>
-    </div>
-
-    <div class="checkOutBtn">
-      <button class="bookBtn">送出訂單</button>
-    </div>
+    </form>
+    
 
 
   </main>
@@ -119,6 +185,12 @@ export default {
       subTotalAmount: 1300,
       deliveryAmount: 0,
       discountAmount: 0,
+      showContent: true,
+      isRotated: true,
+      selectedValue: "0",
+      selectedValue1: "0",
+      showWarning: false,
+      showWarning1: false,
     };
   },
   computed: {
@@ -131,32 +203,11 @@ export default {
     totalPriceCount() {
       return this.subTotalAmount + this.deliveryAmount - this.discountAmount;
     },
-    userName2() {
-      return this.userStore.getUserName;
-    },
     cart() {
       return this.userStore.getCart;
     },
-    cartDetail() {
-      const data = [
-        {
-          id: "111",
-          isFav: true,
-          imgUrl: `aaa/dd-aaa.jpg`,
-        },
-        {
-          id: "113",
-          isFav: false,
-          imgUrl: `aaa/01.jpg`,
-        },
-      ];
-      return this.cart.map((v, i) => {
-        const obj = data.find((u) => u.id === v.id);
-        return {
-          ...v,
-          ...obj,
-        };
-      });
+    rotateIcon() {
+      return this.isRotated ? 'rotate(-180deg)' : '';
     },
   },
   created() {
@@ -171,24 +222,52 @@ export default {
           this.respondData = res.data;
         });
     },
+    toggleContent(e) {
+      this.showContent = !this.showContent;
+      this.isRotated = !this.isRotated;
+    },
+    handlePaymentFocus() {
+        // 在 select 元素被聚焦時，將 showWarning 設為 false
+        this.showWarning = false;
+    },
+    handlePaymentBlur() {
+        // 在 select 元素失去焦點時，檢查選擇的值，根據需要更新 showWarning
+        if (this.selectedValue === "0") {
+            this.showWarning = true;
+        } else {
+            this.showWarning = false;
+        }
+    },
+    handleSelectChange() {
+        // 在選擇發生變化時檢查選擇的值，根據需要更新 showWarning
+        if (this.selectedValue === "0") {
+            this.showWarning = true;
+        } else {
+            this.showWarning = false;
+        }
+    },
+    handlePaymentFocus1() {
+        // 在 select 元素被聚焦時，將 showWarning 設為 false
+        this.showWarning1 = false;
+    },
+    handlePaymentBlur1() {
+    // 在 select 元素失去焦點時，檢查選擇的值，根據需要更新 showWarning1
+    if (!this.selectedValue1 || this.selectedValue1 === "0") {
+      this.showWarning1 = true;
+    } else {
+      this.showWarning1 = false;
+    }
+  },
 
-    deliveryMethodChange() {
-      if (this.deliveryMethod == "homeDelivery") {
-        this.deliveryAmount = 80;
-      } else if (this.deliveryMethod == "pickup") {
-        this.deliveryAmount = 0;
-      }
-    },
-    discountCodeCheck() {
-      if (
-        this.discountCode == "GridIsland" ||
-        this.discountCode == "GridIsland2023"
-      ) {
-        this.discountAmount = 50;
-      } else {
-        this.discountAmount = 0;
-      }
-    },
+  handleSelectChange1() {
+    // 在選擇發生變化時檢查選擇的值，根據需要更新 showWarning1
+    if (!this.selectedValue1 || this.selectedValue1 === "0") {
+      this.showWarning1 = true;
+    } else {
+      this.showWarning1 = false;
+    }
+  },
+
   },
   mounted() {},
 };
