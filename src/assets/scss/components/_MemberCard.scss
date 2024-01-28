@@ -1,22 +1,12 @@
-body{
-
-}
-.memberCard{
-    width: 100%;
-    background-color: $blue-1;
-    padding-bottom: 50%;
-    .container{
-        margin-top: 10%;
-    }
+.memberAside{
     .memAside{
         position: relative;
         display: flex;
         justify-content: center;
-        background-color: $white-1;
-        // max-width: 25%;
-        // left: 8.33%;
         border-radius: $PC-card-radius;
-        // margin: $L-spacing;
+        flex-direction: column;
+        gap: $M-spacing;
+
         @include PC() {
             position: relative;
             // top: 100px;
@@ -25,17 +15,49 @@ body{
     .memID{
         display: flex;
         align-items: center;
+        justify-content: center;
+        padding: $M-spacing;
         gap: $M-spacing;
+        border-radius: $PC-card-radius;
+        background-color: $white-1;
+
     }
     .memID img{
         vertical-align: top;
         width: 100%;
         max-width: 60px;
     }
-    .memAside{
-        display: flex;
-        flex-direction: column;
+
+    .memberContent{
+        gap: $M-spacing;
+        justify-content: center;
     }
 
+    .asideListitem{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: $M-spacing;
+        position: relative;
+    }
+    .asideListitem:not(:last-child):after{
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 10%;
+        width: 80%;
+        height: 1px;        
+        border-top: 1px solid;
+    }
 
+    .asideListitem img{
+        width: 100%;
+        vertical-align: top;
+        max-width: 36px;
+    }
+    .asideList{
+        border-radius: $PC-card-radius;
+        background-color: $white-1;
+
+    }
 }

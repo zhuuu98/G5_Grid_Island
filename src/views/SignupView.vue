@@ -66,6 +66,7 @@ export default {
                 }
             }
             if(this.memName == "" || hasnum == true) {
+                document.body.classList.add('body-overflow-hidden');
                 this.alertContent = '請輸入正確姓名'
                 this.showAlert = true;
                 return;
@@ -73,15 +74,18 @@ export default {
 
             // 比對密碼
             if(this.a83au4.length < 6 || this.a83au5.length < 6){
+                document.body.classList.add('body-overflow-hidden');
                 this.alertContent = '密碼長度至少六碼'
                 this.showAlert = true;
                 return;
             }
             else if(this.a83au4 != this.a83au5){
+                document.body.classList.add('body-overflow-hidden');
                 this.alertContent = '密碼不一致，請重新輸入'
                 this.showAlert = true;
                 return;
             }
+            document.body.classList.add('body-overflow-hidden');
             this.alertContent = '註冊成功，即將前往會員中心'
             this.showAlert = true;
             //跳轉回會員中心
