@@ -2,7 +2,7 @@
 //btn basic
 @mixin btnBasic() {
   cursor: pointer;
-  display: inline-flex !important;
+  display: block;
   align-items: center;
   justify-content: center;
   border:none;
