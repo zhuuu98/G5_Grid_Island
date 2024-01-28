@@ -26,6 +26,12 @@ export default defineStore("cartStore", {
     },
   },
   actions: {
+    getLocalCartData() {
+      let localCartData = localStorage["cartData"];
+      if (localCartData) {
+        this.cartData = JSON.parse(localCartData);
+      }
+    },
     addCartData(product, addCount = 1) {
       const resultIndex = this.cartData.findIndex((item) => {
         // 如果報錯需要確認資料來源的key是什麼
@@ -47,6 +53,7 @@ export default defineStore("cartStore", {
           count: oldCount + addCount,
         };
       }
+      localStorage["cartData"] = JSON.stringify(this.cartData);
       console.log(this.cartData);
     },
     deliveryMethodChange(method) {
@@ -55,14 +62,15 @@ export default defineStore("cartStore", {
       } else if (method === "pickup" || method === "init") {
         this.deliveryPrice = 0;
       }
+      localStorage["deliveryPrice"] = this.deliveryPrice;
     },
     discountCodeCheck(discountCode) {
       if (this.validDiscountCodes.includes(discountCode)) {
         this.discountPrice = 50;
       } else {
-        console.log("hi");
         this.discountPrice = 0;
       }
+      localStorage["discountPrice"] = this.discountPrice;
     },
     reduceFromCart(product) {
       const productIndex = this.cartData.findIndex(
@@ -76,6 +84,7 @@ export default defineStore("cartStore", {
           };
         }
       }
+      localStorage["cartData"] = JSON.stringify(this.cartData);
     },
     increaseFromCart(product) {
       const productIndex = this.cartData.findIndex(
@@ -87,6 +96,7 @@ export default defineStore("cartStore", {
           count: this.cartData[productIndex]["count"] + 1,
         };
       }
+      localStorage["cartData"] = JSON.stringify(this.cartData);
     },
     itemDelFormCart(product) {
       const productIndex = this.cartData.findIndex(
@@ -95,6 +105,13 @@ export default defineStore("cartStore", {
       if (this.cartData[productIndex]) {
         this.cartData.splice(productIndex, 1);
       }
+      if (this.cartData.length == 0) {
+        this.deliveryPrice = 0;
+        this.discountPrice = 0;
+      }
+      localStorage["deliveryPrice"] = this.deliveryPrice;
+      localStorage["discountPrice"] = this.discountPrice;
+      localStorage["cartData"] = JSON.stringify(this.cartData);
     },
   },
 });

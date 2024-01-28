@@ -19,9 +19,17 @@ export default {
 };
 </script>
 
-<template>
+<!-- <template>
   <MainHeader />
   <RouterView />
   <ChatBot />
   <MainFooter />
+</template> -->
+<template>
+  <RouterView v-slot="{ Component, route }">
+    <MainHeader v-if="route.meta.showHeader !== false" />
+    <component :is="Component" />
+    <ChatBot />
+    <MainFooter />
+  </RouterView>
 </template>

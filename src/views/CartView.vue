@@ -68,6 +68,7 @@
             <div class="discountCodeTitle">
               <h3>輸入折扣碼</h3>
             </div>
+
             <div class="discountCodeInputBtn">
               <div class="discountCodeInput">
                 <input
@@ -88,6 +89,9 @@
           <div class="deliveryMethod">
             <div class="deliveryMethodTitle">
               <h3>配送方式</h3>
+            </div>
+            <div class="deliveryWarning" v-show="deliveryMethod == 'init'">
+              <p>*請選擇一個有效的選項</p>
             </div>
             <div class="deliveryMethodSelect">
               <select
@@ -139,9 +143,15 @@
           </div>
           <div
             class="checkOutBtn"
-            v-show="cartData.length != 0 && deliveryMethod != 'init'"
+            :class="{ disableBtn: deliveryMethod === 'init' }"
+            v-show="cartData.length != 0"
           >
-            <button class="bookBtn">前往結帳</button>
+            <button
+              class="bookBtn"
+              :class="{ disableBtn: deliveryMethod === 'init' }"
+            >
+              前往結帳
+            </button>
           </div>
         </div>
       </div>
@@ -247,6 +257,7 @@ export default {
   },
   created() {
     this.axiosGetData();
+    this.getLocalCartData();
   },
   methods: {
     ...mapActions(cartStore, [
@@ -255,6 +266,7 @@ export default {
       "reduceFromCart",
       "increaseFromCart",
       "itemDelFormCart",
+      "getLocalCartData",
     ]),
     axiosGetData() {
       axios

@@ -23,7 +23,8 @@
 
               <li>
                 <RouterLink to="/login" class="nav_link ">
-                  <div class="nav_member"><img src="../assets/images/header/header-member.svg" alt="header-member"></div>
+                  <div class="nav_member"><img src="../assets/images/header/header-member.svg" alt="header-member">
+                  </div>
                 </RouterLink>
               </li>
 
@@ -36,7 +37,7 @@
                 </button>
               </li>
             </ul>
-            
+
           </nav>
         </div>
         <transition name="ham_menu">
@@ -50,7 +51,7 @@
 
                 <div :class="{ 'active-line3': menuOpen }" class="ham_btn2_line3"></div>
               </button>
-            </li> 
+            </li>
 
             <RouterLink to="/" class="ham_logo">
               <img src="../assets/images/header/gdidlogobox.svg" alt="">
@@ -70,7 +71,7 @@
               <!-- 玩家社群，含子階層 -->
               <div class="ham_comm" @click="toggleSubMenuOpen">
                 <div class="ham_link ham_comm">玩家社群
-                  <font-awesome-icon :icon="['fas', 'angle-right']" class="ham_angle_right"/>
+                  <font-awesome-icon :icon="['fas', 'angle-right']" class="ham_angle_right" />
                 </div>
                 <p class="ham_hover_comm ham_hover">Community</p>
 
@@ -108,51 +109,50 @@
 </template>
 
 <script>
-import { RouterLink } from "vue-router";
-export default {
-  components: {
-    RouterLink,
-  },
-  data() {
-    return {
-      menuOpen: false, //漢堡開關
-      subMenuOpen: false, //玩家社群子階層
-      hamX: false,
-    };
-  },
-  methods: {
-    toggleMenu() {
-      // 切換 menuOpen 的值
-      this.menuOpen = !this.menuOpen;
-      // 如果 toggleMenu 為 true，同步將 subMenuOpen 設為 false
-      if (this.toggleMenu) {
-        this.subMenuOpen = false;
+  import { RouterLink } from "vue-router";
+  export default {
+    components: {
+      RouterLink,
+    },
+    data() {
+      return {
+        menuOpen: false, //漢堡開關
+        subMenuOpen: false, //玩家社群子階層
+        hamX: false,
       };
+    },
+    methods: {
+      toggleMenu() {
+        // 切換 menuOpen 的值
+        this.menuOpen = !this.menuOpen;
+        // 如果 toggleMenu 為 true，同步將 subMenuOpen 設為 false
+        if (this.toggleMenu) {
+          this.subMenuOpen = false;
+        };
 
-      if (this.menuOpen) {
-        document.body.classList.add('body-overflow-hidden');
-      } else {
-        document.body.classList.remove('body-overflow-hidden');
-      }
+        if (this.menuOpen) {
+          document.body.classList.add('body-overflow-hidden');
+        } else {
+          document.body.classList.remove('body-overflow-hidden');
+        }
       },
       toggleSubMenuOpen() {
-      this.subMenuOpen = !this.subMenuOpen;
+        this.subMenuOpen = !this.subMenuOpen;
       },
-  },
-  mounted() {
-    this.$router.afterEach(() => {
-    this.menuOpen = false; // 關閉漢堡選單
-  });
+    },
+    mounted() {
+      this.$router.afterEach(() => {
+        this.menuOpen = false; // 關閉漢堡選單
+      });
 
-   // 在路由切換後執行的邏輯
-    this.$router.afterEach(() => {
-      // 關閉漢堡選單
-      this.menuOpen = false;
-      // 恢復卷軸
-      document.body.classList.remove('body-overflow-hidden');
-    });
-  
-  },
-};
+      // 在路由切換後執行的邏輯
+      this.$router.afterEach(() => {
+        // 關閉漢堡選單
+        this.menuOpen = false;
+        // 恢復卷軸
+        document.body.classList.remove('body-overflow-hidden');
+      });
+
+    },
+  };
 </script>
-
