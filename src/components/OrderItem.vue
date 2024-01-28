@@ -18,7 +18,7 @@
             </router-link>
           </div>
           <div class="price">
-            <h2>{{ productPrice }}</h2>
+            <h2>$ {{ productPrice }}</h2>
           </div>
         </div>
       </div>

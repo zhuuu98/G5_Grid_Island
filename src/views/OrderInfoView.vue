@@ -32,7 +32,9 @@
           <td class="prod_img">
             <img :src="`https://tibamef2e.com/chd103/g5/img/${item.prod_img1}`"  :alt="item.prod_name"/>
           </td>
-          <td class="prod_name"><h3>{{ item.prod_name }}</h3></td>
+          <td class="prod_name">
+            <h3>{{ item.prod_name }}</h3>
+          </td>
           <td class="prod_status">{{ item.prod_status }}</td>
           <td class="prod_price">$ {{ item.prod_price }}</td>
         </tr>

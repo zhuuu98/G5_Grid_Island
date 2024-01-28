@@ -64,7 +64,7 @@
   .orderItem {
     display: flex;
     position: relative;
-    margin: $M-spacing 0 $M-spacing $M-spacing;
+    margin: $M-spacing  0 $M-spacing $L-spacing;
     
     @include T(){
       display: none;
@@ -117,7 +117,7 @@
       position: absolute;
       top: 0;
       right: 0;
-      transform: translate(-40px,45px);
+      transform: translate(-40px, 50px);
     }
   }
   
