@@ -8,27 +8,9 @@
 
     <transition name="fade">
       <div v-show="showContent" class="content">
-        <div v-for="(item, index) in respondData" :key="item.prod_id" class="orderItem">
-      <div class="itemImg">
-        <img :src="`https://tibamef2e.com/chd103/g5/img/${item.prod_img1}`">
-      </div>
-      <div class="orderItemDetail">
-        <div class="orderItemArea">
-          <div class="name">
-            <h2>{{ item.prod_name }}</h2>
-          </div>
-          <div class="price">
-            <h2>{{ item.prod_price }}</h2>
-          </div>
-        </div>
-      </div>
-      <span class="amount">
-        x
-        {{ item.prod_status }}
-      </span>
-    
-
-        </div>
+        <OrderItem v-for="(item, index) in respondData" :key="item.prod_id"  :productTitle="item.prod_name" :imgUrl="`https://tibamef2e.com/chd103/g5/img/${item.prod_img1}`" :productPrice="item.prod_price" :productId="item.prod_id"
+        :productStatus="item.prod_status">
+        </OrderItem>
       </div>
     </transition>
     
@@ -120,7 +102,7 @@
           </div>
         </div>
         <div class="paymentInfo">
-          <h2 class="pc-h3">付款資料</h2>
+          <h2 class="pc-h3">付款資訊</h2>
           <div class="payment">
             <div class="text">
               <label for="ordPayment">付款方式</label >
@@ -168,6 +150,7 @@
 <script>
 import axios from "axios";
 import useUserStore from "../stores/user";
+import OrderItem from "../components/OrderItem.vue";
 
 export default {
   setup() {
@@ -192,6 +175,9 @@ export default {
       showWarning: false,
       showWarning1: false,
     };
+  },
+  components: {
+    OrderItem,
   },
   computed: {
     loading() {

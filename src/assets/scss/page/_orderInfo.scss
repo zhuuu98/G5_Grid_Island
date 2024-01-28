@@ -64,6 +64,7 @@
   .orderItem {
     display: flex;
     position: relative;
+    margin: $M-spacing 0 $M-spacing $M-spacing;
     
     @include T(){
       display: none;
@@ -97,11 +98,10 @@
           text-wrap: nowrap;
           text-overflow: ellipsis;
           overflow: hidden;
-          // min-width: 200px;
           h2 {
             overflow: hidden;
             text-overflow: ellipsis;
-
+            color: $blue-4;
           }
         }
         .price {}     

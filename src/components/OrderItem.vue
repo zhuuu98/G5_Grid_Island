@@ -1,74 +1,45 @@
 <template>
-  <main class="cartItem">
-    <div class="cartItemBackground">
-      <div class="deleteBtn">
-        <font-awesome-icon :icon="['fas', 'xmark']" class="xMark" />
+  <div class="orderItem">
+    <router-link
+      :to="{
+        name: 'productInfo',
+        params: { id: productId },
+      }"
+    >   
+      <div class="itemImg">
+        <img :src="imgUrl" :alt="productTitle">
       </div>
-      <div class="cartItemContent">
-        <router-link
-          :to="{
-            name: 'productInfo',
-            params: { id: itemId },
-          }"
-        >
-          <div class="cartItemPic">
-            <img :src="itemPicUrl" :alt="itemName" />
+    </router-link>
+      <div class="orderItemDetail">
+        <div class="orderItemArea">
+          <div class="name">
+            <router-link :to="{ name: 'productInfo', params: { id: productId },}">
+            <h2>{{ productTitle }}</h2>
+            </router-link>
           </div>
-        </router-link>
-        <div class="cartItemInfo">
-          <router-link
-            :to="{
-              name: 'productInfo',
-              params: { id: itemId },
-            }"
-          >
-            <div class="cartItemName">
-              <h3>{{ itemName }}</h3>
-            </div>
-          </router-link>
-          <div class="cartItemPriceQuantity">
-            <div class="cartItemPrice">
-              <div class="cartItemDiscountPrice" v-if="itemDiscountPrice">
-                <h3>{{ itemDiscountPrice }}</h3>
-              </div>
-              <div class="cartItemPrice">
-                <h3>$ {{ itemPrice }}</h3>
-              </div>
-            </div>
-            <div class="cartItemQuantity">
-              <button @click="quantityChange('minus')">
-                <span>-</span>
-              </button>
-              <input type="number" :value="productQuantity" />
-              <button @click="quantityChange('plus')">
-                <span>+</span>
-              </button>
-            </div>
+          <div class="price">
+            <h2>{{ productPrice }}</h2>
           </div>
         </div>
       </div>
-    </div>
-  </main>
+      <span class="amount">
+        x
+        {{ productStatus }}
+      </span>
+
+
+        </div>
 </template>
 
 <script>
 export default {
   data() {
     return {
-      productQuantity: 1,
+      value: 0,
     };
   },
-  props: ["itemPicUrl", "itemName", "itemDiscountPrice", "itemPrice", "itemId"],
+  props: ["imgUrl", "productTitle", "productPrice", "productStatus", "productId"],
   methods: {
-    quantityChange(method) {
-      if (method == "plus") {
-        this.productQuantity += 1;
-      } else {
-        if (this.productQuantity > 1) {
-          this.productQuantity -= 1;
-        }
-      }
-    },
   },
   mounted() {},
 };
