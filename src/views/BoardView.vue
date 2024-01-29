@@ -154,7 +154,7 @@ export default {
       card:[
         {
           id: 1,
-          id_img:'./src/assets/images/board/board_id_img.svg',
+          id_img:'@/assets/images/board/board_id_img.svg',
           id_img_alt:'board_id_img',
           memId:'1啊人家家就笨壓',
           time:'2023/12/30 20:25',
@@ -163,7 +163,7 @@ export default {
           re:[
             {
               id:1,
-              img:'./src/assets/images/board/board_id_img.svg',
+              img:'@/assets/images/board/board_id_img.svg',
               alt:'board_id_img',
               memId:'萵金',
               time:'2023/12/30 20:25',
@@ -171,7 +171,7 @@ export default {
             },
             {
               id:2,
-              img:'./src/assets/images/board/board_id_img.svg',
+              img:'@/assets/images/board/board_id_img.svg',
               alt:'board_id_img',
               memId:'金',
               time:'2023/12/30 20:25',
