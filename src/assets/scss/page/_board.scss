@@ -247,7 +247,6 @@
         p{
           font-size: $M-text;
         }
-
       }
 
 
@@ -364,10 +363,11 @@
     >div{
       h3{
         text-align: center;
-        margin-bottom: 60px;
+        margin: 20px auto 60px auto;
       }
       button{
         margin: auto;
+        display: flex;
       }
     }
   }
@@ -473,11 +473,11 @@
     >div{
       h3{
         text-align: center;
-        margin-bottom: 60px;
+        margin: 20px auto 60px auto;
       }
       button{
         margin: auto;
-
+        display: flex;
       }
     }
   }

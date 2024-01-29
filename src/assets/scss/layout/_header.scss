@@ -64,11 +64,11 @@ header {
         justify-content: space-between;
         width: 18px;
         cursor: pointer;
-        z-index: 990;
+        // z-index: 990;
         outline: none;
         // border: 1px solid red;
         @include PC(){
-          z-index: 1;
+          // z-index: 1;
         }
 
         // 漢堡線
@@ -159,15 +159,16 @@ header {
 
       // 選單內漢堡線
       .inside_ham_btn{
-        display: none;
-        @include PC(){
+        // display: none;
         position: absolute;
-        top: -38px;
-        right: 28px;
+        top:-38px;
+        right: 12px;
         display: flex;
         width: 18px;
         cursor: pointer;
         z-index: 990;
+        @include PC(){
+          right: 28px;
         }
 
         .ham_btn2{
