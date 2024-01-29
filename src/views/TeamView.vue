@@ -67,7 +67,7 @@
                   <!-- 報團按鈕 -->
                   <div class="team_card_btn">
                     <div class="btn_secondary">
-                      來去報隊
+                      我要加入
                     </div>
                   </div>
                 
