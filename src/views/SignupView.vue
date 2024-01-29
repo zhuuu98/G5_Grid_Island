@@ -97,7 +97,10 @@ export default {
             this.showAlert = false;
             this.alertContent = '';
             document.body.classList.remove('body-overflow-hidden');
-        }
+        },
+        // addMemToDb(){
+
+        // }
     },
 };
 </script>

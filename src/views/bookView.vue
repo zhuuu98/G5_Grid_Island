@@ -94,7 +94,9 @@
                 <button @click="closeAlert">
                     <i class="fa-solid fa-xmark fa-2x"></i>
                 </button>
-                <p v-for="content in alertContent">{{ content }}</p>
+                <div class="alert_main_content">
+                    <p v-for="content in alertContent">{{ content }}</p>
+                </div>
             </div>
         </div>
     </div>
@@ -216,10 +218,10 @@ export default {
         },
         handleInput() {
             if (this.dateChosen == '' || this.tableChosen == '' || this.timeChosen == '') {
-                this.alertContent = '請填寫完整預訂資訊'
+                this.alertContent.push('請填寫完整預訂資訊') 
                 this.showAlert = true;
             } else {
-                this.alertContent.push(`選擇日期：${this.dateChosen}`, `選擇桌型：${this.tableChosen}`, `選擇時段：${this.timeChosen}`, `預定人數：${this.count}人`)
+                this.alertContent.push(`預約成功！以下是您的預約資訊`, `選擇日期：${this.dateChosen}`, `選擇桌型：${this.tableChosen}`, `選擇時段：${this.timeChosen}`, `預定人數：${this.count}人`)
                 this.showAlert = true;
                 this.dateChosen = '';
                 this.tableChosen = '';
@@ -228,10 +230,13 @@ export default {
             }
         },
         closeAlert(){
-            // this.showAlert = false;
-            // this.alertContent = [];
-            // document.body.classList.remove('body-overflow-hidden');
-            this.$router.push('/') //這邊要跳回會員中心
+            if(this.alertContent.length<=1){
+                this.showAlert = false;
+                this.alertContent = [];
+                document.body.classList.remove('body-overflow-hidden');
+            }else{
+                this.$router.push('/member') //跳回會員中心
+            }
         },
         // 以下是日曆用
         prevMonth() {
