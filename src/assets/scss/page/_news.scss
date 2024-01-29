@@ -4,11 +4,20 @@
       margin-top: $XXL-spacing ;
       margin-bottom: $XXXL-spacing ;
       .btn {
-        width: 30px;
+        // width: 60px;
+        display: flex;
+        justify-content: flex-end;
+        padding: 20px 40px 20px 0;
+        gap: 10px;
         .svg-inline--fa {
-          width: 100%;
+          width: 30px;
+          // height: 100%;
         }
     
+      }
+      @include T(){
+        max-width: 1500px;
+        margin:  $XXL-spacing auto $XXXL-spacing;
       }
 
     .cardList {
@@ -25,72 +34,74 @@
       }
   
   
-      .newCard {
-        border-radius: $M-button-radius;
-        width: 166.5px;
-        border: 2px solid $blue-4;
-        height: 251px;
-        display: flex;
-        flex-direction: column;
+      // .newCard {
+      //   border-radius: $M-button-radius;
+      //   width: 166.5px;
+      //   border: 2px solid $blue-4;
+      //   height: 251px;
+      //   display: flex;
+      //   flex-direction: column;
         
-        @include T(){
-          width: 305px;
-          height: 457px;
-          border-radius: $S-button-radius;
-        }
+      //   @include T(){
+      //     width: calc((100vw - 160px)/4) ;
+      //     border-radius: $S-button-radius;
+      //   }
+      //   @include PC() {
+      //     height: 457px; 
+
+      //   }
         
-        .newsImg {
-          overflow: hidden;
-          border-radius: 18px 18px 0 0;
-          height: 123px;
-          object-fit: cover;
-          border-bottom: 2px solid $blue-4;
+      //   .newsImg {
+      //     overflow: hidden;
+      //     border-radius: 18px 18px 0 0;
+      //     // height: 123px;
+      //     height: auto;
+      //     object-fit: cover;
+      //     border-bottom: 2px solid $blue-4;
           
+      //     @include T(){
+      //       height: 305px;
+      //       border-radius: 5px 5px 0 0;
+      //       border-bottom: 0px;
+      //     }
           
-          
-          @include T(){
-            height: 305px;
-            border-radius: 5px 5px 0 0;
-            border-bottom: 0px;
-          }
-          
-          img {
-            object-position: 0 -30px;
-            width: 100%;
-            vertical-align: middle;
-            border-bottom: 2px solid $blue-4;
+      //     img {
+      //       object-position: 0 -30px;
+      //       width: 100%;
+      //       vertical-align: middle;
+      //       border-bottom: 2px solid $blue-4;
             
-            @include T(){
-              object-position: 0;
+      //       @include T(){
+      //         object-position: 0;
               
-            }
-          }
-        }
+      //       }
+      //     }
+      //   }
   
-        .text {
-          display: flex;
-          flex-direction: column;
-          flex:1;
-          justify-content: space-between;
-          padding: $S-spacing $S-spacing  $S-spacing;
+      //   .text {
+      //     display: flex;
+      //     flex-direction: column;
+      //     flex:1;
+      //     justify-content: space-between;
+      //     padding: $S-spacing $S-spacing  $S-spacing;
           
-          @include T() {
-            padding: $M-spacing $S-spacing  $M-spacing;
+      //     @include T() {
+      //       padding: $M-spacing $S-spacing  $M-spacing;
   
-          }
-  
-  
-          .title {}
-  
-          .date {
-          }
+      //     }
   
   
-        }
+      //     .title {}
+  
+      //     .date {
+      //     }
+  
+  
+      //   }
   
   
   
-      }
+      // }
   
     }
 

@@ -1,20 +1,24 @@
 <template>
-  <main class="news">
-    <div class="newsTitle">
-      <h1>
-        <PageTitle :pageTitle="'最新消息'" />
-      </h1>
+  <main class="newArticle">
+    <div class="newArticleTitle">
+      <h1>{{ item.prod_title }}</h1>
     </div>
-
+    <div class="breadcrumb">
+      <Breadcrumb separator="<b class='breadcrumb-separator'>></b>">
+        <BreadcrumbItem to="/">首頁</BreadcrumbItem>
+        <BreadcrumbItem to="/product">所有商品</BreadcrumbItem>
+        <BreadcrumbItem>{{ respondData.prod_name }}</BreadcrumbItem>
+      </Breadcrumb>
+    </div>
     
     <div class="content">
       <div class="btn">
         <font-awesome-icon :icon="['fas', 'th']" />
         <font-awesome-icon :icon="['fas', 'th-list']" />
-      </div>
+    </div>
 
       <div class="cardList">
-        <NewsCard v-for="(item, index) in respondData" :key="item.prod_id" :productTitle="item.prod_name" :imgUrl="`https://tibamef2e.com/chd103/g5/img/${item.prod_img1}`" />
+       
       </div>
    
 
@@ -28,7 +32,6 @@
 <script>
 import axios from "axios";
 import PageTitle from "../components/PageTitle.vue";
-import NewsCard from "../components/NewsCard.vue";
 
 
 export default {
@@ -40,7 +43,6 @@ export default {
   },
   components: {
     PageTitle,
-    NewsCard,
   },
   computed: {
   },
