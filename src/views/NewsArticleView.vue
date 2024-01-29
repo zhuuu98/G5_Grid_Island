@@ -1,22 +1,14 @@
 <template>
-  <main class="newArticle">
-    <div class="newArticleTitle">
-      <h1>{{ item.prod_title }}</h1>
+  <main class="newsArticle">
+    <div class="title">
+      <h1>text</h1>
+      <h1>{{ respondData.news_title }}</h1>
     </div>
-    
+    <div class="newsImg">
+      <img :src="`https://tibamef2e.com/chd103/g1/image/news/${respondData.news_img}`">
+    </div>
     <div class="content">
-      <div class="btn">
-        <font-awesome-icon :icon="['fas', 'th']" />
-        <font-awesome-icon :icon="['fas', 'th-list']" />
-    </div>
-
-      <div class="cardList">
-       
-      </div>
-   
-
-
-
+      <span>{{ respondData.news_content }}</span>
     </div>
   </main>
 </template>
@@ -45,7 +37,7 @@ export default {
   methods: {
     axiosGetData() {
       axios
-        .get("https://tibamef2e.com/chd103/g5/phps/ProductM.php")
+        .get("https://tibamef2e.com/chd103/g1/phps/news_fetch.php")
         .then((res) => {
           console.log(res.data);
           this.respondData = res.data;
