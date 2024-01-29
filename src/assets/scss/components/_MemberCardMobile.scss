@@ -1,0 +1,84 @@
+    //手機板
+    .memberMobile{
+        padding-top: 15%;
+        display: flex;
+        flex-direction: column;
+        gap: $M-spacing;
+        align-items: center;
+        justify-content: center;
+
+        @include T(){
+            display: none;
+
+        }
+    }
+    .memberMainMobile{
+        width: 100%;
+        max-width: 360px;
+        display: flex;
+        flex-wrap: wrap;
+        gap: $S-spacing;
+        justify-content: center;
+        align-items: center;
+        background-color: $white-1;
+        border-radius: $PC-card-radius;
+        padding: $S-spacing;
+
+    }
+    .mobileContent{
+        display: flex;
+        gap: $S-spacing;
+        
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        border: 1px solid $blue-3;
+        border-radius: $S-button-radius;
+        padding:$S-spacing $XS-spacing;
+        width: 100%;
+        max-width: 100px;
+        background-color: $gray-1;
+        &:hover {
+            border: 1px solid rgba($color: $gray-1, $alpha: 0);
+            background-color: $blue-3;
+            color: $white-1;
+        
+            img {
+            filter: invert(100%);
+            }
+        }
+    }
+    .mobileContent img{
+        width: 100%;
+        max-width: 36px;
+        vertical-align: top;
+    }
+    .mobileMember img{
+        width: 100%;
+        max-width: 100px;
+        vertical-align: top;
+    }
+    .mobileMember{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        background-color: $white-1;
+        max-width: 360px;
+        width: 100%;
+        border-radius: $PC-card-radius;
+        padding: $M-spacing;
+        gap: $M-spacing;
+
+    }
+
+
+
+
+
+
+
+
+
+
+
