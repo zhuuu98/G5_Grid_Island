@@ -56,7 +56,7 @@
       <div v-if="showReserveCard" id="reserveCard" class="showCard">
         <p class="card-title">預約場地</p>
         <div class="card-line"></div>
-        <p class="card-text">墨書登記，備以預約遊戲之地，選擇良辰與桌戲。ㄋ</p>
+        <p class="card-text">墨書登記，備以預約遊戲之地，選擇良辰與桌戲。</p>
       </div>
       <!-- 蟲 -->
       <img :src="bug" alt="Banner Bug" id="bug" />
@@ -202,8 +202,8 @@
 
       const handleMouseMove = (event) => {
         requestAnimationFrame(() => {
-          moveEye(leftEyeRef, event.clientX, event.clientY, 51.1, 38.6, 0.55, 1.45);
-          moveEye(rightEyeRef, event.clientX, event.clientY, 53, 38.05, 0.4, 1.15);
+          moveEye(leftEyeRef, event.clientX, event.clientY, 51.0, 38.5, 0.51, 1.36);
+          moveEye(rightEyeRef, event.clientX, event.clientY, 52.9, 37.9, 0.35, 1.14);
         });
       };
 
