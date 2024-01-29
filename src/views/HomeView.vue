@@ -78,7 +78,7 @@
 
     <MainHeader />
     <!-- 內容 -->
-    <div class="container">
+    <div class="index">
       
 
           <!-- 所有商品 -->
