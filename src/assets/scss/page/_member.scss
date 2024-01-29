@@ -16,8 +16,6 @@
         @include T(){
             display: flex;
         }
-    
-    
     }
     .memberContent{
         background-color: $white-1;
@@ -132,8 +130,6 @@
         background-color: $white-1;
         border-radius: $PC-card-radius;
         padding: $S-spacing;
-
-       
     }
     .mobileContent{
         display: flex;
@@ -181,14 +177,105 @@
         gap: $M-spacing;
 
     }
+    //手機板會員資料修改
+    .mobileEditData{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        background-color: $gray-1;
+        border-radius: $PC-card-radius;
+        margin: $M-spacing;
+        padding: $S-spacing;
+        @include T(){
+            display: none;
+        }
+    }
+    
+    .editDataTitle{
+        display: flex;
+        justify-content: center;
+    }
+    .editDataTitle img{
+        width: 100%;
+        max-width: 36px;
+    }
+    .editDataContent{
+        display: flex;
+        flex-direction: column;
+        gap: $M-spacing;
+    }
+    .editDataContent input:not([type="submit"]):not([type="radio"]){
+        width: 100%;
+        max-width:700px;
+    }
+    .editDataContent input[type="submit"]{
+        width: 100%;
+        max-width:fit-content;
+        margin: auto;
+    }
+    //手機板訂單資訊
+    .mobileOrderData{}
+    .OrderDataTitle {
+        display: flex;
+        justify-content: center;
+    }
+    .OrderDataTitle img{
+        width: 100%;
+        max-width: 36px;
+        vertical-align: top;
+    }
+    .ContentTitle{
+        display: flex;
 
+    }
 
-
-
-
-
-
-
+    //手機板會員預約紀錄
+    .mobileBookData{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        background-color: $gray-1;
+        border-radius: $PC-card-radius;
+        margin: $M-spacing;
+        padding: $S-spacing;
+        gap: $M-spacing;
+        @include T(){
+            display: none;
+        }
+        
+    }
+    .bookDataTitle{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: $M-spacing;
+    }
+    .bookDataTitle img{
+        width: 100%;
+        max-width: fit-content;
+        vertical-align:top;
+    }
+    .mobileBookDateCancel{
+        display: flex;
+        justify-content: space-between;
+    }
+    .mobileBookTime{
+        display: flex;
+        flex-wrap: wrap;
+        width: 100%;
+        gap: $M-spacing;
+        max-width: 260px;
+    }
+    .bookDataContent{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        gap: $M-spacing;
+        padding: $M-spacing;
+        margin:  $M-spacing;
+        border-radius: $PC-card-radius;
+        background-color: $white-1;
+    }
 
 
 
