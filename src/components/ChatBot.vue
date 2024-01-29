@@ -1,5 +1,5 @@
 <template>
-    <div class="chatbot">
+    <div class="chatbot" ref="closeBot">
 
         <div class="chatContent" v-if="openChatContent" >
             <div class="contentTop">
@@ -107,7 +107,22 @@ export default {
                 chatContent.scrollTop = chatContent.scrollHeight;
             });
         },
-    }
+        ClickChatBox(event){
+            // 檢查點擊事件是否發生在 chatbot 之外
+            const chatbotElement = this.$refs.closeBot;
+            if (chatbotElement && !chatbotElement.contains(event.target)) {
+                // 如果點擊事件不在 chatbot 元素內，則關閉 chatbot
+                this.closeChatbot();
+            }
+        },
+        closeChatbot(){
+             // 關閉 chatbot 的邏輯
+            this.openChatContent = false;
+        }
+    },
+    mounted() {
+        document.addEventListener('click', this.ClickChatBox);
+    },
 }
 </script>
 <style lang="scss" scoped>
