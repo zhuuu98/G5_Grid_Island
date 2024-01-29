@@ -38,6 +38,12 @@
               </div>
             </div>
           </div>
+
+          <!-- ocean1 -->
+          <div class="ocean_1">
+            <img src="../../src/assets/images/about/about-ocean-1.svg" alt="">
+          </div>
+
           <!-- 環境介紹 -->
           <div class="about_en">
             <div class="about_row">
@@ -105,6 +111,10 @@
             </div>
           </div>
 
+        <div class="ocean_2">
+          <img src="../../src/assets/images/about/about-ocean-2.svg" alt="">
+        </div>
+
           <!-- griddy介紹 -->
           <div class="about_griddy">
             <div class="about_row">
@@ -131,6 +141,10 @@
             </div>
           </div>
 
+          <div class="ocean_3">
+            <img src="../../src/assets/images/about/about-ocean-3.svg" alt="">
+          </div>
+
           <!-- 店鋪資訊 -->
           <div class="about_info">
             <div class="about_row">
@@ -143,7 +157,8 @@
                     <p>
                       Grid Island 座落在桃園市中壢區復興路46號9樓，是一個充滿活力的桌遊天堂。<br>
                       營業時間自周一至周日，早上9點至晚上9點，絕對是發揮你遊戲技巧的最佳去處。無論是和好友輕鬆一局，還是舉辦派對聚會，我們都是你的最佳選擇。<br>
-                      有任何疑問或特殊需求，請隨時撥打我們的專線 03-4251108，我們隨時為您服務。
+                      有任何疑問或特殊需求，請隨時撥打我們的專線<br>
+                      03-4251108，我們隨時為您服務。
                     </p>
                   </div>
                 </div>

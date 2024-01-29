@@ -32,6 +32,7 @@
   .about_gi{
     background-color: $orange-1;
     width: 100%;
+    padding-bottom: 100px;
     // 麵包屑
       .breadcrumb {
         margin: 50px 0px 16px 0px;
@@ -86,7 +87,7 @@
             width: 80%;
             margin: 0px auto 40px auto;
             font-size: $M-text;
-            letter-spacing: .3px;
+            letter-spacing: .5px;
             font-weight: 400;
             text-align: justify;
             color: $black;
@@ -143,8 +144,6 @@
             display: flex;
             margin: auto;
             width: 150px;
-            // text-align: center;
-            // justify-items: center;
             a{
               color: $white-1;
             }
@@ -223,7 +222,7 @@
             // text-align: justify;
             // color: $black;
             font-size: $M-text;
-            letter-spacing: .3px;
+            letter-spacing: .5px;
             font-weight: 400;
             text-align: justify;
             color: $black;
@@ -239,7 +238,7 @@
   &_griddy{
     background-color: $blue-2;
     // margin-bottom: 100px;
-    padding: 40px 0px;
+    padding: 100px 0px;
     width: 100%;
     .about_griddy_section{
       margin: auto;
@@ -317,6 +316,7 @@
     &_section{
     @include T(){
         display: flex;
+        justify-content: space-between;
         height: 400px;
       }
 
@@ -324,32 +324,41 @@
     .about_info_text{
       width: 100%;
       margin: 0px auto 30px auto;
-      background-image: url('./src/assets/images/about/about_info_bg.png');
-      background-repeat: no-repeat;
-      background-size: contain;
-      background-position: center center;
+      background-color: $white-1;
+      height: 100%;
+      border-radius: 28px;
+      // background-image: url('./src/assets/images/about/about_info_bg.png');
+      // background-repeat: no-repeat;
+      // background-size: contain;
+      // background-position: center center;
       @media (min-width:460px) {
-        background-position: left center;
+        // background-position: left center;
         
       }
       @include T(){
-        background-size: contain;
-        background-position: center center;
-        width: 50%;
+        // background-size: contain;
+        // background-position: center center;
+        width: 48%;
       }
       
       
       padding: 20px;
       .about_info_title{
         text-align: center;
-        margin: 20px auto;
+        margin: 20px auto 30px auto;
+        @include T(){
+          margin: 10px auto 20px auto;
+        }
+        @include PC(){
+          margin: 20px auto 30px auto;
+        }
 
         h3{
           font-size: $M-h2;
           font-style: normal;
           font-weight: 700;
-          line-height: 100%; /* 36px */
-          letter-spacing: 0.72px;
+          line-height: 165%;
+          letter-spacing: 0.5px;
           color: $black;
         }
       }
@@ -359,10 +368,10 @@
         margin: auto;
         padding-bottom: 10px;
         @include T(){
-          width: 90%;
+          // width: 90%;
         }
         @include PC(){
-          width: 70%;
+          // width: 70%;
         }
         
         p{
@@ -370,7 +379,8 @@
           font-style: normal;
           font-weight: 400;
           line-height: 165%; /* 22.5px */
-          letter-spacing: 0.3px;
+          // letter-spacing: 0.3px;
+          letter-spacing: .5px;
           color: $black;
 
         }
@@ -379,22 +389,26 @@
     }
     .about_info_map{
       margin: 0px auto;
+      height: 300px;
       @include T(){
-        width: 50%;
+        width: 48%;
+        height: 100%;
       }
       iframe{
         width: 100%;
-        height: 300px;
+        // height: 300px;
+        height: 100%;
         vertical-align: bottom;
         border: none;
+        border-radius: 28px;
         @include T(){
-          margin-left: 20px;
-          height: 100%;
+          // margin-left: 20px;
+          // height: 100%;
           
         }
         @include PC(){
-          width: 100%;
-          height: 100%;
+          // width: 100%;
+          // height: 100%;
         }
       }
     }
