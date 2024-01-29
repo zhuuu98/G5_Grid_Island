@@ -6,6 +6,14 @@
       <div class="row">
         <div class="col-PC-10 col-T-10 col-10">
           <!-- <BoardTag /> -->
+          <!-- 麵包屑 -->
+          <div class="board_breadcrumb">
+              <Breadcrumb separator="<b class='breadcrumb-separator'>></b>">
+                <BreadcrumbItem to="/">首頁</BreadcrumbItem>
+                <BreadcrumbItem to="/board">玩家社群</BreadcrumbItem>
+                <BreadcrumbItem to="/board">留言板</BreadcrumbItem>
+              </Breadcrumb>
+            </div>
           <!-- 牙齒區 -->
           <div class="board_tag">
             <div class="board_tag_btn">

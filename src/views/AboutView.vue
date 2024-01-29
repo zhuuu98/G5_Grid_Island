@@ -112,7 +112,7 @@
           </div>
 
         <div class="ocean_2">
-          <img src="../../src/assets/images/about/about-ocean-2.svg" alt="">
+          <img src="../../src/assets/images/about/about-ocean-2.svg" alt="ocean_3">
         </div>
 
           <!-- griddy介紹 -->
@@ -120,7 +120,7 @@
             <div class="about_row">
               <div class="about_griddy_section">
                 <div class="about_griddy_img">
-                  <img src="../assets/images/about/about_card.svg" alt="">
+                  <img src="../assets/images/about/about_card.svg" alt="ocean_2">
                 </div>
                 <div class="about_griddy_text">
                   <div class="about_griddy_title">
@@ -142,7 +142,7 @@
           </div>
 
           <div class="ocean_3">
-            <img src="../../src/assets/images/about/about-ocean-3.svg" alt="">
+            <img src="../../src/assets/images/about/about-ocean-3.svg" alt="ocean_3">
           </div>
 
           <!-- 店鋪資訊 -->

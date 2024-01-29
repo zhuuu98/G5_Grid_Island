@@ -4,9 +4,19 @@
     margin: auto;
   }
 
+  // 麵包屑
+  .board_breadcrumb {
+    padding-left: 20px;
+    margin-top: 50px;
+    // margin: 50px 0px 16px 0px;
+    @include T() {
+      margin-top: 100px;
+    }
+  }
+
   // 牙齒區
   .board_tag{
-    margin-top: 100px;
+    margin-top: 20px;
     padding: 8px 20px;
     @include T(){
       display: flex;
