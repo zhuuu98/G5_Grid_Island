@@ -1,84 +1,102 @@
 .news {
+
   .content {
-    margin-top: $XXL-spacing ;
-    margin-bottom: $XXXL-spacing ;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    justify-items: flex-start;
-    gap: $M-spacing calc($S-spacing + $S-spacing) ;
-
-    
-    @include T() {
-      gap: $L-spacing $M-spacing;
-
-    }
-
-
-    .newCard {
-      border-radius: $M-button-radius;
-      width: 166.5px;
-      border: 1px solid $black;
-      height: 251px;
-      display: flex;
-      flex-direction: column;
-      
-      @include T(){
-        width: 305px;
-        height: 457px;
-        border-radius: $S-button-radius;
-      }
-      
-      .newsImg {
-        overflow: hidden;
-        border-radius: $M-button-radius $M-button-radius 0 0;
-        height: 123px;
-        object-fit: cover;
-        
-        
-        @include T(){
-          height: 305px;
-          border-radius: $S-button-radius $S-button-radius 0 0;
-        }
-        
-        img {
-          object-position: 0 -30px;
+      margin-top: $XXL-spacing ;
+      margin-bottom: $XXXL-spacing ;
+      .btn {
+        width: 30px;
+        .svg-inline--fa {
           width: 100%;
-          vertical-align: middle;
-          
-          @include T(){
-            object-position: 0;
-            
-          }
         }
+    
       }
 
-      .text {
+    .cardList {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      justify-items: flex-start;
+      gap: $M-spacing calc($S-spacing + $S-spacing) ;
+  
+      
+      @include T() {
+        gap: $L-spacing $M-spacing;
+  
+      }
+  
+  
+      .newCard {
+        border-radius: $M-button-radius;
+        width: 166.5px;
+        border: 2px solid $blue-4;
+        height: 251px;
         display: flex;
         flex-direction: column;
-        flex:1;
-        justify-content: space-between;
-        padding: $S-spacing $S-spacing  $S-spacing;
         
-        @include T() {
-          padding: $M-spacing $S-spacing  $M-spacing;
-
+        @include T(){
+          width: 305px;
+          height: 457px;
+          border-radius: $S-button-radius;
         }
-
-
-        .title {}
-
-        .date {
+        
+        .newsImg {
+          overflow: hidden;
+          border-radius: 18px 18px 0 0;
+          height: 123px;
+          object-fit: cover;
+          border-bottom: 2px solid $blue-4;
+          
+          
+          
+          @include T(){
+            height: 305px;
+            border-radius: 5px 5px 0 0;
+            border-bottom: 0px;
+          }
+          
+          img {
+            object-position: 0 -30px;
+            width: 100%;
+            vertical-align: middle;
+            border-bottom: 2px solid $blue-4;
+            
+            @include T(){
+              object-position: 0;
+              
+            }
+          }
         }
-
-
+  
+        .text {
+          display: flex;
+          flex-direction: column;
+          flex:1;
+          justify-content: space-between;
+          padding: $S-spacing $S-spacing  $S-spacing;
+          
+          @include T() {
+            padding: $M-spacing $S-spacing  $M-spacing;
+  
+          }
+  
+  
+          .title {}
+  
+          .date {
+          }
+  
+  
+        }
+  
+  
+  
       }
-
-
-
+  
     }
 
+
   }
+
 
 
 }
