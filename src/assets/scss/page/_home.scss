@@ -1,3 +1,13 @@
+.index_row{
+  width: 90%;
+  margin: auto;
+  @include T(){
+    width: 80%;
+  }
+  @include PC(){
+    max-width: 1140px;
+  }
+}
 main {
 
   //banner

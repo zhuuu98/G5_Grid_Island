@@ -28,8 +28,16 @@ export default defineStore("cartStore", {
   actions: {
     getLocalCartData() {
       let localCartData = localStorage["cartData"];
+      let localDelPrice = localStorage["deliveryPrice"];
+      let localDiscPrice = localStorage["discountPrice"];
       if (localCartData) {
         this.cartData = JSON.parse(localCartData);
+      }
+      if (localDelPrice) {
+        this.deliveryPrice = parseInt(localDelPrice);
+      }
+      if (localDiscPrice) {
+        this.discountPrice = parseInt(localDiscPrice);
       }
     },
     addCartData(product, addCount = 1) {
