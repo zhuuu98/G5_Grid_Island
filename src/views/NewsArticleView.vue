@@ -3,13 +3,6 @@
     <div class="newArticleTitle">
       <h1>{{ item.prod_title }}</h1>
     </div>
-    <div class="breadcrumb">
-      <Breadcrumb separator="<b class='breadcrumb-separator'>></b>">
-        <BreadcrumbItem to="/">首頁</BreadcrumbItem>
-        <BreadcrumbItem to="/product">所有商品</BreadcrumbItem>
-        <BreadcrumbItem>{{ respondData.prod_name }}</BreadcrumbItem>
-      </Breadcrumb>
-    </div>
     
     <div class="content">
       <div class="btn">

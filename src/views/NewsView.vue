@@ -14,7 +14,7 @@
       </div>
 
       <div class="cardList">
-        <NewsCard v-for="(item, index) in respondData" :key="item.prod_id" :productTitle="item.prod_name" :imgUrl="`https://tibamef2e.com/chd103/g5/img/${item.prod_img1}`" />
+        <NewsCard v-for="(item, index) in respondData" :key="item.news_id" :newsTitle="item.news_title" :newsDate="item.news_date" :imgUrl="`https://tibamef2e.com/chd103/g1/image/news/${item.news_img}`"/>
       </div>
    
 
@@ -50,7 +50,7 @@ export default {
   methods: {
     axiosGetData() {
       axios
-        .get("https://tibamef2e.com/chd103/g5/phps/ProductM.php")
+        .get("https://tibamef2e.com/chd103/g1/phps/news_fetch.php")
         .then((res) => {
           console.log(res.data);
           this.respondData = res.data;

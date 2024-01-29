@@ -1,27 +1,13 @@
 <template>
   <div class="newsCard">
-    <router-link
-      :to="{
-        name: 'productInfo',
-        params: { id: productId },
-      }"
-    >   
     <div class="newsImg">
-      <img :src="imgUrl" :alt="productTitle">
+      <img :src="imgUrl" :alt="newsTitle">
     </div>
-    </router-link>
     <div class="text">
       <div class="title">
-        <router-link
-      :to="{
-        name: 'productInfo',
-        params: { id: productId },
-      }"
-    >   
-          <h2 class="pc-h4">{{ productTitle }}</h2>
-        </router-link>
+        <h2 class="pc-h4">{{ newsTitle }}</h2>
       </div>
-      <div class="date pc-h5">2024年1月20日</div>
+      <div class="date pc-h5">{{ newsDate }}</div>
     </div>
   </div>
 </template>
@@ -33,7 +19,7 @@ export default {
       value: 0,
     };
   },
-  props: ["imgUrl", "productTitle", "productId"],
+  props: ["imgUrl", "newsTitle", "newsDate"],
   methods: {
   },
   mounted() {},

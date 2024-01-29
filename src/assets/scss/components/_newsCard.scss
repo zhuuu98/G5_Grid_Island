@@ -7,37 +7,45 @@
   flex-direction: column;
   
   @include T(){
-    width: calc((100vw - 160px)/4) ;
     border-radius: $S-button-radius;
-  }
-  @include PC() {
-    height: 457px; 
-
+    width: 305px;
+    height: 457px;
+    position: relative;
   }
   
   .newsImg {
     overflow: hidden;
     border-radius: 18px 18px 0 0;
-    // height: 123px;
-    height: auto;
+    height: 60%;
     object-fit: cover;
     border-bottom: 2px solid $blue-4;
     
     @include T(){
-      height: 305px;
+      width: 100%;
       border-radius: 5px 5px 0 0;
-      border-bottom: 0px;
     }
     
     img {
-      object-position: 0 -30px;
-      width: 100%;
+      height: 120%;
+      width: auto;
       vertical-align: middle;
-      border-bottom: 2px solid $blue-4;
       
       @include T(){
+        width: 100%;
         object-position: 0;
-        
+        height: 100%;
+        object-fit: cover;
+        transition: all .5s;
+      }
+
+      &:hover {
+
+        @include T(){
+          width: 110%;
+          height: 105%;
+
+        }
+      
       }
     }
   }
@@ -55,7 +63,21 @@
     }
 
 
-    .title {}
+    .title {
+      width: 100%;
+      text-wrap: nowrap;
+      text-overflow: ellipsis;
+      overflow: hidden;
+
+      @include T() {
+        text-wrap: unset;
+      }
+      h2 {
+        text-overflow: ellipsis;
+        overflow: hidden;
+
+      }
+    }
 
     .date {
     }
