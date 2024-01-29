@@ -11,8 +11,7 @@ const router = createRouter({
       meta: {
         title: "首頁",
         showHeader: false, //打開這個即可不顯示header
-        customHeaderPosition: true,  // 新增标记
-
+        customHeaderPosition: true, // 新增标记
       },
     },
     {

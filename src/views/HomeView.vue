@@ -78,44 +78,69 @@
 
     <MainHeader />
     <!-- 內容 -->
-    <div class="container">
-      <div class="row">
-        <div class="col-PC-12 col-T-12 col-12">
+    <div class="index">
+      
 
           <!-- 所有商品 -->
           <div class="index_products">
-            <p>所有商品</p>
+            <div class="index_row">
+              <p>所有商品</p>
+              <!-- 寫這邊 -->
+
+            </div>
           </div>
           <div class="wave">
             <img :src="wave" alt="bgcwave" id="wave1" />
           </div>
           <!-- 服務項目 -->
           <div class="index_service">
-            <p>服務項目</p>
+            <div class="index_row">
+              <p>服務項目</p>
+              <!-- 寫這邊 -->
+
+
+            </div>
           </div>
           <!-- 預約方式 -->
           <div class="index_reserve">
+            <div class="index_row">
+            <!-- 寫這邊 -->
 
+
+            </div>
           </div>
           <!-- Griddy造型屋 -->
           <div class="index_griddy">
-
+            <div class="index_row">
+              
+            </div>
           </div>
           <!-- 最新消息 -->
           <div class="index_news">
+            <div class="index_row">
+            <!-- 寫這邊 -->
 
+              
+            </div>
           </div>
           <!-- 一起遊樂 IG API -->
           <div class="index_insta">
+            <div class="index_row">
+            <!-- 寫這邊 -->
 
+              
+            </div>
           </div>
           <!-- Grid Island 關於我們 -->
           <div class="index_about">
+            <div class="index_row">
+            <!-- 寫這邊 -->
 
+              
+            </div>
           </div>
 
-        </div>
-      </div>
+
     </div>
 
 

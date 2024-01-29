@@ -121,5 +121,10 @@ export default defineStore("cartStore", {
       localStorage["discountPrice"] = this.discountPrice;
       localStorage["cartData"] = JSON.stringify(this.cartData);
     },
+    clearCartData() {
+      this.cartData = [];
+      this.deliveryPrice = 0;
+      this.discountPrice = 0;
+    },
   },
 });

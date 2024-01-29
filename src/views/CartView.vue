@@ -256,6 +256,7 @@ export default {
   created() {
     this.axiosGetData();
     this.getLocalCartData();
+    this.getDelDiscLocal();
   },
   methods: {
     ...mapActions(cartStore, [
@@ -275,6 +276,16 @@ export default {
           this.shuffleAndPick();
         });
     },
+    getDelDiscLocal() {
+      let LocalDel = localStorage["delMethod"];
+      let LocalDisc = localStorage["discCode"];
+      if (LocalDel) {
+        this.deliveryMethod = LocalDel;
+      }
+      if (LocalDisc) {
+        this.discountCode = LocalDisc;
+      }
+    },
     deliveryMethodChangeMethod() {
       this.deliveryMethodChange(this.deliveryMethod);
       if (this.deliveryMethod == "init") {
@@ -282,9 +293,11 @@ export default {
       } else {
         this.showWarning = false;
       }
+      localStorage["delMethod"] = this.deliveryMethod;
     },
     discountCodeCheckMethod() {
       this.discountCodeCheck(this.discountCode);
+      localStorage["discCode"] = this.discountCode;
     },
     quantityChangePlus(product) {
       this.increaseFromCart(product);

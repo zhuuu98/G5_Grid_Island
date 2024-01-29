@@ -182,10 +182,14 @@
         </div>
       </div>
       <div class="checkOutBtn_m">
-        <button class="bookBtn" type="submit">送出訂單</button>
+        <button class="bookBtn" type="button" @click="submitOrder">
+          送出訂單
+        </button>
       </div>
       <div class="checkOutBtn_pc">
-        <button class="btn_lg_orange" type="submit">送出訂單</button>
+        <button class="btn_lg_orange" type="button" @click="submitOrder">
+          送出訂單
+        </button>
       </div>
     </form>
   </main>
@@ -250,7 +254,7 @@ export default {
     this.getLocalCartData();
   },
   methods: {
-    ...mapActions(cartStore, ["getLocalCartData"]),
+    ...mapActions(cartStore, ["getLocalCartData", "clearCartData"]),
     axiosGetData() {
       axios
         .get("https://tibamef2e.com/chd103/g5/phps/ProductM.php")
@@ -304,7 +308,14 @@ export default {
         this.showWarning1 = false;
       }
     },
+    submitOrder() {
+      console.log("submit");
+      this.clearCartData();
+      localStorage.clear();
+      this.$router.push("/orderSuccess");
+    },
   },
+
   mounted() {},
 };
 </script>

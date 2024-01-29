@@ -6,6 +6,14 @@
       <div class="row">
         <div class="col-PC-10 col-T-10 col-10">
           <!-- <BoardTag /> -->
+          <!-- 麵包屑 -->
+          <div class="board_breadcrumb">
+              <Breadcrumb separator="<b class='breadcrumb-separator'>></b>">
+                <BreadcrumbItem to="/">首頁</BreadcrumbItem>
+                <BreadcrumbItem to="/board">玩家社群</BreadcrumbItem>
+                <BreadcrumbItem to="/board">留言板</BreadcrumbItem>
+              </Breadcrumb>
+            </div>
           <!-- 牙齒區 -->
           <div class="board_tag">
             <div class="board_tag_btn">
@@ -154,7 +162,7 @@ export default {
       card:[
         {
           id: 1,
-          id_img:'./src/assets/images/board/board_id_img.svg',
+          id_img:'@/assets/images/board/board_id_img.svg',
           id_img_alt:'board_id_img',
           memId:'1啊人家家就笨壓',
           time:'2023/12/30 20:25',
@@ -163,7 +171,7 @@ export default {
           re:[
             {
               id:1,
-              img:'./src/assets/images/board/board_id_img.svg',
+              img:'@/assets/images/board/board_id_img.svg',
               alt:'board_id_img',
               memId:'萵金',
               time:'2023/12/30 20:25',
@@ -171,7 +179,7 @@ export default {
             },
             {
               id:2,
-              img:'./src/assets/images/board/board_id_img.svg',
+              img:'@/assets/images/board/board_id_img.svg',
               alt:'board_id_img',
               memId:'金',
               time:'2023/12/30 20:25',
