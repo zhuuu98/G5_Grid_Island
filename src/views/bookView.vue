@@ -22,14 +22,14 @@
             <div class="book_cal">
                 <div class="book_cal_nav">
                     <button data-direction="prev" @click.prevent="prevMonth" :disabled="isCurrentMonth">
-                        <font-awesome-icon :icon="['fas', 'chevron-left']" size="2xs" />
+                        <i class="fa-solid fa-chevron-left"></i>
                     </button>
                     <div class="book_cal_nav_title">
                         <div>{{ selectedYear }} 年</div>
                         <div>{{ selectedMonth + 1 }} 月</div>
                     </div>
                     <button data-direction="next" @click.prevent="nextMonth" :disabled="isMaxMonth">
-                        <font-awesome-icon :icon="['fas', 'chevron-right']" size="2xs" />
+                        <i class="fa-solid fa-chevron-right"></i>
                     </button>
                 </div>
                 <div class="book_cal_weekdays">
@@ -58,7 +58,7 @@
                     <div class="book_options" v-for="table in tableType">
                         <input type="radio" name="table" :value="table.value" :id="table.typeId" :disabled="tableTypeStatus"
                             v-model="tableChosen" @input="timeAble" required>
-                        <label :for="table.typeId">{{ table.label }}</label>
+                        <label :for="table.typeId" class="disable_choose" :disabled="tableTypeStatus">{{ table.label }}</label>
                     </div>
                 </div>
             </div>
@@ -68,7 +68,7 @@
                     <div class="book_options" v-for="time in timePeriod">
                         <input type="radio" name="time" :value="time.value" :id="time.timeId" :disabled="timeStatus"
                             v-model="timeChosen" required>
-                        <label :for="time.timeId">{{ time.period }}<br>{{ time.time }}</label>
+                        <label :for="time.timeId" :disabled="timeStatus">{{ time.period }}<br>{{ time.time }}</label>
                     </div>
                 </div>
             </div>
@@ -88,6 +88,15 @@
                 <input type="submit" class="btn_sm_1" id="" value="確認預約" @click.prevent="handleInput">
             </div>
         </form>
+        <!-- 燈箱 -->
+        <div class="alert_bg" v-show="showAlert">
+            <div class="alert_main">
+                <button @click="closeAlert">
+                    <i class="fa-solid fa-xmark fa-2x"></i>
+                </button>
+                <p v-for="content in alertContent">{{ content }}</p>
+            </div>
+        </div>
     </div>
 </template>
 <script>
@@ -95,6 +104,8 @@ import PageTitle from "../components/PageTitle.vue";
 export default {
     data() {
         return {
+            showAlert: false,
+            alertContent: [],
             tableTypeStatus: true,
             timeStatus: true,
             // v-model綁定
@@ -205,12 +216,22 @@ export default {
         },
         handleInput() {
             if (this.dateChosen == '' || this.tableChosen == '' || this.timeChosen == '') {
-                alert('請填寫完整預訂資訊')
+                this.alertContent = '請填寫完整預訂資訊'
+                this.showAlert = true;
             } else {
-                alert(
-                    `選擇日期：${this.dateChosen}\n選擇桌型：${this.tableChosen}\n選擇時段：${this.timeChosen}\n預定人數：${this.count}人`
-                )
+                this.alertContent.push(`選擇日期：${this.dateChosen}`, `選擇桌型：${this.tableChosen}`, `選擇時段：${this.timeChosen}`, `預定人數：${this.count}人`)
+                this.showAlert = true;
+                this.dateChosen = '';
+                this.tableChosen = '';
+                this.timeChosen = '';
+                this.count = 1
             }
+        },
+        closeAlert(){
+            // this.showAlert = false;
+            // this.alertContent = [];
+            // document.body.classList.remove('body-overflow-hidden');
+            this.$router.push('/') //這邊要跳回會員中心
         },
         // 以下是日曆用
         prevMonth() {

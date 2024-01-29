@@ -36,7 +36,6 @@ export default {
             openChatContent: false,
             isFirstLabelShow: true,
             typeIndex: -1,
-            count: 1,
             chatList: [
                 {
                 text: '您好，有什麼需要Griddy幫忙的嗎？',
@@ -69,22 +68,15 @@ export default {
                 text: `${this.questionType[index]}`,
                 sendFrom: 'chatRight'
             })
-            let delay;
-            delay = setInterval(()=>{
+            setTimeout(()=>{
                 this.chatList.push({
-                text: `好的，您想詢問什麼問題呢？`,
-                sendFrom: 'chatLeft'
-            })
+                    text: `好的，您想詢問什麼問題呢？`,
+                    sendFrom: 'chatLeft'
+                })
                 this.scrollToBottom();
-                this.count -= 1;
-                if(this.count == 0){
-                clearInterval(delay)
-                this.count = 1
-            }
-            },1000)
+            }, 1000)
 
             this.typeIndex = index
-            console.log(this.typeIndex)
             this.scrollToBottom();
         },
         showAnswer(index){
@@ -92,35 +84,29 @@ export default {
                 text: `${this.question[this.typeIndex][index]}`,
                 sendFrom: 'chatRight'
             })
-            let delay;
-            delay = setInterval(()=>{
-                this.chatList.push({
-                text: `${this.answer[this.typeIndex][index]}`,
-                sendFrom: 'chatLeft'
-            })
-                this.scrollToBottom();
-                this.count -= 1;
-                if(this.count == 0){
-                clearInterval(delay)
-                this.count = 1
-            }
-            },1000)
             this.scrollToBottom();
+            setTimeout(()=>{
+                this.chatList.push({
+                    text: `${this.answer[this.typeIndex][index]}`,
+                    sendFrom: 'chatLeft'
+                })
+                this.scrollToBottom();
+            }, 1000)
         },
         reChoose(){
             this.typeIndex = -1
             this.isFirstLabelShow = true
         },
         scrollToBottom() { //讓訊息會一直在最下面
-        // 使用 $nextTick 確保在 DOM 更新後執行
-        this.$nextTick(() => {
-            // 取得對話框的 DOM 元素
-            const chatContent = this.$refs.chatContent;
-            
-            // 捲動到最底部
-            chatContent.scrollTop = chatContent.scrollHeight;
-        });
-    },
+            // 使用 $nextTick 確保在 DOM 更新後執行
+            this.$nextTick(() => {
+                // 取得對話框的 DOM 元素
+                const chatContent = this.$refs.chatContent;
+                
+                // 捲動到最底部
+                chatContent.scrollTop = chatContent.scrollHeight;
+            });
+        },
     }
 }
 </script>

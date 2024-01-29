@@ -1,0 +1,114 @@
+.Member{
+    width: 100%;
+    background-color: $green-1;
+    padding-bottom: 15%;
+    h3{
+        text-align: center;
+        margin: $M-spacing;
+    }
+    .memberMain{
+        padding-top: 15%;
+        display: flex;
+        gap: $M-spacing;
+        justify-content: center;
+    }
+    .memberContent{
+        background-color: $white-1;
+        border-radius: $PC-card-radius;
+    }
+    .memberOrderTitle{
+        display: flex;
+        align-items: center;
+        
+    }
+    .memberOrderTitle img,.memberBookTitle img{
+        width: 100%;
+        max-width: 36px;
+        vertical-align: top;
+    }
+    .memberOrderNotFin,.memberOrderFinished{
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+        align-items: center;
+    }
+    .memberOrder{
+        display: flex;
+        padding: $M-spacing;
+        margin: $M-spacing;
+        gap: $XXL-spacing;
+        justify-content: space-evenly;
+        align-items: center;
+        border-radius: $PC-card-radius;
+        background-color: $gray-1;
+    }
+    .memberLookOrder,.memberLookBook{
+        border-radius: $S-button-radius;
+        padding: 0 $M-spacing;
+    }
+    .memberBook{
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        padding: $M-spacing;
+        margin: $M-spacing;
+        background-color: $gray-1;
+        border-radius: $PC-card-radius;
+        gap: $M-spacing;
+    }
+    .memberBookTitle{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    .membertop{
+        display: flex;
+        justify-content: space-between;
+    }
+    .memberBooklog{
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: column;
+        gap: $M-spacing;
+        padding: $M-spacing;
+        background-color: $white-1;
+        border-radius: $PC-card-radius;
+    }
+    .dateAndCancel{
+        display: flex;
+        justify-content: space-between;
+    }
+    .selectedTime{
+        display: flex;
+        text-align: center;
+        justify-content: space-between;
+        align-items: center;
+
+    }
+    .chooseTime{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        border: 1px solid $blue-3;
+        border-radius: $S-button-radius;
+        padding: 0 $S-spacing;
+    }
+    .disabled {
+        opacity: 0.5;  /* 或其他禁用樣式 */
+        background-color: $gray-2;
+        cursor: not-allowed;
+    }
+    
+
+
+
+
+
+
+
+
+
+
+
+}

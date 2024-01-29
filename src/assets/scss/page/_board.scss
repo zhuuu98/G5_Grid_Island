@@ -47,6 +47,7 @@
       margin: 16px 0px auto;
       display: flex;
         .btn_lg_orange{
+          display: flex;
           margin-bottom: 8px;
         }
         select{
@@ -366,7 +367,6 @@
         margin-bottom: 60px;
       }
       button{
-        display: block!important;
         margin: auto;
       }
     }
@@ -476,7 +476,6 @@
         margin-bottom: 60px;
       }
       button{
-        display: block!important;
         margin: auto;
 
       }
@@ -488,16 +487,8 @@
   display: none;
 }
 
-.active{
-  display:block!important;
-}
 
 /* 樣式修改：在開啟燈箱時禁止滾動頁面 */
 .body-overflow-hidden {
   overflow: hidden;
 }
-
-/* 樣式修改：在關閉燈箱時恢復滾動頁面 */
-// .body-overflow-auto {
-//   overflow: auto;
-// }
