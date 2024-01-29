@@ -267,9 +267,13 @@
         }
         .checkOutBtn {
           cursor: not-allowed;
-          button {
+          a {
+            display: flex;
             width: 100%;
             border: none;
+            &:hover {
+              color: $white-1;
+            }
           }
           .disableBtn {
             pointer-events: none;

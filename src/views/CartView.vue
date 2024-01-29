@@ -17,11 +17,7 @@
             <h2>購物車</h2>
           </div>
           <div class="cartItemArea">
-            <div
-              class="cartItemBlock"
-              v-for="item in cartData"
-              :key="item.prod_id"
-            >
+            <div class="cartItemBlock" v-for="item in cartData" :key="item.id">
               <CartItem
                 :itemPicUrl="`https://tibamef2e.com/chd103/g5/img/${item.img}`"
                 :itemName="item.name"
@@ -90,7 +86,7 @@
             <div class="deliveryMethodTitle">
               <h3>配送方式</h3>
             </div>
-            <div class="deliveryWarning" v-show="deliveryMethod == 'init'">
+            <div class="deliveryWarning" v-show="showWarning">
               <p>*請選擇一個有效的選項</p>
             </div>
             <div class="deliveryMethodSelect">
@@ -146,12 +142,13 @@
             :class="{ disableBtn: deliveryMethod === 'init' }"
             v-show="cartData.length != 0"
           >
-            <button
+            <router-link
+              to="/orderInfo"
               class="bookBtn"
               :class="{ disableBtn: deliveryMethod === 'init' }"
             >
               前往結帳
-            </button>
+            </router-link>
           </div>
         </div>
       </div>
@@ -203,6 +200,7 @@ export default {
       discountCode: "",
       deliveryMethod: "init",
       recProduct: [],
+      showWarning: false,
     };
   },
   components: {
@@ -279,6 +277,11 @@ export default {
     },
     deliveryMethodChangeMethod() {
       this.deliveryMethodChange(this.deliveryMethod);
+      if (this.deliveryMethod == "init") {
+        this.showWarning = true;
+      } else {
+        this.showWarning = false;
+      }
     },
     discountCodeCheckMethod() {
       this.discountCodeCheck(this.discountCode);
