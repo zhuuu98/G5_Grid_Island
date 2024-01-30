@@ -96,7 +96,7 @@
           </div>
           <div class="board_light_box_send">
             <div>
-              <input type="checkbox" name="" id="check" v-model="cb_check" @change="article_send">
+              <input type="checkbox" id="check" v-model="cb_check" @change="article_send">
               <label for="check">我已確認文章內容不包含不當內文及攻擊字眼。</label>
             </div>
             <button class="btn_sm_1" v-if="!cb_submit" disabled>送出</button>
@@ -362,6 +362,8 @@ export default {
   created() {},
   mounted() {},
   methods: {
+    // 發文
+    // 打開發文燈箱
     open_light_box(){
       this.article_send_succ = true;
       this.cb_check = false;
@@ -369,11 +371,27 @@ export default {
       this.board_light_box_open = true;
       document.body.classList.add('body-overflow-hidden');
     },
+    // 發文燈箱關閉
     light_box_close(){
       // this.board_light_box_open = false;
       this.board_light_box_open = false;
       document.body.classList.remove('body-overflow-hidden');
     },
+    // 有輸入內容才可以送出
+    article_send(){
+      if(this.cb_check == true && document.querySelector('.light_box textarea').value != ''){
+        this.cb_submit = true;
+      }else{
+        this.cb_submit = false;
+      }
+    },
+    // 送出按鈕導向確認畫面
+    article_send_btn(){
+      this.article_send_succ = false;
+    },
+
+    // 檢舉
+    // 打開檢舉燈箱
     open_light_box_report(){
       this.re_submit_show = true;
       this.selectedOption = this.reports[0].value;
@@ -382,11 +400,13 @@ export default {
       this.board_light_box_report = true;
       document.body.classList.add('body-overflow-hidden');
     },
+    // 關閉檢舉燈箱
     light_box_re_close(){
       this.board_light_box_report = false;
       document.body.classList.remove('body-overflow-hidden');
 
     },
+    // 判斷如果選擇其他必須輸入內容及勾選且不得為預設請選擇才可以送出
     updateReTextVisibility() {
       this.open_re_text = this.selectedOption === "lb_re_other";
 
@@ -397,12 +417,8 @@ export default {
       }else{
         this.re_submit_disable = true;
       }
-
     },
-    toggleReply(){
-      this.open_reply_text = !this.open_reply_text;
-    },
-    // 控制展開留言區
+    //控制展開留言區
     toggleReply(itemId){
       //jquery
       // var cardli = $('.card-' + itemId);
@@ -424,18 +440,6 @@ export default {
     re_submit(){
       this.re_submit_show = false;
     },
-    article_send(){
-      if(this.cb_check == true && document.querySelector('.light_box textarea').value != ''){
-        this.cb_submit = true;
-      }else{
-        this.cb_submit = false;
-
-      }
-    },
-    article_send_btn(){
-      this.article_send_succ = false;
-
-    },
     
 
   },
@@ -445,17 +449,3 @@ export default {
 };
 </script>
 
-
-
-<style lang="scss" scoped>
-  .banner{
-    width: 100%;
-    background-color: #ccc;
-    height: 300px;
-  }
-  [disabled]{
-    cursor: no-drop;
-    // background: gray;
-  }
-
-</style>
