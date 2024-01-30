@@ -64,7 +64,7 @@
                 {{ items }}
             </div>
             <div class="memberMainMobile ">
-                <button class="mobileContent" v-for="(iconName,index) in mobileIcon">
+                <button class="mobileContent" v-for="(iconName,index) in mobileIcon" @click="handleButtonClick(index)">
                     <img
                     :src="getImageUrl(`member/memberAsideIcon_${index+1}.svg`)">
                     <p>{{ iconName }}</p>
@@ -72,7 +72,7 @@
             </div>
         </div>
         <!-- 手機板會員資料修改 -->
-        <div class="mobileEditData">
+        <div class="mobileEditData" v-show="isChoosedEditData">
             <div class="editDataTitle">
                 <img src="../assets/images/member/memberAsideIcon_2.svg" alt="會員資料修改icon">
                 <h3>會員資料修改</h3>
@@ -123,20 +123,49 @@
             </form>
         </div>
         <!-- 手機板會員訂單資訊 -->
-        <div class="mobileOrderData">
+        <div class="mobileOrderData"  v-show="isChoosedOrderData">
             <div class="OrderDataTitle">
                 <img :src="getImageUrl(`member/memberAsideIcon_3.svg`)">
                 <h3>訂單資訊</h3>
             </div>
-            <div class="OrderDataContent" v-for="(items,index) in orderList" :key="index">
-                <div class="ContentTitle" v-for="title in items">
-                    {{ title }}
-                </div>
+            <div class="OrderDataContent" >
+                <!-- 手機板沒有標題 -->
+                <!-- <div class="ContentTitle" >
+                    <p v-for="title in orderTitle">{{ title }}</p>
+                    <button class="btn_sm_1">訂單明細</button>
+                </div> -->
+                <div class="orderMain">
+                    <div class="OrderDataList" v-for="(items,index) in orderList" :key="index">
+                        <div class="orderSimple">
+                            <div class="orderListText">
+                                <p>{{ items.orderDate }}</p>
+                                <p>{{ items.orderNum }}</p>
+                                <p>${{ items.orderTotal }}</p>
+                                <p>{{ items.orderState }}</p>
+                            </div>
+                            <button class="btn_sm_1"  @click="mobileOpenList(index)">訂單明細</button>
+                        </div>
+                        <div class="OrderDataDetail" v-show="openOrderList">
+                            <div v-for="(name,nameIndex) in items.orderItems" class="NameTotal">
+                                <img :src="getImageUrl(`member/memberOrderProducts_${nameIndex+1}.svg`)" alt="商品">
+                                <div class="orderItem">
+                                    <div class="orderName">{{ name }}</div>
+                                    <div class="orderPriceNumTotal">
+                                        <p>${{ items.orderItemsPrice[nameIndex] }}</p>
+                                        <p>{{ items.orderItemsNum[nameIndex] }}</p>
+                                        <p>${{ items.orderItemsTotal[nameIndex] }}</p>
+                                        
+                                    </div>
+                                </div>
+                            </div>
 
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
         <!-- 手機板會員預約紀錄 -->
-        <div class="mobileBookData">
+        <div class="mobileBookData" v-show="isChoosedBookData">
             <div class="bookDataTitle">
                 <img :src="getImageUrl(`member/memberAsideIcon_4.svg`)" alt="預約紀錄icon">
                 <p>{{ mobileIcon[3] }}</p>
@@ -177,23 +206,51 @@ export default {
                 timePeriod:['上午','下午','下午','晚上'],
                 hours:['09:00~12:00','12:00~15:00','15:00~18:00','18:00~21:00']
             },
-            isChoose:true,
             numPeople:['4人','6人'],//預約資訊-人數
             mobileIcon:['Griddy造型屋','會員資料修改','訂單資訊','預約紀錄','報隊管理','會員登出'],//手機板ICON名字
 
             //訂單資訊
-            orderList:{
-                orderTitle:['訂單日期','訂單編號','總計'],
-                orderDate:['2023/12/21','2023/12/11'],//訂單日期
-                orderNum:[1,2],//訂單編號
-                orderTotal:[9000,500],//訂單總計
-                orderState:['未完成','已完成'], //訂單狀況
-                orderItems:['阿瓦蟲','貓與城之內豪華精裝版'],//購買項目
-                orderItemsPrice:[500,8000],//購買項目的單價
-                orderItemsNum:[2,1],//購買項目的數量
-                orderItemsTotal:[2,1],//購買項目的數量*單價=小計
+            orderTitle:['訂單日期','訂單編號','總計'],
+            // orderList:{
+                // orderDate:['2023/12/21','2023/12/11'],//訂單日期
+                // orderNum:[1,2],//訂單編號
+                // orderTotal:[9000,500],//訂單總計
+                // orderState:['未完成','已完成'], //訂單狀況
 
-            }
+                // orderItems:['阿瓦蟲','貓與城之內豪華精裝版'],//購買項目
+                // orderItemsPrice:[500,8000],//購買項目的單價
+                // orderItemsNum:[2,1],//購買項目的數量
+                // orderItemsTotal:[2,1],//購買項目的數量*單價=小計
+            // },
+            orderList:[
+                {
+                    orderDate:'2023/12/21',
+                    orderNum:1,
+                    orderTotal:9000,
+                    orderState:'未完成',
+                    orderItems:['阿瓦蟲','貓與城之內豪華精裝版'],
+                    orderItemsPrice:[500,8000],
+                    orderItemsNum:[2,1],
+                    orderItemsTotal:[1000,8000]
+                },
+                {
+                    orderDate:'2023/12/11',
+                    orderNum:2,
+                    orderTotal:500,
+                    orderState:'已完成',
+                    orderItems:['阿瓦蟲'],
+                    orderItemsPrice:[500],
+                    orderItemsNum:[1],
+                    orderItemsTotal:[500],
+                },
+
+            ],
+
+            isChoosedEditData:false,//會員資料修改被選擇
+            isChoosedOrderData:false,//訂單紀錄被選擇
+            isChoosedBookData:false,//預約紀錄被選擇
+            openOrderList:false,
+            
         };
     },
     components:{
@@ -214,6 +271,27 @@ export default {
         getImageUrl(paths){ //取得圖片路徑
         return new URL(`../assets/images/${paths}`, import.meta.url).href
             },
+        mobileOpenList(index){ //訂單打開明細
+            this.openOrderList=!this.openOrderList
+
+        },
+        handleButtonClick(index) { //手機板選單
+            this.isChoosedEditData=false
+            this.isChoosedOrderData=false
+            this.isChoosedBookData=false
+            switch (index) {
+                case 1: //會員資料修改
+                    this.isChoosedEditData=!this.isChoosedEditData
+                    break;
+                case 2: //訂單紀錄
+                    this.isChoosedOrderData=!this.isChoosedOrderData
+                    break;
+                case 3: //預約紀錄
+                    this.isChoosedBookData=!this.isChoosedBookData
+                    break;
+            }
+        console.log(`Button at index ${index} clicked`);
+    },
     },
 
 };

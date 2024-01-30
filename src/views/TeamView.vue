@@ -82,17 +82,17 @@
       </div>
     <!-- </div> -->
 
-      <!-- 發文燈箱 -->
-    <div class="light_box" v-show="team_light_box_open">
+      <!-- 發文燈箱1 -->
+    <!-- <div class="light_box" v-show="team_light_box_open">
       <div class="overlay" @click="light_box_close"></div>
       <div class="box">
         <form action="post" v-if="article_send_succ">
-          <p class="board_lb_title ">我要組隊</p>
+          <p class="team_lb_title ">我要組隊</p>
           <div>
-            <p class="board_lb_subTitle">組隊宣言</p>
+            <p class="team_lb_subTitle">組隊宣言</p>
             <textarea name="" id="" cols="35" rows="10" placeholder="輸入文章內容..." @keyup="article_send"></textarea>
           </div>
-          <div class="board_light_box_send">
+          <div class="team_light_box_send">
             <div>
               <input type="checkbox" name="" id="check" v-model="cb_check" @change="article_send">
               <label for="check">我已確認文章內容不包含不當內文及攻擊字眼。</label>
@@ -105,7 +105,35 @@
           <h3>已成功送出文章！</h3>
           <button class="btn_sm_1" @click="light_box_close">關閉</button>
         </div>
-        <div class="board_close_light_box" @click="light_box_close">
+        <div class="team_close_light_box" @click="light_box_close">
+          <font-awesome-icon :icon="['fas', 'xmark']" />
+        </div>
+      </div>
+    </div> -->
+      <!-- 發文燈箱2 -->
+    <div class="light_box" v-show="team_lb">
+      <div class="overlay" @click="team_lb_close"></div>
+      <div class="box">
+        <form action="post" v-if="article_send_succ">
+          <p class="team_lb_title">我要組隊</p>
+          <div>
+            <p class="team_lb_subTitle">組隊宣言</p>
+            <textarea name="" id="" cols="35" rows="10" placeholder="輸入文章內容..." @keyup="article_send"></textarea>
+          </div>
+          <div class="team_light_box_send">
+            <div>
+              <input type="checkbox" id="check" v-model="cb_check" @change="article_send">
+              <label for="check">我已確認文章內容不包含不當內文及攻擊字眼。</label>
+            </div>
+            <button class="btn_sm_1" v-if="!cb_submit" disabled>送出</button>
+            <button class="btn_sm_1" v-else @click="article_send_btn">送出</button>
+          </div>
+        </form>
+        <div v-else>
+          <h3>已成功送出文章！</h3>
+          <button class="btn_sm_1" @click="team_lb_close">關閉</button>
+        </div>
+        <div class="team_close_light_box" @click="team_lb_close">
           <font-awesome-icon :icon="['fas', 'xmark']" />
         </div>
       </div>
@@ -284,6 +312,11 @@ export default {
         },
         
       ],
+      team_lb: false,
+      article_send_succ: true,
+      cb_submit: false,
+      cb_check: false,
+      article_send_succ: true,
     };
   },
   computed: {
@@ -294,7 +327,32 @@ export default {
   },
   created() {},
   mounted() {},
-  methods: {},
+  methods: {
+    // 發文燈箱
+    // 打開燈箱
+    open_light_box(){
+      this.team_lb = true;
+      this.cb_check = false;
+      this.cb_submit = false;
+      this.article_send_succ = true;
+      document.body.classList.add('body-overflow-hidden');
+    },
+    // 關閉燈箱
+    team_lb_close(){
+      this.team_lb = false;
+      document.body.classList.remove('body-overflow-hidden');
+    },
+    article_send_btn(){
+      this.article_send_succ = false;
+    },
+    article_send(){
+      if(this.cb_check == true && document.querySelector('.light_box textarea').value != ''){
+        this.cb_submit = true;
+      }else{
+        this.cb_submit = false;
+      }
+    },
+  },
 };
 </script>
 

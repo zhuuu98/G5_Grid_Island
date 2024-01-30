@@ -119,9 +119,11 @@
           <div class="about_griddy">
             <div class="about_row">
               <div class="about_griddy_section">
+
                 <div class="about_griddy_img">
                   <img src="../assets/images/about/about_card.svg" class="rotate-image" alt="ocean_2">
                 </div>
+                
                 <div class="about_griddy_text">
                   <div class="about_griddy_title">
                     <h3>Griddy</h3>
