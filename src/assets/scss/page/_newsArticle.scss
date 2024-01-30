@@ -9,23 +9,31 @@
       @include T(){
         padding: 0 $XL-spacing;
         max-width: 1500px;
-        margin:  $XXL-spacing auto $XXXL-spacing;
+        margin:  $L-spacing auto $XXXL-spacing;
       }
       .title {
         margin: auto;
-        padding: 0 $M-spacing;
+        padding: 0 $M-spacing $S-spacing;
         letter-spacing: $PC-btn-sl-spacing;
         @include T(){
-          padding: 0 $XXL-spacing;
+          padding: 0 $XXL-spacing $M-spacing;
 
         }
 
       }
       .newsImg {
         padding: 0 $M-spacing;
+        max-width: 1000px;
+        min-width: 300px;
+        margin: auto;
+        height: auto;
 
         @include T(){
           padding: 0 $M-spacing;
+        }
+
+        img {
+          width: 100%;
         }
       }
       .textContent {
@@ -50,6 +58,17 @@
 
         }
       }
+      .btn {
+        margin: auto;
+        order:3;
+        padding: $XXL-spacing 0 0;
+        button {
+          width: 250px;
+          // height: 45px;
+        }
+
+      }
+      
 
 
 

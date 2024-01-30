@@ -20,6 +20,11 @@
         <NewsCard v-for="(item, index) in respondData" :key="item.news_id" :newsTitle="item.news_title" :newsDate="item.news_date" :imgUrl="`https://tibamef2e.com/chd103/g1/image/news/${item.news_img}`" :newsId="item.news_id" :class="{ 'noneShow': noneShow }"/>
 
 
+        <NewsRow v-for="(item, index) in respondData" :key="item.news_id" :newsTitle="item.news_title" :newsDate="item.news_date" :imgUrl="`https://tibamef2e.com/chd103/g1/image/news/${item.news_img}`" :newsId="item.news_id" :newsContent="item.news_content" :class="{ 'noneShow': ! noneShow }"/>
+
+
+
+
       </div>
 
     </div>
