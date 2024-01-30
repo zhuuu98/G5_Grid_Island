@@ -63,7 +63,7 @@
         select{
           width: 130px;
           height: 40px;
-          border: 1px solid $black;
+          border: 2px solid $black;
           border-radius: 20px;
           padding: 8px;
           font-size: $M-text;
@@ -274,6 +274,10 @@
     
     
     
+  }
+
+  [disabled]{
+    cursor: no-drop;
   }
   
 
@@ -497,8 +501,8 @@
   display: none;
 }
 
-
 /* 樣式修改：在開啟燈箱時禁止滾動頁面 */
 .body-overflow-hidden {
   overflow: hidden;
 }
+
