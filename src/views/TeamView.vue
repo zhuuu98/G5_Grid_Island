@@ -65,7 +65,7 @@
                   </div>
                   <!-- 報團按鈕 -->
                   <div class="team_card_btn">
-                    <div class="btn_secondary">
+                    <div class="btn_secondary" @click="join_team">
                       我要加入
                     </div>
                   </div>
@@ -104,6 +104,32 @@
           <button class="btn_sm_1" @click="team_lb_close">關閉</button>
         </div>
         <div class="team_close_light_box" @click="team_lb_close">
+          <font-awesome-icon :icon="['fas', 'xmark']" />
+        </div>
+      </div>
+    </div>
+
+      <!-- 報團燈箱 -->
+    <div class="join_light_box" v-show="team_join_lb">
+      <div class="overlay" @click="team_join_lb_close"></div>
+      <div class="box">
+
+        <!-- <form action="post" v-if="join_succ"> -->
+        <form action="post" v-if="join_succ">
+          <h3 class="team_join_lb_title">是否確認報隊？</h3>
+
+          <div class="team_light_box_send" >
+            <button class="btn_default" @click.prevent="team_join_lb_close">取消</button>
+            <button class="btn_default" @click="join_send_btn">確認</button>
+          </div>
+        </form>
+
+        <div v-else>
+          <h3>已成功向團主報團！</h3>
+          <button class="btn_default" @click="team_join_lb_close">關閉</button>
+        </div>
+
+        <div class="team_close_light_box" @click="team_join_lb_close">
           <font-awesome-icon :icon="['fas', 'xmark']" />
         </div>
       </div>
@@ -282,11 +308,14 @@ export default {
         },
         
       ],
+      // 發文
       team_lb: false,
       article_send_succ: true,
       cb_submit: false,
       cb_check: false,
-      article_send_succ: true,
+      // 報團
+      team_join_lb: false,
+      join_succ: true,
     };
   },
   computed: {
@@ -299,7 +328,7 @@ export default {
   mounted() {},
   methods: {
     // 發文燈箱
-    // 打開燈箱
+    // 打開發文燈箱
     open_light_box(){
       this.team_lb = true;
       this.cb_check = false;
@@ -307,7 +336,7 @@ export default {
       this.article_send_succ = true;
       document.body.classList.add('body-overflow-hidden');
     },
-    // 關閉燈箱
+    // 關閉發文燈箱
     team_lb_close(){
       this.team_lb = false;
       document.body.classList.remove('body-overflow-hidden');
@@ -321,6 +350,19 @@ export default {
       }else{
         this.cb_submit = false;
       }
+    },
+    // 打開報團燈箱
+    join_team(){
+      this.team_join_lb = true;
+      this.join_succ = true;
+      document.body.classList.add('body-overflow-hidden');
+    },
+    team_join_lb_close(){
+      this.team_join_lb = false;
+      document.body.classList.remove('body-overflow-hidden');
+    },
+    join_send_btn(){
+      this.join_succ = false;
     },
   },
 };

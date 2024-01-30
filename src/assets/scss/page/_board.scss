@@ -42,7 +42,7 @@
         text-align: center;
         margin-right: 8px;
         @include T(){
-          font-size: 14px;
+          font-size: 13px;
         }
         @include PC(){
           font-size: $PC-btn-sl-font;
@@ -82,48 +82,36 @@
 
   // 內容區
   &_area{
-    margin: 0;
+    margin: auto;
     padding: 0;
-    display: flex;
-    flex-wrap: wrap;
-    // gap: 10px;
     align-items: flex-start;
     margin-bottom: 100px;
-    
-    // column-count: 2;
-    // column-gap: 10px;
+    @include T(){
+      display: flex;
+    }
+    .board_card_col{
+      display: none;
+      margin: 0px auto;
+      width: 100%;
+      @include T(){
+        display: block;
+        width: 50%;
+      }
+    }
+    .board_card_col_mb{
+      display: block;
+      @include T(){
+        display: none;
+      }
+    }
   }
   &_card{
-    // float: left;
-    // display: inline-block;
     border: 10px solid $green-1;
     margin: 8px;
     padding: 16px;
     background-color: $white-1;
     border-radius: 20px;
-    width: 100%;
-
     margin-bottom: 10px;
-    width: 100%;
-
-    // &:after {
-    //   content: "";
-    //   display: table;
-    //   clear: both;
-    // }
-
-    // &:nth-child(odd) {
-    //   flex-basis: 100%;
-    // }
-
-    @include T(){
-      transform: translateX(1%);
-      width: 47%;
-    }
-    @include PC(){
-      width: 48%;
-      transform: translateX(1%);
-    }
   }
   //文章區
   &_info{

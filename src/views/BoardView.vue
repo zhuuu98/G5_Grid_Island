@@ -30,54 +30,163 @@
 
           <!-- 內容區 -->
           <div class="board_area">
+
             <!-- <div class="board_card" v-for="item in card" :key="item.id"> -->
-            <div class="board_card" v-for="item in card" :key="item.id" :class="'card-' + item.id">
-              <!-- 文章區 -->
-              <div class="board_info">
-                <div class="board_id">
-                  <div class="board_id_img">
-                    <img :src="item.id_img" :alt="item.id_img_alt">
+              <!-- 文章區1 -->
+              <div class="board_card_col">
+                <div class="board_card" v-for="item in firstCol" :key="item.id" :class="'card-' + item.id">
+                <div class="board_info">
+                  <div class="board_id">
+                    <div class="board_id_img">
+                      <img src="/images/board/board_id_img.svg" :alt="item.id_img_alt">
+                    </div>
+                    <div class="board_id_info">
+                      <div class="board_memId">{{item.memId}}</div>
+                      <div class="board_time">{{ item.time }}</div>
+                    </div>
                   </div>
-                  <div class="board_id_info">
-                    <div class="board_memId">{{item.memId}}</div>
-                    <div class="board_time">{{ item.time }}</div>
+                  <div class="board_msg">
+                    <p>{{ item.msg }}</p>
+                  </div>
+                  <div class="board_re_type">
+                    <p>回覆留言</p>
+                    <input type="text" placeholder="輸入回覆內容...">
+                  </div>
+                  <div class="board_all_re" @click="toggleReply(item.id)">
+                    共有{{item.re_amount}}則回覆
+                    <font-awesome-icon icon="angle-down" />
+                  </div>
+                  <div class="board_report" @click="open_light_box_report">
+                    <font-awesome-icon :icon="['fas', 'circle-exclamation']" />
                   </div>
                 </div>
-                <div class="board_msg">
-                  <p>{{ item.msg }}</p>
+                <!-- 留言區 -->
+                <div class="board_re hide">
+                  <div class="board_re_card" v-for="reItem in item.re" :key="reItem.id">
+                    <div class="board_re_id">
+                      <div class="board_re_id_img">
+                        <img src="/images/board/board_id_img.svg" :alt="reItem.alt">
+                      </div>
+                      <div class="board_re_id_info">
+                        <div class="board_re_memId">{{ reItem.memId }}</div>
+                        <div class="board_re_time">{{ reItem.time }}</div>
+                      </div>
+                    </div>
+                    <div class="board_re_msg">
+                      <p>{{ reItem.msg }}</p>
+                    </div>
+                  </div>
                 </div>
-                <div class="board_re_type">
-                  <p>回覆留言</p>
-                  <input type="text" placeholder="輸入回覆內容...">
-                </div>
-                <div class="board_all_re" @click="toggleReply(item.id)">
-                  共有{{item.re_amount}}則回覆
-                  <font-awesome-icon icon="angle-down" />
-                </div>
-                <div class="board_report" @click="open_light_box_report">
-                  <font-awesome-icon :icon="['fas', 'circle-exclamation']" />
                 </div>
               </div>
-              <!-- 留言區 -->
-              <div class="board_re hide">
 
-                <div class="board_re_card" v-for="reItem in item.re" :key="reItem.id">
-                  <div class="board_re_id">
-                    <div class="board_re_id_img">
-                      <img :src="reItem.img" :alt="reItem.alt">
+<!-- <BoardCard/> -->
+              <!-- 文章區2 -->
+              <div class="board_card_col">
+                <div class="board_card" v-for="item in secondCol" :key="item.id" :class="'card-' + item.id">
+                  
+                <div class="board_info">
+                  <div class="board_id">
+                    <div class="board_id_img">
+                      <img src="/images/board/board_id_img.svg" :alt="item.id_img_alt">
                     </div>
-                    <div class="board_re_id_info">
-                      <div class="board_re_memId">{{ reItem.memId }}</div>
-                      <div class="board_re_time">{{ reItem.time }}</div>
+                    <div class="board_id_info">
+                      <div class="board_memId">{{item.memId}}</div>
+                      <div class="board_time">{{ item.time }}</div>
                     </div>
                   </div>
-                  <div class="board_re_msg">
+                  <div class="board_msg">
+                    <p>{{ item.msg }}</p>
+                  </div>
+                  <div class="board_re_type">
+                    <p>回覆留言</p>
+                    <input type="text" placeholder="輸入回覆內容...">
+                  </div>
+                  <div class="board_all_re" @click="toggleReply(item.id)">
+                    共有{{item.re_amount}}則回覆
+                    <font-awesome-icon icon="angle-down" />
+                  </div>
+                  <div class="board_report" @click="open_light_box_report">
+                    <font-awesome-icon :icon="['fas', 'circle-exclamation']" />
+                  </div>
+                </div>
+                <!-- 留言區 -->
+                <div class="board_re hide">
+                  <div class="board_re_card" v-for="reItem in item.re" :key="reItem.id">
+                    <div class="board_re_id">
+                      <div class="board_re_id_img">
+                        <img src="/images/board/board_id_img.svg" :alt="reItem.alt">
+                      </div>
+                      <div class="board_re_id_info">
+                        <div class="board_re_memId">{{ reItem.memId }}</div>
+                        <div class="board_re_time">{{ reItem.time }}</div>
+                      </div>
+                    </div>
+                    <div class="board_re_msg">
                     <p>{{ reItem.msg }}</p>
                   </div>
                 </div>
-
+              </div>
               </div>
             </div>
+
+
+              <!-- 文章區3 -->
+              <div class="board_card_col_mb">
+                <div class="board_card" v-for="item in card" :key="item.id" :class="'card-' + item.id">
+                  
+                <div class="board_info">
+                  <div class="board_id">
+                    <div class="board_id_img">
+                      <img src="/images/board/board_id_img.svg" :alt="item.id_img_alt">
+                    </div>
+                    <div class="board_id_info">
+                      <div class="board_memId">{{item.memId}}</div>
+                      <div class="board_time">{{ item.time }}</div>
+                    </div>
+                  </div>
+                  <div class="board_msg">
+                    <p>{{ item.msg }}</p>
+                  </div>
+                  <div class="board_re_type">
+                    <p>回覆留言</p>
+                    <input type="text" placeholder="輸入回覆內容...">
+                  </div>
+                  <div class="board_all_re" @click="toggleReply(item.id)">
+                    共有{{item.re_amount}}則回覆
+                    <font-awesome-icon icon="angle-down" />
+                  </div>
+                  <div class="board_report" @click="open_light_box_report">
+                    <font-awesome-icon :icon="['fas', 'circle-exclamation']" />
+                  </div>
+                </div>
+                <!-- 留言區 -->
+                <div class="board_re hide">
+                  <div class="board_re_card" v-for="reItem in item.re" :key="reItem.id">
+                    <div class="board_re_id">
+                      <div class="board_re_id_img">
+                        <img src="/images/board/board_id_img.svg" :alt="reItem.alt">
+                      </div>
+                      <div class="board_re_id_info">
+                        <div class="board_re_memId">{{ reItem.memId }}</div>
+                        <div class="board_re_time">{{ reItem.time }}</div>
+                      </div>
+                    </div>
+                    <div class="board_re_msg">
+                    <p>{{ reItem.msg }}</p>
+                  </div>
+                </div>
+              </div>
+              </div>
+            </div>
+
+
+
+
+
+
+
+
           </div>
         </div>
       </div>
@@ -155,13 +264,15 @@
 <script>
 // import axios from "axios";
 import PageTitle from "../components/PageTitle.vue";
+// import BoardCard from "../components/BoardCard.vue";
+
 export default {
   data() {
     return { 
       card:[
         {
           id: 1,
-          id_img:'/images/board/board_id_img.svg',
+          // id_img:'/images/board/board_id_img.svg',
           id_img_alt:'board_id_img',
           memId:'1啊人家家就笨壓',
           time:'2023/12/30 20:25',
@@ -188,7 +299,7 @@ export default {
         },
         {
           id: 2,
-          id_img:'../../public/images/board/board_id_img.svg',
+          // id_img:'../../public/images/board/board_id_img.svg',
           id_img_alt:'board_id_img',
           memId:'2大傑',
           time:'2023/12/30 20:25',
@@ -197,7 +308,7 @@ export default {
           re:[
             {
               id:1,
-              img:'../../public/images/board/board_id_img.svg',
+              // img:'../../public/images/board/board_id_img.svg',
               alt:'board_id_img',
               memId:'灰傑克',
               time:'2023/12/30 20:25',
@@ -205,7 +316,7 @@ export default {
             },
             {
               id:2,
-              img:'../../public/images/board/board_id_img.svg',
+              // img:'../../public/images/board/board_id_img.svg',
               alt:'board_id_img',
               memId:'皮諾渴',
               time:'2023/12/30 20:25',
@@ -213,7 +324,7 @@ export default {
             },
             {
               id:3,
-              img:'../../public/images/board/board_id_img.svg',
+              // img:'../../public/images/board/board_id_img.svg',
               alt:'board_id_img',
               memId:'奇牙',
               time:'2023/12/30 20:25',
@@ -223,7 +334,7 @@ export default {
         },
         {
           id: 3,
-          id_img:'../../public/images/board/board_id_img.svg',
+          // id_img:'../../public/images/board/board_id_img.svg',
           id_img_alt:'board_id_img',
           memId:'3酷B',
           time:'2023/12/30 20:25',
@@ -232,7 +343,7 @@ export default {
           re:[
             {
               id:1,
-              img:'../../public/images/board/board_id_img.svg',
+              // img:'../../public/images/board/board_id_img.svg',
               alt:'board_id_img',
               memId:'酷喇皮卡',
               time:'2023/12/30 20:25',
@@ -240,7 +351,7 @@ export default {
             },
             {
               id:2,
-              img:'../../public/images/board/board_id_img.svg',
+              // img:'../../public/images/board/board_id_img.svg',
               alt:'board_id_img',
               memId:'明人',
               time:'2023/12/30 20:25',
@@ -250,16 +361,16 @@ export default {
         },
         {
           id: 4,
-          id_img:'../../public/images/board/board_id_img.svg',
+          // id_img:'../../public/images/board/board_id_img.svg',
           id_img_alt:'board_id_img',
-          memId:'大傑',
+          memId:'4大傑',
           time:'2023/12/30 20:25',
           msg:'有人看到我爸嗎？',
           re_amount:2,
           re:[
             {
               id:1,
-              img:'../../public/images/board/board_id_img.svg',
+              // img:'../../public/images/board/board_id_img.svg',
               alt:'board_id_img',
               memId:'灰傑克',
               time:'2023/12/30 20:25',
@@ -267,7 +378,7 @@ export default {
             },
             {
               id:2,
-              img:'../../public/images/board/board_id_img.svg',
+              // img:'../../public/images/board/board_id_img.svg',
               alt:'board_id_img',
               memId:'皮諾渴',
               time:'2023/12/30 20:25',
@@ -275,7 +386,7 @@ export default {
             },
             {
               id:3,
-              img:'../../public/images/board/board_id_img.svg',
+              // img:'../../public/images/board/board_id_img.svg',
               alt:'board_id_img',
               memId:'奇牙',
               time:'2023/12/30 20:25',
@@ -285,16 +396,16 @@ export default {
         },
         {
           id: 5,
-          id_img:'../../public/images/board/board_id_img.svg',
+          // id_img:'../../public/images/board/board_id_img.svg',
           id_img_alt:'board_id_img',
-          memId:'酷B',
+          memId:'5酷B',
           time:'2023/12/30 20:25',
           msg:'使用同行，前往瑪莎多啦。',
           re_amount:2,
           re:[
             {
               id:1,
-              img:'../../public/images/board/board_id_img.svg',
+              // img:'../../public/images/board/board_id_img.svg',
               alt:'board_id_img',
               memId:'酷喇皮卡',
               time:'2023/12/30 20:25',
@@ -302,12 +413,50 @@ export default {
             },
             {
               id:2,
-              img:'../../public/images/board/board_id_img.svg',
+              // img:'../../public/images/board/board_id_img.svg',
               alt:'board_id_img',
               memId:'明人',
               time:'2023/12/30 20:25',
               msg:'樓上也有血輪眼？',
             }
+          ]
+        },
+        {
+          id: 6,
+          // id_img:'../../public/images/board/board_id_img.svg',
+          id_img_alt:'board_id_img',
+          memId:'6酷B',
+          time:'2023/12/30 20:25',
+          msg:'使用同行，前往瑪莎多啦。',
+          re_amount:2,
+          re:[
+            {
+              id:1,
+              // img:'../../public/images/board/board_id_img.svg',
+              alt:'board_id_img',
+              memId:'酷喇皮卡',
+              time:'2023/12/30 20:25',
+              msg:'我快下船了。',
+            },
+            {
+              id:2,
+              // img:'../../public/images/board/board_id_img.svg',
+              alt:'board_id_img',
+              memId:'明人',
+              time:'2023/12/30 20:25',
+              msg:'樓上也有血輪眼？',
+            }
+          ]
+        },
+        {
+          id: 7,
+          // id_img:'../../public/images/board/board_id_img.svg',
+          id_img_alt:'board_id_img',
+          memId:'7酷B',
+          time:'2023/12/30 20:25',
+          msg:'使用同行，前往瑪莎多啦。',
+          re_amount:2,
+          re:[
           ]
         },
       ],
@@ -353,11 +502,27 @@ export default {
   computed: {
     re_amount() {
       return this.card[1].re.length;
-    }
-    
+    },
+    firstCol() {
+      return this.card.reduce((acc, cur, idx) => {
+        if (idx % 2 === 0) {
+          acc.push(cur)
+        }
+        return acc
+      }, [])
+    },
+    secondCol() {
+      return this.card.reduce((acc, cur, idx) => {
+        if (idx % 2 === 1) {
+          acc.push(cur)
+        }
+        return acc
+      }, [])
+    },
   },
   components: {
     PageTitle,
+    // BoardCard,
   },
   created() {},
   mounted() {},
