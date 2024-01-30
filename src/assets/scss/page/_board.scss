@@ -63,21 +63,17 @@
         select{
           width: 130px;
           height: 40px;
-          border: 1px solid $black;
+          border: 2px solid $black;
           border-radius: 20px;
           padding: 8px;
           font-size: $M-text;
-          // font-size: $small;
-          // font-size: $PC-text;
           outline: none;
           background-color: $white-1;
           cursor: pointer;
           option{
-            // font-size: $small;
             font-size: $M-text;
             padding: 8px;
             margin: 4px;
-            // height: 30px;
           }
         }
       }
@@ -275,6 +271,10 @@
     
     
   }
+
+  [disabled]{
+    cursor: no-drop;
+  }
   
 
 } //board
@@ -326,6 +326,7 @@
         outline: none;
         margin: auto;
         border: 1px solid $gray-2;
+        width: 100%;
         @include T(){
           width: 100%;
         }
@@ -497,8 +498,8 @@
   display: none;
 }
 
-
 /* 樣式修改：在開啟燈箱時禁止滾動頁面 */
 .body-overflow-hidden {
   overflow: hidden;
 }
+

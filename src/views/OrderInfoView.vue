@@ -182,12 +182,22 @@
         </div>
       </div>
       <div class="checkOutBtn_m">
-        <button class="bookBtn" type="button" @click="submitOrder">
+        <button
+          class="bookBtn"
+          type="button"
+          @click="submitOrder"
+          :class="{ disableBtn: optionSelect }"
+        >
           送出訂單
         </button>
       </div>
       <div class="checkOutBtn_pc">
-        <button class="btn_lg_orange" type="button" @click="submitOrder">
+        <button
+          class="btn_lg_orange"
+          type="button"
+          @click="submitOrder"
+          :class="{ disableBtn: optionSelect }"
+        >
           送出訂單
         </button>
       </div>
@@ -233,12 +243,6 @@ export default {
       "discountAmount",
       "totalPrice",
     ]),
-    loading() {
-      return this.respondData.length == 0;
-    },
-    nodata() {
-      return this.displayData.length == 0;
-    },
     totalPriceCount() {
       return this.subTotalAmount + this.deliveryAmount - this.discountAmount;
     },
@@ -247,6 +251,9 @@ export default {
     },
     rotateIcon() {
       return this.isRotated ? "rotate(-180deg)" : "";
+    },
+    optionSelect() {
+      return this.selectedValue == 0 || this.selectedValue1 == 0;
     },
   },
   created() {

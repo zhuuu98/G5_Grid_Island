@@ -5,7 +5,7 @@
         params: { id: newsId },
       }"
     >   
-  <div class="newsCard">
+  <div class="newsRow">
 
     <div class="newsImg">
       <img :src="imgUrl" :alt="newsTitle">
@@ -14,6 +14,9 @@
     <div class="text">
       <div class="title">
         <h2 class="pc-h4">{{ newsTitle }}</h2>
+      </div>
+      <div class="textContent">
+        <span>{{ newsContent }}</span>
       </div>
       <div class="date pc-h5">{{ newsDate }}</div>
     </div>
@@ -28,7 +31,7 @@ export default {
       value: 0,
     };
   },
-  props: ["imgUrl", "newsTitle", "newsDate", "newsId"],
+  props: ["imgUrl", "newsTitle", "newsDate", "newsId", "newsContent"],
   methods: {
   },
   mounted() {},

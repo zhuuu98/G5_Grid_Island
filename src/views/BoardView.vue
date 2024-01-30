@@ -96,7 +96,7 @@
           </div>
           <div class="board_light_box_send">
             <div>
-              <input type="checkbox" name="" id="check" v-model="cb_check" @change="article_send">
+              <input type="checkbox" id="check" v-model="cb_check" @change="article_send">
               <label for="check">我已確認文章內容不包含不當內文及攻擊字眼。</label>
             </div>
             <button class="btn_sm_1" v-if="!cb_submit" disabled>送出</button>
@@ -161,7 +161,7 @@ export default {
       card:[
         {
           id: 1,
-          id_img:'@/assets/images/board/board_id_img.svg',
+          id_img:'/images/board/board_id_img.svg',
           id_img_alt:'board_id_img',
           memId:'1啊人家家就笨壓',
           time:'2023/12/30 20:25',
@@ -170,7 +170,7 @@ export default {
           re:[
             {
               id:1,
-              img:'@/assets/images/board/board_id_img.svg',
+              img:'/images/board/board_id_img.svg',
               alt:'board_id_img',
               memId:'萵金',
               time:'2023/12/30 20:25',
@@ -178,7 +178,7 @@ export default {
             },
             {
               id:2,
-              img:'@/assets/images/board/board_id_img.svg',
+              img:'/images/board/board_id_img.svg',
               alt:'board_id_img',
               memId:'金',
               time:'2023/12/30 20:25',
@@ -188,7 +188,7 @@ export default {
         },
         {
           id: 2,
-          id_img:'./src/assets/images/board/board_id_img.svg',
+          id_img:'../../public/images/board/board_id_img.svg',
           id_img_alt:'board_id_img',
           memId:'2大傑',
           time:'2023/12/30 20:25',
@@ -197,7 +197,7 @@ export default {
           re:[
             {
               id:1,
-              img:'./src/assets/images/board/board_id_img.svg',
+              img:'../../public/images/board/board_id_img.svg',
               alt:'board_id_img',
               memId:'灰傑克',
               time:'2023/12/30 20:25',
@@ -205,7 +205,7 @@ export default {
             },
             {
               id:2,
-              img:'./src/assets/images/board/board_id_img.svg',
+              img:'../../public/images/board/board_id_img.svg',
               alt:'board_id_img',
               memId:'皮諾渴',
               time:'2023/12/30 20:25',
@@ -213,7 +213,7 @@ export default {
             },
             {
               id:3,
-              img:'./src/assets/images/board/board_id_img.svg',
+              img:'../../public/images/board/board_id_img.svg',
               alt:'board_id_img',
               memId:'奇牙',
               time:'2023/12/30 20:25',
@@ -223,7 +223,7 @@ export default {
         },
         {
           id: 3,
-          id_img:'./src/assets/images/board/board_id_img.svg',
+          id_img:'../../public/images/board/board_id_img.svg',
           id_img_alt:'board_id_img',
           memId:'3酷B',
           time:'2023/12/30 20:25',
@@ -232,7 +232,7 @@ export default {
           re:[
             {
               id:1,
-              img:'./src/assets/images/board/board_id_img.svg',
+              img:'../../public/images/board/board_id_img.svg',
               alt:'board_id_img',
               memId:'酷喇皮卡',
               time:'2023/12/30 20:25',
@@ -240,7 +240,7 @@ export default {
             },
             {
               id:2,
-              img:'./src/assets/images/board/board_id_img.svg',
+              img:'../../public/images/board/board_id_img.svg',
               alt:'board_id_img',
               memId:'明人',
               time:'2023/12/30 20:25',
@@ -250,7 +250,7 @@ export default {
         },
         {
           id: 4,
-          id_img:'./src/assets/images/board/board_id_img.svg',
+          id_img:'../../public/images/board/board_id_img.svg',
           id_img_alt:'board_id_img',
           memId:'大傑',
           time:'2023/12/30 20:25',
@@ -259,7 +259,7 @@ export default {
           re:[
             {
               id:1,
-              img:'./src/assets/images/board/board_id_img.svg',
+              img:'../../public/images/board/board_id_img.svg',
               alt:'board_id_img',
               memId:'灰傑克',
               time:'2023/12/30 20:25',
@@ -267,7 +267,7 @@ export default {
             },
             {
               id:2,
-              img:'./src/assets/images/board/board_id_img.svg',
+              img:'../../public/images/board/board_id_img.svg',
               alt:'board_id_img',
               memId:'皮諾渴',
               time:'2023/12/30 20:25',
@@ -275,7 +275,7 @@ export default {
             },
             {
               id:3,
-              img:'./src/assets/images/board/board_id_img.svg',
+              img:'../../public/images/board/board_id_img.svg',
               alt:'board_id_img',
               memId:'奇牙',
               time:'2023/12/30 20:25',
@@ -285,7 +285,7 @@ export default {
         },
         {
           id: 5,
-          id_img:'./src/assets/images/board/board_id_img.svg',
+          id_img:'../../public/images/board/board_id_img.svg',
           id_img_alt:'board_id_img',
           memId:'酷B',
           time:'2023/12/30 20:25',
@@ -294,7 +294,7 @@ export default {
           re:[
             {
               id:1,
-              img:'./src/assets/images/board/board_id_img.svg',
+              img:'../../public/images/board/board_id_img.svg',
               alt:'board_id_img',
               memId:'酷喇皮卡',
               time:'2023/12/30 20:25',
@@ -302,7 +302,7 @@ export default {
             },
             {
               id:2,
-              img:'./src/assets/images/board/board_id_img.svg',
+              img:'../../public/images/board/board_id_img.svg',
               alt:'board_id_img',
               memId:'明人',
               time:'2023/12/30 20:25',
@@ -362,6 +362,8 @@ export default {
   created() {},
   mounted() {},
   methods: {
+    // 發文
+    // 打開發文燈箱
     open_light_box(){
       this.article_send_succ = true;
       this.cb_check = false;
@@ -369,11 +371,27 @@ export default {
       this.board_light_box_open = true;
       document.body.classList.add('body-overflow-hidden');
     },
+    // 發文燈箱關閉
     light_box_close(){
       // this.board_light_box_open = false;
       this.board_light_box_open = false;
       document.body.classList.remove('body-overflow-hidden');
     },
+    // 有輸入內容才可以送出
+    article_send(){
+      if(this.cb_check == true && document.querySelector('.light_box textarea').value != ''){
+        this.cb_submit = true;
+      }else{
+        this.cb_submit = false;
+      }
+    },
+    // 送出按鈕導向確認畫面
+    article_send_btn(){
+      this.article_send_succ = false;
+    },
+
+    // 檢舉
+    // 打開檢舉燈箱
     open_light_box_report(){
       this.re_submit_show = true;
       this.selectedOption = this.reports[0].value;
@@ -382,11 +400,13 @@ export default {
       this.board_light_box_report = true;
       document.body.classList.add('body-overflow-hidden');
     },
+    // 關閉檢舉燈箱
     light_box_re_close(){
       this.board_light_box_report = false;
       document.body.classList.remove('body-overflow-hidden');
 
     },
+    // 判斷如果選擇其他必須輸入內容及勾選且不得為預設請選擇才可以送出
     updateReTextVisibility() {
       this.open_re_text = this.selectedOption === "lb_re_other";
 
@@ -397,12 +417,8 @@ export default {
       }else{
         this.re_submit_disable = true;
       }
-
     },
-    toggleReply(){
-      this.open_reply_text = !this.open_reply_text;
-    },
-    // 控制展開留言區
+    //控制展開留言區
     toggleReply(itemId){
       //jquery
       // var cardli = $('.card-' + itemId);
@@ -424,18 +440,6 @@ export default {
     re_submit(){
       this.re_submit_show = false;
     },
-    article_send(){
-      if(this.cb_check == true && document.querySelector('.light_box textarea').value != ''){
-        this.cb_submit = true;
-      }else{
-        this.cb_submit = false;
-
-      }
-    },
-    article_send_btn(){
-      this.article_send_succ = false;
-
-    },
     
 
   },
@@ -445,17 +449,3 @@ export default {
 };
 </script>
 
-
-
-<style lang="scss" scoped>
-  .banner{
-    width: 100%;
-    background-color: #ccc;
-    height: 300px;
-  }
-  [disabled]{
-    cursor: no-drop;
-    // background: gray;
-  }
-
-</style>

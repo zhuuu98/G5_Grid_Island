@@ -1,60 +1,122 @@
 .newsArticle {
+  .loadingMask {
+    z-index: 1000;
+    background-color: $black;
+    height: 100vh;
+    width: 100vw;
+    position: fixed;
+    .fade-leave-active {
+      transition: opacity 0.5s;
+    }
+    .fade-leave-to {
+      opacity: 0;
+    }
+    .lds-ring {
+      display: inline-block;
+      position: absolute;
+      width: 80px;
+      height: 80px;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
 
-  .content {
-      margin-top: $M-spacing ;
-      margin-bottom: $XL-spacing ;
-      display: flex;
-      flex-direction: column;
-      max-width: $max-width;
-      @include T(){
-        padding: 0 $XL-spacing;
-        max-width: 1500px;
-        margin:  $XXL-spacing auto $XXXL-spacing;
-      }
-      .title {
-        margin: auto;
-        padding: 0 $M-spacing;
-        letter-spacing: $PC-btn-sl-spacing;
-        @include T(){
-          padding: 0 $XXL-spacing;
+      div {
+        box-sizing: border-box;
+        display: block;
+        position: absolute;
+        width: 64px;
+        height: 64px;
+        margin: 8px;
+        border: 8px solid #fff;
+        border-radius: 50%;
+        animation: lds-ring 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+        border-color: #fff transparent transparent transparent;
 
+        &:nth-child(1) {
+          animation-delay: -0.45s;
         }
 
-      }
-      .newsImg {
-        padding: 0 $M-spacing;
-
-        @include T(){
-          padding: 0 $M-spacing;
-        }
-      }
-      .textContent {
-        order: 2;
-        letter-spacing: $PC-btn-esl-spacing;
-        padding: 0 $L-spacing;
-        font-size: $PC-text;
-        @include T(){
-          padding: $M-spacing $XL-spacing;
-          font-size: $PC-text;
-          
+        &:nth-child(2) {
+          animation-delay: -0.3s;
         }
 
-      }
-      .date {
-        padding: 0 $M-spacing $S-spacing;
-        order:1 ;
-        margin-left: auto;
-        letter-spacing: $PC-btn-exsl-spacing;
-        @include T(){
-          padding: $M-spacing $L-spacing;
-
+        &:nth-child(3) {
+          animation-delay: -0.15s;
         }
       }
+    }
 
+    @keyframes lds-ring {
+      0% {
+        transform: rotate(0deg);
+      }
 
-
+      100% {
+        transform: rotate(360deg);
+      }
+    }
   }
+  .content {
+    margin-top: $M-spacing;
+    margin-bottom: $XL-spacing;
+    display: flex;
+    flex-direction: column;
+    max-width: $max-width;
+    @include T() {
+      padding: 0 $XL-spacing;
+      max-width: 1500px;
+      margin: $L-spacing auto $XXXL-spacing;
+    }
+    .title {
+      margin: auto;
+      padding: 0 $M-spacing $S-spacing;
+      letter-spacing: $PC-btn-sl-spacing;
+      @include T() {
+        padding: 0 $XXL-spacing $M-spacing;
+      }
+    }
+    .newsImg {
+      padding: 0 $M-spacing;
+      max-width: 1000px;
+      min-width: 300px;
+      margin: auto;
+      height: auto;
 
+      @include T() {
+        padding: 0 $M-spacing;
+      }
 
-
+      img {
+        width: 100%;
+      }
+    }
+    .textContent {
+      order: 2;
+      letter-spacing: $PC-btn-esl-spacing;
+      padding: 0 $L-spacing;
+      font-size: $PC-text;
+      @include T() {
+        padding: $M-spacing $XL-spacing;
+        font-size: $PC-text;
+      }
+    }
+    .date {
+      padding: 0 $M-spacing $S-spacing;
+      order: 1;
+      margin-left: auto;
+      letter-spacing: $PC-btn-exsl-spacing;
+      @include T() {
+        padding: $M-spacing $L-spacing;
+      }
+    }
+    .btn {
+      margin: auto;
+      order: 3;
+      padding: $XXL-spacing 0 0;
+      button {
+        width: 250px;
+        // height: 45px;
+      }
+    }
+  }
 }

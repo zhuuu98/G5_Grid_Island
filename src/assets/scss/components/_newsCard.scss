@@ -72,7 +72,6 @@
 
     .title {
       width: 100%;
-      text-wrap: nowrap;
       text-overflow: ellipsis;
       overflow: hidden;
 
@@ -80,6 +79,9 @@
         text-wrap: unset;
       }
       h2 {
+        display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
         text-overflow: ellipsis;
         overflow: hidden;
 
