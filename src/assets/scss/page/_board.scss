@@ -67,17 +67,13 @@
           border-radius: 20px;
           padding: 8px;
           font-size: $M-text;
-          // font-size: $small;
-          // font-size: $PC-text;
           outline: none;
           background-color: $white-1;
           cursor: pointer;
           option{
-            // font-size: $small;
             font-size: $M-text;
             padding: 8px;
             margin: 4px;
-            // height: 30px;
           }
         }
       }
@@ -330,6 +326,7 @@
         outline: none;
         margin: auto;
         border: 1px solid $gray-2;
+        width: 100%;
         @include T(){
           width: 100%;
         }

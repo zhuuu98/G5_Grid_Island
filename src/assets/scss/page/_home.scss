@@ -317,26 +317,61 @@ main {
 
     // 最新消息
     .index_news {
+      width: 100%;
+      background-color: $orange-1;
+      .index_row{
+        width: 100%;
+        @include PC(){
+          width: 80%;
+          max-width: 1140px;
+        }
+      }
       h1{
         text-align: center;
+        padding: $XL-spacing 0 $L-spacing;
       }
       .news_card_content{
         display: flex;
         overflow: scroll;
-        &::-webkit-scrollbar{
-          // display: none;
+        margin: $M-spacing 0;
+        padding: 20px;
+        @include PC(){
+          overflow: visible;
+          justify-content: center;
         }
+        &::-webkit-scrollbar{
+          display: none;
+        }
+        $cardWidth: 25vw;
+        .newsCard{
+          height: 340px;
+          width: 80vw;
+          margin: 10px;
+          @include PC(){
+            width: calc($cardWidth - 80px);
+          }
+
+          
+          .text{
+            background-color: $white-1;
+            border-radius: 0 0 calc($M-button-radius - 2px) calc($M-button-radius - 2px);
+            @include T(){
+              border-radius: 0 0 calc($S-button-radius - 2px) calc($S-button-radius - 2px);
+            }
+          }
+        }
+        .newsImg img{
+          width: 100%;
+        }
+      }
+      .news_button{
+        padding: $L-spacing 0 $XXL-spacing;
       }      
-      // .index_news_card{
-      //   width: 155px;
-      // }
-      // .index_news_cardImg{
-      //   width: 155px;
-      // }
-      // .index_news_cardText{
-      //   display: flex;
-      //   flex-direction: column;
-      // }
+      button{
+        display: block;
+        margin: auto;
+        
+      }
     }
 
     // 一起遊樂 IG API

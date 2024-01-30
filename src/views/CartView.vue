@@ -76,9 +76,7 @@
                 />
               </div>
               <div class="discountCodeBtn">
-                <button class="searchBtn" @click="discountCodeCheck">
-                  使用折扣碼
-                </button>
+                <button class="searchBtn">使用折扣碼</button>
               </div>
             </div>
           </div>
