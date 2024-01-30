@@ -117,12 +117,14 @@
           </div>
           <!-- 最新消息 -->
           <div class="index_news">
-            <div class="index_row" style="height:500px">
-            <h1>最新消息</h1>
-            <div class="news_card_content">
-              <NewsCard v-for="(item, index) in latestData" :key="item.news_id" :newsTitle="item.news_title" :newsDate="item.news_date" :imgUrl="`https://tibamef2e.com/chd103/g1/image/news/${item.news_img}`" :newsId="item.news_id" />
-            </div>
-              
+            <div class="index_row" >
+              <h1>最新消息</h1>
+              <div class="news_card_content">
+                <NewsCard v-for="(item, index) in latestData" :key="item.news_id" :newsTitle="item.news_title" :newsDate="item.news_date" :imgUrl="`https://tibamef2e.com/chd103/g1/image/news/${item.news_img}`" :newsId="item.news_id" />
+              </div>
+              <div class="news_button">
+                <button class="btn_lg" @click="goNews()">所有最新消息</button>
+              </div>
             </div>
           </div>
           <!-- 一起遊樂 IG API -->
@@ -270,7 +272,7 @@
       }
     },
     axiosGetData() {
-    axios
+      axios
       .get("https://tibamef2e.com/chd103/g1/phps/news_fetch.php")
       .then((res) => {
         this.respondData = res.data;
@@ -282,6 +284,9 @@
         // console.log('最新的4筆資料:', this.latestData);
       });
     },
+    goNews(){
+      this.$router.push('/news')
+    }
   }
     
 
