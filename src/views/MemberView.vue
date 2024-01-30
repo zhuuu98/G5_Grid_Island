@@ -130,7 +130,7 @@
                                     </div>
                                     <button class="btn_sm_1" @click="mobileOpenList(index)">訂單明細</button>
                                 </div>
-                                <div class="PC_OrderDataDetail" v-show="openOrderList">
+                                <div class="PC_OrderDataDetail" v-show="items.isOpen">
                                     <div v-for="(name, nameIndex) in items.orderItems" class="PC_NameTotal">
                                         <img :src="getImageUrl(`member/memberOrderProducts_${nameIndex + 1}.svg`)" alt="商品">
 
@@ -268,7 +268,7 @@
                             </div>
                             <button class="btn_sm_1" @click="mobileOpenList(index)">訂單明細</button>
                         </div>
-                        <div class="OrderDataDetail" v-show="openOrderList">
+                        <div class="OrderDataDetail" v-show="items.isOpen">
                             <div v-for="(name, nameIndex) in items.orderItems" class="NameTotal">
                                 <img :src="getImageUrl(`member/memberOrderProducts_${nameIndex + 1}.svg`)" alt="商品">
                                 <div class="orderItem">
@@ -353,7 +353,8 @@ export default {
                     orderItems: ['阿瓦蟲', '貓與城之內豪華精裝版'],
                     orderItemsPrice: [500, 8000],
                     orderItemsNum: [2, 1],
-                    orderItemsTotal: [1000, 8000]
+                    orderItemsTotal: [1000, 8000],
+                    isOpen: false,
                 },
                 {
                     orderDate: '2023/12/11',
@@ -364,6 +365,7 @@ export default {
                     orderItemsPrice: [500],
                     orderItemsNum: [1],
                     orderItemsTotal: [500],
+                    isOpen: false,
                 },
 
             ],
@@ -398,7 +400,8 @@ export default {
             return new URL(`../assets/images/${paths}`, import.meta.url).href
         },
         mobileOpenList(index) { //訂單打開明細
-            this.openOrderList = !this.openOrderList
+            this.orderList[index].isOpen = !this.orderList[index].isOpen
+            console.log(index)
 
         },
         handleButtonClick(index) { //手機板選單
