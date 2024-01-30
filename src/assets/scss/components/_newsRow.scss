@@ -1,21 +1,15 @@
-.newsCard {
+.newsRow {
   border-radius: $M-button-radius;
   width: 166.5px;
   border: 2px solid $blue-4;
   height: 251px;
   display: flex;
-  flex-direction: column;
-  
-  .thList {
-    background-color: #fa0;
-    display: flex;
-    flex-direction: row;
-  }
+  // flex-direction: column;
   
   @include T(){
     border-radius: $S-button-radius;
-    width: 305px;
-    height: 457px;
+    width: 1064px;
+    height: 200px;
     position: relative;
   }
   
@@ -24,11 +18,13 @@
     border-radius: 18px 18px 0 0;
     height: 60%;
     object-fit: cover;
-    border-bottom: 2px solid $blue-4;
+    border-right: 2px solid $blue-4;
+
     
     @include T(){
-      width: 100%;
-      border-radius: 5px 5px 0 0;
+      width: 30%;
+      height: 100%;
+      border-radius: 5px 0 0 5px;
     }
     
     img {
@@ -65,7 +61,7 @@
     color: $blue-4;
     
     @include T() {
-      padding: $M-spacing $S-spacing  $M-spacing;
+      padding: $M-spacing $M-spacing  $M-spacing;
 
     }
 

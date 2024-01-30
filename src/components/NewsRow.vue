@@ -5,7 +5,7 @@
         params: { id: newsId },
       }"
     >   
-  <div class="newsCard">
+  <div class="newsRow">
 
     <div class="newsImg">
       <img :src="imgUrl" :alt="newsTitle">
