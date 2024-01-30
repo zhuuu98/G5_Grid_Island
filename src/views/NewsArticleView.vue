@@ -68,7 +68,7 @@ export default {
           href: `https://tibamef2e.com/chd104/g5/front/newsArticle/${this.netData.news_id}`,
         });
       } else {
-        console.warn('連結無效');
+        console.log('連結無效');
       }
     },
   },
