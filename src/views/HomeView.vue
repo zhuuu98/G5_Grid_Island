@@ -120,15 +120,7 @@
             <div class="index_row" style="height:500px">
             <h1>最新消息</h1>
             <div class="news_card_content">
-              <div class="index_news_card" v-for="item in latestData" :key="index">
-                <div class="index_news_cardImg">
-                  <img :src="`https://tibamef2e.com/chd103/g5/img/${item.prod_img1}`">
-                </div>
-                <div class="index_news_cardText">
-                  <h3>{{ item.prod_name }}</h3>
-                  <p>2024年1月30日</p>
-                </div>
-              </div>
+              <NewsCard v-for="(item, index) in latestData" :key="item.news_id" :newsTitle="item.news_title" :newsDate="item.news_date" :imgUrl="`https://tibamef2e.com/chd103/g1/image/news/${item.news_img}`" :newsId="item.news_id" />
             </div>
               
             </div>
@@ -159,6 +151,7 @@
 </template>
 
 <script>
+  import axios from "axios";
   import bannerImage from '../assets/images/banner/gi_banner.png';
   import treeSvg from '../assets/images/banner/centree.svg';
   import news from '../assets/images/banner/news.svg';
@@ -176,13 +169,14 @@
   import { ref, onMounted, onUnmounted } from 'vue';
   import MainHeader from '../components/MainHeader.vue';
   import headerWave from '../assets/images/header/headerWave.svg'
-  import axios from "axios";
 
+  import NewsCard from "../components/NewsCard.vue";
 
   export default {
     name: 'HomeView',
     components: {
       MainHeader,
+      NewsCard,
     },
     data() {
       return {
@@ -262,7 +256,7 @@
   },
   mounted() {
   // 为整个容器添加事件监听器
-  this.$refs.bannerContainer.addEventListener('mousedown', this.preventDrag);
+  // this.$refs.bannerContainer.addEventListener('mousedown', this.preventDrag);
   },
   beforeDestroy() {
     // 在组件销毁时移除事件监听器
@@ -277,7 +271,7 @@
     },
     axiosGetData() {
     axios
-      .get("https://tibamef2e.com/chd103/g5/phps/ProductM.php")
+      .get("https://tibamef2e.com/chd103/g1/phps/news_fetch.php")
       .then((res) => {
         this.respondData = res.data;
         // 將數據按日期降序排序

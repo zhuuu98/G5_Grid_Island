@@ -317,19 +317,26 @@ main {
 
     // 最新消息
     .index_news {
+      h1{
+        text-align: center;
+      }
       .news_card_content{
         display: flex;
+        overflow: scroll;
+        &::-webkit-scrollbar{
+          // display: none;
+        }
       }      
-      .index_news_card{
-        width: 155px;
-      }
-      .index_news_cardImg{
-        width: 155px;
-      }
-      .index_news_cardText{
-        display: flex;
-        flex-direction: column;
-      }
+      // .index_news_card{
+      //   width: 155px;
+      // }
+      // .index_news_cardImg{
+      //   width: 155px;
+      // }
+      // .index_news_cardText{
+      //   display: flex;
+      //   flex-direction: column;
+      // }
     }
 
     // 一起遊樂 IG API
