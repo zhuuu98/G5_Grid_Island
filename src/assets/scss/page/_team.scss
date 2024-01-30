@@ -173,16 +173,8 @@
                 position: absolute;
                 bottom: 20px;
                 right: 20px;
-                // width: 100%;
-                // margin-top: 10px;
-                // display: flex;
                 text-align: center;
-                // align-items: center;
-                // justify-content: flex-end;
-                // align-items: flex-end;
-                // background-color: #ccc;
                 .btn_secondary{
-                    // width: 112px;
                     text-align: center;
                 }
             }
@@ -236,6 +228,7 @@
                 outline: none;
                 margin: auto;
                 border: 1px solid $gray-2;
+                width: 100%;
             @include T(){
                 width: 100%;
             }
