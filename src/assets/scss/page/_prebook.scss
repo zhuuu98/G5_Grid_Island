@@ -54,7 +54,6 @@
         margin: $L-spacing 0;
 
         @include T() {
-            max-width: 620px;
             grid-auto-flow: column
         }
     }
