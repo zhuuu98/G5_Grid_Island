@@ -256,7 +256,7 @@
   },
   mounted() {
   // 为整个容器添加事件监听器
-  // this.$refs.bannerContainer.addEventListener('mousedown', this.preventDrag);
+    this.$refs.bannerContainer.addEventListener('mousedown', this.preventDrag);
   },
   beforeDestroy() {
     // 在组件销毁时移除事件监听器

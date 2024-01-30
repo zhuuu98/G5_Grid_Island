@@ -323,8 +323,17 @@ main {
       .news_card_content{
         display: flex;
         overflow: scroll;
+        // scroll-snap-type: x mandatory;
         &::-webkit-scrollbar{
-          // display: none;
+          display: none;
+        }
+        .newsCard{
+          // width: calc(90% - 40px);
+          width: 90%;
+          margin: auto;
+          height: 334px;
+        }
+        .newsImg img{
         }
       }      
       // .index_news_card{
