@@ -1,7 +1,6 @@
 <template>
   <div class="team">
     <PageTitle :pageTitle="'玩家社群'" />
-      <!-- <div class="team"> -->
         <div class="container">
           <div class="row">
             <div class="col-PC-10 col-T-10 col-10">
@@ -80,37 +79,8 @@
           </div>
         </div>
       </div>
-    <!-- </div> -->
 
-      <!-- 發文燈箱1 -->
-    <!-- <div class="light_box" v-show="team_light_box_open">
-      <div class="overlay" @click="light_box_close"></div>
-      <div class="box">
-        <form action="post" v-if="article_send_succ">
-          <p class="team_lb_title ">我要組隊</p>
-          <div>
-            <p class="team_lb_subTitle">組隊宣言</p>
-            <textarea name="" id="" cols="35" rows="10" placeholder="輸入文章內容..." @keyup="article_send"></textarea>
-          </div>
-          <div class="team_light_box_send">
-            <div>
-              <input type="checkbox" name="" id="check" v-model="cb_check" @change="article_send">
-              <label for="check">我已確認文章內容不包含不當內文及攻擊字眼。</label>
-            </div>
-            <button class="btn_sm_1" v-if="!cb_submit" disabled>送出</button>
-            <button class="btn_sm_1" v-else @click="article_send_btn">送出</button>
-          </div>
-        </form>
-        <div v-else>
-          <h3>已成功送出文章！</h3>
-          <button class="btn_sm_1" @click="light_box_close">關閉</button>
-        </div>
-        <div class="team_close_light_box" @click="light_box_close">
-          <font-awesome-icon :icon="['fas', 'xmark']" />
-        </div>
-      </div>
-    </div> -->
-      <!-- 發文燈箱2 -->
+      <!-- 發文燈箱 -->
     <div class="light_box" v-show="team_lb">
       <div class="overlay" @click="team_lb_close"></div>
       <div class="box">
