@@ -281,7 +281,21 @@ main {
     .index_griddy {}
 
     // 最新消息
-    .index_news {}
+    .index_news {
+      .news_card_content{
+        display: flex;
+      }      
+      .index_news_card{
+        width: 155px;
+      }
+      .index_news_cardImg{
+        width: 155px;
+      }
+      .index_news_cardText{
+        display: flex;
+        flex-direction: column;
+      }
+    }
 
     // 一起遊樂 IG API
     .index_insta {}

@@ -1,0 +1,205 @@
+.team{
+    padding-bottom: 100px;
+    background-color: $purple;
+    .col-PC-10, .col-T-10, .col-12{
+        margin: auto;
+    }
+
+    // 麵包屑
+    .team_breadcrumb {
+        padding-left: 20px;
+        margin-top: 50px;
+        // margin: 50px 0px 16px 0px;
+        @include T() {
+        margin-top: 100px;
+        }
+    }
+
+    // 牙齒區
+    .team_tag{
+        margin-top: 20px;
+        padding: 8px 20px;
+            @include T(){
+            display: flex;
+            }
+            @include PC(){
+            display: flex;
+            }
+        .team_tag_btn{
+        width: 100%;
+        display: flex;
+        display: none;
+        align-items: end;
+            .btn_secondary:last-child{
+                background-color: #ff7a00;
+            }
+            @include T(){
+                display: flex;
+                width: 50%;
+                margin-top: auto;
+            }
+            a{
+                font-size: $small;
+                text-align: center;
+                margin-right: 8px;
+                @include T(){
+                font-size: 14px;
+                }
+                @include PC(){
+                font-size: $PC-btn-sl-font;
+                }
+            }
+        }
+        .team_article{
+            flex-direction: column;
+            align-items: flex-end;
+            width: 100%;
+            margin: 16px 0px auto;
+            display: flex;
+                .btn_lg_orange{
+                display: flex;
+                margin-bottom: 8px;
+                }
+                select{
+                width: 130px;
+                height: 40px;
+                border: 1px solid $black;
+                border-radius: 20px;
+                padding: 8px;
+                font-size: $M-text;
+                // font-size: $small;
+                // font-size: $PC-text;
+                outline: none;
+                background-color: $white-1;
+                cursor: pointer;
+                    option{
+                        // font-size: $small;
+                        font-size: $M-text;
+                        padding: 8px;
+                        margin: 4px;
+                        // height: 30px;
+                    }
+                }
+            }
+    }
+    // 卡片區
+    .main{
+        width: 100%;
+    
+        @include T(){
+            display: flex;
+            flex-wrap: wrap;
+        }
+        @include PC(){
+            display: grid;
+            grid-template-columns: repeat(3, 1fr); /* 三個相等寬度的欄位 */
+            gap: 10px; /* 欄位之間的間距 */
+        }
+        .team_card{
+            position: relative;
+            border: 2px solid $black;
+            padding: 20px;
+            background-color: $white-1;
+            border-radius: 28px;
+            margin: 0px auto 20px auto;
+            @include T(){
+                width: 48%;
+            }
+            @include PC(){
+                width: 100%;
+            }
+            .team_card_id{
+                display: flex;
+                .team_card_img{
+                    width: 70px;
+                    img{
+                        width: 100%;
+                        vertical-align: bottom;
+                    }
+                }
+                .team_card_id_info{
+                    width: 100%;
+                    padding: 3px 0px 0px 16px;
+                    // margin-left: 8px;
+                    // background-color: #ccc;
+                    .team_card_name{
+                        h4{
+                            font-size: $M-h3;
+                            color: $black;
+                        }
+                    }
+                    .team_card_memId{
+                        p{
+                            font-size: $M-text;
+                            color: $black;
+                        }
+                    }
+                }
+            }
+            .team_card_time{
+                display: flex;
+                p{
+                    margin: 8px 8px 8px 0px;
+                    font-size: $M-text;
+                    color: $black;
+                    letter-spacing: 1px;
+                }
+
+            }
+            .team_card_tag_area{
+                display: flex;
+                flex-wrap: wrap;
+                margin-bottom: 8px;
+                .team_card_tags{
+                    color: $white-1;
+                    .team_card_tag{
+                        font-size: $M-text;
+                        background-color: $blue-3;
+                        margin: 0px 8px 8px 0px;
+                        padding: 4px 12px;
+                        border-radius: 8px;
+                        
+                    }
+                }
+            }
+
+            .team_card_article{
+                width: 100%;
+                margin-bottom: 60px;
+                // margin-bottom: auto;
+                p{
+                    font-size: $M-text;
+                    color: $black;
+                    letter-spacing: .5px;
+                }
+            }
+            .team_card_btn{
+                position: absolute;
+                bottom: 20px;
+                right: 20px;
+                // width: 100%;
+                // margin-top: 10px;
+                // display: flex;
+                text-align: center;
+                // align-items: center;
+                // justify-content: flex-end;
+                // align-items: flex-end;
+                // background-color: #ccc;
+                .btn_secondary{
+                    // width: 112px;
+                    text-align: center;
+                }
+            }
+
+
+
+
+        }
+    }
+
+
+
+
+
+
+} //team

@@ -260,6 +260,16 @@
           display: flex;
           align-items: flex-end;
           justify-content: end;
+          .rotate-image {
+            // width: 200px;
+            // height: 200px;
+            transition: transform 1s ease-in-out; /* 可以添加過渡效果，讓旋轉更平滑 */
+            &:hover {
+              transform: rotateY(180deg);
+              // transform: rotate(45deg); /* 在鼠標懸停時旋轉圖片 */
+            }
+          }
+      
         }
         img{
           width: 100%;
