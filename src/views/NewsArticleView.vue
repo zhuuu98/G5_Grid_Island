@@ -32,6 +32,9 @@ export default {
   data() {
     return {
       respondData: [],
+      netData:{
+        news_id: null,
+      }
     };
   },
   components: {
@@ -53,15 +56,23 @@ export default {
           });
           console.log(result);
           this.respondData = result;
+          this.netData= result;
         });
     },
     shareOnFacebook() {
-      FB.ui({
-        method: 'share',
-        href: `https://tibamef2e.com/chd104/g5/front/newsArticle/${respondData.news_id}`,
-      });
+      // 檢查 netData 是否存在並且有 news_id 屬性
+      if (this.netData && this.netData.news_id) {
+        // 使用 Facebook SDK 的功能
+        FB.ui({
+          method: 'share',
+          href: `https://tibamef2e.com/chd104/g5/front/newsArticle/${this.netData.news_id}`,
+        });
+      } else {
+        console.log('連結無效');
+      }
     },
   },
+
   mounted() {},
 };
 </script>
