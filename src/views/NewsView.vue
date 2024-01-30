@@ -9,13 +9,19 @@
     
     <div class="content">
       <div class="btn">
-        <font-awesome-icon :icon="['fas', 'th']" />
-        <font-awesome-icon :icon="['fas', 'th-list']" />
+        <div class="thBtn" @click="romoveListClassName">
+          <font-awesome-icon :icon="['fas', 'th']" />
+        </div>
+        <div class="listBtn"  @click="addListClassName">
+          <font-awesome-icon :icon="['fas', 'th-list']" />
+        </div>
+      </div>      
+      <div class="cardList">
+        <NewsCard v-for="(item, index) in respondData" :key="item.news_id" :newsTitle="item.news_title" :newsDate="item.news_date" :imgUrl="`https://tibamef2e.com/chd103/g1/image/news/${item.news_img}`" :newsId="item.news_id" :class="{ 'noneShow': noneShow }"/>
+
+
       </div>
 
-      <div class="cardList">
-        <NewsCard v-for="(item, index) in respondData" :key="item.news_id" :newsTitle="item.news_title" :newsDate="item.news_date" :imgUrl="`https://tibamef2e.com/chd103/g1/image/news/${item.news_img}`" :newsId="item.news_id"/>
-      </div>
     </div>
   </main>
   
@@ -26,18 +32,21 @@
 import axios from "axios";
 import PageTitle from "../components/PageTitle.vue";
 import NewsCard from "../components/NewsCard.vue";
+import NewsRow from "../components/NewsRow.vue";
 
 
 export default {
   data() {
     return {
       respondData: [],
+      noneShow:false,
 
     };
   },
   components: {
     PageTitle,
     NewsCard,
+    NewsRow,
   },
   computed: {
   },
@@ -52,6 +61,12 @@ export default {
           console.log(res.data);
           this.respondData = res.data;
         });
+    },
+    addListClassName(){
+      this.noneShow = true;
+    },
+    romoveListClassName(){
+      this.noneShow = false;
     },
   },
   mounted() {},

@@ -39,7 +39,7 @@ img{
 
 
         .footer_info {
-            padding: $L-spacing $L-spacing;
+            padding: $L-spacing $L-spacing $M-spacing;
             position: relative;
     
             .footer_menu{
@@ -89,12 +89,12 @@ img{
                     justify-content: center;
                 }
     
-                .socail_logo {
-                    width: 25px;
+                .social_logo {
                     color: $white-1;
                     display: flex;
-                    justify-content: space-around;
+                    justify-content: space-between;
                     margin:$M-spacing 0;
+                    // width: 120%;
                 }
                 .logo{
                     width: 25px;
@@ -117,7 +117,8 @@ img{
     
                 span:not(:first-child) {
                     font-size: $small;
-                    letter-spacing: $PC-btn-exsl-spacing;
+                    letter-spacing: $PC-btn-esl-spacing;
+                    white-space: pre;
                     
                     @include PC(){
                         margin: $XS-spacing;
@@ -135,7 +136,7 @@ img{
             
             .statement {
                 font-size: $small;
-                letter-spacing:     $PC-btn-exsl-spacing;
+                letter-spacing:     $PC-btn-esl-spacing;
             }
             .first {
                 padding:0 0 $M-spacing;

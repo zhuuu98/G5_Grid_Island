@@ -65,11 +65,11 @@ export default {
       }
       ],
       officeInfo:[{
-        content:'客服專線：0800-231-099'
+        content:'客服專線  0800-231-099'
       },{
-        content:'客服時間：週一至五 9:00-20:00, 週六日9:00-18:00',
+        content:'客服時間  週一至週五9:00-20:00 週六日9:00-18:00',
       },{
-        content:'電子信箱：service.taiwan@gridisland.com',
+        content:'電子信箱  service.taiwan@gridisland.com',
       }
       ]
     };

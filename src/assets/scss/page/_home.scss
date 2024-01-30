@@ -12,6 +12,7 @@ main {
 
   //banner
   .header_banner {
+    @include T(){}
     width: 100%;
     display: flex;
     position: relative;
@@ -22,6 +23,7 @@ main {
       linear-gradient(to top, $blue-1, $blue-2, $blue-2);
     background-size: 40px 40px, 40px 40px, cover;
     background-repeat: repeat, repeat, no-repeat;
+    z-index: 949;
 
 
 
@@ -44,21 +46,40 @@ main {
 
     .showCard {
       //卡片統一樣式
-      padding: $M-spacing;
+      padding: $XS-spacing;
       background-color: $white-1;
       outline: 2px solid $black;
       box-shadow:
         0 0 0 4px #fff;
-      width: 20%;
-      display: flex;
+      width: 30%;
+      display: none;
       flex-direction: column;
       align-items: center;
       gap: $S-spacing;
       color: $black;
+      z-index: 1;
+      
+      @include T(){
+        padding: $M-spacing;
+        background-color: $white-1;
+        outline: 2px solid $black;
+        box-shadow:
+          0 0 0 4px #fff;
+        width: 20%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: $S-spacing;
+        color: $black;
+      }
 
       .card-title {
-        font-size: $PC-h2;
+        font-size: $M-h4;
+
         font-family: Zen Maru Gothic;
+        @include T(){
+          font-size: $PC-h3;
+        }
       }
 
       .card-line {
@@ -68,16 +89,9 @@ main {
       }
 
       .card-text {
-        font-size: $PC-text;
-      }
-
-      @include M() {
-        .card-title {
-          font-size: $M-h2;
-
-        }
-        .card-text {
-          font-size: $M-text;
+        font-size: $small;
+        @include T(){
+          font-size: $PC-text;
         }
       }
     }
@@ -85,41 +99,62 @@ main {
     #treeCard {
       //會員中心，樹
       position: absolute;
-      left: 40px;
+      left: $XS-spacing;
       top: 10%;
-      border: $M-spacing solid $blue-1;
+      border: $S-spacing solid $blue-1;
+      @include T(){
+        left: $L-spacing;
+        border: $M-spacing solid $blue-1;
+      }
     }
 
     #commentCard {
       //留言板，留言板
       position: absolute;
-      left: 40px;
+      left: $XS-spacing;
       top: 20%;
-      border: $M-spacing solid $orange-1;
-    }
+      border: $S-spacing solid $orange-1;
+      @include T(){
+        left: $L-spacing;
+        border: $M-spacing solid $orange-1;
+      }
 
+    }
     #newsCard {
       //最新消息
       position: absolute;
-      left: 40px;
+      left: $XS-spacing;
       top: 30%;
-      border: $M-spacing solid $green-1;
+      border: $S-spacing solid $green-1;
+      @include T(){
+        left: $L-spacing;
+        border: $M-spacing solid $green-1;
+      }
     }
 
     #cartCard {
       //購物車
       position: absolute;
-      left: 40px;
-      top: 40%;
-      border: $M-spacing solid $red;
+      left: $XS-spacing;
+      top: 30%;
+      border: $S-spacing solid $red;
+      @include T(){
+        top: 40%;
+        left: $L-spacing;
+        border: $M-spacing solid $red;
+      }
     }
 
     #signCard {
       //關於我們，招牌
       position: absolute;
-      right: 40px;
+      right: $XS-spacing;
       top: 10%;
-      border: $M-spacing solid $yellow;
+      border: $S-spacing solid $yellow;
+      @include T(){
+        right: $L-spacing;
+        border: $M-spacing solid $yellow;
+      }
     }
 
     #gamesCard {
@@ -232,18 +267,18 @@ main {
     }
 
     #lEye {
-      width: 0.68%;
+      width: 0.77%;
       position: absolute;
-      left: 51.5%;
+      left: 51.42%;
       top: 38.5%;
       transition: left 0.1s ease, top 0.1s ease;
     }
 
     #rEye {
-      width: 0.63%;
+      width: 0.66%;
       position: absolute;
-      left: 53.25%;
-      top: 38.05%;
+      left: 53.195%;
+      top: 38.0%;
       transition: left 0.1s ease, top 0.1s ease;
     }
 
