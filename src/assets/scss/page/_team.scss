@@ -90,6 +90,11 @@
             display: flex;
             flex-wrap: wrap;
         }
+        @include PC(){
+            display: grid;
+            grid-template-columns: repeat(3, 1fr); /* 三個相等寬度的欄位 */
+            gap: 10px; /* 欄位之間的間距 */
+        }
         .team_card{
             position: relative;
             border: 2px solid $black;
@@ -101,7 +106,7 @@
                 width: 48%;
             }
             @include PC(){
-                width: 30%;
+                width: 100%;
             }
             .team_card_id{
                 display: flex;

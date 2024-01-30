@@ -120,7 +120,7 @@
             <div class="about_row">
               <div class="about_griddy_section">
                 <div class="about_griddy_img">
-                  <img src="../assets/images/about/about_card.svg" alt="ocean_2">
+                  <img src="../assets/images/about/about_card.svg" class="rotate-image" alt="ocean_2">
                 </div>
                 <div class="about_griddy_text">
                   <div class="about_griddy_title">

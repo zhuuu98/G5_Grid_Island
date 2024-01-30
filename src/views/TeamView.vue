@@ -77,14 +77,45 @@
 
 
 
-
-
-
-
           </div>
         </div>
       </div>
     <!-- </div> -->
+
+      <!-- 發文燈箱 -->
+    <div class="light_box" v-show="team_light_box_open">
+      <div class="overlay" @click="light_box_close"></div>
+      <div class="box">
+        <form action="post" v-if="article_send_succ">
+          <p class="board_lb_title ">我要組隊</p>
+          <div>
+            <p class="board_lb_subTitle">組隊宣言</p>
+            <textarea name="" id="" cols="35" rows="10" placeholder="輸入文章內容..." @keyup="article_send"></textarea>
+          </div>
+          <div class="board_light_box_send">
+            <div>
+              <input type="checkbox" name="" id="check" v-model="cb_check" @change="article_send">
+              <label for="check">我已確認文章內容不包含不當內文及攻擊字眼。</label>
+            </div>
+            <button class="btn_sm_1" v-if="!cb_submit" disabled>送出</button>
+            <button class="btn_sm_1" v-else @click="article_send_btn">送出</button>
+          </div>
+        </form>
+        <div v-else>
+          <h3>已成功送出文章！</h3>
+          <button class="btn_sm_1" @click="light_box_close">關閉</button>
+        </div>
+        <div class="board_close_light_box" @click="light_box_close">
+          <font-awesome-icon :icon="['fas', 'xmark']" />
+        </div>
+      </div>
+    </div>
+
+        
+      
+
+
+
   </div>
 </template>
 
@@ -103,7 +134,7 @@ export default {
           id_img_alt:'team_id_img',
           memName:'窩金',
           memId: '202312300001',
-          date: '2023/12/30',
+          date: '2023/3/9',
           time:'20:30',
           tags: ['阿瓦蟲', '2人', '限女'],
           article:'徵求一起玩阿瓦蟲的夥伴，目前有我跟我朋友兩個男生，希望再找兩個重度玩家。',
@@ -114,7 +145,7 @@ export default {
           id_img_alt:'team_id_img',
           memName:'甘舒',
           memId: '202312300002',
-          date: '2023/1/3',
+          date: '2023/3/11',
           time:'10:00',
           tags: ['貓嶼成之內', '4人'],
           article:'徵求一起玩貓嶼成之內的玩家，目前有我跟我朋友兩個男生，希望再找兩個重度玩家。',
@@ -125,7 +156,7 @@ export default {
           id_img_alt:'team_id_img',
           memName:'金',
           memId: '202312300003',
-          date: '2023/1/12',
+          date: '2023/3/12',
           time:'09:00',
           tags: ['蟲蟲殺', '1人', '重度玩家'],
           article:'三缺一',
@@ -136,7 +167,7 @@ export default {
           id_img_alt:'team_id_img',
           memName:'大傑',
           memId: '202312300004',
-          date: '2023/1/12',
+          date: '2023/3/12',
           time:'09:30',
           tags: ['蟲蟲殺', '1人','重度玩家'],
           article:'徵求一起玩桌遊的人，目前有我跟我朋友兩個人，希望再找多找幾個人。',
@@ -147,7 +178,7 @@ export default {
           id_img_alt:'team_id_img',
           memName:'酷逼',
           memId: '202312300005',
-          date: '2023/1/12',
+          date: '2023/3/15',
           time:'12:30',
           tags: ['阿瓦蟲', '3人', '新手玩家'],
           article:'歡迎新手玩家！不論你是初次嘗試還是已經是輕度玩家，我們期待與你一同探索阿瓦蟲的奇妙世界。最適合3到5人，讓我們一同組隊，共同面對這場策略與冒險的旅程！',
@@ -158,7 +189,7 @@ export default {
           id_img_alt:'team_id_img',
           memName:'奇牙',
           memId: '202312300005',
-          date: '2023/1/15',
+          date: '2023/3/17',
           time:'18:30',
           tags: ['屋蟲', '1-6人','重度玩家'],
           article:'揪團啟動！無論你是新手或者是屋蟲的忠實愛好者，這是個適合所有玩家的桌遊。想要挑戰建造最獨特的房屋嗎？快來加入我們，1到6人都能盡情參與！',
@@ -169,7 +200,7 @@ export default {
           id_img_alt:'team_id_img',
           memName:'灰傑克',
           memId: '202312300007',
-          date: '2023/1/21',
+          date: '2023/3/21',
           time:'20:00',
           tags: ['貓與城之內', '2-4人'],
           article:'揪團！重度玩家快來，新手也別怕，我們會用最簡單的方式介紹貓與城之內。這個遊戲適合2到4人，快來參與這場貓咪與城堡的冒險吧！',
@@ -180,7 +211,7 @@ export default {
           id_img_alt:'team_id_img',
           memName:'皮諾渴',
           memId: '202312300008',
-          date: '2023/1/24',
+          date: '2023/3/24',
           time:'09:30',
           tags: ['星際大戰局', '6人'],
           article:'想要一場宇宙級的戰鬥嗎？星際大戰局等著你！無論你是新手還是老玩家，快來加入這場2到6人的星際冒險！',
@@ -191,7 +222,7 @@ export default {
           id_img_alt:'team_id_img',
           memName:'明人',
           memId: '202312300009',
-          date: '2023/1/24',
+          date: '2023/3/24',
           time:'10:00',
           tags: ['莎士比亞悲喜劇', '3人', '新手'],
           article:'這是一場文學與戲劇的交融，無論你對莎士比亞是否熟悉，我們都歡迎你參與這場3到7人的文藝遊戲。新手玩家也能輕鬆上手，一同演繹屬於你的悲喜劇！',
@@ -202,7 +233,7 @@ export default {
           id_img_alt:'team_id_img',
           memName:'酷喇皮卡',
           memId: '202312300010',
-          date: '2023/2/21',
+          date: '2023/3/25',
           time:'10:00',
           tags: [' 海盜與寶藏', '4人'],
           article:'航向未知的海域，挑戰海盜與寶藏的命運！這款遊戲適合2到5人，無論你是初次冒險還是經驗豐富，都歡迎一同參與這場海上歷險！',
@@ -213,7 +244,7 @@ export default {
           id_img_alt:'team_id_img',
           memName:'大傑',
           memId: '202312300011',
-          date: '2023/3/1',
+          date: '2023/3/26',
           time:'12:30',
           tags: [' 大富翁列車之旅', '3人'],
           article:'換乘你的骰子，展開大富翁列車之旅！這是一場適合2到4人的資源管理遊戲，新手們不用擔心，我們會有老手陪伴你一同體驗經濟策略的樂趣。',
@@ -224,7 +255,7 @@ export default {
           id_img_alt:'team_id_img',
           memName:'啊人家家就笨壓',
           memId: '202312300012',
-          date: '2023/2/28',
+          date: '2023/3/28',
           time:'16:00',
           tags: ['神秘探案：禁忌之夜'],
           article:'進入禁忌之夜，化身為偵探！這款推理遊戲適合4到6人，無論你是新手還是已經深獲其樂，快來參與這場神秘的探案之旅。',
@@ -235,7 +266,7 @@ export default {
           id_img_alt:'team_id_img',
           memName:'那美',
           memId: '202312300013',
-          date: '2023/2/24',
+          date: '2023/3/29',
           time:'18:30',
           tags: ['海底城市建設者', '3人', '新手友善'],
           article:'融入海洋深處，建設你的海底城市！這款建設遊戲適合2到5人，讓我們一同探索海底奇觀，新手們也能輕鬆上手！',
@@ -246,7 +277,7 @@ export default {
           id_img_alt:'team_id_img',
           memName:'海綿小寶',
           memId: '202312300014',
-          date: '2023/2/24',
+          date: '2023/3/29',
           time:'18:00',
           tags: ['仙境奇蹟', '2人', '新手友善'],
           article:'踏入仙境，一同體驗奇蹟的魔法！這是一場2到7人的奇幻遊戲，無論你是新手還是老玩家，都歡迎加入這場令人陶醉的冒險之旅！',
