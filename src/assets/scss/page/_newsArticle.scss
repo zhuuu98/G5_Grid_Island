@@ -1,105 +1,56 @@
-.newArticle {
+.newsArticle {
 
   .content {
-      margin-top: $XXL-spacing ;
-      margin-bottom: $XXXL-spacing ;
-      .btn {
-        width: 30px;
-        
-        .svg-inline--fa {
-          width: 100%;
-        }
-    
-      }
+      margin-top: $M-spacing ;
+      margin-bottom: $XL-spacing ;
+      display: flex;
+      flex-direction: column;
+      max-width: $max-width;
       @include T(){
+        padding: 0 $XL-spacing;
         max-width: 1500px;
         margin:  $XXL-spacing auto $XXXL-spacing;
       }
-
-    .cardList {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      justify-items: flex-start;
-      gap: $M-spacing calc($S-spacing + $S-spacing) ;
-  
-      
-      @include T() {
-        gap: $L-spacing $M-spacing;
-  
-      }
-  
-  
-      .newCard {
-        border-radius: $M-button-radius;
-        width: 166.5px;
-        border: 2px solid $blue-4;
-        height: 251px;
-        display: flex;
-        flex-direction: column;
-        
+      .title {
+        margin: auto;
+        padding: 0 $M-spacing;
+        letter-spacing: $PC-btn-sl-spacing;
         @include T(){
-          width: calc((100vw - 160px)/4) ;
-          border-radius: $S-button-radius;
-        }
-        @include PC() {
-          height: 457px; 
+          padding: 0 $XXL-spacing;
 
         }
-        
-        .newsImg {
-          overflow: hidden;
-          border-radius: 18px 18px 0 0;
-          // height: 123px;
-          height: auto;
-          object-fit: cover;
-          border-bottom: 2px solid $blue-4;
-          
-          @include T(){
-            height: 305px;
-            border-radius: 5px 5px 0 0;
-            border-bottom: 0px;
-          }
-          
-          img {
-            object-position: 0 -30px;
-            width: 100%;
-            vertical-align: middle;
-            border-bottom: 2px solid $blue-4;
-            
-            @include T(){
-              object-position: 0;
-              
-            }
-          }
-        }
-  
-        .text {
-          display: flex;
-          flex-direction: column;
-          flex:1;
-          justify-content: space-between;
-          padding: $S-spacing $S-spacing  $S-spacing;
-          
-          @include T() {
-            padding: $M-spacing $S-spacing  $M-spacing;
-  
-          }
-  
-  
-          .title {}
-  
-          .date {
-          }
-  
-  
-        }
-  
-  
-  
+
       }
-  
-    }
+      .newsImg {
+        padding: 0 $M-spacing;
+
+        @include T(){
+          padding: 0 $M-spacing;
+        }
+      }
+      .textContent {
+        order: 2;
+        letter-spacing: $PC-btn-esl-spacing;
+        padding: 0 $L-spacing;
+        font-size: $PC-text;
+        @include T(){
+          padding: $M-spacing $XL-spacing;
+          font-size: $PC-text;
+          
+        }
+
+      }
+      .date {
+        padding: 0 $M-spacing $S-spacing;
+        order:1 ;
+        margin-left: auto;
+        letter-spacing: $PC-btn-exsl-spacing;
+        @include T(){
+          padding: $M-spacing $L-spacing;
+
+        }
+      }
+
 
 
   }
