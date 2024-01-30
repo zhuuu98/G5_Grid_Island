@@ -77,7 +77,7 @@
     </section>
     <section class="wave">
       <div class="waveImg">
-        <img src="@/assets/images/product/wave.svg" alt="wave" />
+        <img src="@/assets/images/product/productWave.svg" alt="wave" />
       </div>
     </section>
     <section class="productList" ref="productListContainer">

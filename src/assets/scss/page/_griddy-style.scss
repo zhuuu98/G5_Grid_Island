@@ -1,0 +1,46 @@
+#style-body {
+    background-color: $gray-1;
+}
+.tabs button {
+    padding: 10px;
+    cursor: pointer;
+  }
+  .tabs button.active {
+    font-weight: bold;
+  }
+
+
+.stylearea { // 選擇區
+    width: calc(100% - 40px);
+    height: 1000px;
+    margin: auto;
+}
+.componentsarea { //頁籤統一樣式
+    background-color: $white-1;
+    box-sizing: border-box;
+    padding: $M-spacing;
+}
+
+.skin-colors {
+    list-style-type: none;
+    padding: 0;
+}
+
+.skin-component {
+    /* 根據需要添加樣式 */
+}
+
+.skin-colors li {
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    margin: 5px;
+    border: 2px solid transparent;
+    border-radius: 50%;
+    cursor: pointer;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.skin-colors li.selected {
+    border-color: #000;
+}
