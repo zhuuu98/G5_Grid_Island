@@ -47,7 +47,7 @@
       <div v-if="showSignCard" id="signCard" class="showCard">
         <p class="card-title">關於我們</p>
         <div class="card-line"></div>
-        <p class="card-text">格間交織於此島，智者競技，譜寫桌遊新篇章。</p>
+        <p class="card-text">格間交織於此島，譜寫桌遊新篇章。</p>
       </div>
       <router-link to="prebook">
         <img :src="reserve" alt="Banner Reserve" id="reserve" @mouseenter="showReserveCard = true"
@@ -71,7 +71,7 @@
       <div v-if="showCartCard" id="cartCard" class="showCard">
         <p class="card-title">購物車</p>
         <div class="card-line"></div>
-        <p class="card-text">車中積載心繫之桌遊，點金訂物，妙趣橫生隨囊歸。</p>
+        <p class="card-text">車中積載，點金訂物，妙趣橫生隨囊歸。</p>
       </div>
       <img :src="headerWave" id="headerWave" />
     </div>

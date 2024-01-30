@@ -88,6 +88,11 @@ const router = createRouter({
       name: "member",
       component: () => import("../views/MemberView.vue"),
     },
+    {
+      path: "/griddy-style",
+      name: "griddy-style",
+      component: () => import("../views/griddyStyleView.vue"),
+    },
     // 404要寫在最下面
     {
       path: "/:pathMatch(.*)*",
