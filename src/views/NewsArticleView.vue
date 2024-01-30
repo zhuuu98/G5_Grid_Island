@@ -17,6 +17,9 @@
       <div class="date">
         <span>{{ respondData.news_date }}</span>
       </div>
+      <div class="btn">
+        <button class="btn_lg_orange" @click="shareOnFacebook">Facebook分享</button>
+      </div>
     </div>
   </main>
 </template>
@@ -51,6 +54,12 @@ export default {
           console.log(result);
           this.respondData = result;
         });
+    },
+    shareOnFacebook() {
+      FB.ui({
+        method: 'share',
+        href: `https://tibamef2e.com/chd104/g5/front/newsArticle/${respondData.news_id}`,
+      });
     },
   },
   mounted() {},
