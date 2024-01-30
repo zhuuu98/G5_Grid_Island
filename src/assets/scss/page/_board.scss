@@ -90,20 +90,27 @@
       display: flex;
     }
     .board_card_col{
-      display: none;
+      // display: none;
       margin: 0px auto;
       width: 100%;
       @include T(){
         display: block;
         width: 50%;
       }
+      // &:last-child{
+      //   display: block;
+      //   @include T(){
+      //     // display: none;
+
+      //   }
+      // }
     }
-    .board_card_col_mb{
-      display: block;
-      @include T(){
-        display: none;
-      }
-    }
+    // #board_card_mb{
+    //   display: block;
+    //   @include T(){
+    //     display: none;
+    //   }
+    // }
   }
   &_card{
     border: 10px solid $green-1;
@@ -177,6 +184,7 @@
     justify-content: flex-end;
     svg{
       width: 14px;
+      
     }
   }
   &_report{
@@ -491,3 +499,10 @@
   overflow: hidden;
 }
 
+.board_rotate {
+  transition: transform 0.3s ease;  /* 添加轉場效果，時間和過渡方式可以根據需要調整 */
+}
+
+.board_rotate.active {
+  transform: rotate(180deg);  /* 將圖標旋轉180度 */
+}

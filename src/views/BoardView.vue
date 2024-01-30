@@ -31,10 +31,11 @@
           <!-- 內容區 -->
           <div class="board_area">
 
-            <!-- <div class="board_card" v-for="item in card" :key="item.id"> -->
               <!-- 文章區1 -->
               <div class="board_card_col">
-                <div class="board_card" v-for="item in firstCol" :key="item.id" :class="'card-' + item.id">
+                <div class="board_card" v-for="item in firstCol" :key="'area1-' + item.id" :class="'card-' + item.id">
+                <!-- <div class="board_card" v-for="(item, index) in firstCol" :key="item.id"> -->
+
                 <div class="board_info">
                   <div class="board_id">
                     <div class="board_id_img">
@@ -52,10 +53,13 @@
                     <p>回覆留言</p>
                     <input type="text" placeholder="輸入回覆內容...">
                   </div>
+
                   <div class="board_all_re" @click="toggleReply(item.id)">
-                    共有{{item.re_amount}}則回覆
-                    <font-awesome-icon icon="angle-down" />
+                    {{ item.re_amount > 0 ? '共有' + item.re_amount + '則回覆' : '尚無回覆' }}
+                    <!-- <font-awesome-icon v-if="item.re_amount > 0" icon="angle-down" /> -->
+                    <font-awesome-icon v-if="item.re_amount > 0" :class="{ 'board_rotate': isReplyOpen }" icon="angle-down" />
                   </div>
+
                   <div class="board_report" @click="open_light_box_report">
                     <font-awesome-icon :icon="['fas', 'circle-exclamation']" />
                   </div>
@@ -83,7 +87,8 @@
 <!-- <BoardCard/> -->
               <!-- 文章區2 -->
               <div class="board_card_col">
-                <div class="board_card" v-for="item in secondCol" :key="item.id" :class="'card-' + item.id">
+                <!-- <div class="board_card" v-for="item in secondCol" :key="item.id" :class="'card-' + item.id"> -->
+                  <div class="board_card" v-for="item in secondCol" :key="'area2-' + item.id" :class="'card-' + item.id">
                   
                 <div class="board_info">
                   <div class="board_id">
@@ -102,10 +107,15 @@
                     <p>回覆留言</p>
                     <input type="text" placeholder="輸入回覆內容...">
                   </div>
-                  <div class="board_all_re" @click="toggleReply(item.id)">
+                  <!-- <div class="board_all_re" @click="toggleReply(item.id)">
                     共有{{item.re_amount}}則回覆
                     <font-awesome-icon icon="angle-down" />
+                  </div> -->
+                  <div class="board_all_re" @click="toggleReply(item.id)">
+                    {{ item.re_amount > 0 ? '共有' + item.re_amount + '則回覆' : '尚無回覆' }}
+                    <font-awesome-icon v-if="item.re_amount > 0" icon="angle-down" />
                   </div>
+
                   <div class="board_report" @click="open_light_box_report">
                     <font-awesome-icon :icon="['fas', 'circle-exclamation']" />
                   </div>
@@ -132,8 +142,8 @@
 
 
               <!-- 文章區3 -->
-              <div class="board_card_col_mb">
-                <div class="board_card" v-for="item in card" :key="item.id" :class="'card-' + item.id">
+              <!-- <div class="board_card_col">
+                  <div class="board_card" v-for="item in modifiedCard" :key="'area3-' + item.id" :class="'card-' + item.id">
                   
                 <div class="board_info">
                   <div class="board_id">
@@ -153,15 +163,15 @@
                     <input type="text" placeholder="輸入回覆內容...">
                   </div>
                   <div class="board_all_re" @click="toggleReply(item.id)">
-                    共有{{item.re_amount}}則回覆
+                    共有{{ item.re_amount }}則回覆
                     <font-awesome-icon icon="angle-down" />
                   </div>
                   <div class="board_report" @click="open_light_box_report">
                     <font-awesome-icon :icon="['fas', 'circle-exclamation']" />
                   </div>
-                </div>
+                </div> -->
                 <!-- 留言區 -->
-                <div class="board_re hide">
+                <!-- <div class="board_re hide">
                   <div class="board_re_card" v-for="reItem in item.re" :key="reItem.id">
                     <div class="board_re_id">
                       <div class="board_re_id_img">
@@ -178,7 +188,7 @@
                 </div>
               </div>
               </div>
-            </div>
+            </div> -->
 
 
 
@@ -277,7 +287,7 @@ export default {
           memId:'1啊人家家就笨壓',
           time:'2023/12/30 20:25',
           msg:'在遊戲貪婪之島中，只要在問答大賽中答對最多問題，就能獲得統治者的祝福。',
-          re_amount:2,
+          // re_amount:2,
           re:[
             {
               id:1,
@@ -304,33 +314,7 @@ export default {
           memId:'2大傑',
           time:'2023/12/30 20:25',
           msg:'有人看到我爸嗎？',
-          re_amount: 2,
-          re:[
-            {
-              id:1,
-              // img:'../../public/images/board/board_id_img.svg',
-              alt:'board_id_img',
-              memId:'灰傑克',
-              time:'2023/12/30 20:25',
-              msg:'皮諾渴，這個直接電死。',
-            },
-            {
-              id:2,
-              // img:'../../public/images/board/board_id_img.svg',
-              alt:'board_id_img',
-              memId:'皮諾渴',
-              time:'2023/12/30 20:25',
-              msg:'是的醫生！',
-            },
-            {
-              id:3,
-              // img:'../../public/images/board/board_id_img.svg',
-              alt:'board_id_img',
-              memId:'奇牙',
-              time:'2023/12/30 20:25',
-              msg:'我們一定會找到的。',
-            }
-          ]
+          re:[]
         },
         {
           id: 3,
@@ -339,7 +323,6 @@ export default {
           memId:'3酷B',
           time:'2023/12/30 20:25',
           msg:'使用同行，前往瑪莎多啦。',
-          re_amount:2,
           re:[
             {
               id:1,
@@ -356,6 +339,22 @@ export default {
               memId:'明人',
               time:'2023/12/30 20:25',
               msg:'樓上也有血輪眼？',
+            },
+            {
+              id:3,
+              // img:'../../public/images/board/board_id_img.svg',
+              alt:'board_id_img',
+              memId:'酷喇皮卡',
+              time:'2023/12/30 20:25',
+              msg:'我快下船了。',
+            },
+            {
+              id:4,
+              // img:'../../public/images/board/board_id_img.svg',
+              alt:'board_id_img',
+              memId:'明人',
+              time:'2023/12/30 20:25',
+              msg:'樓上也有血輪眼？',
             }
           ]
         },
@@ -366,7 +365,6 @@ export default {
           memId:'4大傑',
           time:'2023/12/30 20:25',
           msg:'有人看到我爸嗎？',
-          re_amount:2,
           re:[
             {
               id:1,
@@ -401,7 +399,6 @@ export default {
           memId:'5酷B',
           time:'2023/12/30 20:25',
           msg:'使用同行，前往瑪莎多啦。',
-          re_amount:2,
           re:[
             {
               id:1,
@@ -428,7 +425,6 @@ export default {
           memId:'6酷B',
           time:'2023/12/30 20:25',
           msg:'使用同行，前往瑪莎多啦。',
-          re_amount:2,
           re:[
             {
               id:1,
@@ -455,16 +451,10 @@ export default {
           memId:'7酷B',
           time:'2023/12/30 20:25',
           msg:'使用同行，前往瑪莎多啦。',
-          re_amount:2,
           re:[
           ]
         },
       ],
-      board_light_box_open: false,
-      board_light_box_report: false,
-      open_re_text: false,
-      selectedOption: "",
-      // open_reply_text: false,
       reports:[{
         reason: '-請選擇檢舉項目-',
         value: '',
@@ -492,34 +482,55 @@ export default {
         reason: '其他',
         value: 'lb_re_other'
       }],
-      re_submit_disable: false,
-      re_submit_show: true,
+      // 發文
+      board_light_box_open: false,
+      board_light_box_report: false,
       cb_submit: false,
       cb_check: false,
       article_send_succ: true,
+      // 檢舉
+      open_re_text: false,
+      selectedOption: "",
+      re_submit_disable: false,
+      re_submit_show: true,
     };
   },
   computed: {
-    re_amount() {
-      return this.card[1].re.length;
+    // firstCol() {
+    //   return this.card.reduce((acc, cur, idx) => {
+    //     if (idx % 2 === 0) {
+    //       acc.push(cur)
+    //     }
+    //     return acc
+    //   }, [])
+    // },
+    // secondCol() {
+    //   return this.card.reduce((acc, cur, idx) => {
+    //     if (idx % 2 === 1) {
+    //       acc.push(cur)
+    //     }
+    //     return acc
+    //   }, [])
+    // },
+    // cardWithReAmount() {
+    //   return this.card.map(item => ({
+    //     ...item,
+    //     re_amount: item.re.length,
+    //   }));
+    // },
+    modifiedCard() {
+    return this.card.map(item => ({
+      ...item,
+      re_amount: item.re.length,
+    }));
     },
     firstCol() {
-      return this.card.reduce((acc, cur, idx) => {
-        if (idx % 2 === 0) {
-          acc.push(cur)
-        }
-        return acc
-      }, [])
+      return this.modifiedCard.filter((_, idx) => idx % 2 === 0);
     },
     secondCol() {
-      return this.card.reduce((acc, cur, idx) => {
-        if (idx % 2 === 1) {
-          acc.push(cur)
-        }
-        return acc
-      }, [])
+      return this.modifiedCard.filter((_, idx) => idx % 2 === 1);
     },
-  },
+    },
   components: {
     PageTitle,
     // BoardCard,
@@ -584,23 +595,36 @@ export default {
       }
     },
     //控制展開留言區
-    toggleReply(itemId){
-      //jquery
-      // var cardli = $('.card-' + itemId);
-      // cardli.find('.down').toggle();
+    // 加上判斷是否有留言回覆的版本
+    toggleReply(itemId) {
+      // 檢查是否有回覆
+      const item = this.card.find(item => item.id === itemId);
 
-      //js
-      var cardli = document.querySelector('.card-' + itemId);
-      var downElements = cardli.getElementsByClassName('board_re');
+      if (item && item.re.length > 0) {
+        // 有回覆，執行 toggle 邏輯
+        const cardli = document.querySelector('.card-' + itemId);
+        const downElements = cardli.getElementsByClassName('board_re');
 
-      for (var i = 0; i < downElements.length; i++) {
-        if (downElements[i].classList.contains('hide')) {
+        for (let i = 0; i < downElements.length; i++) {
+          if (downElements[i].classList.contains('hide')) {
             downElements[i].classList.remove('hide');
-        } else {
+          } else {
             downElements[i].classList.add('hide');
+          }
         }
+
+        // 計算 re_amount 並觸發 Vue 的重新渲染
+        Vue.set(item, 're_amount', item.re.length);
+
+        // 切換 isReplyOpen 狀態
+        item.isReplyOpen = !item.isReplyOpen;
+      } else {
+        // 沒有回覆，不執行 toggle 邏輯，或者執行其他你想要的操作
+        // console.log("No replies available");
       }
     },
+
+
     //送出檢舉彈窗
     re_submit(){
       this.re_submit_show = false;

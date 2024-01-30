@@ -40,7 +40,7 @@
           </div>
 
           <!-- ocean1 -->
-          <div class="ocean_1">
+          <div class="ocean_1 about_ocean">
             <img src="../../src/assets/images/about/about-ocean-1.svg" alt="">
           </div>
 
@@ -111,7 +111,7 @@
             </div>
           </div>
 
-        <div class="ocean_2">
+        <div class="ocean_2 about_ocean">
           <img src="../../src/assets/images/about/about-ocean-2.svg" alt="ocean_3">
         </div>
 
@@ -143,7 +143,7 @@
             </div>
           </div>
 
-          <div class="ocean_3">
+          <div class="ocean_3 about_ocean">
             <img src="../../src/assets/images/about/about-ocean-3.svg" alt="ocean_3">
           </div>
 

@@ -53,10 +53,6 @@
                   <div class="team_card_tag_area">
                     <div class="team_card_tags" v-for="(tag, index) in item.tags" :key="index">
                       <div class="team_card_tag">{{ tag }}</div>
-                      <!-- <div class="team_card_tag1">{{ item.tag1 }}</div> -->
-                      <!-- <div class="team_card_tag2">{{ item.tag2 }}</div>
-                      <div class="team_card_tag3">{{ item.tag3 }}</div>
-                      <div class="team_card_tag4">{{ item.tag4 }}</div> -->
                     </div>
                   </div>
                   <!-- 揪團文 -->
