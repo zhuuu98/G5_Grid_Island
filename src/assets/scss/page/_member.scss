@@ -214,7 +214,19 @@
         margin: auto;
     }
     //手機板訂單資訊
-    .mobileOrderData{}
+    .mobileOrderData{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        background-color: $gray-1;
+        border-radius: $PC-card-radius;
+        margin: $M-spacing;
+        padding: $S-spacing;
+
+        @include T(){
+            display: none;
+        }
+    }
     .OrderDataTitle {
         display: flex;
         justify-content: center;
@@ -226,7 +238,55 @@
     }
     .ContentTitle{
         display: flex;
+        justify-content: space-between;
+    }
+    .OrderDataList{
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        background-color: $white-1;
+        border-radius: $M-button-radius;
+        padding:$M-spacing ;
+        gap:$M-spacing ;
 
+
+    }
+    .orderSimple{
+        display: flex;
+        justify-content: space-between;
+    }
+    .OrderDataContent{
+    }
+    .orderMain{
+        display: flex;
+        flex-direction: column;
+        gap: $M-spacing;
+        padding:$M-spacing ;
+    }
+    .OrderDataDetail{
+        display: flex;
+        flex-direction: column;
+    }
+    .OrderDataDetail img{
+        width: 100%;
+        max-width: 70px;
+        border-radius: $S-button-radius;
+    }
+    .NameTotal{
+        display: flex;
+        align-items: center;
+        gap: $S-spacing;
+        border-top: 1px solid #000;
+        padding: $M-spacing 0;
+    }
+    .orderPriceNumTotal{
+        display: flex;
+        justify-content: space-between;
+
+    }
+    .orderItem{
+        width: 100%;
     }
 
     //手機板會員預約紀錄
