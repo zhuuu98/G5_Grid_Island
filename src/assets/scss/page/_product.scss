@@ -81,7 +81,7 @@ body {
       }
     }
     .hotProductBackground {
-      padding: $XXL-spacing 0 $XXXL-spacing 0;
+      padding: $XXL-spacing 0 $XL-spacing 0;
       color: $black;
       .hotProduct {
         // max-width: $max-width;
@@ -167,8 +167,6 @@ body {
   }
   .wave {
     .waveImg {
-      position: absolute;
-      transform: translateY(-45px);
       width: 100%;
       img {
         width: 100%;
@@ -177,9 +175,10 @@ body {
     }
   }
   .productList {
+    transform: translateY(-1px);
     background-color: $yellow;
     width: 100%;
-    padding: $XXXL-spacing 0 $XL-spacing 0;
+    padding: $XL-spacing 0 $XL-spacing 0;
     .productTitle {
       display: flex;
       gap: 20px;
