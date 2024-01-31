@@ -33,7 +33,8 @@
                   <!-- 身分區 -->
                   <div class="team_card_id">
                     <div class="team_card_img">
-                      <img :src="item.id_img" :alt="item.id_img_alt">
+                      <!-- <img :src="item.id_img" :alt="item.id_img_alt"> -->
+                      <img src="/images/board/board_id_img.svg" alt="board_id_img">
                     </div>
                     <div class="team_card_id_info">
                       <div class="team_card_name">
@@ -150,7 +151,7 @@ export default {
       card:[
         {
           id: 1,
-          id_img:'./src/assets/images/team/team_id_img.svg',
+          // id_img:'./src/assets/images/team/team_id_img.svg',
           id_img_alt:'team_id_img',
           memName:'窩金',
           memId: '202312300001',
@@ -161,7 +162,7 @@ export default {
         },
         {
           id: 2,
-          id_img:'./src/assets/images/team/team_id_img.svg',
+          // id_img:'./src/assets/images/team/team_id_img.svg',
           id_img_alt:'team_id_img',
           memName:'甘舒',
           memId: '202312300002',
@@ -172,7 +173,7 @@ export default {
         },
         {
           id: 3,
-          id_img:'./src/assets/images/team/team_id_img.svg',
+          // id_img:'./src/assets/images/team/team_id_img.svg',
           id_img_alt:'team_id_img',
           memName:'金',
           memId: '202312300003',
@@ -183,7 +184,7 @@ export default {
         },
         {
           id: 4,
-          id_img:'./src/assets/images/team/team_id_img.svg',
+          // id_img:'./src/assets/images/team/team_id_img.svg',
           id_img_alt:'team_id_img',
           memName:'大傑',
           memId: '202312300004',
@@ -194,7 +195,7 @@ export default {
         },
         {
           id: 5,
-          id_img:'./src/assets/images/team/team_id_img.svg',
+          // id_img:'./src/assets/images/team/team_id_img.svg',
           id_img_alt:'team_id_img',
           memName:'酷逼',
           memId: '202312300005',
@@ -205,7 +206,7 @@ export default {
         },
         {
           id: 6,
-          id_img:'./src/assets/images/team/team_id_img.svg',
+          // id_img:'./src/assets/images/team/team_id_img.svg',
           id_img_alt:'team_id_img',
           memName:'奇牙',
           memId: '202312300005',
@@ -216,7 +217,7 @@ export default {
         },
         {
           id: 7,
-          id_img:'./src/assets/images/team/team_id_img.svg',
+          // id_img:'./src/assets/images/team/team_id_img.svg',
           id_img_alt:'team_id_img',
           memName:'灰傑克',
           memId: '202312300007',
@@ -227,7 +228,7 @@ export default {
         },
         {
           id: 8,
-          id_img:'./src/assets/images/team/team_id_img.svg',
+          // id_img:'./src/assets/images/team/team_id_img.svg',
           id_img_alt:'team_id_img',
           memName:'皮諾渴',
           memId: '202312300008',
@@ -238,7 +239,7 @@ export default {
         },
         {
           id: 9,
-          id_img:'./src/assets/images/team/team_id_img.svg',
+          // id_img:'./src/assets/images/team/team_id_img.svg',
           id_img_alt:'team_id_img',
           memName:'明人',
           memId: '202312300009',
@@ -249,7 +250,7 @@ export default {
         },
         {
           id: 10,
-          id_img:'./src/assets/images/team/team_id_img.svg',
+          // id_img:'./src/assets/images/team/team_id_img.svg',
           id_img_alt:'team_id_img',
           memName:'酷喇皮卡',
           memId: '202312300010',
@@ -260,7 +261,7 @@ export default {
         },
         {
           id: 11,
-          id_img:'./src/assets/images/team/team_id_img.svg',
+          // id_img:'./src/assets/images/team/team_id_img.svg',
           id_img_alt:'team_id_img',
           memName:'大傑',
           memId: '202312300011',
@@ -271,7 +272,7 @@ export default {
         },
         {
           id: 12,
-          id_img:'./src/assets/images/team/team_id_img.svg',
+          // id_img:'./src/assets/images/team/team_id_img.svg',
           id_img_alt:'team_id_img',
           memName:'啊人家家就笨壓',
           memId: '202312300012',
@@ -282,7 +283,7 @@ export default {
         },
         {
           id: 13,
-          id_img:'./src/assets/images/team/team_id_img.svg',
+          // id_img:'./src/assets/images/team/team_id_img.svg',
           id_img_alt:'team_id_img',
           memName:'那美',
           memId: '202312300013',
@@ -293,7 +294,7 @@ export default {
         },
         {
           id: 14,
-          id_img:'./src/assets/images/team/team_id_img.svg',
+          // id_img:'./src/assets/images/team/team_id_img.svg',
           id_img_alt:'team_id_img',
           memName:'海綿小寶',
           memId: '202312300014',
