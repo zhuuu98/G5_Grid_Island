@@ -4,7 +4,10 @@
             <!-- 預覽區組件，顯示選擇的零件以及操作按鈕 -->
             <div class="style-view">
                 <!-- 傳遞顏色到SVG組件 -->
-                <originalGriddySrc :selectedColor="currentSelectedColor" />
+                <div id="viewimagebox">
+                    <originalGriddySrc :current-color="currentColor" :selectedColor="currentSelectedColor"
+                        :id="viewimage" />
+                </div>
             </div>
             <div class="style-btn">
                 <!-- 操作按鈕 (如果有的話) -->
@@ -19,7 +22,7 @@
                 </button>
             </div>
             <div class="tab-content">
-                <component :is="currentTab"></component>
+                <component :is="currentTab" @change-color="changeColor" :current-color="currentColor"></component>
                 <!-- 確保SkinComponent在這裡，並且可以發送顏色改變事件 -->
             </div>
         </div>
@@ -35,7 +38,7 @@
     import originalGriddySrc from '../components/styleComponents/noneGriddy.vue';
     import skinComponent from '../components/styleComponents/skinComponent.vue';
 
-
+    import { spotColors } from "@/policy/color.js"
     export default {
         components: {
             originalGriddySrc, // svg組件，顯示選擇的變化
@@ -44,7 +47,7 @@
             antennaComponent,
             accessoriesComponent,
             backgroundComponent,
-            
+
         },
 
         setup() { // 頁籤相關代碼
@@ -60,13 +63,20 @@
             const currentSelectedColor = ref('#d2eb86'); // 預設顏色
 
             // 處理從SkinComponent發出的顏色更改事件
-            const handleColorChange = (color) => {
-                console.log("updateSkinColor called"); 
-                currentSelectedColor.value = color;
-                console.log("Selected Color: ", color);
+            const handleColorChange = (newColor) => {
+                console.log("updateSkinColor called");
+                console.log("Selected Color: ", newColor);
+                currentSelectedColor.value = newColor;
             };
 
-            return { tabs, currentTab, currentSelectedColor, handleColorChange };
+            const currentColor = ref(spotColors[0])
+
+            const changeColor = (color) => {
+                console.log(color)
+                currentColor.value = color
+            }
+
+            return { tabs, currentTab, currentSelectedColor, handleColorChange, currentColor, changeColor };
         },
     };
 </script>

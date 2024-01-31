@@ -9,10 +9,10 @@
     align-items: start;
     box-sizing: border-box;
     padding: $M-spacing;
-    img {
+    #viewimagebox {
         width: 100%;
-        max-width: 360px;
-
+        max-width: 240px;
+        max-height: 240px;
     }
 }
 .tabs button {
