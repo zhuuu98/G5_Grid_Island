@@ -32,7 +32,11 @@
   .about_gi{
     background-color: $orange-1;
     width: 100%;
-    padding-bottom: 100px;
+    padding-bottom: 60px;
+    @include PC(){
+      padding-bottom: 100px;
+
+    }
     // 麵包屑
       .breadcrumb {
         margin: 50px 0px 16px 0px;
@@ -44,12 +48,12 @@
       .about_gi_intro{
         background-color: $white-1;
         border-radius: 28px;
-        margin: 0px auto 54px auto;
+        margin: 0px auto 0px auto;
         width: 100%;
         display: flex;
         flex-direction: column;
         @include T(){
-          margin: 50px auto 50px auto;
+          margin: 60px auto 0px auto;
           display: flex;
           flex-direction: row;
         }
@@ -69,7 +73,7 @@
           @include T(){
             order: -1;
             width: 60%;
-            margin: auto 0px;
+            margin: 40px auto 0px auto;
             
           }
           &_title{
@@ -116,7 +120,6 @@
   &_en{
     width: 100%;
     background-color: $green-2;
-
     &_section{
       margin: 60px auto;
       >div{
@@ -132,12 +135,10 @@
           }
         }
         &:nth-child(2){
-          padding: 16px;
+          padding: 20px 20px;
           h3{
             margin-bottom: 20px;
             font-size: $M-h2;
-            font-style: normal;
-            font-weight: 700;
             color: $black;
           }
           .btn_lg{
@@ -155,7 +156,7 @@
         width: 100%;
         margin: 0px auto;
         padding: 100px 0;
-        display: flex;        
+        display: flex;
         >div{
           width: 50%;
           height: 500px;
@@ -167,7 +168,7 @@
           }
           // 說明文字
           &:nth-child(2){
-            padding: 40px 40px;
+            padding: 20px 40px;
             h3{
               font-size: $PC-h2;
               margin-bottom: 20px;
@@ -180,7 +181,6 @@
           }
         }
       }
-
       @media screen and (max-width:1064px) and (min-width:1024px) {
         >div{
           height: 520px;
@@ -211,7 +211,6 @@
             font-size: $M-h3;
             font-weight: bold;
           }
-          
         }
         .about_en_text_content{
           margin: auto;
@@ -219,20 +218,17 @@
           p{
             margin-bottom: 16px;
             width: 100%;
-            // text-align: justify;
-            // color: $black;
             font-size: $M-text;
             letter-spacing: .5px;
             font-weight: 400;
             text-align: justify;
             color: $black;
-            line-height: 150%; /* 22.5px */
+            line-height: 150%;
           }
         }
       }
     } 
   }
-    
 
   // griddy介紹
   &_griddy{
@@ -241,8 +237,7 @@
     padding: 60px 0px;
     width: 100%;
     @include PC(){
-      padding: 100px 0px;
-
+      padding: 80px 0px;
     }
     .about_griddy_section{
       margin: auto;
@@ -268,7 +263,7 @@
             }
           }
           .rotate-image {
-            animation: rotateAnimation 2s ease-in-out infinite 2s; /* 設定動畫的時間和循環次數，這裡是無限循環 */
+            animation: rotateAnimation 2s ease-in-out infinite 2s; /* 設定動畫的時間和無限循環 */
           }
         }
         @include PC() {
@@ -276,49 +271,46 @@
           display: flex;
           align-items: flex-end;
           justify-content: end;
-      
-          &:hover img {
-            transform: rotateY(720deg);
-          }
-      
-          .rotate-image {
-            transition: transform 2s ease-in-out; /* 添加過渡效果，讓旋轉更平滑 */
-          }
+            &:hover img {
+              transform: rotateY(720deg);
+            }
+            .rotate-image {
+              transition: transform 2s ease-in-out; /* 添加過渡效果，讓旋轉更平滑 */
+            }
         }
         img {
           width: 100%;
           vertical-align: bottom;
         }
       }
-      
-        
 
       .about_griddy_text{
-        padding: 17px;
+        padding: 20px;
         border-radius: 28px;
         background: rgba(0, 0, 0, 0.32);
         @include PC(){
-          // height: 50%;
           width: 400px;
           margin: auto;
         }
-
         .about_griddy_title{
-        text-align: center;
-        
-        h3{
-          color: $white-1;
-          font-size: $M-h2;
+          text-align: center;
+          margin: 20px auto;
+          h3{
+            color: $white-1;
+            font-size: $M-h2;
+          }
         }
-      }
-      .about_griddy_content{
-        margin: 38px 0px;
+        .about_griddy_content{
+        margin-bottom: 30px;
         p{
           font-size: $M-text;
           color: $white-1;
           text-align: center;
-          line-height: 165%; /* 22.5px */
-
+          line-height: 165%;
+          letter-spacing: .5px;
+            @include PC(){
+              letter-spacing: 1px;
+            }
           }
         }
       }
@@ -337,27 +329,26 @@
     // 店鋪資訊
   &_info{
     background-color: $green-1;
-    padding: 100px 0px 160px 0px;
+    padding: 60px 0px 90px 0px;
     width: 100%;
+      @include PC(){
+      padding: 80px 0px 160px 0px;
+      }
     &_section{
-    @include T(){
+      @include T(){
         display: flex;
         justify-content: space-between;
         height: 400px;
       }
-
-
     .about_info_text{
       width: 100%;
       margin: 0px auto 30px auto;
       background-color: $white-1;
       height: 100%;
       border-radius: 28px;
-      @include T(){
-        width: 48%;
-      }
-      
-      
+        @include T(){
+          width: 48%;
+        }
       padding: 20px;
       .about_info_title{
         text-align: center;
@@ -366,7 +357,7 @@
           margin: 10px auto 20px auto;
         }
         @include PC(){
-          margin: 20px auto 30px auto;
+          margin: 30px auto 30px auto;
         }
 
         h3{
@@ -383,51 +374,37 @@
         width: 90%;
         margin: auto;
         padding-bottom: 10px;
-        @include T(){
-          // width: 90%;
-        }
-        @include PC(){
-          // width: 70%;
-        }
-        
+          @include T(){
+            // width: 90%;
+          }
+          @include PC(){
+            // width: 70%;
+          }
         p{
           font-size: $M-text;
           font-style: normal;
           font-weight: 400;
-          line-height: 165%; /* 22.5px */
-          // letter-spacing: 0.3px;
+          line-height: 165%;
           letter-spacing: .5px;
           color: $black;
-
         }
-    }
-
+      }
     }
     .about_info_map{
       margin: 0px auto;
       height: 300px;
-      @include T(){
-        width: 48%;
-        height: 100%;
-      }
-      iframe{
-        width: 100%;
-        // height: 300px;
-        height: 100%;
-        vertical-align: bottom;
-        border: none;
-        border-radius: 28px;
         @include T(){
-          // margin-left: 20px;
-          // height: 100%;
-          
+          width: 48%;
+          height: 100%;
         }
-        @include PC(){
-          // width: 100%;
-          // height: 100%;
+        iframe{
+          width: 100%;
+          height: 100%;
+          vertical-align: bottom;
+          border: none;
+          border-radius: 28px;
         }
       }
-    }
     }
   }
 
@@ -440,6 +417,5 @@
     }
   }
 
-  
 
 } //about

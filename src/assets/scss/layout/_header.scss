@@ -236,12 +236,11 @@ header {
           
         }
         .ham_cart{
-          margin-top: 40px;
+          margin-top: 20px;
 
         }
         .ham_cart,.ham_member{
           color: $purple;
-          // background-color: #9e6fcd;
         }
         
 
@@ -347,6 +346,7 @@ header {
           .submenu{
             display: flex;
             height: 30px;
+            // background-color: aquamarine;
             .ham_sub_bug{
               width: 70px;
               height: 16px;
@@ -358,11 +358,14 @@ header {
               }
             }
             .ham_sub_comm{
+              height: 35px;
+              margin-left: 10px;
               a{
+                // background-color: #9e6fcd;
                 color: $purple;
                 font-size: 16px;
-                padding: 0;
-                margin: 0;
+                padding: 15px 0px;
+                margin: 10px 0px;
                 &:hover{
                   color: #9e6fcd;
                   font-weight: bold;
