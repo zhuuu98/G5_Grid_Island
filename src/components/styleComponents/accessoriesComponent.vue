@@ -1,57 +1,63 @@
 <template>
-    <div class="skin-component componentsarea">
-      <h3>配件</h3>
-      <ul class="skin-colors">
-        <li
-          v-for="color in skinColors"
-          :key="color"
-          :style="{ backgroundColor: color }"
-          @click="selectedSkinColor = color"
-          :class="{ selected: selectedSkinColor === color }"
-        >
-          {{ color }}
-        </li>
-      </ul>
-    </div>
-  </template>
-  
-  <script>
-  import { ref } from 'vue';
-  
+  <div class="componentsarea">
+      <div id="accessories-staff-box">
+          <h3>配件</h3>
+          <ul class="accessories-options options-staff">
+              <button v-for="(accessoriesStaff, index) in accessoriesStaffs" :key="accessoriesStaff.staff"
+                  @click="handleAccessoriesStaffChange(accessoriesStaff.staff)">
+                  {{ accessoriesStaff.label }}
+              </button>
+          </ul>
+
+      </div>
+  </div>
+</template>
+
+<script>
+  import { ref, reactive } from 'vue';
+  import { accessoriesStaff1 } from "@/policy/color.js"
+  import { accessoriesStaff2 } from "@/policy/color.js"
+  import { accessoriesStaff3 } from "@/policy/color.js"
+  import { accessoriesStaff4 } from "@/policy/color.js"
+  import { accessoriesStaff5 } from "@/policy/color.js"
+  import { accessoriesStaff6 } from "@/policy/color.js"
+
   export default {
-    name: 'SkinComponent',
-    setup() {
-      const skinColors = ['#FBE9E7', '#FFCCBC', '#8D6E63', '#4E342E']; // 這些值代表不同的膚色
-      const selectedSkinColor = ref(skinColors[0]); // 預設選擇第一個膚色
-  
-      return { skinColors, selectedSkinColor };
-    }
+      name: 'accessoriesComponent',
+      data() {
+          return {
+              accessoriesStaffs: [
+                  { label: "無", staff: accessoriesStaff1 },
+                  { label: "寒冬", staff: accessoriesStaff2 },
+                  { label: "貓貓拳", staff: accessoriesStaff3 },
+                  { label: "鬍鬚", staff: accessoriesStaff4 },
+                  { label: "芬芳", staff: accessoriesStaff5 },
+                  { label: "大手大腳", staff: accessoriesStaff6 },
+                  
+              ]
+          };
+      },
+      methods: {
+          selectAccessoriesStaff(selectedAccessoriesStaff) {
+              this.$emit('accessories-staff-selected', selectedAccessoriesStaff);
+          }
+      },
+
+      setup(props, context) {
+          // 使用reactive代替ref，创建一个反应性的state对象
+
+          const handleAccessoriesStaffChange = (accessoriesStaff) => {
+              context.emit('accessories-staff-selected', accessoriesStaff);
+              console.log("事件已發射，配件圖片碼：", accessoriesStaff);
+          };
+          return {
+            handleAccessoriesStaffChange
+
+
+
+
+          };
+      },
+
   };
-  </script>
-  
-  <style scoped>
-  .skin-component {
-    /* 根據需要添加樣式 */
-  }
-  
-  .skin-colors {
-    list-style-type: none;
-    padding: 0;
-  }
-  
-  .skin-colors li {
-    display: inline-block;
-    width: 40px;
-    height: 40px;
-    margin: 5px;
-    border: 2px solid transparent;
-    border-radius: 50%;
-    cursor: pointer;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
-  }
-  
-  .skin-colors li.selected {
-    border-color: #000;
-  }
-  </style>
-  
+</script>
