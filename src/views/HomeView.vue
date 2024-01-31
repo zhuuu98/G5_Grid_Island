@@ -291,7 +291,7 @@
       <div class="index_reserve">
         <div class="index_row container">
           <!-- 寫這邊 -->
-          <h1>預約方式</h1>
+          <h2>預約方式</h2>
           <div class="reserveInfo row">
             <div class="reserveContent col-6 col-T-10 col-PC-10">
               <!-- <img v-for="num in 3" :src="getImageUrl(`home/reserveInfo_${num}.png`)" alt="預約方式"> -->
@@ -325,7 +325,7 @@
       <!-- 最新消息 -->
       <div class="index_news">
         <div class="index_row">
-          <h1>最新消息</h1>
+          <h2 class="h2" >最新消息</h2>
           <div class="news_card_content">
             <NewsCard
               v-for="(item, index) in latestData"
@@ -357,7 +357,7 @@
       <div class="index_about">
         <div class="index_row">
           <!-- 寫這邊 -->
-          <h1>Grid Island</h1>
+          <h2>Grid Island</h2>
           <!-- 中間圖片的外框 -->
           <div class="aboutContent">
             <!-- 桌機板的文字 -->

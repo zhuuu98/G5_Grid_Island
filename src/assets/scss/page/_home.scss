@@ -307,6 +307,7 @@ main {
           font-size: 48px;
           font-family: "Zen Maru Gothic";
           -webkit-text-stroke: 1px $white-1;
+          color: $black;
         }
         .prodBackground {
           background-color: $white-1;
@@ -463,6 +464,12 @@ main {
         flex-direction: column;
         justify-content: center;
         align-items: center;
+        h2 {
+          font-size: 48px;
+          font-family: "Zen Maru Gothic";
+          -webkit-text-stroke: 1px $white-1;
+          color: $black;
+        }
       }
       .serviceMarqueeContent {
         overflow: hidden;
@@ -522,9 +529,11 @@ main {
         justify-content: center;
         gap: $XL-spacing;
       }
-      h1 {
-        text-align: center;
-        margin: $M-spacing;
+      h2 {
+        font-size: 48px;
+        font-family: "Zen Maru Gothic";
+        -webkit-text-stroke: 1px $white-1;
+        color: $black;
       }
       .reserveInfo {
         justify-content: center;
@@ -621,9 +630,12 @@ main {
           max-width: 1140px;
         }
       }
-      h1 {
+      .h2 {
+        font-size: 48px;
+        font-family: "Zen Maru Gothic";
+        -webkit-text-stroke: 1px $white-1;
+        color: $black;
         text-align: center;
-        padding: $XL-spacing 0 $L-spacing;
       }
       .news_card_content {
         display: flex;
@@ -693,9 +705,12 @@ main {
           max-width: 1140px;
         }
       }
-      h1 {
+      h2 {
+        font-size: 48px;
+        font-family: "Zen Maru Gothic";
+        -webkit-text-stroke: 1px $white-1;
+        color: $black;
         text-align: center;
-        padding: $XL-spacing 0 $L-spacing;
       }
       .aboutContent {
         max-width: 350px;
