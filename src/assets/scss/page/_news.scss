@@ -104,103 +104,221 @@
       }
     }
   }
-  // .index_products {
-  //   width: 100%;
-  //   background-color: $red;
-  //   .index_row {
-  //     color: $black;
-  //     padding: $XXL-spacing 0;
-  //     display: flex;
-  //     flex-direction: column;
-  //     justify-content: center;
-  //     align-items: center;
-  //     h2 {
-  //       font-size: 48px;
-  //       font-family: "Zen Maru Gothic";
-  //       -webkit-text-stroke: 1px $white-1;
-  //     }
-  //     .prodBackground {
-  //       background-color: $white-1;
-  //       border: 3px solid $black;
-  //       border-radius: $S-button-radius;
-  //       padding: $XL-spacing 0;
-  //       display: flex;
-  //       flex-direction: column;
-  //       gap: $L-spacing;
-  //       width: 90%;
-  //       overflow: hidden;
-  //       @include T() {
-  //         width: 90%;
-  //       }
-  //       @include PC() {
-  //         max-width: $max-width;
-  //       }
-  //       .prodBreif {
-  //         padding: 0 $S-spacing;
-  //         @include T() {
-  //           padding: 0 $XXL-spacing;
-  //         }
-  //         @include PC() {
-  //           padding: 0 $XXXL-spacing;
-  //         }
-  //         p {
-  //           font-size: $PC-text;
-  //         }
-  //       }
-  //       .prodMarquee {
-  //         border-top: 1px solid #b3b3b3;
-  //         border-bottom: 2px solid #b3b3b3;
-  //         background-image: url("@/assets/images/home/Grid.svg");
-  //         height: 250px;
-  //         .marqueeAnimation {
-  //           display: flex;
-  //           align-items: center;
-  //           justify-content: center;
-  //           animation: marquee 25s linear infinite;
-  //           &:hover {
-  //             animation-play-state: paused;
-  //           }
-  //           .productCard {
-  //             margin: 0 $S-spacing;
-  //             display: flex;
-  //             flex-direction: column;
-  //             align-items: center;
-  //             transform: translateY(20px);
-  //             .productImg {
-  //               border: 1px solid $black;
-  //               padding: $S-spacing;
-  //               background-color: $white-1;
-  //               img {
-  //                 width: 150px;
-  //               }
-  //             }
-  //             .productName {
-  //               border: 1px solid $black;
-  //               padding: $S-spacing;
-  //               transform: translateY(-10px);
-  //               background-color: $green-1;
-  //               p {
-  //                 font-size: $PC-text;
-  //                 white-space: nowrap;
-  //                 overflow: hidden;
-  //                 text-overflow: ellipsis;
-  //               }
-  //             }
-  //           }
-  //         }
-  //       }
-  //     }
-  //     .searchArea {
-  //       border: 1px solid balck;
-  //     }
-  //   }
-  // }
-  // @keyframes marquee {
-  //   0% {
-  //     transform: translateX(1000%);
-  //   }
-  //   100% {
-  //     transform: translateX(-100%);
-  //   }
-  // }
+  .index_service {
+    width: 100%;
+    background-color: $blue-2;
+    padding: $XL-spacing 0;
+
+    .index_row{
+      display: flex;
+      gap: $M-spacing;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+    .serviceMarqueeContent{
+      overflow: hidden;
+      background-color: $white-1;
+      border: 3px solid $black;
+      border-radius: $S-button-radius;
+      padding: $XL-spacing 0;
+      display: flex;
+      max-width: $max-width;
+      gap: 20px;
+      // flex-direction: column;
+      // gap: $L-spacing;
+      // width: 90%;
+      background:$white-1 url("/src/assets/images/home/Grid.svg") no-repeat center;
+      @include T(){
+        background:$white-1 url("/src/assets/images/home/Grid.svg") no-repeat center;
+        padding: $XXL-spacing 0;
+        // width: 900px;
+
+      }
+      @include PC(){
+        // width: 1200px;
+      }
+
+
+
+    }
+    .marqueePic{
+    animation: marquee 5s linear infinite;
+
+    }
+    .marqueePic img{
+      width: 100%;
+      vertical-align: top;
+      max-width: 260px;
+      @include T(){
+        max-width: 300px;
+      }
+    }
+    .marqueeText p{
+      background-color: $green-1;
+      padding: $S-spacing $M-spacing;
+      transform: translateY(-15px);
+      border: 1px solid $black;
+
+    }
+  }
+  .index_products {
+    width: 100%;
+    background-color: $red;
+    .index_row {
+      color: $black;
+      padding: $XXL-spacing 0;
+      display: flex;
+      gap: $L-spacing;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      h2 {
+        font-size: 48px;
+        font-family: "Zen Maru Gothic";
+        -webkit-text-stroke: 1px $white-1;
+      }
+      .prodBackground {
+        background-color: $white-1;
+        border: 3px solid $black;
+        border-radius: $S-button-radius;
+        padding: $XL-spacing 0;
+        display: flex;
+        flex-direction: column;
+        gap: $L-spacing;
+        width: 90%;
+        overflow: hidden;
+        @include T() {
+          width: 90%;
+        }
+        @include PC() {
+          width: 100%;
+          max-width: $max-width;
+        }
+        .prodBreif {
+          padding: 0 $S-spacing;
+          @include T() {
+            padding: 0 $XXL-spacing;
+          }
+          @include PC() {
+            padding: 0 $XXXL-spacing;
+          }
+          p {
+            font-size: $PC-text;
+          }
+        }
+        .prodMarquee {
+          border-top: 1px solid #b3b3b3;
+          border-bottom: 2px solid #b3b3b3;
+          background-image: url("@/assets/images/home/Grid.svg");
+          height: 250px;
+          .marqueeAnimation {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            animation: marquee 15s linear infinite;
+            &:hover {
+              animation-play-state: paused;
+            }
+
+            .productCard {
+              a {
+                margin: 0 $S-spacing;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                transform: translateY(20px);
+                .productImg {
+                  border: 1px solid $black;
+                  padding: $S-spacing;
+                  background-color: $white-1;
+                  img {
+                    width: 150px;
+                  }
+                }
+                .productName {
+                  border: 1px solid $black;
+                  padding: $S-spacing;
+                  transform: translateY(-10px);
+                  background-color: $green-1;
+                  display: flex;
+                  justify-content: center;
+                  align-items: center;
+                  width: 150px;
+                  p {
+                    color: $black;
+                    font-size: $PC-text;
+                    white-space: nowrap;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+      .searchArea {
+        width: 90%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        background-color: $blue-1;
+        padding: $L-spacing 0;
+        border-radius: $PC-card-radius;
+        @include PC() {
+          width: 100%;
+        }
+        .searchGroup {
+          position: relative;
+          display: flex;
+          flex-direction: column;
+          gap: $S-spacing;
+          align-items: center;
+          justify-content: center;
+          label {
+            font-size: $PC-h3;
+          }
+          input {
+            border: 1px solid $black;
+            width: 200px;
+            height: 30px;
+            padding: $S-spacing;
+            border-radius: $input-radius;
+            @include PC() {
+              width: 300px;
+            }
+          }
+          .searchResult {
+            border-radius: $input-radius;
+            padding: $S-spacing;
+            background-color: $black;
+            width: 100%;
+            position: absolute;
+            bottom: -100px;
+            height: 100px;
+            overflow-y: auto;
+            p {
+              a {
+                font-size: $M-text;
+                color: $white-1;
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  @keyframes marquee {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-100%);
+    }
+  }
 }
