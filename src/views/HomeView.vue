@@ -279,6 +279,30 @@
       <div class="index_about">
         <div class="index_row">
           <!-- 寫這邊 -->
+          <h1>Grid Island</h1>
+          <!-- 中間圖片的外框 -->
+          <div class="aboutContent">
+            <!-- 桌機板的文字 -->
+            <div class="aboutContentTxt">
+              <p>
+                　　我們精選了3000種桌上遊戲，涵蓋了從熱門到冷門的各種類型。即使你不熟悉遊戲規則，也無需擔心，因為我們會親自指導你如何遊玩，一起加入桌遊的行列吧！
+              </p>
+            </div>
+            <!-- 放圖片的地方 -->
+            <div class="aboutContentImg">
+              <img
+                v-for="num in 3"
+                :src="getImageUrl(`home/homeAbout_${num}.svg`)"
+                alt="首頁關於我們"
+              />
+            </div>
+          </div>
+          <button class="btn_lg" @click="goAbout()">關於我們</button>
+        </div>
+      </div>
+      <div class="index_about">
+        <div class="index_row">
+          <!-- 寫這邊 -->
         </div>
       </div>
     </div>
@@ -470,6 +494,9 @@ export default {
     },
     toProduct() {
       this.$router.push("/product");
+    },
+    goAbout() {
+      this.$router.push("/About");
     },
   },
 };
