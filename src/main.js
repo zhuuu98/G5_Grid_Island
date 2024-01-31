@@ -26,7 +26,7 @@ import { fab } from '@fortawesome/free-brands-svg-icons'
 // Add all icons to the library so you can use it in your page
 library.add(fas, far, fab)
 
-// 设置 FontAwesome 默认样式，如果需要的话
+// FontAwesome默認樣式
 config.autoAddCss = false;
 
 
@@ -35,8 +35,13 @@ config.autoAddCss = false;
 
 const app = createApp(App);
 
+// 設定全域的網站名稱
+app.config.globalProperties.$siteName = 'GridIsland';
+
 app.use(createPinia());
 app.use(router);
+
+
 app.component("Button", Button);
 app.component("Carousel", Carousel)
 app.component("CarouselItem", CarouselItem)
