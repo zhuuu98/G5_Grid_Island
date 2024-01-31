@@ -57,13 +57,13 @@
     }
   }
   .content {
-      margin-top: $XXL-spacing ;
-      margin-bottom: $XXXL-spacing ;
-      .btn {
-        display: flex;
-        justify-content: flex-end;
-        padding: 20px 40px 20px 0;
-        gap: 10px;
+    margin-top: $XXL-spacing;
+    margin-bottom: $XXXL-spacing;
+    .btn {
+      display: flex;
+      justify-content: flex-end;
+      padding: 20px 40px 20px 0;
+      gap: 10px;
 
       .thBtn {
         width: 40px;
@@ -96,9 +96,8 @@
       flex-wrap: wrap;
       justify-content: center;
       justify-items: flex-start;
-      gap: $M-spacing calc($S-spacing + $S-spacing) ;
-  
-      
+      gap: $M-spacing calc($S-spacing + $S-spacing);
+
       @include T() {
         gap: $L-spacing $M-spacing;
       }
