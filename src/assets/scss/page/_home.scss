@@ -473,6 +473,11 @@ main {
         gap: $L-spacing;
         width: 90%;
         background:$white-1 url("/src/assets/images/home/Grid.svg") no-repeat center;
+        @include T(){
+          background:$white-1 url("/src/assets/images/home/Grid.svg") no-repeat center;
+          padding: $XXL-spacing 0;
+
+        }
 
 
       }
