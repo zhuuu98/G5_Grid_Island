@@ -3,12 +3,12 @@
   @include PC() {
     @include grid(12, PC);
   }
-  padding-bottom: 100px;
+  padding: 120px 0 100px;
 
   .signup_main {
     width: 100%;
     max-width: 353px;
-    margin: 120px auto 0;
+    margin: auto;
     display: flex;
     flex-direction: column;
     align-items: center;

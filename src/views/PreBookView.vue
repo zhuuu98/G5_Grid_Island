@@ -4,8 +4,7 @@
         <div class="breadcrumb">
             <Breadcrumb separator="<b class='breadcrumb-separator'>></b>">
             <BreadcrumbItem to="/">首頁</BreadcrumbItem>
-            <BreadcrumbItem to="/prebook">預約須知</BreadcrumbItem>
-            <BreadcrumbItem>現場預約</BreadcrumbItem>
+            <BreadcrumbItem>預約須知</BreadcrumbItem>
             </Breadcrumb>
         </div>
         <div class="preBook">

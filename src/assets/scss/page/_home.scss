@@ -445,6 +445,9 @@ main {
           height: 340px;
           width: 80vw;
           margin: 10px;
+          @include T(){
+            width: 36vw;
+          }
           @include PC(){
             width: calc($cardWidth - 80px);
           }
