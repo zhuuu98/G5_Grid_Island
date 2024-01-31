@@ -217,9 +217,14 @@
         </div>
       </div>
 
-      <div class="wave">
+      <!-- <div class="wave">
         <img :src="wave" alt="bgcwave" id="wave1" />
+      </div> -->
+
+      <div class="home_ocean">
+        <img src="/images/home/home_ocean_1.svg" alt="home_ocean_1">
       </div>
+
       <!-- 服務項目 -->
       <div class="index_service">
         <div class="index_row container">
@@ -277,6 +282,11 @@
           </div>
         </div>
       </div>
+
+      <div class="home_ocean">
+        <img src="/images/home/home_ocean_2.svg" alt="home_ocean_2">
+      </div>
+
       <!-- 預約方式 -->
       <div class="index_reserve">
         <div class="index_row container">
@@ -302,22 +312,16 @@
           <button class="btn_lg" @click="goBook()">預約場地</button>
         </div>
       </div>
-      <!-- Griddy造型屋 -->
-      <div class="index_griddy">
-        <div class="index_row"></div>
-      </div>
-      <!-- 最新消息 -->
 
-      <!-- 預約方式 -->
-      <div class="index_reserve">
-        <div class="index_row">
-          <!-- 寫這邊 -->
-        </div>
-      </div>
       <!-- Griddy造型屋 -->
-      <div class="index_griddy">
+      <!-- <div class="index_griddy">
         <div class="index_row"></div>
+      </div> -->
+
+      <div class="home_ocean">
+        <img src="/images/home/home_ocean_temp.svg" alt="home_ocean_temp">
       </div>
+
       <!-- 最新消息 -->
       <div class="index_news">
         <div class="index_row">
@@ -337,12 +341,18 @@
           </div>
         </div>
       </div>
+
       <!-- 一起遊樂 IG API -->
-      <div class="index_insta">
-        <div class="index_row">
+      <!-- <div class="index_insta">
+        <div class="index_row"> -->
           <!-- 寫這邊 -->
-        </div>
+        <!-- </div>
+      </div> -->
+
+      <div class="home_ocean">
+        <img src="/images/home/home_ocean_temp2.svg" alt="home_ocean_temp2">
       </div>
+
       <!-- Grid Island 關於我們 -->
       <div class="index_about">
         <div class="index_row">

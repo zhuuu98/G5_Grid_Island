@@ -293,7 +293,8 @@ main {
     // 所有商品
     .index_products {
       width: 100%;
-      background-color: $red;
+      // background-color: $red;
+      background-color: #3BB1B9;
       .index_row {
         color: $black;
         padding: $XXL-spacing 0;
@@ -453,16 +454,17 @@ main {
     // 服務項目
     .index_service {
       width: 100%;
-      background-color: $blue-2;
+      // background-color: $blue-2;
+      background-color: $orange-1;
       padding: $XL-spacing 0;
-      .index_row{
+      .index_row {
         display: flex;
         gap: $M-spacing;
         flex-direction: column;
         justify-content: center;
         align-items: center;
       }
-      .serviceMarqueeContent{
+      .serviceMarqueeContent {
         overflow: hidden;
         background-color: $white-1;
         border: 3px solid $black;
@@ -472,44 +474,40 @@ main {
         // flex-direction: column;
         // gap: $L-spacing;
         // width: 90%;
-        background:$white-1 url("/src/assets/images/home/Grid.svg") no-repeat center;
-        @include T(){
-          background:$white-1 url("/src/assets/images/home/Grid.svg") no-repeat center;
+        background: $white-1 url("/src/assets/images/home/Grid.svg") no-repeat
+          center;
+        @include T() {
+          background: $white-1 url("/src/assets/images/home/Grid.svg") no-repeat
+            center;
           padding: $XXL-spacing 0;
           // width: 900px;
-
         }
-        @include PC(){
+        @include PC() {
           // width: 1200px;
+          max-width: 1200px;
+          gap: $M-spacing;
         }
-
-
-
       }
-      .marqueePic{
-      width: 400px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      animation: marquee 5s linear infinite;
-      // gap: $M-spacing;
-
+      .marqueePic {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        animation: marquee 5s linear infinite;
+        // gap: $M-spacing;
       }
-      .marqueePic img{
-        width: 100%;
+      .marqueePic img {
         vertical-align: top;
-        max-width: 260px;
-        @include T(){
-          max-width: 300px;
+        width: 260px;
+        @include T() {
+          width: 300px;
         }
       }
-      .marqueeText p{
+      .marqueeText p {
         background-color: $green-1;
         padding: $S-spacing $M-spacing;
         transform: translateY(-15px);
         border: 1px solid $black;
-
       }
     }
 
