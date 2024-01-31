@@ -112,6 +112,26 @@
     </div>
 
     <MainHeader />
+    <!-- 跑馬燈 -->
+    <div class="cuppon">
+      <div class="btn">
+        <font-awesome-icon :icon="['fas', 'times']" />
+      </div>
+      <div class="content">
+        <span>1/31 - 2/20 全館線上商品熱銷中，立即輸入優惠碼: GridIsland2023 折抵🐛🐛🐛🐛🐛🐛🐛 </span>
+        <span>1/31 - 2/20 全館線上商品熱銷中，立即輸入優惠碼: GridIsland2023 折抵🐛🐛🐛🐛🐛🐛🐛 </span>
+        <span>1/31 - 2/20 全館線上商品熱銷中，立即輸入優惠碼: GridIsland2023 折抵🐛🐛🐛🐛🐛🐛🐛 </span>
+        <span>1/31 - 2/20 全館線上商品熱銷中，立即輸入優惠碼: GridIsland2023 折抵🐛🐛🐛🐛🐛🐛🐛 </span>
+        <span>1/31 - 2/20 全館線上商品熱銷中，立即輸入優惠碼: GridIsland2023 折抵🐛🐛🐛🐛🐛🐛🐛 </span>
+        <span>1/31 - 2/20 全館線上商品熱銷中，立即輸入優惠碼: GridIsland2023 折抵🐛🐛🐛🐛🐛🐛🐛 </span>
+        <span>1/31 - 2/20 全館線上商品熱銷中，立即輸入優惠碼: GridIsland2023 折抵🐛🐛🐛🐛🐛🐛🐛 </span>
+        <span>1/31 - 2/20 全館線上商品熱銷中，立即輸入優惠碼: GridIsland2023 折抵🐛🐛🐛🐛🐛🐛🐛 </span>
+        <span>1/31 - 2/20 全館線上商品熱銷中，立即輸入優惠碼: GridIsland2023 折抵🐛🐛🐛🐛🐛🐛🐛 </span>
+        <span>1/31 - 2/20 全館線上商品熱銷中，立即輸入優惠碼: GridIsland2023 折抵🐛🐛🐛🐛🐛🐛🐛 </span>
+        <span>1/31 - 2/20 全館線上商品熱銷中，立即輸入優惠碼: GridIsland2023 折抵🐛🐛🐛🐛🐛🐛🐛 </span>
+        <span>1/31 - 2/20 全館線上商品熱銷中，立即輸入優惠碼: GridIsland2023 折抵🐛🐛🐛🐛🐛🐛🐛 </span>
+      </div>
+    </div>
     <!-- 內容 -->
     <div class="index">
       <!-- 所有商品 -->
@@ -230,53 +250,53 @@
         <div class="index_row container">
           <!-- 寫這邊 -->
           <h2>服務項目</h2>
-            <div class="serviceMarqueeContent" >
+          <div class="serviceMarqueeContent" >
               <div class="marqueePic">
                   <img src="../assets/images/home/servicePic_1.svg" alt="首頁服務項目">
                   <div class="marqueeText">
-                    <p>桌游販售</p>
+                    <span>桌遊販售</span>
                   </div>
               </div>
               <div class="marqueePic">
                   <img src="../assets/images/home/servicePic_2.svg" alt="首頁服務項目">
                   <div class="marqueeText">
-                    <p>桌游販售</p>
+                    <span>精釀啤酒與飲料</span>
                   </div>
               </div>
               <div class="marqueePic">
                   <img src="../assets/images/home/servicePic_3.svg" alt="首頁服務項目">
                   <div class="marqueeText">
-                    <p>桌游遊玩教學</p>
+                    <span>桌上遊戲遊玩與教學</span>
                   </div>
               </div>
               <div class="marqueePic">
                   <img src="../assets/images/home/servicePic_4.svg" alt="首頁服務項目">
                   <div class="marqueeText">
-                    <p>各式場地租借</p>
+                    <span>各式場地租借</span>
                   </div>
               </div>
               <div class="marqueePic">
                   <img src="../assets/images/home/servicePic_1.svg" alt="首頁服務項目">
                   <div class="marqueeText">
-                    <p>桌游販售</p>
+                    <span>桌游販售</span>
                   </div>
               </div>
               <div class="marqueePic">
                   <img src="../assets/images/home/servicePic_2.svg" alt="首頁服務項目">
                   <div class="marqueeText">
-                    <p>桌游販售</p>
+                    <span>桌游販售</span>
                   </div>
               </div>
               <div class="marqueePic">
                   <img src="../assets/images/home/servicePic_3.svg" alt="首頁服務項目">
                   <div class="marqueeText">
-                    <p>桌游遊玩教學</p>
+                    <span>桌游遊玩教學</span>
                   </div>
               </div>
               <div class="marqueePic">
                   <img src="../assets/images/home/servicePic_4.svg" alt="首頁服務項目">
                   <div class="marqueeText">
-                    <p>各式場地租借</p>
+                    <span>各式場地租借</span>
                   </div>
               </div>
           </div>

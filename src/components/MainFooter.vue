@@ -13,9 +13,15 @@
         <div class="footer_logo">
           <img class="img" src="../assets/images/footer/footer_logo.svg">
           <div class="social_logo">
-            <font-awesome-icon class="logo" :icon="['fab', 'facebook']" />
-            <font-awesome-icon class="logo" :icon="['fab', 'instagram']" />
-            <font-awesome-icon class="logo" :icon="['fab', 'youtube']" />
+            <a href="https://www.facebook.com/TibaMe/?locale=zh_TW">
+              <font-awesome-icon class="logo fb" :icon="['fab', 'facebook']" />
+            </a>
+            <a href="https://www.instagram.com/tibame_wiedu/">
+              <font-awesome-icon class="logo" :icon="['fab', 'instagram']" />
+            </a>
+            <a href="https://www.youtube.com/channel/UClhecf7eOGHwbKW5e7l_pTA">
+              <font-awesome-icon class="logo youtube" :icon="['fab', 'youtube']" />
+            </a>
           </div>
         </div>
         <div class="footer_officeInfo">
@@ -47,7 +53,7 @@ export default {
         },
         {
           title: '預約須知',
-          link: '/pre_book'
+          link: '/prebook'
         },
         {
           title: '隱私政策',
