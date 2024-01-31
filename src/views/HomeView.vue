@@ -228,6 +228,7 @@
             <div class="serviceMarqueeContent">
               <div class="marqueePic">
                 <img v-for="num in 4" :src="getImageUrl(`home/servicePic_${num}.svg`)" alt="首頁服務項目">
+                <img v-for="num in 4" :src="getImageUrl(`home/servicePic_${num}.svg`)" alt="首頁服務項目">
             </div>
           </div>
         </div>

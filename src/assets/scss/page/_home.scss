@@ -488,11 +488,9 @@ main {
         width: 100%;
         vertical-align: top;
         max-width: 260px;
-        @include T(){
-          max-width: 420px;
-        }
-      }
-      .serviceMarquee{
+        // @include T(){
+        //   max-width: 300px;
+        // }
       }
 
 
