@@ -492,14 +492,6 @@ main {
         //   max-width: 300px;
         // }
       }
-
-
-
-
-
-
-
-
     }
 
     //預約方式
@@ -705,7 +697,7 @@ main {
           max-width: 1100px;
           background: $white-1
             url("/src/assets/images/home/homeAbout_BackgoundGrid.svg") no-repeat
-            left 0 bottom 10%/100%;
+            left 0 bottom 9%/100%;
         }
         &::-webkit-scrollbar {
           display: none;
@@ -715,7 +707,7 @@ main {
         display: flex;
         justify-content: center;
         gap: $M-spacing;
-        margin: $L-spacing;
+        margin: $XL-spacing;
       }
       .aboutContentImg img {
         width: auto;
@@ -728,7 +720,7 @@ main {
       .aboutContentTxt {
         display: none;
         text-align: center;
-        margin: $M-spacing;
+        margin: $XL-spacing;
         font-size: $PC-h4;
         @include T() {
           display: flex;
