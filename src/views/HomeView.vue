@@ -130,14 +130,55 @@
             <div class="prodMarquee">
               <div class="marqueeAnimation">
                 <div class="productCard" v-for="item in productData">
-                  <div class="productImg">
-                    <img
-                      :src="`https://tibamef2e.com/chd103/g5/img/${item.prod_img1}`"
-                    />
-                  </div>
-                  <div class="productName">
-                    <p>{{ item.prod_name }}</p>
-                  </div>
+                  <router-link
+                    :to="{
+                      name: 'productInfo',
+                      params: { id: item.prod_id },
+                    }"
+                  >
+                    <div class="productImg">
+                      <img
+                        :src="`https://tibamef2e.com/chd103/g5/img/${item.prod_img1}`"
+                      />
+                    </div>
+                    <div class="productName">
+                      <p>{{ item.prod_name }}</p>
+                    </div>
+                  </router-link>
+                </div>
+                <div class="productCard" v-for="item in productData">
+                  <router-link
+                    :to="{
+                      name: 'productInfo',
+                      params: { id: item.prod_id },
+                    }"
+                  >
+                    <div class="productImg">
+                      <img
+                        :src="`https://tibamef2e.com/chd103/g5/img/${item.prod_img1}`"
+                      />
+                    </div>
+                    <div class="productName">
+                      <p>{{ item.prod_name }}</p>
+                    </div>
+                  </router-link>
+                </div>
+                <div class="productCard" v-for="item in productData">
+                  <router-link
+                    :to="{
+                      name: 'productInfo',
+                      params: { id: item.prod_id },
+                    }"
+                  >
+                    <div class="productImg">
+                      <img
+                        :src="`https://tibamef2e.com/chd103/g5/img/${item.prod_img1}`"
+                      />
+                    </div>
+                    <div class="productName">
+                      <p>{{ item.prod_name }}</p>
+                    </div>
+                  </router-link>
                 </div>
               </div>
             </div>
@@ -153,7 +194,7 @@
             </div>
           </div>
           <div class="prodBtn">
-            <button class="btn_lg">所有商品</button>
+            <button class="btn_lg" @click="toProduct">所有商品</button>
           </div>
         </div>
       </div>
@@ -426,6 +467,9 @@ export default {
     },
     goBook() {
       this.$router.push("/PreBook");
+    },
+    toProduct() {
+      this.$router.push("/product");
     },
   },
 };
