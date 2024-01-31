@@ -528,6 +528,9 @@ main {
           height: 340px;
           width: 80vw;
           margin: 10px;
+          @include T(){
+            width: 36vw;
+          }
           @include PC() {
             width: calc($cardWidth - 80px);
           }
@@ -561,9 +564,6 @@ main {
 
     // Grid Island 關於我們
     .index_about {
-<<<<<<< HEAD
-    }
-=======
       padding-bottom: 15%;
       width: 100%;
       background-color: $green-2;
@@ -646,7 +646,6 @@ main {
     }
 
 
->>>>>>> smallguo
   }
 } //index
 
