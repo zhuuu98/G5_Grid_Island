@@ -2,7 +2,7 @@
 @import "@/assets/scss/components/_button.scss";
 .login {
   background-color: $bgc-2;
-  padding-bottom: 100px;
+  padding: 120px 0 100px;
 
   @mixin loginA{
     color: $blue-3;
@@ -13,7 +13,7 @@
   .login_main {
     width: 100%;
     max-width: 353px;
-    margin: 120px auto 0;
+    margin: auto;
     display: flex;
     flex-direction: column;
     align-items: center;

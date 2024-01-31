@@ -130,14 +130,55 @@
             <div class="prodMarquee">
               <div class="marqueeAnimation">
                 <div class="productCard" v-for="item in productData">
-                  <div class="productImg">
-                    <img
-                      :src="`https://tibamef2e.com/chd103/g5/img/${item.prod_img1}`"
-                    />
-                  </div>
-                  <div class="productName">
-                    <p>{{ item.prod_name }}</p>
-                  </div>
+                  <router-link
+                    :to="{
+                      name: 'productInfo',
+                      params: { id: item.prod_id },
+                    }"
+                  >
+                    <div class="productImg">
+                      <img
+                        :src="`https://tibamef2e.com/chd103/g5/img/${item.prod_img1}`"
+                      />
+                    </div>
+                    <div class="productName">
+                      <p>{{ item.prod_name }}</p>
+                    </div>
+                  </router-link>
+                </div>
+                <div class="productCard" v-for="item in productData">
+                  <router-link
+                    :to="{
+                      name: 'productInfo',
+                      params: { id: item.prod_id },
+                    }"
+                  >
+                    <div class="productImg">
+                      <img
+                        :src="`https://tibamef2e.com/chd103/g5/img/${item.prod_img1}`"
+                      />
+                    </div>
+                    <div class="productName">
+                      <p>{{ item.prod_name }}</p>
+                    </div>
+                  </router-link>
+                </div>
+                <div class="productCard" v-for="item in productData">
+                  <router-link
+                    :to="{
+                      name: 'productInfo',
+                      params: { id: item.prod_id },
+                    }"
+                  >
+                    <div class="productImg">
+                      <img
+                        :src="`https://tibamef2e.com/chd103/g5/img/${item.prod_img1}`"
+                      />
+                    </div>
+                    <div class="productName">
+                      <p>{{ item.prod_name }}</p>
+                    </div>
+                  </router-link>
                 </div>
               </div>
             </div>
@@ -148,12 +189,30 @@
                 <label for="productSearch">搜尋遊戲</label>
               </div>
               <div class="searchInput">
-                <input type="search" id="productSearch" />
+                <input
+                  type="text"
+                  id="productSearch"
+                  @input="handleSearch"
+                  @focus="searchResultDisplay = true"
+                  @blur="searchResultClose"
+                  v-model="gameSearch"
+                />
+              </div>
+              <div class="searchResult" v-show="searchResultDisplay">
+                <p v-for="item in displayProdData">
+                  <router-link
+                    :to="{
+                      name: 'productInfo',
+                      params: { id: item.prod_id },
+                    }"
+                    >{{ item.prod_name }}</router-link
+                  >
+                </p>
               </div>
             </div>
           </div>
           <div class="prodBtn">
-            <button class="btn_lg">所有商品</button>
+            <button class="btn_lg" @click="toProduct">所有商品</button>
           </div>
         </div>
       </div>
@@ -238,6 +297,30 @@
       <div class="index_about">
         <div class="index_row">
           <!-- 寫這邊 -->
+          <h1>Grid Island</h1>
+          <!-- 中間圖片的外框 -->
+          <div class="aboutContent">
+            <!-- 桌機板的文字 -->
+            <div class="aboutContentTxt">
+              <p>
+                　　我們精選了3000種桌上遊戲，涵蓋了從熱門到冷門的各種類型。即使你不熟悉遊戲規則，也無需擔心，因為我們會親自指導你如何遊玩，一起加入桌遊的行列吧！
+              </p>
+            </div>
+            <!-- 放圖片的地方 -->
+            <div class="aboutContentImg">
+              <img
+                v-for="num in 3"
+                :src="getImageUrl(`home/homeAbout_${num}.svg`)"
+                alt="首頁關於我們"
+              />
+            </div>
+          </div>
+          <button class="btn_lg" @click="goAbout()">關於我們</button>
+        </div>
+      </div>
+      <div class="index_about">
+        <div class="index_row">
+          <!-- 寫這邊 -->
         </div>
       </div>
     </div>
@@ -299,6 +382,9 @@ export default {
       respondData: [],
       latestData: [],
       productData: [],
+      displayProdData: [],
+      gameSearch: "",
+      searchResultDisplay: false,
     };
   },
   setup() {
@@ -413,8 +499,9 @@ export default {
       axios
         .get("https://tibamef2e.com/chd103/g5/phps/ProductM.php")
         .then((res) => {
-          console.log(res.data);
           this.productData = res.data;
+          this.displayProdData = res.data;
+          console.log(this.displayProdData);
         });
     },
     goNews() {
@@ -426,6 +513,25 @@ export default {
     },
     goBook() {
       this.$router.push("/PreBook");
+    },
+    toProduct() {
+      this.$router.push("/product");
+    },
+    goAbout() {
+      this.$router.push("/About");
+    },
+    handleSearch() {
+      console.log(this.productData);
+      this.displayProdData = this.productData.filter((item) => {
+        return item.prod_name.includes(this.gameSearch);
+      });
+      console.log(this.displayProdData);
+    },
+    searchResultClose() {
+      setTimeout(() => {
+        // 关闭搜索建议列表的逻辑
+        this.searchResultDisplay = false;
+      }, 100);
     },
   },
 };

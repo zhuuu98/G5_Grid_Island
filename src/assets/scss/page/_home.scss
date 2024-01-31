@@ -298,6 +298,7 @@ main {
         color: $black;
         padding: $XXL-spacing 0;
         display: flex;
+        gap: $L-spacing;
         flex-direction: column;
         justify-content: center;
         align-items: center;
@@ -320,6 +321,7 @@ main {
             width: 90%;
           }
           @include PC() {
+            width: 100%;
             max-width: $max-width;
           }
           .prodBreif {
@@ -343,34 +345,42 @@ main {
               display: flex;
               align-items: center;
               justify-content: center;
-              animation: marquee 10s linear infinite;
+              animation: marquee 15s linear infinite;
               &:hover {
                 animation-play-state: paused;
               }
+
               .productCard {
-                margin: 0 $S-spacing;
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-                transform: translateY(20px);
-                .productImg {
-                  border: 1px solid $black;
-                  padding: $S-spacing;
-                  background-color: $white-1;
-                  img {
-                    width: 150px;
+                a {
+                  margin: 0 $S-spacing;
+                  display: flex;
+                  flex-direction: column;
+                  align-items: center;
+                  transform: translateY(20px);
+                  .productImg {
+                    border: 1px solid $black;
+                    padding: $S-spacing;
+                    background-color: $white-1;
+                    img {
+                      width: 150px;
+                    }
                   }
-                }
-                .productName {
-                  border: 1px solid $black;
-                  padding: $S-spacing;
-                  transform: translateY(-10px);
-                  background-color: $green-1;
-                  p {
-                    font-size: $PC-text;
-                    white-space: nowrap;
-                    overflow: hidden;
-                    text-overflow: ellipsis;
+                  .productName {
+                    border: 1px solid $black;
+                    padding: $S-spacing;
+                    transform: translateY(-10px);
+                    background-color: $green-1;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    width: 150px;
+                    p {
+                      color: $black;
+                      font-size: $PC-text;
+                      white-space: nowrap;
+                      overflow: hidden;
+                      text-overflow: ellipsis;
+                    }
                   }
                 }
               }
@@ -378,7 +388,57 @@ main {
           }
         }
         .searchArea {
-          border: 1px solid balck;
+          width: 90%;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          background-color: $blue-1;
+          padding: $L-spacing 0;
+          border-radius: $PC-card-radius;
+          @include PC() {
+            width: 100%;
+          }
+          .searchGroup {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            gap: $S-spacing;
+            align-items: center;
+            justify-content: center;
+            label {
+              font-size: $PC-h3;
+            }
+            input {
+              border: 1px solid $black;
+              width: 200px;
+              height: 30px;
+              padding: $S-spacing;
+              border-radius: $input-radius;
+              @include PC() {
+                width: 300px;
+              }
+            }
+            .searchResult {
+              border-radius: $input-radius;
+              padding: $S-spacing;
+              background-color: $black;
+              width: 100%;
+              position: absolute;
+              bottom: -100px;
+              height: 100px;
+              overflow-y: auto;
+              p {
+                a {
+                  font-size: $M-text;
+                  color: $white-1;
+                  white-space: nowrap;
+                  overflow: hidden;
+                  text-overflow: ellipsis;
+                }
+              }
+            }
+          }
         }
       }
     }
@@ -528,6 +588,9 @@ main {
           height: 340px;
           width: 80vw;
           margin: 10px;
+          @include T() {
+            width: 36vw;
+          }
           @include PC() {
             width: calc($cardWidth - 80px);
           }
@@ -561,6 +624,73 @@ main {
 
     // Grid Island 關於我們
     .index_about {
+      padding-bottom: 15%;
+      width: 100%;
+      background-color: $green-2;
+      .index_row {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: $L-spacing;
+        @include PC() {
+          width: 80%;
+          max-width: 1140px;
+        }
+      }
+      h1 {
+        text-align: center;
+        padding: $XL-spacing 0 $L-spacing;
+      }
+      .aboutContent {
+        max-width: 350px;
+        width: 100%;
+        overflow: scroll;
+        background: $white-1
+          url("/src/assets/images/home/homeAbout_BackgoundGrid.svg") no-repeat
+          center/180%;
+        border: 3px solid $blue-3;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        border-radius: $S-button-radius;
+        @include T() {
+          max-width: 1100px;
+          background: $white-1
+            url("/src/assets/images/home/homeAbout_BackgoundGrid.svg") no-repeat
+            left 0 bottom 10%/100%;
+        }
+        &::-webkit-scrollbar {
+          display: none;
+        }
+      }
+      .aboutContentImg {
+        display: flex;
+        justify-content: center;
+        gap: $M-spacing;
+        margin: $L-spacing;
+      }
+      .aboutContentImg img {
+        width: auto;
+        max-width: 100%;
+        vertical-align: top;
+        @include T() {
+          max-width: 420px;
+        }
+      }
+      .aboutContentTxt {
+        display: none;
+        text-align: center;
+        margin: $M-spacing;
+        font-size: $PC-h4;
+        @include T() {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+        }
+      }
     }
   }
 } //index

@@ -1,6 +1,5 @@
 <template>
     <div class="signup">
-        <PageTitle :pageTitle="'註冊會員'" />
         <div class="signup_main">
             <div class="signup_title">
                 <div class="signup_main_griddy"></div>
@@ -30,7 +29,6 @@
 </template>
 
 <script>
-import PageTitle from "../components/PageTitle.vue";
 export default {
     data() {
         return {
@@ -41,9 +39,6 @@ export default {
             showAlert: false,
             alertContent: '',
         };
-    },
-    components:{
-        PageTitle
     },
     created() {
     },

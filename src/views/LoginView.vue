@@ -1,6 +1,5 @@
 <template>
     <div class="login">
-        <PageTitle :pageTitle="'會員登入'" />
         <div class="login_main">
             <div class="login_main_griddy"></div>
             <h2>會員登入</h2>
@@ -24,11 +23,7 @@
 import axios from 'axios';
 import { mapActions } from 'pinia';
 import userStore from '@/stores/user'
-import PageTitle from "../components/PageTitle.vue";
 export default {
-    components: {
-        PageTitle
-    },
     data() {
         return {
             accName: '',
