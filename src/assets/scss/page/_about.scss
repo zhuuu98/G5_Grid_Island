@@ -238,8 +238,12 @@
   &_griddy{
     background-color: $blue-2;
     // margin-bottom: 100px;
-    padding: 100px 0px;
+    padding: 60px 0px;
     width: 100%;
+    @include PC(){
+      padding: 100px 0px;
+
+    }
     .about_griddy_section{
       margin: auto;
       @include PC(){
@@ -251,28 +255,44 @@
           margin: auto;
         }
       }
-      .about_griddy_img{
-        width: 50%;
-        margin: 0px auto 20px auto;
-        // border: 1px solid red;
-        @include PC(){
+      .about_griddy_img {
+        width: 60%;
+        margin: 0px auto 40px auto;
+        @media only screen and (max-width: 767px) {
+          @keyframes rotateAnimation {
+            0% {
+              transform: rotateY(0deg);
+            }
+            100% {
+              transform: rotateY(720deg);
+            }
+          }
+          .rotate-image {
+            animation: rotateAnimation 2s ease-in-out infinite 2s; /* 設定動畫的時間和循環次數，這裡是無限循環 */
+          }
+        }
+        @include PC() {
           width: 260px;
           display: flex;
           align-items: flex-end;
           justify-content: end;
-          &:hover img{
-            transform: rotateY(180deg);
+      
+          &:hover img {
+            transform: rotateY(720deg);
           }
+      
           .rotate-image {
-            transition: transform 1s ease-in-out ; /* 可以添加過渡效果，讓旋轉更平滑 */
+            transition: transform 2s ease-in-out; /* 添加過渡效果，讓旋轉更平滑 */
           }
-          
         }
-        img{
+        img {
           width: 100%;
           vertical-align: bottom;
         }
       }
+      
+        
+
       .about_griddy_text{
         padding: 17px;
         border-radius: 28px;

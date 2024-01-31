@@ -310,7 +310,105 @@ main {
     }
 
     //預約方式
-    .index_reserve {}
+    .index_reserve {
+      background-color: $blue-1;
+      padding: $XL-spacing;
+      .index_row{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: $XL-spacing;
+      }
+      h1{
+        text-align: center;
+        margin: $M-spacing;
+      }
+      .reserveInfo{
+        justify-content: center;
+      }
+      .reserveContent{
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+        gap: $XL-spacing;
+        @include T(){
+          flex-wrap: nowrap;
+          gap: $L-spacing;
+        }
+        @include PC(){
+          flex-wrap: nowrap;
+          gap: $XL-spacing;
+        }
+      }
+      .reserveContent img{
+        // width: 100%;
+        vertical-align: top;
+        width: 200px;
+        @include PC(){
+          width: 300px;
+        }
+      }
+      [class*="reserveStep"]{
+        position: relative;
+      }
+      [class*="reserveStep"]>span{
+        background-color: $green-1;
+        padding: $S-spacing $M-spacing;
+        border: 1px solid $blue-3;
+        // width: 200px;
+        width: fit-content;
+        text-align: center;
+        position: absolute;
+      }
+      .reserveStep1 span{
+        left: 18%;
+        bottom: -5%;
+        @include T(){
+          left: 20%;
+          bottom: -4%;
+        }
+        @include PC(){
+          left: 30%;
+          bottom: -4%;
+        }
+      }
+
+      .reserveStep2 span{
+        // width: 290px;
+        left: 4%;
+        bottom: -5%;
+        @include T(){
+          left: 5%;
+          bottom: -4%;
+        }
+        @include PC(){
+          left: 20%;
+          bottom: -4%;
+        }
+
+      }
+
+      .reserveStep3 span{
+        // width: 290px;
+        left: 5%;
+        bottom: -5%;
+        @include T(){
+          right: -4%;
+          bottom: -4%;
+        }
+        @include PC(){
+          left: 20%;
+          bottom: -4%;
+        }
+
+      }
+
+
+
+
+    }
 
     // Griddy造型屋
     .index_griddy {}
