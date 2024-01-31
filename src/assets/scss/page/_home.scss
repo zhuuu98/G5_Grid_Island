@@ -453,8 +453,50 @@ main {
     // 服務項目
     .index_service {
       width: 100%;
-      height: 200px;
       background-color: $blue-2;
+      padding: $XL-spacing 0;
+      .index_row{
+        display: flex;
+        gap: $M-spacing;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+      }
+      .serviceMarqueeContent{
+        overflow: hidden;
+        background-color: $white-1;
+        border: 3px solid $black;
+        border-radius: $S-button-radius;
+        padding: $XL-spacing 0;
+        display: flex;
+        flex-direction: column;
+        gap: $L-spacing;
+        width: 90%;
+        background:$white-1 url("/src/assets/images/home/Grid.svg") no-repeat center;
+        @include T(){
+          background:$white-1 url("/src/assets/images/home/Grid.svg") no-repeat center;
+          padding: $XXL-spacing 0;
+
+        }
+
+
+      }
+      .marqueePic{
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      animation: marquee 15s linear infinite;
+      gap: $M-spacing;
+
+      }
+      .marqueePic img{
+        width: 100%;
+        vertical-align: top;
+        max-width: 260px;
+        // @include T(){
+        //   max-width: 300px;
+        // }
+      }
     }
 
     //預約方式
@@ -660,7 +702,7 @@ main {
           max-width: 1100px;
           background: $white-1
             url("/src/assets/images/home/homeAbout_BackgoundGrid.svg") no-repeat
-            left 0 bottom 10%/100%;
+            left 0 bottom 9%/100%;
         }
         &::-webkit-scrollbar {
           display: none;
@@ -670,7 +712,7 @@ main {
         display: flex;
         justify-content: center;
         gap: $M-spacing;
-        margin: $L-spacing;
+        margin: $XL-spacing;
       }
       .aboutContentImg img {
         width: auto;
@@ -683,7 +725,7 @@ main {
       .aboutContentTxt {
         display: none;
         text-align: center;
-        margin: $M-spacing;
+        margin: $XL-spacing;
         font-size: $PC-h4;
         @include T() {
           display: flex;

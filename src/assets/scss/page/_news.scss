@@ -104,4 +104,103 @@
       }
     }
   }
+  // .index_products {
+  //   width: 100%;
+  //   background-color: $red;
+  //   .index_row {
+  //     color: $black;
+  //     padding: $XXL-spacing 0;
+  //     display: flex;
+  //     flex-direction: column;
+  //     justify-content: center;
+  //     align-items: center;
+  //     h2 {
+  //       font-size: 48px;
+  //       font-family: "Zen Maru Gothic";
+  //       -webkit-text-stroke: 1px $white-1;
+  //     }
+  //     .prodBackground {
+  //       background-color: $white-1;
+  //       border: 3px solid $black;
+  //       border-radius: $S-button-radius;
+  //       padding: $XL-spacing 0;
+  //       display: flex;
+  //       flex-direction: column;
+  //       gap: $L-spacing;
+  //       width: 90%;
+  //       overflow: hidden;
+  //       @include T() {
+  //         width: 90%;
+  //       }
+  //       @include PC() {
+  //         max-width: $max-width;
+  //       }
+  //       .prodBreif {
+  //         padding: 0 $S-spacing;
+  //         @include T() {
+  //           padding: 0 $XXL-spacing;
+  //         }
+  //         @include PC() {
+  //           padding: 0 $XXXL-spacing;
+  //         }
+  //         p {
+  //           font-size: $PC-text;
+  //         }
+  //       }
+  //       .prodMarquee {
+  //         border-top: 1px solid #b3b3b3;
+  //         border-bottom: 2px solid #b3b3b3;
+  //         background-image: url("@/assets/images/home/Grid.svg");
+  //         height: 250px;
+  //         .marqueeAnimation {
+  //           display: flex;
+  //           align-items: center;
+  //           justify-content: center;
+  //           animation: marquee 25s linear infinite;
+  //           &:hover {
+  //             animation-play-state: paused;
+  //           }
+  //           .productCard {
+  //             margin: 0 $S-spacing;
+  //             display: flex;
+  //             flex-direction: column;
+  //             align-items: center;
+  //             transform: translateY(20px);
+  //             .productImg {
+  //               border: 1px solid $black;
+  //               padding: $S-spacing;
+  //               background-color: $white-1;
+  //               img {
+  //                 width: 150px;
+  //               }
+  //             }
+  //             .productName {
+  //               border: 1px solid $black;
+  //               padding: $S-spacing;
+  //               transform: translateY(-10px);
+  //               background-color: $green-1;
+  //               p {
+  //                 font-size: $PC-text;
+  //                 white-space: nowrap;
+  //                 overflow: hidden;
+  //                 text-overflow: ellipsis;
+  //               }
+  //             }
+  //           }
+  //         }
+  //       }
+  //     }
+  //     .searchArea {
+  //       border: 1px solid balck;
+  //     }
+  //   }
+  // }
+  // @keyframes marquee {
+  //   0% {
+  //     transform: translateX(1000%);
+  //   }
+  //   100% {
+  //     transform: translateX(-100%);
+  //   }
+  // }
 }
