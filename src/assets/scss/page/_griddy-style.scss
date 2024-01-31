@@ -35,14 +35,6 @@
     padding: $M-spacing;
 }
 
-.skin-colors {
-    list-style-type: none;
-    padding: 0;
-}
-
-.skin-component {
-    /* 根據需要添加樣式 */
-}
 
 .options-colors li {
     display: inline-block;
@@ -56,5 +48,8 @@
 }
 
 .options-colors li.selected {
-    border-color: #000;
+    border: 1px solid#000;
+}
+#spot-box {
+    background-color: #ccc;
 }
