@@ -4,7 +4,9 @@
             <!-- 預覽區組件，顯示選擇的零件以及操作按鈕 -->
             <div class="style-view">
                 <!-- 傳遞顏色到SVG組件 -->
-                <originalGriddySrc :selectedColor="currentSelectedColor" />
+                <div id="viewimagebox">
+                    <originalGriddySrc :selectedSpotColor="selectedSpotColor" :selectedBodyColor="selectedBodyColor" />
+                </div>
             </div>
             <div class="style-btn">
                 <!-- 操作按鈕 (如果有的話) -->
@@ -18,11 +20,17 @@
                     {{ tab.title }}
                 </button>
             </div>
+            <!-- 頁籤內容 -->
             <div class="tab-content">
-                <component :is="currentTab"></component>
-                <!-- 確保SkinComponent在這裡，並且可以發送顏色改變事件 -->
+                <component :is="currentTab" 
+                @spot-color-selected="handleSpotColorChange" 
+                @body-color-selected="handleBodyColorChange">
+
+                </component>
+
             </div>
         </div>
+
     </div>
 </template>
 
@@ -34,20 +42,18 @@
     import backgroundComponent from '../components/styleComponents/backgroundComponent.vue';
     import originalGriddySrc from '../components/styleComponents/noneGriddy.vue';
     import skinComponent from '../components/styleComponents/skinComponent.vue';
-
-
+    import { spotColors } from "@/policy/color.js"
+    import { bodyColors } from "@/policy/color.js"
     export default {
         components: {
             originalGriddySrc, // svg組件，顯示選擇的變化
             skinComponent, // 膚色區組件，用來切換膚色區的選擇
-            eyesComponent,
-            antennaComponent,
-            accessoriesComponent,
-            backgroundComponent,
-            
+            eyesComponent, //眼睛區
+            antennaComponent, //觸角區
+            accessoriesComponent, //配件區
+            backgroundComponent, //背景顏色區
         },
-
-        setup() { // 頁籤相關代碼
+        setup() {
             const tabs = [
                 { name: 'tab1', title: '膚色', component: skinComponent },
                 { name: 'tab2', title: '眼睛', component: eyesComponent },
@@ -55,18 +61,24 @@
                 { name: 'tab4', title: '配件', component: accessoriesComponent },
                 { name: 'tab5', title: '背景', component: backgroundComponent },
             ];
-            const currentTab = ref(tabs[0].component);  // 設置初始顯示的組件
-            // 用於存儲從SkinComponent選擇的顏色
-            const currentSelectedColor = ref('#d2eb86'); // 預設顏色
+            const currentTab = ref(tabs[0].component);  // 初始顯示第一張頁籤
+            const selectedSpotColor = ref(spotColors[0]);
+            const selectedBodyColor = ref(bodyColors[0]);
 
-            // 處理從SkinComponent發出的顏色更改事件
-            const handleColorChange = (color) => {
-                console.log("updateSkinColor called"); 
-                currentSelectedColor.value = color;
-                console.log("Selected Color: ", color);
-            };
 
-            return { tabs, currentTab, currentSelectedColor, handleColorChange };
+            return { tabs, currentTab, selectedSpotColor, selectedBodyColor };
         },
+        methods: {
+            handleSpotColorChange(spotColor) {
+                console.log("接收到子組件的斑點顏色：", spotColor);
+                this.selectedSpotColor = spotColor;
+                console.log("被選擇的的斑點顏色：", this.selectedSpotColor);
+            },
+            handleBodyColorChange(bodyColor) {
+                console.log("接收到子組件的軀幹顏色：", bodyColor);
+                this.selectedBodyColor = bodyColor;
+                console.log("被選擇的軀幹顏色：", this.selectedBodyColor);
+            },
+        }
     };
 </script>

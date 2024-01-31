@@ -1,29 +1,20 @@
 <template>
     <div class="componentsarea">
-        <div id="skin-box">
-            <h3>膚色</h3>
-            <ul class="skin-options options-colors">
-                <li v-for="color in skinColors" :key="color" :style="{ backgroundColor: color }"
-                    @click="updateSkinColor(color)" :class="{ selected: selectedSkinColor === color }">
-                    {{ color }}
+        <div id="spot-box">
+            <h3>軀幹</h3>
+            <ul class="body-options options-colors">
+                <li v-for="bodyColor in bodyColors" :key="bodyColor" :style="{ backgroundColor: bodyColor }"
+                    @click="handleBodyColorChange(bodyColor)" :class="{ selected: selectedBodyColor === bodyColor }">
                 </li>
             </ul>
         </div>
-        <div id="abdomen-box">
-            <h3>腹部</h3>
-            <ul class="abdomen-options options-colors">
-                <li v-for="color in abdomenColors" :key="color" :style="{ backgroundColor: color }"
-                    @click="selectedAbdomenColor = color" :class="{ selected: selectedAbdomenColor === color }">
-                    {{ color }}
-                </li>
-            </ul>
-        </div>
+    </div>
+    <div class="componentsarea">
         <div id="spot-box">
             <h3>斑紋</h3>
             <ul class="spot-options options-colors">
-                <li v-for="color in spotColors" :key="color" :style="{ backgroundColor: color }"
-                    @click="selectedSpotColor = color" :class="{ selected: selectedSpotColor === color }">
-                    {{ color }}
+                <li v-for="spotColor in spotColors" :key="spotColor" :style="{ backgroundColor: spotColor }"
+                    @click="handleSpotColorChange(spotColor)" :class="{ selected: selectedSpotColor === spotColor }">
                 </li>
             </ul>
         </div>
@@ -31,30 +22,43 @@
 </template>
 
 <script>
-    import { ref } from 'vue';
+    import { ref, reactive } from 'vue';
 
     export default {
         name: 'SkinComponent',
-        setup() {
-            const skinColors = ['#d2eb86', '#1ca88e', '#fbb466', '#f9eaa7', '#f7f7f7', '#fb7676', '#ffdcdc', '#9dd0e1', '#a9aaff', '#c088f9']; // 這些值代表不同的膚色
-            const selectedSkinColor = ref(skinColors[0]); // 預設選擇第一個膚色
-            const abdomenColors = ['#d2eb86', '#1ca88e', '#fbb466', '#f9eaa7', '#f7f7f7', '#fb7676', '#ffdcdc', '#9dd0e1', '#a9aaff', '#c088f9']; // 這些值代表不同的腹部
-            const selectedAbdomenColor = ref(abdomenColors[3]); // 預設選擇第一個腹部顏色
-            const spotColors = ['#d2eb86', '#1ca88e', '#fbb466', '#f9eaa7', '#f7f7f7', '#fb7676', '#ffdcdc', '#9dd0e1', '#a9aaff', '#c088f9']; // 這些值代表不同的斑紋
-            const selectedSpotColor = ref(spotColors[9]); // 預設選擇第一個斑紋顏色
-            const updateSkinColor = (color) => {
-                selectedSkinColor.value = color;
-                console.log("Selected Color: ", color);
-                // 發送事件，帶上選中的顏色
-                // 注意: 在 setup() 中使用 this.$emit 是不合適的，應該返回一個提供給模板的方法
+        props: {
+            spotColor: String
+        },
+        setup(props, context) {
+            // 使用reactive代替ref，创建一个反应性的state对象
+            const spotState = reactive({
+                selectedSpotColor: props.currentColor
+            });
+            const bodyState = reactive({
+                selectedBodyColor: props.currentColor
+            });
+
+            const spotColors = ['#d2eb86', '#1ca88e', '#fbb466', '#f9eaa7', '#f7f7f7', '#fb7676', '#ffdcdc', '#9dd0e1', '#a9aaff', '#c088f9'];
+            const bodyColors = ['#d2eb86', '#1ca88e', '#fbb466', '#f9eaa7', '#f7f7f7', '#fb7676', '#ffdcdc', '#9dd0e1', '#a9aaff', '#c088f9'];
+
+            // 更新選中的颜色
+            const handleSpotColorChange = (spotColor) => {
+                context.emit('spot-color-selected', spotColor);
+                console.log("事件已發射，斑紋顏色：", spotColor);
             };
+            const handleBodyColorChange = (bodyColor) => {
+                console.log(bodyColor);
+                context.emit('body-color-selected', bodyColor);
+                console.log("事件已發射，軀幹顏色：", bodyColor);
+            };
+
             return {
-                skinColors, selectedSkinColor, updateSkinColor, // 將此方法提供給模板
-                abdomenColors, selectedAbdomenColor,
-                spotColors, selectedSpotColor
+                spotColors, selectedSpotColor: spotState.selectedSpotColor, handleSpotColorChange,
+                bodyColors, selectedBodyColor: bodyState.selectedBodyColor, handleBodyColorChange,
+
 
             };
         },
-
+        
     };
 </script>
