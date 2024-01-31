@@ -1,31 +1,32 @@
-.index_row{
+.index_row {
   width: 90%;
   margin: auto;
-  @include T(){
+  @include T() {
     width: 80%;
   }
-  @include PC(){
+  @include PC() {
     max-width: 1140px;
   }
 }
 main {
-
   //banner
   .header_banner {
-    @include T(){}
+    @include T() {
+    }
     width: 100%;
     display: flex;
     position: relative;
     padding: 0 0 4.8% 0;
-    background-image: 
-      linear-gradient(90deg, rgba(255, 255, 255, 0.1) 1px, transparent 1px),
+    background-image: linear-gradient(
+        90deg,
+        rgba(255, 255, 255, 0.1) 1px,
+        transparent 1px
+      ),
       linear-gradient(180deg, rgba(255, 255, 255, 0.1) 1px, transparent 1px),
       linear-gradient(to top, $blue-1, $blue-2, $blue-2);
     background-size: 40px 40px, 40px 40px, cover;
     background-repeat: repeat, repeat, no-repeat;
     z-index: 949;
-
-
 
     #main-banner {
       width: 72%;
@@ -49,8 +50,7 @@ main {
       padding: $XS-spacing;
       background-color: $white-1;
       outline: 2px solid $black;
-      box-shadow:
-        0 0 0 4px #fff;
+      box-shadow: 0 0 0 4px #fff;
       width: 30%;
       display: none;
       flex-direction: column;
@@ -58,13 +58,12 @@ main {
       gap: $S-spacing;
       color: $black;
       z-index: 1;
-      
-      @include T(){
+
+      @include T() {
         padding: $M-spacing;
         background-color: $white-1;
         outline: 2px solid $black;
-        box-shadow:
-          0 0 0 4px #fff;
+        box-shadow: 0 0 0 4px #fff;
         width: 20%;
         display: flex;
         flex-direction: column;
@@ -77,7 +76,7 @@ main {
         font-size: $M-h4;
 
         font-family: Zen Maru Gothic;
-        @include T(){
+        @include T() {
           font-size: $PC-h3;
         }
       }
@@ -90,7 +89,7 @@ main {
 
       .card-text {
         font-size: $small;
-        @include T(){
+        @include T() {
           font-size: $PC-text;
         }
       }
@@ -102,7 +101,7 @@ main {
       left: $XS-spacing;
       top: 10%;
       border: $S-spacing solid $blue-1;
-      @include T(){
+      @include T() {
         left: $L-spacing;
         border: $M-spacing solid $blue-1;
       }
@@ -114,11 +113,10 @@ main {
       left: $XS-spacing;
       top: 20%;
       border: $S-spacing solid $orange-1;
-      @include T(){
+      @include T() {
         left: $L-spacing;
         border: $M-spacing solid $orange-1;
       }
-
     }
     #newsCard {
       //最新消息
@@ -126,7 +124,7 @@ main {
       left: $XS-spacing;
       top: 30%;
       border: $S-spacing solid $green-1;
-      @include T(){
+      @include T() {
         left: $L-spacing;
         border: $M-spacing solid $green-1;
       }
@@ -138,7 +136,7 @@ main {
       left: $XS-spacing;
       top: 30%;
       border: $S-spacing solid $red;
-      @include T(){
+      @include T() {
         top: 40%;
         left: $L-spacing;
         border: $M-spacing solid $red;
@@ -151,7 +149,7 @@ main {
       right: $XS-spacing;
       top: 10%;
       border: $S-spacing solid $yellow;
-      @include T(){
+      @include T() {
         right: $L-spacing;
         border: $M-spacing solid $yellow;
       }
@@ -201,7 +199,6 @@ main {
       position: absolute;
       left: 38.35%;
       top: 17.58%;
-
     }
 
     #sign {
@@ -231,7 +228,6 @@ main {
       position: absolute;
       left: 64.15%;
       top: 39.15%;
-
     }
 
     #reserve:hover {
@@ -278,7 +274,7 @@ main {
       width: 0.66%;
       position: absolute;
       left: 53.195%;
-      top: 38.0%;
+      top: 38%;
       transition: left 0.1s ease, top 0.1s ease;
     }
 
@@ -287,21 +283,113 @@ main {
       bottom: -1px;
       z-index: 950;
     }
-
   }
 
   // header + 波浪圖
 
   //內容
-  .index{
+  .index {
     width: 100%;
     // 所有商品
     .index_products {
       width: 100%;
-      height: 200px;
       background-color: $red;
+      .index_row {
+        color: $black;
+        padding: $XXL-spacing 0;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        h2 {
+          font-size: 48px;
+          font-family: "Zen Maru Gothic";
+          -webkit-text-stroke: 1px $white-1;
+        }
+        .prodBackground {
+          background-color: $white-1;
+          border: 3px solid $black;
+          border-radius: $S-button-radius;
+          padding: $XL-spacing 0;
+          display: flex;
+          flex-direction: column;
+          gap: $L-spacing;
+          width: 90%;
+          overflow: hidden;
+          @include T() {
+            width: 90%;
+          }
+          @include PC() {
+            max-width: $max-width;
+          }
+          .prodBreif {
+            padding: 0 $S-spacing;
+            @include T() {
+              padding: 0 $XXL-spacing;
+            }
+            @include PC() {
+              padding: 0 $XXXL-spacing;
+            }
+            p {
+              font-size: $PC-text;
+            }
+          }
+          .prodMarquee {
+            border-top: 1px solid #b3b3b3;
+            border-bottom: 2px solid #b3b3b3;
+            background-image: url("@/assets/images/home/Grid.svg");
+            height: 250px;
+            .marqueeAnimation {
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              animation: marquee 10s linear infinite;
+              &:hover {
+                animation-play-state: paused;
+              }
+              .productCard {
+                margin: 0 $S-spacing;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                transform: translateY(20px);
+                .productImg {
+                  border: 1px solid $black;
+                  padding: $S-spacing;
+                  background-color: $white-1;
+                  img {
+                    width: 150px;
+                  }
+                }
+                .productName {
+                  border: 1px solid $black;
+                  padding: $S-spacing;
+                  transform: translateY(-10px);
+                  background-color: $green-1;
+                  p {
+                    font-size: $PC-text;
+                    white-space: nowrap;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                  }
+                }
+              }
+            }
+          }
+        }
+        .searchArea {
+          border: 1px solid balck;
+        }
+      }
     }
-
+    @keyframes marquee {
+      0% {
+        transform: translateX(0);
+      }
+      100% {
+        transform: translateX(-100%);
+      }
+    }
     // 服務項目
     .index_service {
       width: 100%;
@@ -411,74 +499,75 @@ main {
     }
 
     // Griddy造型屋
-    .index_griddy {}
+    .index_griddy {
+    }
 
     // 最新消息
     .index_news {
       width: 100%;
       background-color: $orange-1;
-      .index_row{
+      .index_row {
         width: 100%;
-        @include PC(){
+        @include PC() {
           width: 80%;
           max-width: 1140px;
         }
       }
-      h1{
+      h1 {
         text-align: center;
         padding: $XL-spacing 0 $L-spacing;
       }
-      .news_card_content{
+      .news_card_content {
         display: flex;
         overflow: scroll;
         margin: $M-spacing 0;
         padding: 20px;
-        @include PC(){
+        @include PC() {
           overflow: visible;
           justify-content: center;
         }
-        &::-webkit-scrollbar{
+        &::-webkit-scrollbar {
           display: none;
         }
         $cardWidth: 25vw;
-        .newsCard{
+        .newsCard {
           height: 340px;
           width: 80vw;
           margin: 10px;
-          @include PC(){
+          @include PC() {
             width: calc($cardWidth - 80px);
           }
 
-          
-          .text{
+          .text {
             background-color: $white-1;
-            border-radius: 0 0 calc($M-button-radius - 2px) calc($M-button-radius - 2px);
-            @include T(){
-              border-radius: 0 0 calc($S-button-radius - 2px) calc($S-button-radius - 2px);
+            border-radius: 0 0 calc($M-button-radius - 2px)
+              calc($M-button-radius - 2px);
+            @include T() {
+              border-radius: 0 0 calc($S-button-radius - 2px)
+                calc($S-button-radius - 2px);
             }
           }
         }
-        .newsImg img{
+        .newsImg img {
           width: 100%;
         }
       }
-      .news_button{
+      .news_button {
         padding: $L-spacing 0 $XXL-spacing;
-      }      
-      button{
+      }
+      button {
         display: block;
         margin: auto;
-        
       }
     }
 
     // 一起遊樂 IG API
-    .index_insta {}
+    .index_insta {
+    }
 
     // Grid Island 關於我們
-    .index_about {}
-
-
+    .index_about {
+    }
   }
 } //index
 
