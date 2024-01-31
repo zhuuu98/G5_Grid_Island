@@ -127,7 +127,6 @@
                 一起加入桌遊的行列吧！
               </p>
             </div>
-<<<<<<< HEAD
             <div class="prodMarquee">
               <div class="marqueeAnimation">
                 <div class="productCard" v-for="item in productData">
@@ -140,61 +139,6 @@
                     <p>{{ item.prod_name }}</p>
                   </div>
                 </div>
-=======
-          </div>
-          <div class="wave">
-            <img :src="wave" alt="bgcwave" id="wave1" />
-          </div>
-          <!-- 服務項目 -->
-          <div class="index_service">
-            <div class="index_row">
-              <p>服務項目</p>
-              <!-- 寫這邊 -->
-
-
-            </div>
-          </div>
-          <!-- 預約方式 -->
-          <div class="index_reserve ">
-            <div class="index_row container ">
-            <!-- 寫這邊 -->
-              <h1>預約方式</h1>
-              <div class="reserveInfo row ">
-                <div class="reserveContent  col-6 col-T-10 col-PC-10">
-                  <!-- <img v-for="num in 3" :src="getImageUrl(`home/reserveInfo_${num}.png`)" alt="預約方式"> -->
-                  <div class="reserveStep1">
-                    <img src="../assets/images/home/reserveInfo_1.png" alt="">
-                    <span>確認預約須知</span>
-                  </div>
-                  <div class="reserveStep2">
-                    <img src="../assets/images/home/reserveInfo_2.png" alt="">
-                    <span>選擇人數、日期、時段</span>
-                  </div>
-                  <div class="reserveStep3">
-                    <img src="../assets/images/home/reserveInfo_3.png" alt="">
-                    <span>選擇桌號，預約完成！</span>
-                  </div>
-                </div>
-              </div>
-              <button class="btn_lg" @click="goBook()">預約場地</button>
-            </div>
-          </div>
-          <!-- Griddy造型屋 -->
-          <div class="index_griddy">
-            <div class="index_row">
-              
-            </div>
-          </div>
-          <!-- 最新消息 -->
-          <div class="index_news">
-            <div class="index_row" >
-              <h1>最新消息</h1>
-              <div class="news_card_content">
-                <NewsCard v-for="(item, index) in latestData" :key="item.news_id" :newsTitle="item.news_title" :newsDate="item.news_date" :imgUrl="`https://tibamef2e.com/chd103/g1/image/news/${item.news_img}`" :newsId="item.news_id" />
-              </div>
-              <div class="news_button">
-                <button class="btn_lg" @click="goNews()">所有最新消息</button>
->>>>>>> ee76cb454f3e29a87f99af543c5fa697a5347d0e
               </div>
             </div>
           </div>
@@ -213,6 +157,7 @@
           </div>
         </div>
       </div>
+
       <div class="wave">
         <img :src="wave" alt="bgcwave" id="wave1" />
       </div>
@@ -223,6 +168,37 @@
           <!-- 寫這邊 -->
         </div>
       </div>
+      <!-- 預約方式 -->
+      <div class="index_reserve">
+        <div class="index_row container">
+          <!-- 寫這邊 -->
+          <h1>預約方式</h1>
+          <div class="reserveInfo row">
+            <div class="reserveContent col-6 col-T-10 col-PC-10">
+              <!-- <img v-for="num in 3" :src="getImageUrl(`home/reserveInfo_${num}.png`)" alt="預約方式"> -->
+              <div class="reserveStep1">
+                <img src="../assets/images/home/reserveInfo_1.png" alt="" />
+                <span>確認預約須知</span>
+              </div>
+              <div class="reserveStep2">
+                <img src="../assets/images/home/reserveInfo_2.png" alt="" />
+                <span>選擇人數、日期、時段</span>
+              </div>
+              <div class="reserveStep3">
+                <img src="../assets/images/home/reserveInfo_3.png" alt="" />
+                <span>選擇桌號，預約完成！</span>
+              </div>
+            </div>
+          </div>
+          <button class="btn_lg" @click="goBook()">預約場地</button>
+        </div>
+      </div>
+      <!-- Griddy造型屋 -->
+      <div class="index_griddy">
+        <div class="index_row"></div>
+      </div>
+      <!-- 最新消息 -->
+
       <!-- 預約方式 -->
       <div class="index_reserve">
         <div class="index_row">
@@ -290,7 +266,6 @@ import headerWave from "../assets/images/header/headerWave.svg";
 
 import NewsCard from "../components/NewsCard.vue";
 
-<<<<<<< HEAD
 export default {
   name: "HomeView",
   components: {
@@ -329,47 +304,6 @@ export default {
   setup() {
     const leftEyeRef = ref(null);
     const rightEyeRef = ref(null);
-=======
-  export default {
-    name: 'HomeView',
-    components: {
-      MainHeader,
-      NewsCard,
-    },
-    data() {
-      return {
-        bannerImage: bannerImage,
-        treeSvg: treeSvg,
-        news: news,
-        comment: comment,
-        roof: roof,
-        sign: sign,
-        games: games,
-        reserve: reserve,
-        cart: cart,
-        bar: bar,
-        bug: bug,
-        showTreeCard: false, //會員中心，樹的卡片
-        showSignCard: false, //關於我們，招牌
-        showCommentCard: false, //留言板，留言板
-        showNewsCard: false, //最新消息，最新消息
-        showReserveCard: false, //場地預約，石檯
-        showGamesCard: false, //所有商品，遊戲櫃
-        showCartCard: false, //購物車，購物車
-        wave: wave,
-        lEye: lEye,
-        rEye: rEye,
-        headerWave: headerWave,
-        respondData: [],
-        latestData: [],
-
-
-      };
-    },
-    setup() {
-      const leftEyeRef = ref(null);
-      const rightEyeRef = ref(null);
->>>>>>> ee76cb454f3e29a87f99af543c5fa697a5347d0e
 
     const moveEye = (
       eye,
@@ -442,7 +376,7 @@ export default {
   },
   created() {
     this.axiosGetData();
-    this.axiosGetProdData();
+    this.axiosGetProductData();
   },
   mounted() {
     // 为整个容器添加事件监听器
@@ -475,8 +409,7 @@ export default {
           // console.log('最新的4筆資料:', this.latestData);
         });
     },
-<<<<<<< HEAD
-    axiosGetProdData() {
+    axiosGetProductData() {
       axios
         .get("https://tibamef2e.com/chd103/g5/phps/ProductM.php")
         .then((res) => {
@@ -487,28 +420,13 @@ export default {
     goNews() {
       this.$router.push("/news");
     },
+    getImageUrl(paths) {
+      //取得圖片路徑
+      return new URL(`../assets/images/${paths}`, import.meta.url).href;
+    },
+    goBook() {
+      this.$router.push("/PreBook");
+    },
   },
 };
 </script>
-=======
-    goNews(){
-      this.$router.push('/news')
-    },
-    getImageUrl(paths) { //取得圖片路徑
-            return new URL(`../assets/images/${paths}`, import.meta.url).href
-        },
-    goBook(){
-      this.$router.push('/PreBook')
-
-    },
-
-
-  }
-    
-
-
-
-
-  };
-</script>
->>>>>>> ee76cb454f3e29a87f99af543c5fa697a5347d0e

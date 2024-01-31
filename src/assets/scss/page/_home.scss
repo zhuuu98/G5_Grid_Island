@@ -399,51 +399,49 @@ main {
 
     //預約方式
     .index_reserve {
-<<<<<<< HEAD
-=======
       background-color: $blue-1;
       padding: $XL-spacing;
-      .index_row{
+      .index_row {
         display: flex;
         flex-direction: column;
         align-items: center;
         justify-content: center;
         gap: $XL-spacing;
       }
-      h1{
+      h1 {
         text-align: center;
         margin: $M-spacing;
       }
-      .reserveInfo{
+      .reserveInfo {
         justify-content: center;
       }
-      .reserveContent{
+      .reserveContent {
         display: flex;
         flex-wrap: wrap;
         justify-content: center;
         align-items: center;
         gap: $XL-spacing;
-        @include T(){
+        @include T() {
           flex-wrap: nowrap;
           gap: $L-spacing;
         }
-        @include PC(){
+        @include PC() {
           flex-wrap: nowrap;
           gap: $XL-spacing;
         }
       }
-      .reserveContent img{
+      .reserveContent img {
         // width: 100%;
         vertical-align: top;
         width: 200px;
-        @include PC(){
+        @include PC() {
           width: 300px;
         }
       }
-      [class*="reserveStep"]{
+      [class*="reserveStep"] {
         position: relative;
       }
-      [class*="reserveStep"]>span{
+      [class*="reserveStep"] > span {
         background-color: $green-1;
         padding: $S-spacing $M-spacing;
         border: 1px solid $blue-3;
@@ -452,53 +450,46 @@ main {
         text-align: center;
         position: absolute;
       }
-      .reserveStep1 span{
+      .reserveStep1 span {
         left: 18%;
         bottom: -5%;
-        @include T(){
+        @include T() {
           left: 20%;
           bottom: -4%;
         }
-        @include PC(){
+        @include PC() {
           left: 30%;
           bottom: -4%;
         }
       }
 
-      .reserveStep2 span{
+      .reserveStep2 span {
         // width: 290px;
         left: 4%;
         bottom: -5%;
-        @include T(){
+        @include T() {
           left: 5%;
           bottom: -4%;
         }
-        @include PC(){
+        @include PC() {
           left: 20%;
           bottom: -4%;
         }
-
       }
 
-      .reserveStep3 span{
+      .reserveStep3 span {
         // width: 290px;
         left: 5%;
         bottom: -5%;
-        @include T(){
+        @include T() {
           right: -4%;
           bottom: -4%;
         }
-        @include PC(){
+        @include PC() {
           left: 20%;
           bottom: -4%;
         }
-
       }
-
-
-
-
->>>>>>> ee76cb454f3e29a87f99af543c5fa697a5347d0e
     }
 
     // Griddy造型屋
