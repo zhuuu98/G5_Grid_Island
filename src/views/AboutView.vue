@@ -41,7 +41,7 @@
 
           <!-- ocean1 -->
           <div class="ocean_1 about_ocean">
-            <img src="../../src/assets/images/about/about-ocean-1.svg" alt="">
+            <img src="../../src/assets/images/about/about-ocean-1.svg" alt="about_ocean1">
           </div>
 
           <!-- 環境介紹 -->
@@ -112,7 +112,7 @@
           </div>
 
         <div class="ocean_2 about_ocean">
-          <img src="../../src/assets/images/about/about-ocean-2.svg" alt="ocean_3">
+          <img src="../../src/assets/images/about/about-ocean-2.svg" alt="ocean_2">
         </div>
 
           <!-- griddy介紹 -->

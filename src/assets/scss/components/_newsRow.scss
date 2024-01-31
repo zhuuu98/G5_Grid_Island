@@ -4,6 +4,8 @@
   border: 2px solid $blue-4;
   height: 100px;
   display: flex;
+  background-color: $white-1;
+  max-width: $max-width;
   @include T(){
     border-radius: $S-button-radius;
     width: calc(100vw / 1 - 80px);
