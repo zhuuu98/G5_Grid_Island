@@ -400,6 +400,7 @@ main {
             width: 100%;
           }
           .searchGroup {
+            position: relative;
             display: flex;
             flex-direction: column;
             gap: $S-spacing;
@@ -416,6 +417,25 @@ main {
               border-radius: $input-radius;
               @include PC() {
                 width: 300px;
+              }
+            }
+            .searchResult {
+              border-radius: $input-radius;
+              padding: $S-spacing;
+              background-color: $black;
+              width: 100%;
+              position: absolute;
+              bottom: -100px;
+              height: 100px;
+              overflow-y: auto;
+              p {
+                a {
+                  font-size: $M-text;
+                  color: $white-1;
+                  white-space: nowrap;
+                  overflow: hidden;
+                  text-overflow: ellipsis;
+                }
               }
             }
           }

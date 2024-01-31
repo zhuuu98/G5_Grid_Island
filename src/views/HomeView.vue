@@ -189,7 +189,25 @@
                 <label for="productSearch">搜尋遊戲</label>
               </div>
               <div class="searchInput">
-                <input type="search" id="productSearch" />
+                <input
+                  type="text"
+                  id="productSearch"
+                  @input="handleSearch"
+                  @focus="searchResultDisplay = true"
+                  @blur="searchResultClose"
+                  v-model="gameSearch"
+                />
+              </div>
+              <div class="searchResult" v-show="searchResultDisplay">
+                <p v-for="item in displayProdData">
+                  <router-link
+                    :to="{
+                      name: 'productInfo',
+                      params: { id: item.prod_id },
+                    }"
+                    >{{ item.prod_name }}</router-link
+                  >
+                </p>
               </div>
             </div>
           </div>
@@ -364,6 +382,9 @@ export default {
       respondData: [],
       latestData: [],
       productData: [],
+      displayProdData: [],
+      gameSearch: "",
+      searchResultDisplay: false,
     };
   },
   setup() {
@@ -478,8 +499,9 @@ export default {
       axios
         .get("https://tibamef2e.com/chd103/g5/phps/ProductM.php")
         .then((res) => {
-          console.log(res.data);
           this.productData = res.data;
+          this.displayProdData = res.data;
+          console.log(this.displayProdData);
         });
     },
     goNews() {
@@ -497,6 +519,19 @@ export default {
     },
     goAbout() {
       this.$router.push("/About");
+    },
+    handleSearch() {
+      console.log(this.productData);
+      this.displayProdData = this.productData.filter((item) => {
+        return item.prod_name.includes(this.gameSearch);
+      });
+      console.log(this.displayProdData);
+    },
+    searchResultClose() {
+      setTimeout(() => {
+        // 关闭搜索建议列表的逻辑
+        this.searchResultDisplay = false;
+      }, 100);
     },
   },
 };
