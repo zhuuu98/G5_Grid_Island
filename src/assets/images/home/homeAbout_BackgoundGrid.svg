@@ -1,0 +1,15 @@
+<svg width="1064" height="419" viewBox="0 0 1064 419" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g opacity="0.9">
+<mask id="path-1-inside-1_1764_24666" fill="white">
+<path d="M0 0H1064V419H0V0Z"/>
+</mask>
+<path d="M0 0H1064V419H0V0Z" fill="url(#pattern0)"/>
+<path d="M0 1H1064V-1H0V1ZM1064 418H0V420H1064V418Z" fill="#AAAAAA" mask="url(#path-1-inside-1_1764_24666)"/>
+</g>
+<defs>
+<pattern id="pattern0" patternContentUnits="objectBoundingBox" width="0.0225564" height="0.0572792">
+<use xlink:href="#image0_1764_24666" transform="scale(0.000469925 0.00119332)"/>
+</pattern>
+<image id="image0_1764_24666" width="48" height="48" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAABZSURBVHgB7dpBDcAwDATBpPyRmGSrolhZmkFw+787M+/ZbHPAv/05ywmoCagJqAmoCagJqAmoCagJqAmoCagJqAmoCagJqAmoCagJqAmoCagJqAmo3e13mw+QkgxRwieF3QAAAABJRU5ErkJggg=="/>
+</defs>
+</svg>
