@@ -190,7 +190,6 @@
               </div>
             </div>
           </div>
-<<<<<<< HEAD
           <button class="btn_lg" @click="goBook()">預約場地</button>
         </div>
       </div>
@@ -223,7 +222,6 @@
               :imgUrl="`https://tibamef2e.com/chd103/g1/image/news/${item.news_img}`"
               :newsId="item.news_id"
             />
-=======
           <!-- Grid Island 關於我們 -->
           <div class="index_about">
             <div class="index_row">
@@ -243,7 +241,6 @@
               </div>
               <button class="btn_lg" @click="goAbout()">關於我們</button>
             </div>
->>>>>>> smallguo
           </div>
           <div class="news_button">
             <button class="btn_lg" @click="goNews()">所有最新消息</button>
@@ -262,6 +259,7 @@
           <!-- 寫這邊 -->
         </div>
       </div>
+    </div>
     </div>
   </main>
 </template>
@@ -442,7 +440,6 @@ export default {
     goNews() {
       this.$router.push("/news");
     },
-<<<<<<< HEAD
     getImageUrl(paths) {
       //取得圖片路徑
       return new URL(`../assets/images/${paths}`, import.meta.url).href;
@@ -450,20 +447,16 @@ export default {
     goBook() {
       this.$router.push("/PreBook");
     },
-  },
-};
-</script>
-=======
     goAbout(){
       this.$router.push('/About')
     },
-
+  
   }
+  }
+</script>
     
 
 
 
 
-  };
-</script>
->>>>>>> smallguo
+  

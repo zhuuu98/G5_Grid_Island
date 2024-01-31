@@ -17,10 +17,6 @@ export default defineConfig({
   },
   server: {
     // host: '192.168.0.155' //請輸入自己的IP
-<<<<<<< HEAD
-  },
-=======
-    host: '192.168.5.136'
+    // host: '192.168.5.136'
   }
->>>>>>> smallguo
 });
