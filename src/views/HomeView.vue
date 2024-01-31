@@ -225,11 +225,55 @@
         <div class="index_row container">
           <!-- 寫這邊 -->
           <h2>服務項目</h2>
-            <div class="serviceMarqueeContent">
+            <div class="serviceMarqueeContent" >
               <div class="marqueePic">
-                <img v-for="num in 4" :src="getImageUrl(`home/servicePic_${num}.svg`)" alt="首頁服務項目">
-                <img v-for="num in 4" :src="getImageUrl(`home/servicePic_${num}.svg`)" alt="首頁服務項目">
-            </div>
+                  <img src="../assets/images/home/servicePic_1.svg" alt="首頁服務項目">
+                  <div class="marqueeText">
+                    <p>桌游販售</p>
+                  </div>
+              </div>
+              <div class="marqueePic">
+                  <img src="../assets/images/home/servicePic_2.svg" alt="首頁服務項目">
+                  <div class="marqueeText">
+                    <p>桌游販售</p>
+                  </div>
+              </div>
+              <div class="marqueePic">
+                  <img src="../assets/images/home/servicePic_3.svg" alt="首頁服務項目">
+                  <div class="marqueeText">
+                    <p>桌游遊玩教學</p>
+                  </div>
+              </div>
+              <div class="marqueePic">
+                  <img src="../assets/images/home/servicePic_4.svg" alt="首頁服務項目">
+                  <div class="marqueeText">
+                    <p>各式場地租借</p>
+                  </div>
+              </div>
+              <div class="marqueePic">
+                  <img src="../assets/images/home/servicePic_1.svg" alt="首頁服務項目">
+                  <div class="marqueeText">
+                    <p>桌游販售</p>
+                  </div>
+              </div>
+              <div class="marqueePic">
+                  <img src="../assets/images/home/servicePic_2.svg" alt="首頁服務項目">
+                  <div class="marqueeText">
+                    <p>桌游販售</p>
+                  </div>
+              </div>
+              <div class="marqueePic">
+                  <img src="../assets/images/home/servicePic_3.svg" alt="首頁服務項目">
+                  <div class="marqueeText">
+                    <p>桌游遊玩教學</p>
+                  </div>
+              </div>
+              <div class="marqueePic">
+                  <img src="../assets/images/home/servicePic_4.svg" alt="首頁服務項目">
+                  <div class="marqueeText">
+                    <p>各式場地租借</p>
+                  </div>
+              </div>
           </div>
         </div>
       </div>
@@ -386,6 +430,7 @@ export default {
       displayProdData: [],
       gameSearch: "",
       searchResultDisplay: false,
+      serviceText:['桌遊販售','精釀啤酒與飲料','桌上遊戲遊玩與教學','各式場地租借']
     };
   },
   setup() {

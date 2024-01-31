@@ -469,33 +469,47 @@ main {
         border-radius: $S-button-radius;
         padding: $XL-spacing 0;
         display: flex;
-        flex-direction: column;
-        gap: $L-spacing;
-        width: 90%;
+        // flex-direction: column;
+        // gap: $L-spacing;
+        // width: 90%;
         background:$white-1 url("/src/assets/images/home/Grid.svg") no-repeat center;
         @include T(){
           background:$white-1 url("/src/assets/images/home/Grid.svg") no-repeat center;
           padding: $XXL-spacing 0;
+          // width: 900px;
 
         }
+        @include PC(){
+          // width: 1200px;
+        }
+
 
 
       }
       .marqueePic{
+      width: 400px;
       display: flex;
+      flex-direction: column;
       align-items: center;
       justify-content: center;
-      animation: marquee 15s linear infinite;
-      gap: $M-spacing;
+      animation: marquee 5s linear infinite;
+      // gap: $M-spacing;
 
       }
       .marqueePic img{
         width: 100%;
         vertical-align: top;
         max-width: 260px;
-        // @include T(){
-        //   max-width: 300px;
-        // }
+        @include T(){
+          max-width: 300px;
+        }
+      }
+      .marqueeText p{
+        background-color: $green-1;
+        padding: $S-spacing $M-spacing;
+        transform: translateY(-15px);
+        border: 1px solid $black;
+
       }
     }
 
