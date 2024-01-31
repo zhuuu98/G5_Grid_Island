@@ -294,7 +294,7 @@ main {
     .index_products {
       width: 100%;
       // background-color: $red;
-      background-color: #3BB1B9;
+      background-color: #3bb1b9;
       .index_row {
         color: $black;
         padding: $XXL-spacing 0;
@@ -473,19 +473,19 @@ main {
         display: flex;
         // flex-direction: column;
         // gap: $L-spacing;
-        // width: 90%;
+        width: 90%;
+        gap: $M-spacing;
         background: $white-1 url("/src/assets/images/home/Grid.svg") no-repeat
           center;
         @include T() {
           background: $white-1 url("/src/assets/images/home/Grid.svg") no-repeat
             center;
           padding: $XXL-spacing 0;
-          // width: 900px;
+          width: 90%;
         }
         @include PC() {
-          // width: 1200px;
-          max-width: 1200px;
-          gap: $M-spacing;
+          width: 100%;
+          max-width: $max-width;
         }
       }
       .marqueePic {
