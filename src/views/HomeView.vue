@@ -204,9 +204,14 @@
       </div>
       <!-- 服務項目 -->
       <div class="index_service">
-        <div class="index_row">
-          <p>服務項目</p>
+        <div class="index_row container">
           <!-- 寫這邊 -->
+          <h2>服務項目</h2>
+            <div class="serviceMarqueeContent">
+              <div class="marqueePic">
+                <img v-for="num in 4" :src="getImageUrl(`home/servicePic_${num}.svg`)" alt="首頁服務項目">
+            </div>
+          </div>
         </div>
       </div>
       <!-- 預約方式 -->
@@ -298,11 +303,6 @@
             </div>
           </div>
           <button class="btn_lg" @click="goAbout()">關於我們</button>
-        </div>
-      </div>
-      <div class="index_about">
-        <div class="index_row">
-          <!-- 寫這邊 -->
         </div>
       </div>
     </div>
