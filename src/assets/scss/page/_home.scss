@@ -293,7 +293,8 @@ main {
     // 所有商品
     .index_products {
       width: 100%;
-      background-color: $red;
+      // background-color: $red;
+      background-color: #3BB1B9;
       .index_row {
         color: $black;
         padding: $XXL-spacing 0;
@@ -453,7 +454,8 @@ main {
     // 服務項目
     .index_service {
       width: 100%;
-      background-color: $blue-2;
+      // background-color: $blue-2;
+      background-color: $orange-1;
       padding: $XL-spacing 0;
       .index_row {
         display: flex;
