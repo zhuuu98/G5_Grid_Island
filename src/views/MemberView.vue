@@ -4,11 +4,15 @@
         <div class="container">
             <div class="memberMain row">
                 <!-- 左側選單 -->
-                <MemberCard class="col-T-3 col-PC-3"/>
+                <MemberCard class="col-T-3 col-PC-3" @changeMemberInfo="changeMember"
+                @orderInfo="order"
+                @bookInfo="book" 
+                @backToIndex="backToMemIndex"
+                />
                 <!-- 右側主要內容 -->
                 <!-- 會員中心首頁 -->
-                <div class="memberContent col-T-7 col-PC-7" v-for="id in memID">
-                    <h3>您好，{{id}}，歡迎入島遊玩！</h3>
+                <div class="memberContentIndex col-T-7 col-PC-7" v-for="id in memID" v-show="isChoosedIndex_PC">
+                    <h3>您好，{{ id }}，歡迎入島遊玩！</h3>
                     <!-- 訂單資訊 -->
                     <div class="memberOrder">
                         <div class="memberOrderTitle">
@@ -35,44 +39,163 @@
                             <button class="memberLookBook btn_lg_orange">查看預約</button>
                         </div>
                         <div class="memberBooklog" v-for="date in bookDate">
-                            <div class="dateAndCancel" >
+                            <div class="dateAndCancel">
                                 <p>{{ date }}</p>
-                                <button :class="{ 'btn_sm_1': true, 'disabled': isPastDate(date) }" @click="cancelReservation(date)">取消預約</button>
+                                <button :class="{ 'btn_sm_1': true, 'disabled': isPastDate(date) }"
+                                    @click="cancelReservation(date)">取消預約</button>
                             </div>
-                            <div class="selectedTime" >
-                                <button class="chooseTime"
-                                v-for="(choose,index) in selectedTime.timePeriod" :key="index"
-                                >
-                                <p>{{ choose }}</p>
-                                <p>{{ selectedTime.hours[index] }}</p>
+                            <div class="selectedTime">
+                                <button class="chooseTime" v-for="(choose, index) in selectedTime.timePeriod" :key="index">
+                                    <p>{{ choose }}</p>
+                                    <p>{{ selectedTime.hours[index] }}</p>
                                 </button>
-                                <div class="numPeople" >
+                                <div class="numPeople">
                                     <p>人數：{{ numPeople[0] }}</p>
                                 </div>
                             </div>
                         </div>
-                        
+
                     </div>
                 </div>
-                <!-- 會員資料修改 -->
+                <!-- PC會員資料修改 -->
+                <div class="PC_EditData col-T-7 col-PC-7" v-show="isChoosedEditData_PC">
+                    <div class="PC_editDataTitle">
+                        <img src="../assets/images/member/memberAsideIcon_2.svg" alt="會員資料修改icon">
+                        <h3>會員資料修改</h3>
+                    </div>
+                    <form action="" class="PC_editDataContent">
+                        <label for="inputName">
+                            <p>姓名：</p>
+                            <input type="text" placeholder="請輸入姓名" id="inputName">
+                        </label>
+                        <label for="inputNickName">
+                            <p>暱稱：</p>
+                            <input type="text" placeholder="請輸入暱稱" id="inputNickName">
+                        </label>
+                        <label for="inputEmail">
+                            <p>電子信箱：</p>
+                            <input type="email" placeholder="請輸入電子信箱" id="inputEmail">
+                        </label>
+                        <label for="inputTel">
+                            <p>連絡電話：</p>
+                            <input type="tel" placeholder="請輸入連絡電話" id="inputTel">
+                        </label>
+                        <div class="inputSexual">
+                            <p>性別：</p>
+                            <div class="sexualRadio">
+                                <label for="Men">
+                                    <input type="radio" id="Men" name="sexual">
+                                    男性
+                                </label>
+                                <label for="Women">
+                                    <input type="radio" id="Women" name="sexual">
+                                    女性
+                                </label>
+                                <label for="sexualOthers">
+                                    <input type="radio" id="sexualOthers" name="sexual">
+                                    其他
+                                </label>
+                            </div>
+                        </div>
+                        <label for="inputBirth">
+                            <p>生日：</p>
+                            <input type="date" placeholder="YYYY/MM/DD" id="inputBirth">
+                        </label>
+                        <label for="inputAdress">
+                            <p>收件地址：</p>
+                            <input type="text" placeholder="請輸入收件地址" id="inputAdress">
+                        </label>
+                        <input type="submit" class="searchBtn" value="儲存設定">
+                    </form>
+                </div>
+                <!-- PC訂單資訊 -->
+                <div class="PC_OrderData col-T-7 col-PC-7" v-show="isChoosedOrderData_PC">
+                    <div class="PC_OrderDataTitle">
+                        <img :src="getImageUrl(`member/memberAsideIcon_3.svg`)">
+                        <h3>訂單資訊</h3>
+                    </div>
+                    <div class="PC_OrderDataContent">
+                        <div class="PC_ContentTitle">
+                            <p v-for="title in orderTitle">{{ title }}</p>
+                            <p></p>
+                        </div>
+                        <div class="PC_orderMain">
+                            <div class="PC_OrderDataList" v-for="(items, index) in orderList" :key="index">
+                                <div class="PC_orderSimple">
+                                    <div class="PC_orderListText">
+                                        <p>{{ items.orderDate }}</p>
+                                        <p>{{ items.orderNum }}</p>
+                                        <p>${{ items.orderTotal }}</p>
+                                        <p>{{ items.orderState }}</p>
+                                    </div>
+                                    <button class="btn_sm_1" @click="mobileOpenList(index)">訂單明細</button>
+                                </div>
+                                <div class="PC_OrderDataDetail" v-show="items.isOpen">
+                                    <div v-for="(name, nameIndex) in items.orderItems" class="PC_NameTotal">
+                                        <img :src="getImageUrl(`member/memberOrderProducts_${nameIndex + 1}.svg`)" alt="商品">
+
+
+                                        <div class="PC_orderPriceNumTotal">
+                                            <p>{{ name }}</p>
+                                            <p>${{ items.orderItemsPrice[nameIndex] }}</p>
+                                            <p>{{ items.orderItemsNum[nameIndex] }}</p>
+                                            <p>${{ items.orderItemsTotal[nameIndex] }}</p>
+
+                                        </div>
+
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <!-- 預約紀錄 -->
+                <div class="PC_BookData col-T-7 col-PC-7" v-show="isChoosedBookData_PC">
+                    <div class="memberBook">
+                        <div class="membertop">
+                            <div class="memberBookTitle">
+                                <img src="../assets/images/member/memberAsideIcon_4.svg" alt="預約紀錄icon">
+                                <p>預約紀錄</p>
+                            </div>
+                        </div>
+                        <div class="memberBooklog" v-for="date in bookDate">
+                            <div class="dateAndCancel">
+                                <p>{{ date }}</p>
+                                <button :class="{ 'btn_sm_1': true, 'disabled': isPastDate(date) }"
+                                    @click="cancelReservation(date)">取消預約</button>
+                            </div>
+                            <div class="selectedTime">
+                                <button class="chooseTime" v-for="(choose, index) in selectedTime.timePeriod" :key="index">
+                                    <p>{{ choose }}</p>
+                                    <p>{{ selectedTime.hours[index] }}</p>
+                                </button>
+                                <div class="numPeople">
+                                    <p>人數：{{ numPeople[0] }}</p>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
             </div>
         </div>
         <!-- 手機板選單 -->
         <div class="memberMobile container">
             <div class="mobileMember " v-for="items in memID">
-                <img src="../assets/images/member/member_photo.svg" >
+                <img src="../assets/images/member/member_photo.svg">
                 {{ items }}
             </div>
             <div class="memberMainMobile ">
-                <button class="mobileContent" v-for="(iconName,index) in mobileIcon">
-                    <img
-                    :src="getImageUrl(`member/memberAsideIcon_${index+1}.svg`)">
+                <button class="mobileContent" v-for="(iconName, index) in mobileIcon" @click="handleButtonClick(index)">
+                    <img :src="getImageUrl(`member/memberAsideIcon_${index + 1}.svg`)">
                     <p>{{ iconName }}</p>
                 </button>
             </div>
         </div>
         <!-- 手機板會員資料修改 -->
-        <div class="mobileEditData">
+        <div class="mobileEditData" v-show="isChoosedEditData">
             <div class="editDataTitle">
                 <img src="../assets/images/member/memberAsideIcon_2.svg" alt="會員資料修改icon">
                 <h3>會員資料修改</h3>
@@ -123,36 +246,64 @@
             </form>
         </div>
         <!-- 手機板會員訂單資訊 -->
-        <div class="mobileOrderData">
+        <div class="mobileOrderData" v-show="isChoosedOrderData">
             <div class="OrderDataTitle">
                 <img :src="getImageUrl(`member/memberAsideIcon_3.svg`)">
                 <h3>訂單資訊</h3>
             </div>
-            <div class="OrderDataContent" v-for="(items,index) in orderList" :key="index">
-                <div class="ContentTitle" v-for="title in items">
-                    {{ title }}
-                </div>
+            <div class="OrderDataContent">
+                <!-- 手機板沒有標題 -->
+                <!-- <div class="ContentTitle" >
+                    <p v-for="title in orderTitle">{{ title }}</p>
+                    <button class="btn_sm_1">訂單明細</button>
+                </div> -->
+                <div class="orderMain">
+                    <div class="OrderDataList" v-for="(items, index) in orderList" :key="index">
+                        <div class="orderSimple">
+                            <div class="orderListText">
+                                <p>{{ items.orderDate }}</p>
+                                <p>{{ items.orderNum }}</p>
+                                <p>${{ items.orderTotal }}</p>
+                                <p>{{ items.orderState }}</p>
+                            </div>
+                            <button class="btn_sm_1" @click="mobileOpenList(index)">訂單明細</button>
+                        </div>
+                        <div class="OrderDataDetail" v-show="items.isOpen">
+                            <div v-for="(name, nameIndex) in items.orderItems" class="NameTotal">
+                                <img :src="getImageUrl(`member/memberOrderProducts_${nameIndex + 1}.svg`)" alt="商品">
+                                <div class="orderItem">
+                                    <div class="orderName">{{ name }}</div>
+                                    <div class="orderPriceNumTotal">
+                                        <p>${{ items.orderItemsPrice[nameIndex] }}</p>
+                                        <p>{{ items.orderItemsNum[nameIndex] }}</p>
+                                        <p>${{ items.orderItemsTotal[nameIndex] }}</p>
 
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
         <!-- 手機板會員預約紀錄 -->
-        <div class="mobileBookData">
+        <div class="mobileBookData" v-show="isChoosedBookData">
             <div class="bookDataTitle">
                 <img :src="getImageUrl(`member/memberAsideIcon_4.svg`)" alt="預約紀錄icon">
                 <p>{{ mobileIcon[3] }}</p>
             </div>
             <div class="bookDataContent" v-for="date in bookDate">
-                <div class="mobileBookDateCancel" >
+                <div class="mobileBookDateCancel">
                     <p>{{ date }}</p>
-                    <button :class="{ 'btn_sm_1': true, 'disabled': isPastDate(date) }" @click="cancelReservation(date)">取消預約</button>
+                    <button :class="{ 'btn_sm_1': true, 'disabled': isPastDate(date) }"
+                        @click="cancelReservation(date)">取消預約</button>
                 </div>
                 <p>時段：</p>
                 <div class="mobileBookTime">
-                    <button class="chooseTime"
-                    v-for="(choose,index) in selectedTime.timePeriod" :key="index"
-                    >
-                    <p>{{ choose }}</p>
-                    <p>{{ selectedTime.hours[index] }}</p>
+                    <button class="chooseTime" v-for="(choose, index) in selectedTime.timePeriod" :key="index">
+                        <p>{{ choose }}</p>
+                        <p>{{ selectedTime.hours[index] }}</p>
                     </button>
                 </div>
                 <p>人數：{{ numPeople[0] }}</p>
@@ -171,49 +322,129 @@ import PageTitle from "../components/PageTitle.vue";
 export default {
     data() {
         return {
-            memID:['啊人家家就笨壓'], //會員暱稱
-            bookDate:['2024/02/02','2023/12/24'], //預約資訊-日期
-            selectedTime:{
-                timePeriod:['上午','下午','下午','晚上'],
-                hours:['09:00~12:00','12:00~15:00','15:00~18:00','18:00~21:00']
+            memID: ['啊人家家就笨壓'], //會員暱稱
+            bookDate: ['2024/02/02', '2023/12/24'], //預約資訊-日期
+            selectedTime: {
+                timePeriod: ['上午', '下午', '下午', '晚上'],
+                hours: ['09:00~12:00', '12:00~15:00', '15:00~18:00', '18:00~21:00']
             },
-            isChoose:true,
-            numPeople:['4人','6人'],//預約資訊-人數
-            mobileIcon:['Griddy造型屋','會員資料修改','訂單資訊','預約紀錄','報隊管理','會員登出'],//手機板ICON名字
+            numPeople: ['4人', '6人'],//預約資訊-人數
+            mobileIcon: ['Griddy造型屋', '會員資料修改', '訂單資訊', '預約紀錄', '報隊管理', '會員登出'],//手機板ICON名字
 
             //訂單資訊
-            orderList:{
-                orderTitle:['訂單日期','訂單編號','總計'],
-                orderDate:['2023/12/21','2023/12/11'],//訂單日期
-                orderNum:[1,2],//訂單編號
-                orderTotal:[9000,500],//訂單總計
-                orderState:['未完成','已完成'], //訂單狀況
-                orderItems:['阿瓦蟲','貓與城之內豪華精裝版'],//購買項目
-                orderItemsPrice:[500,8000],//購買項目的單價
-                orderItemsNum:[2,1],//購買項目的數量
-                orderItemsTotal:[2,1],//購買項目的數量*單價=小計
+            orderTitle: ['訂單日期', '訂單編號', '總計', '訂單狀況'],
+            // orderList:{
+            // orderDate:['2023/12/21','2023/12/11'],//訂單日期
+            // orderNum:[1,2],//訂單編號
+            // orderTotal:[9000,500],//訂單總計
+            // orderState:['未完成','已完成'], //訂單狀況
 
-            }
+            // orderItems:['阿瓦蟲','貓與城之內豪華精裝版'],//購買項目
+            // orderItemsPrice:[500,8000],//購買項目的單價
+            // orderItemsNum:[2,1],//購買項目的數量
+            // orderItemsTotal:[2,1],//購買項目的數量*單價=小計
+            // },
+            orderList: [
+                {
+                    orderDate: '2023/12/21',
+                    orderNum: 1,
+                    orderTotal: 9000,
+                    orderState: '未完成',
+                    orderItems: ['阿瓦蟲', '貓與城之內豪華精裝版'],
+                    orderItemsPrice: [500, 8000],
+                    orderItemsNum: [2, 1],
+                    orderItemsTotal: [1000, 8000],
+                    isOpen: false,
+                },
+                {
+                    orderDate: '2023/12/11',
+                    orderNum: 2,
+                    orderTotal: 500,
+                    orderState: '已完成',
+                    orderItems: ['阿瓦蟲'],
+                    orderItemsPrice: [500],
+                    orderItemsNum: [1],
+                    orderItemsTotal: [500],
+                    isOpen: false,
+                },
+
+            ],
+
+            isChoosedEditData: false,//會員資料修改被選擇
+            isChoosedOrderData: false,//訂單紀錄被選擇
+            isChoosedBookData: false,//預約紀錄被選擇
+            openOrderList: false,
+
+            isChoosedEditData_PC: false,//會員資料修改被選擇
+            isChoosedOrderData_PC: false,//訂單紀錄被選擇
+            isChoosedBookData_PC: false,//預約紀錄被選擇
+            isChoosedIndex_PC: true,
         };
     },
-    components:{
+    components: {
         MemberCard,
         PageTitle,
     },
 
     mounted() {
-        
+
     },
 
     methods: {
         isPastDate(date) {
-        const today = new Date();
-        const selectedDate = new Date(date);
-        return selectedDate < today;
+            const today = new Date();
+            const selectedDate = new Date(date);
+            return selectedDate < today;
         },
-        getImageUrl(paths){ //取得圖片路徑
-        return new URL(`../assets/images/${paths}`, import.meta.url).href
-            },
+        getImageUrl(paths) { //取得圖片路徑
+            return new URL(`../assets/images/${paths}`, import.meta.url).href
+        },
+        mobileOpenList(index) { //訂單打開明細
+            this.orderList[index].isOpen = !this.orderList[index].isOpen
+            console.log(index)
+
+        },
+        handleButtonClick(index) { //手機板選單
+            this.isChoosedEditData = false
+            this.isChoosedOrderData = false
+            this.isChoosedBookData = false
+            switch (index) {
+                case 1: //會員資料修改
+                    this.isChoosedEditData = !this.isChoosedEditData
+                    break;
+                case 2: //訂單紀錄
+                    this.isChoosedOrderData = !this.isChoosedOrderData
+                    break;
+                case 3: //預約紀錄
+                    this.isChoosedBookData = !this.isChoosedBookData
+                    break;
+            }
+            console.log(`Button at index ${index} clicked`);
+        },
+        changeMember(){
+            this.isChoosedEditData_PC = true;
+            this.isChoosedOrderData_PC= false;
+            this.isChoosedBookData_PC= false;
+            this.isChoosedIndex_PC=false;
+        },
+        order(){
+            this.isChoosedEditData_PC = false;
+            this.isChoosedOrderData_PC= true;
+            this.isChoosedBookData_PC= false;
+            this.isChoosedIndex_PC=false;
+        },
+        book(){
+            this.isChoosedEditData_PC = false;
+            this.isChoosedOrderData_PC= false;
+            this.isChoosedBookData_PC= true;
+            this.isChoosedIndex_PC=false;
+        },
+        backToMemIndex(){
+            this.isChoosedEditData_PC = false;
+            this.isChoosedOrderData_PC= false;
+            this.isChoosedBookData_PC= false;
+            this.isChoosedIndex_PC=true;
+        }
     },
 
 };

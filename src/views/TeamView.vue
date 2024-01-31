@@ -1,7 +1,6 @@
 <template>
   <div class="team">
     <PageTitle :pageTitle="'玩家社群'" />
-      <!-- <div class="team"> -->
         <div class="container">
           <div class="row">
             <div class="col-PC-10 col-T-10 col-10">
@@ -54,10 +53,6 @@
                   <div class="team_card_tag_area">
                     <div class="team_card_tags" v-for="(tag, index) in item.tags" :key="index">
                       <div class="team_card_tag">{{ tag }}</div>
-                      <!-- <div class="team_card_tag1">{{ item.tag1 }}</div> -->
-                      <!-- <div class="team_card_tag2">{{ item.tag2 }}</div>
-                      <div class="team_card_tag3">{{ item.tag3 }}</div>
-                      <div class="team_card_tag4">{{ item.tag4 }}</div> -->
                     </div>
                   </div>
                   <!-- 揪團文 -->
@@ -66,7 +61,7 @@
                   </div>
                   <!-- 報團按鈕 -->
                   <div class="team_card_btn">
-                    <div class="btn_secondary">
+                    <div class="btn_secondary" @click="join_team">
                       我要加入
                     </div>
                   </div>
@@ -80,37 +75,8 @@
           </div>
         </div>
       </div>
-    <!-- </div> -->
 
-      <!-- 發文燈箱1 -->
-    <!-- <div class="light_box" v-show="team_light_box_open">
-      <div class="overlay" @click="light_box_close"></div>
-      <div class="box">
-        <form action="post" v-if="article_send_succ">
-          <p class="team_lb_title ">我要組隊</p>
-          <div>
-            <p class="team_lb_subTitle">組隊宣言</p>
-            <textarea name="" id="" cols="35" rows="10" placeholder="輸入文章內容..." @keyup="article_send"></textarea>
-          </div>
-          <div class="team_light_box_send">
-            <div>
-              <input type="checkbox" name="" id="check" v-model="cb_check" @change="article_send">
-              <label for="check">我已確認文章內容不包含不當內文及攻擊字眼。</label>
-            </div>
-            <button class="btn_sm_1" v-if="!cb_submit" disabled>送出</button>
-            <button class="btn_sm_1" v-else @click="article_send_btn">送出</button>
-          </div>
-        </form>
-        <div v-else>
-          <h3>已成功送出文章！</h3>
-          <button class="btn_sm_1" @click="light_box_close">關閉</button>
-        </div>
-        <div class="team_close_light_box" @click="light_box_close">
-          <font-awesome-icon :icon="['fas', 'xmark']" />
-        </div>
-      </div>
-    </div> -->
-      <!-- 發文燈箱2 -->
+      <!-- 發文燈箱 -->
     <div class="light_box" v-show="team_lb">
       <div class="overlay" @click="team_lb_close"></div>
       <div class="box">
@@ -134,6 +100,32 @@
           <button class="btn_sm_1" @click="team_lb_close">關閉</button>
         </div>
         <div class="team_close_light_box" @click="team_lb_close">
+          <font-awesome-icon :icon="['fas', 'xmark']" />
+        </div>
+      </div>
+    </div>
+
+      <!-- 報團燈箱 -->
+    <div class="join_light_box" v-show="team_join_lb">
+      <div class="overlay" @click="team_join_lb_close"></div>
+      <div class="box">
+
+        <!-- <form action="post" v-if="join_succ"> -->
+        <form action="post" v-if="join_succ">
+          <h3 class="team_join_lb_title">是否確認報隊？</h3>
+
+          <div class="team_light_box_send" >
+            <button class="btn_default" @click.prevent="team_join_lb_close">取消</button>
+            <button class="btn_default" @click="join_send_btn">確認</button>
+          </div>
+        </form>
+
+        <div v-else>
+          <h3>已成功向團主報團！</h3>
+          <button class="btn_default" @click="team_join_lb_close">關閉</button>
+        </div>
+
+        <div class="team_close_light_box" @click="team_join_lb_close">
           <font-awesome-icon :icon="['fas', 'xmark']" />
         </div>
       </div>
@@ -312,11 +304,14 @@ export default {
         },
         
       ],
+      // 發文
       team_lb: false,
       article_send_succ: true,
       cb_submit: false,
       cb_check: false,
-      article_send_succ: true,
+      // 報團
+      team_join_lb: false,
+      join_succ: true,
     };
   },
   computed: {
@@ -329,7 +324,7 @@ export default {
   mounted() {},
   methods: {
     // 發文燈箱
-    // 打開燈箱
+    // 打開發文燈箱
     open_light_box(){
       this.team_lb = true;
       this.cb_check = false;
@@ -337,7 +332,7 @@ export default {
       this.article_send_succ = true;
       document.body.classList.add('body-overflow-hidden');
     },
-    // 關閉燈箱
+    // 關閉發文燈箱
     team_lb_close(){
       this.team_lb = false;
       document.body.classList.remove('body-overflow-hidden');
@@ -351,6 +346,19 @@ export default {
       }else{
         this.cb_submit = false;
       }
+    },
+    // 打開報團燈箱
+    join_team(){
+      this.team_join_lb = true;
+      this.join_succ = true;
+      document.body.classList.add('body-overflow-hidden');
+    },
+    team_join_lb_close(){
+      this.team_join_lb = false;
+      document.body.classList.remove('body-overflow-hidden');
+    },
+    join_send_btn(){
+      this.join_succ = false;
     },
   },
 };

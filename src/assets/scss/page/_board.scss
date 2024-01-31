@@ -42,7 +42,7 @@
         text-align: center;
         margin-right: 8px;
         @include T(){
-          font-size: 14px;
+          font-size: 13px;
         }
         @include PC(){
           font-size: $PC-btn-sl-font;
@@ -67,17 +67,13 @@
           border-radius: 20px;
           padding: 8px;
           font-size: $M-text;
-          // font-size: $small;
-          // font-size: $PC-text;
           outline: none;
           background-color: $white-1;
           cursor: pointer;
           option{
-            // font-size: $small;
             font-size: $M-text;
             padding: 8px;
             margin: 4px;
-            // height: 30px;
           }
         }
       }
@@ -86,48 +82,43 @@
 
   // 內容區
   &_area{
-    margin: 0;
+    margin: auto;
     padding: 0;
-    display: flex;
-    flex-wrap: wrap;
-    // gap: 10px;
     align-items: flex-start;
     margin-bottom: 100px;
-    
-    // column-count: 2;
-    // column-gap: 10px;
+    @include T(){
+      display: flex;
+    }
+    .board_card_col{
+      // display: none;
+      margin: 0px auto;
+      width: 100%;
+      @include T(){
+        display: block;
+        width: 50%;
+      }
+      // &:last-child{
+      //   display: block;
+      //   @include T(){
+      //     // display: none;
+
+      //   }
+      // }
+    }
+    // #board_card_mb{
+    //   display: block;
+    //   @include T(){
+    //     display: none;
+    //   }
+    // }
   }
   &_card{
-    // float: left;
-    // display: inline-block;
     border: 10px solid $green-1;
     margin: 8px;
     padding: 16px;
     background-color: $white-1;
     border-radius: 20px;
-    width: 100%;
-
     margin-bottom: 10px;
-    width: 100%;
-
-    // &:after {
-    //   content: "";
-    //   display: table;
-    //   clear: both;
-    // }
-
-    // &:nth-child(odd) {
-    //   flex-basis: 100%;
-    // }
-
-    @include T(){
-      transform: translateX(1%);
-      width: 47%;
-    }
-    @include PC(){
-      width: 48%;
-      transform: translateX(1%);
-    }
   }
   //文章區
   &_info{
@@ -193,6 +184,7 @@
     justify-content: flex-end;
     svg{
       width: 14px;
+      
     }
   }
   &_report{
@@ -330,6 +322,7 @@
         outline: none;
         margin: auto;
         border: 1px solid $gray-2;
+        width: 100%;
         @include T(){
           width: 100%;
         }
@@ -506,3 +499,10 @@
   overflow: hidden;
 }
 
+.board_rotate {
+  transition: transform 0.3s ease;  /* 添加轉場效果，時間和過渡方式可以根據需要調整 */
+}
+
+.board_rotate.active {
+  transform: rotate(180deg);  /* 將圖標旋轉180度 */
+}

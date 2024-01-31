@@ -14,20 +14,24 @@
     }
     .memID{
         display: flex;
+        flex-wrap: wrap;
         align-items: center;
         justify-content: center;
         padding: $M-spacing;
         gap: $M-spacing;
         border-radius: $PC-card-radius;
         background-color: $white-1;
-
+        cursor: pointer;
     }
     .memID img{
         vertical-align: top;
         width: 100%;
         max-width: 60px;
     }
+    .memID:hover{
+        background-color: $gray-1;
 
+    }
     .memberContent{
         gap: $M-spacing;
         justify-content: center;
@@ -39,6 +43,7 @@
         align-items: center;
         padding: $M-spacing;
         position: relative;
+        cursor: pointer;
     }
     .asideListitem:not(:last-child):after{
         content: '';
@@ -49,7 +54,18 @@
         height: 1px;        
         border-top: 1px solid;
     }
-
+    .asideListitem:hover:not(:first-child):not(:last-child){
+        background-color: rgba($color: $gray-1, $alpha: 0.5);
+        border-radius: $S-button-radius;
+    }
+    .asideListitem:hover:first-child{
+        background-color: rgba($color: $gray-1, $alpha: 0.5);
+        border-radius:$PC-card-radius $PC-card-radius  $S-button-radius $S-button-radius;
+    }
+    .asideListitem:hover:last-child{
+        background-color: rgba($color: $gray-1, $alpha: 0.5);
+        border-radius:  $S-button-radius $S-button-radius $PC-card-radius $PC-card-radius;
+    }
     .asideListitem img{
         width: 100%;
         vertical-align: top;

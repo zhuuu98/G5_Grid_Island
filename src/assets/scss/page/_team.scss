@@ -173,16 +173,8 @@
                 position: absolute;
                 bottom: 20px;
                 right: 20px;
-                // width: 100%;
-                // margin-top: 10px;
-                // display: flex;
                 text-align: center;
-                // align-items: center;
-                // justify-content: flex-end;
-                // align-items: flex-end;
-                // background-color: #ccc;
                 .btn_secondary{
-                    // width: 112px;
                     text-align: center;
                 }
             }
@@ -236,6 +228,7 @@
                 outline: none;
                 margin: auto;
                 border: 1px solid $gray-2;
+                width: 100%;
             @include T(){
                 width: 100%;
             }
@@ -290,6 +283,93 @@
             }
         }
         }
+    }
+
+    .join_light_box{
+        position: fixed;
+        z-index: 1000;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        overflow: hidden;
+        .overlay{
+            width: 100%;
+            height: 100vh;
+            background: #000;
+            opacity: .5;
+        }
+        .box{
+            background-color: $gray-1;
+            border: 10px solid $purple;
+            border-radius: 20px;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%,-50%);
+            padding: 30px;
+            width: 340px;
+        @include T(){
+            width: 400px;
+        }
+        @include PC(){
+            width: 500px;
+        }
+        form{
+            h3{
+                letter-spacing: 1px;
+                color: $black;
+                font-size: $M-h3;
+                text-align: center;
+                // margin: auto;
+                // background-color: #5e5e5e;
+                // border: 1px solid red;
+            }
+            .team_light_box_send{
+                display: flex;
+                margin: 60px 0px 0px 0px;
+                // margin-right: 20px;
+                justify-content: center;
+                // align-items: center;
+                // background-color: #ff7a00;
+                button{
+                    margin: 0px 10px;
+                    &:last-child{
+                        background-color: $orange-2;
+                        &:hover {
+                            background-color: darken($orange-2, 10);
+                        }
+                    }
+                }
+            }
+        }
+        svg{
+            background-color: $white-1;
+            border-radius: 50px;
+            width: 24px;
+            height: 24px;
+            position: absolute;
+            top: 5px;
+            right: 6px;
+            vertical-align: bottom;
+            cursor: pointer;
+                &:hover{
+                color: $red;
+                }
+        }
+        >div{
+            h3{
+                text-align: center;
+                margin: 20px auto 60px auto;
+            }
+            button{
+                margin: auto;
+                display: flex;
+                
+            }
+        }
+        }
+
     }
 
 

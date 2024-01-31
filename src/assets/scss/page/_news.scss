@@ -1,40 +1,95 @@
 .news {
+  .loadingMask {
+    z-index: 1000;
+    background-color: $black;
+    height: 100vh;
+    width: 100vw;
+    position: fixed;
+    .fade-leave-active {
+      transition: opacity 0.5s;
+    }
+    .fade-leave-to {
+      opacity: 0;
+    }
+    .lds-ring {
+      display: inline-block;
+      position: absolute;
+      width: 80px;
+      height: 80px;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
 
+      div {
+        box-sizing: border-box;
+        display: block;
+        position: absolute;
+        width: 64px;
+        height: 64px;
+        margin: 8px;
+        border: 8px solid #fff;
+        border-radius: 50%;
+        animation: lds-ring 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+        border-color: #fff transparent transparent transparent;
+
+        &:nth-child(1) {
+          animation-delay: -0.45s;
+        }
+
+        &:nth-child(2) {
+          animation-delay: -0.3s;
+        }
+
+        &:nth-child(3) {
+          animation-delay: -0.15s;
+        }
+      }
+    }
+
+    @keyframes lds-ring {
+      0% {
+        transform: rotate(0deg);
+      }
+
+      100% {
+        transform: rotate(360deg);
+      }
+    }
+  }
   .content {
       margin-top: $XXL-spacing ;
       margin-bottom: $XXXL-spacing ;
       .btn {
         display: flex;
         justify-content: flex-end;
-        padding: $XXL-spacing $XXXL-spacing $M-spacing 0;
-        gap: $M-spacing ;
+        padding: 20px 40px 20px 0;
+        gap: 10px;
 
-        .thBtn {
-          width: 40px;
-          &:hover {
-            cursor: pointer;
-          }
+      .thBtn {
+        width: 40px;
+        &:hover {
+          cursor: pointer;
         }
-        .listBtn {
-          width: 40px;
-          &:hover {
-            cursor: pointer;
-          }
-        }
-        .svg-inline--fa {
-          width: 100%;
-          // height: 40px;
-        }
-    
       }
-      @include T(){
-        max-width: 1500px;
-        margin:  $XXL-spacing auto $XXXL-spacing;
+      .listBtn {
+        width: 40px;
+        &:hover {
+          cursor: pointer;
+        }
       }
+      .svg-inline--fa {
+        width: 100%;
+        // height: 40px;
+      }
+    }
+    @include T() {
+      max-width: 1500px;
+      margin: $XXL-spacing auto $XXXL-spacing;
+    }
 
-      .noneShow {
-        display: none;
-      }
+    .noneShow {
+      display: none;
+    }
 
     .cardList {
       display: flex;
@@ -42,17 +97,11 @@
       justify-content: center;
       justify-items: flex-start;
       gap: $M-spacing calc($S-spacing + $S-spacing) ;
+  
       
       @include T() {
         gap: $L-spacing $M-spacing;
-  
       }
-  
     }
-
-
   }
-
-
-
 }

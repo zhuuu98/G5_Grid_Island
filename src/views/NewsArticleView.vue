@@ -1,15 +1,24 @@
 <template>
   <main class="newsArticle">
-    <div class="newsImg">
-    </div>
+    <transition name="fade">
+      <div class="loadingMask" v-if="loading" name="fade">
+        <div class="lds-ring">
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+        </div>
+      </div>
+    </transition>
+    <div class="newsImg"></div>
     <div class="content">
       <div class="title">
         <h1>{{ respondData.news_title }}</h1>
       </div>
       <div class="newsImg">
         <img
-        :src="`https://tibamef2e.com/chd103/g1/image/news/${respondData.news_img}`"
-      />
+          :src="`https://tibamef2e.com/chd103/g1/image/news/${respondData.news_img}`"
+        />
       </div>
       <div class="textContent">
         <span>{{ respondData.news_content }}</span>
@@ -32,15 +41,19 @@ export default {
   data() {
     return {
       respondData: [],
-      netData:{
+      netData: {
         news_id: null,
-      }
+      },
     };
   },
   components: {
     PageTitle,
   },
-  computed: {},
+  computed: {
+    loading() {
+      return this.respondData.length == 0;
+    },
+  },
   created() {
     this.axiosGetData();
   },
@@ -56,7 +69,7 @@ export default {
           });
           console.log(result);
           this.respondData = result;
-          this.netData= result;
+          this.netData = result;
         });
     },
     shareOnFacebook() {
@@ -64,11 +77,11 @@ export default {
       if (this.netData && this.netData.news_id) {
         // 使用 Facebook SDK 的功能
         FB.ui({
-          method: 'share',
+          method: "share",
           href: `https://tibamef2e.com/chd104/g5/front/newsArticle/${this.netData.news_id}`,
         });
       } else {
-        console.log('連結無效');
+        console.log("連結無效");
       }
     },
   },

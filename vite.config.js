@@ -15,4 +15,7 @@ export default defineConfig({
       "@": fileURLToPath(new URL("./src", import.meta.url)),
     },
   },
+  server:{
+    host: '192.168.0.155' //請輸入自己的IP
+  }
 });

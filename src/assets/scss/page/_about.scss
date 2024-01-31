@@ -318,7 +318,6 @@
   &_info{
     background-color: $green-1;
     padding: 100px 0px 160px 0px;
-    // margin-bottom: 300px;
     width: 100%;
     &_section{
     @include T(){
@@ -334,17 +333,7 @@
       background-color: $white-1;
       height: 100%;
       border-radius: 28px;
-      // background-image: url('./src/assets/images/about/about_info_bg.png');
-      // background-repeat: no-repeat;
-      // background-size: contain;
-      // background-position: center center;
-      @media (min-width:460px) {
-        // background-position: left center;
-        
-      }
       @include T(){
-        // background-size: contain;
-        // background-position: center center;
         width: 48%;
       }
       
@@ -419,6 +408,15 @@
         }
       }
     }
+    }
+  }
+
+  .about_ocean{
+    width: 100vw;
+    outline: none;
+    vertical-align: bottom;
+    img{
+      width: 100%;
     }
   }
 

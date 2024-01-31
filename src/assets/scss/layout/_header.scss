@@ -154,7 +154,7 @@ header {
         padding: 40px;
       }
       @include PC(){
-        padding: 80px;
+        padding: 60px 80px;
       }
 
       // 選單內漢堡線
@@ -227,13 +227,23 @@ header {
           color: $blue-2;
           display: flex;
           text-align: center;
+          // background-color: #9e6fcd;
           &:hover{
             background-color: $green-1;
             font-weight: bold;
           }
-            
-            
+          
+          
         }
+        .ham_cart{
+          margin-top: 40px;
+
+        }
+        .ham_cart,.ham_member{
+          color: $purple;
+          // background-color: #9e6fcd;
+        }
+        
 
         // hover效果在T和M消失
         .ham_hover_news,.ham_hover{
