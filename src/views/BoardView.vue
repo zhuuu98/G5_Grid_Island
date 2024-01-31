@@ -284,7 +284,7 @@ export default {
           id: 1,
           // id_img:'/images/board/board_id_img.svg',
           id_img_alt:'board_id_img',
-          memId:'1啊人家家就笨壓',
+          memId:'啊人家家就笨壓',
           time:'2023/12/30 20:25',
           msg:'在遊戲貪婪之島中，只要在問答大賽中答對最多問題，就能獲得統治者的祝福。',
           // re_amount:2,
@@ -311,7 +311,7 @@ export default {
           id: 2,
           // id_img:'../../public/images/board/board_id_img.svg',
           id_img_alt:'board_id_img',
-          memId:'2大傑',
+          memId:'大傑',
           time:'2023/12/30 20:25',
           msg:'有人看到我爸嗎？',
           re:[]
@@ -320,7 +320,7 @@ export default {
           id: 3,
           // id_img:'../../public/images/board/board_id_img.svg',
           id_img_alt:'board_id_img',
-          memId:'3酷B',
+          memId:'酷B',
           time:'2023/12/30 20:25',
           msg:'使用同行，前往瑪莎多啦。',
           re:[
@@ -362,7 +362,7 @@ export default {
           id: 4,
           // id_img:'../../public/images/board/board_id_img.svg',
           id_img_alt:'board_id_img',
-          memId:'4大傑',
+          memId:'大傑',
           time:'2023/12/30 20:25',
           msg:'有人看到我爸嗎？',
           re:[
@@ -396,7 +396,7 @@ export default {
           id: 5,
           // id_img:'../../public/images/board/board_id_img.svg',
           id_img_alt:'board_id_img',
-          memId:'5酷B',
+          memId:'酷B',
           time:'2023/12/30 20:25',
           msg:'使用同行，前往瑪莎多啦。',
           re:[
@@ -422,7 +422,7 @@ export default {
           id: 6,
           // id_img:'../../public/images/board/board_id_img.svg',
           id_img_alt:'board_id_img',
-          memId:'6酷B',
+          memId:'酷B',
           time:'2023/12/30 20:25',
           msg:'使用同行，前往瑪莎多啦。',
           re:[
@@ -448,7 +448,7 @@ export default {
           id: 7,
           // id_img:'../../public/images/board/board_id_img.svg',
           id_img_alt:'board_id_img',
-          memId:'7酷B',
+          memId:'酷B',
           time:'2023/12/30 20:25',
           msg:'使用同行，前往瑪莎多啦。',
           re:[
