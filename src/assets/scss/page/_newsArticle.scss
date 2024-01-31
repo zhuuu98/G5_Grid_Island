@@ -69,10 +69,12 @@
     }
     .title {
       margin: auto;
-      padding: 0 $M-spacing $S-spacing;
+      padding: $S-spacing $M-spacing $S-spacing;
       letter-spacing: $PC-btn-sl-spacing;
+      order: 1;
       @include T() {
         padding: 0 $XXL-spacing $M-spacing;
+        order: unset;
       }
     }
     .newsImg {
@@ -93,7 +95,7 @@
     .textContent {
       order: 2;
       letter-spacing: $PC-btn-esl-spacing;
-      padding: 0 $L-spacing;
+      padding: $M-spacing $L-spacing 0;
       font-size: $PC-text;
       @include T() {
         padding: $M-spacing $XL-spacing;
