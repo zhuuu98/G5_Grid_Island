@@ -102,11 +102,28 @@
             </div>
           </div>
           <!-- 預約方式 -->
-          <div class="index_reserve">
-            <div class="index_row">
+          <div class="index_reserve ">
+            <div class="index_row container ">
             <!-- 寫這邊 -->
-
-
+              <h1>預約方式</h1>
+              <div class="reserveInfo row ">
+                <div class="reserveContent  col-6 col-T-10 col-PC-10">
+                  <!-- <img v-for="num in 3" :src="getImageUrl(`home/reserveInfo_${num}.png`)" alt="預約方式"> -->
+                  <div class="reserveStep1">
+                    <img src="../assets/images/home/reserveInfo_1.png" alt="">
+                    <span>確認預約須知</span>
+                  </div>
+                  <div class="reserveStep2">
+                    <img src="../assets/images/home/reserveInfo_2.png" alt="">
+                    <span>選擇人數、日期、時段</span>
+                  </div>
+                  <div class="reserveStep3">
+                    <img src="../assets/images/home/reserveInfo_3.png" alt="">
+                    <span>選擇桌號，預約完成！</span>
+                  </div>
+                </div>
+              </div>
+              <button class="btn_lg" @click="goBook()">預約場地</button>
             </div>
           </div>
           <!-- Griddy造型屋 -->
@@ -206,6 +223,8 @@
         headerWave: headerWave,
         respondData: [],
         latestData: [],
+
+
       };
     },
     setup() {
@@ -286,7 +305,16 @@
     },
     goNews(){
       this.$router.push('/news')
-    }
+    },
+    getImageUrl(paths) { //取得圖片路徑
+            return new URL(`../assets/images/${paths}`, import.meta.url).href
+        },
+    goBook(){
+      this.$router.push('/PreBook')
+
+    },
+
+
   }
     
 
