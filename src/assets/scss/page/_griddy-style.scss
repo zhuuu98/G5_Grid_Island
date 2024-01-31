@@ -13,6 +13,7 @@
         width: 100%;
         max-width: 240px;
         max-height: 240px;
+        border: 1px solid #000;
     }
 }
 .tabs button {
@@ -46,10 +47,36 @@
     cursor: pointer;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
+.options-staff{
+display: flex;
+column-gap: $M-spacing;
+row-gap: $S-spacing;
+flex-wrap: wrap;
+
+    button{
+        width: calc( 33.3333% - 20px);
+        height: 40px;
+        border: 2px solid transparent;
+        cursor: pointer;
+        border: 1px solid #ccc;
+        border-radius: 8px;
+        @include T() {
+            width: calc( 16.333333% - 16.333333px);
+          }
+
+    }
+}
 
 .options-colors li.selected {
     border: 1px solid#000;
 }
-#spot-box {
-    background-color: #ccc;
+
+#mainSvg{
+    position: relative;
+    .SVGSTAFF {
+        position: absolute;
+        top: 0;
+        right: 0;
+    }
 }
+
