@@ -18,7 +18,7 @@
         <span>{{ respondData.news_date }}</span>
       </div>
       <div class="btn">
-        <button class="btn_lg_orange" @click="shareOnFacebook">Facebook分享</button>
+        <button class="btn_lg_orange" @click="shareOnFacebook">分享到Facebook</button>
       </div>
     </div>
   </main>

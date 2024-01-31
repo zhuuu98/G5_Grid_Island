@@ -6,8 +6,8 @@
       .btn {
         display: flex;
         justify-content: flex-end;
-        padding: 20px 40px 20px 0;
-        gap: 10px;
+        padding: $XXL-spacing $XXXL-spacing $M-spacing 0;
+        gap: $M-spacing ;
 
         .thBtn {
           width: 40px;
@@ -42,7 +42,6 @@
       justify-content: center;
       justify-items: flex-start;
       gap: $M-spacing calc($S-spacing + $S-spacing) ;
-  
       
       @include T() {
         gap: $L-spacing $M-spacing;
