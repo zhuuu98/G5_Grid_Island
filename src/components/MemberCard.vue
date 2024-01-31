@@ -5,15 +5,15 @@
                 <!-- 會員暱稱 -->
                 <div class="memID" v-for="items in memID" @click="backToMemIndex">
                         <img src="../assets/images/member/member_photo.svg" alt="會員頭貼">
-                        <h3>{{ items }}</h3>
+                        <h3 class="pc-h4">{{ items }}</h3>
                 </div>
                     <!-- 會員側邊攔 -->
                 <ul class="asideList" >
                     <!-- 這裡等頁面做出來要記得放routerLink -->
                     <li class="asideListitem" v-for="(items,index) in AsideItem" :key="index" @click="openList_PC(index)">
-                        <img 
+                        <img
                         :src="getImageUrl(`member/memberAsideIcon_${index+1}.svg`)">
-                        <p>{{ items }}</p>
+                        <span >{{ items }}</span>
                     </li>
                 </ul>
             </aside>
