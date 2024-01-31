@@ -3,12 +3,12 @@
     background-color: $green-1;
     padding-bottom: 15%;
     
-    h3{
+    .hello{
         text-align: center;
         margin: $M-spacing;
     }
     .memberMain{
-        padding-top: 15%;
+        padding-top: 12%;
         display: flex;
         gap: $M-spacing;
         justify-content: center;
@@ -16,6 +16,7 @@
         @include T(){
             display: flex;
         }
+
     }
     .memberContentIndex{
         background-color: $white-1;
@@ -340,31 +341,95 @@
     }
     //電腦版會員資料修改
     .PC_EditData{
-        background-color: $gray-1;
-        border-radius: $PC-card-radius;
-        padding: $M-spacing;
-    }
-    .PC_editDataTitle{
-        display: flex;
-        justify-content: center;
-    }
-    .PC_editDataTitle img{
-        width: 100%;
-        max-width: 36px;
-    }
-    .PC_editDataContent{
-        display: flex;
-        flex-direction: column;
-        gap: $M-spacing;
-    }
-    .PC_editDataContent input:not([type="submit"]):not([type="radio"]){
-        width: 100%;
-        max-width:700px;
-    }
-    .PC_editDataContent input[type="submit"]{
-        width: 100%;
-        max-width:fit-content;
-        margin: auto;
+        padding: 20px;
+        border-radius: 40px;
+        background-color: $white-1;
+        .content {
+            background-color: $gray-1;
+            padding: $M-spacing;
+            border-radius: 25px;
+
+            .title{
+                display: flex;
+                justify-content: center;
+                padding: 20px 0;
+                margin-bottom: 20px;
+
+                img{
+                    width: 100%;
+                    max-width: 36px;
+                    vertical-align: middle;
+                }
+            }
+
+            .dataContent{
+                display: flex;
+                flex-direction: column;
+
+                //修改radio預設樣式
+                input[type="radio"] {
+                    display: none;
+                }
+
+                input[type="radio"] + label {
+                    position: relative;
+                    padding-left: 30px;
+                    cursor: pointer;
+                    display: inline-block;
+                    line-height: 20px;
+                }
+            
+                input[type="radio"] + label:before {
+                    content: '';
+                    position: absolute;
+                    left: 0;
+                    top: 0;
+                    width: 20px;
+                    height: 20px;
+                    border: 1.8px solid $blue-4;
+                    background-color: $white-1;
+                    border-radius: 50%;
+                    transition: all 0.2s;
+                }
+                
+                input[type="radio"]:checked + label:before {
+                    background-color: $blue-4; 
+                }
+            
+
+                input:not([type="submit"]):not([type="radio"]){
+                    width: 100%;
+                    max-width:700px;
+                    padding: 5px 15px;
+                    border-radius: 8px;
+                    border: 0.5px solid $gray-2;
+                    letter-spacing: $PC-btn-esl-spacing;
+                }
+                input:not(.searchBtn) {
+                    margin-bottom: 15px;
+                }
+                span,label {
+                    letter-spacing: $PC-btn-esl-spacing;
+                    padding: 0 0 4px 10px;
+                    color: $blue-4;
+                    font-size: $PC-text;
+                }
+                .genderRadio {
+                    padding: 10px 20px 10px;
+                    label {
+                        padding: 0 30px 0 5px;
+                    }
+                }
+                .email {
+                    cursor: not-allowed;
+                }
+                .searchBtn {
+                    margin-left: auto;
+                    margin-top: 60px;
+                }
+            }
+
+        }
     }
     //PC版訂單資訊
     .PC_OrderData{

@@ -6,45 +6,124 @@
         border-radius: $PC-card-radius;
         flex-direction: column;
         gap: $M-spacing;
-
         @include PC() {
             position: relative;
             // top: 100px;
         }
+        .asideList{
+            border-radius: $PC-card-radius;
+            background-color: $white-1;
+            margin: 0 $S-spacing;
+
+            .asideListitem{
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                padding: $M-spacing $S-spacing 15px;
+                position: relative;
+                cursor: pointer;
+
+                &:first-child {
+                    padding-top: 30px;
+                }
+
+                &:last-child {
+                    padding-bottom: 30px;
+                }
+
+                img {
+                    width: 100%;
+                    height: auto;
+                    vertical-align: middle;
+                    @include T(){
+                        margin-left: 15px;
+                        
+                    }
+                    @include PC(){
+                        margin-left: 20px;
+
+                    }
+                }
+
+               
+
+                span {
+                    padding: 0px 15px 0 0;
+                    font-size: 16px;
+                    letter-spacing: $PC-btn-exsl-spacing;
+                    
+                    @include T(){
+                        font-size: 16px;
+                        text-wrap: nowrap;
+                        
+                    }
+                    @include PC(){
+                        padding: 0px 20px;
+                        font-size: 18px;
+                    }
+                }
+            }
+        }        
     }
     .memID{
         display: flex;
-        flex-wrap: wrap;
+        flex-direction: column;
         align-items: center;
-        justify-content: center;
-        padding: $M-spacing;
-        gap: $M-spacing;
+        padding: calc($M-spacing / 2) $M-spacing ;
         border-radius: $PC-card-radius;
         background-color: $white-1;
         cursor: pointer;
-    }
-    .memID img{
-        vertical-align: top;
-        width: 100%;
-        max-width: 60px;
-    }
-    .memID:hover{
-        background-color: $gray-1;
+        margin: 0 $S-spacing;
+        
+        @include T(){
+            justify-content: center;
+            flex-wrap: wrap;
+            
+        }
+        @include PC(){
+            justify-content: space-between;
+            flex-wrap: nowrap;
+            
+        }
+
+        img{
+            vertical-align: middle;
+            width: 100%;
+            
+            @include T(){
+                max-width: 120px;
+                padding-top: 10px;
+            }
+            @include PC(){
+                max-width: 140px;
+                padding-top: 10px;
+            }
+        }
+
+        &:hover{
+            background-color: $gray-1;
+        }
+
+        h3 {
+            text-align: center;
+
+            @include T(){
+                margin-top: 10px;
+                padding-bottom: 10px;
+            }
+            @include PC(){
+                margin-top: 15px;
+            }
+
+        }
 
     }
     .memberContent{
-        gap: $M-spacing;
+        // gap: $M-spacing;
         justify-content: center;
     }
 
-    .asideListitem{
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding: $M-spacing;
-        position: relative;
-        cursor: pointer;
-    }
+
     .asideListitem:not(:last-child):after{
         content: '';
         position: absolute;
@@ -52,7 +131,7 @@
         left: 10%;
         width: 80%;
         height: 1px;        
-        border-top: 1px solid;
+        border-top: 1.5px solid $blue-4;
     }
     .asideListitem:hover:not(:first-child):not(:last-child){
         background-color: rgba($color: $gray-1, $alpha: 0.5);
@@ -61,6 +140,7 @@
     .asideListitem:hover:first-child{
         background-color: rgba($color: $gray-1, $alpha: 0.5);
         border-radius:$PC-card-radius $PC-card-radius  $S-button-radius $S-button-radius;
+
     }
     .asideListitem:hover:last-child{
         background-color: rgba($color: $gray-1, $alpha: 0.5);
@@ -71,9 +151,5 @@
         vertical-align: top;
         max-width: 36px;
     }
-    .asideList{
-        border-radius: $PC-card-radius;
-        background-color: $white-1;
 
-    }
 }
