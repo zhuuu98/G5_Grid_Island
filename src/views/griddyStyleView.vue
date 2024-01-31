@@ -10,7 +10,9 @@
                         :selectedEyesStaff="selectedEyesStaff"
                         :selectedEyesColor="selectedEyesColor"
                         :selectedEarsStaff="selectedEarsStaff" 
-                        :selectedEarsColor="selectedEarsColor" />
+                        :selectedEarsColor="selectedEarsColor" 
+                        :selectedAccessoriesStaff="selectedAccessoriesStaff"
+                        :selectedBackgroundColor="selectedBackgroundColor"  />
                 </div>
             </div>
             <div class="style-btn">
@@ -30,7 +32,9 @@
                 <component :is="currentTab" @spot-color-selected="handleSpotColorChange"
                     @body-color-selected="handleBodyColorChange" @belly-color-selected="handleBellyColorChange"
                     @eyes-color-selected="handleEyesColorChange" @eyes-staff-selected="handleEyesStaffChange"
-                    @ears-color-selected="handleEarsColorChange" @ears-staff-selected="handleEarsStaffChange">
+                    @ears-color-selected="handleEarsColorChange" @ears-staff-selected="handleEarsStaffChange"
+                    @accessories-staff-selected="handleAccessoriesStaffChange"
+                    @background-color-selected="handleBackgroundColorChange">
                 </component>
 
             </div>
@@ -54,6 +58,8 @@
     import { eyesStaffs } from "@/policy/color.js"
     import { earsColors } from "@/policy/color.js"
     import { earsStaffs } from "@/policy/color.js"
+    import { accessoriesStaffs } from "@/policy/color.js"
+    import { backgroundColors } from "@/policy/color.js"
 
 
     export default {
@@ -84,11 +90,14 @@
             const selectedEyesColor = ref(eyesColors[9]);
             const selectedEarsStaff = ref(earsStaffs[0]);
             const selectedEarsColor = ref(earsColors[0]);
+            const selectedAccessoriesStaff = ref(accessoriesStaffs[0]);
+            const selectedBackgroundColor = ref(backgroundColors[4]);
 
 
             return {
                 tabs, currentTab, selectedBodyColor, selectedBellyColor, selectedSpotColor, selectedBellyColor,
                 selectedEyesColor, selectedEyesStaff, selectedEarsColor, selectedEarsStaff,
+                selectedAccessoriesStaff, selectedBackgroundColor
             };
         },
         methods: {
@@ -126,6 +135,16 @@
                 console.log("接收到子組件的耳朵顏色：", earsColor);
                 this.selectedEarsColor = earsColor;
                 console.log("被選擇的的耳朵顏色：", this.selectedEarsColor);
+            },
+            handleAccessoriesStaffChange(accessoriesStaff) {
+                console.log("接收到子組件的配件零件：", accessoriesStaff);
+                this.selectedAccessoriesStaff = accessoriesStaff;
+                console.log("被選擇的的配件零件：", this.selectedAccessoriesStaff);
+            },
+            handleBackgroundColorChange(backgroundColor) {
+                console.log("接收到子組件的背景顏色：", backgroundColor);
+                this.selectedBackgroundColor = backgroundColor;
+                console.log("被選擇的的背景顏色：", this.selectedBackgroundColor);
             },
         },
     };

@@ -1,57 +1,44 @@
 <template>
-    <div class="skin-component componentsarea">
-      <h3>背景顏色</h3>
-      <ul class="skin-colors">
-        <li
-          v-for="color in skinColors"
-          :key="color"
-          :style="{ backgroundColor: color }"
-          @click="selectedSkinColor = color"
-          :class="{ selected: selectedSkinColor === color }"
-        >
-          {{ color }}
-        </li>
-      </ul>
-    </div>
-  </template>
-  
-  <script>
-  import { ref } from 'vue';
-  
+  <div class="componentsarea">
+      <div id="background-color-box">
+          <h3>背景顏色</h3>
+          <ul class="background-options options-colors">
+              <li v-for="backgroundColor in backgroundColors" :key="backgroundColor" :style="{ backgroundColor: backgroundColor }"
+                  @click="handleBackgroundColorChange(backgroundColor)" :class="{ selected: selectedBackgroundColor === backgroundColor }">
+              </li>
+          </ul>
+      </div>
+  </div>
+</template>
+
+<script>
+  import { ref, reactive } from 'vue';
   export default {
-    name: 'SkinComponent',
-    setup() {
-      const skinColors = ['#FBE9E7', '#FFCCBC', '#8D6E63', '#4E342E']; // 這些值代表不同的膚色
-      const selectedSkinColor = ref(skinColors[0]); // 預設選擇第一個膚色
-  
-      return { skinColors, selectedSkinColor };
-    }
+      name: 'backgroundComponent',
+      data() {
+      },
+
+      setup(props, context) {
+          // 使用reactive代替ref，创建一个反应性的state对象
+          const backgroundState = reactive({
+              selectedbackgroundColor: props.currentColor
+          });
+          const backgroundColors = ['#d2eb86', '#1ca88e', '#fbb466', '#f9eaa7', '#f7f7f7', '#fb7676', '#ffdcdc', '#9dd0e1', '#a9aaff', '#c088f9'];
+
+          // 更新選中的颜色
+          const handleBackgroundColorChange = (backgroundColor) => {
+              context.emit('background-color-selected', backgroundColor);
+              console.log("事件已發射，背景顏色：", backgroundColor);
+          };
+
+          return {
+              backgroundColors, selectedBackgroundColor: backgroundState.selectedBackgroundColor,
+              handleBackgroundColorChange, 
+
+
+
+          };
+      },
+
   };
-  </script>
-  
-  <style scoped>
-  .skin-component {
-    /* 根據需要添加樣式 */
-  }
-  
-  .skin-colors {
-    list-style-type: none;
-    padding: 0;
-  }
-  
-  .skin-colors li {
-    display: inline-block;
-    width: 40px;
-    height: 40px;
-    margin: 5px;
-    border: 2px solid transparent;
-    border-radius: 50%;
-    cursor: pointer;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
-  }
-  
-  .skin-colors li.selected {
-    border-color: #000;
-  }
-  </style>
-  
+</script>
