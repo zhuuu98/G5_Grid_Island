@@ -394,6 +394,11 @@ export default {
             this.isChoosedOrderData = false
             this.isChoosedBookData = false
             switch (index) {
+                case 0: //griddy
+                    this.$router.push("/griddy-style");
+                    this.$emit("griddy-style");
+                    break;
+
                 case 1: //會員資料修改
                     this.isChoosedEditData = !this.isChoosedEditData
                     break;

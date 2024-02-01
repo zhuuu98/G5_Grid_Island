@@ -37,6 +37,10 @@
             },
             openList_PC(index){
                 switch (index) {
+                case 0: //griddy
+                    this.$router.push("/griddy-style");
+                    this.$emit("griddy-style");
+                    break;
                 case 1: //會員資料修改
                     this.isChoosedEditData_PC = !this.isChoosedEditData_PC
                     this.$emit("changeMemberInfo");
