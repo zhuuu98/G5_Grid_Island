@@ -114,10 +114,10 @@
     <MainHeader />
     <!-- 跑馬燈 -->
     <div class="cuppon">
-      <div class="btn">
+      <div class="btn" @click="closeCuppon">
         <font-awesome-icon :icon="['fas', 'times']" />
       </div>
-      <div class="content">
+      <div v-if="cuppon" class="content">
         <span>1/31 - 2/20 全館線上商品熱銷中，立即輸入優惠碼: GridIsland2023 折抵🐛🐛🐛🐛🐛🐛🐛 </span>
         <span>1/31 - 2/20 全館線上商品熱銷中，立即輸入優惠碼: GridIsland2023 折抵🐛🐛🐛🐛🐛🐛🐛 </span>
         <span>1/31 - 2/20 全館線上商品熱銷中，立即輸入優惠碼: GridIsland2023 折抵🐛🐛🐛🐛🐛🐛🐛 </span>
@@ -460,7 +460,8 @@ export default {
       displayProdData: [],
       gameSearch: "",
       searchResultDisplay: false,
-      serviceText:['桌遊販售','精釀啤酒與飲料','桌上遊戲遊玩與教學','各式場地租借']
+      serviceText:['桌遊販售','精釀啤酒與飲料','桌上遊戲遊玩與教學','各式場地租借'],
+      cuppon: true,//
     };
   },
   setup() {
@@ -609,6 +610,9 @@ export default {
         this.searchResultDisplay = false;
       }, 100);
     },
+    closeCuppon(){
+      this.cuppon = false;
+    }
   },
 };
 </script>
