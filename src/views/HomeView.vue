@@ -118,18 +118,54 @@
         <font-awesome-icon :icon="['fas', 'times']" />
       </div>
       <div v-if="cuppon" class="content">
-        <span>1/31 - 2/20 全館線上商品熱銷中，立即輸入優惠碼: GridIsland2023 折抵🐛🐛🐛🐛🐛🐛🐛 </span>
-        <span>1/31 - 2/20 全館線上商品熱銷中，立即輸入優惠碼: GridIsland2023 折抵🐛🐛🐛🐛🐛🐛🐛 </span>
-        <span>1/31 - 2/20 全館線上商品熱銷中，立即輸入優惠碼: GridIsland2023 折抵🐛🐛🐛🐛🐛🐛🐛 </span>
-        <span>1/31 - 2/20 全館線上商品熱銷中，立即輸入優惠碼: GridIsland2023 折抵🐛🐛🐛🐛🐛🐛🐛 </span>
-        <span>1/31 - 2/20 全館線上商品熱銷中，立即輸入優惠碼: GridIsland2023 折抵🐛🐛🐛🐛🐛🐛🐛 </span>
-        <span>1/31 - 2/20 全館線上商品熱銷中，立即輸入優惠碼: GridIsland2023 折抵🐛🐛🐛🐛🐛🐛🐛 </span>
-        <span>1/31 - 2/20 全館線上商品熱銷中，立即輸入優惠碼: GridIsland2023 折抵🐛🐛🐛🐛🐛🐛🐛 </span>
-        <span>1/31 - 2/20 全館線上商品熱銷中，立即輸入優惠碼: GridIsland2023 折抵🐛🐛🐛🐛🐛🐛🐛 </span>
-        <span>1/31 - 2/20 全館線上商品熱銷中，立即輸入優惠碼: GridIsland2023 折抵🐛🐛🐛🐛🐛🐛🐛 </span>
-        <span>1/31 - 2/20 全館線上商品熱銷中，立即輸入優惠碼: GridIsland2023 折抵🐛🐛🐛🐛🐛🐛🐛 </span>
-        <span>1/31 - 2/20 全館線上商品熱銷中，立即輸入優惠碼: GridIsland2023 折抵🐛🐛🐛🐛🐛🐛🐛 </span>
-        <span>1/31 - 2/20 全館線上商品熱銷中，立即輸入優惠碼: GridIsland2023 折抵🐛🐛🐛🐛🐛🐛🐛 </span>
+        <span
+          >1/31 - 2/20 全館線上商品熱銷中，立即輸入優惠碼: GridIsland2023
+          折抵🐛🐛🐛🐛🐛🐛🐛
+        </span>
+        <span
+          >1/31 - 2/20 全館線上商品熱銷中，立即輸入優惠碼: GridIsland2023
+          折抵🐛🐛🐛🐛🐛🐛🐛
+        </span>
+        <span
+          >1/31 - 2/20 全館線上商品熱銷中，立即輸入優惠碼: GridIsland2023
+          折抵🐛🐛🐛🐛🐛🐛🐛
+        </span>
+        <span
+          >1/31 - 2/20 全館線上商品熱銷中，立即輸入優惠碼: GridIsland2023
+          折抵🐛🐛🐛🐛🐛🐛🐛
+        </span>
+        <span
+          >1/31 - 2/20 全館線上商品熱銷中，立即輸入優惠碼: GridIsland2023
+          折抵🐛🐛🐛🐛🐛🐛🐛
+        </span>
+        <span
+          >1/31 - 2/20 全館線上商品熱銷中，立即輸入優惠碼: GridIsland2023
+          折抵🐛🐛🐛🐛🐛🐛🐛
+        </span>
+        <span
+          >1/31 - 2/20 全館線上商品熱銷中，立即輸入優惠碼: GridIsland2023
+          折抵🐛🐛🐛🐛🐛🐛🐛
+        </span>
+        <span
+          >1/31 - 2/20 全館線上商品熱銷中，立即輸入優惠碼: GridIsland2023
+          折抵🐛🐛🐛🐛🐛🐛🐛
+        </span>
+        <span
+          >1/31 - 2/20 全館線上商品熱銷中，立即輸入優惠碼: GridIsland2023
+          折抵🐛🐛🐛🐛🐛🐛🐛
+        </span>
+        <span
+          >1/31 - 2/20 全館線上商品熱銷中，立即輸入優惠碼: GridIsland2023
+          折抵🐛🐛🐛🐛🐛🐛🐛
+        </span>
+        <span
+          >1/31 - 2/20 全館線上商品熱銷中，立即輸入優惠碼: GridIsland2023
+          折抵🐛🐛🐛🐛🐛🐛🐛
+        </span>
+        <span
+          >1/31 - 2/20 全館線上商品熱銷中，立即輸入優惠碼: GridIsland2023
+          折抵🐛🐛🐛🐛🐛🐛🐛
+        </span>
       </div>
     </div>
     <!-- 內容 -->
@@ -218,7 +254,10 @@
                   v-model="gameSearch"
                 />
               </div>
-              <div class="searchResult" v-show="searchResultDisplay">
+              <div
+                class="searchResult"
+                v-show="searchResultDisplay && displayProdData.length != 0"
+              >
                 <p v-for="item in displayProdData">
                   <router-link
                     :to="{
@@ -242,7 +281,7 @@
       </div> -->
 
       <div class="home_ocean">
-        <img src="/images/home/home_ocean_1.svg" alt="home_ocean_1">
+        <img src="/images/home/home_ocean_1.svg" alt="home_ocean_1" />
       </div>
 
       <!-- 服務項目 -->
@@ -250,61 +289,85 @@
         <div class="index_row container">
           <!-- 寫這邊 -->
           <h2>服務項目</h2>
-          <div class="serviceMarqueeContent" >
-              <div class="marqueePic">
-                  <img src="../assets/images/home/servicePic_1.svg" alt="首頁服務項目">
-                  <div class="marqueeText">
-                    <span>桌遊販售</span>
-                  </div>
+          <div class="serviceMarqueeContent">
+            <div class="marqueePic">
+              <img
+                src="../assets/images/home/servicePic_1.svg"
+                alt="首頁服務項目"
+              />
+              <div class="marqueeText">
+                <span>桌遊販售</span>
               </div>
-              <div class="marqueePic">
-                  <img src="../assets/images/home/servicePic_2.svg" alt="首頁服務項目">
-                  <div class="marqueeText">
-                    <span>精釀啤酒與飲料</span>
-                  </div>
+            </div>
+            <div class="marqueePic">
+              <img
+                src="../assets/images/home/servicePic_2.svg"
+                alt="首頁服務項目"
+              />
+              <div class="marqueeText">
+                <span>精釀啤酒與飲料</span>
               </div>
-              <div class="marqueePic">
-                  <img src="../assets/images/home/servicePic_3.svg" alt="首頁服務項目">
-                  <div class="marqueeText">
-                    <span>桌上遊戲遊玩與教學</span>
-                  </div>
+            </div>
+            <div class="marqueePic">
+              <img
+                src="../assets/images/home/servicePic_3.svg"
+                alt="首頁服務項目"
+              />
+              <div class="marqueeText">
+                <span>桌上遊戲遊玩與教學</span>
               </div>
-              <div class="marqueePic">
-                  <img src="../assets/images/home/servicePic_4.svg" alt="首頁服務項目">
-                  <div class="marqueeText">
-                    <span>各式場地租借</span>
-                  </div>
+            </div>
+            <div class="marqueePic">
+              <img
+                src="../assets/images/home/servicePic_4.svg"
+                alt="首頁服務項目"
+              />
+              <div class="marqueeText">
+                <span>各式場地租借</span>
               </div>
-              <div class="marqueePic">
-                  <img src="../assets/images/home/servicePic_1.svg" alt="首頁服務項目">
-                  <div class="marqueeText">
-                    <span>桌游販售</span>
-                  </div>
+            </div>
+            <div class="marqueePic">
+              <img
+                src="../assets/images/home/servicePic_1.svg"
+                alt="首頁服務項目"
+              />
+              <div class="marqueeText">
+                <span>桌游販售</span>
               </div>
-              <div class="marqueePic">
-                  <img src="../assets/images/home/servicePic_2.svg" alt="首頁服務項目">
-                  <div class="marqueeText">
-                    <span>桌游販售</span>
-                  </div>
+            </div>
+            <div class="marqueePic">
+              <img
+                src="../assets/images/home/servicePic_2.svg"
+                alt="首頁服務項目"
+              />
+              <div class="marqueeText">
+                <span>桌游販售</span>
               </div>
-              <div class="marqueePic">
-                  <img src="../assets/images/home/servicePic_3.svg" alt="首頁服務項目">
-                  <div class="marqueeText">
-                    <span>桌游遊玩教學</span>
-                  </div>
+            </div>
+            <div class="marqueePic">
+              <img
+                src="../assets/images/home/servicePic_3.svg"
+                alt="首頁服務項目"
+              />
+              <div class="marqueeText">
+                <span>桌游遊玩教學</span>
               </div>
-              <div class="marqueePic">
-                  <img src="../assets/images/home/servicePic_4.svg" alt="首頁服務項目">
-                  <div class="marqueeText">
-                    <span>各式場地租借</span>
-                  </div>
+            </div>
+            <div class="marqueePic">
+              <img
+                src="../assets/images/home/servicePic_4.svg"
+                alt="首頁服務項目"
+              />
+              <div class="marqueeText">
+                <span>各式場地租借</span>
               </div>
+            </div>
           </div>
         </div>
       </div>
 
       <div class="home_ocean">
-        <img src="/images/home/home_ocean_2.svg" alt="home_ocean_2">
+        <img src="/images/home/home_ocean_2.svg" alt="home_ocean_2" />
       </div>
 
       <!-- 預約方式 -->
@@ -339,13 +402,13 @@
       </div> -->
 
       <div class="home_ocean">
-        <img src="/images/home/home_ocean_temp.svg" alt="home_ocean_temp">
+        <img src="/images/home/home_ocean_temp.svg" alt="home_ocean_temp" />
       </div>
 
       <!-- 最新消息 -->
       <div class="index_news">
         <div class="index_row">
-          <h2 class="h2" >最新消息</h2>
+          <h2 class="h2">最新消息</h2>
           <div class="news_card_content">
             <NewsCard
               v-for="(item, index) in latestData"
@@ -365,12 +428,12 @@
       <!-- 一起遊樂 IG API -->
       <!-- <div class="index_insta">
         <div class="index_row"> -->
-          <!-- 寫這邊 -->
-        <!-- </div>
+      <!-- 寫這邊 -->
+      <!-- </div>
       </div> -->
 
       <div class="home_ocean">
-        <img src="/images/home/home_ocean_temp2.svg" alt="home_ocean_temp2">
+        <img src="/images/home/home_ocean_temp2.svg" alt="home_ocean_temp2" />
       </div>
 
       <!-- Grid Island 關於我們 -->
@@ -460,8 +523,13 @@ export default {
       displayProdData: [],
       gameSearch: "",
       searchResultDisplay: false,
-      serviceText:['桌遊販售','精釀啤酒與飲料','桌上遊戲遊玩與教學','各式場地租借'],
-      cuppon: true,//
+      serviceText: [
+        "桌遊販售",
+        "精釀啤酒與飲料",
+        "桌上遊戲遊玩與教學",
+        "各式場地租借",
+      ],
+      cuppon: true, //
     };
   },
   setup() {
@@ -577,8 +645,6 @@ export default {
         .get("https://tibamef2e.com/chd103/g5/phps/ProductM.php")
         .then((res) => {
           this.productData = res.data;
-          this.displayProdData = res.data;
-          console.log(this.displayProdData);
         });
     },
     goNews() {
@@ -598,11 +664,12 @@ export default {
       this.$router.push("/About");
     },
     handleSearch() {
-      console.log(this.productData);
       this.displayProdData = this.productData.filter((item) => {
         return item.prod_name.includes(this.gameSearch);
       });
-      console.log(this.displayProdData);
+      if (this.gameSearch == "") {
+        this.displayProdData = [];
+      }
     },
     searchResultClose() {
       setTimeout(() => {
@@ -610,9 +677,9 @@ export default {
         this.searchResultDisplay = false;
       }, 100);
     },
-    closeCuppon(){
+    closeCuppon() {
       this.cuppon = false;
-    }
+    },
   },
 };
 </script>
