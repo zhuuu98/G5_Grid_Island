@@ -27,7 +27,7 @@
                             <span>0</span>
                             <span>已完成</span>
                         </div>
-                        <button class="memberLookOrder btn_lg_orange">查看訂單</button>
+                        <button class="memberLookOrder btn_lg_orange" @click="order">查看訂單</button>
                     </div>
                     <!-- 預約紀錄 -->
                     <div class="memberBook">
@@ -36,7 +36,7 @@
                                 <img src="../assets/images/member/memberAsideIcon_4.svg" alt="預約紀錄icon">
                                 <p>預約紀錄</p>
                             </div>
-                            <button class="memberLookBook btn_lg_orange">查看預約</button>
+                            <button class="memberLookBook btn_lg_orange" @click="book">查看預約</button>
                         </div>
                         <div class="memberBooklog" v-for="date in bookDate">
                             <div class="dateAndCancel">
@@ -434,7 +434,8 @@ export default {
             this.isChoosedOrderData_PC= false;
             this.isChoosedBookData_PC= false;
             this.isChoosedIndex_PC=true;
-        }
+        },
+        
     },
 
 };
