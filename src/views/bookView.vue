@@ -268,7 +268,7 @@ export default {
         isDisabled(num) {
             let restDay = 15 - (this.daysInLastMonth - this.today.getDate())
             return (
-                (this.isCurrentMonth && num <= this.today.getDate())
+                (this.isCurrentMonth && num <= this.today.getDate())||(this.isCurrentMonth && num > this.today.getDate()+15)
                 || (!this.isCurrentMonth && num > restDay)
                 );
         },
