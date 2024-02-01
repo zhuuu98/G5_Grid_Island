@@ -134,7 +134,7 @@
                     </p>
                   </div>
                   <div class="btn_lg">
-                    <RouterLink to="/login">
+                    <RouterLink to="/griddy-style">
                       創造專屬蟲蟲
                     </RouterLink>
                   </div>
