@@ -29,6 +29,7 @@
 
 <script>
     import { ref, reactive } from 'vue';
+    import { unifiedColors } from "@/policy/color.js";
 
     export default {
         name: 'SkinComponent',
@@ -43,9 +44,9 @@
             const spotState = reactive({
                 selectedSpotColor: props.currentColor
             });
-            const bodyColors = ['#d2eb86', '#1ca88e', '#fbb466', '#f9eaa7', '#f7f7f7', '#fb7676', '#ffdcdc', '#9dd0e1', '#a9aaff', '#c088f9'];
-            const bellyColors = ['#d2eb86', '#1ca88e', '#fbb466', '#f9eaa7', '#f7f7f7', '#fb7676', '#ffdcdc', '#9dd0e1', '#a9aaff', '#c088f9']; 
-            const spotColors = ['#d2eb86', '#1ca88e', '#fbb466', '#f9eaa7', '#f7f7f7', '#fb7676', '#ffdcdc', '#9dd0e1', '#a9aaff', '#c088f9'];
+            const bodyColors = unifiedColors;
+            const bellyColors = unifiedColors;
+            const spotColors = unifiedColors;
 
             // 更新選中的颜色
             const handleBodyColorChange = (bodyColor) => {

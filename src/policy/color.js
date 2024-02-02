@@ -1,3 +1,11 @@
+export const unifiedColors =[
+    '#d2eb86', '#1ca88e', '#fbb466', '#f9eaa7', '#fb7676', '#ffdcdc', 
+    '#9dd0e1', '#a9aaff', '#c088f9', "#FF9DC6", "#D15582", 
+    "#DDDDDD", "#C9C6B9", "#90795F", "#B3CD7A", "#84A68B", "#7A8EAC", "#D8DCFF",
+    '#f7f7f7', "#404040"
+];
+
+
 export const bodyColors = ['#d2eb86', '#1ca88e', '#fbb466', '#f9eaa7', '#f7f7f7', '#fb7676', '#ffdcdc', '#9dd0e1', '#a9aaff', '#c088f9']; // 這些值代表不同的膚色
 export const bellyColors = ['#d2eb86', '#1ca88e', '#fbb466', '#f9eaa7', '#f7f7f7', '#fb7676', '#ffdcdc', '#9dd0e1', '#a9aaff', '#c088f9'];
 export const spotColors = ['#d2eb86', '#1ca88e', '#fbb466', '#f9eaa7', '#f7f7f7', '#fb7676', '#ffdcdc', '#9dd0e1', '#a9aaff', '#c088f9'];
