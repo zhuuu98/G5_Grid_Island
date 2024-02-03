@@ -109,7 +109,7 @@
             const selectedEarsColor = ref(earsColors[0]);
             const selectedAccessoriesStaff = ref(accessoriesStaffs[0]);
             const selectedBackgroundColor = ref(backgroundColors[4]);
-            const currentZone = ref('style-play-zone'); // 初始设为 true 或 false 根据您的需求
+            const currentZone = ref('style-play-zone');
             const toggleZone = () => {
                 currentZone.value = currentZone.value === 'style-play-zone' ? 'show-zone' : 'style-play-zone';
             };
@@ -126,7 +126,6 @@
                     height: elementToCapture.offsetHeight,
                     useCORS: true // 允许加载跨域图片
                 };
-
 
 
 
@@ -152,60 +151,79 @@
                 });
             };
 
+            const handleBodyColorChange = (bodyColor) => {
+                console.log("接收到子組件的軀幹顏色：", bodyColor);
+                selectedBodyColor.value = bodyColor;
+                console.log("被選擇的軀幹顏色：", selectedBodyColor.value);
+            };
+            const handleBellyColorChange = (bellyColor) => {
+                console.log("接收到子組件的肚肚顏色：", bellyColor);
+                selectedBellyColor.value = bellyColor;
+                console.log("被選擇的肚肚顏色：", selectedBellyColor.value);
+            };
+            const handleSpotColorChange = (spotColor) => {
+                console.log("接收到子組件的斑點顏色：", spotColor);
+                selectedSpotColor.value = spotColor;
+                console.log("被選擇的的斑點顏色：", selectedSpotColor.value);
+            };
+            const handleEyesStaffChange = (eyesStaff) => {
+                console.log("接收到子組件的眼鏡零件：", eyesStaff);
+                selectedEyesStaff.value = eyesStaff;
+                console.log("被選擇的的眼鏡零件：", selectedEyesStaff.value);
+            };
+            const handleEyesColorChange = (eyesColor) => {
+                console.log("接收到子組件的眼鏡顏色：", eyesColor);
+                selectedEyesColor.value = eyesColor;
+                console.log("被選擇的的眼鏡顏色：", selectedEyesColor.value);
+            };
+
+            const handleEarsStaffChange = (earsStaff) => {
+                console.log("接收到子組件的耳朵零件：", earsStaff);
+                selectedEarsStaff.value = earsStaff;
+                console.log("被選擇的的耳朵零件：", selectedEarsStaff.value);
+            };
+
+            const handleEarsColorChange = (earsColor) => {
+                console.log("接收到子組件的耳朵顏色：", earsColor);
+                selectedEarsColor.value = earsColor;
+                console.log("被選擇的的耳朵顏色：", selectedEarsColor.value);
+            };
+
+            const handleAccessoriesStaffChange = (accessoriesStaff) => {
+                console.log("接收到子組件的配件零件：", accessoriesStaff);
+                selectedAccessoriesStaff.value = accessoriesStaff;
+                console.log("被選擇的的配件零件：", selectedAccessoriesStaff.value);
+            };
+
+            const handleBackgroundColorChange = (backgroundColor) => {
+                console.log("接收到子組件的背景顏色：", backgroundColor);
+                selectedBackgroundColor.value = backgroundColor;
+                console.log("被選擇的的背景顏色：", selectedBackgroundColor.value);
+            };
+
+
+
+
+
 
             return {
                 currentZone, toggleZone, tabs, currentTab, selectedBodyColor, selectedBellyColor, selectedSpotColor, selectedBellyColor,
                 selectedEyesColor, selectedEyesStaff, selectedEarsColor, selectedEarsStaff,
                 selectedAccessoriesStaff, selectedBackgroundColor,
                 griddyToImage,
+                handleBodyColorChange,
+                handleBellyColorChange,
+                handleSpotColorChange,
+                handleEyesStaffChange,
+                handleEyesColorChange,
+                handleEarsStaffChange,
+                handleEarsColorChange,
+                handleAccessoriesStaffChange,
+                handleBackgroundColorChange
             };
         },
         methods: {
-            handleBodyColorChange(bodyColor) {
-                console.log("接收到子組件的軀幹顏色：", bodyColor);
-                this.selectedBodyColor = bodyColor;
-                console.log("被選擇的軀幹顏色：", this.selectedBodyColor);
-            },
-            handleBellyColorChange(bellyColor) {
-                console.log("接收到子組件的肚肚顏色：", bellyColor);
-                this.selectedBellyColor = bellyColor;
-                console.log("被選擇的肚肚顏色：", this.selectedBellyColor);
-            },
-            handleSpotColorChange(spotColor) {
-                console.log("接收到子組件的斑點顏色：", spotColor);
-                this.selectedSpotColor = spotColor;
-                console.log("被選擇的的斑點顏色：", this.selectedSpotColor);
-            },
-            handleEyesStaffChange(eyesStaff) {
-                console.log("接收到子組件的眼鏡零件：", eyesStaff);
-                this.selectedEyesStaff = eyesStaff;
-                console.log("被選擇的的眼鏡零件：", this.selectedEyesStaff);
-            },
-            handleEyesColorChange(eyesColor) {
-                console.log("接收到子組件的眼鏡顏色：", eyesColor);
-                this.selectedEyesColor = eyesColor;
-                console.log("被選擇的的眼鏡顏色：", this.selectedEyesColor);
-            },
-            handleEarsStaffChange(earsStaff) {
-                console.log("接收到子組件的耳朵零件：", earsStaff);
-                this.selectedEarsStaff = earsStaff;
-                console.log("被選擇的的耳朵零件：", this.selectedEarsStaff);
-            },
-            handleEarsColorChange(earsColor) {
-                console.log("接收到子組件的耳朵顏色：", earsColor);
-                this.selectedEarsColor = earsColor;
-                console.log("被選擇的的耳朵顏色：", this.selectedEarsColor);
-            },
-            handleAccessoriesStaffChange(accessoriesStaff) {
-                console.log("接收到子組件的配件零件：", accessoriesStaff);
-                this.selectedAccessoriesStaff = accessoriesStaff;
-                console.log("被選擇的的配件零件：", this.selectedAccessoriesStaff);
-            },
-            handleBackgroundColorChange(backgroundColor) {
-                console.log("接收到子組件的背景顏色：", backgroundColor);
-                this.selectedBackgroundColor = backgroundColor;
-                console.log("被選擇的的背景顏色：", this.selectedBackgroundColor);
-            },
+
         },
     };
 </script>

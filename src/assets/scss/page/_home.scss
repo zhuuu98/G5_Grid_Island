@@ -10,7 +10,7 @@
 }
 main {
   //banner
-  .header_banner {
+  #header_banner {
     border: 20px solid black;
     @include T() {
     }
@@ -29,16 +29,16 @@ main {
     background-repeat: repeat, repeat, no-repeat;
     z-index: 949;
 
-    #main-banner {
+    #bannerImage {
       width: 72%;
       margin: auto;
     }
 
     #tree-svg {
-      width: 13.9%;
+      width: 100%;
       position: absolute;
-      left: 28.15%;
-      top: 3.1%;
+      left: 0;
+      top: 0;
       /* display: none; */
     }
 
