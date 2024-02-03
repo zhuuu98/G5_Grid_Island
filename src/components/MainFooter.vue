@@ -57,7 +57,7 @@ export default {
         },
         {
           title: '隱私政策',
-          link: '/privacy_policy'
+          link: '/privacy-policy'
         },
         {
           title: '最新消息',
