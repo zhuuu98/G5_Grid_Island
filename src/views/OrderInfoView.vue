@@ -212,12 +212,6 @@ import OrderItem from "../components/OrderItem.vue";
 import { mapState, mapActions } from "pinia";
 import cartStore from "@/stores/cart";
 export default {
-  setup() {
-    const user = useUserStore();
-    return {
-      userStore: user,
-    };
-  },
   data() {
     return {
       respondData: [],

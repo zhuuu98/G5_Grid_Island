@@ -19,12 +19,6 @@
 import useUserStore from "../stores/user";
 
 export default {
-  setup() {
-    const user = useUserStore();
-    return {
-      userStore: user,
-    };
-  },
   data() {
     return {
 
