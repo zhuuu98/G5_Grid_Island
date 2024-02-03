@@ -7,10 +7,14 @@ img{
     .mOcean {
         position: absolute;
         top: 0;
-        transform: translateY(-95%);
+        transform: translateY(-91%);
         right: 0;
         width: 101%;
+        @include M(){
+            transform: translateY(-93%);
+        }
         @include T(){
+            // transform: translateY(-95%);
             display: none;
         }
     }

@@ -10,11 +10,57 @@
         </div>
       </div>
     </transition>
+
     <div class="newsTitle">
       <h1>
         <PageTitle :pageTitle="'最新消息'" />
       </h1>
     </div>
+		<MainHeader></MainHeader>
+    <div class="cuppon"  v-if="cuppon">
+			<div class="btn" @click="closeCuppon">
+				<font-awesome-icon :icon="['fas', 'times']" />
+			</div>
+			<div class="subContent">
+				<span>1/31 - 2/20 全館線上商品熱銷中，立即輸入優惠碼: GridIsland2023
+					折抵🐛🐛🐛🐛🐛🐛🐛
+				</span>
+				<span>1/31 - 2/20 全館線上商品熱銷中，立即輸入優惠碼: GridIsland2023
+					折抵🐛🐛🐛🐛🐛🐛🐛
+				</span>
+				<span>1/31 - 2/20 全館線上商品熱銷中，立即輸入優惠碼: GridIsland2023
+					折抵🐛🐛🐛🐛🐛🐛🐛
+				</span>
+				<span>1/31 - 2/20 全館線上商品熱銷中，立即輸入優惠碼: GridIsland2023
+					折抵🐛🐛🐛🐛🐛🐛🐛
+				</span>
+				<span>1/31 - 2/20 全館線上商品熱銷中，立即輸入優惠碼: GridIsland2023
+					折抵🐛🐛🐛🐛🐛🐛🐛
+				</span>
+				<span>1/31 - 2/20 全館線上商品熱銷中，立即輸入優惠碼: GridIsland2023
+					折抵🐛🐛🐛🐛🐛🐛🐛
+				</span>
+				<span>1/31 - 2/20 全館線上商品熱銷中，立即輸入優惠碼: GridIsland2023
+					折抵🐛🐛🐛🐛🐛🐛🐛
+				</span>
+				<span>1/31 - 2/20 全館線上商品熱銷中，立即輸入優惠碼: GridIsland2023
+					折抵🐛🐛🐛🐛🐛🐛🐛
+				</span>
+				<span>1/31 - 2/20 全館線上商品熱銷中，立即輸入優惠碼: GridIsland2023
+					折抵🐛🐛🐛🐛🐛🐛🐛
+				</span>
+				<span>1/31 - 2/20 全館線上商品熱銷中，立即輸入優惠碼: GridIsland2023
+					折抵🐛🐛🐛🐛🐛🐛🐛
+				</span>
+				<span>1/31 - 2/20 全館線上商品熱銷中，立即輸入優惠碼: GridIsland2023
+					折抵🐛🐛🐛🐛🐛🐛🐛
+				</span>
+				<span>1/31 - 2/20 全館線上商品熱銷中，立即輸入優惠碼: GridIsland2023
+					折抵🐛🐛🐛🐛🐛🐛🐛
+				</span>
+			</div>
+		</div>
+
 
 
     <div class="content">
@@ -57,18 +103,24 @@ import axios from "axios";
 import PageTitle from "../components/PageTitle.vue";
 import NewsCard from "../components/NewsCard.vue";
 import NewsRow from "../components/NewsRow.vue";
+import MainHeader from "../components/MainHeader.vue";
+
 
 export default {
   data() {
     return {
       respondData: [],
       noneShow: false,
+      cuppon: true
+
     };
   },
   components: {
     PageTitle,
     NewsCard,
     NewsRow,
+    MainHeader,
+
   },
   computed: {
     loading() {
@@ -92,6 +144,10 @@ export default {
     },
     romoveListClassName() {
       this.noneShow = false;
+    },
+    closeCuppon() {
+      console.log("Button Clicked!");
+				this.cuppon = false;
     },
 
   },

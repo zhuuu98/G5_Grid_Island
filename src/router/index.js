@@ -30,6 +30,8 @@ const router = createRouter({
       name: "news",
       meta: {
         title:"最新消息",
+        showHeader: false, //測試跑馬燈用，之後須刪除
+        customHeaderPosition: true, // 測試跑馬燈用，之後須刪除
       },
       component: () => import("../views/NewsView.vue"),
     },
