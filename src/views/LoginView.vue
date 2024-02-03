@@ -35,7 +35,8 @@ export default {
     methods: {
         ...mapActions(userStore, ['updateToken']),
         signin() {
-            axios.post('https://fakestoreapi.com/auth/login', {
+            axios.post(`${import.meta.env.VITE_API_URL}/ssss.php`, {
+            // axios.post('https://fakestoreapi.com/auth/login', {
                 username: this.accName,
                 password: this.au4a83
             })
