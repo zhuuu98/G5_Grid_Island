@@ -11,6 +11,7 @@
 main {
   //banner
   .header_banner {
+    border: 20px solid black;
     @include T() {
     }
     width: 100%;

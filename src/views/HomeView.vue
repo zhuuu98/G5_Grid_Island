@@ -467,7 +467,7 @@
 
 <script>
 import axios from "axios";
-import bannerImage from "../assets/images/banner/gi_banner.png";
+import bannerImage from "../assets/images/islandbanner/islandbgc.svg";
 import treeSvg from "../assets/images/banner/centree.svg";
 import news from "../assets/images/banner/news.svg";
 import comment from "../assets/images/banner/comment.svg";
