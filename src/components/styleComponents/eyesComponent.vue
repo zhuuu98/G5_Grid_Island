@@ -28,6 +28,11 @@
     import { eyesStaff4 } from "@/policy/color.js"
     import { eyesStaff5 } from "@/policy/color.js"
     import { eyesStaff6 } from "@/policy/color.js"
+    import { eyesStaff7 } from "@/policy/color.js"
+    import { eyesStaff8 } from "@/policy/color.js"
+    import { eyesStaff9 } from "@/policy/color.js"
+    import { eyesStaff10 } from "@/policy/color.js"
+    import { unifiedColors } from "@/policy/color.js";
 
     export default {
         name: 'eyesComponent',
@@ -40,7 +45,10 @@
                     { label: "哭哭", staff: eyesStaff4 },
                     { label: "水汪汪", staff: eyesStaff5 },
                     { label: "複眼", staff: eyesStaff6 },
-                    
+                    { label: "疲憊", staff: eyesStaff7 },
+                    { label: "舒眠", staff: eyesStaff8 },
+                    { label: "愛戀", staff: eyesStaff9 },
+                    { label: "少年", staff: eyesStaff10 },
                 ]
             };
         },
@@ -55,7 +63,7 @@
             const eyesState = reactive({
                 selectedeyesColor: props.currentColor
             });
-            const eyesColors = ['#d2eb86', '#1ca88e', '#fbb466', '#f9eaa7', '#f7f7f7', '#fb7676', '#ffdcdc', '#9dd0e1', '#a9aaff', '#c088f9'];
+            const eyesColors = unifiedColors;
 
             // 更新選中的颜色
             const handleEyesColorChange = (eyesColor) => {
@@ -70,10 +78,6 @@
             return {
                 eyesColors, selectedEyesColor: eyesState.selectedEyesColor,
                 handleEyesColorChange, handleEyesStaffChange
-
-
-
-
             };
         },
 

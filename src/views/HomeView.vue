@@ -178,7 +178,7 @@
           <div class="prodBackground">
             <div class="prodBreif">
               <p>
-                　　我們精選了3000種桌上遊戲，涵蓋了從熱門到冷門的各種類型。
+                　　哈哈我們精選了3000種桌上遊戲，涵蓋了從熱門到冷門的各種類型。
                 即使你不熟悉遊戲規則，也無需擔心，因為我們會親自指導你如何遊玩，
                 一起加入桌遊的行列吧！
               </p>
@@ -467,7 +467,7 @@
 
 <script>
 import axios from "axios";
-import bannerImage from "../assets/images/banner/gi_banner.png";
+import bannerImage from "../assets/images/islandbanner/islandbgc.svg";
 import treeSvg from "../assets/images/banner/centree.svg";
 import news from "../assets/images/banner/news.svg";
 import comment from "../assets/images/banner/comment.svg";
