@@ -81,7 +81,7 @@
             }
             .membertop{
                 display: flex;
-                justify-content: space-between;
+                justify-content: center;
             }
             .memberBooklog{
                 display: flex;
@@ -582,6 +582,7 @@
             .PC_OrderDataTitle {
                 display: flex;
                 justify-content: center;
+                margin: $M-spacing;
             }
             .PC_OrderDataTitle img{
                 width: 100%;
