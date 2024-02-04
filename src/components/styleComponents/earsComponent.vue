@@ -29,6 +29,8 @@ import { earsStaff3 } from "@/policy/color.js"
 import { earsStaff4 } from "@/policy/color.js"
 import { earsStaff5 } from "@/policy/color.js"
 import { earsStaff6 } from "@/policy/color.js"
+import { earsStaff7 } from "@/policy/color.js"
+import { earsStaff8 } from "@/policy/color.js"
 import { unifiedColors } from "@/policy/color.js";
 
 export default {
@@ -42,6 +44,8 @@ export default {
                 { label: "犄角", staff: earsStaff4 },
                 { label: "獸耳", staff: earsStaff5 },
                 { label: "蓬鬆", staff: earsStaff6 },
+                // { label: "搖滾", staff: earsStaff7 },
+                // { label: "哥布林", staff: earsStaff8 },
             ]
         };
     },
