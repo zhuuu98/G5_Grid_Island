@@ -1,8 +1,15 @@
 $islandItems: (
   islandTree: (objw: 365.5, objx: 5.49, objy: 8.08),
   islandNews: (objw: 217.24, objx: 160.84, objy: 521.67),
-  islandBar: (objw: 558.4, objx: 436.07, objy: 624.62),
-  islandGames: (objw: 330.29, objx: 690.93, objy: 382.8),
+  islandBar: (objw: 558.4, objx: 436.07, objy: 622),
+  islandGames: (objw: 330.29, objx: 688, objy: 382.8),
+  islandRoof: (objw: 645.69, objx: 277.95, objy: 212.94),
+  islandBoard: (objw: 212.85, objx: 261.76, objy: 403.2),
+  islandBug: (objw: 252.28, objx: 463.4, objy: 390.32),
+  islandBarup: (objw: 255.99, objx: 434.96, objy: 660.38),
+  islandPrebook: (objw: 283.02, objx: 965.84, objy: 515.87),
+  islandCart: (objw: 202.41, objx: 367.14, objy: 756),
+  islandAbout: (objw: 419.36, objx: 423.64, objy: 155.4),
   // 添加更多物件...
 );
 
@@ -37,12 +44,12 @@ $islandItems: (
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: start;
 
   #banner-imagebox {
-    width: 40%;
+    width: 80%;
     position: relative;
-    margin-top: 20%;
+    margin-top: 12%;
     outline: 2px solid #fa0;
 
     #island-image {

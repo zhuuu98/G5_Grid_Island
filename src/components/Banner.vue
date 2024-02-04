@@ -3,11 +3,39 @@
         <div id="banner-imagebox">
             <img :src="island" id="island-image" />
             <router-link to="product">
-                <img :src="islandTree" id="islandTree-image"  />
-                <img :src="islandNews" id="islandNews-image"  />
-                <img :src="islandBar" id="islandBar-image"  />
-                <img :src="islandGames" id="islandGames-image"  />
+                <img :src="islandTree" id="islandTree-image" />
             </router-link>
+            <router-link to="product">
+                <img :src="islandNews" id="islandNews-image" />
+            </router-link>
+            <router-link to="product">
+                <img :src="islandBar" id="islandBar-image" />
+            </router-link>
+            <router-link to="product">
+                <img :src="islandGames" id="islandGames-image" />
+            </router-link>
+            <router-link to="product">
+                <img :src="islandRoof" id="islandRoof-image" />
+            </router-link>
+            <router-link to="product">
+                <img :src="islandBoard" id="islandBoard-image" />
+            </router-link>
+            <router-link to="griddy-style">
+                <img :src="islandBug" id="islandBug-image" />
+            </router-link>
+            <router-link to="product">
+                <img :src="islandBarup" id="islandBarup-image" />
+            </router-link>
+            <router-link to="product">
+                <img :src="islandPrebook" id="islandPrebook-image" />
+            </router-link>
+            <router-link to="product">
+                <img :src="islandCart" id="islandCart-image" />
+            </router-link>
+            <router-link to="product">
+                <img :src="islandAbout" id="islandAbout-image" />
+            </router-link>
+            
 
 
         </div>
@@ -91,6 +119,13 @@
     import islandNews from "../assets/images/islandbanner/islandNews.svg";
     import islandBar from "../assets/images/islandbanner/islandBar.svg";
     import islandGames from "../assets/images/islandbanner/islandGames.svg";
+    import islandRoof from "../assets/images/islandbanner/islandRoof.svg";
+    import islandBoard from "../assets/images/islandbanner/islandBoard.svg";
+    import islandBug from "../assets/images/islandbanner/islandBug.svg";
+    import islandBarup from "../assets/images/islandbanner/islandBarup.svg";
+    import islandPrebook from "../assets/images/islandbanner/islandPrebook.svg";
+    import islandCart from "../assets/images/islandbanner/islandCart.svg";
+    import islandAbout from "../assets/images/islandbanner/islandAbout.svg";
 
     export default {
         name: 'bannerComponent', // 組件名稱
@@ -104,6 +139,13 @@
                 islandNews: islandNews,
                 islandBar: islandBar,
                 islandGames: islandGames,
+                islandRoof: islandRoof,
+                islandBoard: islandBoard,
+                islandBug: islandBug,
+                islandBarup: islandBarup,
+                islandPrebook: islandPrebook,
+                islandCart: islandCart,
+                islandAbout: islandAbout,  
             };
         },
         methods: {
