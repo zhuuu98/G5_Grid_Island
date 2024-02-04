@@ -95,73 +95,71 @@
                 </div>
                 <!-- PC訂單資訊 -->
                 <div class="PC_OrderData col-T-7 col-PC-7" v-show="isChoosedOrderData_PC">
-                    <div class="PC_OrderDataTitle">
-                        <img :src="getImageUrl(`member/memberAsideIcon_3.svg`)">
-                        <h3>訂單資訊</h3>
-                    </div>
-                    <div class="PC_OrderDataContent">
-                        <div class="PC_ContentTitle">
-                            <p v-for="title in orderTitle">{{ title }}</p>
-                            <p></p>
+                    <div class="content">
+                        <div class="PC_OrderDataTitle">
+                            <img :src="getImageUrl(`member/memberAsideIcon_3.svg`)">
+                            <h3>訂單資訊</h3>
                         </div>
-                        <div class="PC_orderMain">
-                            <div class="PC_OrderDataList" v-for="(items, index) in orderList" :key="index">
-                                <div class="PC_orderSimple">
-                                    <div class="PC_orderListText">
-                                        <p>{{ items.orderDate }}</p>
-                                        <p>{{ items.orderNum }}</p>
-                                        <p>${{ items.orderTotal }}</p>
-                                        <p>{{ items.orderState }}</p>
-                                    </div>
-                                    <button class="btn_sm_1" @click="mobileOpenList(index)">訂單明細</button>
-                                </div>
-                                <div class="PC_OrderDataDetail" v-show="items.isOpen">
-                                    <div v-for="(name, nameIndex) in items.orderItems" class="PC_NameTotal">
-                                        <img :src="getImageUrl(`member/memberOrderProducts_${nameIndex + 1}.svg`)" alt="商品">
-
-
-                                        <div class="PC_orderPriceNumTotal">
-                                            <p>{{ name }}</p>
-                                            <p>${{ items.orderItemsPrice[nameIndex] }}</p>
-                                            <p>{{ items.orderItemsNum[nameIndex] }}</p>
-                                            <p>${{ items.orderItemsTotal[nameIndex] }}</p>
-
+                        <div class="PC_OrderDataContent">
+                            <div class="PC_ContentTitle">
+                                <p v-for="title in orderTitle">{{ title }}</p>
+                                <p></p>
+                            </div>
+                            <div class="PC_orderMain">
+                                <div class="PC_OrderDataList" v-for="(items, index) in orderList" :key="index">
+                                    <div class="PC_orderSimple">
+                                        <div class="PC_orderListText">
+                                            <p>{{ items.orderDate }}</p>
+                                            <p>{{ items.orderNum }}</p>
+                                            <p>${{ items.orderTotal }}</p>
+                                            <p>{{ items.orderState }}</p>
                                         </div>
-
+                                        <button class="btn_sm_1" @click="mobileOpenList(index)">訂單明細</button>
                                     </div>
-
+                                    <div class="PC_OrderDataDetail" v-show="items.isOpen">
+                                        <div v-for="(name, nameIndex) in items.orderItems" class="PC_NameTotal">
+                                            <img :src="getImageUrl(`member/memberOrderProducts_${nameIndex + 1}.svg`)" alt="商品">
+                                            <div class="PC_orderPriceNumTotal">
+                                                <p>{{ name }}</p>
+                                                <p>${{ items.orderItemsPrice[nameIndex] }}</p>
+                                                <p>{{ items.orderItemsNum[nameIndex] }}</p>
+                                                <p>${{ items.orderItemsTotal[nameIndex] }}</p>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
 
                 </div>
-                <!-- 預約紀錄 -->
+                <!-- PC預約紀錄 -->
                 <div class="PC_BookData col-T-7 col-PC-7" v-show="isChoosedBookData_PC">
-                    <div class="memberBook">
-                        <div class="membertop">
-                            <div class="memberBookTitle">
-                                <img src="../assets/images/member/memberAsideIcon_4.svg" alt="預約紀錄icon">
-                                <p>預約紀錄</p>
+                    <div class="content">
+                        <div class="memberBook">
+                            <div class="membertop">
+                                <div class="memberBookTitle">
+                                    <img src="../assets/images/member/memberAsideIcon_4.svg" alt="預約紀錄icon">
+                                    <p>預約紀錄</p>
+                                </div>
                             </div>
-                        </div>
-                        <div class="memberBooklog" v-for="date in bookDate">
-                            <div class="dateAndCancel">
-                                <p>{{ date }}</p>
-                                <button :class="{ 'btn_sm_1': true, 'disabled': isPastDate(date) }"
-                                    @click="cancelReservation(date)">取消預約</button>
-                            </div>
-                            <div class="selectedTime">
-                                <button class="chooseTime" v-for="(choose, index) in selectedTime.timePeriod" :key="index">
-                                    <p>{{ choose }}</p>
-                                    <p>{{ selectedTime.hours[index] }}</p>
-                                </button>
-                                <div class="numPeople">
-                                    <p>人數：{{ numPeople[0] }}</p>
+                            <div class="memberBooklog" v-for="date in bookDate">
+                                <div class="dateAndCancel">
+                                    <p>{{ date }}</p>
+                                    <button :class="{ 'btn_sm_1': true, 'disabled': isPastDate(date) }"
+                                        @click="cancelReservation(date)">取消預約</button>
+                                </div>
+                                <div class="selectedTime">
+                                    <button class="chooseTime" v-for="(choose, index) in selectedTime.timePeriod" :key="index">
+                                        <p>{{ choose }}</p>
+                                        <p>{{ selectedTime.hours[index] }}</p>
+                                    </button>
+                                    <div class="numPeople">
+                                        <p>人數：{{ numPeople[0] }}</p>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-
                     </div>
                 </div>
             </div>

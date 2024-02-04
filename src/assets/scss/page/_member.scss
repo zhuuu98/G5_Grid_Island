@@ -53,59 +53,136 @@
         border-radius: $S-button-radius;
         padding: 0 $M-spacing;
     }
-    .memberBook{
-        display: flex;
-        flex-direction: column;
-        flex-wrap: wrap;
-        justify-content: space-between;
-        padding: $M-spacing;
-        margin: $M-spacing;
-        background-color: $gray-1;
-        border-radius: $PC-card-radius;
-        gap: $M-spacing;
-    }
-    .memberBookTitle{
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-    }
-    .membertop{
-        display: flex;
-        justify-content: space-between;
-    }
-    .memberBooklog{
-        display: flex;
-        flex-wrap: wrap;
-        flex-direction: column;
-        gap: $M-spacing;
-        padding: $M-spacing;
+    // PC版預約紀錄
+    .PC_BookData{
+        padding: 20px;
+        border-radius: 40px;
         background-color: $white-1;
-        border-radius: $PC-card-radius;
-    }
-    .dateAndCancel{
-        display: flex;
-        justify-content: space-between;
-    }
-    .selectedTime{
-        display: flex;
-        flex-wrap: wrap;
-        text-align: center;
-        justify-content: space-between;
-        align-items: center;
+        .content {
+            background-color: $gray-1;
+            // padding: $M-spacing;
+            border-radius: 25px;
+
+            .memberBook{
+                display: flex;
+                flex-direction: column;
+                flex-wrap: wrap;
+                justify-content: space-between;
+                padding: $M-spacing;
+                // margin: $M-spacing;
+                background-color: $gray-1;
+                border-radius: $PC-card-radius;
+                gap: $M-spacing 0;
+            }
+            .memberBookTitle{
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+            }
+            .membertop{
+                display: flex;
+                justify-content: space-between;
+            }
+            .memberBooklog{
+                display: flex;
+                flex-wrap: wrap;
+                flex-direction: column;
+                gap: $M-spacing;
+                padding: $M-spacing;
+                background-color: $white-1;
+                border-radius: $PC-card-radius;
+            }
+            .dateAndCancel{
+                display: flex;
+                justify-content: space-between;
+            }
+            .selectedTime{
+                display: flex;
+                flex-wrap: wrap;
+                text-align: center;
+                justify-content: space-between;
+                align-items: center;
+        
+            }
+            .chooseTime{
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                border: 1px solid $blue-3;
+                border-radius: $S-button-radius;
+                padding: 0 $S-spacing;
+            }
+            .disabled {
+                opacity: 0.5;  /* 或其他禁用樣式 */
+                background-color: $gray-2;
+                cursor: not-allowed;
+            }
+        
+        }
+
+
 
     }
-    .chooseTime{
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        border: 1px solid $blue-3;
-        border-radius: $S-button-radius;
-        padding: 0 $S-spacing;
-    }
-    .disabled {
-        opacity: 0.5;  /* 或其他禁用樣式 */
-        background-color: $gray-2;
-        cursor: not-allowed;
+    //會員中心首頁
+    .memberContentIndex{
+        .memberBook{
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            background-color: $gray-1;
+            margin: $M-spacing;
+            padding: $M-spacing;
+            border-radius: 26px;
+            .memberBookTitle{
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+            }
+            .membertop{
+                border-radius: 26px;
+                display: flex;
+                justify-content: space-between;
+        
+            }
+            .memberBooklog{
+                display: flex;
+                flex-wrap: wrap;
+                flex-direction: column;
+                gap: $M-spacing;
+                padding: $M-spacing;
+                background-color: $white-1;
+                border-radius: 25px;
+            }
+            .dateAndCancel{
+                display: flex;
+                justify-content: space-between;
+            }
+            .selectedTime{
+                display: flex;
+                flex-wrap: wrap;
+                text-align: center;
+                // justify-content: space-between;
+                gap: 20px;
+                align-items: center;
+            }
+            .numPeople{
+                margin-left: 35px;
+            }
+            .chooseTime{
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                border: 1px solid $blue-3;
+                border-radius: $S-button-radius;
+                padding: 0 $S-spacing;
+            }
+            .disabled {
+                opacity: 0.5;  /* 或其他禁用樣式 */
+                background-color: $gray-2;
+                cursor: not-allowed;
+            }
+        }
+    
     }
 
     //手機板
@@ -433,83 +510,91 @@
     }
     //PC版訂單資訊
     .PC_OrderData{
-        background-color: $gray-1;
-        border-radius: $PC-card-radius;
-        padding: $M-spacing;
-    }
-    .PC_OrderDataTitle {
-        display: flex;
-        justify-content: center;
-    }
-    .PC_OrderDataTitle img{
-        width: 100%;
-        max-width: 36px;
-    }
-    .PC_ContentTitle{
-        display: flex;
-        gap: $XL-spacing;
-        padding: $M-spacing;
-    }
-    .PC_ContentTitle p{
-        width: 60px;
-        text-align: center;
-    }
-    .PC_orderListText{
-        display: flex;
-        gap: $XL-spacing;
-        justify-content: space-around;
-        @include T(){
-            gap: $L-spacing;
-        }
-        @include PC(){
-            gap: $XL-spacing;
-        }
-    }
-    .PC_orderListText p{
-        text-align: center;
-        width: 60px;
-    }
-    .PC_orderSimple{
-        display: flex;
-        justify-content: space-between;
-        margin: $M-spacing;
-
-    }
-    .PC_ContentTitle p:last-child{
-        width: 60px;
-    }
-    .PC_NameTotal{
-        display: flex;
-        align-items: center;
-        border-top: 1px solid $blue-3;
-        padding: $M-spacing $S-spacing;
-    }
-    .PC_NameTotal img{
-        width: 100%;
-        max-width: 150px;
-        vertical-align: top;
-    }
-    .PC_orderPriceNumTotal{
-        display: flex;
-        justify-content: space-between;
-        width: 100%;
-        max-width: 800px;
-        padding: 0 $M-spacing;
-    }
-    .PC_orderPriceNumTotal p{
-        display: flex;
-        flex-wrap: wrap;
-        width: 60px;
-    }
-    .PC_OrderDataList{
         background-color: $white-1;
         border-radius: $PC-card-radius;
-        padding: $M-spacing 0;
-    }
-    .PC_orderMain{
-        display: flex;
-        flex-direction: column;
-        gap: $M-spacing;
+        padding: $M-spacing;
+        .content{
+            background-color: $gray-1;
+            padding: $M-spacing;
+            border-radius: 25px;
+
+            .PC_OrderDataTitle {
+                display: flex;
+                justify-content: center;
+            }
+            .PC_OrderDataTitle img{
+                width: 100%;
+                max-width: 36px;
+            }
+            .PC_ContentTitle{
+                display: flex;
+                gap: $XL-spacing;
+                padding: $M-spacing;
+            }
+            .PC_ContentTitle p{
+                width: 60px;
+                text-align: center;
+            }
+            .PC_orderListText{
+                display: flex;
+                gap: $XL-spacing;
+                justify-content: space-around;
+                @include T(){
+                    gap: $L-spacing;
+                }
+                @include PC(){
+                    gap: $XL-spacing;
+                }
+            }
+            .PC_orderListText p{
+                text-align: center;
+                width: 60px;
+            }
+            .PC_orderSimple{
+                display: flex;
+                justify-content: space-between;
+                margin: $M-spacing;
+        
+            }
+            .PC_ContentTitle p:last-child{
+                width: 60px;
+            }
+            .PC_NameTotal{
+                display: flex;
+                align-items: center;
+                border-top: 1px solid $blue-3;
+                padding: $M-spacing $S-spacing;
+            }
+            .PC_NameTotal img{
+                width: 100%;
+                max-width: 150px;
+                vertical-align: top;
+            }
+            .PC_orderPriceNumTotal{
+                display: flex;
+                justify-content: space-between;
+                width: 100%;
+                max-width: 800px;
+                padding: 0 $M-spacing;
+            }
+            .PC_orderPriceNumTotal p{
+                display: flex;
+                flex-wrap: wrap;
+                width: 60px;
+            }
+            .PC_OrderDataList{
+                background-color: $white-1;
+                border-radius: $PC-card-radius;
+                padding: $M-spacing 0;
+            }
+            .PC_orderMain{
+                display: flex;
+                flex-direction: column;
+                gap: $M-spacing;
+            }
+        
+
+        }
     }
     .btn_sm_1{
         height: auto;
