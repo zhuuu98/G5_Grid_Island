@@ -1,18 +1,61 @@
+$islandItems: (
+  islandTree: (objw: 365.5, objx: 5.49, objy: 8.08),
+  islandNews: (objw: 217.24, objx: 160.84, objy: 521.67),
+  islandBar: (objw: 558.4, objx: 436.07, objy: 624.62),
+  islandGames: (objw: 330.29, objx: 690.93, objy: 382.8),
+  // 添加更多物件...
+);
+
+@mixin applyStyles($islandItems) {
+  @each $name, $values in $islandItems {
+    #{'#' + $name + '-image'} {
+      position: absolute;
+      width: calc(map-get($values, objw) / 1280 * 100%);
+      top: calc(map-get($values, objy) / 1172 * 100%);
+      left: calc(map-get($values, objx) / 1280 * 100%);
+    }
+  }
+}
+
+
+
+
+
+
 
 #banner-container {
-    background-image: linear-gradient(
-        90deg,
-        rgba(255, 255, 255, 0.1) 1px,
-        transparent 1px
-      ),
-      linear-gradient(180deg, rgba(255, 255, 255, 0.1) 1px, transparent 1px),
-      linear-gradient(to top, $blue-1, $blue-2, $blue-2);
-    background-size: 40px 40px, 40px 40px, cover;
-    background-repeat: repeat, repeat, no-repeat;
-    z-index: 949;
-    width: 100%;
-    height: 600px;
+  background-image: linear-gradient(90deg,
+      rgba(255, 255, 255, 0.1) 1px,
+      transparent 1px),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.1) 1px, transparent 1px),
+    linear-gradient(to top, $blue-1, $blue-2, $blue-2);
+  background-size: 40px 40px, 40px 40px, cover;
+  background-repeat: repeat, repeat, no-repeat;
+  z-index: 949;
+  width: 100%;
+  height: 600px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 
+  #banner-imagebox {
+    width: 40%;
+    position: relative;
+    margin-top: 20%;
+    outline: 2px solid #fa0;
+
+    #island-image {
+      width: 100%;
+    }
+    // #islandTree-image {
+    //   position: absolute;
+    //   width: calc(365.5 / 1280 * 100%);
+    //   left: calc(5.49 / 1280 * 100%);
+    //   top: calc(8.08 / 1172 * 100%);
+    // }
+    @include applyStyles($islandItems);
+  }
 
 
 

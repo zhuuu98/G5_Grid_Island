@@ -159,7 +159,7 @@ const router = createRouter({
             meta: {
         title:"劉書院",
       },
-      component: () => import("../components/Banner.vue"),
+      component: () => import("@/components/Banner.vue"),
     },
     // 404要寫在最下面
     {

@@ -1,7 +1,15 @@
 <template>
     <div id="banner-container" ref="bannerContainer">
         <div id="banner-imagebox">
-            <img src="src/assets/images/islandbanner/island.svg" alt="">
+            <img :src="island" id="island-image" />
+            <router-link to="product">
+                <img :src="islandTree" id="islandTree-image"  />
+                <img :src="islandNews" id="islandNews-image"  />
+                <img :src="islandBar" id="islandBar-image"  />
+                <img :src="islandGames" id="islandGames-image"  />
+            </router-link>
+
+
         </div>
 
         <router-link to="product">
@@ -78,8 +86,12 @@
     </div>
 </template>
 <script>
-    // import island from "src/assets/images/islandbanner/island.svg";
-    
+    import island from "../assets/images/islandbanner/island.svg";
+    import islandTree from "../assets/images/islandbanner/islandTree.svg";
+    import islandNews from "../assets/images/islandbanner/islandNews.svg";
+    import islandBar from "../assets/images/islandbanner/islandBar.svg";
+    import islandGames from "../assets/images/islandbanner/islandGames.svg";
+
     export default {
         name: 'bannerComponent', // 組件名稱
         data() {
@@ -87,8 +99,11 @@
             return {
                 title: '歡迎使用Vue 3',
                 count: 0,
-
-                // island: island,
+                island: island,
+                islandTree: islandTree,
+                islandNews: islandNews,
+                islandBar: islandBar,
+                islandGames: islandGames,
             };
         },
         methods: {
