@@ -54,7 +54,6 @@
                     v-model="value"
                     :autoplay="true"
                     :autoplay-speed="2000"
-                    :dots="outside"
                     :radius-dot="true"
                     :trigger="click"
                     :arrow="false">

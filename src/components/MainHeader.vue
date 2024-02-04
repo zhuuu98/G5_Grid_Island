@@ -110,8 +110,6 @@
 
 <script>
   import { RouterLink } from "vue-router";
-  import { computed } from 'vue';
-  import { useRoute } from 'vue-router';
   export default {
     components: {
       RouterLink,
@@ -124,12 +122,11 @@
       };
     },
     computed: {
-    headerClass() {
-      const route = useRoute();
-      return {
-        'sticky-header': route.path === '/' // 如果是首頁，添加 sticky-header
-      };
-    }
+      headerClass() {
+        return {
+          'sticky-header': this.$route.path === '/' // 如果是首頁，添加 sticky-header
+        };
+      }
   },
     methods: {
       toggleMenu() {
