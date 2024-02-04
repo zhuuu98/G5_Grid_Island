@@ -179,54 +179,38 @@
         </div>
         <!-- 手機板會員資料修改 -->
         <div class="mobileEditData" v-show="isChoosedEditData">
-            <div class="editDataTitle">
-                <img src="../assets/images/member/memberAsideIcon_2.svg" alt="會員資料修改icon">
-                <h3>會員資料修改</h3>
-            </div>
-            <form action="" class="editDataContent">
-                <label for="inputName">
-                    <p>姓名：</p>
-                    <input type="text" placeholder="請輸入姓名" id="inputName">
-                </label>
-                <label for="inputNickName">
-                    <p>暱稱：</p>
-                    <input type="text" placeholder="請輸入暱稱" id="inputNickName">
-                </label>
-                <label for="inputEmail">
-                    <p>電子信箱：</p>
-                    <input type="email" placeholder="請輸入電子信箱" id="inputEmail">
-                </label>
-                <label for="inputTel">
-                    <p>連絡電話：</p>
-                    <input type="tel" placeholder="請輸入連絡電話" id="inputTel">
-                </label>
-                <div class="inputSexual">
-                    <p>性別：</p>
-                    <div class="sexualRadio">
-                        <label for="Men">
-                            <input type="radio" id="Men" name="sexual">
-                            男性
-                        </label>
-                        <label for="Women">
-                            <input type="radio" id="Women" name="sexual">
-                            女性
-                        </label>
-                        <label for="sexualOthers">
-                            <input type="radio" id="sexualOthers" name="sexual">
-                            其他
-                        </label>
-                    </div>
+            <div class="wrapper">
+                <div class="title">
+                    <img src="../assets/images/member/memberAsideIcon_2.svg" alt="會員資料修改icon">
+                    <h3 class="pc-h4" >會員資料修改</h3>
                 </div>
-                <label for="inputBirth">
-                    <p>生日：</p>
-                    <input type="date" placeholder="YYYY/MM/DD" id="inputBirth">
-                </label>
-                <label for="inputAdress">
-                    <p>收件地址：</p>
-                    <input type="text" placeholder="請輸入收件地址" id="inputAdress">
-                </label>
-                <input type="submit" class="searchBtn" value="儲存設定">
-            </form>
+                <form action="" class="content">
+                    <label for="memName">姓名</label>
+                    <input type="text" value="小J" id="memName" name="mem_name">
+                    <label for="memNickname">暱稱</label>
+                    <input type="text" placeholder="請輸入暱稱" id="memNickname" name="mem_nickname"  value="啊人家家就笨壓">
+                    <label for="memEmail">電子信箱</label>
+                        <input type="email" value="griddy@griddy.com" id="memEmail" name="mem_email" readonly class="email">
+                    <label for="memTel">連絡電話</label>
+                    <input type="tel" placeholder="請輸入連絡電話" id="memTel" name="mem_tel" >
+                    <div class="inputGender">
+                        <span>性別</span>
+                        <div class="genderRadio">
+                            <input type="radio" id="femaleMb" name="mem_gender" value="0">
+                            <label for="femaleMb">女性</label>
+                            <input type="radio" id="maleMb" name="mem_gender" value="1">
+                            <label for="maleMb">男性</label>
+                            <input type="radio" id="theyMb" name="mem_gender" value="2">
+                            <label for="theyMb">其他</label>
+                        </div>
+                    </div>
+                    <label for="memBirth">生日</label>
+                        <input type="date" placeholder="YYYY/MM/DD" id="memBirth" name="mem_birth" >
+                    <label for="memAddr">收件地址</label>
+                        <input type="text" placeholder="請輸入收件地址" id="memAddr" name="mem_addr">
+                    <input type="submit" class="searchBtn submit" value="儲存設定">
+                </form>
+            </div>
         </div>
         <!-- 手機板會員訂單資訊 -->
         <div class="mobileOrderData" v-show="isChoosedOrderData">

@@ -259,40 +259,101 @@
     }
     //手機板會員資料修改
     .mobileEditData{
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        background-color: $gray-1;
-        border-radius: $PC-card-radius;
+        background-color: $white-1;
+        // margin: 10px;
+        // box-sizing: border-box;
+        padding: 10px;
+        border-radius: 30px;
         margin: $M-spacing;
-        padding: $S-spacing;
-        @include T(){
+        
+        .wrapper {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            background-color: $gray-1;
+            border-radius: 20px;
+            margin: 5px;
+            @include T(){
+                display: none;
+            }
+        }
+        .title{
+            display: flex;
+            justify-content: center;
+            padding: 20px;
+            img {
+                max-width: 36px;
+                // width: 100%;
+                vertical-align: middle;
+            }
+        }
+        .content{
+            display: flex;
+            flex-direction: column;
+            margin: 0 $M-spacing;
+        }
+
+        input:not([type="submit"]):not([type="radio"]){
+            width: 100%;
+            max-width:700px;
+            margin: 4px 0 10px;
+        }
+        span, label {
+            letter-spacing: $PC-btn-esl-spacing;
+            color: $blue-4;
+            font-size: $PC-text;
+        }
+        input {
+            border-radius: 8px;
+            border: .5px solid $gray-2;
+            padding: 5px 15px;
+            letter-spacing: $PC-btn-esl-spacing;
+        }
+        .submit {
+            width: 100%;
+            max-width:fit-content;
+            margin-left: auto;
+            margin-top: 40px;
+            margin-bottom: 20px;
+        }
+
+        //修改radio預設樣式
+        input[type="radio"] {
             display: none;
         }
-    }
+
+        input[type="radio"] + label {
+            position: relative;
+            padding-left: 30px;
+            cursor: pointer;
+            display: inline-block;
+            line-height: 20px;
+        }
     
-    .editDataTitle{
-        display: flex;
-        justify-content: center;
+        input[type="radio"] + label:before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 20px;
+            height: 20px;
+            border: 1.8px solid $blue-4;
+            background-color: $white-1;
+            border-radius: 50%;
+            transition: all 0.2s;
+        }
+        
+        input[type="radio"]:checked + label:before {
+            background-color: $blue-4; 
+        }
+        .genderRadio {
+            margin: 8px 0 10px;
+            label {
+                padding: 0 20px 0 5px;
+            }
+        }
     }
-    .editDataTitle img{
-        width: 100%;
-        max-width: 36px;
-    }
-    .editDataContent{
-        display: flex;
-        flex-direction: column;
-        gap: $M-spacing;
-    }
-    .editDataContent input:not([type="submit"]):not([type="radio"]){
-        width: 100%;
-        max-width:700px;
-    }
-    .editDataContent input[type="submit"]{
-        width: 100%;
-        max-width:fit-content;
-        margin: auto;
-    }
+
     //手機板訂單資訊
     .mobileOrderData{
         display: flex;
