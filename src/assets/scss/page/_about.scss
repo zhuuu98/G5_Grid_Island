@@ -253,7 +253,8 @@
       .about_griddy_img {
         width: 60%;
         margin: 0px auto 40px auto;
-        @media only screen and (max-width: 767px) {
+        position: relative;
+        @media only screen and (max-width: 1023px) {
           @keyframes rotateAnimation {
             0% {
               transform: rotateY(0deg);
@@ -277,12 +278,16 @@
             .rotate-image {
               transition: transform 2s ease-in-out; /* 添加過渡效果，讓旋轉更平滑 */
             }
+          }
+          img {
+            width: 100%;
+            vertical-align: bottom;
+            box-shadow: 2px 0 10px rgba(0, 0, 0, 0.2); /* 側面陰影效果，根據需要調整陰影的顏色、模糊度等參數 */
         }
-        img {
-          width: 100%;
-          vertical-align: bottom;
-        }
+
+        
       }
+
 
       .about_griddy_text{
         padding: 20px;
