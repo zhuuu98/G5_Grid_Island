@@ -379,7 +379,6 @@
 	import lEye from "../assets/images/banner/lEye.svg";
 	import rEye from "../assets/images/banner/rEye.svg";
 	import wave from "../assets/images/wave/wave.svg";
-	import { ref, onMounted, onUnmounted } from "vue";
 	import MainHeader from "../components/MainHeader.vue";
 	import headerWave from "../assets/images/header/headerWave.svg";
 
@@ -430,79 +429,6 @@
 				cuppon: true, //
 			};
 		},
-		setup() {
-			const leftEyeRef = ref(null);
-			const rightEyeRef = ref(null);
-
-			const moveEye = (
-				eye,
-				mouseX,
-				mouseY,
-				initialLeft,
-				initialTop,
-				maxMovementX,
-				maxMovementY
-			) => {
-				if (!eye.value) return;
-
-				const eyeRect = eye.value.getBoundingClientRect();
-				const eyeCenterX = eyeRect.left + eyeRect.width / 2;
-				const eyeCenterY = eyeRect.top + eyeRect.height / 2;
-
-				let deltaX = ((mouseX - eyeCenterX) / window.innerWidth) * 100;
-				let deltaY = ((mouseY - eyeCenterY) / window.innerHeight) * 100;
-
-				// 检查是否在椭圆形轨迹内
-				if (
-					(deltaX * deltaX) / (maxMovementX * maxMovementX) +
-					(deltaY * deltaY) / (maxMovementY * maxMovementY) >
-					1
-				) {
-					const angle = Math.atan2(deltaY, deltaX);
-					deltaX = maxMovementX * Math.cos(angle);
-					deltaY = maxMovementY * Math.sin(angle);
-				}
-
-				eye.value.style.left = `calc(${initialLeft}% + ${deltaX}%)`;
-				eye.value.style.top = `calc(${initialTop}% + ${deltaY}%)`;
-			};
-
-			const handleMouseMove = (event) => {
-				requestAnimationFrame(() => {
-					moveEye(
-						leftEyeRef,
-						event.clientX,
-						event.clientY,
-						51.0,
-						38.5,
-						0.51,
-						1.36
-					);
-					moveEye(
-						rightEyeRef,
-						event.clientX,
-						event.clientY,
-						52.9,
-						37.9,
-						0.35,
-						1.14
-					);
-				});
-			};
-
-			onMounted(() => {
-				document.addEventListener("mousemove", handleMouseMove);
-			});
-
-			onUnmounted(() => {
-				document.removeEventListener("mousemove", handleMouseMove);
-			});
-
-			return {
-				leftEyeRef,
-				rightEyeRef,
-			};
-		},
 		created() {
 			this.axiosGetData();
 			this.axiosGetProductData();
@@ -510,6 +436,7 @@
 		mounted() {
 			// 为整个容器添加事件监听器
 			this.$refs.bannerContainer.addEventListener("mousedown", this.preventDrag);
+			document.addEventListener("mousemove", this.handleMouseMove);
 		},
 		beforeDestroy() {
 			// 在组件销毁时移除事件监听器
@@ -517,6 +444,8 @@
 				"mousedown",
 				this.preventDrag
 			);
+			document.removeEventListener("mousemove", this.handleMouseMove);
+
 		},
 		methods: {
 			preventDrag(event) {
@@ -578,6 +507,60 @@
 			closeCuppon() {
 				this.cuppon = false;
 			},
+			moveEye(
+				eye,
+				mouseX,
+				mouseY,
+				initialLeft,
+				initialTop,
+				maxMovementX,
+				maxMovementY
+			){
+				if (!eye) return;
+
+				const eyeRect = eye.getBoundingClientRect();
+				const eyeCenterX = eyeRect.left + eyeRect.width / 2;
+				const eyeCenterY = eyeRect.top + eyeRect.height / 2;
+
+				let deltaX = ((mouseX - eyeCenterX) / window.innerWidth) * 100;
+				let deltaY = ((mouseY - eyeCenterY) / window.innerHeight) * 100;
+
+				// 检查是否在椭圆形轨迹内
+				if (
+					(deltaX * deltaX) / (maxMovementX * maxMovementX) +
+					(deltaY * deltaY) / (maxMovementY * maxMovementY) >
+					1
+				) {
+					const angle = Math.atan2(deltaY, deltaX);
+					deltaX = maxMovementX * Math.cos(angle);
+					deltaY = maxMovementY * Math.sin(angle);
+				}
+
+				eye.style.left = `calc(${initialLeft}% + ${deltaX}%)`;
+				eye.style.top = `calc(${initialTop}% + ${deltaY}%)`;
+			},
+			handleMouseMove(event){
+				requestAnimationFrame(() => {
+					this.moveEye(
+						this.$refs.leftEyeRef,
+						event.clientX,
+						event.clientY,
+						51.0,
+						38.5,
+						0.51,
+						1.36
+					);
+					this.moveEye(
+						this.$refs.rightEyeRef,
+						event.clientX,
+						event.clientY,
+						52.9,
+						37.9,
+						0.35,
+						1.14
+					);
+				});
+			}
 		},
 	};
 </script>
