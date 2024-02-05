@@ -44,7 +44,7 @@ $islandItems: (
 	#banner-imagebox {
 		width: 96%;
 		position: relative;
-		margin-top: 12%;
+		margin: 4% auto 12% auto;
 		outline: 2px solid #fa0;
 
 		@include T() {
@@ -52,7 +52,8 @@ $islandItems: (
 		}
 
 		@include PC() {
-			width: 50%;
+			width: 46%;
+			max-width: 800px;
 		}
 
 		#island-image {
@@ -61,20 +62,71 @@ $islandItems: (
 
 		#lEye {
 			position: absolute;
-			width: calc((20 / 1280) * 100%);
-			left: calc((620.6 / 1280) * 100%);
-			top: calc((551 / 1280) * 100%);
+			// width: calc((20 / 1280) * 100%);
+			// left: calc((620.6 / 1280) * 100%);
+			// top: calc((551 / 1280) * 100%);
+			width: 1.5625%;
+			left: 48.484375%;
+			top: 43.046875%;
+			transition: left 0.1s ease, top 0.1s ease;
 		}
 
 		#rEye {
 			position: absolute;
-			width: calc((18.5 / 1280) * 100%);
-			left: calc((669 / 1280) * 100%);
-			top: calc((543 / 1280) * 100%);
+			// width: calc((18 / 1280) * 100%);
+			// left: calc((669 / 1280) * 100%);
+			// top: calc((543 / 1280) * 100%);
+			width: 1.40625%;
+			left: 52.265625%;
+			top: 42.421875%;
+			transition: left 0.1s ease, top 0.1s ease;
+		}
+
+		@include applyStyles($islandItems);
+
+		.itemTag {
+			background-color: $white-1;
+			color: $black;
+			font-size: 3.2vw;
+			font-family: Zen Maru Gothic;
+			display: block;
+			position: absolute;
+			text-align: center;
+			outline: 1px solid $black;
+			
+			@include T() {
+				font-size: $M-h3;
+			}
+
+			@include PC() {
+				display: none;
+			}
+
+		}
+		#treeTag {
+			top: 5%;
+			left: 12%;
+			border-top: .4em  solid $green-2;
+			border-bottom: .4em  solid $green-2;
+			border-right: .4em  solid $green-2;
+			padding: 0 1.5% 0 6%;
+
+		}
+		#newsTag {
+			top: 54%;
+			left: 0%;
+			border-top: .4em  solid $orange-1;
+			border-bottom: .4em  solid $orange-1;
+			border-left: .4em  solid $orange-1;
+			padding: 0 6% 0 1.5%;
+			
 		}
 
 
-		@include applyStyles($islandItems);
+
+
+
+
 
 		#islandTree-image:hover {
 			filter: drop-shadow(0px 0px 4px #fff) drop-shadow(0px 0px 12px #fff);
@@ -110,26 +162,108 @@ $islandItems: (
 	}
 
 	#banner-cardsbox {
-		padding: $XS-spacing;
-
-		border: #fa0;
 		position: absolute;
 		top: 0;
-		left: 0;
+		right: 0;
+		width: 100%;
+		height: 100%;
+		bottom: 0;
+		pointer-events: none;
+		outline: 1px solid green;
 
 		.showCard {
+			//手機版none
+			padding: $XS-spacing;
 			background-color: $white-1;
 			outline: 2px solid $black;
 			box-shadow: 0 0 0 4px #fff;
-			width: 30rem;
+			width: 40%;
 			flex-direction: column;
 			align-items: center;
 			gap: $S-spacing;
 			color: $black;
 			z-index: 1;
 			position: absolute;
-			top: 0;
-			left: -100%;
+			display: none;
+			padding: $M-spacing;
+
+			@include PC() {
+				display: flex;
+				flex-direction: column;
+			}
+
+			.card-title {
+				font-size: $M-h4;
+				font-family: Zen Maru Gothic;
+				font-size: $PC-h3;
+			}
+
+			.card-line {
+				width: calc(100% - 8px);
+				height: 1px;
+				background-color: $orange-1;
+			}
+
+			.card-text {
+				font-size: $small;
+				font-size: $PC-text;
+			}
+		}
+
+		#treeCard {
+			position: absolute;
+			top: 10%;
+			left: -48%;
+			border: $M-spacing solid $green-2;
+		}
+
+		#boardCard {
+			position: absolute;
+			top: 26.67%;
+			left: -48%;
+			border: $M-spacing solid $yellow;
+		}
+
+		#newsCard {
+			position: absolute;
+			top: 43.33%;
+			left: -48%;
+			border: $M-spacing solid $orange-1;
+		}
+
+		#cartCard {
+			position: absolute;
+			top: 60%;
+			left: -48%;
+			border: $M-spacing solid $red;
+		}
+
+		#aboutCard {
+			position: absolute;
+			top: 10%;
+			right: -48%;
+			border: $M-spacing solid $orange-2;
+		}
+
+		#bugCard {
+			position: absolute;
+			top: 26.67%;
+			right: -48%;
+			border: $M-spacing solid $green-1;
+		}
+
+		#gamesCard {
+			position: absolute;
+			top: 43.33%;
+			right: -48%;
+			border: $M-spacing solid $blue-2;
+		}
+
+		#prebookCard {
+			position: absolute;
+			top: 60%;
+			right: -48%;
+			border: $M-spacing solid $purple;
 		}
 
 
