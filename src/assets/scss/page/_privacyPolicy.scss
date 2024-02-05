@@ -1,0 +1,211 @@
+.privacyPolicy {
+    background-color: $green-1;
+    width: 100%;
+    letter-spacing: 2px;
+    padding-bottom: 100px;
+
+    h2 {
+        font-size: 16px;
+        letter-spacing: 1px;
+    }
+    h3 {
+        margin: $M-spacing 0;
+    }
+    .breadcrumb {
+        position: relative;
+        max-width: $max-width;
+        width: 90%;
+        margin: auto;
+        top: 50px;
+
+        @include PC() {
+            top: 100px;
+        }
+    }
+    ul {
+        margin: 10px 0 30px;
+        li{
+
+        }
+        .pc-h5 {
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+    }
+
+    .policy {
+        max-width: 900px;
+        // width: 90vw;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        // margin:  auto;
+        background-color: $white-1;
+        border-radius: $PC-card-radius;
+        margin: $XXL-spacing $M-spacing 0;
+        padding: $L-spacing $M-spacing;
+
+        @include M() {
+            margin: $XXL-spacing $L-spacing 0;
+            padding: $L-spacing $M-spacing;
+        }
+
+        @include PC() {
+            margin: $XXXL-spacing auto 0;
+            padding: $L-spacing $XXL-spacing;
+        }
+
+        p {
+            margin: $S-spacing 0;
+        }
+
+        h1 {
+            font-size: 16px;
+            span {
+                margin: 0 5px;
+                display: block;                
+            }
+        }
+        .detail {
+            margin: 20px 0 40px;
+            // letter-spacing: 1px;
+
+        }
+
+    }
+
+    .fee_detail {
+        display: grid;
+        gap: 20px;
+        margin: $L-spacing 0;
+
+        @include T() {
+            grid-auto-flow: column
+        }
+    }
+
+    // .fee_detail_weekday{
+    // }
+    .fee_content {
+        display: grid;
+        grid-template-columns: 1fr 2fr;
+        gap: $S-spacing;
+    }
+
+    .fee_detail_weekday,
+    .fee_content {
+        text-align: center;
+        margin: $S-spacing 0;
+    }
+
+    .fee_detail_time,
+    .fee_detail_price {
+        background-color: $gray-1;
+    }
+
+    .fee_detail_weekday {
+        background-color: $blue-3;
+        color: $white-1;
+    }
+
+    .fee_detail_weekday p,
+    .fee_content p,
+    .fee_detail_price p {
+        margin: $S-spacing;
+    }
+
+    .preTitle {
+        text-align: center;
+        margin: $M-spacing 0;
+
+
+    }
+
+    .preCheck {
+        display: flex;
+        gap: 8px;
+        justify-content: center;
+        margin: $M-spacing 0;
+        // input[type="checkbox"] {
+        // display: inline-block;
+        // background-color: #aaa;
+        // padding: 3px 6px;
+        // border: 1px solid gray;
+        // color: #444;
+        // user-select: none; /* 防止文字被滑鼠選取反白 */
+        // }
+        // input[type="checkbox"]:checked {
+        //     color: yellow;
+        //     background-color: #444;
+        // }
+    }
+
+    .preBtn {
+        margin: $M-spacing auto;
+        display: flex;
+        justify-content: center;
+    }
+
+
+    .alert_bg {
+        background-color: #0006;
+        position: fixed;
+        top: 0;
+        width: 100vw;
+        height: 100vh;
+        z-index: 991;
+    }
+
+    $alertBoxHeight: 40vh;
+    $alertCrossHeight: 50px;
+
+    .alert_main {
+        background-color: #fff;
+        min-width: 300px;
+        width: 90vw;
+        display: flex;
+        flex-direction: column;
+        height: $alertBoxHeight;
+        position: absolute;
+        top: 33%;
+        left: 5%;
+        border-radius: $Mob-card-radius;
+        user-select: none;
+
+        @include T() {
+            width: 60vw;
+            left: 20%;
+            border-radius: $PC-card-radius;
+        }
+
+        @include PC() {
+            width: 40vw;
+            left: 30%;
+            border-radius: $PC-card-radius;
+        }
+
+
+        button {
+            align-self: flex-end;
+            width: $alertCrossHeight;
+            height: $alertCrossHeight;
+            background-color: transparent;
+            border: none;
+            cursor: pointer;
+        }
+
+        p {
+            // border-top: 1px solid;
+            text-align: center;
+            vertical-align: middle;
+            font-size: $PC-h3;
+            justify-self: center;
+            height: calc(#{$alertBoxHeight} - #{$alertCrossHeight});
+            line-height: calc(#{$alertBoxHeight} / 1.6);
+        }
+    }
+
+    .body-overflow-hidden {
+        overflow: hidden;
+    }
+}

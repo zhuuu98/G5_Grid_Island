@@ -1,0 +1,124 @@
+.notFound {
+  @include T(){
+    margin-bottom:$XL-spacing ;
+  }
+  @include PC(){
+    max-width: $max-width;
+    margin: auto auto $XXXL-spacing;
+  }
+
+  .content {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: $L-spacing 0 $M-spacing 0;
+    @include T(){
+      height:unset;
+      max-width: $max-width;
+      margin: auto;
+    }
+    @include PC(){
+      position: relative;
+      max-width: 1400px;
+      height: unset;
+      margin: unset auto;
+    }
+    .wrapper {
+
+      @include T(){
+        display: flex;
+      }
+      .textArea {
+        @include T(){
+          margin: 0 auto;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+        }
+
+        .text {
+          text-align: center;
+          @include T(){
+            margin: auto;
+          }
+          span {
+              font-size: 40px;
+              font-family: "Zen Maru Gothic";
+              margin: 40px auto 0;
+              color: $blue-4;
+            @include T(){
+              display: block;
+              margin: 0 auto;
+              font-size: 65px;
+              color: $white-1;
+              -webkit-text-stroke: 2.5px $blue-4;
+            }
+            @include PC(){
+              margin: 0 auto;
+              font-size: 90px;
+              color: $white-1;
+              -webkit-text-stroke: 3px $blue-4;
+            }
+          }
+        }
+
+      }
+    
+    }
+
+    img {
+      width: 100%;
+      vertical-align: middle;
+      filter: brightness(80%) grayscale(50%);
+      padding: 0 $S-spacing;
+      @include T(){
+        width: 50%;
+        padding: unset;
+      }
+      @include PC(){
+        // filter: brightness(80%);
+        width: 50%;
+        padding: unset;
+      }
+    }
+  
+  }
+  button {
+    display: block;
+    margin: 20px auto 100px;
+    width: calc(100vw - 250px);
+    letter-spacing: 1px;
+  }
+  .mobile {
+
+    @include M(){
+      display: none;
+    }
+  }
+  .pc {
+    display: none;
+    @include M(){
+      display: flex;
+      width: 200px;
+      font-size: 18px;
+
+    }
+    @include T(){
+      font-size: 20px;
+      letter-spacing: 2px;
+      
+    }
+    @include PC(){
+      width: 150px;
+      font-size: 20px;
+      letter-spacing: 3px;
+
+      
+    }
+  }
+  
+
+}

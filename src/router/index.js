@@ -147,6 +147,22 @@ const router = createRouter({
       },
       component: () => import("../views/griddyStyleView.vue"),
     },
+    {
+      path: "/privacy-policy",
+      name: "privacy-policy",
+            meta: {
+        title:"隱私權政策",
+      },
+      component: () => import("../views/PrivacyPolicyView.vue"),
+    },
+    {
+      path: "/test",
+      name: "test",
+            meta: {
+        title:"劉書院",
+      },
+      component: () => import("@/components/Banner.vue"),
+    },
     // 404要寫在最下面
     {
       path: "/:pathMatch(.*)*",

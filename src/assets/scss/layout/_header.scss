@@ -37,6 +37,11 @@ header {
           height: 40px;
           padding: 8px;
           align-items: center;
+          @media (max-width:374px) {
+            &:first-child{
+              display: none;
+            }
+          }
           a{
             color: $black;
             img{

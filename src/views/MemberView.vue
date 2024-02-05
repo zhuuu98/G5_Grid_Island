@@ -95,73 +95,71 @@
                 </div>
                 <!-- PC訂單資訊 -->
                 <div class="PC_OrderData col-T-7 col-PC-7" v-show="isChoosedOrderData_PC">
-                    <div class="PC_OrderDataTitle">
-                        <img :src="getImageUrl(`member/memberAsideIcon_3.svg`)">
-                        <h3>訂單資訊</h3>
-                    </div>
-                    <div class="PC_OrderDataContent">
-                        <div class="PC_ContentTitle">
-                            <p v-for="title in orderTitle">{{ title }}</p>
-                            <p></p>
+                    <div class="content">
+                        <div class="PC_OrderDataTitle">
+                            <img :src="getImageUrl(`member/memberAsideIcon_3.svg`)">
+                            <h3>訂單資訊</h3>
                         </div>
-                        <div class="PC_orderMain">
-                            <div class="PC_OrderDataList" v-for="(items, index) in orderList" :key="index">
-                                <div class="PC_orderSimple">
-                                    <div class="PC_orderListText">
-                                        <p>{{ items.orderDate }}</p>
-                                        <p>{{ items.orderNum }}</p>
-                                        <p>${{ items.orderTotal }}</p>
-                                        <p>{{ items.orderState }}</p>
-                                    </div>
-                                    <button class="btn_sm_1" @click="mobileOpenList(index)">訂單明細</button>
-                                </div>
-                                <div class="PC_OrderDataDetail" v-show="items.isOpen">
-                                    <div v-for="(name, nameIndex) in items.orderItems" class="PC_NameTotal">
-                                        <img :src="getImageUrl(`member/memberOrderProducts_${nameIndex + 1}.svg`)" alt="商品">
-
-
-                                        <div class="PC_orderPriceNumTotal">
-                                            <p>{{ name }}</p>
-                                            <p>${{ items.orderItemsPrice[nameIndex] }}</p>
-                                            <p>{{ items.orderItemsNum[nameIndex] }}</p>
-                                            <p>${{ items.orderItemsTotal[nameIndex] }}</p>
-
+                        <div class="PC_OrderDataContent">
+                            <div class="PC_ContentTitle">
+                                <p v-for="title in orderTitle">{{ title }}</p>
+                                <p></p>
+                            </div>
+                            <div class="PC_orderMain">
+                                <div class="PC_OrderDataList" v-for="(items, index) in orderList" :key="index">
+                                    <div class="PC_orderSimple">
+                                        <div class="PC_orderListText">
+                                            <p>{{ items.orderDate }}</p>
+                                            <p>{{ items.orderNum }}</p>
+                                            <p>${{ items.orderTotal }}</p>
+                                            <p>{{ items.orderState }}</p>
                                         </div>
-
+                                        <button class="btn_sm_1" @click="mobileOpenList(index)">訂單明細</button>
                                     </div>
-
+                                    <div class="PC_OrderDataDetail" v-show="items.isOpen">
+                                        <div v-for="(name, nameIndex) in items.orderItems" class="PC_NameTotal">
+                                            <img :src="getImageUrl(`member/memberOrderProducts_${nameIndex + 1}.svg`)" alt="商品">
+                                            <div class="PC_orderPriceNumTotal">
+                                                <p>{{ name }}</p>
+                                                <p>${{ items.orderItemsPrice[nameIndex] }}</p>
+                                                <p>{{ items.orderItemsNum[nameIndex] }}</p>
+                                                <p>${{ items.orderItemsTotal[nameIndex] }}</p>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
 
                 </div>
-                <!-- 預約紀錄 -->
+                <!-- PC預約紀錄 -->
                 <div class="PC_BookData col-T-7 col-PC-7" v-show="isChoosedBookData_PC">
-                    <div class="memberBook">
-                        <div class="membertop">
-                            <div class="memberBookTitle">
-                                <img src="../assets/images/member/memberAsideIcon_4.svg" alt="預約紀錄icon">
-                                <p>預約紀錄</p>
+                    <div class="content">
+                        <div class="memberBook">
+                            <div class="membertop">
+                                <div class="memberBookTitle">
+                                    <img src="../assets/images/member/memberAsideIcon_4.svg" alt="預約紀錄icon">
+                                    <p>預約紀錄</p>
+                                </div>
                             </div>
-                        </div>
-                        <div class="memberBooklog" v-for="date in bookDate">
-                            <div class="dateAndCancel">
-                                <p>{{ date }}</p>
-                                <button :class="{ 'btn_sm_1': true, 'disabled': isPastDate(date) }"
-                                    @click="cancelReservation(date)">取消預約</button>
-                            </div>
-                            <div class="selectedTime">
-                                <button class="chooseTime" v-for="(choose, index) in selectedTime.timePeriod" :key="index">
-                                    <p>{{ choose }}</p>
-                                    <p>{{ selectedTime.hours[index] }}</p>
-                                </button>
-                                <div class="numPeople">
-                                    <p>人數：{{ numPeople[0] }}</p>
+                            <div class="memberBooklog" v-for="date in bookDate">
+                                <div class="dateAndCancel">
+                                    <p>{{ date }}</p>
+                                    <button :class="{ 'btn_sm_1': true, 'disabled': isPastDate(date) }"
+                                        @click="cancelReservation(date)">取消預約</button>
+                                </div>
+                                <div class="selectedTime">
+                                    <button class="chooseTime" v-for="(choose, index) in selectedTime.timePeriod" :key="index">
+                                        <p>{{ choose }}</p>
+                                        <p>{{ selectedTime.hours[index] }}</p>
+                                    </button>
+                                    <div class="numPeople">
+                                        <p>人數：{{ numPeople[0] }}</p>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-
                     </div>
                 </div>
             </div>
@@ -181,54 +179,38 @@
         </div>
         <!-- 手機板會員資料修改 -->
         <div class="mobileEditData" v-show="isChoosedEditData">
-            <div class="editDataTitle">
-                <img src="../assets/images/member/memberAsideIcon_2.svg" alt="會員資料修改icon">
-                <h3>會員資料修改</h3>
-            </div>
-            <form action="" class="editDataContent">
-                <label for="inputName">
-                    <p>姓名：</p>
-                    <input type="text" placeholder="請輸入姓名" id="inputName">
-                </label>
-                <label for="inputNickName">
-                    <p>暱稱：</p>
-                    <input type="text" placeholder="請輸入暱稱" id="inputNickName">
-                </label>
-                <label for="inputEmail">
-                    <p>電子信箱：</p>
-                    <input type="email" placeholder="請輸入電子信箱" id="inputEmail">
-                </label>
-                <label for="inputTel">
-                    <p>連絡電話：</p>
-                    <input type="tel" placeholder="請輸入連絡電話" id="inputTel">
-                </label>
-                <div class="inputSexual">
-                    <p>性別：</p>
-                    <div class="sexualRadio">
-                        <label for="Men">
-                            <input type="radio" id="Men" name="sexual">
-                            男性
-                        </label>
-                        <label for="Women">
-                            <input type="radio" id="Women" name="sexual">
-                            女性
-                        </label>
-                        <label for="sexualOthers">
-                            <input type="radio" id="sexualOthers" name="sexual">
-                            其他
-                        </label>
-                    </div>
+            <div class="wrapper">
+                <div class="title">
+                    <img src="../assets/images/member/memberAsideIcon_2.svg" alt="會員資料修改icon">
+                    <h3 class="pc-h4" >會員資料修改</h3>
                 </div>
-                <label for="inputBirth">
-                    <p>生日：</p>
-                    <input type="date" placeholder="YYYY/MM/DD" id="inputBirth">
-                </label>
-                <label for="inputAdress">
-                    <p>收件地址：</p>
-                    <input type="text" placeholder="請輸入收件地址" id="inputAdress">
-                </label>
-                <input type="submit" class="searchBtn" value="儲存設定">
-            </form>
+                <form action="" class="content">
+                    <label for="memName">姓名</label>
+                    <input type="text" value="小J" id="memName" name="mem_name">
+                    <label for="memNickname">暱稱</label>
+                    <input type="text" placeholder="請輸入暱稱" id="memNickname" name="mem_nickname"  value="啊人家家就笨壓">
+                    <label for="memEmail">電子信箱</label>
+                        <input type="email" value="griddy@griddy.com" id="memEmail" name="mem_email" readonly class="email">
+                    <label for="memTel">連絡電話</label>
+                    <input type="tel" placeholder="請輸入連絡電話" id="memTel" name="mem_tel" >
+                    <div class="inputGender">
+                        <span>性別</span>
+                        <div class="genderRadio">
+                            <input type="radio" id="femaleMb" name="mem_gender" value="0">
+                            <label for="femaleMb">女性</label>
+                            <input type="radio" id="maleMb" name="mem_gender" value="1">
+                            <label for="maleMb">男性</label>
+                            <input type="radio" id="theyMb" name="mem_gender" value="2">
+                            <label for="theyMb">其他</label>
+                        </div>
+                    </div>
+                    <label for="memBirth">生日</label>
+                        <input type="date" placeholder="YYYY/MM/DD" id="memBirth" name="mem_birth" >
+                    <label for="memAddr">收件地址</label>
+                        <input type="text" placeholder="請輸入收件地址" id="memAddr" name="mem_addr">
+                    <input type="submit" class="searchBtn submit" value="儲存設定">
+                </form>
+            </div>
         </div>
         <!-- 手機板會員訂單資訊 -->
         <div class="mobileOrderData" v-show="isChoosedOrderData">

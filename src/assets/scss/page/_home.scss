@@ -290,12 +290,15 @@ main {
   //跑馬燈
   .cuppon {
     width: 100%;
+    height: 22px;
     overflow: hidden;
-    position: fixed;
-    top: 9%;
-    left: 0;
+    // position: relative;
+    position: sticky;
+    top:65px;
+    transform: translateY(-6.2%);
     background-color: $white-1;
     z-index: 500;
+    box-shadow: 2px 0 10px 5px rgba(black, .2);
     .btn {
       position: relative;
       width: 100%;
@@ -308,15 +311,17 @@ main {
         position: absolute;
         top: 0;
         right: 0;
+        z-index: 30;
         transform: translate(-500%,20%);
       }
     }
-    .content {
+    .subContent {
+      position: absolute;
+      top: 0;
+      left: 0;
       display: inline-block;
       white-space: nowrap;
-      animation: marquee 250s linear infinite;
-      
-
+      animation: marquee 600s linear infinite;
       span {
         padding: 0 60px ;
         letter-spacing: $PC-btn-exsl-spacing;
@@ -747,11 +752,11 @@ main {
       width: 100%;
       background-color: $green-2;
       .index_row {
-        width: 100%;
+        width: 80%;
         display: flex;
         flex-direction: column;
         align-items: center;
-        justify-content: center;
+        // justify-content: center;
         gap: $L-spacing;
         @include PC() {
           width: 80%;
@@ -767,55 +772,98 @@ main {
         font-weight: bold;
       }
       .aboutContent {
-        max-width: 350px;
         width: 100%;
-        overflow: scroll;
+        height: 320px;
         background: $white-1
-          url("/src/assets/images/home/homeAbout_BackgoundGrid.svg") no-repeat
-          center/180%;
-        border: 3px solid $blue-3;
+          // url("/src/assets/images/home/homeAbout_BackgoundGrid.svg") no-repeat
+          // left 0 bottom 140%/340%;
+          url("/src/assets/images/home/Grid.svg") no-repeat center;
+        border: 3px solid $black;
         display: flex;
         justify-content: center;
         align-items: center;
         flex-direction: column;
         border-radius: $S-button-radius;
+        @include M() {
+        height: auto;
+          width: 100%;
+        background: $white-1
+          url("/src/assets/images/home/homeAbout_BackgoundGrid.svg") no-repeat
+          center/180%;
+
+        }
         @include T() {
-          max-width: 1100px;
+          width: 95%;
           background: $white-1
-            url("/src/assets/images/home/homeAbout_BackgoundGrid.svg") no-repeat
-            left 0 bottom 9%/100%;
+          url("/src/assets/images/home/homeAbout_BackgoundGrid.svg") no-repeat
+          left 0 bottom 15%/160%;
         }
-        &::-webkit-scrollbar {
+        @include PC() {
+          max-width: 1100px;
+          width: 98%;
+          background: $white-1
+          url("/src/assets/images/home/homeAbout_BackgoundGrid.svg") no-repeat
+          left 0 bottom 15%/100%;
+        }
+        .aboutContentTxt {
           display: none;
+          text-align: center;
+          margin: $L-spacing $XXXL-spacing $L-spacing;
+          font-size: $PC-h4;
+          color: $black;
+          letter-spacing: .5px;
+          font-weight: bold;
+          padding: 0 $M-spacing;
+          @include M(){
+            margin: $L-spacing $L-spacing 0;
+          }
+          @include T() {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+          }
+          @include PC() {
+          margin: $L-spacing $XXXL-spacing $S-spacing;
+
+          }
+
         }
+
+      }
+      .imgWrapper {
+        width: 100%;
+        overflow-x: scroll;
+        @include T(){
+          overflow: hidden;
+        }
+        
       }
       .aboutContentImg {
+        // padding:  0 0 0 190px;
+        width: 800px;
         display: flex;
         justify-content: center;
         gap: $M-spacing;
-        margin: $XL-spacing;
-      }
-      .aboutContentImg img {
-        width: auto;
-        max-width: 100%;
-        vertical-align: top;
-        @include T() {
-          max-width: 420px;
+        margin:$XL-spacing 0 $XL-spacing;
+        &::-webkit-scrollbar {
+          display: none;
         }
-      }
-      .aboutContentTxt {
-        display: none;
-        text-align: center;
-        margin: $XL-spacing $XL-spacing $L-spacing;
-        font-size: $PC-h4;
-        color: $black;
-        letter-spacing: .5px;
-        font-weight: bold;
-        padding: 0 $M-spacing;
-        @include T() {
-          display: flex;
-          justify-content: center;
-          align-items: center;
+        @include T(){
+          overflow-x: scroll;
+          width: unset;
+          margin-bottom: $XL-spacing;
+          padding: 0 0 0 200px;
+        }
+        img {
+          width: 260px;
+          max-width: 100%;
+          vertical-align: middle;
+          @include M() {
+            width: auto;
+          }
+          @include T() {
+            max-width: 420px;
+          }
         }
       }
     }

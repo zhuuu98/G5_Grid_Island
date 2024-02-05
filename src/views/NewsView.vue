@@ -10,12 +10,12 @@
         </div>
       </div>
     </transition>
+
     <div class="newsTitle">
       <h1>
         <PageTitle :pageTitle="'最新消息'" />
       </h1>
     </div>
-
 
     <div class="content">
       <div class="btn">
@@ -58,17 +58,20 @@ import PageTitle from "../components/PageTitle.vue";
 import NewsCard from "../components/NewsCard.vue";
 import NewsRow from "../components/NewsRow.vue";
 
+
 export default {
   data() {
     return {
       respondData: [],
       noneShow: false,
+
     };
   },
   components: {
     PageTitle,
     NewsCard,
     NewsRow,
+
   },
   computed: {
     loading() {
@@ -93,7 +96,6 @@ export default {
     romoveListClassName() {
       this.noneShow = false;
     },
-
   },
   mounted() {},
 };

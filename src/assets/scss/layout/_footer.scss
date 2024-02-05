@@ -7,19 +7,29 @@ img{
     .mOcean {
         position: absolute;
         top: 0;
-        transform: translateY(-90%);
+        transform: translateY(-91%);
         right: 0;
-        @include PC(){
-            display: none;
-
+        width: 101%;
+        @include M(){
+            transform: translateY(-93%);
         }
-        
+        @include T(){
+            // transform: translateY(-95%);
+            display: none;
+        }
     }
     .pcOcean{
         display: none;
-        @include PC(){
+        @include T(){
             display: block;
-            margin: -2px auto;
+            position: absolute;
+            top: 0;
+            transform: translateY(-95%);
+            // transform: translateX(-1%);
+            right: 0;
+            width: 101%;
+        }
+        @include PC(){
             position: absolute;
             top: 0;
             transform: translateY(-95%);
@@ -143,15 +153,31 @@ img{
         .copyright {
             display: flex;
             flex-direction: column;
-            padding:$M-spacing $L-spacing $L-spacing;
+            padding:$M-spacing $L-spacing $M-spacing;
             border-top: 1px solid $gray-2;
+            @include T(){
+                padding:$M-spacing $L-spacing $L-spacing;
+
+            }
             
             .statement {
                 font-size: $small;
-                letter-spacing:     $PC-btn-esl-spacing;
+                letter-spacing:$PC-btn-esl-spacing;
+            }
+            .statement:nth-child(2){
+                display: none;
+                @include M(){
+                    display: block;
+                }
             }
             .first {
-                padding:0 0 $M-spacing;
+                @include M(){
+                    padding:0 0 $M-spacing;
+
+                }
+                @include T(){
+                    padding:0 0 $M-spacing;
+                }
             }
         }
 

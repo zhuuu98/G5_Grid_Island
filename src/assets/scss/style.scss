@@ -18,6 +18,7 @@
 @import "components/pageTitle";
 @import "components/MemberCard";
 @import "components/MemberCardMobile";
+@import "components/banner";
 
 //layout
 @import "layout/header";
@@ -41,3 +42,5 @@
 @import "page/member";
 @import "page/team";
 @import "page/griddy-style";
+@import "page/privacyPolicy";
+@import "page/notFound";
