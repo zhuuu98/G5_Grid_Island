@@ -1,6 +1,6 @@
 <template>
     <div class="preWrapper">
-        <PageTitle :pageTitle="'現場預約'" />
+        <PageTitle :pageTitle="'預約須知'" />
         <div class="breadcrumb">
             <Breadcrumb separator="<b class='breadcrumb-separator'>></b>">
             <BreadcrumbItem to="/">首頁</BreadcrumbItem>

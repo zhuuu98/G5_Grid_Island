@@ -173,7 +173,11 @@ export default {
             return this.selectedMonth == new Date().getMonth() && this.isCurrentYear;
         },
         isMaxMonth() {
-            return this.selectedMonth == new Date().getMonth() + 1 && this.isCurrentYear;
+            if(this.daysInLastMonth - this.today.getDate() > 15){
+                return this.selectedMonth == new Date().getMonth() && this.isCurrentYear;
+            }else{
+                return this.selectedMonth == new Date().getMonth() + 1 && this.isCurrentYear;
+            }
         },
         daysInMonth() {
             return new Date(this.selectedYear, this.selectedMonth + 1, 0).getDate();
