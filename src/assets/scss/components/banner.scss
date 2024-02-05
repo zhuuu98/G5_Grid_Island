@@ -42,10 +42,9 @@ $islandItems: (
 	position: relative;
 
 	#banner-imagebox {
-		width: 96%;
+		width: 100%;
 		position: relative;
 		margin: 4% auto 12% auto;
-		outline: 2px solid #fa0;
 
 		@include T() {
 			width: 75%;
@@ -95,24 +94,58 @@ $islandItems: (
 			outline: 1px solid $black;
 			width: 0%;
 			/* 初始寬度設為0 */
-			animation: expandWidth 0.5s forwards;
-			/* 動畫名稱, 持續時間, 動畫結束時保持最後一幀 */
-			animation-delay: 1s;
-			/* 網頁加載完成後延遲時間 */
 			overflow: hidden;
+			white-space: nowrap;
 
+			@keyframes expandWidthR {
+				0% {
+					width: 0%;
+					padding: 0;
+				}
+				10% {
+					width: 0%;
+					padding: 0;
+				}
 
-			@keyframes expandWidth {
-				to {
-					width: 24%;
-					/* 終點寬度 */
+				50% {
+					width: 23%; /* 第一次超過目標值 */
+					padding: 0 1.5% 0 6.2%;
+				}
+				85% {
+					width: 19.5%; /* 縮 */
+					padding: 0 1.5% 0 6%;
+				}
+				100% {
+					width: 20%;
+					padding: 0 1% 0 6%;
 				}
 			}
+			@keyframes expandWidthL {
+				0% {
+					width: 0%;
+					padding: 0;
+				}
+				10% {
+					width: 0%;
+					padding: 0;
+				}
 
+				50% {
+					width: 23%; /* 第一次超過目標值 */
+					padding: 0 6.2% 0 1.5%;
+				}
+				85% {
+					width: 19.5%; /* 縮 */
+					padding: 0 6% 0 1.5%;
+				}
+				100% {
+					width: 20%;
+					padding: 0 6% 0 1%;
+				}
+			}
 			@include T() {
 				font-size: $M-h3;
 			}
-
 			@include PC() {
 				display: none;
 			}
@@ -124,69 +157,81 @@ $islandItems: (
 			border-top: .4em solid $green-2;
 			border-bottom: .4em solid $green-2;
 			border-right: .4em solid $green-2;
-			padding: 0 1.5% 0 6%;
+			animation: expandWidthR 0.5s forwards;
+			animation-delay: .6s;
+
 
 		}
 
-		#newsTag {
+		#newsTag { //L
 			top: 51%;
-			left: 0%;
+			right: 79%;
 			border-top: .4em solid $orange-1;
 			border-bottom: .4em solid $orange-1;
 			border-left: .4em solid $orange-1;
-			padding: 0 6% 0 1.5%;
+			// padding: 0 6% 0 1.5%;
+			animation: expandWidthL .5s ease-out forwards;
+			animation-delay: .6s;
+			
 		}
 
-		#GamesTag {
+		#GamesTag { //R
 			top: 35%;
 			left: 66%;
 			border-top: .4em solid $blue-2;
 			border-bottom: .4em solid $blue-2;
 			border-right: .4em solid $blue-2;
-			padding: 0 1.5% 0 6%;
+			// padding: 0 1.5% 0 6%;
+			animation: expandWidthR 0.5s forwards;
+			animation-delay: .6s;
 		}
 
-		#boardTag {
+		#boardTag { //L
 			// 玩家社群
 			top: 41.5%;
 			right: 74%;
 			border-top: .4em solid $yellow;
 			border-bottom: .4em solid $yellow;
 			border-left: .4em solid $yellow;
-			padding: 0 6% 0 1.5%;
+			// padding: 0 6% 0 1.5%;
+			animation: expandWidthL .5s ease-out forwards;
+			animation-delay: .6s;
 		}
 
 		#bugTag {
 			// 兩行，比較特別
 			top: 43.5%;
-			left: 51%;
+			left: 49%;
 			border-top: .4em solid $green-1;
 			border-bottom: .4em solid $green-1;
 			border-right: .4em solid $green-1;
-			padding: 0 1.5% 0 6%;
+			// padding: 0 1.5% 0 6%;
 			line-height: 1.1em;
+			animation: expandWidthR 0.5s forwards;
+			animation-delay: .6s;
 		}
 
-		#prebookTag {
+		#prebookTag { //L
 			top: 60%;
 			right: 19.5%;
 			border-top: .4em solid $purple;
 			border-bottom: .4em solid $purple;
 			border-left: .4em solid $purple;
-			padding: 0 6% 0 1.5%;
+			// padding: 0 6% 0 1.5%;
+			animation: expandWidthL .5s ease-out forwards;
+			animation-delay: .6s;
 		}
 
-		#cartTag {
+		#cartTag { //L
 			// 購物車
 			top: 68%;
 			right: 67%;
 			border-top: .4em solid $red;
 			border-bottom: .4em solid $red;
 			border-left: .4em solid $red;
-			padding: 0 6% 0 1.5%;
-			//動畫效果
-
-
+			// padding: 0 6% 0 1.5%;
+			animation: expandWidthL .5s ease-out forwards;
+			animation-delay: .6s;
 		}
 
 		#aboutTag {
@@ -195,13 +240,10 @@ $islandItems: (
 			border-top: .4em solid $orange-2;
 			border-bottom: .4em solid $orange-2;
 			border-right: .4em solid $orange-2;
-			padding: 0 1.5% 0 6%;
+			// padding: 0 1.5% 0 6%;
+			animation: expandWidthR 0.5s forwards;
+			animation-delay: .6s;
 		}
-
-
-
-
-
 
 		#islandTree-image:hover {
 			filter: drop-shadow(0px 0px 4px #fff) drop-shadow(0px 0px 12px #fff);
@@ -246,7 +288,6 @@ $islandItems: (
 		height: 100%;
 		bottom: 0;
 		pointer-events: none;
-		outline: 1px solid green;
 
 		.showCard {
 			//手機版none
