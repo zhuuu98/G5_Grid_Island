@@ -681,25 +681,25 @@
     }
 
     //手機板選單被選取時，縮小的icon
-    .mobileList{
-        width: 100%;
-        max-width: 350px;
-        margin: 10% auto ;
-        display: flex;
-        gap: 20px;
-        background-color: $white-1;
-        padding: 10px;
-        border-radius: 8px;
+    // .mobileList{
+    //     width: 100%;
+    //     max-width: 350px;
+    //     margin: 10% auto ;
+    //     display: flex;
+    //     gap: 20px;
+    //     background-color: $white-1;
+    //     padding: 10px;
+    //     border-radius: 8px;
 
 
-        .mobileListContent{
-        width: 100%;
-        max-width: 50px;
-        background-color: $gray-1;
-        border: 1px solid $blue-3;
-        border-radius: 8px;
-        }
-    }
+    //     .mobileListContent{
+    //     width: 100%;
+    //     max-width: 50px;
+    //     background-color: $gray-1;
+    //     border: 1px solid $blue-3;
+    //     border-radius: 8px;
+    //     }
+    // }
 
 
 

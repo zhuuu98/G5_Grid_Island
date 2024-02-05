@@ -178,11 +178,11 @@
             </div>
         </div>
         <!--     //手機板選單被選取時，縮小的icon -->
-        <div class="mobileList " v-show="mobileListIsChoosed">
+        <!-- <div class="mobileList " v-show="mobileListIsChoosed">
                 <button class="mobileListContent" v-for="(iconName, index) in mobileIcon" @click="handleButtonClick(index)">
                     <img :src="getImageUrl(`member/memberAsideIcon_${index + 1}.svg`)">
                 </button>
-        </div>
+        </div> -->
 
         <!-- 手機板會員資料修改 -->
         <div class="mobileEditData" v-show="isChoosedEditData">
@@ -377,30 +377,20 @@ export default {
             this.mobileListIsChoosed=false
             switch (index) {
                 case 0: //griddy
-                    this.mobileListNotChoosed=false
-                    this.mobileListIsChoosed=true
                     this.$router.push("/griddy-style");
                     this.$emit("griddy-style");
                     break;
 
                 case 1: //會員資料修改
-                    this.mobileListNotChoosed=false
-                    this.mobileListIsChoosed=true
                     this.isChoosedEditData = !this.isChoosedEditData
                     break;
                 case 2: //訂單紀錄
-                    this.mobileListNotChoosed=false
-                    this.mobileListIsChoosed=true
                     this.isChoosedOrderData = !this.isChoosedOrderData
                     break;
                 case 3: //預約紀錄
-                    this.mobileListNotChoosed=false
-                    this.mobileListIsChoosed=true
                     this.isChoosedBookData = !this.isChoosedBookData
                     break;
                 case 4: //報隊管理
-                    this.mobileListNotChoosed=false
-                    this.mobileListIsChoosed=true
 
                     break;
             }
