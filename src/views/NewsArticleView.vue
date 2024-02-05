@@ -11,7 +11,7 @@
       </div>
     </transition>
     <div class="newsImg"></div>
-    <div class="content">
+    <!-- <div class="content">
       <div class="title">
         <h1>{{ respondData.news_title }}</h1>
       </div>
@@ -25,6 +25,26 @@
       </div>
       <div class="date">
         <span>{{ respondData.news_date }}</span>
+      </div>
+      <div class="btn">
+        <button class="btn_lg_orange" @click="shareOnFacebook">分享到Facebook</button>
+      </div>
+    </div> -->
+
+    <div class="content">
+      <div class="title">
+        <h1>{{ newsData.news_title }}</h1>
+      </div>
+      <div class="newsImg">
+        <img
+          :src="`https://tibamef2e.com/chd103/g1/image/news/${newsData.news_image}`"
+        />
+      </div>
+      <div class="textContent">
+        <span>{{ newsData.news_content }}</span>
+      </div>
+      <div class="date">
+        <span>{{ newsData.news_date }}</span>
       </div>
       <div class="btn">
         <button class="btn_lg_orange" @click="shareOnFacebook">分享到Facebook</button>
@@ -44,6 +64,11 @@ export default {
       netData: {
         news_id: null,
       },
+      newsData: [],
+      singleNews: {
+        news_id: null,
+      },
+      pageId: null,
     };
   },
   components: {
@@ -51,11 +76,14 @@ export default {
   },
   computed: {
     loading() {
-      return this.respondData.length == 0;
+      return this.newsData.length == 0;
     },
   },
   created() {
     this.axiosGetData();
+    this.fetchNews();
+    this.pageId = this.$route.params.id; // 將路由參數賦值給 pageId
+
   },
   methods: {
     axiosGetData() {
@@ -84,6 +112,20 @@ export default {
         console.log("連結無效");
       }
     },
+    fetchNews() {
+        axios
+          .post(`${import.meta.env.VITE_API_URL}/news.php`, {})
+          .then(res => {
+            const allNews = res.data.news;
+            const result = allNews.find((item) => {
+              return item.news_id == this.pageId;
+            });
+            console.log(result);
+            this.newsData = result;
+            this.singleNews = result;
+          })
+          .catch(error => console.error('發生錯誤:',error))
+    }
   },
 
   mounted() {},

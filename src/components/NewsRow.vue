@@ -18,7 +18,7 @@
       <div class="textContent">
         <span>{{ newsContent }}</span>
       </div>
-      <div class="date pc-h5">{{ newsDate }}</div>
+      <div class="date pc-h5">{{ formattedDate }}</div>
     </div>
   </div>
   </router-link>
@@ -33,6 +33,12 @@ export default {
   },
   props: ["imgUrl", "newsTitle", "newsDate", "newsId", "newsContent"],
   methods: {
+  },
+  computed: {
+    formattedDate() {
+      const date = new Date(this.newsDate);
+      return date.toISOString().split('T')[0];
+    },
   },
   mounted() {},
 };
