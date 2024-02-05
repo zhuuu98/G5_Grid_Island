@@ -160,6 +160,7 @@ const router = createRouter({
       name: "test",
             meta: {
         title:"劉書院",
+        showHeader: false, //打開這個即可不顯示header
       },
       component: () => import("@/components/Banner.vue"),
     },
