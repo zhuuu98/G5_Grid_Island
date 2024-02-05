@@ -85,7 +85,7 @@ export default {
             this.showAlert = true;
             //跳轉回會員中心
             setTimeout(()=>{
-                this.$router.push('/member')
+                this.$router.replace('/member')
             }, 2000)
         },
         closeAlert(){

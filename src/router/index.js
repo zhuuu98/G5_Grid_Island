@@ -8,6 +8,7 @@ const router = createRouter({
       path: "/",
       name: "home",
       component: HomeView,
+      alias: "/home",
       meta: {
         title: "首頁",
         showHeader: false, //打開這個即可不顯示header
@@ -36,7 +37,7 @@ const router = createRouter({
     {
       path: "/newsArticle/:id",
       name: "newsArticle",
-            meta: {
+      meta: {
         title:"最新消息",
       },
       component: () => import("../views/NewsArticleView.vue"),
@@ -44,7 +45,7 @@ const router = createRouter({
     {
       path: "/product",
       name: "product",
-            meta: {
+      meta: {
         title:"所有商品",
       },
       component: () => import("../views/Product1View.vue"),
@@ -52,7 +53,7 @@ const router = createRouter({
     {
       path: "/productInfo/:id",
       name: "productInfo",
-            meta: {
+      meta: {
         title:"所有商品",
       },
       component: () => import("../views/ProductInfoView.vue"),
@@ -60,7 +61,7 @@ const router = createRouter({
     {
       path: "/cart",
       name: "cart",
-            meta: {
+      meta: {
         title:"購物車",
       },
       component: () => import("../views/CartView.vue"),
@@ -68,7 +69,7 @@ const router = createRouter({
     {
       path: "/orderInfo",
       name: "orderInfo",
-            meta: {
+      meta: {
         title:"訂單資訊",
       },
       component: () => import("../views/OrderInfoView.vue"),
@@ -76,7 +77,7 @@ const router = createRouter({
     {
       path: "/orderSuccess",
       name: "orderSuccess",
-            meta: {
+      meta: {
         title:"訂購成功",
       },
       component: () => import("../views/OrderSuccessView.vue"),
@@ -84,7 +85,7 @@ const router = createRouter({
     {
       path: "/login",
       name: "login",
-            meta: {
+      meta: {
         title:"登入",
       },
       component: () => import("../views/LoginView.vue"),
@@ -92,7 +93,7 @@ const router = createRouter({
     {
       path: "/signup",
       name: "signup",
-            meta: {
+      meta: {
         title:"註冊",
       },
       component: () => import("../views/SignupView.vue"),
@@ -100,7 +101,7 @@ const router = createRouter({
     {
       path: "/prebook",
       name: "prebook",
-            meta: {
+      meta: {
         title:"預約須知",
       },
       component: () => import("../views/PreBookView.vue"),
@@ -108,15 +109,16 @@ const router = createRouter({
     {
       path: "/book",
       name: "book",
-            meta: {
+      meta: {
         title:"現場預約",
+        requiresAuth: true,
       },
       component: () => import("../views/BookView.vue"),
     },
     {
       path: "/board",
       name: "board",
-            meta: {
+      meta: {
         title:"留言區",
       },
       component: () => import("../views/BoardView.vue"),
@@ -124,7 +126,7 @@ const router = createRouter({
     {
       path: "/team",
       name: "team",
-            meta: {
+      meta: {
         title:"報隊區",
       },
       component: () => import("../views/TeamView.vue"),
@@ -132,7 +134,7 @@ const router = createRouter({
     {
       path: "/member",
       name: "member",
-            meta: {
+      meta: {
         title:"會員中心",
       },
       component: () => import("../views/MemberView.vue"),
@@ -140,7 +142,7 @@ const router = createRouter({
     {
       path: "/griddy-style",
       name: "griddy-style",
-            meta: {
+      meta: {
         title:"造型屋",
       },
       component: () => import("../views/griddyStyleView.vue"),
@@ -149,7 +151,7 @@ const router = createRouter({
     {
       path: "/:pathMatch(.*)*",
       name: "NotFound",
-            meta: {
+      meta: {
         title:"404",
       },
       component: () => import("../views/NotFoundView.vue"),
