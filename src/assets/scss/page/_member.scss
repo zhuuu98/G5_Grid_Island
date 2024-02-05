@@ -360,7 +360,7 @@
         display: flex;
         flex-direction: column;
         justify-content: center;
-        background-color: $gray-1;
+        background-color: $white-1;
         border-radius: $PC-card-radius;
         margin: $M-spacing;
         padding: $S-spacing;
@@ -368,10 +368,18 @@
         @include T(){
             display: none;
         }
+
+        .wrapper{
+            background-color: $gray-1;
+            border-radius: 25px;
+            margin: 10px;
+            padding: 20px;
+            }
     }
     .OrderDataTitle {
         display: flex;
         justify-content: center;
+        margin: 0 20px 20px 20px;
     }
     .OrderDataTitle img{
         width: 100%;
@@ -404,7 +412,7 @@
         display: flex;
         flex-direction: column;
         gap: $M-spacing;
-        padding:$M-spacing ;
+        // padding:$M-spacing ;
     }
     .OrderDataDetail{
         display: flex;
@@ -436,11 +444,18 @@
         display: flex;
         flex-direction: column;
         justify-content: center;
-        background-color: $gray-1;
+        background-color: $white-1;
         border-radius: $PC-card-radius;
         margin: $M-spacing;
         padding: $S-spacing;
         gap: $M-spacing;
+
+        .wrapper{
+            background-color: $gray-1;
+            border-radius: 25px;
+            margin: 10px;
+            }
+
         @include T(){
             display: none;
         }
@@ -665,6 +680,26 @@
         padding: $S-spacing;
     }
 
+    //手機板選單被選取時，縮小的icon
+    .mobileList{
+        width: 100%;
+        max-width: 350px;
+        margin: 10% auto ;
+        display: flex;
+        gap: 20px;
+        background-color: $white-1;
+        padding: 10px;
+        border-radius: 8px;
+
+
+        .mobileListContent{
+        width: 100%;
+        max-width: 50px;
+        background-color: $gray-1;
+        border: 1px solid $blue-3;
+        border-radius: 8px;
+        }
+    }
 
 
 
