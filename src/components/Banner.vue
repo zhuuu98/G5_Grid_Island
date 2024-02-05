@@ -2,117 +2,107 @@
     <div id="banner-container" ref="bannerContainer">
         <div id="banner-imagebox">
             <img :src="island" id="island-image" />
+            <div id="treeTag" class="itemTag">
+                <p>會員中心</p>
+            </div>
             <router-link to="/member">
-                <img :src="islandTree" id="islandTree-image" />
+                <img :src="islandTree" id="islandTree-image" @mouseenter="showTreeCard = true"
+                    @mouseleave="showTreeCard = false" />
             </router-link>
+            
+            <div id="newsTag" class="itemTag">
+                <p>最新消息</p>
+            </div>
             <router-link to="/news">
-                <img :src="islandNews" id="islandNews-image" />
+                <img :src="islandNews" id="islandNews-image" @mouseenter="showNewsCard = true"
+                @mouseleave="showNewsCard = false" />
             </router-link>
 
             <img :src="islandBar" id="islandBar-image" />
 
             <router-link to="/product">
-                <img :src="islandGames" id="islandGames-image" 
-                @mouseenter="showGamesCard = true"
-                @mouseleave="showGamesCard = false" />
+                <img :src="islandGames" id="islandGames-image" @mouseenter="showGamesCard = true"
+                    @mouseleave="showGamesCard = false" />
             </router-link>
 
             <img :src="islandRoof" id="islandRoof-image" />
 
             <router-link to="/board">
-                <img :src="islandBoard" id="islandBoard-image" />
+                <img :src="islandBoard" id="islandBoard-image" @mouseenter="showBoardCard = true"
+                @mouseleave="showBoardCard = false" />
             </router-link>
             <router-link to="/griddy-style">
-                <img :src="islandBug" id="islandBug-image" />
+                <img :src="islandBug" id="islandBug-image" @mouseenter="showBugCard = true"
+                @mouseleave="showBugCard = false" />
             </router-link>
 
             <img :src="islandBarup" id="islandBarup-image" />
 
             <router-link to="/book">
-                <img :src="islandPrebook" id="islandPrebook-image" />
+                <img :src="islandPrebook" id="islandPrebook-image" @mouseenter="showPrebookCard = true"
+                @mouseleave="showPrebookCard = false" />
             </router-link>
             <router-link to="/cart">
-                <img :src="islandCart" id="islandCart-image" />
+                <img :src="islandCart" id="islandCart-image" @mouseenter="showCartCard = true"
+                @mouseleave="showCartCard = false" />
             </router-link>
             <router-link to="/about">
-                <img :src="islandAbout" id="islandAbout-image" />
+                <img :src="islandAbout" id="islandAbout-image" @mouseenter="showAboutCard = true"
+                @mouseleave="showAboutCard = false" />
             </router-link>
-
-            <img :src="lEye" id="lEye" />
-            <img :src="rEye" id="rEye" />
-
+            
+            <img :src="lEye" id="lEye" ref="leftEyeRef"/>
+            <img :src="rEye" id="rEye" ref="rightEyeRef" />
+            <!-- ============================================= -->
             <div id="banner-cardsbox">
+                <div v-if="showTreeCard" id="treeCard" class="showCard">
+                    <p class="card-title">會員中心</p>
+                    <div class="card-line"></div>
+                    <p class="card-text">毛毛蟲之歸屬，於此粉墨衣裝、查看遊歷紀錄。</p>
+                </div>
+                <div v-if="showBoardCard" id="boardCard" class="showCard">
+                    <p class="card-title">玩家社群</p>
+                    <div class="card-line"></div>
+                    <p class="card-text">玩家交流之地，分享桌遊經驗，結織世界友誼。</p>
+                </div>
+                <div v-if="showNewsCard" id="newsCard" class="showCard">
+                    <p class="card-title">最新消息</p>
+                    <div class="card-line"></div>
+                    <p class="card-text">板上新蹤，於此發掘格線島之近況與盛事。</p>
+                </div>
+                <div v-if="showCartCard" id="cartCard" class="showCard">
+                    <p class="card-title">購物車</p>
+                    <div class="card-line"></div>
+                    <p class="card-text">車中積載，點金訂物，妙趣橫生隨囊歸。</p>
+                </div>
+                <div v-if="showAboutCard" id="aboutCard" class="showCard">
+                    <p class="card-title">關於我們</p>
+                    <div class="card-line"></div>
+                    <p class="card-text">格間交織於此島，譜寫桌遊新篇章。</p>
+                </div>
                 <div v-if="showGamesCard" id="gamesCard" class="showCard">
                     <p class="card-title">所有商品</p>
                     <div class="card-line"></div>
                     <p class="card-text">櫃中珍藏匯聚天下桌遊，於此揀選，尋心之所向。</p>
                 </div>
+                <div v-if="showBugCard" id="bugCard" class="showCard">
+                    <p class="card-title">Griddy造型屋</p>
+                    <div class="card-line"></div>
+                    <p class="card-text">櫃中珍藏匯聚天下桌遊，於此揀選，尋心之所向。</p>
+                </div>
+                <div v-if="showPrebookCard" id="prebookCard" class="showCard">
+                    <p class="card-title">預約場地</p>
+                    <div class="card-line"></div>
+                    <p class="card-text">墨書登記，備以預約遊戲之地，選擇良辰與桌戲。</p>
+                </div>
             </div>
         </div>
-        
 
-        <img :src="roof" alt="Banner roof" id="roof" />
-        <router-link to="member">
-            <img :src="treeSvg" alt="Banner Tree" id="tree-svg" @mouseenter="showTreeCard = true"
-                @mouseleave="showTreeCard = false" />
-        </router-link>
-        <div v-if="showTreeCard" id="treeCard" class="showCard">
-            <p class="card-title">會員中心</p>
-            <div class="card-line"></div>
-            <p class="card-text">毛毛蟲之歸屬，於此粉墨衣裝、查看遊歷紀錄。</p>
-        </div>
-        <router-link to="board">
-            <img :src="comment" alt="Banner comments" id="comment" @mouseenter="showCommentCard = true"
-                @mouseleave="showCommentCard = false" />
-        </router-link>
-        <div v-if="showCommentCard" id="commentCard" class="showCard">
-            <p class="card-title">留言板</p>
-            <div class="card-line"></div>
-            <p class="card-text">玩家交流之地，分享桌遊經驗，結織世界友誼。</p>
-        </div>
-        <router-link to="news">
-            <img :src="news" alt="Banner News" id="news" @mouseenter="showNewsCard = true"
-                @mouseleave="showNewsCard = false" />
-        </router-link>
-        <div v-if="showNewsCard" id="newsCard" class="showCard">
-            <p class="card-title">最新消息</p>
-            <div class="card-line"></div>
-            <p class="card-text">板上新蹤，於此發掘格線島之近況與盛事。</p>
-        </div>
-        <router-link to="about">
-            <img :src="sign" alt="Banner Sign" id="sign" @mouseenter="showSignCard = true"
-                @mouseleave="showSignCard = false" />
-        </router-link>
-        <div v-if="showSignCard" id="signCard" class="showCard">
-            <p class="card-title">關於我們</p>
-            <div class="card-line"></div>
-            <p class="card-text">格間交織於此島，譜寫桌遊新篇章。</p>
-        </div>
-        <router-link to="prebook">
-            <img :src="reserve" alt="Banner Reserve" id="reserve" @mouseenter="showReserveCard = true"
-                @mouseleave="showReserveCard = false" />
-        </router-link>
-        <div v-if="showReserveCard" id="reserveCard" class="showCard">
-            <p class="card-title">預約場地</p>
-            <div class="card-line"></div>
-            <p class="card-text">墨書登記，備以預約遊戲之地，選擇良辰與桌戲。</p>
-        </div>
-        <!-- 蟲 -->
 
-        <!-- 蟲 -->
-        <img :src="bar" alt="Banner Bar" id="bar" />
-        <router-link to="cart">
-            <img :src="cart" alt="Banner Cart" id="cart" @mouseenter="showCartCard = true"
-                @mouseleave="showCartCard = false" />
-        </router-link>
-        <div v-if="showCartCard" id="cartCard" class="showCard">
-            <p class="card-title">購物車</p>
-            <div class="card-line"></div>
-            <p class="card-text">車中積載，點金訂物，妙趣橫生隨囊歸。</p>
-        </div>
     </div>
 </template>
 <script>
+    import { ref, onMounted, onUnmounted } from "vue";
     import island from "../assets/images/islandbanner/island.svg";
     import islandTree from "../assets/images/islandbanner/islandTree.svg";
     import islandNews from "../assets/images/islandbanner/islandNews.svg";
@@ -150,13 +140,91 @@
                 lEye: lEye,
                 rEye: rEye,
                 showGamesCard: false, //所有商品，遊戲櫃
+                showTreeCard: false, //會員中心，樹
+                showAboutCard: false, //關於我們，招牌
+                showBoardCard: false, //玩家社群，留言板
+                showPrebookCard: false, //預約場地，書桌
+                showCartCard: false, //購物車，購物車
+                showBugCard: false, //造型屋，蟲
+                showNewsCard: false, //最新消息，佈告欄
             };
         },
+        mounted() {
+			// 为整个容器添加事件监听器
+			this.$refs.bannerContainer.addEventListener("mousedown", this.preventDrag);
+			document.addEventListener("mousemove", this.handleMouseMove);
+		},
+		beforeDestroy() {
+			// 在组件销毁时移除事件监听器
+			this.$refs.bannerContainer.removeEventListener(
+				"mousedown",
+				this.preventDrag
+			);
+			document.removeEventListener("mousemove", this.handleMouseMove);
+
+		},
         methods: {
             // 定義組件的方法
-            increment() {
-                this.count++;
-            },
+            preventDrag(event) {
+				// 检查事件的目标是否是您想阻止拖拽的图像
+				if (event.target.tagName === "IMG") {
+					event.preventDefault();
+				}
+			},
+            moveEye(
+				eye,
+				mouseX,
+				mouseY,
+				initialLeft,
+				initialTop,
+				maxMovementX,
+				maxMovementY
+			){
+				if (!eye) return;
+
+				const eyeRect = eye.getBoundingClientRect();
+				const eyeCenterX = eyeRect.left + eyeRect.width / 2;
+				const eyeCenterY = eyeRect.top + eyeRect.height / 2;
+
+				let deltaX = ((mouseX - eyeCenterX) / window.innerWidth) * 200;
+				let deltaY = ((mouseY - eyeCenterY) / window.innerHeight) * 200;
+
+				// 检查是否在椭圆形轨迹内
+				if (
+					(deltaX * deltaX) / (maxMovementX * maxMovementX) +
+					(deltaY * deltaY) / (maxMovementY * maxMovementY) >
+					1
+				) {
+					const angle = Math.atan2(deltaY, deltaX);
+					deltaX = maxMovementX * Math.cos(angle);
+					deltaY = maxMovementY * Math.sin(angle);
+				}
+
+				eye.style.left = `calc(${initialLeft}% + ${deltaX}%)`;
+				eye.style.top = `calc(${initialTop}% + ${deltaY}%)`;
+			},
+			handleMouseMove(event){
+				requestAnimationFrame(() => {
+					this.moveEye(
+						this.$refs.leftEyeRef,
+						event.clientX,
+						event.clientY,
+						47.8,  // x軸定位點
+						43.2,   // y軸定位點
+						1, // x軸移動範圍
+						1.4 // y軸移動範圍
+					);
+					this.moveEye(
+						this.$refs.rightEyeRef,
+						event.clientX,
+						event.clientY,
+						51.75,  // x軸定位點
+						42.35,   // y軸定位點
+						0.8, // x軸移動範圍
+						1.28 // y軸移動範圍
+					);
+				});
+			}
         },
     };
 </script>
