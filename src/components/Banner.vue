@@ -12,7 +12,9 @@
             <img :src="islandBar" id="islandBar-image" />
 
             <router-link to="/product">
-                <img :src="islandGames" id="islandGames-image" />
+                <img :src="islandGames" id="islandGames-image" 
+                @mouseenter="showGamesCard = true"
+                @mouseleave="showGamesCard = false" />
             </router-link>
 
             <img :src="islandRoof" id="islandRoof-image" />
@@ -36,17 +38,19 @@
                 <img :src="islandAbout" id="islandAbout-image" />
             </router-link>
 
-        </div>
+            <img :src="lEye" id="lEye" />
+            <img :src="rEye" id="rEye" />
 
-        <router-link to="product">
-            <img :src="games" alt="Banner games" id="games" @mouseenter="showGamesCard = true"
-                @mouseleave="showGamesCard = false" />
-        </router-link>
-        <div v-if="showGamesCard" id="gamesCard" class="showCard">
-            <p class="card-title">所有商品</p>
-            <div class="card-line"></div>
-            <p class="card-text">櫃中珍藏匯聚天下桌遊，於此揀選，尋心之所向。</p>
+            <div id="banner-cardsbox">
+                <div v-if="showGamesCard" id="gamesCard" class="showCard">
+                    <p class="card-title">所有商品</p>
+                    <div class="card-line"></div>
+                    <p class="card-text">櫃中珍藏匯聚天下桌遊，於此揀選，尋心之所向。</p>
+                </div>
+            </div>
         </div>
+        
+
         <img :src="roof" alt="Banner roof" id="roof" />
         <router-link to="member">
             <img :src="treeSvg" alt="Banner Tree" id="tree-svg" @mouseenter="showTreeCard = true"
@@ -94,9 +98,7 @@
             <p class="card-text">墨書登記，備以預約遊戲之地，選擇良辰與桌戲。</p>
         </div>
         <!-- 蟲 -->
-        <img :src="bug" alt="Banner Bug" id="bug" />
-        <img :src="lEye" id="lEye" ref="leftEyeRef" />
-        <img :src="rEye" id="rEye" ref="rightEyeRef" />
+
         <!-- 蟲 -->
         <img :src="bar" alt="Banner Bar" id="bar" />
         <router-link to="cart">
@@ -108,7 +110,6 @@
             <div class="card-line"></div>
             <p class="card-text">車中積載，點金訂物，妙趣橫生隨囊歸。</p>
         </div>
-        <img :src="headerWave" id="headerWave" />
     </div>
 </template>
 <script>
@@ -124,6 +125,8 @@
     import islandPrebook from "../assets/images/islandbanner/islandPrebook.svg";
     import islandCart from "../assets/images/islandbanner/islandCart.svg";
     import islandAbout from "../assets/images/islandbanner/islandAbout.svg";
+    import lEye from "../assets/images/islandbanner/lEye.svg";
+    import rEye from "../assets/images/islandbanner/rEye.svg";
 
     export default {
         name: 'bannerComponent', // 組件名稱
@@ -144,6 +147,9 @@
                 islandPrebook: islandPrebook,
                 islandCart: islandCart,
                 islandAbout: islandAbout,
+                lEye: lEye,
+                rEye: rEye,
+                showGamesCard: false, //所有商品，遊戲櫃
             };
         },
         methods: {
