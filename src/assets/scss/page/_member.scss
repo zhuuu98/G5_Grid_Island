@@ -46,7 +46,7 @@
         gap: $XXL-spacing;
         justify-content: space-evenly;
         align-items: center;
-        border-radius: $PC-card-radius;
+        border-radius: 25px;
         background-color: $gray-1;
     }
     .memberLookOrder,.memberLookBook{
@@ -71,7 +71,7 @@
                 padding: $M-spacing;
                 // margin: $M-spacing;
                 background-color: $gray-1;
-                border-radius: $PC-card-radius;
+                border-radius: 25px;
                 gap: $M-spacing 0;
             }
             .memberBookTitle{
@@ -82,6 +82,7 @@
             .membertop{
                 display: flex;
                 justify-content: center;
+                margin: $M-spacing 0;
             }
             .memberBooklog{
                 display: flex;
@@ -90,7 +91,7 @@
                 gap: $M-spacing;
                 padding: $M-spacing;
                 background-color: $white-1;
-                border-radius: $PC-card-radius;
+                border-radius:25px;
             }
             .dateAndCancel{
                 display: flex;
@@ -616,6 +617,7 @@
                 display: flex;
                 justify-content: space-between;
                 margin: $M-spacing;
+                align-items: center;
         
             }
             .PC_ContentTitle p:last-child{
@@ -646,7 +648,7 @@
             }
             .PC_OrderDataList{
                 background-color: $white-1;
-                border-radius: $PC-card-radius;
+                border-radius: 25px;
                 padding: $M-spacing 0;
             }
             .PC_orderMain{

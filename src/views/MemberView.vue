@@ -98,7 +98,7 @@
                     <div class="content">
                         <div class="PC_OrderDataTitle">
                             <img :src="getImageUrl(`member/memberAsideIcon_3.svg`)">
-                            <h3>訂單資訊</h3>
+                            <h3 class="pc-h4">訂單資訊</h3>
                         </div>
                         <div class="PC_OrderDataContent">
                             <div class="PC_ContentTitle">
@@ -140,7 +140,7 @@
                             <div class="membertop">
                                 <div class="memberBookTitle">
                                     <img src="../assets/images/member/memberAsideIcon_4.svg" alt="預約紀錄icon">
-                                    <p>預約紀錄</p>
+                                    <h3 class="pc-h4">預約紀錄</h3>
                                 </div>
                             </div>
                             <div class="memberBooklog" v-for="date in bookDate">
