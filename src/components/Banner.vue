@@ -2,41 +2,39 @@
     <div id="banner-container" ref="bannerContainer">
         <div id="banner-imagebox">
             <img :src="island" id="island-image" />
-            <router-link to="product">
+            <router-link to="/member">
                 <img :src="islandTree" id="islandTree-image" />
             </router-link>
-            <router-link to="product">
+            <router-link to="/news">
                 <img :src="islandNews" id="islandNews-image" />
             </router-link>
-            <router-link to="product">
-                <img :src="islandBar" id="islandBar-image" />
-            </router-link>
-            <router-link to="product">
+
+            <img :src="islandBar" id="islandBar-image" />
+
+            <router-link to="/product">
                 <img :src="islandGames" id="islandGames-image" />
             </router-link>
-            <router-link to="product">
-                <img :src="islandRoof" id="islandRoof-image" />
-            </router-link>
-            <router-link to="product">
+
+            <img :src="islandRoof" id="islandRoof-image" />
+
+            <router-link to="/board">
                 <img :src="islandBoard" id="islandBoard-image" />
             </router-link>
-            <router-link to="griddy-style">
+            <router-link to="/griddy-style">
                 <img :src="islandBug" id="islandBug-image" />
             </router-link>
-            <router-link to="product">
-                <img :src="islandBarup" id="islandBarup-image" />
-            </router-link>
-            <router-link to="product">
+
+            <img :src="islandBarup" id="islandBarup-image" />
+
+            <router-link to="/book">
                 <img :src="islandPrebook" id="islandPrebook-image" />
             </router-link>
-            <router-link to="product">
+            <router-link to="/cart">
                 <img :src="islandCart" id="islandCart-image" />
             </router-link>
-            <router-link to="product">
+            <router-link to="/about">
                 <img :src="islandAbout" id="islandAbout-image" />
             </router-link>
-            
-
 
         </div>
 
@@ -145,7 +143,7 @@
                 islandBarup: islandBarup,
                 islandPrebook: islandPrebook,
                 islandCart: islandCart,
-                islandAbout: islandAbout,  
+                islandAbout: islandAbout,
             };
         },
         methods: {
