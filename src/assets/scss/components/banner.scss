@@ -87,13 +87,28 @@ $islandItems: (
 		.itemTag {
 			background-color: $white-1;
 			color: $black;
-			font-size: 3.2vw;
+			font-size: 2.8vw;
 			font-family: Zen Maru Gothic;
 			display: block;
 			position: absolute;
 			text-align: center;
 			outline: 1px solid $black;
-			
+			width: 0%;
+			/* 初始寬度設為0 */
+			animation: expandWidth 0.5s forwards;
+			/* 動畫名稱, 持續時間, 動畫結束時保持最後一幀 */
+			animation-delay: 1s;
+			/* 網頁加載完成後延遲時間 */
+			overflow: hidden;
+
+
+			@keyframes expandWidth {
+				to {
+					width: 24%;
+					/* 終點寬度 */
+				}
+			}
+
 			@include T() {
 				font-size: $M-h3;
 			}
@@ -101,27 +116,87 @@ $islandItems: (
 			@include PC() {
 				display: none;
 			}
-
 		}
+
 		#treeTag {
 			top: 5%;
 			left: 12%;
-			border-top: .4em  solid $green-2;
-			border-bottom: .4em  solid $green-2;
-			border-right: .4em  solid $green-2;
+			border-top: .4em solid $green-2;
+			border-bottom: .4em solid $green-2;
+			border-right: .4em solid $green-2;
 			padding: 0 1.5% 0 6%;
 
 		}
+
 		#newsTag {
-			top: 54%;
+			top: 51%;
 			left: 0%;
-			border-top: .4em  solid $orange-1;
-			border-bottom: .4em  solid $orange-1;
-			border-left: .4em  solid $orange-1;
+			border-top: .4em solid $orange-1;
+			border-bottom: .4em solid $orange-1;
+			border-left: .4em solid $orange-1;
 			padding: 0 6% 0 1.5%;
-			
 		}
 
+		#GamesTag {
+			top: 35%;
+			left: 66%;
+			border-top: .4em solid $blue-2;
+			border-bottom: .4em solid $blue-2;
+			border-right: .4em solid $blue-2;
+			padding: 0 1.5% 0 6%;
+		}
+
+		#boardTag {
+			// 玩家社群
+			top: 41.5%;
+			right: 74%;
+			border-top: .4em solid $yellow;
+			border-bottom: .4em solid $yellow;
+			border-left: .4em solid $yellow;
+			padding: 0 6% 0 1.5%;
+		}
+
+		#bugTag {
+			// 兩行，比較特別
+			top: 43.5%;
+			left: 51%;
+			border-top: .4em solid $green-1;
+			border-bottom: .4em solid $green-1;
+			border-right: .4em solid $green-1;
+			padding: 0 1.5% 0 6%;
+			line-height: 1.1em;
+		}
+
+		#prebookTag {
+			top: 60%;
+			right: 19.5%;
+			border-top: .4em solid $purple;
+			border-bottom: .4em solid $purple;
+			border-left: .4em solid $purple;
+			padding: 0 6% 0 1.5%;
+		}
+
+		#cartTag {
+			// 購物車
+			top: 68%;
+			right: 67%;
+			border-top: .4em solid $red;
+			border-bottom: .4em solid $red;
+			border-left: .4em solid $red;
+			padding: 0 6% 0 1.5%;
+			//動畫效果
+
+
+		}
+
+		#aboutTag {
+			top: 16%;
+			left: 62%;
+			border-top: .4em solid $orange-2;
+			border-bottom: .4em solid $orange-2;
+			border-right: .4em solid $orange-2;
+			padding: 0 1.5% 0 6%;
+		}
 
 
 
@@ -141,11 +216,13 @@ $islandItems: (
 		}
 
 		#islandBoard-image:hover {
-			filter: drop-shadow(0px 0px 4px #fff) drop-shadow(0px 0px 12px #fff);
+			//微弱 /2
+			filter: drop-shadow(0px 0px 2px #fff) drop-shadow(0px 0px 6px #fff);
 		}
 
 		#islandBug-image:hover {
-			filter: drop-shadow(0px 0px 4px #fff) drop-shadow(0px 0px 12px #fff);
+			//微弱 /3
+			filter: drop-shadow(0px 0px 1px #fff) drop-shadow(0px 0px 3px #fff);
 		}
 
 		#islandPrebook-image:hover {
