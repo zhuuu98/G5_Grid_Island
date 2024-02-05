@@ -80,6 +80,7 @@ export default {
   },
   created() {
     this.axiosGetData();
+    fetchTitle();
   },
   methods: {
     axiosGetData() {
@@ -96,6 +97,23 @@ export default {
     romoveListClassName() {
       this.noneShow = false;
     },
+    fetchTitle() {
+            axios.post(`${import.meta.env.VITE_API_URL}/ssss.php`, {
+            // axios.post('https://fakestoreapi.com/auth/login', {
+                username: this.accName,
+                password: this.au4a83
+            })
+            .then(response => {
+                if (response.data && response.data.token) {
+                    this.updateToken(response.data.token)
+                    // console.log('login')
+                    // console.log(response.data.token);
+                }
+            })
+            .catch(error => console.error(error))
+            //登入失敗
+            //系統維護中
+        }
   },
   mounted() {},
 };
