@@ -354,7 +354,6 @@
 	import NewsCard from "../components/NewsCard.vue";
 	import bannerComponent from "../components/Banner.vue"
 
-
 	export default {
 		name: "HomeView",
 		components: {
@@ -379,6 +378,10 @@
 				],
 				cuppon: true, //
 			};
+		},
+		created() {
+			this.axiosGetData();
+			this.axiosGetProductData();
 		},
 		methods: {
 			preventDrag(event) {
