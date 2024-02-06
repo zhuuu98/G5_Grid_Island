@@ -125,9 +125,9 @@
     },
     computed: {
     headerClass() {
-      const route = useRoute();
+      // const route = useRoute();
       return {
-        'sticky-header': route.path === '/' // 如果是首頁，添加 sticky-header
+        'sticky-header': this.$route.path === '/' // 如果是首頁，添加 sticky-header
       };
     }
   },
