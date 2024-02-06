@@ -97,21 +97,20 @@
         display: block;
         width: 50%;
       }
-      // &:last-child{
-      //   display: block;
-      //   @include T(){
-      //     // display: none;
-
-      //   }
-      // }
     }
-    // #board_card_mb{
-    //   display: block;
-    //   @include T(){
-    //     display: none;
-    //   }
-    // }
+    .--desktop{
+      display: none;
+      @include T(){
+        display: block;
+      }
+    }
+    .--mobile{
+      @include T(){
+        display: none;
+      }
+    }
   }
+  // 元件
   &_card{
     // border: 10px solid $green-1;
     border: 8px solid $green-1;
@@ -240,6 +239,9 @@
   }
 
   // 留言區
+  .board_re:not(.--is-always-hide) {
+    cursor: default;
+  }
   &_re{
     // display: none;
     margin-top: 8px;
@@ -541,4 +543,8 @@
 
 .board_rotate.active {
   transform: rotate(180deg);  /* 將圖標旋轉180度 */
+}
+
+.--is-always-hide{
+  cursor: default;
 }

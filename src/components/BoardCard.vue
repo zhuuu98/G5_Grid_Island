@@ -3,7 +3,8 @@
       <div class="board_info">
         <div class="board_id">
           <div class="board_id_img">
-            <img :src="item.id_img" :alt="item.id_img_alt">
+            <!-- <img :src="item.id_img" :alt="item.id_img_alt"> -->
+            <img src="/images/board/board_id_img.svg" :alt="item.id_img_alt">
           </div>
           <div class="board_id_info">
             <div class="board_memId">{{ item.memId }}</div>
@@ -15,7 +16,13 @@
         </div>
         <div class="board_re_type">
           <p>回覆留言</p>
-          <input type="text" placeholder="輸入回覆內容...">
+          <!-- <input type="text" placeholder="輸入回覆內容..."> -->
+          <div class="board_re_input">
+            <input type="text" placeholder="輸入回覆內容...">
+            <div class="board_re_send">
+            <font-awesome-icon :icon="['fas', 'circle-up']" />
+            </div>
+        </div>
         </div>
         <div class="board_all_re" @click="toggleReply">
           {{ item.re_amount > 0 ? '共有' + item.re_amount + '則回覆' : '尚無回覆' }}
@@ -26,11 +33,13 @@
         </div>
       </div>
       <!-- 留言區 -->
-      <div class="board_re" v-if="item.isReplyOpen">
+      <!-- <div class="board_re" :class="{hide: !isOpen || item.re.length === 0}"> -->
+      <div class="board_re" :class="{ hide: !isOpen || item.re.length === 0, '--is-always-hide': item.re.length === 0 }">
         <div class="board_re_card" v-for="reItem in item.re" :key="reItem.id">
           <div class="board_re_id">
             <div class="board_re_id_img">
-              <img :src="reItem.img" :alt="reItem.alt">
+                <img src="/images/board/board_id_img.svg" :alt="item.id_img_alt">
+              <!-- <img :src="reItem.img" :alt="reItem.alt"> -->
             </div>
             <div class="board_re_id_info">
               <div class="board_re_memId">{{ reItem.memId }}</div>
@@ -50,31 +59,18 @@
     props: {
       item: Object,
     },
-    methods: {
-      toggleReply() {
-        if (this.item.re.length > 0) {
-          const cardli = document.querySelector('.card-' + this.item.id);
-          const downElements = cardli.getElementsByClassName('board_re');
-  
-          for (let i = 0; i < downElements.length; i++) {
-            if (downElements[i].classList.contains('hide')) {
-              downElements[i].classList.remove('hide');
-            } else {
-              downElements[i].classList.add('hide');
-            }
-          }
-  
-          this.$set(this.item, 're_amount', this.item.re.length);
-          this.$set(this.item, 'isReplyOpen', !this.item.isReplyOpen);
+    data() {
+        return {
+            isOpen: false
         }
+    },
+    methods: {
+      //留言開關
+      toggleReply() {
+       this.isOpen = !this.isOpen
       },
       open_light_box_report() {
-        this.re_submit_show = true;
-        this.selectedOption = this.reports[0].value;
-        this.re_submit_disable = false;
-        this.open_re_text = false;
-        this.board_light_box_report = true;
-        document.body.classList.add('body-overflow-hidden');
+        this.$emit('open-report')
       },
     },
   };

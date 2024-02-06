@@ -52,7 +52,7 @@
           :key="item.news_id"
           :newsTitle="item.news_title"
           :newsDate="item.news_date"
-          :imgUrl="`https://tibamef2e.com/chd103/g1/image/news/${item.news_image}`"
+          :imgUrl="`https://tibamef2e.com/chd104/g5/php/images/${item.news_image}`"
           :newsId="item.news_id"
           :newsContent="item.news_content"
           :class="{ noneShow: noneShow }"
@@ -62,7 +62,7 @@
           :key="item.news_id"
           :newsTitle="item.news_title"
           :newsDate="item.news_date"
-          :imgUrl="`https://tibamef2e.com/chd103/g1/image/news/${item.news_image}`"
+          :imgUrl="`https://tibamef2e.com/chd104/g5/php/images/${item.news_image}`"
           :newsId="item.news_id"
           :newsContent="item.news_content"
           :class="{ noneShow: !noneShow }"
@@ -120,7 +120,7 @@ export default {
     },
     fetchNews() {
       axios
-        .post(`${import.meta.env.VITE_API_URL}/news.php`, {})
+        .post(`${import.meta.env.VITE_API_URL}/getNews.php`, {})
         .then(res => {
           console.log(res.data.news);
           this.newsData = res.data.news;
