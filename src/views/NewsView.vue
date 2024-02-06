@@ -120,7 +120,7 @@ export default {
     },
     fetchNews() {
       axios
-        .post(`${import.meta.env.VITE_API_URL}/news.php`, {})
+        .post(`${import.meta.env.VITE_API_URL}/getNews.php`, {})
         .then(res => {
           console.log(res.data.news);
           this.newsData = res.data.news;

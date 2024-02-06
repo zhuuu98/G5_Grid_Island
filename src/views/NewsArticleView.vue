@@ -37,7 +37,7 @@
       </div>
       <div class="newsImg">
         <img
-          :src="`https://tibamef2e.com/chd103/g1/image/news/${newsData.news_image}`"
+          :src="`https://tibamef2e.com/chd104/g5/images/${newsData.news_image}`"
         />
       </div>
       <div class="textContent">
@@ -114,7 +114,7 @@ export default {
     },
     fetchNews() {
         axios
-          .post(`${import.meta.env.VITE_API_URL}/news.php`, {})
+          .post(`${import.meta.env.VITE_API_URL}/getNews.php`, {})
           .then(res => {
             const allNews = res.data.news;
             const result = allNews.find((item) => {
