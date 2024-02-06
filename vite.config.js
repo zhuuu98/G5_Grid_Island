@@ -18,5 +18,7 @@ export default defineConfig({
   server: {
     // host: '192.168.0.155' //請輸入自己的IP
     // host: '192.168.5.136'
+    // host: '10.1.19.8', //劉書院的IP
+    // host: '192.168.0.204' //劉書院MAC的IP
   }
 });
