@@ -4,7 +4,7 @@
 
 		<MainHeader />
 		<!-- 跑馬燈 -->
-		<div class="cuppon" v-if="cuppon">
+		<div class="cuppon"  v-if="cuppon">
 			<div class="btn" @click="closeCuppon">
 				<font-awesome-icon :icon="['fas', 'times']" />
 			</div>
@@ -47,247 +47,302 @@
 				</span>
 			</div>
 		</div>
-		<!-- 內容 -->
-		<div class="index">
-			<!-- 所有商品 -->
-			<div class="index_products">
-				<div class="index_row">
-					<h2>所有商品</h2>
-					<!-- 寫這邊 -->
-					<div class="prodBackground">
-						<div class="prodBreif">
-							<p>
-								我們精選了3000種桌上遊戲，涵蓋了從熱門到冷門的各種類型。
-								即使您不熟悉遊戲規則，也無需擔心，因為我們會親自指導您如何遊玩，
-								一起加入桌遊的行列吧！
-							</p>
-						</div>
-						<div class="prodMarquee">
-							<div class="marqueeAnimation">
-								<div class="productCard" v-for="item in productData">
-									<router-link :to="{
+	  <!-- 內容 -->
+	  <div class="index">
+		<!-- 所有商品 -->
+		<div class="index_products">
+		  <div class="index_row">
+			<h2>所有商品</h2>
+			<!-- 寫這邊 -->
+			<div class="prodBackground">
+			  <div class="prodBreif">
+				<p>
+				  我們精選了3000種桌上遊戲，涵蓋了從熱門到冷門的各種類型。
+				  即使您不熟悉遊戲規則，也無需擔心，因為我們會親自指導您如何遊玩，
+				  一起加入桌遊的行列吧！
+				</p>
+			  </div>
+			  <div class="prodMarquee">
+				<div class="marqueeAnimation">
+				  <div class="productCard" v-for="item in productData">
+					<router-link
+					  :to="{
 						name: 'productInfo',
 						params: { id: item.prod_id },
-					  }">
-										<div class="productImg">
-											<img :src="`https://tibamef2e.com/chd103/g5/img/${item.prod_img1}`" />
-										</div>
-										<div class="productName">
-											<p>{{ item.prod_name }}</p>
-										</div>
-									</router-link>
-								</div>
-								<div class="productCard" v-for="item in productData">
-									<router-link :to="{
+					  }"
+					>
+					  <div class="productImg">
+						<img
+						  :src="`https://tibamef2e.com/chd103/g5/img/${item.prod_img1}`"
+						/>
+					  </div>
+					  <div class="productName">
+						<p>{{ item.prod_name }}</p>
+					  </div>
+					</router-link>
+				  </div>
+				  <div class="productCard" v-for="item in productData">
+					<router-link
+					  :to="{
 						name: 'productInfo',
 						params: { id: item.prod_id },
-					  }">
-										<div class="productImg">
-											<img :src="`https://tibamef2e.com/chd103/g5/img/${item.prod_img1}`" />
-										</div>
-										<div class="productName">
-											<p>{{ item.prod_name }}</p>
-										</div>
-									</router-link>
-								</div>
-								<div class="productCard" v-for="item in productData">
-									<router-link :to="{
+					  }"
+					>
+					  <div class="productImg">
+						<img
+						  :src="`https://tibamef2e.com/chd103/g5/img/${item.prod_img1}`"
+						/>
+					  </div>
+					  <div class="productName">
+						<p>{{ item.prod_name }}</p>
+					  </div>
+					</router-link>
+				  </div>
+				  <div class="productCard" v-for="item in productData">
+					<router-link
+					  :to="{
 						name: 'productInfo',
 						params: { id: item.prod_id },
-					  }">
-										<div class="productImg">
-											<img :src="`https://tibamef2e.com/chd103/g5/img/${item.prod_img1}`" />
-										</div>
-										<div class="productName">
-											<p>{{ item.prod_name }}</p>
-										</div>
-									</router-link>
-								</div>
-							</div>
-						</div>
-					</div>
-					<div class="searchArea">
-						<div class="searchGroup">
-							<div class="searchTitle">
-								<label for="productSearch">搜尋遊戲</label>
-							</div>
-							<div class="searchInput">
-								<input type="text" id="productSearch" @input="handleSearch"
-									@focus="searchResultDisplay = true" @blur="searchResultClose"
-									v-model="gameSearch" />
-							</div>
-							<div class="searchResult" v-show="searchResultDisplay && displayProdData.length != 0">
-								<p v-for="item in displayProdData">
-									<router-link :to="{
-						name: 'productInfo',
-						params: { id: item.prod_id },
-					  }">{{ item.prod_name }}</router-link>
-								</p>
-							</div>
-						</div>
-					</div>
-					<div class="prodBtn">
-						<button class="btn_lg" @click="toProduct">所有商品</button>
-					</div>
+					  }"
+					>
+					  <div class="productImg">
+						<img
+						  :src="`https://tibamef2e.com/chd103/g5/img/${item.prod_img1}`"
+						/>
+					  </div>
+					  <div class="productName">
+						<p>{{ item.prod_name }}</p>
+					  </div>
+					</router-link>
+				  </div>
 				</div>
+			  </div>
 			</div>
-
-			<!-- <div class="wave">
+			<div class="searchArea">
+			  <div class="searchGroup">
+				<div class="searchTitle">
+				  <label for="productSearch">搜尋遊戲</label>
+				</div>
+				<div class="searchInput">
+				  <input
+					type="text"
+					id="productSearch"
+					@input="handleSearch"
+					@focus="searchResultDisplay = true"
+					@blur="searchResultClose"
+					v-model="gameSearch"
+				  />
+				</div>
+				<div
+				  class="searchResult"
+				  v-show="searchResultDisplay && displayProdData.length != 0"
+				>
+				  <p v-for="item in displayProdData">
+					<router-link
+					  :to="{
+						name: 'productInfo',
+						params: { id: item.prod_id },
+					  }"
+					  >{{ item.prod_name }}</router-link
+					>
+				  </p>
+				</div>
+			  </div>
+			</div>
+			<div class="prodBtn">
+			  <button class="btn_lg" @click="toProduct">所有商品</button>
+			</div>
+		  </div>
+		</div>
+  
+		<!-- <div class="wave">
 		  <img :src="wave" alt="bgcwave" id="wave1" />
 		</div> -->
-
-			<div class="home_ocean">
-				<img src="/images/home/home_ocean_1.svg" alt="home_ocean_1" />
-			</div>
-
-			<!-- 服務項目 -->
-			<div class="index_service">
-				<div class="index_row container">
-					<!-- 寫這邊 -->
-					<h2>服務項目</h2>
-					<div class="serviceMarqueeContent">
-						<div class="marqueePic">
-							<img src="../assets/images/home/servicePic_1.svg" alt="首頁服務項目" />
-							<div class="marqueeText">
-								<span>桌遊販售</span>
-							</div>
-						</div>
-						<div class="marqueePic">
-							<img src="../assets/images/home/servicePic_2.svg" alt="首頁服務項目" />
-							<div class="marqueeText">
-								<span>精釀啤酒與飲料</span>
-							</div>
-						</div>
-						<div class="marqueePic">
-							<img src="../assets/images/home/servicePic_3.svg" alt="首頁服務項目" />
-							<div class="marqueeText">
-								<span>桌上遊戲遊玩與教學</span>
-							</div>
-						</div>
-						<div class="marqueePic">
-							<img src="../assets/images/home/servicePic_4.svg" alt="首頁服務項目" />
-							<div class="marqueeText">
-								<span>各式場地租借</span>
-							</div>
-						</div>
-						<div class="marqueePic">
-							<img src="../assets/images/home/servicePic_1.svg" alt="首頁服務項目" />
-							<div class="marqueeText">
-								<span>桌游販售</span>
-							</div>
-						</div>
-						<div class="marqueePic">
-							<img src="../assets/images/home/servicePic_2.svg" alt="首頁服務項目" />
-							<div class="marqueeText">
-								<span>桌游販售</span>
-							</div>
-						</div>
-						<div class="marqueePic">
-							<img src="../assets/images/home/servicePic_3.svg" alt="首頁服務項目" />
-							<div class="marqueeText">
-								<span>桌游遊玩教學</span>
-							</div>
-						</div>
-						<div class="marqueePic">
-							<img src="../assets/images/home/servicePic_4.svg" alt="首頁服務項目" />
-							<div class="marqueeText">
-								<span>各式場地租借</span>
-							</div>
-						</div>
-					</div>
+  
+		<div class="home_ocean">
+		  <img src="/images/home/home_ocean_1.svg" alt="home_ocean_1" />
+		</div>
+  
+		<!-- 服務項目 -->
+		<div class="index_service">
+		  <div class="index_row container">
+			<!-- 寫這邊 -->
+			<h2>服務項目</h2>
+			<div class="serviceMarqueeContent">
+			  <div class="marqueePic">
+				<img
+				  src="../assets/images/home/servicePic_1.svg"
+				  alt="首頁服務項目"
+				/>
+				<div class="marqueeText">
+				  <span>桌遊販售</span>
 				</div>
-			</div>
-
-			<div class="home_ocean">
-				<img src="/images/home/home_ocean_2.svg" alt="home_ocean_2" />
-			</div>
-
-			<!-- 預約方式 -->
-			<div class="index_reserve">
-				<div class="index_row container">
-					<!-- 寫這邊 -->
-					<h2>預約方式</h2>
-					<div class="reserveInfo row">
-						<div class="reserveContent col-6 col-T-10 col-PC-10">
-							<!-- <img v-for="num in 3" :src="getImageUrl(`home/reserveInfo_${num}.png`)" alt="預約方式"> -->
-							<div class="reserveStep1">
-								<img src="../assets/images/home/reserveInfo_1.png" alt="" />
-								<span>確認預約須知</span>
-							</div>
-							<div class="reserveStep2">
-								<img src="../assets/images/home/reserveInfo_2.png" alt="" />
-								<span>選擇人數、日期、時段</span>
-							</div>
-							<div class="reserveStep3">
-								<img src="../assets/images/home/reserveInfo_3.png" alt="" />
-								<span>選擇桌號，預約完成！</span>
-							</div>
-						</div>
-					</div>
-					<button class="btn_lg" @click="goBook()">預約場地</button>
+			  </div>
+			  <div class="marqueePic">
+				<img
+				  src="../assets/images/home/servicePic_2.svg"
+				  alt="首頁服務項目"
+				/>
+				<div class="marqueeText">
+				  <span>精釀啤酒與飲料</span>
 				</div>
+			  </div>
+			  <div class="marqueePic">
+				<img
+				  src="../assets/images/home/servicePic_3.svg"
+				  alt="首頁服務項目"
+				/>
+				<div class="marqueeText">
+				  <span>桌上遊戲遊玩與教學</span>
+				</div>
+			  </div>
+			  <div class="marqueePic">
+				<img
+				  src="../assets/images/home/servicePic_4.svg"
+				  alt="首頁服務項目"
+				/>
+				<div class="marqueeText">
+				  <span>各式場地租借</span>
+				</div>
+			  </div>
+			  <div class="marqueePic">
+				<img
+				  src="../assets/images/home/servicePic_1.svg"
+				  alt="首頁服務項目"
+				/>
+				<div class="marqueeText">
+				  <span>桌游販售</span>
+				</div>
+			  </div>
+			  <div class="marqueePic">
+				<img
+				  src="../assets/images/home/servicePic_2.svg"
+				  alt="首頁服務項目"
+				/>
+				<div class="marqueeText">
+				  <span>桌游販售</span>
+				</div>
+			  </div>
+			  <div class="marqueePic">
+				<img
+				  src="../assets/images/home/servicePic_3.svg"
+				  alt="首頁服務項目"
+				/>
+				<div class="marqueeText">
+				  <span>桌游遊玩教學</span>
+				</div>
+			  </div>
+			  <div class="marqueePic">
+				<img
+				  src="../assets/images/home/servicePic_4.svg"
+				  alt="首頁服務項目"
+				/>
+				<div class="marqueeText">
+				  <span>各式場地租借</span>
+				</div>
+			  </div>
 			</div>
-
-			<!-- Griddy造型屋 -->
-			<!-- <div class="index_griddy">
+		  </div>
+		</div>
+  
+		<div class="home_ocean">
+		  <img src="/images/home/home_ocean_2.svg" alt="home_ocean_2" />
+		</div>
+  
+		<!-- 預約方式 -->
+		<div class="index_reserve">
+		  <div class="index_row container">
+			<!-- 寫這邊 -->
+			<h2>預約方式</h2>
+			<div class="reserveInfo row">
+			  <div class="reserveContent col-6 col-T-10 col-PC-10">
+				<!-- <img v-for="num in 3" :src="getImageUrl(`home/reserveInfo_${num}.png`)" alt="預約方式"> -->
+				<div class="reserveStep1">
+				  <img src="../assets/images/home/reserveInfo_1.png" alt="" />
+				  <span>確認預約須知</span>
+				</div>
+				<div class="reserveStep2">
+				  <img src="../assets/images/home/reserveInfo_2.png" alt="" />
+				  <span>選擇人數、日期、時段</span>
+				</div>
+				<div class="reserveStep3">
+				  <img src="../assets/images/home/reserveInfo_3.png" alt="" />
+				  <span>選擇桌號，預約完成！</span>
+				</div>
+			  </div>
+			</div>
+			<button class="btn_lg" @click="goBook()">預約場地</button>
+		  </div>
+		</div>
+  
+		<!-- Griddy造型屋 -->
+		<!-- <div class="index_griddy">
 		  <div class="index_row"></div>
 		</div> -->
-
-			<div class="home_ocean">
-				<img src="/images/home/home_ocean_temp.svg" alt="home_ocean_temp" />
-			</div>
-
-			<!-- 最新消息 -->
-			<div class="index_news">
-				<div class="index_row">
-					<h2 class="h2">最新消息</h2>
-					<div class="news_card_content">
-						<NewsCard v-for="(item, index) in latestData" :key="item.news_id" :newsTitle="item.news_title"
-							:newsDate="item.news_date"
-							:imgUrl="`https://tibamef2e.com/chd103/g1/image/news/${item.news_img}`"
-							:newsId="item.news_id" />
-					</div>
-					<div class="news_button">
-						<button class="btn_lg" @click="goNews()">所有最新消息</button>
-					</div>
-				</div>
-			</div>
-
-			<!-- 一起遊樂 IG API -->
-			<!-- <div class="index_insta">
-		  <div class="index_row"> -->
-			<!-- 寫這邊 -->
-			<!-- </div>
-		</div> -->
-
-			<div class="home_ocean">
-				<img src="/images/home/home_ocean_temp2.svg" alt="home_ocean_temp2" />
-			</div>
-
-			<!-- Grid Island 關於我們 -->
-			<div class="index_about">
-				<div class="index_row">
-					<!-- 寫這邊 -->
-					<h2>Grid Island</h2>
-					<!-- 中間圖片的外框 -->
-					<div class="aboutContent">
-						<!-- 桌機板的文字 -->
-						<div class="aboutContentTxt">
-							<p>
-								我們精選了3000種桌上遊戲，涵蓋了從熱門到冷門的各種類型。即使您不熟悉遊戲規則，也無需擔心，因為我們會親自指導您如何遊玩，一起加入桌遊的行列吧！
-							</p>
-						</div>
-						<!-- 放圖片的地方 -->
-						<div class="imgWrapper">
-							<div class="aboutContentImg">
-								<img v-for="num in 3" :src="getImageUrl(`home/homeAbout_${num}.svg`)" alt="首頁關於我們" />
-							</div>
-						</div>
-					</div>
-					<button class="btn_lg" @click="goAbout()">關於我們</button>
-				</div>
-			</div>
+  
+		<div class="home_ocean">
+		  <img src="/images/home/home_ocean_temp.svg" alt="home_ocean_temp" />
 		</div>
+  
+		<!-- 最新消息 -->
+		<div class="index_news">
+		  <div class="index_row">
+			<h2 class="h2">最新消息</h2>
+			<div class="news_card_content">
+			  <NewsCard
+				v-for="(item, index) in latestData"
+				:key="item.news_id"
+				:newsTitle="item.news_title"
+				:newsDate="item.news_date"
+				:imgUrl="`https://tibamef2e.com/chd103/g1/image/news/${item.news_img}`"
+				:newsId="item.news_id"
+			  />
+			</div>
+			<div class="news_button">
+			  <button class="btn_lg" @click="goNews()">所有最新消息</button>
+			</div>
+		  </div>
+		</div>
+  
+		<!-- 一起遊樂 IG API -->
+		<!-- <div class="index_insta">
+		  <div class="index_row"> -->
+		<!-- 寫這邊 -->
+		<!-- </div>
+		</div> -->
+  
+		<div class="home_ocean">
+		  <img src="/images/home/home_ocean_temp2.svg" alt="home_ocean_temp2" />
+		</div>
+  
+		<!-- Grid Island 關於我們 -->
+		<div class="index_about">
+		  <div class="index_row">
+			<!-- 寫這邊 -->
+			<h2>Grid Island</h2>
+			<!-- 中間圖片的外框 -->
+			<div class="aboutContent">
+			  <!-- 桌機板的文字 -->
+			  <div class="aboutContentTxt">
+				<p>
+				  我們精選了3000種桌上遊戲，涵蓋了從熱門到冷門的各種類型。即使您不熟悉遊戲規則，也無需擔心，因為我們會親自指導您如何遊玩，一起加入桌遊的行列吧！
+				</p>
+			  </div>
+			  <!-- 放圖片的地方 -->
+			  <div class="imgWrapper">
+				<div class="aboutContentImg">
+					<img
+						v-for="num in 3"
+						:src="getImageUrl(`home/homeAbout_${num}.svg`)"
+						alt="首頁關於我們"
+					/>
+				</div>
+			  </div>
+			</div>
+			<button class="btn_lg" @click="goAbout()">關於我們</button>
+		  </div>
+		</div>
+	  </div>
 	</main>
 </template>
 
