@@ -150,7 +150,7 @@
 			  </div>
 			</div>
 			<div class="prodBtn">
-			  <button class="btn_lg" @click="toProduct">所有商品</button>
+			  <button class="btn_lg" @click="toProduct">所有商品666</button>
 			</div>
 		  </div>
 		</div>
