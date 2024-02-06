@@ -115,7 +115,9 @@
             </div>
         </div>
 
-
+        <!-- <div class="wavebox">
+            <img :src>
+        </div> -->
     </div>
 </template>
 <script>
