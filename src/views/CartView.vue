@@ -19,7 +19,7 @@
           <div class="cartItemArea">
             <div class="cartItemBlock" v-for="item in cartData" :key="item.id">
               <CartItem
-                :itemPicUrl="`https://tibamef2e.com/chd103/g5/img/${item.img}`"
+                :itemPicUrl="`https://tibamef2e.com/chd104/g5/image/prod/${item.img}`"
                 :itemName="item.name"
                 :itemPrice="item.price"
                 :itemId="item.id"
