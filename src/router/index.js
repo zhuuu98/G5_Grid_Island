@@ -199,8 +199,9 @@ router.beforeEach(async(to) => {
     // 如果没有，则重定向到登录页面
     console.log('userToken');
     return { name: "login", query: { redirect: to.fullPath }, }
-  } else if(to.name == 'login' || to.name == 'signup' && isAuthenticated() ){
-    return { name: "member" }
-  }
+  } 
+  // else if(to.name == 'login' || to.name == 'signup' && isAuthenticated() ){
+  //   return { name: "member" }
+  // }
 })
 export default router;
