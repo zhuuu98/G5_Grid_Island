@@ -14,7 +14,7 @@
           v-for="(item, index) in cartData"
           :key="item.prod_id"
           :productTitle="item.name"
-          :imgUrl="`https://tibamef2e.com/chd103/g5/img/${item.img}`"
+          :imgUrl="`https://tibamef2e.com/chd104/g5/image/prod/${item.img}`"
           :productPrice="item.price"
           :productId="item.id"
           :productStatus="item.count"
@@ -38,7 +38,7 @@
             <tr v-for="(item, index) in cartData" :key="item.id">
               <td class="prod_img">
                 <img
-                  :src="`https://tibamef2e.com/chd103/g5/img/${item.img}`"
+                  :src="`https://tibamef2e.com/chd104/g5/image/prod/${item.img}`"
                   :alt="item.name"
                 />
               </td>

@@ -27,7 +27,7 @@
           </div>
           <Carousel v-model="value" loop>
             <CarouselItem
-              v-for="(item, index) in displayData.slice(0, 3)"
+              v-for="(item, index) in prodDisData.slice(0, 3)"
               :key="item.prod_id"
             >
               <div class="hotProductBody">
@@ -43,7 +43,7 @@
                   >
                     <div class="hotProductImg">
                       <img
-                        :src="`https://tibamef2e.com/chd103/g5/img/${item.prod_img1}`"
+                        :src="`https://tibamef2e.com/chd104/g5/image/prod/${item.prod_img1}`"
                       />
                     </div>
                   </router-link>
@@ -57,15 +57,18 @@
                       <h3>{{ item.prod_name }}</h3>
                     </router-link>
                     <div class="hotproductTag">
-                      <span>1-5人</span>
-                      <span>益智遊戲</span>
-                      <span>團隊合作</span>
+                      <span v-for="item in item.tags">{{ item }}</span>
                     </div>
                     <div class="hotproductIntro">
-                      {{ item.prod_des1 }}
+                      {{ item.prod_breif }}
                     </div>
                     <div class="hotProductPrice">
-                      <span>$ {{ item.prod_price }}</span>
+                      <span :class="{ ordinaryPrice: item.prod_discount_price }"
+                        >${{ item.prod_price }}</span
+                      >
+                      <span v-if="item.prod_discount_price"
+                        >$ {{ item.prod_discount_price }}</span
+                      >
                     </div>
                   </div>
                 </div>
@@ -218,7 +221,7 @@
             />
           </div>
         </div>
-        <div class="pageBtnList">
+        <div class="pageBtnList" v-if="!nodata">
           <button
             class="pageBtn pageBtncursor"
             @click="nextPrevPage('prev')"
