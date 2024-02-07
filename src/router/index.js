@@ -161,9 +161,9 @@ const router = createRouter({
       name: "test",
             meta: {
         title:"劉書院",
-        showHeader: false, //打開這個即可不顯示header
+        // showHeader: false, //打開這個即可不顯示header
       },
-      component: () => import("@/components/Banner.vue"),
+      component: () => import("../views/AboutView_2.vue"),
     },
     // 404要寫在最下面
     {

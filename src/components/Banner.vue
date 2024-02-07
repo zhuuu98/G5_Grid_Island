@@ -115,9 +115,10 @@
             </div>
         </div>
 
-        <!-- <div class="wavebox">
-            <img :src>
-        </div> -->
+        <div id="whiteWave-imagebox">
+            <img src="../assets/images/wave/whiteWave.svg" id="whiteWave">
+            <!-- <whiteWave id="whiteWave"/> -->
+        </div>
     </div>
 </template>
 <script>
@@ -136,6 +137,7 @@
     import islandAbout from "../assets/images/islandbanner/islandAbout.svg";
     import lEye from "../assets/images/islandbanner/lEye.svg";
     import rEye from "../assets/images/islandbanner/rEye.svg";
+    import { whiteWave } from "../policy/wave.js";
 
     export default {
         name: 'bannerComponent', // 組件名稱
@@ -166,7 +168,6 @@
                 showCartCard: false, //購物車，購物車
                 showBugCard: false, //造型屋，蟲
                 showNewsCard: false, //最新消息，佈告欄
-
             };
         },
         mounted() {

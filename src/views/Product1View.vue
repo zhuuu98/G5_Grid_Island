@@ -27,7 +27,7 @@
           </div>
           <Carousel v-model="value" loop>
             <CarouselItem
-              v-for="(item, index) in displayData.slice(0, 3)"
+              v-for="(item, index) in prodDisData.slice(0, 3)"
               :key="item.prod_id"
             >
               <div class="hotProductBody">
@@ -43,7 +43,7 @@
                   >
                     <div class="hotProductImg">
                       <img
-                        :src="`https://tibamef2e.com/chd103/g5/img/${item.prod_img1}`"
+                        :src="`https://tibamef2e.com/chd104/g5/image/prod/${item.prod_img1}`"
                       />
                     </div>
                   </router-link>
@@ -57,15 +57,18 @@
                       <h3>{{ item.prod_name }}</h3>
                     </router-link>
                     <div class="hotproductTag">
-                      <span>1-5人</span>
-                      <span>益智遊戲</span>
-                      <span>團隊合作</span>
+                      <span v-for="item in item.tags">{{ item }}</span>
                     </div>
                     <div class="hotproductIntro">
-                      {{ item.prod_des1 }}
+                      {{ item.prod_breif }}
                     </div>
                     <div class="hotProductPrice">
-                      <span>$ {{ item.prod_price }}</span>
+                      <span :class="{ ordinaryPrice: item.prod_discount_price }"
+                        >${{ item.prod_price }}</span
+                      >
+                      <span v-if="item.prod_discount_price"
+                        >$ {{ item.prod_discount_price }}</span
+                      >
                     </div>
                   </div>
                 </div>
@@ -209,7 +212,7 @@
               v-for="item in currentProducts"
               :key="item.prod_id"
               :productTitle="item.prod_name"
-              :imgUrl="item.prod_img1"
+              :imgUrl="`https://tibamef2e.com/chd104/g5/image/prod/${item.prod_img1}`"
               :productPrice="item.prod_price"
               :productDiscountPrice="item.prod_discount_price"
               :productId="item.prod_id"
@@ -218,7 +221,7 @@
             />
           </div>
         </div>
-        <div class="pageBtnList">
+        <div class="pageBtnList" v-if="!nodata">
           <button
             class="pageBtn pageBtncursor"
             @click="nextPrevPage('prev')"
@@ -288,10 +291,10 @@ export default {
     // !!!要寫在computed
     ...mapState(cartStore, ["cartData"]),
     loading() {
-      return this.respondData.length == 0;
+      return this.prodResData.length == 0;
     },
     nodata() {
-      return this.displayData.length == 0;
+      return this.prodDisData.length == 0;
     },
     totalPages() {
       return Math.ceil(this.prodDisData.length / this.itemsPerPage);
@@ -319,7 +322,7 @@ export default {
         });
     },
     handleSearch() {
-      this.displayData = this.respondData.filter((item) => {
+      this.prodDisData = this.prodResData.filter((item) => {
         return item.prod_name.includes(this.search);
       });
       this.currentPage = 1;
@@ -328,22 +331,26 @@ export default {
       // 幫我和同學講一下怎麼寫排序
       switch (this.sortMethod) {
         case "priceAsc":
-          this.displayData = this.displayData.sort(
-            (a, b) => a.prod_price - b.prod_price
-          );
+          this.prodDisData = this.prodDisData.sort((a, b) => {
+            const priceA = a.prod_discount_price || a.prod_price;
+            const priceB = b.prod_discount_price || b.prod_price;
+            return priceA - priceB;
+          });
           break;
         case "priceDesc":
-          this.displayData = this.displayData.sort(
-            (a, b) => b.prod_price - a.prod_price
-          );
+          this.prodDisData = this.prodDisData.sort((a, b) => {
+            const priceA = a.prod_discount_price || a.prod_price;
+            const priceB = b.prod_discount_price || b.prod_price;
+            return priceB - priceA;
+          });
           break;
         case "idAsc":
-          this.displayData = this.displayData.sort(
+          this.prodDisData = this.prodDisData.sort(
             (a, b) => a.prod_id - b.prod_id
           );
           break;
         case "idDesc":
-          this.displayData = this.displayData.sort(
+          this.prodDisData = this.prodDisData.sort(
             (a, b) => b.prod_id - a.prod_id
           );
           break;

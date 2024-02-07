@@ -57,6 +57,9 @@
   }
   .productPic {
     position: relative;
+    height: 280px;
+    object-fit: cover;
+    overflow: hidden;
     img {
       vertical-align: top;
       width: 100%;

@@ -23,7 +23,11 @@
 import axios from 'axios';
 import { mapActions } from 'pinia';
 import userStore from '@/stores/user'
+<<<<<<< HEAD
 import apiInstance from '@/plugins/auth'
+=======
+
+>>>>>>> b9c617351836f7c8fc127f15e31b23beab1e4ab8
 export default {
     data() {
         return {
