@@ -148,6 +148,7 @@ export default {
     return {
       search: "",
       respondData: {},
+      prodData: {},
       value: 0,
       prodDiscountPrice: "",
       desc: 1,
@@ -167,6 +168,7 @@ export default {
   },
   created() {
     this.axiosGetData();
+    this.fetchProd();
   },
   methods: {
     ...mapActions(cartStore, ["addCartData"]),
@@ -181,6 +183,19 @@ export default {
           });
           console.log(result);
           this.respondData = result;
+        });
+    },
+    fetchProd() {
+      const pageId = this.$route.params.id;
+      axios
+        .post(`${import.meta.env.VITE_API_URL}/getProduct.php`)
+        .then((res) => {
+          const allProduct = res.data.products;
+          const result = allProduct.find((item) => {
+            return item.prod_id == pageId;
+          });
+          console.log(result);
+          this.prodData = result;
         });
     },
     selectTab(tab) {
@@ -203,20 +218,7 @@ export default {
       alert("已加入購物車");
     },
   },
-  watch: {
-    search(newSearch, oldSearch) {
-      // console.log("new:" + newSearch);
-      // console.log("old:" + oldSearch);
-      // 可以調用 methods
-    },
-    respondData(newData) {
-      // console.log(newData.length);
-    },
-    // 如果畫面一開始要監聽要設成 true
-    // immediate: true,
-    // 如果要監聽陣列或物件要設稱 true
-    // deep: true,
-  },
+  watch: {},
   mounted() {},
 };
 </script>

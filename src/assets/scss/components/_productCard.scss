@@ -58,6 +58,8 @@
   .productPic {
     position: relative;
     img {
+      object-fit: cover;
+      overflow: hidden;
       vertical-align: top;
       width: 100%;
       max-width: 280px;

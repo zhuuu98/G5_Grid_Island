@@ -209,7 +209,7 @@
               v-for="item in currentProducts"
               :key="item.prod_id"
               :productTitle="item.prod_name"
-              :imgUrl="item.prod_img1"
+              :imgUrl="`https://tibamef2e.com/chd104/g5/image/prod/${item.prod_img1}`"
               :productPrice="item.prod_price"
               :productDiscountPrice="item.prod_discount_price"
               :productId="item.prod_id"
