@@ -94,8 +94,6 @@
         components:{
             PageTitle
         },
-        mounted() {
-        },
         methods:{
             goReserve(){
                 if (this.ischecked == true) {

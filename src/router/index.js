@@ -181,9 +181,6 @@ const router = createRouter({
   },
 });
 
-// router.beforeEach(async (to, from) => {
-
-// });
 
 const isAuthenticated = () => {
   const userToken = localStorage.getItem("userToken")
@@ -200,8 +197,8 @@ router.beforeEach(async(to) => {
     console.log('userToken');
     return { name: "login", query: { redirect: to.fullPath }, }
   } 
-  // else if(to.name == 'login' || to.name == 'signup' && isAuthenticated() ){
-  //   return { name: "member" }
-  // }
+  if(to.name == 'login' || to.name == 'signup' && isAuthenticated() ){
+    return { name: "member" }
+  }
 })
 export default router;

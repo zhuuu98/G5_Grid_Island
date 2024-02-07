@@ -30,33 +30,10 @@ export default {
         return {
             accName: 'griddy@griddy.com',
             au4a83: 'griddy123'
-            // accName: 'mor_2314',
-            // au4a83: '83r5^_',
         }
     },
-    created(){
-
-    },
     methods: {
-        // ...mapActions(userStore, ['updateToken']),
-        // signin() {
-        //     axios.post(`${import.meta.env.VITE_API_URL}/ssss.php`, {
-        //     // axios.post('https://fakestoreapi.com/auth/login', {
-        //         username: this.accName,
-        //         password: this.au4a83
-        //     })
-        //     .then(response => {
-        //         if (response.data && response.data.token) {
-        //             this.updateToken(response.data.token)
-        //             // console.log('login')
-        //             // console.log(response.data.token);
-        //         }
-        //     })
-        //     .catch(error => console.error(error))
-        //     //登入失敗
-        //     //系統維護中
-        // }
-        ...mapActions(userStore, ['updateToken', 'updateName', 'checkLogin', 'updateUserData']),
+        ...mapActions(userStore, ['updateToken', 'updateName', 'checkLogin', 'updateUserData']),       
 
         login() {
             const bodyFormData = new FormData();
@@ -70,14 +47,18 @@ export default {
                 headers: { "Content-Type": "multipart/form-data" },
                 data: bodyFormData
             }).then(res => {
-                console.log(res);
+                // console.log(res);
                 if (res && res.data) {
                     if (res.data.code == 1) {
                         this.updateToken(res.data.session_id)
                         this.updateUserData(res.data.memInfo)
                         // this.$router.push('/member')
                         const redirect = this.$route.query.redirect
-                        this.$router.push(redirect)
+                        if(this.$route.query.redirect){
+                            this.$router.push(redirect)
+                        }else{
+                            this.$router.push('/member')
+                        }
                     } else {
                         alert('登入失敗，請檢查帳號密碼是否正確。')
                     }
