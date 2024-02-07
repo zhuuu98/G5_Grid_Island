@@ -57,3 +57,69 @@ $PC-btn-exsl-spacing: .5px;
     font-size: $PC-text;
     letter-spacing: $PC-btn-exsl-spacing;
   }
+
+  @mixin H1() {
+    font-size: 40px;
+    font-family: Zen Maru Gothic;
+    font-weight: 900;
+
+    @include T() {
+			font-size: 48px;
+		}
+  }
+
+  @mixin H1() {
+    font-size: 40px;
+    font-family: Zen Maru Gothic;
+    font-weight: 900;
+    letter-spacing: .2rem;
+
+    @include T() {
+			font-size: 48px;
+		}
+  }
+
+  @mixin H2() {
+    font-size: 32px;
+    font-family: 'Noto Sans TC', sans-serif;
+    font-weight: 700;
+    letter-spacing: .1rem;
+
+    @include T() {
+			font-size: 40px;
+		}
+  }
+
+  @mixin H3() {
+    font-size: 24px;
+    font-family: 'Noto Sans TC', sans-serif;
+    font-weight: 700;
+    letter-spacing: .05rem;
+
+    @include T() {
+			font-size: 28px;
+		}
+  }
+
+  @mixin H4() {
+    font-size: 20px;
+    font-family: 'Noto Sans TC', sans-serif;
+    font-weight: 700;
+    letter-spacing: .05rem;
+
+    @include T() {
+			font-size: 24px;
+		}
+  }
+
+  @mixin text() {
+    font-size: 15px;
+    font-family: 'Noto Sans TC', sans-serif;
+    font-weight: 400;
+    letter-spacing: .05rem;
+    line-height: 1.5rem;
+
+    @include T() {
+			font-size: 16px;
+		}
+  }
