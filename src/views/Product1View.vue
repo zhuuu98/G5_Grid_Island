@@ -288,10 +288,10 @@ export default {
     // !!!要寫在computed
     ...mapState(cartStore, ["cartData"]),
     loading() {
-      return this.respondData.length == 0;
+      return this.prodResData.length == 0;
     },
     nodata() {
-      return this.displayData.length == 0;
+      return this.prodDisData.length == 0;
     },
     totalPages() {
       return Math.ceil(this.prodDisData.length / this.itemsPerPage);
@@ -319,7 +319,7 @@ export default {
         });
     },
     handleSearch() {
-      this.displayData = this.respondData.filter((item) => {
+      this.prodDisData = this.prodResData.filter((item) => {
         return item.prod_name.includes(this.search);
       });
       this.currentPage = 1;
@@ -328,22 +328,26 @@ export default {
       // 幫我和同學講一下怎麼寫排序
       switch (this.sortMethod) {
         case "priceAsc":
-          this.displayData = this.displayData.sort(
-            (a, b) => a.prod_price - b.prod_price
-          );
+          this.prodDisData = this.prodDisData.sort((a, b) => {
+            const priceA = a.prod_discount_price || a.prod_price;
+            const priceB = b.prod_discount_price || b.prod_price;
+            return priceA - priceB;
+          });
           break;
         case "priceDesc":
-          this.displayData = this.displayData.sort(
-            (a, b) => b.prod_price - a.prod_price
-          );
+          this.prodDisData = this.prodDisData.sort((a, b) => {
+            const priceA = a.prod_discount_price || a.prod_price;
+            const priceB = b.prod_discount_price || b.prod_price;
+            return priceB - priceA;
+          });
           break;
         case "idAsc":
-          this.displayData = this.displayData.sort(
+          this.prodDisData = this.prodDisData.sort(
             (a, b) => a.prod_id - b.prod_id
           );
           break;
         case "idDesc":
-          this.displayData = this.displayData.sort(
+          this.prodDisData = this.prodDisData.sort(
             (a, b) => b.prod_id - a.prod_id
           );
           break;
