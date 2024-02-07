@@ -17,9 +17,9 @@
     ></router-link>
     <div class="productInfo">
       <div class="productTag">
-        <span>1-5人</span>
-        <span>益智遊戲</span>
-        <span>團隊合作</span>
+        <span v-for="item in tags">
+          {{ item }}
+        </span>
       </div>
       <router-link
         :to="{
@@ -30,7 +30,12 @@
         <h3>{{ productTitle }}</h3>
       </router-link>
       <div class="price">
-        <span>${{ productPrice }}</span>
+        <span :class="{ ordinaryPrice: productDiscountPrice }"
+          >${{ productPrice }}</span
+        >
+        <span class="discountPrice" v-if="productDiscountPrice"
+          >${{ productDiscountPrice }}</span
+        >
       </div>
       <div class="addCart" @click="addCart">
         <font-awesome-icon icon="cart-shopping" class="cart" />
@@ -46,7 +51,14 @@ export default {
       value: 0,
     };
   },
-  props: ["imgUrl", "productTitle", "productPrice", "productId"],
+  props: [
+    "imgUrl",
+    "productTitle",
+    "productPrice",
+    "productDiscountPrice",
+    "productId",
+    "tags",
+  ],
   methods: {
     addCart(info) {
       this.$emit("addCartData", info);

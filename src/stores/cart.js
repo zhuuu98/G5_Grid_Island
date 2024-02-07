@@ -49,7 +49,9 @@ export default defineStore("cartStore", {
         this.cartData.push({
           id: product.prod_id,
           name: product.prod_name,
-          price: product.prod_price,
+          price: product.prod_discount_price
+            ? product.prod_discount_price
+            : product.prod_price,
           img: product.prod_img1,
           count: addCount,
         });

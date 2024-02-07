@@ -209,9 +209,11 @@
               v-for="item in currentProducts"
               :key="item.prod_id"
               :productTitle="item.prod_name"
-              :imgUrl="`https://tibamef2e.com/chd103/g5/img/${item.prod_img1}`"
+              :imgUrl="item.prod_img1"
               :productPrice="item.prod_price"
+              :productDiscountPrice="item.prod_discount_price"
               :productId="item.prod_id"
+              :tags="item.tags"
               @addCartData="addCart(item)"
             />
           </div>
@@ -262,7 +264,8 @@ export default {
       search: "",
       respondData: [],
       displayData: [],
-      // cartData: [],
+      prodResData: [],
+      prodDisData: [],
       sortMethod: "init",
       value: 0,
       gameTypeTags: ["策略", "紙牌", "經營"],
@@ -291,16 +294,17 @@ export default {
       return this.displayData.length == 0;
     },
     totalPages() {
-      return Math.ceil(this.displayData.length / this.itemsPerPage);
+      return Math.ceil(this.prodDisData.length / this.itemsPerPage);
     },
     currentProducts() {
       const start = (this.currentPage - 1) * this.itemsPerPage;
       const end = start + this.itemsPerPage;
-      return this.displayData.slice(start, end);
+      return this.prodDisData.slice(start, end);
     },
   },
   created() {
     this.axiosGetData();
+    this.fetchProd();
   },
   methods: {
     //使用 mapActions 輔助函數將/src/stores/cart裡的methods 映射在這裡
@@ -320,25 +324,6 @@ export default {
       });
       this.currentPage = 1;
     },
-    // addCart(product) {
-    //   const result = this.cartData.findIndex(
-    //     (item) => item.id == product.prod_id
-    //   );
-    //   if (result >= 0) {
-    //     this.cartData[result] = {
-    //       ...this.cartData[result],
-    //       count: this.cartData[result]["count"] + 1,
-    //     };
-    //   } else {
-    //     this.cartData.push({
-    //       id: product.prod_id,
-    //       title: product.prod_name,
-    //       price: product.prod_price,
-    //       count: 1,
-    //     });
-    //   }
-    //   console.log(this.cartData);
-    // },
     sort() {
       // 幫我和同學講一下怎麼寫排序
       switch (this.sortMethod) {
@@ -436,6 +421,14 @@ export default {
     },
     addCart(product) {
       this.addCartData(product);
+    },
+    fetchProd() {
+      axios
+        .post(`${import.meta.env.VITE_API_URL}/getProduct.php`)
+        .then((res) => {
+          this.prodResData = res.data.products;
+          this.prodDisData = res.data.products;
+        });
     },
   },
   watch: {

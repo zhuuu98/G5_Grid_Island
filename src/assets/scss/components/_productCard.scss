@@ -36,6 +36,13 @@
     }
     .price {
       font-size: $PC-h3;
+      display: flex;
+      gap: $S-spacing;
+      align-items: center;
+      .ordinaryPrice {
+        text-decoration: line-through;
+        font-size: $PC-text;
+      }
     }
     .addCart {
       .cart {
