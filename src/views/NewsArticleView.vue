@@ -37,7 +37,8 @@
       </div>
       <div class="newsImg">
         <img
-          :src="`https://tibamef2e.com/chd104/g5/php/images/${newsData.news_image}`"
+          :src="
+          `https://tibamef2e.com/chd104/g5/image/news/${newsData.news_image}`"
         />
       </div>
       <div class="textContent">
