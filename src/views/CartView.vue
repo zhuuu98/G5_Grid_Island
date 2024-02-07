@@ -181,7 +181,6 @@
 <script>
 import axios from "axios";
 import CartItem from "../components/CartItem.vue";
-import useUserStore from "../stores/user";
 import { mapState, mapActions } from "pinia";
 import cartStore from "@/stores/cart";
 export default {
@@ -193,6 +192,7 @@ export default {
       deliveryMethod: "init",
       recProduct: [],
       showWarning: false,
+      promoCodeList: [],
     };
   },
   components: {
@@ -210,39 +210,6 @@ export default {
     ]),
     loading() {
       return this.respondData.length == 0;
-    },
-    nodata() {
-      return this.displayData.length == 0;
-    },
-    totalPriceCount() {
-      return this.subTotalPrice + this.deliveryAmount - this.discountAmount;
-    },
-    userName2() {
-      return this.userStore.getUserName;
-    },
-    cart() {
-      return this.userStore.getCart;
-    },
-    cartDetail() {
-      const data = [
-        {
-          id: "111",
-          isFav: true,
-          imgUrl: `aaa/dd-aaa.jpg`,
-        },
-        {
-          id: "113",
-          isFav: false,
-          imgUrl: `aaa/01.jpg`,
-        },
-      ];
-      return this.cart.map((v, i) => {
-        const obj = data.find((u) => u.id === v.id);
-        return {
-          ...v,
-          ...obj,
-        };
-      });
     },
   },
   created() {

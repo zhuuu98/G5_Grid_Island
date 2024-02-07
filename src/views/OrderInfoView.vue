@@ -96,33 +96,15 @@
           <h2 class="pc-h3">訂購人資料</h2>
           <div class="name">
             <label for="memName">姓名</label>
-            <input
-              type="text"
-              name="mem_name"
-              id="memName"
-              value="古迪錐"
-              readonly
-            />
+            <input type="text" name="mem_name" id="memName" v-model="memName" />
           </div>
           <div class="phone">
             <label for="memTel">手機號碼</label>
-            <input
-              type="tel"
-              name="mem_tel"
-              id="memTel"
-              value="0912345678"
-              readonly
-            />
+            <input type="tel" name="mem_tel" id="memTel" v-model="memTel" />
           </div>
           <div class="adress">
             <label for="memAddr">地址</label>
-            <input
-              type="text"
-              name="mem_addr"
-              id="memAddr"
-              value="桃園市中壢區古迪路123號"
-              readonly
-            />
+            <input type="text" name="mem_addr" id="memAddr" v-model="memAddr" />
           </div>
           <div class="email">
             <label for="memEmail">電子信箱</label>
@@ -130,8 +112,7 @@
               type="email"
               name="mem_email"
               id="memEmail"
-              value="griddy@griddy.com"
-              readonly
+              v-model="memEmail"
             />
           </div>
         </div>
@@ -202,28 +183,31 @@
         </button>
       </div>
     </form>
+    <button @click="promoIdCheck">Click me</button>
   </main>
 </template>
 
 <script>
 import axios from "axios";
-import useUserStore from "../stores/user";
 import OrderItem from "../components/OrderItem.vue";
 import { mapState, mapActions } from "pinia";
 import cartStore from "@/stores/cart";
 export default {
   data() {
     return {
-      respondData: [],
       discountCode: "",
       deliveryMethod: "init",
-      subTotalAmount: 1300,
       showContent: true,
       isRotated: true,
       selectedValue: "0",
       selectedValue1: "0",
       showWarning: false,
       showWarning1: false,
+      promoCodeList: [],
+      memName: "",
+      memTel: "",
+      memAddr: "",
+      memEmail: "",
     };
   },
   components: {
@@ -240,19 +224,24 @@ export default {
     totalPriceCount() {
       return this.subTotalAmount + this.deliveryAmount - this.discountAmount;
     },
-    cart() {
-      return this.userStore.getCart;
-    },
     rotateIcon() {
       return this.isRotated ? "rotate(-180deg)" : "";
     },
     optionSelect() {
-      return this.selectedValue == 0 || this.selectedValue1 == 0;
+      return (
+        this.selectedValue == 0 ||
+        this.selectedValue1 == 0 ||
+        this.memName == "" ||
+        this.memAddr == "" ||
+        this.memEmail == "" ||
+        this.memTel == ""
+      );
     },
   },
   created() {
     this.axiosGetData();
     this.getLocalCartData();
+    this.fetchPromoCode();
   },
   methods: {
     ...mapActions(cartStore, ["getLocalCartData", "clearCartData"]),
@@ -314,6 +303,40 @@ export default {
       this.clearCartData();
       localStorage.clear();
       this.$router.push("/orderSuccess");
+    },
+    fetchPromoCode() {
+      axios
+        .post(`${import.meta.env.VITE_API_URL}/getPromoCode.php`, {})
+        .then((res) => {
+          this.promoCodeList = res.data.promos;
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    },
+    paymentExchange(value) {
+      if (value == "option1") {
+        return "線上刷卡";
+      } else if (value == "option2") {
+        return "匯款轉帳";
+      } else if (value == "option3") {
+        return "貨到付款";
+      }
+    },
+    promoIdCheck() {
+      const promoCode = localStorage["discCode"];
+      if (promoCode) {
+        const promos = this.promoCodeList.find((item) => {
+          return item.promo_code == promoCode;
+        });
+        if (promos) {
+          return promos.promo_id;
+        } else {
+          return "";
+        }
+      } else {
+        return "";
+      }
     },
   },
 
