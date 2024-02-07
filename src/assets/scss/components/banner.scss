@@ -88,6 +88,7 @@ $islandItems: (
 			color: $black;
 			font-size: 2.8vw;
 			font-family: Zen Maru Gothic;
+			font-weight: 500;
 			display: block;
 			position: absolute;
 			text-align: center;
@@ -313,6 +314,7 @@ $islandItems: (
 			.card-title {
 				font-size: $M-h4;
 				font-family: Zen Maru Gothic;
+				font-weight: 500;
 				font-size: $PC-h3;
 			}
 
@@ -383,9 +385,19 @@ $islandItems: (
 			right: -48%;
 			border: $M-spacing solid $purple;
 		}
-
-
-
-
+	}
+	#whiteWave-imagebox {
+		position: absolute;
+		bottom: 0;
+		width: 100%;
+		
+		display: flex;
+		justify-content: end;
+		background-color: #fa0;
+		#whiteWave {
+			display: block;
+			width: 100%;
+			height: 100%;
+		}
 	}
 }
