@@ -23,6 +23,7 @@
 import axios from 'axios';
 import { mapActions } from 'pinia';
 import userStore from '@/stores/user'
+
 export default {
     data() {
         return {
@@ -50,7 +51,8 @@ export default {
             .catch(error => console.error(error))
             //登入失敗
             //系統維護中
-        }
+        }, 
+
     }
 }
 </script>
