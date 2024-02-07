@@ -3,9 +3,7 @@ export default defineStore("userStore", {
   // 對應 data
   state: () => ({
     token: "",
-    userData: {
-      name: 'aaa'
-    },
+    userData: {},
     cart: [
       {
         id: '111',
@@ -24,8 +22,28 @@ export default defineStore("userStore", {
   },
   // 對應 methods (物件形式)
   actions: {
-    updateToken(token) {
-      console.log(token);
-    },
+    updateToken (payload) {
+      if(payload){
+          this.token = payload
+          localStorage.setItem('userToken', payload)
+      }else{
+          this.token = ''
+          localStorage.removeItem('userToken')
+      }
+  },
+  updateUserData(val) {
+      this.userData = val
+  },
+  checkLogin(){
+      const storageToken = localStorage.getItem('userToken')
+      if(this.token){
+          return this.token
+      }else if(storageToken){
+          this.token = storageToken
+          return storageToken
+      }else{
+          return ''
+      }
+  },
   },
 });

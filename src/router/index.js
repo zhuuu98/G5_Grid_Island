@@ -136,6 +136,7 @@ const router = createRouter({
       name: "member",
       meta: {
         title:"會員中心",
+        // requiresAuth: true,
       },
       component: () => import("../views/MemberView.vue"),
     },
@@ -180,9 +181,26 @@ const router = createRouter({
   },
 });
 
-router.beforeEach(async (to, from) => {
+// router.beforeEach(async (to, from) => {
+
+// });
+
+const isAuthenticated = () => {
+  const userToken = localStorage.getItem("userToken")
+  return userToken? true: false
+}
+
+router.beforeEach(async(to) => {
   if (to.meta && to.meta.title) {
     document.title = to.meta.title;
   }
-});
+  if (to.meta.requiresAuth && !isAuthenticated()) {
+    // 此路由需要授权，请检查是否已登录
+    // 如果没有，则重定向到登录页面
+    console.log('userToken');
+    return { name: "login", query: { redirect: to.fullPath }, }
+  } else if(to.name == 'login' || to.name == 'signup' && isAuthenticated() ){
+    return { name: "member" }
+  }
+})
 export default router;
