@@ -383,9 +383,19 @@ $islandItems: (
 			right: -48%;
 			border: $M-spacing solid $purple;
 		}
-
-
-
-
+	}
+	#whiteWave-imagebox {
+		position: absolute;
+		bottom: 0;
+		width: 100%;
+		
+		display: flex;
+		justify-content: end;
+		background-color: #fa0;
+		#whiteWave {
+			display: block;
+			width: 100%;
+			height: 100%;
+		}
 	}
 }
