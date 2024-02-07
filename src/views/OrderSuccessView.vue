@@ -2,12 +2,12 @@
   <main class="orderSuccess">
     <font-awesome-icon :icon="['far', 'check-circle']" spin size="sm" />
     <div class="text">
-      <span class="title pc-h2">訂購成功</span>
-      <span class="detail pc-h3">您已訂購成功，我們將盡快為您出貨</span>
+      <h2 class="title">訂購成功</h2>
+      <h3 class="detail">您已訂購成功，我們將盡快為您出貨</h3>
     </div>
     <div class="link">
       <router-link to="./" class="btn_secondary_border">回到首頁</router-link>
-      <router-link to="" class="btn_secondary">訂單資訊</router-link>
+      <router-link to="./member" class="btn_secondary">訂單資訊</router-link>
     </div>
 
 
