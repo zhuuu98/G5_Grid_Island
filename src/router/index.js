@@ -136,7 +136,7 @@ const router = createRouter({
       name: "member",
       meta: {
         title:"會員中心",
-        // requiresAuth: true,
+        requiresAuth: true,
       },
       component: () => import("../views/MemberView.vue"),
     },
@@ -197,7 +197,7 @@ router.beforeEach(async(to) => {
     console.log('userToken');
     return { name: "login", query: { redirect: to.fullPath }, }
   } 
-  if(to.name == 'login' || to.name == 'signup' && isAuthenticated() ){
+  if(isAuthenticated() && to.name == 'login' || to.name == 'signup'){
     return { name: "member" }
   }
 })
