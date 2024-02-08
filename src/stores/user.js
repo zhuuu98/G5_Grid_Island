@@ -23,7 +23,8 @@ export default defineStore("userStore", {
   },
   updateUserData(val) {
       this.userData = val
-      localStorage.setItem('userData', val)
+      const userDataStr = JSON.stringify(this.userData)
+      localStorage.setItem('userDataStr', userDataStr)
   },
   checkLogin(){
       const storageToken = localStorage.getItem('userToken')

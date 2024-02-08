@@ -103,8 +103,6 @@
 </template>
 <script>
 import PageTitle from "../components/PageTitle.vue";
-import { mapState }  from 'pinia';
-import userStore from '@/stores/user';
 export default {
     data() {
         return {
@@ -158,14 +156,17 @@ export default {
             selectedDate: null,
             dateDisabled: false,
             // 以上是日曆用
-            datas: {}
+            userData:{},
         }
     },
     components:{
         PageTitle
     },
+    mounted(){
+        this.userData = JSON.parse(localStorage.getItem("userDataStr"))
+    },
     computed: {
-        ...mapState(userStore, ['userData', 'userName']),
+        // ...mapState(userStore, ['userData']),
         //以下是日曆用
         today() {
             return new Date();
