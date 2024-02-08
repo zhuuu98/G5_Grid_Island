@@ -75,9 +75,9 @@
                   @input="discountCodeCheckMethod()"
                 />
               </div>
-              <div class="discountCodeBtn">
+              <!-- <div class="discountCodeBtn">
                 <button class="searchBtn">使用折扣碼</button>
-              </div>
+              </div> -->
             </div>
           </div>
           <div class="deliveryMethod">
@@ -276,6 +276,7 @@ export default {
           }
         } else {
           this.discountCodeCheck(this.discountCode);
+          localStorage["discCode"] = this.discountCode;
         }
       } else {
         alert("請先登入");
