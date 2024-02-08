@@ -193,6 +193,7 @@ export default {
       recProduct: [],
       showWarning: false,
       promoCodeRecord: [],
+      promoCodeList: [],
     };
   },
   components: {
@@ -207,6 +208,7 @@ export default {
       "deliveryAmount",
       "discountAmount",
       "totalPrice",
+      ,
     ]),
     loading() {
       return this.respondData.length == 0;
@@ -227,6 +229,7 @@ export default {
       "increaseFromCart",
       "itemDelFormCart",
       "getLocalCartData",
+      "setPromoData",
     ]),
     axiosGetData() {
       axios
@@ -267,8 +270,6 @@ export default {
           });
           if (used) {
             alert("你已經用過此折扣碼");
-            localStorage["discountPrice"] = 0;
-            this.discountAmount = 0;
           } else {
             localStorage["discCode"] = this.discountCode;
             this.discountCodeCheck(this.discountCode);
@@ -307,7 +308,6 @@ export default {
       axios
         .post(`${import.meta.env.VITE_API_URL}/getPromoRecord.php`)
         .then((res) => {
-          console.log(res.data.promoRecords);
           this.promoCodeRecord = res.data.promoRecords;
         });
     },
@@ -316,6 +316,7 @@ export default {
         .post(`${import.meta.env.VITE_API_URL}/getPromoCode.php`, {})
         .then((res) => {
           this.promoCodeList = res.data.promos;
+          this.setPiniaPromoData(res.data.promos);
         })
         .catch((error) => {
           console.log(error);
@@ -335,6 +336,9 @@ export default {
       } else {
         return "";
       }
+    },
+    setPiniaPromoData(data) {
+      this.setPromoData(data);
     },
   },
   mounted() {},
