@@ -140,13 +140,13 @@
             :class="{ disableBtn: deliveryMethod === 'init' }"
             v-show="cartData.length != 0"
           >
-            <router-link
-              to="/orderInfo"
+            <button
+              @click="checkLogin"
               class="bookBtn"
               :class="{ disableBtn: deliveryMethod === 'init' }"
             >
               前往結帳
-            </router-link>
+            </button>
           </div>
         </div>
       </div>
@@ -192,7 +192,7 @@ export default {
       deliveryMethod: "init",
       recProduct: [],
       showWarning: false,
-      promoCodeList: [],
+      promoCodeRecord: [],
     };
   },
   components: {
@@ -216,6 +216,7 @@ export default {
     this.axiosGetData();
     this.getLocalCartData();
     this.getDelDiscLocal();
+    this.fetchPromoRecord();
   },
   methods: {
     ...mapActions(cartStore, [
@@ -255,8 +256,17 @@ export default {
       localStorage["delMethod"] = this.deliveryMethod;
     },
     discountCodeCheckMethod() {
-      this.discountCodeCheck(this.discountCode);
-      localStorage["discCode"] = this.discountCode;
+      const token = localStorage["userToken"];
+      if (token) {
+        if (true) {
+          this.discountCodeCheck(this.discountCode);
+          localStorage["discCode"] = this.discountCode;
+        } else {
+        }
+      } else {
+        alert("請先登入");
+        this.$router.push("/login");
+      }
     },
     quantityChangePlus(product) {
       this.increaseFromCart(product);
@@ -270,6 +280,23 @@ export default {
     shuffleAndPick() {
       const shuffled = this.displayData.sort(() => 0.5 - Math.random());
       this.recProduct = shuffled.slice(0, 4);
+    },
+    checkLogin() {
+      const token = localStorage["userToken"];
+      if (token) {
+        this.$router.push("/orderInfo");
+      } else {
+        alert("請先登入");
+        this.$router.push("/login");
+      }
+    },
+    fetchPromoRecord() {
+      axios
+        .post(`${import.meta.env.VITE_API_URL}/getPromoRecord.php`)
+        .then((res) => {
+          console.log(res.data.promoRecords);
+          this.promoCodeRecord = res.data.promoRecords;
+        });
     },
   },
   mounted() {},
