@@ -359,43 +359,39 @@ main {
         position: absolute;
       }
       .reserveStep1 span {
-        left: 18%;
-        bottom: -5%;
-        @include T() {
-          left: 20%;
-          bottom: -4%;
-        }
-        @include PC() {
-          left: 25%;
-          bottom: -4%;
+        display: flex;
+        flex-direction: column;
+        transform: translateX(26px) translateY(-20px);      
+        @include T(){
+          transform: translateX(75px) translateY(-20px);      
         }
       }
 
       .reserveStep2 span {
         // width: 290px;
-        left: 4%;
-        bottom: -5%;
-        @include T() {
-          left: 5%;
-          bottom: -4%;
-        }
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: column;
+        justify-content: center;
+        transform: translateX(26px) translateY(-20px);
+        width: 100%;
+        max-width: 150px;
         @include PC() {
-          left: 15%;
-          bottom: -4%;
+          max-width: 250px;
         }
-      }
 
+      }
       .reserveStep3 span {
         // width: 290px;
-        left: 5%;
-        bottom: -5%;
-        @include T() {
-          right: -4%;
-          bottom: -4%;
-        }
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: column;
+        justify-content: center;
+        transform: translateX(26px) translateY(-20px);
+        width: 100%;
+        max-width: 150px;
         @include PC() {
-          left: 16%;
-          bottom: -4%;
+          max-width: 250px;
         }
       }
     }
