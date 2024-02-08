@@ -217,6 +217,7 @@ export default {
     this.getLocalCartData();
     this.getDelDiscLocal();
     this.fetchPromoRecord();
+    this.fetchPromoCode();
   },
   methods: {
     ...mapActions(cartStore, [
@@ -258,10 +259,22 @@ export default {
     discountCodeCheckMethod() {
       const token = localStorage["userToken"];
       if (token) {
-        if (true) {
-          this.discountCodeCheck(this.discountCode);
-          localStorage["discCode"] = this.discountCode;
+        const userId = JSON.parse(localStorage["userDataStr"]).mem_id;
+        const promoId = this.promoIdCheck();
+        if (promoId) {
+          const used = this.promoCodeRecord.some((record) => {
+            return record.mem_id == userId && record.promo_id == promoId;
+          });
+          if (used) {
+            alert("你已經用過此折扣碼");
+            localStorage["discountPrice"] = 0;
+            this.discountAmount = 0;
+          } else {
+            localStorage["discCode"] = this.discountCode;
+            this.discountCodeCheck(this.discountCode);
+          }
         } else {
+          this.discountCodeCheck(this.discountCode);
         }
       } else {
         alert("請先登入");
@@ -297,6 +310,31 @@ export default {
           console.log(res.data.promoRecords);
           this.promoCodeRecord = res.data.promoRecords;
         });
+    },
+    fetchPromoCode() {
+      axios
+        .post(`${import.meta.env.VITE_API_URL}/getPromoCode.php`, {})
+        .then((res) => {
+          this.promoCodeList = res.data.promos;
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    },
+    promoIdCheck() {
+      const promoCode = this.discountCode;
+      if (promoCode) {
+        const promos = this.promoCodeList.find((item) => {
+          return item.promo_code == promoCode;
+        });
+        if (promos) {
+          return promos.promo_id;
+        } else {
+          return "";
+        }
+      } else {
+        return "";
+      }
     },
   },
   mounted() {},
