@@ -13,9 +13,9 @@
     
     <div class="text">
       <div class="title">
-        <h2 class="pc-h4">{{ newsTitle }}</h2>
+        <h4>{{ newsTitle }}</h4>
       </div>
-      <div class="date pc-h5">{{ formattedDate }}</div>
+      <div>{{ formattedDate }}</div>
     </div>
   </div>
   </router-link>

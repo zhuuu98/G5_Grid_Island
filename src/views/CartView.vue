@@ -75,9 +75,9 @@
                   @input="discountCodeCheckMethod()"
                 />
               </div>
-              <div class="discountCodeBtn">
+              <!-- <div class="discountCodeBtn">
                 <button class="searchBtn">使用折扣碼</button>
-              </div>
+              </div> -->
             </div>
           </div>
           <div class="deliveryMethod">
@@ -140,13 +140,13 @@
             :class="{ disableBtn: deliveryMethod === 'init' }"
             v-show="cartData.length != 0"
           >
-            <router-link
-              to="/orderInfo"
+            <button
+              @click="checkLogin"
               class="bookBtn"
               :class="{ disableBtn: deliveryMethod === 'init' }"
             >
               前往結帳
-            </router-link>
+            </button>
           </div>
         </div>
       </div>
@@ -192,6 +192,7 @@ export default {
       deliveryMethod: "init",
       recProduct: [],
       showWarning: false,
+      promoCodeRecord: [],
       promoCodeList: [],
     };
   },
@@ -207,6 +208,7 @@ export default {
       "deliveryAmount",
       "discountAmount",
       "totalPrice",
+      ,
     ]),
     loading() {
       return this.respondData.length == 0;
@@ -216,6 +218,8 @@ export default {
     this.axiosGetData();
     this.getLocalCartData();
     this.getDelDiscLocal();
+    this.fetchPromoRecord();
+    this.fetchPromoCode();
   },
   methods: {
     ...mapActions(cartStore, [
@@ -225,6 +229,7 @@ export default {
       "increaseFromCart",
       "itemDelFormCart",
       "getLocalCartData",
+      "setPromoData",
     ]),
     axiosGetData() {
       axios
@@ -255,8 +260,28 @@ export default {
       localStorage["delMethod"] = this.deliveryMethod;
     },
     discountCodeCheckMethod() {
-      this.discountCodeCheck(this.discountCode);
-      localStorage["discCode"] = this.discountCode;
+      const token = localStorage["userToken"];
+      if (token) {
+        const userId = JSON.parse(localStorage["userDataStr"]).mem_id;
+        const promoId = this.promoIdCheck();
+        if (promoId) {
+          const used = this.promoCodeRecord.some((record) => {
+            return record.mem_id == userId && record.promo_id == promoId;
+          });
+          if (used) {
+            alert("你已經用過此折扣碼");
+          } else {
+            localStorage["discCode"] = this.discountCode;
+            this.discountCodeCheck(this.discountCode);
+          }
+        } else {
+          this.discountCodeCheck(this.discountCode);
+          localStorage["discCode"] = this.discountCode;
+        }
+      } else {
+        alert("請先登入");
+        this.$router.push("/login");
+      }
     },
     quantityChangePlus(product) {
       this.increaseFromCart(product);
@@ -270,6 +295,51 @@ export default {
     shuffleAndPick() {
       const shuffled = this.displayData.sort(() => 0.5 - Math.random());
       this.recProduct = shuffled.slice(0, 4);
+    },
+    checkLogin() {
+      const token = localStorage["userToken"];
+      if (token) {
+        this.$router.push("/orderInfo");
+      } else {
+        alert("請先登入");
+        this.$router.push("/login");
+      }
+    },
+    fetchPromoRecord() {
+      axios
+        .post(`${import.meta.env.VITE_API_URL}/getPromoRecord.php`)
+        .then((res) => {
+          this.promoCodeRecord = res.data.promoRecords;
+        });
+    },
+    fetchPromoCode() {
+      axios
+        .post(`${import.meta.env.VITE_API_URL}/getPromoCode.php`, {})
+        .then((res) => {
+          this.promoCodeList = res.data.promos;
+          this.setPiniaPromoData(res.data.promos);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    },
+    promoIdCheck() {
+      const promoCode = this.discountCode;
+      if (promoCode) {
+        const promos = this.promoCodeList.find((item) => {
+          return item.promo_code == promoCode;
+        });
+        if (promos) {
+          return promos.promo_id;
+        } else {
+          return "";
+        }
+      } else {
+        return "";
+      }
+    },
+    setPiniaPromoData(data) {
+      this.setPromoData(data);
     },
   },
   mounted() {},

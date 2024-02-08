@@ -5,7 +5,7 @@ export default defineStore("cartStore", {
     cartData: [],
     deliveryPrice: 0,
     discountPrice: 0,
-    validDiscountCodes: ["GridIsland", "GridIsland2023"],
+    validDiscountCodes: [],
   }),
   getters: {
     subTotalPrice() {
@@ -75,11 +75,11 @@ export default defineStore("cartStore", {
       localStorage["deliveryPrice"] = this.deliveryPrice;
     },
     discountCodeCheck(discountCode) {
-      if (this.validDiscountCodes.includes(discountCode)) {
-        this.discountPrice = 50;
-      } else {
-        this.discountPrice = 0;
-      }
+      const matchedCode = this.validDiscountCodes.find(
+        (item) => item.promo_code == discountCode
+      );
+      const discountAmount = matchedCode ? matchedCode.promo_amount : 0;
+      this.discountPrice = discountAmount;
       localStorage["discountPrice"] = this.discountPrice;
     },
     reduceFromCart(product) {
@@ -127,6 +127,9 @@ export default defineStore("cartStore", {
       this.cartData = [];
       this.deliveryPrice = 0;
       this.discountPrice = 0;
+    },
+    setPromoData(promo) {
+      this.validDiscountCodes = promo;
     },
   },
 });

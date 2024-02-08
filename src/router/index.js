@@ -19,7 +19,7 @@ const router = createRouter({
       path: "/about",
       name: "about",
       meta: {
-        title:"關於我們",
+        title: "關於我們",
       },
       // route level code-splitting
       // this generates a separate chunk (About.[hash].js) for this route
@@ -30,7 +30,7 @@ const router = createRouter({
       path: "/news",
       name: "news",
       meta: {
-        title:"最新消息",
+        title: "最新消息",
       },
       component: () => import("../views/NewsView.vue"),
     },
@@ -38,7 +38,7 @@ const router = createRouter({
       path: "/newsArticle/:id",
       name: "newsArticle",
       meta: {
-        title:"最新消息",
+        title: "最新消息",
       },
       component: () => import("../views/NewsArticleView.vue"),
     },
@@ -46,7 +46,7 @@ const router = createRouter({
       path: "/product",
       name: "product",
       meta: {
-        title:"所有商品",
+        title: "所有商品",
       },
       component: () => import("../views/Product1View.vue"),
     },
@@ -54,7 +54,7 @@ const router = createRouter({
       path: "/productInfo/:id",
       name: "productInfo",
       meta: {
-        title:"所有商品",
+        title: "所有商品",
       },
       component: () => import("../views/ProductInfoView.vue"),
     },
@@ -62,7 +62,7 @@ const router = createRouter({
       path: "/cart",
       name: "cart",
       meta: {
-        title:"購物車",
+        title: "購物車",
       },
       component: () => import("../views/CartView.vue"),
     },
@@ -70,7 +70,8 @@ const router = createRouter({
       path: "/orderInfo",
       name: "orderInfo",
       meta: {
-        title:"訂單資訊",
+        title: "訂單資訊",
+        requiresAuth: true,
       },
       component: () => import("../views/OrderInfoView.vue"),
     },
@@ -78,7 +79,8 @@ const router = createRouter({
       path: "/orderSuccess",
       name: "orderSuccess",
       meta: {
-        title:"訂購成功",
+        title: "訂購成功",
+        requiresAuth: true,
       },
       component: () => import("../views/OrderSuccessView.vue"),
     },
@@ -86,7 +88,7 @@ const router = createRouter({
       path: "/login",
       name: "login",
       meta: {
-        title:"登入",
+        title: "登入",
       },
       component: () => import("../views/LoginView.vue"),
     },
@@ -94,7 +96,7 @@ const router = createRouter({
       path: "/signup",
       name: "signup",
       meta: {
-        title:"註冊",
+        title: "註冊",
       },
       component: () => import("../views/SignupView.vue"),
     },
@@ -102,7 +104,7 @@ const router = createRouter({
       path: "/prebook",
       name: "prebook",
       meta: {
-        title:"預約須知",
+        title: "預約須知",
       },
       component: () => import("../views/PreBookView.vue"),
     },
@@ -110,7 +112,7 @@ const router = createRouter({
       path: "/book",
       name: "book",
       meta: {
-        title:"現場預約",
+        title: "現場預約",
         requiresAuth: true,
       },
       component: () => import("../views/BookView.vue"),
@@ -119,7 +121,7 @@ const router = createRouter({
       path: "/board",
       name: "board",
       meta: {
-        title:"留言區",
+        title: "留言區",
       },
       component: () => import("../views/BoardView.vue"),
     },
@@ -127,7 +129,7 @@ const router = createRouter({
       path: "/team",
       name: "team",
       meta: {
-        title:"報隊區",
+        title: "報隊區",
       },
       component: () => import("../views/TeamView.vue"),
     },
@@ -135,7 +137,8 @@ const router = createRouter({
       path: "/member",
       name: "member",
       meta: {
-        title:"會員中心",
+        title: "會員中心",
+        requiresAuth: true,
       },
       component: () => import("../views/MemberView.vue"),
     },
@@ -143,23 +146,23 @@ const router = createRouter({
       path: "/griddy-style",
       name: "griddy-style",
       meta: {
-        title:"造型屋",
+        title: "造型屋",
       },
       component: () => import("../views/griddyStyleView.vue"),
     },
     {
       path: "/privacy-policy",
       name: "privacy-policy",
-            meta: {
-        title:"隱私權政策",
+      meta: {
+        title: "隱私權政策",
       },
       component: () => import("../views/PrivacyPolicyView.vue"),
     },
     {
       path: "/test",
       name: "test",
-            meta: {
-        title:"劉書院",
+      meta: {
+        title: "劉書院",
         // showHeader: false, //打開這個即可不顯示header
       },
       component: () => import("../views/AboutView_2.vue"),
@@ -169,7 +172,7 @@ const router = createRouter({
       path: "/:pathMatch(.*)*",
       name: "NotFound",
       meta: {
-        title:"404",
+        title: "404",
       },
       component: () => import("../views/NotFoundView.vue"),
     },
@@ -180,9 +183,22 @@ const router = createRouter({
   },
 });
 
-router.beforeEach(async (to, from) => {
+const isAuthenticated = () => {
+  const userToken = localStorage.getItem("userToken");
+  return userToken ? true : false;
+};
+
+router.beforeEach(async (to) => {
   if (to.meta && to.meta.title) {
     document.title = to.meta.title;
+  }
+  if (to.meta.requiresAuth && !isAuthenticated()) {
+    // 此路由需要授权，请检查是否已登录
+    // 如果没有，则重定向到登录页面
+    return { name: "login", query: { redirect: to.fullPath } };
+  }
+  if ((isAuthenticated() && to.name == "login") || to.name == "signup") {
+    return { name: "member" };
   }
 });
 export default router;

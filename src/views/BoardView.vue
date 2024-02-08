@@ -344,28 +344,6 @@ export default {
     };
   },
   computed: {
-    // firstCol() {
-    //   return this.card.reduce((acc, cur, idx) => {
-    //     if (idx % 2 === 0) {
-    //       acc.push(cur)
-    //     }
-    //     return acc
-    //   }, [])
-    // },
-    // secondCol() {
-    //   return this.card.reduce((acc, cur, idx) => {
-    //     if (idx % 2 === 1) {
-    //       acc.push(cur)
-    //     }
-    //     return acc
-    //   }, [])
-    // },
-    // cardWithReAmount() {
-    //   return this.card.map(item => ({
-    //     ...item,
-    //     re_amount: item.re.length,
-    //   }));
-    // },
     modifiedCard() {
       return this.card.map(item => ({
         ...item,

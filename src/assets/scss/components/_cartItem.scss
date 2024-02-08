@@ -68,12 +68,16 @@
             border: 1px solid $black;
             border-radius: $S-button-radius;
             display: flex;
+            align-items: center;
             input[type="number"] {
               width: 50px;
               text-align: center;
               border: none;
               font-size: $M-text;
               background-color: transparent;
+              &:focus {
+                outline: none;
+              }
               @include PC() {
                 font-size: $PC-text;
               }
