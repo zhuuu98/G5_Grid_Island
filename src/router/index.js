@@ -200,8 +200,5 @@ router.beforeEach(async (to) => {
   if ((isAuthenticated() && to.name == "login") || to.name == "signup") {
     return { name: "member" };
   }
-  if ((isAuthenticated() && to.name == "login") || to.name == "signup") {
-    return { name: "member" };
-  }
 });
 export default router;
