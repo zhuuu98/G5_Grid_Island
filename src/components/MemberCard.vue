@@ -55,6 +55,7 @@
                     break;
                 case 5:
                     localStorage.removeItem('userToken')
+                    localStorage.removeItem('userDataStr')
                     this.$router.push('/')
                 }
             },
