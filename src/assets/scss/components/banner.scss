@@ -389,10 +389,11 @@ $islandItems: (
 		position: absolute;
 		bottom: 0;
 		width: 100%;
+		height: auto;
 		display: flex;
-
+		justify-content: end;
 		align-items: end;
-		background-color: #fa00;
+		background-color: #fa0;
 		#whiteWave {
 			display: block;
 			width: 100%;
