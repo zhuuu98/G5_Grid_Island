@@ -176,14 +176,13 @@
         <button
           class="btn_lg_orange"
           type="button"
-          @click="submitOrder"
+          @click="sendOrdertoDB"
           :class="{ disableBtn: optionSelect }"
         >
           送出訂單
         </button>
       </div>
     </form>
-    <button @click="promoIdCheck">Click me</button>
   </main>
 </template>
 
@@ -249,7 +248,6 @@ export default {
       axios
         .get("https://tibamef2e.com/chd103/g5/phps/ProductM.php")
         .then((res) => {
-          console.log(res.data);
           this.respondData = res.data;
         });
     },
@@ -298,12 +296,6 @@ export default {
         this.showWarning1 = false;
       }
     },
-    submitOrder() {
-      console.log("submit");
-      this.clearCartData();
-      localStorage.clear();
-      this.$router.push("/orderSuccess");
-    },
     fetchPromoCode() {
       axios
         .post(`${import.meta.env.VITE_API_URL}/getPromoCode.php`, {})
@@ -337,6 +329,37 @@ export default {
       } else {
         return "";
       }
+    },
+    sendOrdertoDB() {
+      const cartInfo = this.cartData;
+      const orderData = {
+        mem_id: JSON.parse(localStorage["userDataStr"]).mem_id,
+        ord_sum: this.subTotalPrice,
+        ord_promo: this.discountAmount,
+        ord_delivery: this.deliveryAmount,
+        ord_pay: this.totalPrice,
+        ord_addr: this.memAddr,
+        ord_name: this.memName,
+        ord_tel: this.memTel,
+        promo: this.promoIdCheck() ? this.promoIdCheck() : null,
+        ord_payment: this.paymentExchange(this.selectedValue),
+      };
+      const allOrderData = { cart: cartInfo, order: orderData };
+      const jsonData = JSON.stringify(allOrderData);
+      axios
+        .post(`${import.meta.env.VITE_API_URL}/sendOrderInfo.php`, { jsonData })
+        .then((res) => {
+          this.clearCartData();
+          localStorage.removeItem("cartData");
+          localStorage.removeItem("discountPrice");
+          localStorage.removeItem("delMethod");
+          localStorage.removeItem("discCode");
+          localStorage.removeItem("deliveryPrice");
+          this.$router.push("/orderSuccess");
+        })
+        .catch((error) => {
+          console.log(error);
+        });
     },
   },
 
