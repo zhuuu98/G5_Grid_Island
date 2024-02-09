@@ -297,6 +297,9 @@ import PageTitle from "../components/PageTitle.vue";
 export default {
     data() {
         return {
+
+            memData:[],
+
             memID: ['啊人家家就笨壓'], //會員暱稱
             bookDate: ['2024/02/02', '2023/12/24'], //預約資訊-日期
             selectedTime: {
@@ -343,19 +346,15 @@ export default {
             isChoosedOrderData_PC: false,//訂單紀錄被選擇
             isChoosedBookData_PC: false,//預約紀錄被選擇
             isChoosedIndex_PC: true,
-            mobileListIsChoosed:false, //其他頁面被選擇時，縮小的ICON出現
-            mobileListNotChoosed:true,//其他頁面被選擇時，首頁版的ICON消失
         };
     },
     components: {
         MemberCard,
         PageTitle,
     },
-
-    mounted() {
-
+    created() {
+	// this.fetchMem();
     },
-
     methods: {
         isPastDate(date) {
             const today = new Date();
@@ -393,6 +392,12 @@ export default {
                 case 4: //報隊管理
 
                     break;
+                case 5: //登出
+                localStorage.removeItem('userToken')
+                localStorage.removeItem('userDataStr')
+                this.$router.push('/')
+                break;
+
             }
             console.log(`Button at index ${index} clicked`);
         },
@@ -420,6 +425,15 @@ export default {
             this.isChoosedBookData_PC= false;
             this.isChoosedIndex_PC=true;
         },
+        // fetchMem() {
+        //     axios
+        //     .post(`${import.meta.env.VITE_API_URL}/getMember.php`, {})
+        //     .then(res => {
+        //         console.log(res.data.mem); //這可以在f12看到自己的陣列，好用！
+        //         this.memData = res.data.mem;
+        //     })
+        //     .catch(error => console.error('發生錯誤:',error))
+        // },
         
     },
 
