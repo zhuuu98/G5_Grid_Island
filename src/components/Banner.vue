@@ -116,9 +116,8 @@
         </div>
 
         <div id="whiteWave-imagebox">
-            <!-- <img src="../assets/images/wave/whiteWave.svg" id="whiteWave"> -->
             <div v-html="whiteWaveSvg" id="whiteWave"></div>
-            <div class="box"></div>
+            <div id="whitebox"></div>
         </div>
     </div>
 </template>
