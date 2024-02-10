@@ -152,13 +152,25 @@ body {
               }
               .hotProductPrice {
                 font-size: $PC-h3;
+
+                .ordinaryPrice {
+                  margin-right: $S-spacing;
+                  text-decoration: line-through;
+                }
               }
             }
-            .hotProductImg img {
-              vertical-align: top;
+            .hotProductImg {
+              img {
+                vertical-align: top;
+                width: 100%;
+                width: 350px;
+                height: 280px;
+                object-fit: contain;
+              }
               width: 350px;
               height: 280px;
-              border-radius: $PC-card-radius 0 $PC-card-radius 0;
+              overflow: hidden;
+              border-radius: $PC-card-radius;
             }
           }
         }
@@ -213,10 +225,10 @@ body {
       overflow: hidden;
       margin: $S-spacing 0;
       width: 90%;
-      margin: $M-spacing auto;
+      margin: auto;
       @include PC() {
         max-width: $max-width;
-        margin: $M-spacing auto 0 auto;
+        margin: auto;
       }
       .productCatBackground {
         background-color: $black;
@@ -238,7 +250,6 @@ body {
           color: $black;
           display: flex;
           flex-direction: column;
-          row-gap: $M-spacing;
           .catTitle {
             background-color: $gray-1;
             border-radius: 100px;
@@ -247,6 +258,7 @@ body {
             justify-content: center;
             align-items: center;
             cursor: pointer;
+            margin: $S-spacing 0;
             h4 {
               font-size: $M-h4;
             }

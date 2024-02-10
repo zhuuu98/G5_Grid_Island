@@ -40,7 +40,7 @@
               <button @click="quantityChangeMinus">
                 <span>-</span>
               </button>
-              <input type="number" :value="itemCount" />
+              <input type="number" :value="itemCount" readonly />
               <button @click="quantityChangePlus">
                 <span>+</span>
               </button>

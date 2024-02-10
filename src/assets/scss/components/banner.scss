@@ -44,15 +44,17 @@ $islandItems: (
 	#banner-imagebox {
 		width: 100%;
 		position: relative;
-		margin: 4% auto 12% auto;
+		margin: 2% auto 20% auto;
 
 		@include T() {
 			width: 75%;
+			
 		}
 
 		@include PC() {
 			width: 46%;
 			max-width: 800px;
+			margin: 2% auto 10% auto;
 		}
 
 		#island-image {
@@ -87,7 +89,8 @@ $islandItems: (
 			background-color: $white-1;
 			color: $black;
 			font-size: 2.8vw;
-			font-family: Zen Maru Gothic;
+			font-family: 'Zen Maru Gothic', serif;
+			font-weight: 700;
 			display: block;
 			position: absolute;
 			text-align: center;
@@ -311,9 +314,9 @@ $islandItems: (
 			}
 
 			.card-title {
-				font-size: $M-h4;
-				font-family: Zen Maru Gothic;
-				font-size: $PC-h3;
+				font-family: 'Zen Maru Gothic', serif;
+				font-weight: 700;
+				font-size: 24px;
 			}
 
 			.card-line {
@@ -383,9 +386,36 @@ $islandItems: (
 			right: -48%;
 			border: $M-spacing solid $purple;
 		}
-
-
-
-
+	}
+	#whiteWave-imagebox {
+		position: absolute;
+		bottom: 0;
+		width: 100%;
+		display: flex;
+		flex-direction: column;
+		justify-content: start;
+		height: 12vw; /* 調整到適合的高度 */
+		overflow: hidden;
+		@include PC() {
+			height: 6vw;
+		}
+		#whiteWave {
+			display: block;
+			width: 150%;
+			@include PC() {
+				width: 100%;
+			}
+		}
+		#whitebox {
+			width: 100%;
+			height: 6vw;
+			background-color: #fff;
+			position: absolute;
+			bottom: 0;
+			
+			@include PC() {
+				height: 2vw; 
+			}
+		}
 	}
 }

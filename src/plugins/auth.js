@@ -9,7 +9,7 @@ const apiInstance = axios.create({
     timeout: 5000,
     // Set default headers for all requests
     headers: {
-      'Content-Type': 'application/json', 
+        'Content-Type': 'application/json', 
     },
 });
 

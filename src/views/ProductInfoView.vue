@@ -15,7 +15,7 @@
       <Breadcrumb separator="<b class='breadcrumb-separator'>></b>">
         <BreadcrumbItem to="/">首頁</BreadcrumbItem>
         <BreadcrumbItem to="/product">所有商品</BreadcrumbItem>
-        <BreadcrumbItem>{{ respondData.prod_name }}</BreadcrumbItem>
+        <BreadcrumbItem>{{ prodData.prod_name }}</BreadcrumbItem>
       </Breadcrumb>
     </div>
     <div class="productAllInfo">
@@ -25,24 +25,24 @@
             <div class="productPicArea">
               <div class="productMainPic">
                 <img
-                  :src="`https://tibamef2e.com/chd103/g5/img/${
-                    respondData['prod_img' + mainPic]
+                  :src="`https://tibamef2e.com/chd104/g5/image/prod/${
+                    prodData['prod_img' + mainPic]
                   }`"
-                  :alt="respondData.prod_name"
+                  :alt="prodData.prod_name"
                 />
               </div>
               <div class="productPicList">
                 <div
-                  v-for="num in 4"
+                  v-for="num in 3"
                   class="productPic"
                   @click="changeMainPic(num)"
                 >
                   <img
-                    v-if="respondData['prod_img' + num]"
-                    :src="`https://tibamef2e.com/chd103/g5/img/${
-                      respondData['prod_img' + num]
+                    v-if="prodData['prod_img' + num]"
+                    :src="`https://tibamef2e.com/chd104/g5/image/prod/${
+                      prodData['prod_img' + num]
                     }`"
-                    :alt="respondData.prod_name"
+                    :alt="prodData.prod_name"
                   />
                 </div>
               </div>
@@ -50,23 +50,26 @@
 
             <div class="productBuyingArea">
               <div class="productName">
-                <h3>{{ respondData.prod_name }}</h3>
+                <h3>{{ prodData.prod_name }}</h3>
               </div>
               <div class="productTag">
-                <span>1-5人</span>
-                <span>益智遊戲</span>
-                <span>團隊合作</span>
+                <span v-for="item in prodData.tags">{{ item }}</span>
               </div>
               <div class="productBrief">
-                <p>{{ respondData.prod_des1 }}</p>
+                <p>{{ prodData.prod_breif }}</p>
               </div>
               <div class="productPriceQuantity">
                 <div class="productPriceQuantityArea">
-                  <div v-if="prodDiscountPrice" class="productPrice">
-                    <h3>{{ prodDiscountPrice }}</h3>
-                  </div>
-                  <div class="productDiscountPrice">
-                    <h3>$ {{ respondData.prod_price }}</h3>
+                  <div class="priceArea">
+                    <div
+                      v-if="prodData.prod_discount_price"
+                      class="productPrice"
+                    >
+                      <h3>$ {{ prodData.prod_discount_price }}</h3>
+                    </div>
+                    <div class="productDiscountPrice">
+                      <h3>$ {{ prodData.prod_price }}</h3>
+                    </div>
                   </div>
                   <div class="productQuantity">
                     <button @click="quantityChange('minus')">
@@ -78,20 +81,10 @@
                     </button>
                   </div>
                 </div>
-                <!-- <div class="productBuyingButton">
-                  <button class="buyingBtn">直接購買</button>
-                  <button class="cartBookBtn">加入購物車</button>
-                </div>
-                <div class="productBook">
-                  <router-link class="cartBookBtn" to="/prebook"
-                    >預約遊玩</router-link
-                  >
-                </div> -->
                 <div class="productBuyingButton">
-                  <button class="cartBtn" @click="addCart(respondData)">
+                  <button class="cartBtn" @click="addCart(prodData)">
                     加入購物車
                   </button>
-                  <!-- <button class="bookBtn" @click="prebookPlay">預約遊玩</button> -->
                   <router-link class="bookBtn" to="/prebook"
                     >預約遊玩</router-link
                   >
@@ -124,8 +117,9 @@
               <h3 v-if="desc == 1">遊戲介紹</h3>
               <h3 v-if="desc == 2">產品規格</h3>
             </div>
-            <div class="productDesc" v-for="num in 2">
-              <p v-if="desc == num">{{ respondData["prod_des" + num] }}</p>
+            <div class="productDesc">
+              <p v-if="desc == 1">{{ prodData.prod_intro }}</p>
+              <p v-else>{{ prodData.prod_desc }}</p>
             </div>
           </div>
         </div>
@@ -148,6 +142,7 @@ export default {
     return {
       search: "",
       respondData: {},
+      prodData: {},
       value: 0,
       prodDiscountPrice: "",
       desc: 1,
@@ -162,11 +157,12 @@ export default {
   },
   computed: {
     nodata() {
-      return this.respondData && this.respondData.prod_id;
+      return this.prodData && this.prodData.prod_id;
     },
   },
   created() {
     this.axiosGetData();
+    this.fetchProd();
   },
   methods: {
     ...mapActions(cartStore, ["addCartData"]),
@@ -181,6 +177,19 @@ export default {
           });
           console.log(result);
           this.respondData = result;
+        });
+    },
+    fetchProd() {
+      const pageId = this.$route.params.id;
+      axios
+        .post(`${import.meta.env.VITE_API_URL}/getProduct.php`)
+        .then((res) => {
+          const allProduct = res.data.products;
+          const result = allProduct.find((item) => {
+            return item.prod_id == pageId;
+          });
+          console.log(result);
+          this.prodData = result;
         });
     },
     selectTab(tab) {
@@ -203,20 +212,7 @@ export default {
       alert("已加入購物車");
     },
   },
-  watch: {
-    search(newSearch, oldSearch) {
-      // console.log("new:" + newSearch);
-      // console.log("old:" + oldSearch);
-      // 可以調用 methods
-    },
-    respondData(newData) {
-      // console.log(newData.length);
-    },
-    // 如果畫面一開始要監聽要設成 true
-    // immediate: true,
-    // 如果要監聽陣列或物件要設稱 true
-    // deep: true,
-  },
+  watch: {},
   mounted() {},
 };
 </script>

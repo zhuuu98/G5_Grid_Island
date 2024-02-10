@@ -3,9 +3,9 @@
         <PageTitle :pageTitle="'現場預約'" />
         <div class="breadcrumb">
             <Breadcrumb separator="<b class='breadcrumb-separator'>></b>">
-            <BreadcrumbItem to="/">首頁</BreadcrumbItem>
-            <BreadcrumbItem to="/prebook">預約須知</BreadcrumbItem>
-            <BreadcrumbItem>現場預約</BreadcrumbItem>
+                <BreadcrumbItem to="/">首頁</BreadcrumbItem>
+                <BreadcrumbItem to="/prebook">預約須知</BreadcrumbItem>
+                <BreadcrumbItem>現場預約</BreadcrumbItem>
             </Breadcrumb>
         </div>
         <div class="book_notice">
@@ -40,9 +40,7 @@
                         blank: !num,
                         today: isCurrentMonth && num && num == today.getDate()
                     }">
-                        <button v-if="num" 
-                        :disabled="isDisabled(num)"
-                        :current="selectedDate && selectedDate.toLocaleDateString() ==
+                        <button v-if="num" :disabled="isDisabled(num)" :current="selectedDate && selectedDate.toLocaleDateString() ==
                             new Date(selectedYear, selectedMonth, num).toLocaleDateString()
                             ? 'date' : false" @click.prevent="selectDay(num), tableAble()">
                             {{ num }}
@@ -58,7 +56,8 @@
                     <div class="book_options" v-for="table in tableType">
                         <input type="radio" name="table" :value="table.value" :id="table.typeId" :disabled="tableTypeStatus"
                             v-model="tableChosen" @input="timeAble" required>
-                        <label :for="table.typeId" class="disable_choose" :disabled="tableTypeStatus">{{ table.label }}</label>
+                        <label :for="table.typeId" class="disable_choose" :disabled="tableTypeStatus">{{ table.label
+                        }}</label>
                     </div>
                 </div>
             </div>
@@ -66,7 +65,7 @@
                 <h2>請選擇時段</h2>
                 <div class="book_time_option">
                     <div class="book_options" v-for="time in timePeriod">
-                        <input type="radio" name="time" :value="time.value" :id="time.timeId" :disabled="timeStatus"
+                        <input type="radio" name="time" :value="time.period" :id="time.timeId" :disabled="timeStatus"
                             v-model="timeChosen" required>
                         <label :for="time.timeId" :disabled="timeStatus">{{ time.period }}<br>{{ time.time }}</label>
                     </div>
@@ -102,6 +101,7 @@
     </div>
 </template>
 <script>
+import axios from "axios";
 import PageTitle from "../components/PageTitle.vue";
 export default {
     data() {
@@ -113,18 +113,19 @@ export default {
             // v-model綁定
             dateChosen: '',
             tableChosen: '',
+            tableName: '',
             timeChosen: '',
             count: 1,
             tableType: [{
-                value: '四人桌',
+                value: '1',
                 label: '4人桌',
                 typeId: 'type_four'
             }, {
-                value: '八人桌',
+                value: '2',
                 label: '8人桌',
                 typeId: 'type_eight'
             }, {
-                value: '十二人桌',
+                value: '3',
                 label: '12人桌',
                 typeId: 'type_twelve'
             }],
@@ -156,12 +157,18 @@ export default {
             selectedDate: null,
             dateDisabled: false,
             // 以上是日曆用
+            bookState: 1,
+            userData: {},
         }
     },
-    components:{
+    components: {
         PageTitle
     },
+    mounted() {
+        this.userData = JSON.parse(localStorage.getItem("userDataStr"))
+    },
     computed: {
+        // ...mapState(userStore, ['userData']),
         //以下是日曆用
         today() {
             return new Date();
@@ -173,9 +180,9 @@ export default {
             return this.selectedMonth == new Date().getMonth() && this.isCurrentYear;
         },
         isMaxMonth() {
-            if(this.daysInLastMonth - this.today.getDate() > 15){
+            if (this.daysInLastMonth - this.today.getDate() > 15) {
                 return this.selectedMonth == new Date().getMonth() && this.isCurrentYear;
-            }else{
+            } else {
                 return this.selectedMonth == new Date().getMonth() + 1 && this.isCurrentYear;
             }
         },
@@ -205,7 +212,6 @@ export default {
             } else {
                 this.count = 1
             }
-            console.log(this.count)
         },
         plusPer() {
             if (this.count < 12) {
@@ -221,11 +227,54 @@ export default {
             this.timeStatus = false
         },
         handleInput() {
+            // const bookFormData = new FormData();
+            // bookFormData.append('mem_id', this.userData.mem_id);
+            // bookFormData.append('book_date', this.dateChosen);
+            // bookFormData.append('book_time', this.timeChosen);
+            // bookFormData.append('book_people', this.count);
+            // bookFormData.append('tables_type', this.tableChosen);
+            // bookFormData.append('book_state', this.bookState);
+            // console.log(bookFormData)
+
+
             if (this.dateChosen == '' || this.tableChosen == '' || this.timeChosen == '') {
                 this.alertContent.push('請填寫完整預訂資訊') 
                 this.showAlert = true;
             } else {
-                this.alertContent.push(`預約成功！以下是您的預約資訊`, `選擇日期：${this.dateChosen}`, `選擇桌型：${this.tableChosen}`, `選擇時段：${this.timeChosen}`, `預定人數：${this.count}人`)
+                //向後端傳送資料
+                axios({
+                    method: 'post',
+                    url: `${import.meta.env.VITE_API_URL}/writeBook.php`,
+                    // url: `${import.meta.env.VITE_API_URL}/123.php`,
+                    headers: { "Content-Type": "multipart/form-data" },
+                    data: {
+                        mem_id: this.userData.mem_id,
+                        book_date: this.dateChosen,
+                        book_time: this.timeChosen,
+                        book_people: this.count,
+                        tables_type: this.tableChosen,
+                        book_state: this.bookState
+                    }
+                })
+                .then((res) =>{
+                    console.log('修改成功')
+                })
+                .catch((err) => {
+                    console.log(err)}
+                );
+
+                let tableName = ''
+                switch (this.tableChosen){
+                    case '1' : 
+                        tableName = '四人桌';
+                        break;
+                    case '2' : 
+                        tableName = '八人桌'
+                        break;
+                    case '3' : 
+                        tableName = '十二人桌'
+                }
+                this.alertContent.push(`預約成功！以下是您的預約資訊`, `選擇日期：${this.dateChosen}`, `選擇桌型：${tableName}`, `選擇時段：${this.timeChosen}`, `預定人數：${this.count}人`)
                 this.showAlert = true;
                 this.dateChosen = '';
                 this.tableChosen = '';
@@ -233,12 +282,12 @@ export default {
                 this.count = 1
             }
         },
-        closeAlert(){
-            if(this.alertContent.length<=1){
+        closeAlert() {
+            if (this.alertContent.length <= 1) {
                 this.showAlert = false;
                 this.alertContent = [];
                 document.body.classList.remove('body-overflow-hidden');
-            }else{
+            } else {
                 this.$router.push('/member') //跳回會員中心
             }
         },
@@ -272,12 +321,12 @@ export default {
         isDisabled(num) {
             let restDay = 15 - (this.daysInLastMonth - this.today.getDate())
             return (
-                (this.isCurrentMonth && num <= this.today.getDate())||(this.isCurrentMonth && num > this.today.getDate()+15)
+                (this.isCurrentMonth && num <= this.today.getDate()) || (this.isCurrentMonth && num > this.today.getDate() + 15)
                 || (!this.isCurrentMonth && num > restDay)
-                );
+            );
         },
         // 以上是日曆用
-    }
+}
 }
 </script>
 <style lang="scss"></style>

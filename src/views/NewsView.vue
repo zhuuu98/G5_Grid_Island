@@ -27,42 +27,24 @@
         </div>
       </div>
       <div class="cardList">
-        <!-- <NewsCard
-          v-for="(item, index) in respondData"
-          :key="item.news_id"
-          :newsTitle="item.news_title"
-          :newsDate="item.news_date"
-          :imgUrl="`https://tibamef2e.com/chd103/g1/image/news/${item.news_img}`"
-          :newsId="item.news_id"
-          :class="{ noneShow: noneShow }"
-        />
 
-        <NewsRow
-          v-for="(item, index) in respondData"
-          :key="item.news_id"
-          :newsTitle="item.news_title"
-          :newsDate="item.news_date"
-          :imgUrl="`https://tibamef2e.com/chd103/g1/image/news/${item.news_img}`"
-          :newsId="item.news_id"
-          :newsContent="item.news_content"
-          :class="{ noneShow: !noneShow }"
-        /> -->
         <NewsCard
           v-for="(item, index) in newsData"
           :key="item.news_id"
           :newsTitle="item.news_title"
           :newsDate="item.news_date"
-          :imgUrl="`https://tibamef2e.com/chd104/g5/php/images/${item.news_image}`"
+          :imgUrl="`https://tibamef2e.com/chd104/g5/image/news/${item.news_image}`"
           :newsId="item.news_id"
           :newsContent="item.news_content"
           :class="{ noneShow: noneShow }"
         />
+        
         <NewsRow
           v-for="(item, index) in newsData"
           :key="item.news_id"
           :newsTitle="item.news_title"
           :newsDate="item.news_date"
-          :imgUrl="`https://tibamef2e.com/chd104/g5/php/images/${item.news_image}`"
+          :imgUrl="`https://tibamef2e.com/chd104/g5/image/news/${item.news_image}`"
           :newsId="item.news_id"
           :newsContent="item.news_content"
           :class="{ noneShow: !noneShow }"
@@ -95,23 +77,13 @@ export default {
   },
   computed: {
     loading() {
-      // return this.newsData.length == 0;
-      return this.respondData.length == 0;
+      return this.newsData.length == 0;
     },
   },
   created() {
-    this.axiosGetData();
     this.fetchNews();
   },
   methods: {
-    axiosGetData() {
-      axios
-        .get("https://tibamef2e.com/chd103/g1/phps/news_fetch.php")
-        .then((res) => {
-          console.log(res.data);
-          this.respondData = res.data;
-        });
-    },
     addListClassName() {
       this.noneShow = true;
     },
@@ -119,13 +91,19 @@ export default {
       this.noneShow = false;
     },
     fetchNews() {
+      let url = `${import.meta.env.VITE_API_URL}/getNews.php`;
+      console.log(`${import.meta.env.VITE_API_URL}/getNews.php`);
       axios
-        .post(`${import.meta.env.VITE_API_URL}/getNews.php`, {})
+        .get(`${import.meta.env.VITE_API_URL}/getNews.php`, {})
         .then(res => {
           console.log(res.data.news);
           this.newsData = res.data.news;
         })
         .catch(error => console.error('發生錯誤:',error))
+    },
+    getNewsURL(path) {
+      return new URL(`${import.meta.env.VITE_API_URL}/${path}`);
+      console.log(e);
     }
   },
   mounted() {},

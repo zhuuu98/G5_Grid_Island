@@ -52,7 +52,7 @@
 		<!-- 所有商品 -->
 		<div class="index_products">
 		  <div class="index_row">
-			<h2>所有商品</h2>
+			<h1 data-stroke="所有商品">所有商品</h1>
 			<!-- 寫這邊 -->
 			<div class="prodBackground">
 			  <div class="prodBreif">
@@ -150,7 +150,7 @@
 			  </div>
 			</div>
 			<div class="prodBtn">
-			  <button class="btn_lg" @click="toProduct">所有商品666</button>
+			  <button class="btn_lg" @click="toProduct">所有商品</button>
 			</div>
 		  </div>
 		</div>
@@ -163,11 +163,22 @@
 		  <img src="/images/home/home_ocean_1.svg" alt="home_ocean_1" />
 		</div>
   
+		<!-- Griddy造型屋 -->
+		<div id="griddystyle-container">
+			<h1 data-stroke="Griddy 造型屋">Griddy 造型屋</h1>
+			<div id="griddystyle-contentbox">
+
+			</div>
+			<div id="griddystyle-btnbox">
+				<button class="griddystyle-btn" @click="toProduct">設計Griddy！</button>
+			</div>
+		</div>
+
 		<!-- 服務項目 -->
 		<div class="index_service">
 		  <div class="index_row container">
 			<!-- 寫這邊 -->
-			<h2>服務項目</h2>
+			<h1 data-stroke="服務項目">服務項目</h1>
 			<div class="serviceMarqueeContent">
 			  <div class="marqueePic">
 				<img
@@ -253,7 +264,7 @@
 		<div class="index_reserve">
 		  <div class="index_row container">
 			<!-- 寫這邊 -->
-			<h2>預約方式</h2>
+			<h1 data-stroke="預約方式">預約方式</h1>
 			<div class="reserveInfo row">
 			  <div class="reserveContent col-6 col-T-10 col-PC-10">
 				<!-- <img v-for="num in 3" :src="getImageUrl(`home/reserveInfo_${num}.png`)" alt="預約方式"> -->
@@ -287,7 +298,7 @@
 		<!-- 最新消息 -->
 		<div class="index_news">
 		  <div class="index_row">
-			<h2 class="h2">最新消息</h2>
+			<h1 data-stroke="最新消息">最新消息</h1>
 			<div class="news_card_content">
 			  <NewsCard
 				v-for="(item, index) in latestData"
@@ -319,7 +330,7 @@
 		<div class="index_about">
 		  <div class="index_row">
 			<!-- 寫這邊 -->
-			<h2>Grid Island</h2>
+			<h1 data-stroke="Grid Island">Grid Island</h1>
 			<!-- 中間圖片的外框 -->
 			<div class="aboutContent">
 			  <!-- 桌機板的文字 -->

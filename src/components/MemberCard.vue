@@ -53,6 +53,11 @@
                     this.isChoosedBookData_PC = !this.isChoosedBookData_PC
                     this.$emit("bookInfo")
                     break;
+                case 5: //登出
+                    localStorage.removeItem('userToken')
+                    localStorage.removeItem('userDataStr')
+                    this.$router.push('/')
+                    break;
                 }
             },
             backToMemIndex(){//點會員名稱返回會員中心首頁

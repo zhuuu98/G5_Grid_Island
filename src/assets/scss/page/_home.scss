@@ -9,10 +9,6 @@
   }
 }
 main {
-  //banner
-  
-
-  // header + 波浪圖
 
   //跑馬燈
   .cuppon {
@@ -81,11 +77,8 @@ main {
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        h2 {
-          font-size: 48px;
-          font-family: "Zen Maru Gothic";
-          -webkit-text-stroke: 1px $white-1;
-          color: $black;
+        h1 {
+          @include textStrokeEffect($black, $white-1, 6px);
         }
         .prodBackground {
           background-color: $white-1;
@@ -230,6 +223,17 @@ main {
         transform: translateX(-100%);
       }
     }
+
+    //造型屋
+    #griddystyle-container {
+      background-color: $gray-1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      h1 {
+        @include textStrokeEffect($black, $white-1, 6px);
+      }
+    }
     // 服務項目
     .index_service {
       width: 100%;
@@ -242,11 +246,8 @@ main {
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        h2 {
-          font-size: 48px;
-          font-family: "Zen Maru Gothic";
-          -webkit-text-stroke: 1px $white-1;
-          color: $black;
+        h1 {
+          @include textStrokeEffect($black, $white-1, 6px);
         }
         span {
           font-size: 16px;
@@ -309,11 +310,8 @@ main {
         justify-content: center;
         gap: $XL-spacing;
       }
-      h2 {
-        font-size: 48px;
-        font-family: "Zen Maru Gothic";
-        -webkit-text-stroke: 1px $white-1;
-        color: $black;
+      h1 {
+        @include textStrokeEffect($black, $white-1, 6px);
       }
       .reserveInfo {
         justify-content: center;
@@ -359,43 +357,39 @@ main {
         position: absolute;
       }
       .reserveStep1 span {
-        left: 18%;
-        bottom: -5%;
-        @include T() {
-          left: 20%;
-          bottom: -4%;
-        }
-        @include PC() {
-          left: 25%;
-          bottom: -4%;
+        display: flex;
+        flex-direction: column;
+        transform: translateX(26px) translateY(-20px);      
+        @include T(){
+          transform: translateX(75px) translateY(-20px);      
         }
       }
 
       .reserveStep2 span {
         // width: 290px;
-        left: 4%;
-        bottom: -5%;
-        @include T() {
-          left: 5%;
-          bottom: -4%;
-        }
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: column;
+        justify-content: center;
+        transform: translateX(26px) translateY(-20px);
+        width: 100%;
+        max-width: 150px;
         @include PC() {
-          left: 15%;
-          bottom: -4%;
+          max-width: 250px;
         }
-      }
 
+      }
       .reserveStep3 span {
         // width: 290px;
-        left: 5%;
-        bottom: -5%;
-        @include T() {
-          right: -4%;
-          bottom: -4%;
-        }
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: column;
+        justify-content: center;
+        transform: translateX(26px) translateY(-20px);
+        width: 100%;
+        max-width: 150px;
         @include PC() {
-          left: 16%;
-          bottom: -4%;
+          max-width: 250px;
         }
       }
     }
@@ -415,12 +409,8 @@ main {
           max-width: 1140px;
         }
       }
-      .h2 {
-        font-size: 48px;
-        font-family: "Zen Maru Gothic";
-        -webkit-text-stroke: 1px $white-1;
-        color: $black;
-        text-align: center;
+      h1 {
+        @include textStrokeEffect($black, $white-1, 6px);
       }
       .news_card_content {
         display: flex;
@@ -490,13 +480,8 @@ main {
           max-width: 1140px;
         }
       }
-      h2 {
-        font-size: 48px;
-        font-family: 'Zen Maru Gothic', serif;
-        -webkit-text-stroke: 1px $white-1;
-        color: $black;
-        text-align: center;
-        font-weight: bold;
+      h1 {
+        @include textStrokeEffect($black, $white-1, 6px);
       }
       .aboutContent {
         width: 100%;
