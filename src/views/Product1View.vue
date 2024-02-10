@@ -92,7 +92,6 @@
             v-model="search"
             placeholder="請輸入關鍵字"
           />
-          <button @click="handleSearch" class="searchBtn">搜尋</button>
         </div>
         <div class="innerSearch">
           <button class="searchBtn catBtn" @click="catExpand">
@@ -128,6 +127,7 @@
                         :name="item"
                         :id="item"
                         :ref="item"
+                        @change="handleCheckBoxValue"
                       />
                       <label :for="item">{{ item }}</label>
                     </div>
@@ -151,6 +151,7 @@
                         :name="item"
                         :id="item"
                         :ref="item"
+                        @change="handleCheckBoxValue"
                       />
                       <label :for="item">{{ item }}</label>
                     </div>
@@ -174,6 +175,7 @@
                         :name="item"
                         :id="item"
                         :ref="item"
+                        @change="handleCheckBoxValue"
                       />
                       <label :for="item">{{ item }}</label>
                     </div>
@@ -181,7 +183,7 @@
                 </transition>
               </div>
             </div>
-            <div class="enterBtn">
+            <div class="enterBtn" @click="handleFilter">
               <p>送出</p>
             </div>
           </div>
@@ -280,6 +282,7 @@ export default {
       difficulty: false,
       itemsPerPage: 6,
       currentPage: 1,
+      checkboxValue: [],
     };
   },
   components: {
@@ -403,6 +406,7 @@ export default {
           });
         }
       });
+      this.checkboxValue = [];
     },
     changePage(page) {
       this.currentPage = page;
@@ -436,6 +440,32 @@ export default {
           this.prodResData = res.data.products;
           this.prodDisData = res.data.products;
         });
+    },
+    // 將選取標籤放入陣列裡
+    handleCheckBoxValue(e) {
+      if (e.target.checked) {
+        this.checkboxValue.push(e.target.name);
+        console.log(this.checkboxValue);
+      } else {
+        const valueIndex = this.checkboxValue.indexOf(e.target.name);
+        if (valueIndex != -1) {
+          this.checkboxValue.splice(valueIndex, 1);
+        }
+      }
+    },
+    // 判斷選取標籤陣列是否與商品標籤相同
+    handleFilter() {
+      if (this.checkboxValue.length > 0) {
+        this.prodDisData = this.prodResData.filter((item) => {
+          return this.checkboxValue.some((value) => {
+            return item.tags.includes(value);
+          });
+        });
+        this.currentPage = 1;
+      } else {
+        this.prodDisData = this.prodResData;
+        this.currentPage = 1;
+      }
     },
   },
   watch: {
