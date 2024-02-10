@@ -29,7 +29,7 @@
 </template>
 
 <script>
-import apiInstance from '../stores/auth'
+import apiInstance from '../plugins/auth'
 export default {
     data() {
         return {

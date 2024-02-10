@@ -193,11 +193,9 @@ router.beforeEach(async (to) => {
     document.title = to.meta.title;
   }
   if (to.meta.requiresAuth && !isAuthenticated()) {
-    // 此路由需要授权，请检查是否已登录
-    // 如果没有，则重定向到登录页面
     return { name: "login", query: { redirect: to.fullPath } };
   }
-  if ((isAuthenticated() && to.name == "login") || to.name == "signup") {
+  if (isAuthenticated() && ((to.name == "login") || to.name == "signup")) {
     return { name: "member" };
   }
 });
