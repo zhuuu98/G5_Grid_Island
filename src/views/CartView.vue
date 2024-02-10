@@ -75,9 +75,9 @@
                   @input="discountCodeCheckMethod()"
                 />
               </div>
-              <div class="discountCodeBtn">
+              <!-- <div class="discountCodeBtn">
                 <button class="searchBtn">使用折扣碼</button>
-              </div>
+              </div> -->
             </div>
           </div>
           <div class="deliveryMethod">
@@ -193,6 +193,7 @@ export default {
       recProduct: [],
       showWarning: false,
       promoCodeRecord: [],
+      promoCodeList: [],
     };
   },
   components: {
@@ -207,6 +208,7 @@ export default {
       "deliveryAmount",
       "discountAmount",
       "totalPrice",
+      ,
     ]),
     loading() {
       return this.respondData.length == 0;
@@ -217,6 +219,7 @@ export default {
     this.getLocalCartData();
     this.getDelDiscLocal();
     this.fetchPromoRecord();
+    this.fetchPromoCode();
   },
   methods: {
     ...mapActions(cartStore, [
@@ -226,6 +229,7 @@ export default {
       "increaseFromCart",
       "itemDelFormCart",
       "getLocalCartData",
+      "setPromoData",
     ]),
     axiosGetData() {
       axios
@@ -258,10 +262,21 @@ export default {
     discountCodeCheckMethod() {
       const token = localStorage["userToken"];
       if (token) {
-        if (true) {
+        const userId = JSON.parse(localStorage["userDataStr"]).mem_id;
+        const promoId = this.promoIdCheck();
+        if (promoId) {
+          const used = this.promoCodeRecord.some((record) => {
+            return record.mem_id == userId && record.promo_id == promoId;
+          });
+          if (used) {
+            alert("你已經用過此折扣碼");
+          } else {
+            localStorage["discCode"] = this.discountCode;
+            this.discountCodeCheck(this.discountCode);
+          }
+        } else {
           this.discountCodeCheck(this.discountCode);
           localStorage["discCode"] = this.discountCode;
-        } else {
         }
       } else {
         alert("請先登入");
@@ -294,9 +309,37 @@ export default {
       axios
         .post(`${import.meta.env.VITE_API_URL}/getPromoRecord.php`)
         .then((res) => {
-          console.log(res.data.promoRecords);
           this.promoCodeRecord = res.data.promoRecords;
         });
+    },
+    fetchPromoCode() {
+      axios
+        .post(`${import.meta.env.VITE_API_URL}/getPromoCode.php`, {})
+        .then((res) => {
+          this.promoCodeList = res.data.promos;
+          this.setPiniaPromoData(res.data.promos);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    },
+    promoIdCheck() {
+      const promoCode = this.discountCode;
+      if (promoCode) {
+        const promos = this.promoCodeList.find((item) => {
+          return item.promo_code == promoCode;
+        });
+        if (promos) {
+          return promos.promo_id;
+        } else {
+          return "";
+        }
+      } else {
+        return "";
+      }
+    },
+    setPiniaPromoData(data) {
+      this.setPromoData(data);
     },
   },
   mounted() {},

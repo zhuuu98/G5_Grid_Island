@@ -95,7 +95,6 @@ export default {
             document.body.classList.remove('body-overflow-hidden');
         },
         register() {
-            console.log("11");
             if (this.au4a83 !== this.au4a83again) {
                 alert('請確認密碼')
 

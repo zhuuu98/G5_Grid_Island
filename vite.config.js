@@ -20,7 +20,9 @@ export default defineConfig({
     // host: '192.168.5.136'
     // host: '10.1.19.8', //劉書院的TibaMe_Guest
     // host: '192.168.0.204' //劉書院MAC的IP
-    // host: '192.168.0.204' //劉書院家的IP
+    // host: '192.168.0.204', //劉書院家的IP
+    // host: '172.20.10.8' //劉書手機熱點的IP
+    // host: '192.168.1.116', //劉書院的貓的IP
     proxy: {
       // 带选项写法：http://localhost:5173/api/bar.php -> https://tibamef2e.com/cgd103/g1/api/bar.php
       // '/api': {

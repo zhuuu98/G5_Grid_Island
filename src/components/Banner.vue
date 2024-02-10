@@ -3,7 +3,7 @@
         <div id="banner-imagebox">
             <img :src="island" id="island-image" />
             <div id="treeTag" class="itemTag">
-                <p>會員中心</p>
+                <span>會員中心</span>
             </div>
             <router-link to="/member">
                 <img :src="islandTree" id="islandTree-image" @mouseenter="showTreeCard = true"
@@ -11,7 +11,7 @@
             </router-link>
 
             <div id="newsTag" class="itemTag">
-                <p>最新消息</p>
+                <span>最新消息</span>
             </div>
             <router-link to="/news">
                 <img :src="islandNews" id="islandNews-image" @mouseenter="showNewsCard = true"
@@ -21,25 +21,25 @@
             <img :src="islandBar" id="islandBar-image" />
 
             <div id="GamesTag" class="itemTag">
-                <p>所有商品</p>
+                <span>所有商品</span>
             </div>
             <router-link to="/product">
                 <img :src="islandGames" id="islandGames-image" @mouseenter="showGamesCard = true"
                     @mouseleave="showGamesCard = false" />
             </router-link>
             <div id="aboutTag" class="itemTag">
-                <p>關於我們</p>
+                <span>關於我們</span>
             </div>
             <img :src="islandRoof" id="islandRoof-image" />
             <div id="boardTag" class="itemTag">
-                <p>玩家社群</p>
+                <span>玩家社群</span>
             </div>
             <router-link to="/board">
                 <img :src="islandBoard" id="islandBoard-image" @mouseenter="showBoardCard = true"
                     @mouseleave="showBoardCard = false" />
             </router-link>
             <div id="bugTag" class="itemTag">
-                <p>Griddy<br>造型屋</p>
+                <span>Griddy<br>造型屋</span>
             </div>
             <router-link to="/griddy-style">
                 <img :src="islandBug" id="islandBug-image" @mouseenter="showBugCard = true"
@@ -49,14 +49,14 @@
             <img :src="islandBarup" id="islandBarup-image" />
 
             <div id="prebookTag" class="itemTag">
-                <p>場地預約</p>
+                <span>場地預約</span>
             </div>
             <router-link to="/book">
                 <img :src="islandPrebook" id="islandPrebook-image" @mouseenter="showPrebookCard = true"
                     @mouseleave="showPrebookCard = false" />
             </router-link>
             <div id="cartTag" class="itemTag">
-                <p>購物車</p>
+                <span>購物車</span>
             </div>
             <router-link to="/cart">
                 <img :src="islandCart" id="islandCart-image" @mouseenter="showCartCard = true"
@@ -73,42 +73,42 @@
             <!-- ============================================= -->
             <div id="banner-cardsbox">
                 <div v-if="showTreeCard" id="treeCard" class="showCard">
-                    <p class="card-title">會員中心</p>
+                    <span class="card-title">會員中心</span>
                     <div class="card-line"></div>
                     <p class="card-text">毛毛蟲之歸屬，於此粉墨衣裝、查看遊歷紀錄。</p>
                 </div>
                 <div v-if="showBoardCard" id="boardCard" class="showCard">
-                    <p class="card-title">玩家社群</p>
+                    <span class="card-title">玩家社群</span>
                     <div class="card-line"></div>
                     <p class="card-text">玩家交流之地，分享桌遊經驗，結織世界友誼。</p>
                 </div>
                 <div v-if="showNewsCard" id="newsCard" class="showCard">
-                    <p class="card-title">最新消息</p>
+                    <span class="card-title">最新消息</span>
                     <div class="card-line"></div>
                     <p class="card-text">板上新蹤，於此發掘格線島之近況與盛事。</p>
                 </div>
                 <div v-if="showCartCard" id="cartCard" class="showCard">
-                    <p class="card-title">購物車</p>
+                    <span class="card-title">購物車</span>
                     <div class="card-line"></div>
                     <p class="card-text">車中積載，點金訂物，妙趣橫生隨囊歸。</p>
                 </div>
                 <div v-if="showAboutCard" id="aboutCard" class="showCard">
-                    <p class="card-title">關於我們</p>
+                    <span class="card-title">關於我們</span>
                     <div class="card-line"></div>
                     <p class="card-text">格間交織於此島，譜寫桌遊新篇章。</p>
                 </div>
                 <div v-if="showGamesCard" id="gamesCard" class="showCard">
-                    <p class="card-title">所有商品</p>
+                    <span class="card-title">所有商品</span>
                     <div class="card-line"></div>
                     <p class="card-text">櫃中珍藏匯聚天下桌遊，於此揀選，尋心之所向。</p>
                 </div>
                 <div v-if="showBugCard" id="bugCard" class="showCard">
-                    <p class="card-title">Griddy造型屋</p>
+                    <span class="card-title">Griddy造型屋</span>
                     <div class="card-line"></div>
                     <p class="card-text">櫃中珍藏匯聚天下桌遊，於此揀選，尋心之所向。</p>
                 </div>
                 <div v-if="showPrebookCard" id="prebookCard" class="showCard">
-                    <p class="card-title">預約場地</p>
+                    <span class="card-title">預約場地</span>
                     <div class="card-line"></div>
                     <p class="card-text">墨書登記，備以預約遊戲之地，選擇良辰與桌戲。</p>
                 </div>
@@ -116,8 +116,8 @@
         </div>
 
         <div id="whiteWave-imagebox">
-            <img src="../assets/images/wave/whiteWave.svg" id="whiteWave">
-            <!-- <whiteWave id="whiteWave"/> -->
+            <div v-html="whiteWaveSvg" id="whiteWave"></div>
+            <div id="whitebox"></div>
         </div>
     </div>
 </template>
@@ -168,7 +168,8 @@
                 showCartCard: false, //購物車，購物車
                 showBugCard: false, //造型屋，蟲
                 showNewsCard: false, //最新消息，佈告欄
-            };
+                whiteWaveSvg: whiteWave,
+            }
         },
         mounted() {
             // 为整个容器添加事件监听器
