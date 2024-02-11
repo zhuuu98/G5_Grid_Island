@@ -241,6 +241,7 @@ export default {
     this.axiosGetData();
     this.getLocalCartData();
     this.fetchPromoCode();
+    this.autoFillData();
   },
   methods: {
     ...mapActions(cartStore, ["getLocalCartData", "clearCartData"]),
@@ -360,6 +361,23 @@ export default {
         .catch((error) => {
           console.log(error);
         });
+    },
+    autoFillData() {
+      const userData = JSON.parse(localStorage["userDataStr"]);
+      if (userData) {
+        if (userData.mem_name) {
+          this.memName = userData.mem_name;
+        }
+        if (userData.mem_addr) {
+          this.memAddr = userData.mem_addr;
+        }
+        if (userData.mem_email) {
+          this.memEmail = userData.mem_email;
+        }
+        if (userData.mem_tel) {
+          this.memTel = userData.mem_tel;
+        }
+      }
     },
   },
 
