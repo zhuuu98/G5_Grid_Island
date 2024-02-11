@@ -243,7 +243,7 @@ header {
           .ham_hover{
             @include HeaderHover;
             position: absolute;
-            bottom: -35px;
+            bottom: -25px;
             right: 0px;
             display: none;
             z-index: -1;
