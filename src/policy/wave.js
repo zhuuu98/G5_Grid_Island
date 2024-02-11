@@ -5,3 +5,5 @@ export const whiteWave =`
 </svg>
 
 `;
+
+export const waveTurnProToGri =``;

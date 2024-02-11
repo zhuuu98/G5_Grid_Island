@@ -196,7 +196,9 @@ p {
     font-size: 16px !important;
   }
 }
-
+//這是h1用的白框線，引用時務必在結構中寫入
+//<h1 data-stroke="最新消息">最新消息</h1>
+//最新消息是範例，請改成當前文字
 @mixin textStrokeEffect($textColor, $strokeColor, $strokeWidth) {
   color: $textColor;
   position: relative;

@@ -105,7 +105,7 @@
                 <div v-if="showBugCard" id="bugCard" class="showCard">
                     <span class="card-title">Griddy造型屋</span>
                     <div class="card-line"></div>
-                    <p class="card-text">櫃中珍藏匯聚天下桌遊，於此揀選，尋心之所向。</p>
+                    <p class="card-text">於此匯聚個性，繪製風采，粉墨登場。</p>
                 </div>
                 <div v-if="showPrebookCard" id="prebookCard" class="showCard">
                     <span class="card-title">預約場地</span>
