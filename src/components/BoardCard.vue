@@ -15,7 +15,7 @@
           <p>{{ item.msg }}</p>
         </div>
         <div class="board_re_type">
-          <p>回覆留言</p>
+          <div class="reply_subtitle">回覆留言</div>
           <!-- <input type="text" placeholder="輸入回覆內容..."> -->
           <div class="board_re_input">
             <input type="text" placeholder="輸入回覆內容...">

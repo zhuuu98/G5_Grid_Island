@@ -56,9 +56,9 @@
       <div class="overlay" @click="light_box_close"></div>
       <div class="box">
         <form action="post" v-if="article_send_succ">
-          <p class="board_lb_title ">我要發文</p>
+          <h3 class="board_lb_title ">我要發文</h3>
           <div>
-            <p class="board_lb_subTitle">留言內容</p>
+            <!-- <p class="board_lb_subTitle">留言內容</p> -->
             <textarea name="" id="" cols="35" rows="10" placeholder="輸入文章內容..." @keyup="article_send"></textarea>
           </div>
           <div class="board_light_box_send">
@@ -86,7 +86,7 @@
       <div class="board_lb_re_box">
         <form action="" v-if="re_submit_show">
           <div class="board_lb_re_title">
-            <p>請問您要檢舉的項目是...</p>
+            <h4>請問您要檢舉的項目是...</h4>
           </div>
           <select id="re_option" v-model="selectedOption" @change="updateReTextVisibility">
             <option v-for="(report, index) in reports" :key="index" :value="report.value" :disabled="report.disabled"
@@ -105,7 +105,7 @@
           <button class="btn_sm_1" v-else @click.prevent="re_submit">送出</button>
         </form>
         <div v-else>
-          <h3>已成功檢舉，謝謝您！</h3>
+          <h4>已成功檢舉，謝謝您！</h4>
           <button @click="light_box_re_close" class="btn_sm_1">關閉</button>
         </div>
         <div class="board_close_light_box" @click="light_box_re_close">
@@ -425,7 +425,7 @@ export default {
         this.re_submit_disable = true;
       }
     },
-  
+
     //送出檢舉彈窗
     re_submit() {
       this.re_submit_show = false;
