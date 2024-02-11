@@ -54,26 +54,26 @@
             </li>
 
             <RouterLink to="/" class="ham_logo">
-              <img src="../assets/images/header/gdidlogobox.svg" alt="">
+              <img src="../assets/images/header/gdidlogobox.svg" alt="gdidlogobox">
             </RouterLink>
 
             <!-- 選單項目 -->
             <div class="ham_links">
               <RouterLink to="/prebook" class="ham_link ham_prebook">預約場地</RouterLink>
-              <p class="ham_hover_prebook ham_hover">Reservation</p>
+              <div class="ham_hover_prebook ham_hover">Reservation</div>
 
               <RouterLink to="/product" class="ham_link ham_products">所有商品</RouterLink>
-              <p class="ham_hover_products ham_hover">Products</p>
+              <div class="ham_hover_products ham_hover">Products</div>
 
               <RouterLink to="/news" class="ham_link ham_news">最新消息</RouterLink>
-              <p class="ham_hover_news ham_hover">NEWS</p>
+              <div class="ham_hover_news ham_hover">NEWS</div>
 
               <!-- 玩家社群，含子階層 -->
               <div class="ham_comm" @click="toggleSubMenuOpen">
                 <div class="ham_link ham_comm">玩家社群
                   <font-awesome-icon :icon="['fas', 'angle-right']" class="ham_angle_right" />
                 </div>
-                <p class="ham_hover_comm ham_hover">Community</p>
+                <div class="ham_hover_comm ham_hover">Community</div>
 
                 <ul class="submenu" v-show="subMenuOpen">
                   <li class="ham_sub_bug">
@@ -90,79 +90,72 @@
                 </ul>
               </div>
               <RouterLink to="/about" class="ham_link ham_about">關於我們</RouterLink>
-              <p class="ham_hover_about ham_hover">About Us</p>
+              <div class="ham_hover_about ham_hover">About Us</div>
 
               <RouterLink to="/cart" class="ham_link ham_cart">購物車</RouterLink>
-              <p class="ham_hover_cart ham_hover">Cart</p>
+              <div class="ham_hover_cart ham_hover">Cart</div>
 
               <RouterLink to="/member" class="ham_link ham_member">會員中心</RouterLink>
-              <p class="ham_hover_member ham_hover">Member</p>
+              <div class="ham_hover_member ham_hover">Member</div>
             </div>
           </div>
         </transition>
-
-
-
       </div>
     </div>
   </header>
 </template>
 
 <script>
-  import { RouterLink } from "vue-router";
-  import { computed } from 'vue';
-  import { useRoute } from 'vue-router';
-  export default {
-    components: {
-      RouterLink,
-    },
-    data() {
-      return {
-        menuOpen: false, //漢堡開關
-        subMenuOpen: false, //玩家社群子階層
-        hamX: false,
-      };
-    },
-    computed: {
+import { RouterLink } from "vue-router";
+import { computed } from 'vue';
+import { useRoute } from 'vue-router';
+export default {
+  components: {
+    RouterLink,
+  },
+  data() {
+    return {
+      menuOpen: false, //漢堡開關
+      subMenuOpen: false, //玩家社群子階層
+      hamX: false,
+    };
+  },
+  computed: {
     headerClass() {
-      // const route = useRoute();
       return {
         'sticky-header': this.$route.path === '/' // 如果是首頁，添加 sticky-header
       };
     }
   },
-    methods: {
-      toggleMenu() {
-        // 切換 menuOpen 的值
-        this.menuOpen = !this.menuOpen;
-        // 如果 toggleMenu 為 true，同步將 subMenuOpen 設為 false
-        if (this.toggleMenu) {
-          this.subMenuOpen = false;
-        };
-
-        if (this.menuOpen) {
-          document.body.classList.add('body-overflow-hidden');
-        } else {
-          document.body.classList.remove('body-overflow-hidden');
-        }
-      },
-      toggleSubMenuOpen() {
-        this.subMenuOpen = !this.subMenuOpen;
-      },
-    },
-    mounted() {
-      this.$router.afterEach(() => {
-        this.menuOpen = false; // 關閉漢堡選單
-      });
-
-      // 在路由切換後執行的邏輯
-      this.$router.afterEach(() => {
-        // 關閉漢堡選單
-        this.menuOpen = false;
-        // 恢復卷軸
+  methods: {
+    toggleMenu() {
+      // 切換 menuOpen 的值
+      this.menuOpen = !this.menuOpen;
+      // 如果 toggleMenu 為 true，同步將 subMenuOpen 設為 false
+      if (this.toggleMenu) {
+        this.subMenuOpen = false;
+      };
+      if (this.menuOpen) {
+        document.body.classList.add('body-overflow-hidden');
+      } else {
         document.body.classList.remove('body-overflow-hidden');
-      });
-
+      }
     },
-  };
+    toggleSubMenuOpen() {
+      this.subMenuOpen = !this.subMenuOpen;
+    },
+  },
+  mounted() {
+    this.$router.afterEach(() => {
+      this.menuOpen = false; // 關閉漢堡選單
+    });
+    // 在路由切換後執行的邏輯
+    this.$router.afterEach(() => {
+      // 關閉漢堡選單
+      this.menuOpen = false;
+      // 恢復卷軸
+      document.body.classList.remove('body-overflow-hidden');
+    });
+  },
+};
 </script>

@@ -60,6 +60,15 @@
     font-size: 16px;
   }
 }
+
+@mixin HeaderHover() {
+  font-size: 220px;
+  font-family: Zen Maru Gothic;
+  font-weight: 900;
+  letter-spacing: .2rem;
+  opacity: .3;
+}
+
 //btn basic
 @mixin btnBasic() {
   cursor: pointer;

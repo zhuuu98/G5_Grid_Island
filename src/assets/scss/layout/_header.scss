@@ -8,7 +8,6 @@ header {
     flex-direction: row;
     justify-content: space-between;
     border-bottom: 1px solid $gray-2;
-
     .logo_box {
       display: flex;
       margin: 4px 0px 4px 5px;
@@ -58,7 +57,6 @@ header {
           }
         }
       }
-
       .ham_btn { // 漢堡按紐
         border: none;
         background-color: $transp;
@@ -75,7 +73,6 @@ header {
         @include PC(){
           // z-index: 1;
         }
-
         // 漢堡線
         .ham_btn_line1 {
           /* 初始樣式 */
@@ -86,7 +83,6 @@ header {
           height: 2px;
           border-radius: 5px;
         }
-        
         .ham_btn_line2 { // 漢堡按鈕中間的線
           /* 初始樣式 */
           opacity: 1;
@@ -96,7 +92,6 @@ header {
           height: 2px;
           border-radius: 5px;
         }
-        
         .ham_btn_line3 {
           /* 初始樣式 */
           transform: translateY(0) rotate(0deg);
@@ -106,7 +101,6 @@ header {
           height: 2px;
           border-radius: 5px;
         }
-        
         /* 按鈕激活狀態下的樣式 */
         .active-line1 {
           width: 21px;
@@ -115,12 +109,10 @@ header {
             transform: translateY(0) rotate(0deg);
           }
         }
-        
         .active-line2 {
           // opacity: 0;
           height: 0;
         }
-        
         .active-line3 {
           width: 21px;
           transform: translateY(-7.8px) rotate(-45deg);
@@ -128,13 +120,10 @@ header {
             transform: translateY(0) rotate(0deg);
           }
           }
-
-        
       }
     }
 
     //header_icons
-
     .ham_menu {
       position: relative;
       display: flex;
@@ -161,7 +150,6 @@ header {
       @include PC(){
         padding: 60px 80px;
       }
-
       // 選單內漢堡線
       .inside_ham_btn{
         // display: none;
@@ -175,7 +163,6 @@ header {
         @include PC(){
           right: 28px;
         }
-
         .ham_btn2{
           border: none;
           background-color: $transp;
@@ -188,7 +175,12 @@ header {
           cursor: pointer;
           z-index: 990;
           outline: none;
+          &:hover{
+            .ham_btn2_line1, .ham_btn2_line3{
+              box-shadow: rgba(14, 30, 37, 0.12) 0px 0px 2px 0px, rgba(14, 30, 37, 0.32) 0px 0px 4px 0px;
 
+            }
+          }
           .ham_btn2_line1 {
             transform: translateY(8px) rotate(45deg);
             background-color: $black;
@@ -196,7 +188,6 @@ header {
             height: 2px;
             border-radius: 5px;
           }
-          
           .ham_btn2_line3 {
             transform: translateY(-7.8px) rotate(-45deg);
             transition: transform 0.3s ease;
@@ -220,7 +211,6 @@ header {
         width: 100%;
         border: none;
         }
-        
       }
 
       .ham_links{
@@ -237,43 +227,36 @@ header {
             background-color: $green-1;
             font-weight: bold;
           }
-          
-          
         }
         .ham_cart{
           margin-top: 20px;
-
         }
         .ham_cart,.ham_member{
           color: $purple;
         }
         
-
         // hover效果在T和M消失
         .ham_hover_news,.ham_hover{
           display: none;
         }
         @include PC(){
           .ham_hover{
-            font-size: 220px;
-            opacity: .3;
-            font-weight: bold;
+            @include HeaderHover;
             position: absolute;
             bottom: -35px;
             right: 0px;
             display: none;
+            z-index: -1;
           }
             // prebook hover效果
             .ham_prebook{
               &:hover{
                 +.ham_hover_prebook{
                   display: block;
-                  z-index: -1;
                   color: $blue-1;
                 }
               }
             }
-          
           // news hover效果
           .ham_news{
             &:hover{
@@ -289,7 +272,6 @@ header {
               +.ham_hover_products{
                 display: block;
                 color: $green-1;
-
               }
             }
           }
@@ -302,7 +284,6 @@ header {
               }
             }
           }
-        
           // about hover效果
           .ham_about{
             &:hover{
@@ -332,8 +313,6 @@ header {
           }
         }
           
-          
-
         .ham_comm{
           display: flex;
           cursor: pointer;
@@ -343,15 +322,10 @@ header {
                 display: block;
                 color: $purple;
               }
-            .ham_comm{
-              background-color: $green-1;
-              font-weight: bold;
-            }
           }
           .submenu{
             display: flex;
             height: 30px;
-            // background-color: aquamarine;
             .ham_sub_bug{
               width: 70px;
               height: 16px;
@@ -359,14 +333,12 @@ header {
               img{
                 animation: gogo 1.3s ease-in-out infinite;
                 width: 46%;
-                // height: 100%;
               }
             }
             .ham_sub_comm{
               height: 35px;
               margin-left: 10px;
               a{
-                // background-color: #9e6fcd;
                 color: $purple;
                 font-size: 16px;
                 padding: 15px 0px;
@@ -385,22 +357,13 @@ header {
         }
       }
       
-
-
     }//ham_menu
-
-
-
-
   } //wrapper
-
-  
 } //header
 
 
 
 // 滑動動畫
-
 /* 滑入效果  */
 @keyframes slideInFromTop {
   from {
@@ -415,7 +378,6 @@ header {
 .ham_menu-enter {
   opacity: 0; /* 初始透明度為0 */
 }
-
 .ham_menu-enter-active {
   transition: opacity 0.6s ease-out, transform 0.3s cubic-bezier(0.68, -0.55, 0.27, 1.55); /* 設置淡入和從上方滑進來的動畫 */
   opacity: 1; /* 最終透明度為1 */
@@ -423,15 +385,12 @@ header {
 }
 
 /* 滑出效果 */
-
 .ham_menu-leave-active {
   transition: all .4s ease;
 }
-
 .ham_menu-leave-active {
   transform: translateY(-100%);
 }
-
 .ham_menu-leave {
   transform: translateY(0);
 }

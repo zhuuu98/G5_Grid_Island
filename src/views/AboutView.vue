@@ -1,10 +1,7 @@
 <template>
   <div class="about">
     <PageTitle :pageTitle="'關於我們'" />
-    <!-- <div class="container"> -->
       <div class="row">
-        <!-- <div class="col-PC-12 col-T-10 col-12"> -->
-
           
           <!-- 內容區 -->
           <!-- GridIsland簡介 -->
@@ -60,24 +57,24 @@
                     :arrow="false">
                     <!-- 輪播圖一 -->
                     <CarouselItem>
-                        <div class="about_demo-carousel">
-                          <img class="is_m" src="../assets/images/about/about_en_1_m.jpg" alt="en_1">
-                          <img class="is_d" src="../assets/images/about/about_en_1.jpg" alt="en_1">
-                        </div>
-                      </CarouselItem>
-                      <!-- 輪播圖二 -->
-                      <CarouselItem>
-                        <div class="about_demo-carousel">
-                          <img class="is_m" src="../assets/images/about/about_en_3_m.jpg" alt="en_3">
-                          <img class="is_d" src="../assets/images/about/about_en_3.jpg" alt="en_3">
-                        </div>
-                      </CarouselItem>
-                      <!-- 輪播圖三 -->
-                      <CarouselItem>
-                        <div class="about_demo-carousel">
-                          <img class="is_m" src="../assets/images/about/about_en_5_m.jpg" alt="en_5">
-                          <img class="is_d" src="../assets/images/about/about_en_5.jpg" alt="en_5">
-                        </div>
+                      <div class="about_demo-carousel">
+                        <img class="is_m" src="../assets/images/about/about_en_1_m.jpg" alt="en_1">
+                        <img class="is_d" src="../assets/images/about/about_en_1.jpg" alt="en_1">
+                      </div>
+                    </CarouselItem>
+                    <!-- 輪播圖二 -->
+                    <CarouselItem>
+                      <div class="about_demo-carousel">
+                        <img class="is_m" src="../assets/images/about/about_en_3_m.jpg" alt="en_3">
+                        <img class="is_d" src="../assets/images/about/about_en_3.jpg" alt="en_3">
+                      </div>
+                    </CarouselItem>
+                    <!-- 輪播圖三 -->
+                    <CarouselItem>
+                      <div class="about_demo-carousel">
+                        <img class="is_m" src="../assets/images/about/about_en_5_m.jpg" alt="en_5">
+                        <img class="is_d" src="../assets/images/about/about_en_5.jpg" alt="en_5">
+                      </div>
                     </CarouselItem>
                   </Carousel>
                 </div>
@@ -100,12 +97,9 @@
                       此外，如果你計畫舉辦派對或特殊活動，我們也能提供場地包場服務，打造專屬於你的派對體驗。
                     </p>
                   </div>
-                
-                  <!-- <div class="about_re_btn"> -->
                   <div class="btn_lg">
                     <RouterLink to="/prebook">立即預約</RouterLink>
                   </div>
-                
                 </div>
               </div>
             </div>
@@ -170,18 +164,10 @@
                 </div>
               </div>
             </div>
-
-
           </div>
-
-
-
         </div>
-      <!-- </div> -->
     </div>
-  <!-- </div> -->
 </template>
-
 
 <script>
 // import axios from "axios";
@@ -200,18 +186,12 @@ export default {
       }
     };
   },
-  computed: {
-    
-  },
   components: {
     PageTitle,
   },
-  created() {},
-  mounted() {},
-  methods: {},
 };
 </script>
 
 <style lang="scss">
-
+//
 </style>
