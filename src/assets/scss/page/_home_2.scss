@@ -1,0 +1,74 @@
+//測試中
+main {
+
+  .index2 {
+
+    .test-container {
+      color: #000;
+      background-color: #ccc;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 20px;
+      height: 500px;
+
+
+      .test-box {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        background-color: #fff2;
+        margin: 0 20%;
+        gap: 20px;
+
+        .test-contentbox {
+          display: flex;
+          gap: 20px;
+          justify-content: space-between;
+          background-color: #f9f9f9;
+          padding: 20px;
+          width: 80%; // 调整为适当的宽度以改善布局
+
+          img {
+            width: 100%; // 确保图片填充整个内容框
+            max-width: 300px; // 限制图片最大宽度
+          }
+
+          p {
+            // 为段落添加适当的样式，如有需要
+          }
+        }
+
+
+        button {
+          // 为按钮添加样式
+          padding: 0 20px;
+          border: none;
+          background-color: #007bff;
+          color: white;
+          cursor: pointer;
+          transition: background-color 0.3s;
+
+          &:hover {
+            background-color: darken(#007bff, 10%);
+          }
+        }
+      }
+    }
+
+    #scroll-box0 {
+      background-color: #36a;
+    }
+
+    #scroll-box1 {
+      background-color: #63a;
+    }
+
+    #scroll-box2 {
+      background-color: #a36;
+    }
+    #scroll-bottom{
+      background-color: #aaa;
+    }
+  }
+}
