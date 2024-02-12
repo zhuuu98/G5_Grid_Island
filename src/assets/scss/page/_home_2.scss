@@ -3,46 +3,49 @@ main {
 
   .index2 {
 
+
     .test-container {
+      overflow: hidden;
+
       color: #000;
       background-color: #ccc;
       display: flex;
       flex-direction: column;
       align-items: center;
       gap: 20px;
-      height: 500px;
-
+      height: 48rem;
 
       .test-box {
         display: flex;
         flex-direction: column;
+        align-items: center;
         justify-content: center;
         background-color: #fff2;
-        margin: 0 20%;
+        margin: auto 20%;
         gap: 20px;
+        padding: 20px;
+        box-sizing: border-box;
 
         .test-contentbox {
           display: flex;
           gap: 20px;
           justify-content: space-between;
           background-color: #f9f9f9;
-          padding: 20px;
+          padding: 40px;
           width: 80%; // 调整为适当的宽度以改善布局
 
-          img {
-            width: 100%; // 确保图片填充整个内容框
-            max-width: 300px; // 限制图片最大宽度
-          }
+
 
           p {
-            // 为段落添加适当的样式，如有需要
+            width: calc(100%);
+            text-overflow: ellipsis;
           }
         }
 
 
         button {
           // 为按钮添加样式
-          padding: 0 20px;
+          padding: 10px 20px;
           border: none;
           background-color: #007bff;
           color: white;
@@ -56,19 +59,67 @@ main {
       }
     }
 
-    #scroll-box0 {
+    #test-container0 {
       background-color: #36a;
+
+      .waveBotton-imagebox {
+        width: 100%;
+        background-color: #fff;
+      }
+
     }
 
-    #scroll-box1 {
+    #test-container1 {
       background-color: #63a;
+
+      .waveTop-imagebox {
+        width: 100%;
+        background-color: #fff;
+      }
+
+      .waveBotton-imagebox {
+        width: 100%;
+        background-color: #fff;
+      }
     }
 
-    #scroll-box2 {
+    #test-container2 {
       background-color: #a36;
+
+      .waveTop-imagebox {
+        width: 100%;
+        background-color: #fff;
+      }
+
+      .waveBotton-imagebox {
+        width: 100%;
+        background-color: #fff;
+      }
     }
-    #scroll-bottom{
-      background-color: #aaa;
+
+    #test-container3 {
+      background-color: #6a3;
+
+      .waveTop-imagebox {
+        width: 100%;
+        background-color: #fff;
+      }
+
+      .waveBotton-imagebox {
+        width: 100%;
+        background-color: #fff;
+      }
     }
+
+    #test-container4 {
+      background-color: #3a6;
+
+      .waveTop-imagebox {
+        width: 100%;
+        background-color: #fff;
+      }
+
+    }
+
   }
 }
