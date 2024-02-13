@@ -68,29 +68,29 @@
                         </div>
                         <form action="" class="dataContent" method="post" >
                             <label for="memName">姓名</label>
-                            <input type="text" value="小J" id="memName" name="mem_name">
+                            <input type="text" :placeholder="memberData[0].mem_name" id="memName" name="mem_name">
                             
                             <label for="memNickname">暱稱</label>
-                            <input type="text" placeholder="請輸入暱稱" id="memNickname" name="mem_nickname"  value="啊人家家就笨壓">
+                            <input type="text" :placeholder="memberData[0].mem_nickname" id="memNickname" name="mem_nickname" >
                             <label for="memEmail">電子信箱</label>
-                                <input type="email" value="griddy@griddy.com" id="memEmail" name="mem_email" readonly class="email">
+                                <input type="email" :placeholder="memberData[0].mem_email" id="memEmail" name="mem_email" readonly class="email">
                             <label for="memTel">連絡電話</label>
-                            <input type="tel" placeholder="請輸入連絡電話" id="memTel" name="mem_tel" >
+                            <input type="tel" :placeholder="memberData[0].mem_tel" id="memTel" name="mem_tel" >
                             <div class="inputGender">
                                 <span>性別</span>
                                 <div class="genderRadio">
-                                    <input type="radio" id="female" name="mem_gender" value="0">
+                                    <input type="radio" id="female" name="mem_gender" value="0" :checked="memberData[0].mem_gender == 0">
                                     <label for="female">女性</label>
-                                    <input type="radio" id="male" name="mem_gender" value="1">
+                                    <input type="radio" id="male" name="mem_gender" value="1" :checked="memberData[0].mem_gender == 1">
                                     <label for="male">男性</label>
-                                    <input type="radio" id="they" name="mem_gender" value="2">
+                                    <input type="radio" id="they" name="mem_gender" value="2" :checked="memberData[0].mem_gender == 2">
                                     <label for="they">其他</label>
                                 </div>
                             </div>
                             <label for="memBirth">生日</label>
-                                <input type="date" placeholder="YYYY/MM/DD" id="memBirth" name="mem_birth" >
+                                <input type="date" :value="memberData[0].mem_birthday" id="memBirth" name="mem_birth" >
                             <label for="memAddr">收件地址</label>
-                                <input type="text" placeholder="請輸入收件地址" id="memAddr" name="mem_addr">
+                                <input type="text" :placeholder="memberData[0].mem_addr" id="memAddr" name="mem_addr">
                             <input type="submit" class="searchBtn" value="儲存設定">
                         </form>
                     </div>
@@ -179,12 +179,6 @@
                 </button>
             </div>
         </div>
-        <!--     //手機板選單被選取時，縮小的icon -->
-        <!-- <div class="mobileList " v-show="mobileListIsChoosed">
-                <button class="mobileListContent" v-for="(iconName, index) in mobileIcon" @click="handleButtonClick(index)">
-                    <img :src="getImageUrl(`member/memberAsideIcon_${index + 1}.svg`)">
-                </button>
-        </div> -->
 
         <!-- 手機板會員資料修改 -->
         <div class="mobileEditData" v-show="isChoosedEditData">
@@ -304,7 +298,8 @@ export default {
             memberData: [],
             userdata: {},
             
-            memID: ['啊人家家就笨壓'], //會員暱稱
+            bookInfo:[],
+
             bookDate: ['2024/02/02', '2023/12/24'], //預約資訊-日期
             selectedTime: {
                 timePeriod: ['上午', '下午', '下午', '晚上'],
