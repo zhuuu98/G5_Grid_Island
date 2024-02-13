@@ -16,7 +16,6 @@
   }
 }
 .about {
-
   &_row{
     width: 90%;
     margin: auto;
@@ -251,8 +250,9 @@
         }
       }
       .about_griddy_img {
+        transform: rotate(-15deg); /* 將圖片順時針旋轉10度 */
         width: 60%;
-        margin: 0px auto 40px auto;
+        margin: 20px auto 40px auto;
         position: relative;
         @media only screen and (max-width: 1023px) {
           @keyframes rotateAnimation {
@@ -282,7 +282,7 @@
           img {
             width: 100%;
             vertical-align: bottom;
-            box-shadow: 2px 0 10px rgba(0, 0, 0, 0.2); /* 側面陰影效果，根據需要調整陰影的顏色、模糊度等參數 */
+            // box-shadow: 2px 0 10px rgba(0, 0, 0, 0.2); /* 側面陰影效果，根據需要調整陰影的顏色、模糊度等參數 */
         }
 
         
