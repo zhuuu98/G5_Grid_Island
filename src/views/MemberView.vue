@@ -11,8 +11,11 @@
                 />
                 <!-- 右側主要內容 -->
                 <!-- 會員中心首頁 -->
-                <div class="memberContentIndex col-T-7 col-PC-7" v-for="id in memID" v-show="isChoosedIndex_PC">
-                    <h3 class="hello" >您好，{{ id }}，歡迎入島遊玩！</h3>
+                <div class="memberContentIndex col-T-7 col-PC-7"  v-show="isChoosedIndex_PC">
+                    <h3 class="hello" v-if="memdata[0].mem_nickname">
+                        您好，{{ memberData[0].mem_nickname }}，歡迎入島遊玩！</h3>
+                    <h3 class="hello" v-else="memdata[0].mem_nickname">
+                        您好，{{ memdata[0].mem_name }}，歡迎入島遊玩！</h3>
                     <!-- 訂單資訊 -->
                     <div class="memberOrder">
                         <div class="memberOrderTitle">
@@ -165,7 +168,7 @@
             </div>
         </div>
         <!-- 手機板選單 -->
-        <div class="memberMobile container" v-show="mobileListNotChoosed">
+        <div class="memberMobile container">
             <div class="mobileMember " v-for="items in memID">
                 <img src="../assets/images/member/member_photo.svg">
                 {{ items }}
@@ -292,14 +295,16 @@
 </template>
 
 <script>
+import axios from 'axios';
 import MemberCard from "../components/MemberCard.vue";
 import PageTitle from "../components/PageTitle.vue";
 export default {
     data() {
         return {
 
-            memData:[],
-
+            memberData: [],
+            userdata: {},
+            
             memID: ['啊人家家就笨壓'], //會員暱稱
             bookDate: ['2024/02/02', '2023/12/24'], //預約資訊-日期
             selectedTime: {
@@ -353,7 +358,27 @@ export default {
         PageTitle,
     },
     created() {
-	// this.fetchMem();
+            // 從localstorage中獲取mem_id
+            const userData = JSON.parse(localStorage.getItem("userDataStr"));
+            const memid = userData.mem_id;
+            // console.log(memid)
+            // 發送POST請求到後端的PHP程式
+            axios.post(`${import.meta.env.VITE_API_URL}/getMember.php`, {
+                mem_id:memid
+            })
+            .then(res => {
+            // 成功接收後端返回的資料
+            // console.log(res.data);
+                this.memberData = res.data;
+            })
+            .catch(error => console.error('發生錯誤:',error));
+
+
+        // this.fetchMem()
+        this.isLogin()
+    },
+    mounted(){
+        this.userData = JSON.parse(localStorage.getItem("userDataStr"))
     },
     methods: {
         isPastDate(date) {
@@ -425,16 +450,18 @@ export default {
             this.isChoosedBookData_PC= false;
             this.isChoosedIndex_PC=true;
         },
-        // fetchMem() {
-        //     axios
-        //     .post(`${import.meta.env.VITE_API_URL}/getMember.php`, {})
-        //     .then(res => {
-        //         console.log(res.data.mem); //這可以在f12看到自己的陣列，好用！
-        //         this.memData = res.data.mem;
-        //     })
-        //     .catch(error => console.error('發生錯誤:',error))
-        // },
-        
+        isLogin(){
+            const userToken = localStorage.getItem("userToken")
+            // return userToken? true: false
+            if(userToken){
+                console.log("已經登入")
+            }else{
+                console.log("你沒登入欸")
+            }
+        },
+        fetchMem(){
+        },
+
     },
 
 };
