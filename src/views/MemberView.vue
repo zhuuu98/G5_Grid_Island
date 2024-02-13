@@ -12,10 +12,9 @@
                 <!-- 右側主要內容 -->
                 <!-- 會員中心首頁 -->
                 <div class="memberContentIndex col-T-7 col-PC-7"  v-show="isChoosedIndex_PC">
-                    <h3 class="hello" v-if="memdata[0].mem_nickname">
+                    <h3 class="hello">
                         您好，{{ memberData[0].mem_nickname }}，歡迎入島遊玩！</h3>
-                    <h3 class="hello" v-else="memdata[0].mem_nickname">
-                        您好，{{ memdata[0].mem_name }}，歡迎入島遊玩！</h3>
+                    
                     <!-- 訂單資訊 -->
                     <div class="memberOrder">
                         <div class="memberOrderTitle">
