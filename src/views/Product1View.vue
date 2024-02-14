@@ -108,6 +108,7 @@
           </div>
         </div>
       </div>
+      <div class="gap"></div>
       <transition name="expandLg">
         <div class="productCat" v-show="productCat">
           <div class="productCatBackground">

@@ -191,6 +191,10 @@ body {
     background-color: $yellow;
     width: 100%;
     padding: $XL-spacing 0 $XL-spacing 0;
+    .gap {
+      width: 100%;
+      height: $M-spacing;
+    }
     .productTitle {
       display: flex;
       gap: 20px;
@@ -205,7 +209,7 @@ body {
     .expandLg-enter-active,
     .expandLg-leave-active {
       transition: all 1s;
-      max-height: 350px;
+      max-height: 450px;
     }
     .expandLg-enter-from,
     .expandLg-leave-to {
