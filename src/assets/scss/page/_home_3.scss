@@ -12,7 +12,8 @@
 }
 
 main {
-
+  width: 100%;
+  overflow: hidden;
   //跑馬燈
   .cuppon {
     width: 100%;
@@ -75,24 +76,25 @@ main {
     width: 100%;
 
     // 所有商品
-    #indexContainer_products {
-      width: 100%;
-      padding: 5rem 0;
-      // background-color: $red;
-      background-color: #3bb1b9;
+    .indexContainer {
+      padding: 4rem 0 6rem 0;
 
       @include T(){
-        padding: 5rem 0 8rem 0;
+        padding: 4rem 0 8rem 0;
       }
       @include PC(){
-        padding: 6rem 0 12rem 0;
+        padding: 4rem 0 10rem 0;
       }
-
+    }
+    #indexContainer_products {
+      width: 100%;
+      background-color: #3bb1b9;
+      
       .index_row {
         color: $black;
         padding: 0;
         display: flex;
-        gap: $L-spacing;
+        gap: $M-spacing;
         flex-direction: column;
         justify-content: center;
         align-items: center;
@@ -103,9 +105,9 @@ main {
 
         .prodBackground {
           background-color: $white-1;
-          border: 4px solid $black;
+          border: 4.236px solid $black;
           border-radius: 28px;
-          padding: 5rem 0;
+          padding: 3rem 0;
           display: flex;
           flex-direction: column;
           gap: $M-spacing;
@@ -213,9 +215,10 @@ main {
           align-items: center;
           justify-content: center;
           background-color: $blue-1;
-          padding: 5rem 0;
+          padding: 3rem 0;
           border-radius: $PC-card-radius;
-          box-shadow: inset 0 0 0 4px #fff4;
+          box-shadow: inset 0 0 0 4.236px #fff4;
+          margin-bottom: 60px;
 
           @include PC() {
             width: 100%;
@@ -300,15 +303,17 @@ main {
       align-items: center;
       background-color: $gray-1;
       overflow: visible;
+      width: 100%;
 
       .wave-imagebox {
         width: 100%;
         position: relative;
         .wave {
-          width: 300%;
+          width: 240%;
           position: absolute;
-          bottom: calc(100% - 1px);
+          bottom: calc(100% + 4rem - 1px);
           z-index: 20;
+
           .pathLine {
             fill: $blue-2;
           }
@@ -319,19 +324,47 @@ main {
             width: 200%;
           }
           @include PC(){
-            width: 100%;
+            width: 120%;
           }
         }
+      }
+      .index_row {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: $L-spacing;
+
       }
     }
 
     // 服務項目
-    .index_service {
+    #indexContainer_service {
       width: 100%;
       // background-color: $blue-2;
       background-color: $orange-1;
-      padding: $XL-spacing 0;
+      .wave-imagebox {
+        width: 100%;
+        position: relative;
+        .wave {
+          width: 240%;
+          position: absolute;
+          bottom: calc(100% + 4rem - 1px);
+          z-index: 20;
 
+          .pathLine {
+            fill: $green-2;
+          }
+          .pathPan {
+            fill: $orange-1;
+          }
+          @include T(){
+            width: 200%;
+          }
+          @include PC(){
+            width: 120%;
+          }
+        }
+      }
       .index_row {
         display: flex;
         gap: $M-spacing;
@@ -348,7 +381,7 @@ main {
           letter-spacing: .5px;
           background-color: $green-1;
           padding: 10px $M-spacing;
-          border: 1px solid $black;
+          border: 1.618px solid $black;
           color: $black;
         }
       }
@@ -356,8 +389,8 @@ main {
       .serviceMarqueeContent {
         overflow: hidden;
         background-color: $white-1;
-        border: 3px solid $black;
-        border-radius: $S-button-radius;
+        border: 4.236px solid $black;
+        border-radius: 28px;
         padding: $XL-spacing 0;
         display: flex;
         // flex-direction: column;
@@ -398,9 +431,32 @@ main {
     }
 
     //預約方式
-    .index_reserve {
+    #indexContainer_reserve {
       background-color: $blue-1;
-      padding: $XL-spacing;
+      width: 100%;
+      .wave-imagebox {
+        width: 100%;
+        position: relative;
+        .wave {
+          width: 240%;
+          position: absolute;
+          bottom: calc(100% + 4rem - 1px);
+          z-index: 20;
+
+          .pathLine {
+            fill: $purple;
+          }
+          .pathPan {
+            fill: $blue-1;
+          }
+          @include T(){
+            width: 200%;
+          }
+          @include PC(){
+            width: 120%;
+          }
+        }
+      }
 
       .index_row {
         display: flex;
@@ -447,7 +503,7 @@ main {
       }
 
       span {
-        font-size: 16px;
+        @include text;
         letter-spacing: .5px;
         color: $black;
       }
@@ -459,7 +515,7 @@ main {
       [class*="reserveStep"]>span {
         background-color: $green-1;
         padding: $S-spacing $M-spacing;
-        border: 1px solid $blue-3;
+        border: 1.618px solid $black;
         // width: 200px;
         width: fit-content;
         text-align: center;
@@ -507,14 +563,33 @@ main {
         }
       }
     }
-
-    // Griddy造型屋
-    .index_griddy {}
-
     // 最新消息
-    .index_news {
+    #indexContainer_news {
       width: 100%;
       background-color: $orange-1;
+      .wave-imagebox {
+        width: 100%;
+        position: relative;
+        .wave {
+          width: 240%;
+          position: absolute;
+          bottom: calc(100% + 4rem - 1px);
+          z-index: 20;
+
+          .pathLine {
+            fill: $blue-2;
+          }
+          .pathPan {
+            fill: $orange-1;
+          }
+          @include T(){
+            width: 200%;
+          }
+          @include PC(){
+            width: 120%;
+          }
+        }
+      }
 
       .index_row {
         width: 100%;
@@ -575,7 +650,7 @@ main {
       }
 
       .news_button {
-        padding: $L-spacing 0 $XXL-spacing;
+        padding: $L-spacing 0 0;
       }
 
       button {
@@ -588,10 +663,33 @@ main {
     .index_insta {}
 
     // Grid Island 關於我們
-    .index_about {
+    #indexContainer_about {
       padding-bottom: 15%;
       width: 100%;
       background-color: $green-2;
+      .wave-imagebox {
+        width: 100%;
+        position: relative;
+        .wave {
+          width: 240%;
+          position: absolute;
+          bottom: calc(100% + 4rem - 1px);
+          z-index: 20;
+
+          .pathLine {
+            fill: $green-1;
+          }
+          .pathPan {
+            fill: $green-2;
+          }
+          @include T(){
+            width: 200%;
+          }
+          @include PC(){
+            width: 120%;
+          }
+        }
+      }
 
       .index_row {
         width: 80%;
@@ -617,7 +715,7 @@ main {
         background: $white-1 // url("/src/assets/images/home/homeAbout_BackgoundGrid.svg") no-repeat
           // left 0 bottom 140%/340%;
           url("/src/assets/images/home/Grid.svg") no-repeat center;
-        border: 3px solid $black;
+        border: 4.236px solid $black;
         display: flex;
         justify-content: center;
         align-items: center;

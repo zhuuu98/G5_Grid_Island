@@ -1,5 +1,5 @@
 <template>
-	<main>
+	<main id="scroll-zone" data-scroll>
 		<bannerComponent />
 
 		<MainHeader />
@@ -49,7 +49,7 @@
 		</div>
 
 		<!-- ⬇ 各個區塊 ⬇ -->
-		<div class="index" id="scroll-zone" data-scroll>
+		<div class="index" >
 			<!-- 所有商品 -->
 			<div id="indexContainer_products" class="indexContainer">
 				<div class="index_row">
@@ -170,66 +170,71 @@
 					<div id="griddystyle-contentbox">
 
 					</div>
-					<div id="griddystyle-btnbox">
-						<button class="griddystyle-btn" @click="toProduct">設計Griddy！</button>
-					</div>
+				</div>
+				<div id="griddystyle-btnbox">
+					<button class="btn_lg" @click="griddy-style">設計Griddy！</button>
 				</div>
 			</div>
 
 			<!-- 服務項目 -->
-			<div class="index_service">
-				<div class="index_row container">
-					<!-- 寫這邊 -->
+			<!-- <div class="index_service"> -->
+			<div id="indexContainer_service" class="indexContainer">
+				<div class="wave-imagebox">
+					<div v-html="wave" class="wave"></div>
+				</div>
+				<div class="index_row">
 					<h1 data-stroke="服務項目">服務項目</h1>
 					<div class="serviceMarqueeContent">
-						<div class="marqueePic">
-							<img src="../assets/images/home/servicePic_1.svg" alt="首頁服務項目" />
-							<div class="marqueeText">
-								<span>桌遊販售</span>
+						
+							<div class="marqueePic">
+								<img src="../assets/images/home/servicePic_1.svg" alt="首頁服務項目" />
+								<div class="marqueeText">
+									<span>桌遊販售</span>
+								</div>
 							</div>
-						</div>
-						<div class="marqueePic">
-							<img src="../assets/images/home/servicePic_2.svg" alt="首頁服務項目" />
-							<div class="marqueeText">
-								<span>精釀啤酒與飲料</span>
+							<div class="marqueePic">
+								<img src="../assets/images/home/servicePic_2.svg" alt="首頁服務項目" />
+								<div class="marqueeText">
+									<span>精釀啤酒與飲料</span>
+								</div>
 							</div>
-						</div>
-						<div class="marqueePic">
-							<img src="../assets/images/home/servicePic_3.svg" alt="首頁服務項目" />
-							<div class="marqueeText">
-								<span>桌上遊戲遊玩與教學</span>
+							<div class="marqueePic">
+								<img src="../assets/images/home/servicePic_3.svg" alt="首頁服務項目" />
+								<div class="marqueeText">
+									<span>桌上遊戲遊玩與教學</span>
+								</div>
 							</div>
-						</div>
-						<div class="marqueePic">
-							<img src="../assets/images/home/servicePic_4.svg" alt="首頁服務項目" />
-							<div class="marqueeText">
-								<span>各式場地租借</span>
+							<div class="marqueePic">
+								<img src="../assets/images/home/servicePic_4.svg" alt="首頁服務項目" />
+								<div class="marqueeText">
+									<span>各式場地租借</span>
+								</div>
 							</div>
-						</div>
-						<div class="marqueePic">
-							<img src="../assets/images/home/servicePic_1.svg" alt="首頁服務項目" />
-							<div class="marqueeText">
-								<span>桌游販售</span>
+							<div class="marqueePic">
+								<img src="../assets/images/home/servicePic_1.svg" alt="首頁服務項目" />
+								<div class="marqueeText">
+									<span>桌遊販售</span>
+								</div>
 							</div>
-						</div>
-						<div class="marqueePic">
-							<img src="../assets/images/home/servicePic_2.svg" alt="首頁服務項目" />
-							<div class="marqueeText">
-								<span>桌游販售</span>
+							<div class="marqueePic">
+								<img src="../assets/images/home/servicePic_2.svg" alt="首頁服務項目" />
+								<div class="marqueeText">
+									<span>桌遊販售</span>
+								</div>
 							</div>
-						</div>
-						<div class="marqueePic">
-							<img src="../assets/images/home/servicePic_3.svg" alt="首頁服務項目" />
-							<div class="marqueeText">
-								<span>桌游遊玩教學</span>
+							<div class="marqueePic">
+								<img src="../assets/images/home/servicePic_3.svg" alt="首頁服務項目" />
+								<div class="marqueeText">
+									<span>桌遊遊玩教學</span>
+								</div>
 							</div>
-						</div>
-						<div class="marqueePic">
-							<img src="../assets/images/home/servicePic_4.svg" alt="首頁服務項目" />
-							<div class="marqueeText">
-								<span>各式場地租借</span>
+							<div class="marqueePic">
+								<img src="../assets/images/home/servicePic_4.svg" alt="首頁服務項目" />
+								<div class="marqueeText">
+									<span>各式場地租借</span>
+								</div>
 							</div>
-						</div>
+
 					</div>
 				</div>
 			</div>
@@ -237,9 +242,11 @@
 
 
 			<!-- 預約方式 -->
-			<div class="index_reserve">
-				<div class="index_row container">
-					<!-- 寫這邊 -->
+			<div id="indexContainer_reserve" class="indexContainer">
+				<div class="wave-imagebox">
+					<div v-html="wave" class="wave"></div>
+				</div>
+				<div class="index_row">
 					<h1 data-stroke="預約方式">預約方式</h1>
 					<div class="reserveInfo row">
 						<div class="reserveContent col-6 col-T-10 col-PC-10">
@@ -262,13 +269,11 @@
 				</div>
 			</div>
 
-
-			<div class="home_ocean">
-				<img src="/images/home/home_ocean_temp.svg" alt="home_ocean_temp" />
-			</div>
-
 			<!-- 最新消息 -->
-			<div class="index_news">
+			<div id="indexContainer_news" class="indexContainer">
+				<div class="wave-imagebox">
+					<div v-html="wave" class="wave"></div>
+				</div>
 				<div class="index_row">
 					<h1 data-stroke="最新消息">最新消息</h1>
 					<div class="news_card_content">
@@ -290,12 +295,13 @@
 			<!-- </div>
 		</div> -->
 
-			<div class="home_ocean">
-				<img src="/images/home/home_ocean_temp2.svg" alt="home_ocean_temp2" />
-			</div>
+
 
 			<!-- Grid Island 關於我們 -->
-			<div class="index_about">
+			<div id="indexContainer_about" class="indexContainer">
+				<div class="wave-imagebox">
+					<div v-html="wave" class="wave"></div>
+				</div>
 				<div class="index_row">
 					<!-- 寫這邊 -->
 					<h1 data-stroke="Grid Island">Grid Island</h1>
@@ -331,10 +337,10 @@
 	import { wave } from "../policy/wave.js";
 	// import LocomotiveScroll from 'locomotive-scroll';
 	// import 'locomotive-scroll/src/locomotive-scroll.scss';
-	// 	import { gsap } from "gsap";
-	// import { ScrollTrigger } from "gsap/ScrollTrigger";
+	import { gsap } from "gsap";
+	import { ScrollTrigger } from "gsap/ScrollTrigger";
 
-	// gsap.registerPlugin(ScrollTrigger);
+	gsap.registerPlugin(ScrollTrigger);
 
 	export default {
 		name: "HomeView",
@@ -369,9 +375,42 @@
 		},
 		mounted() {
 			// this.initLocomotiveScroll();
-			// this.initScrollAnimations();
+			this.initScrollAnimations();
 		},
 		methods: {
+			initScrollAnimations() {
+				gsap.utils.toArray(".indexContainer").forEach(container => {
+					ScrollTrigger.create({
+						trigger: container,
+						start: "top top",
+						pin: true,
+						pinSpacing: false,
+						// scroller: "#scroll-zone",
+					});
+				});
+			},
+			// initLocomotiveScroll() {
+			// 	const locomotiveScroll = new LocomotiveScroll({
+			// 		el: document.querySelector('#scroll-zone'),
+			// 		smooth: true,
+			// 		lerp: .08,
+			// 	});
+
+			// 	locomotiveScroll.on("scroll", ScrollTrigger.update);
+
+			// 	ScrollTrigger.scrollerProxy("#scroll-zone", {
+			// 		scrollTop(value) {
+			// 			return arguments.length ? locomotiveScroll.scrollTo(value, 0, 0) : locomotiveScroll.scroll.instance.scroll.y;
+			// 		},
+			// 		getBoundingClientRect() {
+			// 			return { top: 0, left: 0, width: window.innerWidth, height: window.innerHeight };
+			// 		},
+			// 		pinType: document.querySelector("#scroll-zone").style.transform ? "transform" : "fixed",
+			// 	});
+
+			// 	ScrollTrigger.addEventListener("refresh", () => locomotiveScroll.update());
+			// 	ScrollTrigger.refresh();
+			// },
 			preventDrag(event) {
 				// 检查事件的目标是否是您想阻止拖拽的图像
 				if (event.target.tagName === "IMG") {
