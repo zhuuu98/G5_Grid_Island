@@ -12,7 +12,7 @@
                     autocomplete="new-password">
                 <input type="password" v-model="au4a83again" placeholder="再次輸入密碼" minlength="8" maxlength="20"
                     autocomplete="new-password">
-                <input type="submit" value="註冊" class="signBtn" @click="register">
+                <input type="submit" value="註冊" class="signBtn" @click.prevent="register">
             </form>
         </div>
 
@@ -222,14 +222,12 @@ export default {
                 headers: { "Content-Type": "multipart/form-data" },
                 data: bodyFormData,
             }).then(res => {
-                // alert('aa');
-                // console.log("註冊成功");
-                // console.log(res);
+                console.log(res);
                 if (res && res.data && res.data.msg === 'success') {
                     alert("註冊成功，登入前往會員中心");
-                    setTimeout(() => {
-                        this.$router.replace('/login');
-                    }, 1000);
+                    this.$router.push('/login');
+                    // setTimeout(() => {
+                    // }, 1000);
                 } else {
                     alert('註冊失敗');
                 }
