@@ -36,6 +36,6 @@ export default {
     <MainHeader v-if="route.meta.showHeader !== false" />
     <component :is="Component" />
     <ChatBot />
-    <MainFooter v-if="route.meta.showFooter !== false" />
+    <MainFooter/>
   </RouterView>
 </template>

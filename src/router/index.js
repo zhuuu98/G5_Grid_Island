@@ -20,7 +20,7 @@ const router = createRouter({
       name: "home_3",
       meta: {
         title: "首頁測試",
-        showHeader: false, //打開這個即可不顯示header
+        // showHeader: false, //打開這個即可不顯示header
         customHeaderPosition: true, // 新增標記
       },
       component: () => import("../views/HomeView_3.vue"),

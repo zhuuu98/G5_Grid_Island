@@ -1,5 +1,5 @@
 <template>
-	<main id="scroll-zone" data-scroll>
+	<main id="scroll-zone" >
 		<bannerComponent />
 
 		<MainHeader />
