@@ -22,11 +22,11 @@
                             <p>訂單資訊</p>
                         </div>
                         <div class="memberOrderNotFin">
-                            <span>0</span>
+                            <span>{{ undoneOrder[0] }}</span>
                             <span>未完成</span>
                         </div>
                         <div class="memberOrderFinished">
-                            <span>0</span>
+                            <span>{{ completedOrder }}</span>
                             <span>已完成</span>
                         </div>
                         <button class="memberLookOrder btn_lg_orange" @click="order">查看訂單</button>
@@ -40,19 +40,22 @@
                             </div>
                             <button class="memberLookBook btn_lg_orange" @click="book">查看預約</button>
                         </div>
-                        <div class="memberBooklog" v-for="date in bookDate">
+                        <div class="memberBooklog" v-for="data in bookInfo">
                             <div class="dateAndCancel">
-                                <p>{{ date }}</p>
+                                <p>{{ data.book_date }}</p>
                                 <button :class="{ 'btn_sm_1': true, 'disabled': isPastDate(date) }"
                                     @click="cancelReservation(date)">取消預約</button>
                             </div>
-                            <div class="selectedTime">
-                                <button class="chooseTime" v-for="(choose, index) in selectedTime.timePeriod" :key="index">
-                                    <p>{{ choose }}</p>
-                                    <p>{{ selectedTime.hours[index] }}</p>
-                                </button>
+                            <div class="TimeAndPeople">
+                                <p>時段：</p>
+                                <div class="selectedTime">
+                                    <div class="chooseTime" >
+                                        <p>{{ data.book_time }}</p>
+                                        <p>{{ data.book_start_time }}~{{ data.book_end_time }}</p>
+                                    </div>
+                                </div>
                                 <div class="numPeople">
-                                    <p>人數：{{ numPeople[0] }}</p>
+                                    <p>人數：{{ data.book_people }}人</p>
                                 </div>
                             </div>
                         </div>
@@ -145,22 +148,25 @@
                                     <h3 class="pc-h4">預約紀錄</h3>
                                 </div>
                             </div>
-                            <div class="memberBooklog" v-for="date in bookDate">
-                                <div class="dateAndCancel">
-                                    <p>{{ date }}</p>
-                                    <button :class="{ 'btn_sm_1': true, 'disabled': isPastDate(date) }"
-                                        @click="cancelReservation(date)">取消預約</button>
-                                </div>
+                            <div class="memberBooklog" v-for="data in bookInfo">
+                            <div class="dateAndCancel">
+                                <p>{{ data.book_date }}</p>
+                                <button :class="{ 'btn_sm_1': true, 'disabled': isPastDate(date) }"
+                                    @click="cancelReservation(date)">取消預約</button>
+                            </div>
+                            <div class="TimeAndPeople">
+                                <p>時段：</p>
                                 <div class="selectedTime">
-                                    <button class="chooseTime" v-for="(choose, index) in selectedTime.timePeriod" :key="index">
-                                        <p>{{ choose }}</p>
-                                        <p>{{ selectedTime.hours[index] }}</p>
-                                    </button>
-                                    <div class="numPeople">
-                                        <p>人數：{{ numPeople[0] }}</p>
+                                    <div class="chooseTime" >
+                                        <p>{{ data.book_time }}</p>
+                                        <p>{{ data.book_start_time }}~{{ data.book_end_time }}</p>
                                     </div>
                                 </div>
+                                <div class="numPeople">
+                                    <p>人數：{{ data.book_people }}人</p>
+                                </div>
                             </div>
+                        </div>
                         </div>
                     </div>
                 </div>
@@ -277,7 +283,7 @@
                             <p>{{ selectedTime.hours[index] }}</p>
                         </button>
                     </div>
-                    <p>人數：{{ numPeople[0] }}</p>
+                    <p>人數：{{ numPeople }}</p>
                 </div>
             </div>
 
@@ -295,10 +301,14 @@ export default {
     data() {
         return {
 
-            memberData: [],
+            memberData: [],//會員資料
+            bookInfo:[],//預約資料
+            orderInfo:[],//訂單資料
+            orderListInfo:[],//訂單明細
+            undoneOrder:0,//未完成訂單
+            completedOrder:0,//已完成訂單
+
             userdata: {},
-            
-            bookInfo:[],
 
             bookDate: ['2024/02/02', '2023/12/24'], //預約資訊-日期
             selectedTime: {
@@ -362,13 +372,19 @@ export default {
             })
             .then(res => {
             // 成功接收後端返回的資料
-            // console.log(res.data);
-                this.memberData = res.data;
+                // console.log(res.data.undoneOrder[0]['count(*)']);
+                console.log(res.data.bookInfo);
+                this.memberData = res.data.memberData;
+                this.bookInfo=res.data.bookInfo;
+                this.orderInfo=res.data.orderInfo;
+                this.orderListInfo=res.data.orderListInfo;
+                this.undoneOrder=res.data.undoneOrder;
+                this.completedOrder=res.data.completedOrder;
+                // console.log(undoneOrder);
             })
             .catch(error => console.error('發生錯誤:',error));
 
 
-        // this.fetchMem()
         this.isLogin()
     },
     mounted(){

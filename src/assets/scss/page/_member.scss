@@ -93,6 +93,12 @@
                 background-color: $white-1;
                 border-radius:25px;
             }
+            .TimeAndPeople{
+                display: flex;
+                // flex-wrap: wrap;
+                align-items: center;
+            }
+
             .dateAndCancel{
                 display: flex;
                 justify-content: space-between;
@@ -154,6 +160,11 @@
                 background-color: $white-1;
                 border-radius: 25px;
             }
+            .TimeAndPeople{
+                display: flex;
+                // flex-wrap: wrap;
+                align-items: center;
+            }
             .dateAndCancel{
                 display: flex;
                 justify-content: space-between;
@@ -167,7 +178,10 @@
                 align-items: center;
             }
             .numPeople{
-                margin-left: 35px;
+                margin-left: 13%;
+                @include PC(){
+                    margin-left: 47%;
+                }
             }
             .chooseTime{
                 display: flex;
@@ -176,6 +190,8 @@
                 border: 1px solid $blue-3;
                 border-radius: $S-button-radius;
                 padding: 0 $S-spacing;
+                // background-color: $btn-pri-bgc;
+                // color: $white-1;
             }
             .disabled {
                 opacity: 0.5;  /* 或其他禁用樣式 */
