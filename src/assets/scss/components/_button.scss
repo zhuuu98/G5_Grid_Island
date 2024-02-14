@@ -73,7 +73,7 @@
 .btn_secondary {
   @include btnBasic;
   @include btnColor($btn-sec-bgc, false);
-  height: 47px;
+  // height: 48px;
   border-radius: $S-button-radius;
   padding: 12px 20px;
   letter-spacing: $PC-btn-sl-spacing;
