@@ -12,11 +12,19 @@
                             :selectedEarsColor="selectedEarsColor" :selectedAccessoriesStaff="selectedAccessoriesStaff"
                             :selectedBackgroundColor="selectedBackgroundColor" />
                     </div>
-                    <button id="setphoto" @click="toggleZone">確認送出</button>
+                    
                 </div>
-                <div class="style-btn">
+                <div class="btnbox">
                     <!-- 操作按鈕 (如果有的話) -->
-
+                    <button id="reset" @click="toggleZone" class="btn_secondary">
+                        隨機選擇
+                    </button>
+                    <button id="random" @click="toggleZone" class="btn_secondary">
+                        重置
+                    </button>
+                    <button id="setphoto" @click="toggleZone" class="btn_secondary">
+                        確認送出
+                    </button>
                 </div>
             </div>
             <!-- 選項區，含頁籤 -->

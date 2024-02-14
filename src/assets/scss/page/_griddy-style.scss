@@ -2,138 +2,184 @@
     background-color: $gray-1;
     height: 100%;
     padding: 20px 0;
-}
-#style-play-zone {
-    margin: 0;
-}
-#style-operate{
-    display: flex;
-    background-color: $white-1;
-    width: calc(100% - 40px);
-    margin: 0 auto 20px auto;
-    align-items: end;
-    flex-wrap: wrap;
-    border-radius: 8px;
-    .style-btn{
-        #setphoto{
-            margin: $M-spacing;
+
+    #style-play-zone {
+        margin: 0;
+
+        #style-operate {
+            display: flex;
+            background-color: $white-1;
+            width: calc(100% - 40px);
+            margin: 0 auto 20px auto;
+            align-items: end;
+            flex-wrap: wrap;
+            border-radius: 8px;
+            outline: 2px solid black;
+            gap: 20px;
+            justify-content: center;
+            box-sizing: border-box;
+            padding: 20px;
+
+            .btnbox {
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: space-between;
+                background-color: #6af;
+                width: 100%;
+                gap: 20px;
+                @include text();
+                #reset {
+                    width: calc(50% - 10px);
+                    background-color: $white-1;
+                    border: 1px solid $orange-2;
+                    color: $orange-2;
+                    vertical-align: top;
+                }
+                #random {
+                    width: calc(50% - 10px);
+                    background-color: $white-1;
+                    border: 1px solid $orange-2;
+                    color: $orange-2;
+                    // padding: 8px 0;
+                    // border-radius: 8px
+                }
+                #setphoto {
+                    width: calc(100%);
+                    // @include btnColor($orange-2);
+                    // @include btnBasic();
+                    // padding: 8px 0;
+                    // border-radius: 8px
+                }
+            }
+        }
+    }
+
+    .style-view {
+        width: 100%;
+        margin: auto;
+        background-color: $white-1;
+        display: flex;
+        align-items: start;
+        box-sizing: border-box;
+        padding: $M-spacing;
+        gap: 20px;
+        align-items: end;
+        justify-content: center;
+        flex-wrap: wrap;
+        background: #fa6;
+
+        .viewimagebox {
+            width: 100%;
+            height: 100%;
+            min-width: 240px;
+            min-height: 240px;
+            max-width: 240px;
+            max-height: 240px;
+            outline: 1px solid #000;
+        }
+    }
+
+    .final-show {
+        padding-top: 20px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+
+        #finalimagebox {
+            position: relative;
+            min-width: 240px;
+            min-height: 240px;
+            max-width: 240px;
+            max-height: 240px;
+            outline: 1px solid #000;
+            margin: 20px auto;
+
+        }
+
+        p {
+            font-size: 20px;
+            font-weight: bold;
+            letter-spacing: 0.12em;
+        }
+    }
+
+    .tabs button {
+        padding: 10px;
+        cursor: pointer;
+    }
+
+    .tabs button.active {
+        font-weight: bold;
+    }
+
+
+    .stylearea {
+        // 選擇區
+        width: calc(100% - 40px);
+        height: 1000px;
+        margin: auto;
+    }
+
+    .componentsarea {
+        //頁籤統一樣式
+        background-color: $white-1;
+        box-sizing: border-box;
+        padding: $M-spacing;
+    }
+
+
+    .options-colors li {
+        display: inline-block;
+        width: 40px;
+        height: 40px;
+        margin: 5px;
+        border: 2px solid transparent;
+        border-radius: 50%;
+        cursor: pointer;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    }
+
+    .options-staff {
+        display: flex;
+        column-gap: $M-spacing;
+        row-gap: $S-spacing;
+        flex-wrap: wrap;
+
+        button {
+            width: calc(33.3333% - 20px);
+            height: 40px;
+            border: 2px solid transparent;
+            cursor: pointer;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+
+            @include T() {
+                width: calc(16.333333% - 16.333333px);
+            }
 
         }
     }
-}
-    
-.style-view {
-    width: calc(100% - 40px);
-    margin: auto;
-    background-color: $white-1;
-    display: flex;
-    align-items: start;
-    box-sizing: border-box;
-    padding: $M-spacing;
-    gap: 20px;
-    align-items: end;
-    flex-wrap: wrap;
-    .viewimagebox {
-        width: 100%;
-        height: 100%;
-        min-width: 240px;
-        min-height: 240px;
-        max-width: 240px;
-        max-height: 240px;
-        outline: 1px solid #000;
-        
+
+    .options-colors li.selected {
+        border: 1px solid#000;
     }
-}
-.final-show{
-    padding-top: 20px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 20px;
-    #finalimagebox {
+
+    #mainSvg {
         position: relative;
-        min-width: 240px;
-        min-height: 240px;
-        max-width: 240px;
-        max-height: 240px;
-        outline: 1px solid #000;
-        margin: 20px auto;
 
+        .SVGSTAFF {
+            position: absolute;
+            top: 0;
+            right: 0;
+        }
     }
-    p{
-        font-size: 20px;
-        font-weight: bold;
-        letter-spacing: 0.12em;
+
+    #show-zone {
+        width: calc(100% - 40px);
+        height: 800px;
+        background-color: #fff;
+        margin: auto;
     }
+
 }
-
-.tabs button {
-    padding: 10px;
-    cursor: pointer;
-  }
-  .tabs button.active {
-    font-weight: bold;
-  }
-
-
-.stylearea { // 選擇區
-    width: calc(100% - 40px);
-    height: 1000px;
-    margin: auto;
-}
-.componentsarea { //頁籤統一樣式
-    background-color: $white-1;
-    box-sizing: border-box;
-    padding: $M-spacing;
-}
-
-
-.options-colors li {
-    display: inline-block;
-    width: 40px;
-    height: 40px;
-    margin: 5px;
-    border: 2px solid transparent;
-    border-radius: 50%;
-    cursor: pointer;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-}
-.options-staff{
-display: flex;
-column-gap: $M-spacing;
-row-gap: $S-spacing;
-flex-wrap: wrap;
-
-    button{
-        width: calc( 33.3333% - 20px);
-        height: 40px;
-        border: 2px solid transparent;
-        cursor: pointer;
-        border: 1px solid #ccc;
-        border-radius: 8px;
-        @include T() {
-            width: calc( 16.333333% - 16.333333px);
-          }
-
-    }
-}
-
-.options-colors li.selected {
-    border: 1px solid#000;
-}
-
-#mainSvg{
-    position: relative;
-    .SVGSTAFF {
-        position: absolute;
-        top: 0;
-        right: 0;
-    }
-}
-#show-zone{
-    width: calc(100% - 40px);
-    height: 800px;
-    background-color: #fff;
-    margin: auto;
-}
-
