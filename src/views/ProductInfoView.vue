@@ -62,13 +62,15 @@
                 <div class="productPriceQuantityArea">
                   <div class="priceArea">
                     <div
+                      :class="{ productPrice: prodData.prod_discount_price }"
+                    >
+                      <h3>$ {{ prodData.prod_price }}</h3>
+                    </div>
+                    <div
                       v-if="prodData.prod_discount_price"
-                      class="productPrice"
+                      class="productDiscountPrice"
                     >
                       <h3>$ {{ prodData.prod_discount_price }}</h3>
-                    </div>
-                    <div class="productDiscountPrice">
-                      <h3>$ {{ prodData.prod_price }}</h3>
                     </div>
                   </div>
                   <div class="productQuantity">
