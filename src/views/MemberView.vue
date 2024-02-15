@@ -373,7 +373,7 @@ export default {
             .then(res => {
             // 成功接收後端返回的資料
                 // console.log(res.data.undoneOrder[0]['count(*)']);
-                console.log(res.data.bookInfo);
+                console.log(res.data.orderInfo);
                 this.memberData = res.data.memberData;
                 this.bookInfo=res.data.bookInfo;
                 this.orderInfo=res.data.orderInfo;
