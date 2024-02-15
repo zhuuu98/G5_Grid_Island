@@ -1,10 +1,10 @@
 <template>
-  <div class="board_card" v-if="item.report_state == 0">
+  <div class="board_card" v-if="item.report_state == 0 || item.report_state == null">
     <div class="board_info">
       <div class="board_id">
         <div class="board_id_img">
-          <!-- <img :src="item.id_img" :alt="item.id_img_alt"> -->
-          <img src="/images/board/board_id_img.svg" :alt="item.id_img_alt">
+          <img :src="item.mem_profile" :alt="item.id_img_alt">
+          <!-- <img src="/images/board/board_id_img.svg" :alt="item.id_img_alt"> -->
         </div>
         <div class="board_id_info">
           <div class="board_memId" v-if="item.mem_nickname == null">{{ item.mem_name }}</div>
@@ -41,11 +41,12 @@
       <div class="board_re_card" v-for="(reItem, reIndex) in item.replies" :key="reIndex">
         <div class="board_re_id">
           <div class="board_re_id_img">
-            <img src="/images/board/board_id_img.svg" :alt="item.id_img_alt">
-            <!-- <img :src="reItem.img" :alt="reItem.alt"> -->
+            <!-- <img src="/images/board/board_id_img.svg" :alt="item.id_img_alt"> -->
+            <img :src="reItem.reply_memProfile" :alt="reItem.alt">
           </div>
           <div class="board_re_id_info">
-            <div class="board_re_memId">{{ reItem.reply_memName }}</div>
+            <div class="board_re_memId" v-if="reItem.reply_nickName == null">{{ reItem.reply_memName }}</div>
+            <div class="board_re_memId" v-else>{{ reItem.reply_nickName }}</div>
             <div class="board_re_time">{{ reItem.reply_time }}</div>
           </div>
         </div>

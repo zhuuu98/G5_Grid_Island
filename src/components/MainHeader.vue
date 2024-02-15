@@ -106,6 +106,7 @@
 </template>
 
 <script>
+import axios from "axios";
 import { RouterLink } from "vue-router";
 import { computed } from 'vue';
 import { useRoute } from 'vue-router';
@@ -115,6 +116,7 @@ export default {
   },
   data() {
     return {
+      // memData[],
       menuOpen: false, //漢堡開關
       subMenuOpen: false, //玩家社群子階層
       hamX: false,
@@ -128,6 +130,15 @@ export default {
     }
   },
   methods: {
+    fetchMem() {
+      axios
+        .post(`${import.meta.env.VITE_API_URL}/headerMem.php`, {})
+        .then(res => {
+          console.log(res.data.header);
+          this.memData = res.data.header;
+        })
+        .catch(error => console.error('發生錯誤:', error))
+    },
     toggleMenu() {
       // 切換 menuOpen 的值
       this.menuOpen = !this.menuOpen;
