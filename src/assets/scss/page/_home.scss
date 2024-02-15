@@ -9,7 +9,6 @@
   }
 }
 main {
-
   //跑馬燈
   .cuppon {
     width: 100%;
@@ -17,11 +16,11 @@ main {
     overflow: hidden;
     // position: relative;
     position: sticky;
-    top:65px;
+    top: 65px;
     transform: translateY(-6.2%);
     background-color: $white-1;
     z-index: 500;
-    box-shadow: 2px 0 10px 5px rgba(black, .2);
+    box-shadow: 2px 0 10px 5px rgba(black, 0.2);
     .btn {
       position: relative;
       width: 100%;
@@ -35,7 +34,7 @@ main {
         top: 0;
         right: 0;
         z-index: 30;
-        transform: translate(-500%,20%);
+        transform: translate(-500%, 20%);
       }
     }
     .subContent {
@@ -46,11 +45,11 @@ main {
       white-space: nowrap;
       animation: marquee 600s linear infinite;
       span {
-        padding: 0 60px ;
+        padding: 0 60px;
         letter-spacing: $PC-btn-exsl-spacing;
       }
     }
-   
+
     @keyframes marquee {
       0% {
         transform: translateX(0%);
@@ -59,7 +58,6 @@ main {
         transform: translateX(-100%);
       }
     }
-    
   }
   //內容
   .index {
@@ -124,6 +122,10 @@ main {
               }
 
               .productCard {
+                transition: all 0.2s ease-in-out;
+                &:hover {
+                  scale: 1.1;
+                }
                 a {
                   margin: 0 $S-spacing;
                   display: flex;
@@ -224,7 +226,6 @@ main {
       }
     }
 
-
     //造型屋
     #griddystyle-container {
       background-color: $gray-1;
@@ -252,7 +253,7 @@ main {
         }
         span {
           font-size: 16px;
-          letter-spacing: .5px;
+          letter-spacing: 0.5px;
           background-color: $green-1;
           padding: 10px $M-spacing;
           border: 1px solid $black;
@@ -342,7 +343,7 @@ main {
       }
       span {
         font-size: 16px;
-        letter-spacing: .5px;
+        letter-spacing: 0.5px;
         color: $black;
       }
       [class*="reserveStep"] {
@@ -360,9 +361,9 @@ main {
       .reserveStep1 span {
         display: flex;
         flex-direction: column;
-        transform: translateX(26px) translateY(-20px);      
-        @include T(){
-          transform: translateX(75px) translateY(-20px);      
+        transform: translateX(26px) translateY(-20px);
+        @include T() {
+          transform: translateX(75px) translateY(-20px);
         }
       }
 
@@ -378,7 +379,6 @@ main {
         @include PC() {
           max-width: 250px;
         }
-
       }
       .reserveStep3 span {
         // width: 290px;
@@ -498,25 +498,24 @@ main {
         flex-direction: column;
         border-radius: $S-button-radius;
         @include M() {
-        height: auto;
+          height: auto;
           width: 100%;
-        background: $white-1
-          url("/src/assets/images/home/homeAbout_BackgoundGrid.svg") no-repeat
-          center/180%;
-
+          background: $white-1
+            url("/src/assets/images/home/homeAbout_BackgoundGrid.svg") no-repeat
+            center/180%;
         }
         @include T() {
           width: 95%;
           background: $white-1
-          url("/src/assets/images/home/homeAbout_BackgoundGrid.svg") no-repeat
-          left 0 bottom 15%/160%;
+            url("/src/assets/images/home/homeAbout_BackgoundGrid.svg") no-repeat
+            left 0 bottom 15%/160%;
         }
         @include PC() {
           max-width: 1100px;
           width: 98%;
           background: $white-1
-          url("/src/assets/images/home/homeAbout_BackgoundGrid.svg") no-repeat
-          left 0 bottom 15%/100%;
+            url("/src/assets/images/home/homeAbout_BackgoundGrid.svg") no-repeat
+            left 0 bottom 15%/100%;
         }
         .aboutContentTxt {
           display: none;
@@ -524,10 +523,10 @@ main {
           margin: $L-spacing $XXXL-spacing $L-spacing;
           font-size: $PC-h4;
           color: $black;
-          letter-spacing: .5px;
+          letter-spacing: 0.5px;
           font-weight: bold;
           padding: 0 $M-spacing;
-          @include M(){
+          @include M() {
             margin: $L-spacing $L-spacing 0;
           }
           @include T() {
@@ -536,20 +535,16 @@ main {
             align-items: center;
           }
           @include PC() {
-          margin: $L-spacing $XXXL-spacing $S-spacing;
-
+            margin: $L-spacing $XXXL-spacing $S-spacing;
           }
-
         }
-
       }
       .imgWrapper {
         width: 100%;
         overflow-x: scroll;
-        @include T(){
+        @include T() {
           overflow: hidden;
         }
-        
       }
       .aboutContentImg {
         // padding:  0 0 0 190px;
@@ -557,11 +552,11 @@ main {
         display: flex;
         justify-content: center;
         gap: $M-spacing;
-        margin:$XL-spacing 0 $XL-spacing;
+        margin: $XL-spacing 0 $XL-spacing;
         &::-webkit-scrollbar {
           display: none;
         }
-        @include T(){
+        @include T() {
           overflow-x: scroll;
           width: unset;
           margin-bottom: $XL-spacing;
