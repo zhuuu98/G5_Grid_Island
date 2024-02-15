@@ -118,7 +118,7 @@
 </template>
 
 <script>
-// import axios from "axios";
+import axios from "axios";
 import PageTitle from "../components/PageTitle.vue";
 import BoardCard from "../components/BoardCard.vue";
 
@@ -126,181 +126,181 @@ export default {
   data() {
     return {
       card: [
-        {
-          id: 1,
-          m_id: 1,
-          // id_img:'/images/board/board_id_img.svg',
-          id_img_alt: 'board_id_img',
-          memId: '1啊人家家就笨壓',
-          time: '2023/12/30 20:25',
-          msg: '在遊戲貪婪之島中，只要在問答大賽中答對最多問題，就能獲得統治者的祝福。',
-          // re_amount:2,
-          re: [
-            {
-              id: 1,
-              img: '/images/board/board_id_img.svg',
-              alt: 'board_id_img',
-              memId: '萵金',
-              time: '2023/12/30 20:25',
-              msg: '一般人會忘掉這種事嗎？只要喊出"book"就可以叫出卡冊，裡面存放所有目前收集到的卡片，可以取出卡片使用。',
-            },
-            {
-              id: 2,
-              img: '/images/board/board_id_img.svg',
-              alt: 'board_id_img',
-              memId: '金',
-              time: '2023/12/30 20:25',
-              msg: '你是一般人嗎？',
-            }
-          ]
-        },
-        {
-          id: 2,
-          // id_img:'../../public/images/board/board_id_img.svg',
-          id_img_alt: 'board_id_img',
-          memId: '2大傑',
-          time: '2023/12/30 20:25',
-          msg: '有人看到我爸嗎？',
-          re: []
-        },
-        {
-          id: 3,
-          // id_img:'../../public/images/board/board_id_img.svg',
-          id_img_alt: 'board_id_img',
-          memId: '3酷B',
-          time: '2023/12/30 20:25',
-          msg: '使用同行，前往瑪莎多啦。',
-          re: [
-            {
-              id: 1,
-              // img:'../../public/images/board/board_id_img.svg',
-              alt: 'board_id_img',
-              memId: '酷喇皮卡',
-              time: '2023/12/30 20:25',
-              msg: '我快下船了。',
-            },
-            {
-              id: 2,
-              // img:'../../public/images/board/board_id_img.svg',
-              alt: 'board_id_img',
-              memId: '明人',
-              time: '2023/12/30 20:25',
-              msg: '樓上也有血輪眼？',
-            },
-            {
-              id: 3,
-              // img:'../../public/images/board/board_id_img.svg',
-              alt: 'board_id_img',
-              memId: '酷喇皮卡',
-              time: '2023/12/30 20:25',
-              msg: '我快下船了。',
-            },
-            {
-              id: 4,
-              // img:'../../public/images/board/board_id_img.svg',
-              alt: 'board_id_img',
-              memId: '明人',
-              time: '2023/12/30 20:25',
-              msg: '樓上也有血輪眼？',
-            }
-          ]
-        },
-        {
-          id: 4,
-          // id_img:'../../public/images/board/board_id_img.svg',
-          id_img_alt: 'board_id_img',
-          memId: '大傑',
-          time: '2023/12/30 20:25',
-          msg: '有人看到我爸嗎？',
-          re: [
-            {
-              id: 1,
-              // img:'../../public/images/board/board_id_img.svg',
-              alt: 'board_id_img',
-              memId: '灰傑克',
-              time: '2023/12/30 20:25',
-              msg: '皮諾渴，這個直接電死。',
-            },
-            {
-              id: 2,
-              // img:'../../public/images/board/board_id_img.svg',
-              alt: 'board_id_img',
-              memId: '皮諾渴',
-              time: '2023/12/30 20:25',
-              msg: '是的醫生！',
-            },
-            {
-              id: 3,
-              // img:'../../public/images/board/board_id_img.svg',
-              alt: 'board_id_img',
-              memId: '奇牙',
-              time: '2023/12/30 20:25',
-              msg: '我們一定會找到的。',
-            }
-          ]
-        },
-        {
-          id: 5,
-          // id_img:'../../public/images/board/board_id_img.svg',
-          id_img_alt: 'board_id_img',
-          memId: '酷B',
-          time: '2023/12/30 20:25',
-          msg: '使用同行，前往瑪莎多啦。',
-          re: [
-            {
-              id: 1,
-              // img:'../../public/images/board/board_id_img.svg',
-              alt: 'board_id_img',
-              memId: '酷喇皮卡',
-              time: '2023/12/30 20:25',
-              msg: '我快下船了。',
-            },
-            {
-              id: 2,
-              // img:'../../public/images/board/board_id_img.svg',
-              alt: 'board_id_img',
-              memId: '明人',
-              time: '2023/12/30 20:25',
-              msg: '樓上也有血輪眼？',
-            }
-          ]
-        },
-        {
-          id: 6,
-          // id_img:'../../public/images/board/board_id_img.svg',
-          id_img_alt: 'board_id_img',
-          memId: '酷B',
-          time: '2023/12/30 20:25',
-          msg: '使用同行，前往瑪莎多啦。',
-          re: [
-            {
-              id: 1,
-              // img:'../../public/images/board/board_id_img.svg',
-              alt: 'board_id_img',
-              memId: '酷喇皮卡',
-              time: '2023/12/30 20:25',
-              msg: '我快下船了。',
-            },
-            {
-              id: 2,
-              // img:'../../public/images/board/board_id_img.svg',
-              alt: 'board_id_img',
-              memId: '明人',
-              time: '2023/12/30 20:25',
-              msg: '樓上也有血輪眼？',
-            }
-          ]
-        },
-        {
-          id: 7,
-          // id_img:'../../public/images/board/board_id_img.svg',
-          id_img_alt: 'board_id_img',
-          memId: '酷B',
-          time: '2023/12/30 20:25',
-          msg: '使用同行，前往瑪莎多啦。',
-          re: [
-          ]
-        },
+        // {
+        //   id: 1,
+        //   m_id: 1,
+        //   // id_img:'/images/board/board_id_img.svg',
+        //   id_img_alt: 'board_id_img',
+        //   memId: '1啊人家家就笨壓',
+        //   time: '2023/12/30 20:25',
+        //   msg: '在遊戲貪婪之島中，只要在問答大賽中答對最多問題，就能獲得統治者的祝福。',
+        //   // re_amount:2,
+        //   re: [
+        //     {
+        //       id: 1,
+        //       img: '/images/board/board_id_img.svg',
+        //       alt: 'board_id_img',
+        //       memId: '萵金',
+        //       time: '2023/12/30 20:25',
+        //       msg: '一般人會忘掉這種事嗎？只要喊出"book"就可以叫出卡冊，裡面存放所有目前收集到的卡片，可以取出卡片使用。',
+        //     },
+        //     {
+        //       id: 2,
+        //       img: '/images/board/board_id_img.svg',
+        //       alt: 'board_id_img',
+        //       memId: '金',
+        //       time: '2023/12/30 20:25',
+        //       msg: '你是一般人嗎？',
+        //     }
+        //   ]
+        // },
+        // {
+        //   id: 2,
+        //   // id_img:'../../public/images/board/board_id_img.svg',
+        //   id_img_alt: 'board_id_img',
+        //   memId: '2大傑',
+        //   time: '2023/12/30 20:25',
+        //   msg: '有人看到我爸嗎？',
+        //   re: []
+        // },
+        // {
+        //   id: 3,
+        //   // id_img:'../../public/images/board/board_id_img.svg',
+        //   id_img_alt: 'board_id_img',
+        //   memId: '3酷B',
+        //   time: '2023/12/30 20:25',
+        //   msg: '使用同行，前往瑪莎多啦。',
+        //   re: [
+        //     {
+        //       id: 1,
+        //       // img:'../../public/images/board/board_id_img.svg',
+        //       alt: 'board_id_img',
+        //       memId: '酷喇皮卡',
+        //       time: '2023/12/30 20:25',
+        //       msg: '我快下船了。',
+        //     },
+        //     {
+        //       id: 2,
+        //       // img:'../../public/images/board/board_id_img.svg',
+        //       alt: 'board_id_img',
+        //       memId: '明人',
+        //       time: '2023/12/30 20:25',
+        //       msg: '樓上也有血輪眼？',
+        //     },
+        //     {
+        //       id: 3,
+        //       // img:'../../public/images/board/board_id_img.svg',
+        //       alt: 'board_id_img',
+        //       memId: '酷喇皮卡',
+        //       time: '2023/12/30 20:25',
+        //       msg: '我快下船了。',
+        //     },
+        //     {
+        //       id: 4,
+        //       // img:'../../public/images/board/board_id_img.svg',
+        //       alt: 'board_id_img',
+        //       memId: '明人',
+        //       time: '2023/12/30 20:25',
+        //       msg: '樓上也有血輪眼？',
+        //     }
+        //   ]
+        // },
+        // {
+        //   id: 4,
+        //   // id_img:'../../public/images/board/board_id_img.svg',
+        //   id_img_alt: 'board_id_img',
+        //   memId: '大傑',
+        //   time: '2023/12/30 20:25',
+        //   msg: '有人看到我爸嗎？',
+        //   re: [
+        //     {
+        //       id: 1,
+        //       // img:'../../public/images/board/board_id_img.svg',
+        //       alt: 'board_id_img',
+        //       memId: '灰傑克',
+        //       time: '2023/12/30 20:25',
+        //       msg: '皮諾渴，這個直接電死。',
+        //     },
+        //     {
+        //       id: 2,
+        //       // img:'../../public/images/board/board_id_img.svg',
+        //       alt: 'board_id_img',
+        //       memId: '皮諾渴',
+        //       time: '2023/12/30 20:25',
+        //       msg: '是的醫生！',
+        //     },
+        //     {
+        //       id: 3,
+        //       // img:'../../public/images/board/board_id_img.svg',
+        //       alt: 'board_id_img',
+        //       memId: '奇牙',
+        //       time: '2023/12/30 20:25',
+        //       msg: '我們一定會找到的。',
+        //     }
+        //   ]
+        // },
+        // {
+        //   id: 5,
+        //   // id_img:'../../public/images/board/board_id_img.svg',
+        //   id_img_alt: 'board_id_img',
+        //   memId: '酷B',
+        //   time: '2023/12/30 20:25',
+        //   msg: '使用同行，前往瑪莎多啦。',
+        //   re: [
+        //     {
+        //       id: 1,
+        //       // img:'../../public/images/board/board_id_img.svg',
+        //       alt: 'board_id_img',
+        //       memId: '酷喇皮卡',
+        //       time: '2023/12/30 20:25',
+        //       msg: '我快下船了。',
+        //     },
+        //     {
+        //       id: 2,
+        //       // img:'../../public/images/board/board_id_img.svg',
+        //       alt: 'board_id_img',
+        //       memId: '明人',
+        //       time: '2023/12/30 20:25',
+        //       msg: '樓上也有血輪眼？',
+        //     }
+        //   ]
+        // },
+        // {
+        //   id: 6,
+        //   // id_img:'../../public/images/board/board_id_img.svg',
+        //   id_img_alt: 'board_id_img',
+        //   memId: '酷B',
+        //   time: '2023/12/30 20:25',
+        //   msg: '使用同行，前往瑪莎多啦。',
+        //   re: [
+        //     {
+        //       id: 1,
+        //       // img:'../../public/images/board/board_id_img.svg',
+        //       alt: 'board_id_img',
+        //       memId: '酷喇皮卡',
+        //       time: '2023/12/30 20:25',
+        //       msg: '我快下船了。',
+        //     },
+        //     {
+        //       id: 2,
+        //       // img:'../../public/images/board/board_id_img.svg',
+        //       alt: 'board_id_img',
+        //       memId: '明人',
+        //       time: '2023/12/30 20:25',
+        //       msg: '樓上也有血輪眼？',
+        //     }
+        //   ]
+        // },
+        // {
+        //   id: 7,
+        //   // id_img:'../../public/images/board/board_id_img.svg',
+        //   id_img_alt: 'board_id_img',
+        //   memId: '酷B',
+        //   time: '2023/12/30 20:25',
+        //   msg: '使用同行，前往瑪莎多啦。',
+        //   re: [
+        //   ]
+        // },
       ],
       reports: [{
         reason: '-請選擇檢舉項目-',
@@ -343,11 +343,14 @@ export default {
       isReplyOpen: false,
     };
   },
+  created(){
+    this.getCard();
+  },
   computed: {
     modifiedCard() {
       return this.card.map(item => ({
         ...item,
-        re_amount: item.re.length,
+        // re_amount: item.re.length,
       }));
     },
     firstCol() {
@@ -368,6 +371,36 @@ export default {
     window.removeEventListener('resize', this.handleResize);
   },
   methods: {
+    getCard(){
+      axios
+        .post(`${import.meta.env.VITE_API_URL}/board.php`, {})
+        .then((res) => {
+          console.log(res.data.board);
+          this.card = res.data.board;
+          //跑迴圈渲染子陣列
+          for (let i = 0; i < this.card.length; i++) {
+            let item = this.card[i];
+            //把json變成陣列
+            let jsondata = JSON.parse(item.replies);
+            //把陣列內容渲染到頁面上
+            item.replies = jsondata;
+
+            // console.log(jsondata);
+            //有留言才會計算有幾則留言
+            if(jsondata != null){
+              item.re_amount = jsondata.length;
+              console.log(jsondata.length);
+              for(let j = 0; j < jsondata.length; j++){
+                let reitem = jsondata[j];
+                console.log(reitem.reply_time.split('.')[0]);
+                // reitem.reply_time.split('.')
+                reitem.reply_time = reitem.reply_time.split('.')[0];
+              }
+            }
+          }
+        })
+        .catch(error => console.error('發生錯誤:', error))
+    },
     // 發文
     // 打開發文燈箱
     open_light_box() {

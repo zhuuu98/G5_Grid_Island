@@ -228,7 +228,7 @@
     margin-top: 8px;
     padding-top: 8px;
     border-top: 1px solid #aaa;
-    height: 180px;
+    max-height: 180px;
     overflow-y: auto;
     // background-color: #ccc;
     &_card{
