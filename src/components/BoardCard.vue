@@ -1,5 +1,5 @@
 <template>
-  <div class="board_card" v-if="item.msg_state == 1">
+  <div class="board_card" v-if="item.report_state == 0">
     <div class="board_info">
       <div class="board_id">
         <div class="board_id_img">
