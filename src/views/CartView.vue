@@ -168,7 +168,7 @@
             }"
           >
             <img
-              :src="`https://tibamef2e.com/chd103/g5/img/${item.prod_img1}`"
+              :src="`https://tibamef2e.com/chd104/g5/image/prod/${item.prod_img1}`"
               :alt="item.prod_name"
             />
           </router-link>
@@ -187,7 +187,6 @@ export default {
   data() {
     return {
       respondData: [],
-      displayData: [],
       discountCode: "",
       deliveryMethod: "init",
       recProduct: [],
@@ -215,7 +214,7 @@ export default {
     },
   },
   created() {
-    this.axiosGetData();
+    this.fetchProd();
     this.getLocalCartData();
     this.getDelDiscLocal();
     this.fetchPromoRecord();
@@ -231,15 +230,6 @@ export default {
       "getLocalCartData",
       "setPromoData",
     ]),
-    axiosGetData() {
-      axios
-        .get("https://tibamef2e.com/chd103/g5/phps/ProductM.php")
-        .then((res) => {
-          this.respondData = res.data;
-          this.displayData = res.data;
-          this.shuffleAndPick();
-        });
-    },
     getDelDiscLocal() {
       let LocalDel = localStorage["delMethod"];
       let LocalDisc = localStorage["discCode"];
@@ -292,8 +282,16 @@ export default {
     itemChangeDel(product) {
       this.itemDelFormCart(product);
     },
+    fetchProd() {
+      axios
+        .post(`${import.meta.env.VITE_API_URL}/getProduct.php`)
+        .then((res) => {
+          this.respondData = res.data.products;
+          this.shuffleAndPick();
+        });
+    },
     shuffleAndPick() {
-      const shuffled = this.displayData.sort(() => 0.5 - Math.random());
+      const shuffled = this.respondData.sort(() => 0.5 - Math.random());
       this.recProduct = shuffled.slice(0, 4);
     },
     checkLogin() {

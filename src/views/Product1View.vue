@@ -268,8 +268,6 @@ export default {
   data() {
     return {
       search: "",
-      respondData: [],
-      displayData: [],
       prodResData: [],
       prodDisData: [],
       sortMethod: "init",
@@ -310,21 +308,11 @@ export default {
     },
   },
   created() {
-    this.axiosGetData();
     this.fetchProd();
   },
   methods: {
     //使用 mapActions 輔助函數將/src/stores/cart裡的methods 映射在這裡
     ...mapActions(cartStore, ["addCartData"]),
-    axiosGetData() {
-      axios
-        .get("https://tibamef2e.com/chd103/g5/phps/ProductM.php")
-        .then((res) => {
-          console.log(res.data);
-          this.respondData = res.data;
-          this.displayData = res.data;
-        });
-    },
     handleSearch() {
       this.prodDisData = this.prodResData.filter((item) => {
         return item.prod_name.includes(this.search);
