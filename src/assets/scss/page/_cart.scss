@@ -301,6 +301,7 @@
       overflow: auto;
       .recProductPic {
         img {
+          object-fit: contain;
           width: calc(1200px / 4 - $M-spacing);
           height: calc(1200px / 4 - $M-spacing);
         }
