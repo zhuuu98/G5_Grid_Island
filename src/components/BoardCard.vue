@@ -3,7 +3,7 @@
     <div class="board_info">
       <div class="board_id">
         <div class="board_id_img">
-          <img :src="item.mem_profile" :alt="item.id_img_alt">
+          <img :src="item.mem_profile" alt="id_img_alt">
           <!-- <img src="/images/board/board_id_img.svg" :alt="item.id_img_alt"> -->
         </div>
         <div class="board_id_info">
