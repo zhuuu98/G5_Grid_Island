@@ -12,7 +12,7 @@
                 <!-- 右側主要內容 -->
                 <!-- 會員中心首頁 -->
                 <div class="memberContentIndex col-T-7 col-PC-7"  v-show="isChoosedIndex_PC">
-                    <h3 class="hello">
+                    <h3 v-if="memberData[0]" class="hello">
                         您好，{{ memberData[0].mem_nickname }}，歡迎入島遊玩！</h3>
                     
                     <!-- 訂單資訊 -->
@@ -69,7 +69,7 @@
                             <img src="../assets/images/member/memberAsideIcon_2.svg" alt="會員資料修改icon">
                             <h3 class="pc-h4">會員資料修改</h3>
                         </div>
-                        <form action="" class="dataContent" method="post" >
+                        <form action="" class="dataContent" method="post" v-if="memberData[0]">
                             <label for="memName">姓名</label>
                             <input type="text" :placeholder="memberData[0].mem_name" id="memName" name="mem_name">
                             
@@ -193,7 +193,7 @@
                     <img src="../assets/images/member/memberAsideIcon_2.svg" alt="會員資料修改icon">
                     <h3 class="pc-h4" >會員資料修改</h3>
                 </div>
-                <form action="" class="content">
+                <form action="" class="content" v-if="memberData[0]">
                     <label for="memName">姓名</label>
                     <input type="text" :placeholder="memberData[0].mem_name" id="memName" name="mem_name">
                     <label for="memNickname">暱稱</label>
