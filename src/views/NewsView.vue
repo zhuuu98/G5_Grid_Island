@@ -103,7 +103,7 @@ export default {
     },
     getNewsURL(path) {
       return new URL(`${import.meta.env.VITE_API_URL}/${path}`);
-      console.log(e);
+      console.log(path);
     }
   },
   mounted() {},
