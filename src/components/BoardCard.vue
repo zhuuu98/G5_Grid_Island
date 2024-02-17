@@ -3,8 +3,9 @@
     <div class="board_info">
       <div class="board_id">
         <div class="board_id_img">
-          <img :src="item.mem_profile" alt="id_img_alt">
+          <!-- <img :src="item.mem_profile" alt="id_img_alt"> -->
           <!-- <img src="/images/board/board_id_img.svg" :alt="item.id_img_alt"> -->
+          <img :src="`https://tibamef2e.com/chd104/g5/image/mem/${item.mem_profile}`" :alt="會員頭貼">
         </div>
         <div class="board_id_info">
           <div class="board_memId" v-if="item.mem_nickname == null">{{ item.mem_name }}</div>
@@ -42,7 +43,8 @@
         <div class="board_re_id">
           <div class="board_re_id_img">
             <!-- <img src="/images/board/board_id_img.svg" :alt="item.id_img_alt"> -->
-            <img :src="reItem.reply_memProfile" :alt="reItem.alt">
+            <!-- <img :src="reItem.reply_memProfile" :alt="reItem.alt"> -->
+            <img :src="`https://tibamef2e.com/chd104/g5/image/mem/${reItem.reply_memProfile}`" :alt="會員頭貼">
           </div>
           <div class="board_re_id_info">
             <div class="board_re_memId" v-if="reItem.reply_nickName == null">{{ reItem.reply_memName }}</div>

@@ -126,9 +126,11 @@
     display: flex;
     &_img{
       width: 40px;
+      overflow: hidden;
       img{
+        border-radius: 50%;
+        vertical-align: top;
         width: 100%;
-        vertical-align: bottom;
       }
     }
     &_info{
@@ -242,7 +244,9 @@
         &_img{
           width: 32px;
           margin: 4px;
+          overflow: hidden;
           img{
+            border-radius: 50%;
             width: 100%;
             vertical-align: bottom;
           }
