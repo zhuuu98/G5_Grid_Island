@@ -45,8 +45,8 @@
                         <div class="memberBooklog" v-for="data in bookInfo">
                             <div class="dateAndCancel">
                                 <p>{{ data.book_date }}</p>
-                                <button :class="{ 'btn_sm_1': true, 'disabled': isPastDate(date) }"
-                                    @click="cancelReservation(date)">取消預約</button>
+                                <button :class="{ 'btn_sm_1': true, 'disabled': isPastDate(data.book_date) }"
+                                    @click="cancelReservation(data.book_date)">取消預約</button>
                             </div>
                             <div class="TimeAndPeople">
                                 <p>時段：</p>
@@ -119,12 +119,12 @@
                                         <div class="PC_orderListText">
                                             <p>{{ items.ord_date }}</p>
                                             <p>{{ items.ord_id }}</p>
-                                            <p>${{ items.ord_pay }}</p>
+                                            <p>${{ items.ord_sum }}</p>
                                             <p>{{ items.ord_state }}</p>
                                         </div>
                                         <button class="btn_sm_1" @click="OpenList(index)">訂單明細</button>
                                     </div>
-                                    <div class="PC_OrderDataDetail" v-for="(prod, prodIndex) in items.orderListInfo"  v-show="prod.openOrderList">
+                                    <div class="PC_OrderDataDetail" v-for="(prod, prodIndex) in items.orderListInfo"  v-show="items.openOrderList">
                                         
                                         <img :src="`https://tibamef2e.com/chd104/g5/image/prod/${prod.prod_img1}`" :alt="prod.prod_name">
                                         <p>{{ prod.prod_name }}</p>
@@ -151,8 +151,8 @@
                             <div class="memberBooklog" v-for="data in bookInfo">
                             <div class="dateAndCancel">
                                 <p>{{ data.book_date }}</p>
-                                <button :class="{ 'btn_sm_1': true, 'disabled': isPastDate(date) }"
-                                    @click="cancelReservation(date)">取消預約</button>
+                                <button :class="{ 'btn_sm_1': true, 'disabled': isPastDate(data.book_date) }"
+                                    @click="cancelReservation(data.book_date)">取消預約</button>
                             </div>
                             <div class="TimeAndPeople">
                                 <p>時段：</p>
@@ -174,9 +174,9 @@
         </div>
         <!-- 手機板選單 -->
         <div class="memberMobile container">
-            <div class="mobileMember " v-for="items in memID">
-                <img src="../assets/images/member/member_photo.svg">
-                {{ items }}
+            <div class="mobileMember " v-for="item in memberData">
+                <img :src="`https://tibamef2e.com/chd104/g5/image/mem/${item.mem_profile}`" alt="會員頭貼">
+                {{ item.mem_nickname }}
             </div>
             <div class="memberMainMobile ">
                 <button class="mobileContent" v-for="(iconName, index) in mobileIcon" @click="handleButtonClick(index)">
@@ -268,8 +268,8 @@
                 <div class="bookDataContent" v-for="data in bookInfo">
                     <div class="mobileBookDateCancel">
                         <p>{{ data.book_date }}</p>
-                        <button :class="{ 'btn_sm_1': true, 'disabled': isPastDate(date) }"
-                            @click="cancelReservation(date)">取消預約</button>
+                        <button :class="{ 'btn_sm_1': true, 'disabled': isPastDate(data.book_date) }"
+                            @click="cancelReservation(data.book_date)">取消預約</button>
                     </div>
                     <div class="TimeAndPeople">
                                 <p>時段：</p>
@@ -384,10 +384,10 @@ export default {
                 //把json變成陣列
                 let jsondata = JSON.parse(item.orderListInfo);
                 //把陣列內容渲染到頁面上
-                jsondata.forEach(orderListItem => {
-                // 在每個 orderListInfo 物件中新增一個布林值屬性 openOrderList，預設為 true
-                orderListItem.openOrderList = false; // 或者你可以設置為你需要的預設值
-                });
+                // 在每個物件中新增一個布林值屬性 openOrderList
+                item.openOrderList = false; 
+
+                console.log(this.orderInfo[i]);
 
 
                 item.orderListInfo = jsondata;
@@ -414,19 +414,15 @@ export default {
         getImageUrl(paths) { //取得圖片路徑
             return new URL(`../assets/images/${paths}`, import.meta.url).href
         },
-        OpenList(orderIndex, listIndex) { //訂單打開明細
-            // console.log(this.orderInfo[index].openOrderList);
-            // this.orderInfo[index].openOrderList = !this.orderInfo[index].openOrderList
-            // console.log(this.orderInfo[index].openOrderList)
-
+        OpenList(orderIndex) { //訂單打開明細
             // 取得特定索引的訂單資料
             const order = this.orderInfo[orderIndex];
+            //看看值對不對
+            // console.log(this.orderInfo[orderIndex].openOrderList);
 
-            // 取得該訂單資料中特定索引的訂單明細資料
-            const orderList = order.orderListInfo[listIndex];
+            // 開關訂單明細
+            this.orderInfo[orderIndex].openOrderList=!this.orderInfo[orderIndex].openOrderList
 
-            // 切換該訂單明細資料的 openOrderList 屬性的值
-            orderList.openOrderList = !orderList.openOrderList;
 
         },
         handleButtonClick(index) { //手機板選單
