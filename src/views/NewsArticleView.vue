@@ -26,7 +26,7 @@
         <span>{{ newsData.news_content }}</span>
       </div>
       <div class="date">
-        <span>{{ newsData.news_date }}</span>
+        <span>{{ formattedDate }}</span>
       </div>
       <div class="btn">
         <button class="btn_lg_orange" @click="shareOnFacebook">分享到Facebook</button>
@@ -94,7 +94,12 @@ export default {
           .catch(error => console.error('發生錯誤:',error))
     }
   },
-
+    computed: {
+    formattedDate() {
+      const date = new Date(this.newsData.news_date);
+      return date.toISOString().split('T')[0];
+    },
+  },
   mounted() {},
 };
 </script>

@@ -79,17 +79,16 @@
     }
     .newsImg {
       padding: 0 $M-spacing;
-      max-width: 1000px;
+      max-width: 600px;
       min-width: 300px;
       margin: auto;
       height: auto;
-
-      @include T() {
-        padding: 0 $M-spacing;
-      }
-
+      
       img {
         width: 100%;
+      }
+      @include T() {
+        padding: 0 $M-spacing;
       }
     }
     .textContent {
