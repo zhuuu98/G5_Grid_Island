@@ -43,6 +43,19 @@ header {
           }
           a{
             color: $black;
+            .nav_member_login{
+              // height: 45px;
+              overflow: hidden;
+              // width: 25px;
+              height: 25px;
+              border-radius: 50%;
+              border: 2px solid $black;
+              .header_login_profile{
+                width: 100%;
+                // transform: scale(1.5);
+                vertical-align: top;
+              }
+            }
             img{
               vertical-align: top;
               width: 100%;
