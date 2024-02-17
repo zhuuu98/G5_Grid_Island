@@ -9,9 +9,10 @@
             </Breadcrumb>
         </div>
         <div class="book_notice">
-            <h3>請依序選擇日期、桌型、時段及人次。</h3>
-            <h3>若日期、桌型或時段無法選擇，代表當日、該桌型、或該時段預約已額滿。</h3>
+            <h4>請依序選擇日期、桌型、時段及人次。</h4>
+            <h4>若日期、桌型或時段無法選擇，代表當日、該桌型、或該時段預約已額滿。</h4>
         </div>
+        <button @click="isDateFull()">click</button>
         <form action="" class="bookTableForm">
             <div class="book_date_select">
                 <h2>請選擇日期</h2>
@@ -64,10 +65,10 @@
             <div class="book_time_select">
                 <h2>請選擇時段</h2>
                 <div class="book_time_option">
-                    <div class="book_options" v-for="time in timePeriod">
+                    <div class="book_options" v-for="(time,index) in timePeriod">
                         <input type="radio" name="time" :value="time.period" :id="time.timeId" :disabled="timeStatus"
-                            v-model="timeChosen" required>
-                        <label :for="time.timeId" :disabled="timeStatus">{{ time.period }}<br>{{ time.time }}</label>
+                            v-model="timeChosen" @input="timeSet(index)" required>
+                        <label :for="time.timeId" :disabled="timeStatus">{{ time.period }}<br>{{ time.timeFrom }}-{{ time.timeTo }}</label>
                     </div>
                 </div>
             </div>
@@ -115,6 +116,10 @@ export default {
             tableChosen: '',
             tableName: '',
             timeChosen: '',
+            chosentimeFrom: '',
+            chosentimeTo: '',
+            bookingData: [],
+            disableDate: [],
             count: 1,
             tableType: [{
                 value: '1',
@@ -132,30 +137,34 @@ export default {
             timePeriod: [{
                 value: '上午時段',
                 period: '上午',
-                time: '09:00-12:00',
-                timeId: 'book_morning',
+                timeFrom: '09:00',
+                timeTo: '12:00',
+                timeId: 'bookAM'
             }, {
                 value: '下午時段',
                 period: '下午',
-                time: '12:00-15:00',
-                timeId: 'book_afternoon',
+                timeFrom: '12:00',
+                timeTo: '15:00',
+                timeId: 'bookAF'
             }, {
                 value: '傍晚時段',
                 period: '傍晚',
-                time: '15:00-18:00',
-                timeId: 'book_dusk',
+                timeFrom: '15:00',
+                timeTo: '18:00',
+                timeId: 'bookEVE'
             }, {
                 value: '晚上時段',
                 period: '晚上',
-                time: '18:00-21:00',
-                timeId: 'book_evening',
+                timeFrom: '18:00',
+                timeTo: '21:00',
+                timeId: 'bookPM'
             }],
             //以下是日曆用
             dayNames: ["日", "一", "二", "三", "四", "五", "六"],
             selectedMonth: new Date().getMonth(),
             selectedYear: new Date().getFullYear(),
             selectedDate: null,
-            dateDisabled: false,
+            // dateDisabled: false,
             // 以上是日曆用
             bookState: 1,
             userData: {},
@@ -164,11 +173,16 @@ export default {
     components: {
         PageTitle
     },
+    created(){
+        this.createTables()
+    },
     mounted() {
         this.userData = JSON.parse(localStorage.getItem("userDataStr"))
     },
+    beforeUpdate(){
+        this.dateDisabled()
+    },
     computed: {
-        // ...mapState(userStore, ['userData']),
         //以下是日曆用
         today() {
             return new Date();
@@ -180,7 +194,7 @@ export default {
             return this.selectedMonth == new Date().getMonth() && this.isCurrentYear;
         },
         isMaxMonth() {
-            if (this.daysInLastMonth - this.today.getDate() > 15) {
+            if (this.daysInMonth - this.today.getDate() > 15) {
                 return this.selectedMonth == new Date().getMonth() && this.isCurrentYear;
             } else {
                 return this.selectedMonth == new Date().getMonth() + 1 && this.isCurrentYear;
@@ -220,23 +234,59 @@ export default {
                 this.count = 12
             }
         },
+        createTables(){
+            axios({
+                    method: 'post',
+                    url: `${import.meta.env.VITE_API_URL}/buildTables.php`,
+                    headers: { "Content-Type": "multipart/form-data" },
+                    // data: {
+                    //     book_date: this.dateChosen,
+                    // }
+                })
+                .then((res) =>{
+                    // console.log('執行成功')
+                    this.bookingData = res.data.returnTables
+                    // console.log(res.data.returnTables)
+                    // console.log(this.bookingData)
+                    // console.log(this.bookingData[0])
+                    // console.log(this.bookingData[0].tables_type)
+                })
+                .catch((err) => {
+                    console.log(err)}
+                );
+        },
         tableAble() {
+            console.log(this.dateChosen)
+            // let tablesTotal = this.bookingData[i].tables_total
+            // let amBooked = this.bookingData[i].tables_am_booked
+            // let afBooked = this.bookingData[i].tables_af_booked
+            // let eveBooked = this.bookingData[i].tables_eve_booked
+            // let pmBooked = this.bookingData[i].tables_pm_booked
+            // let selectedDateTables = [];
+            // for(i=0; i<this.bookingData.length; i++){
+            //     if(this.bookingData[i].tables_date == this.dateChosen && 
+            //         (tablesTotal - amBooked > 0 ||
+            //         tablesTotal - afBooked > 0 ||
+            //         tablesTotal - eveBooked > 0 ||
+            //         tablesTotal - pmBooked > 0 )
+            //     ){
+            //         selectedDateTables.push(this.bookingData[i].tables_type)
+            //         console.log(selectedDateTables)
+            //     }
+            // }
+            // // console.log(selectedDateTables)
+            
+            // console.log(this.bookingData[0].tables_type)
             this.tableTypeStatus = false;
         },
         timeAble() {
             this.timeStatus = false
         },
+        timeSet(index){
+            this.chosentimeFrom = this.timePeriod[index].timeFrom
+            this.chosentimeTo = this.timePeriod[index].timeTo
+        },
         handleInput() {
-            // const bookFormData = new FormData();
-            // bookFormData.append('mem_id', this.userData.mem_id);
-            // bookFormData.append('book_date', this.dateChosen);
-            // bookFormData.append('book_time', this.timeChosen);
-            // bookFormData.append('book_people', this.count);
-            // bookFormData.append('tables_type', this.tableChosen);
-            // bookFormData.append('book_state', this.bookState);
-            // console.log(bookFormData)
-
-
             if (this.dateChosen == '' || this.tableChosen == '' || this.timeChosen == '') {
                 this.alertContent.push('請填寫完整預訂資訊') 
                 this.showAlert = true;
@@ -245,41 +295,40 @@ export default {
                 axios({
                     method: 'post',
                     url: `${import.meta.env.VITE_API_URL}/writeBook.php`,
-                    // url: `${import.meta.env.VITE_API_URL}/123.php`,
                     headers: { "Content-Type": "multipart/form-data" },
                     data: {
                         mem_id: this.userData.mem_id,
                         book_date: this.dateChosen,
                         book_time: this.timeChosen,
+                        book_start_time: this.chosentimeFrom,
+                        book_end_time: this.chosentimeTo,
                         book_people: this.count,
                         tables_type: this.tableChosen,
                         book_state: this.bookState
                     }
                 })
                 .then((res) =>{
-                    console.log('修改成功')
-                })
+                    let tableName = ''
+                    switch (this.tableChosen){
+                        case '1' : 
+                            tableName = '四人桌';
+                            break;
+                        case '2' : 
+                            tableName = '八人桌'
+                            break;
+                        case '3' : 
+                            tableName = '十二人桌'
+                    }
+                    this.alertContent.push(`預約成功！以下是您的預約資訊`, `選擇日期：${this.dateChosen}`, `選擇桌型：${tableName}`, `選擇時段：${this.timeChosen}`, `預定人數：${this.count}人`)
+                    this.showAlert = true;
+                    this.dateChosen = '';
+                    this.tableChosen = '';
+                    this.timeChosen = '';
+                    this.count = 1
+                    })
                 .catch((err) => {
                     console.log(err)}
                 );
-
-                let tableName = ''
-                switch (this.tableChosen){
-                    case '1' : 
-                        tableName = '四人桌';
-                        break;
-                    case '2' : 
-                        tableName = '八人桌'
-                        break;
-                    case '3' : 
-                        tableName = '十二人桌'
-                }
-                this.alertContent.push(`預約成功！以下是您的預約資訊`, `選擇日期：${this.dateChosen}`, `選擇桌型：${tableName}`, `選擇時段：${this.timeChosen}`, `預定人數：${this.count}人`)
-                this.showAlert = true;
-                this.dateChosen = '';
-                this.tableChosen = '';
-                this.timeChosen = '';
-                this.count = 1
             }
         },
         closeAlert() {
@@ -320,11 +369,83 @@ export default {
         },
         isDisabled(num) {
             let restDay = 15 - (this.daysInLastMonth - this.today.getDate())
-            return (
-                (this.isCurrentMonth && num <= this.today.getDate()) || (this.isCurrentMonth && num > this.today.getDate() + 15)
-                || (!this.isCurrentMonth && num > restDay)
-            );
+
+            let month = new Date().getMonth()+1
+            if(month<10){
+                month = '0' + month
+            }
+            let date = `${new Date().getFullYear()}-${month}-${num}`
+            if(this.bookingData.length > 0){
+                let result;
+                for(i=0; i<this.disableDate.length; i++){
+                    if(this.disableDate == date){
+                        result = true
+                    }
+                }
+                return (
+                    ((this.isCurrentMonth && num <= this.today.getDate()) 
+                    || 
+                    (this.isCurrentMonth && num > this.today.getDate() + 15)
+                    || 
+                    (!this.isCurrentMonth && num > restDay))
+                    ||
+                    result
+                );
+            }
         },
+        dateDisabled(){
+            for(i=0; i<this.bookingData.length; i=i+3){
+                let tablesType = this.bookingData[i].tables_type
+                let tablesTotal = this.bookingData[i].tables_total
+                let amBooked = this.bookingData[i].tables_am_booked
+                let afBooked = this.bookingData[i].tables_af_booked
+                let eveBooked = this.bookingData[i].tables_eve_booked
+                let pmBooked = this.bookingData[i].tables_pm_booked
+                let hasFalse = true;
+                for(let j=1; j<=3; j++){
+                    if(tablesTotal - amBooked <= 0 && tablesTotal - afBooked <= 0 && tablesTotal - eveBooked <= 0 && tablesTotal - pmBooked <= 0){
+                        hasFalse = false
+                        break;
+                    }
+                }
+                if(hasFalse == false && !this.disableDate.includes(this.bookingData[i].tables_date)){
+                        this.disableDate.push(this.bookingData[i].tables_date)
+                    }
+            }
+        },
+        isDateFull(num){
+            // if(bookingData)
+            // this.bookingData
+            // let date = `${new Date().getFullYear()}-${new Date().getMonth()+1}-${num}`
+            // let month = new Date().getMonth()+1
+            // if(month<10){
+            //     month = '0' + month
+            // }
+            // let date = `${new Date().getFullYear()}-${month}-17`
+            
+            // console.log(this.bookingData)
+            // console.log(date)
+            // console.log(this.bookingData[13].tables_date)
+            // if(this.bookingData[0].tables_date == date){
+            //     console.log(true)
+            // }else{
+            //     console.log(false)
+            // }
+            // for(i=0; i<this.bookingData.length; i++){
+            //     let tablesTotal = this.bookingData[i].tables_total
+            //     let amBooked = this.bookingData[i].tables_am_booked
+            //     let afBooked = this.bookingData[i].tables_af_booked
+            //     let eveBooked = this.bookingData[i].tables_eve_booked
+            //     let pmBooked = this.bookingData[i].tables_pm_booked
+            //     if(tablesTotal - amBooked == 0 && tablesTotal - afBooked == 0 && tablesTotal - eveBooked == 0 && tablesTotal - pmBooked == 0){
+            //         if(!this.disableDate.includes(this.bookingData[i].tables_date)){
+            //             this.disableDate.push(this.bookingData[i].tables_date)
+            //         }
+            //     }
+            // }
+            // if(this.bookingData[i].tables_date == ``)
+            // console.log(this.disableDate)
+        }
         // 以上是日曆用
 }
 }
