@@ -16,6 +16,16 @@ const router = createRouter({
       },
     },
     {
+      path: "/home_3",
+      name: "home_3",
+      meta: {
+        title: "首頁測試",
+        // showHeader: false, //打開這個即可不顯示header
+        customHeaderPosition: true, // 新增標記
+      },
+      component: () => import("../views/HomeView_3.vue"),
+    },
+    {
       path: "/about",
       name: "about",
       meta: {

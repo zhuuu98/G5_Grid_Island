@@ -12,8 +12,10 @@
                 <!-- 右側主要內容 -->
                 <!-- 會員中心首頁 -->
                 <div class="memberContentIndex col-T-7 col-PC-7"  v-show="isChoosedIndex_PC">
-                    <h3 class="hello">
-                        您好，{{ memberData[0].mem_nickname }}，歡迎入島遊玩！</h3>
+                    <!-- <h3 v-if="memberData[0]" class="hello">
+                        您好，{{ memberData[0].mem_nickname }}，歡迎入島遊玩！</h3> -->
+                    <h3 class="hello" v-for="nickname in memberData">
+                        您好，{{ nickname.mem_nickname }}，歡迎入島遊玩！</h3>
                     
                     <!-- 訂單資訊 -->
                     <div class="memberOrder">
@@ -21,12 +23,12 @@
                             <img src="../assets/images/member/memberAsideIcon_3.svg" alt="訂單資訊ICON">
                             <p>訂單資訊</p>
                         </div>
-                        <div class="memberOrderNotFin">
-                            <span>0</span>
+                        <div class="memberOrderNotFin" >
+                            <span>{{ undoneOrder }}</span>
                             <span>未完成</span>
                         </div>
                         <div class="memberOrderFinished">
-                            <span>0</span>
+                            <span>{{ completedOrder }}</span>
                             <span>已完成</span>
                         </div>
                         <button class="memberLookOrder btn_lg_orange" @click="order">查看訂單</button>
@@ -40,19 +42,22 @@
                             </div>
                             <button class="memberLookBook btn_lg_orange" @click="book">查看預約</button>
                         </div>
-                        <div class="memberBooklog" v-for="date in bookDate">
+                        <div class="memberBooklog" v-for="data in bookInfo">
                             <div class="dateAndCancel">
-                                <p>{{ date }}</p>
+                                <p>{{ data.book_date }}</p>
                                 <button :class="{ 'btn_sm_1': true, 'disabled': isPastDate(date) }"
                                     @click="cancelReservation(date)">取消預約</button>
                             </div>
-                            <div class="selectedTime">
-                                <button class="chooseTime" v-for="(choose, index) in selectedTime.timePeriod" :key="index">
-                                    <p>{{ choose }}</p>
-                                    <p>{{ selectedTime.hours[index] }}</p>
-                                </button>
+                            <div class="TimeAndPeople">
+                                <p>時段：</p>
+                                <div class="selectedTime">
+                                    <div class="chooseTime" >
+                                        <p>{{ data.book_time }}{{ data.book_start_time }}~{{ data.book_end_time }}</p>
+                                        
+                                    </div>
+                                </div>
                                 <div class="numPeople">
-                                    <p>人數：{{ numPeople[0] }}</p>
+                                    <p>人數：{{ data.book_people }}人</p>
                                 </div>
                             </div>
                         </div>
@@ -66,31 +71,32 @@
                             <img src="../assets/images/member/memberAsideIcon_2.svg" alt="會員資料修改icon">
                             <h3 class="pc-h4">會員資料修改</h3>
                         </div>
-                        <form action="" class="dataContent" method="post" >
+                        <!-- <form action="" class="dataContent" method="post" v-if="memberData[0]"> -->
+                        <form action="" class="dataContent" method="post" v-for="data in memberData">
                             <label for="memName">姓名</label>
-                            <input type="text" :placeholder="memberData[0].mem_name" id="memName" name="mem_name">
+                            <input type="text" :placeholder="data.mem_name" id="memName" name="mem_name">
                             
                             <label for="memNickname">暱稱</label>
-                            <input type="text" :placeholder="memberData[0].mem_nickname" id="memNickname" name="mem_nickname" >
+                            <input type="text" :placeholder="data.mem_nickname" id="memNickname" name="mem_nickname" >
                             <label for="memEmail">電子信箱</label>
-                                <input type="email" :placeholder="memberData[0].mem_email" id="memEmail" name="mem_email" readonly class="email">
+                                <input type="email" :placeholder="data.mem_email" id="memEmail" name="mem_email" readonly class="email">
                             <label for="memTel">連絡電話</label>
-                            <input type="tel" :placeholder="memberData[0].mem_tel" id="memTel" name="mem_tel" >
+                            <input type="tel" :placeholder="data.mem_tel" id="memTel" name="mem_tel" >
                             <div class="inputGender">
                                 <span>性別</span>
                                 <div class="genderRadio">
-                                    <input type="radio" id="female" name="mem_gender" value="0" :checked="memberData[0].mem_gender == 0">
+                                    <input type="radio" id="female" name="mem_gender" value="0" :checked="data.mem_gender == 0">
                                     <label for="female">女性</label>
-                                    <input type="radio" id="male" name="mem_gender" value="1" :checked="memberData[0].mem_gender == 1">
+                                    <input type="radio" id="male" name="mem_gender" value="1" :checked="data.mem_gender == 1">
                                     <label for="male">男性</label>
-                                    <input type="radio" id="they" name="mem_gender" value="2" :checked="memberData[0].mem_gender == 2">
+                                    <input type="radio" id="they" name="mem_gender" value="2" :checked="data.mem_gender == 2">
                                     <label for="they">其他</label>
                                 </div>
                             </div>
                             <label for="memBirth">生日</label>
-                                <input type="date" :value="memberData[0].mem_birthday" id="memBirth" name="mem_birth" >
+                                <input type="date" :value="data.mem_birthday" id="memBirth" name="mem_birth" >
                             <label for="memAddr">收件地址</label>
-                                <input type="text" :placeholder="memberData[0].mem_addr" id="memAddr" name="mem_addr">
+                                <input type="text" :placeholder="data.mem_addr" id="memAddr" name="mem_addr">
                             <input type="submit" class="searchBtn" value="儲存設定">
                         </form>
                     </div>
@@ -105,29 +111,26 @@
                         <div class="PC_OrderDataContent">
                             <div class="PC_ContentTitle">
                                 <p v-for="title in orderTitle">{{ title }}</p>
-                                <p></p>
+                                
                             </div>
                             <div class="PC_orderMain">
-                                <div class="PC_OrderDataList" v-for="(items, index) in orderList" :key="index">
+                                <div class="PC_OrderDataList" v-for="(items, index) in orderInfo" :key="index">
                                     <div class="PC_orderSimple">
                                         <div class="PC_orderListText">
-                                            <p>{{ items.orderDate }}</p>
-                                            <p>{{ items.orderNum }}</p>
-                                            <p>${{ items.orderTotal }}</p>
-                                            <p>{{ items.orderState }}</p>
+                                            <p>{{ items.ord_date }}</p>
+                                            <p>{{ items.ord_id }}</p>
+                                            <p>${{ items.ord_pay }}</p>
+                                            <p>{{ items.ord_state }}</p>
                                         </div>
-                                        <button class="btn_sm_1" @click="mobileOpenList(index)">訂單明細</button>
+                                        <button class="btn_sm_1" @click="OpenList(index)">訂單明細</button>
                                     </div>
-                                    <div class="PC_OrderDataDetail" v-show="items.isOpen">
-                                        <div v-for="(name, nameIndex) in items.orderItems" class="PC_NameTotal">
-                                            <img :src="getImageUrl(`member/memberOrderProducts_${nameIndex + 1}.svg`)" alt="商品">
-                                            <div class="PC_orderPriceNumTotal">
-                                                <p>{{ name }}</p>
-                                                <p>${{ items.orderItemsPrice[nameIndex] }}</p>
-                                                <p>{{ items.orderItemsNum[nameIndex] }}</p>
-                                                <p>${{ items.orderItemsTotal[nameIndex] }}</p>
-                                            </div>
-                                        </div>
+                                    <div class="PC_OrderDataDetail" v-for="(prod, prodIndex) in items.orderListInfo"  v-show="prod.openOrderList">
+                                        
+                                        <img :src="`https://tibamef2e.com/chd104/g5/image/prod/${prod.prod_img1}`" :alt="prod.prod_name">
+                                        <p>{{ prod.prod_name }}</p>
+                                        <p>${{ prod.ord_item_price }}</p>
+                                        <p>{{ prod.ord_item_qty }}個</p>
+                                        <p>${{ prod.ord_item_total }}</p>
                                     </div>
                                 </div>
                             </div>
@@ -145,22 +148,25 @@
                                     <h3 class="pc-h4">預約紀錄</h3>
                                 </div>
                             </div>
-                            <div class="memberBooklog" v-for="date in bookDate">
-                                <div class="dateAndCancel">
-                                    <p>{{ date }}</p>
-                                    <button :class="{ 'btn_sm_1': true, 'disabled': isPastDate(date) }"
-                                        @click="cancelReservation(date)">取消預約</button>
-                                </div>
+                            <div class="memberBooklog" v-for="data in bookInfo">
+                            <div class="dateAndCancel">
+                                <p>{{ data.book_date }}</p>
+                                <button :class="{ 'btn_sm_1': true, 'disabled': isPastDate(date) }"
+                                    @click="cancelReservation(date)">取消預約</button>
+                            </div>
+                            <div class="TimeAndPeople">
+                                <p>時段：</p>
                                 <div class="selectedTime">
-                                    <button class="chooseTime" v-for="(choose, index) in selectedTime.timePeriod" :key="index">
-                                        <p>{{ choose }}</p>
-                                        <p>{{ selectedTime.hours[index] }}</p>
-                                    </button>
-                                    <div class="numPeople">
-                                        <p>人數：{{ numPeople[0] }}</p>
+                                    <div class="chooseTime" >
+                                        <p>{{ data.book_time }}</p>
+                                        <p>{{ data.book_start_time }}~{{ data.book_end_time }}</p>
                                     </div>
                                 </div>
+                                <div class="numPeople">
+                                    <p>人數：{{ data.book_people }}人</p>
+                                </div>
                             </div>
+                        </div>
                         </div>
                     </div>
                 </div>
@@ -187,30 +193,31 @@
                     <img src="../assets/images/member/memberAsideIcon_2.svg" alt="會員資料修改icon">
                     <h3 class="pc-h4" >會員資料修改</h3>
                 </div>
-                <form action="" class="content">
+                <!-- <form action="" class="content" v-if="memberData[0]"> -->
+                <form action="" class="content" v-for="data in memberData">
                     <label for="memName">姓名</label>
-                    <input type="text" :placeholder="memberData[0].mem_name" id="memName" name="mem_name">
+                    <input type="text" :placeholder="data.mem_name" id="memName" name="mem_name">
                     <label for="memNickname">暱稱</label>
-                    <input type="text" :placeholder="memberData[0].mem_nickname" name="mem_nickname">
+                    <input type="text" :placeholder="data.mem_nickname" name="mem_nickname">
                     <label for="memEmail">電子信箱</label>
-                        <input type="email" :placeholder="memberData[0].mem_email" id="memEmail" name="mem_email" readonly class="email">
+                        <input type="email" :placeholder="data.mem_email" id="memEmail" name="mem_email" readonly class="email">
                     <label for="memTel">連絡電話</label>
-                    <input type="tel" :placeholder="memberData[0].mem_tel" id="memTel" name="mem_tel" >
+                    <input type="tel" :placeholder="data.mem_tel" id="memTel" name="mem_tel" >
                     <div class="inputGender">
                         <span>性別</span>
                         <div class="genderRadio">
-                            <input type="radio" id="femaleMb" name="mem_gender" value="0" :checked="memberData[0].mem_gender == 0">
+                            <input type="radio" id="femaleMb" name="mem_gender" value="0" :checked="data.mem_gender == 0">
                             <label for="femaleMb">女性</label>
-                            <input type="radio" id="maleMb" name="mem_gender" value="1" :checked="memberData[0].mem_gender == 1">
+                            <input type="radio" id="maleMb" name="mem_gender" value="1" :checked="data.mem_gender == 1">
                             <label for="maleMb">男性</label>
-                            <input type="radio" id="theyMb" name="mem_gender" value="2" :checked="memberData[0].mem_gender == 2">
+                            <input type="radio" id="theyMb" name="mem_gender" value="2" :checked="data.mem_gender == 2">
                             <label for="theyMb">其他</label>
                         </div>
                     </div>
                     <label for="memBirth">生日</label>
-                        <input type="date" :value="memberData[0].mem_birthday"  id="memBirth" name="mem_birth" >
+                        <input type="date" :value="data.mem_birthday"  id="memBirth" name="mem_birth" >
                     <label for="memAddr">收件地址</label>
-                        <input type="text" :placeholder="memberData[0].mem_addr" id="memAddr" name="mem_addr">
+                        <input type="text" :placeholder="data.mem_addr" id="memAddr" name="mem_addr">
                     <input type="submit" class="searchBtn submit" value="儲存設定">
                 </form>
             </div>
@@ -229,28 +236,22 @@
                         <button class="btn_sm_1">訂單明細</button>
                     </div> -->
                     <div class="orderMain">
-                        <div class="OrderDataList" v-for="(items, index) in orderList" :key="index">
+                        <div class="OrderDataList" v-for="(items, index) in orderInfo" :key="index">
                             <div class="orderSimple">
                                 <div class="orderListText">
-                                    <p>{{ items.orderDate }}</p>
-                                    <p>{{ items.orderNum }}</p>
-                                    <p>${{ items.orderTotal }}</p>
-                                    <p>{{ items.orderState }}</p>
+                                    <p>{{ items.ord_date }}</p>
+                                    <p>{{ items.ord_id }}</p>
+                                    <p>${{ items.ord_pay }}</p>
+                                    <p>{{ items.ord_state }}</p>                      
                                 </div>
-                                <button class="btn_sm_1" @click="mobileOpenList(index)">訂單明細</button>
+                                <button class="btn_sm_1" @click="OpenList(index)">訂單明細</button>
                             </div>
-                            <div class="OrderDataDetail" v-show="items.isOpen">
-                                <div v-for="(name, nameIndex) in items.orderItems" class="NameTotal">
-                                    <img :src="getImageUrl(`member/memberOrderProducts_${nameIndex + 1}.svg`)" alt="商品">
-                                    <div class="orderItem">
-                                        <div class="orderName">{{ name }}</div>
-                                        <div class="orderPriceNumTotal">
-                                            <p>${{ items.orderItemsPrice[nameIndex] }}</p>
-                                            <p>{{ items.orderItemsNum[nameIndex] }}</p>
-                                            <p>${{ items.orderItemsTotal[nameIndex] }}</p>
-                                        </div>
-                                    </div>
-                                </div>
+                            <div class="OrderDataDetail" v-for="(prod, prodIndex) in items.orderListInfo" v-show="prod.openOrderList">
+                                <img :src="`https://tibamef2e.com/chd104/g5/image/prod/${prod.prod_img1}`" :alt="prod.prod_name">
+                                <p>{{ prod.prod_name }}</p>
+                                <p>${{ prod.ord_item_price }}</p>
+                                <p>{{ prod.ord_item_qty }}個</p>
+                                <p>${{ prod.ord_item_total }}</p>
                             </div>
                         </div>
                     </div>
@@ -264,20 +265,24 @@
                     <img :src="getImageUrl(`member/memberAsideIcon_4.svg`)" alt="預約紀錄icon">
                     <h3 class="pc-h4">{{ mobileIcon[3] }}</h3>
                 </div>
-                <div class="bookDataContent" v-for="date in bookDate">
+                <div class="bookDataContent" v-for="data in bookInfo">
                     <div class="mobileBookDateCancel">
-                        <p>{{ date }}</p>
+                        <p>{{ data.book_date }}</p>
                         <button :class="{ 'btn_sm_1': true, 'disabled': isPastDate(date) }"
                             @click="cancelReservation(date)">取消預約</button>
                     </div>
-                    <p>時段：</p>
-                    <div class="mobileBookTime">
-                        <button class="chooseTime" v-for="(choose, index) in selectedTime.timePeriod" :key="index">
-                            <p>{{ choose }}</p>
-                            <p>{{ selectedTime.hours[index] }}</p>
-                        </button>
-                    </div>
-                    <p>人數：{{ numPeople[0] }}</p>
+                    <div class="TimeAndPeople">
+                                <p>時段：</p>
+                                <div class="selectedTime">
+                                    <div class="chooseTime" >
+                                        <p>{{ data.book_time }}{{ data.book_start_time }}~{{ data.book_end_time }}</p>
+                                        
+                                    </div>
+                                </div>
+                                <div class="numPeople">
+                                    <p>人數：{{ data.book_people }}人</p>
+                                </div>
+                            </div>
                 </div>
             </div>
 
@@ -295,46 +300,50 @@ export default {
     data() {
         return {
 
-            memberData: [],
-            userdata: {},
-            
-            bookInfo:[],
+            memberData: [],//會員資料
+            bookInfo:[],//預約資料
+            orderInfo:[],//訂單資料
+            orderListInfo:[],//訂單明細
+            undoneOrder:0,//未完成訂單
+            completedOrder:0,//已完成訂單
 
-            bookDate: ['2024/02/02', '2023/12/24'], //預約資訊-日期
-            selectedTime: {
-                timePeriod: ['上午', '下午', '下午', '晚上'],
-                hours: ['09:00~12:00', '12:00~15:00', '15:00~18:00', '18:00~21:00']
-            },
-            numPeople: ['4人', '6人'],//預約資訊-人數
+            userdata: {},
+
+            // bookDate: ['2024/02/02', '2023/12/24'], //預約資訊-日期
+            // selectedTime: {
+            //     timePeriod: ['上午', '下午', '下午', '晚上'],
+            //     hours: ['09:00~12:00', '12:00~15:00', '15:00~18:00', '18:00~21:00']
+            // },
+            // numPeople: ['4人', '6人'],//預約資訊-人數
             mobileIcon: ['Griddy造型屋', '會員資料修改', '訂單資訊', '預約紀錄', '報隊管理', '會員登出'],//手機板ICON名字
 
             //訂單資訊
             orderTitle: ['訂單日期', '訂單編號', '總計', '訂單狀況'],
-            orderList: [
-                {
-                    orderDate: '2023/12/21',
-                    orderNum: 1,
-                    orderTotal: 9000,
-                    orderState: '未完成',
-                    orderItems: ['阿瓦蟲', '貓與城之內豪華精裝版'],
-                    orderItemsPrice: [500, 8000],
-                    orderItemsNum: [2, 1],
-                    orderItemsTotal: [1000, 8000],
-                    isOpen: false,
-                },
-                {
-                    orderDate: '2023/12/11',
-                    orderNum: 2,
-                    orderTotal: 500,
-                    orderState: '已完成',
-                    orderItems: ['阿瓦蟲'],
-                    orderItemsPrice: [500],
-                    orderItemsNum: [1],
-                    orderItemsTotal: [500],
-                    isOpen: false,
-                },
+            // orderList: [
+            //     {
+            //         orderDate: '2023/12/21',
+            //         orderNum: 1,
+            //         orderTotal: 9000,
+            //         orderState: '未完成',
+            //         orderItems: ['阿瓦蟲', '貓與城之內豪華精裝版'],
+            //         orderItemsPrice: [500, 8000],
+            //         orderItemsNum: [2, 1],
+            //         orderItemsTotal: [1000, 8000],
+            //         isOpen: false,
+            //     },
+            //     {
+            //         orderDate: '2023/12/11',
+            //         orderNum: 2,
+            //         orderTotal: 500,
+            //         orderState: '已完成',
+            //         orderItems: ['阿瓦蟲'],
+            //         orderItemsPrice: [500],
+            //         orderItemsNum: [1],
+            //         orderItemsTotal: [500],
+            //         isOpen: false,
+            //     },
 
-            ],
+            // ],
 
             isChoosedEditData: false,//會員資料修改被選擇
             isChoosedOrderData: false,//訂單紀錄被選擇
@@ -362,13 +371,35 @@ export default {
             })
             .then(res => {
             // 成功接收後端返回的資料
-            // console.log(res.data);
-                this.memberData = res.data;
+                // console.log(res.data.undoneOrder[0]['count(*)']);
+                // console.log(res.data.undoneOrder);
+                this.memberData = res.data.memberData;
+                this.bookInfo=res.data.bookInfo;
+                this.undoneOrder=res.data.undoneOrder;
+                this.completedOrder=res.data.completedOrder;
+                this.orderInfo=res.data.orderInfo;
+                //跑迴圈渲染子陣列
+                for (let i = 0; i < this.orderInfo.length; i++) {
+                let item = this.orderInfo[i];
+                //把json變成陣列
+                let jsondata = JSON.parse(item.orderListInfo);
+                //把陣列內容渲染到頁面上
+                jsondata.forEach(orderListItem => {
+                // 在每個 orderListInfo 物件中新增一個布林值屬性 openOrderList，預設為 true
+                orderListItem.openOrderList = false; // 或者你可以設置為你需要的預設值
+                });
+
+
+                item.orderListInfo = jsondata;
+
+                console.log(jsondata);
+            }
+
+                
             })
             .catch(error => console.error('發生錯誤:',error));
 
 
-        // this.fetchMem()
         this.isLogin()
     },
     mounted(){
@@ -383,9 +414,19 @@ export default {
         getImageUrl(paths) { //取得圖片路徑
             return new URL(`../assets/images/${paths}`, import.meta.url).href
         },
-        mobileOpenList(index) { //訂單打開明細
-            this.orderList[index].isOpen = !this.orderList[index].isOpen
-            console.log(index)
+        OpenList(orderIndex, listIndex) { //訂單打開明細
+            // console.log(this.orderInfo[index].openOrderList);
+            // this.orderInfo[index].openOrderList = !this.orderInfo[index].openOrderList
+            // console.log(this.orderInfo[index].openOrderList)
+
+            // 取得特定索引的訂單資料
+            const order = this.orderInfo[orderIndex];
+
+            // 取得該訂單資料中特定索引的訂單明細資料
+            const orderList = order.orderListInfo[listIndex];
+
+            // 切換該訂單明細資料的 openOrderList 屬性的值
+            orderList.openOrderList = !orderList.openOrderList;
 
         },
         handleButtonClick(index) { //手機板選單

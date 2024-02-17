@@ -248,15 +248,15 @@ header {
             display: none;
             z-index: -1;
           }
-            // prebook hover效果
-            .ham_prebook{
-              &:hover{
-                +.ham_hover_prebook{
-                  display: block;
-                  color: $blue-1;
-                }
+          // prebook hover效果
+          .ham_prebook{
+            &:hover{
+              +.ham_hover_prebook{
+                display: block;
+                color: $blue-1;
               }
             }
+          }
           // news hover效果
           .ham_news{
             &:hover{

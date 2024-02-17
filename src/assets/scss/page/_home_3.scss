@@ -1,14 +1,19 @@
 .index_row {
-  width: 90%;
+  width: 100%;
   margin: auto;
+
   @include T() {
     width: 80%;
   }
+
   @include PC() {
     max-width: 1140px;
   }
 }
-main {
+
+#scroll-zone {
+  width: 100%;
+  overflow: hidden;
   //跑馬燈
   .cuppon {
     width: 100%;
@@ -20,12 +25,14 @@ main {
     transform: translateY(-6.2%);
     background-color: $white-1;
     z-index: 500;
-    box-shadow: 2px 0 10px 5px rgba(black, 0.2);
+    box-shadow: 2px 0 10px 5px rgba(black, .2);
+
     .btn {
       position: relative;
       width: 100%;
       height: 100%;
       z-index: 20;
+
       .svg-inline--fa {
         cursor: pointer;
         width: 10px;
@@ -37,6 +44,7 @@ main {
         transform: translate(-500%, 20%);
       }
     }
+
     .subContent {
       position: absolute;
       top: 0;
@@ -44,6 +52,7 @@ main {
       display: inline-block;
       white-space: nowrap;
       animation: marquee 600s linear infinite;
+
       span {
         padding: 0 60px;
         letter-spacing: $PC-btn-exsl-spacing;
@@ -54,108 +63,140 @@ main {
       0% {
         transform: translateX(0%);
       }
+
       100% {
         transform: translateX(-100%);
       }
     }
+
   }
+
   //內容
   .index {
     width: 100%;
+
     // 所有商品
-    .index_products {
+    .indexContainer {
+      padding: 4rem 0 6rem 0;
+
+      @include T(){
+        padding: 4rem 0 8rem 0;
+      }
+      @include PC(){
+        padding: 4rem 0 12rem 0;
+      }
+    }
+    #indexContainer_products {
       width: 100%;
-      // background-color: $red;
       background-color: #3bb1b9;
+      
       .index_row {
         color: $black;
-        padding: $XXL-spacing 0;
+        padding: 0;
         display: flex;
-        gap: $L-spacing;
+        gap: $M-spacing;
         flex-direction: column;
         justify-content: center;
         align-items: center;
+
         h1 {
           @include textStrokeEffect($black, $white-1, 6px);
         }
+
         .prodBackground {
           background-color: $white-1;
-          border: 3px solid $black;
-          border-radius: $S-button-radius;
-          padding: $XL-spacing 0;
+          border: 4.236px solid $black;
+          border-radius: 28px;
+          padding: 3rem 0;
           display: flex;
           flex-direction: column;
-          gap: $L-spacing;
-          width: 90%;
+          gap: $M-spacing;
+          width: 100%;
           overflow: hidden;
+
           @include T() {
-            width: 90%;
+            width: 100%;
           }
+
           @include PC() {
             width: 100%;
             max-width: $max-width;
           }
+
           .prodBreif {
             padding: 0 $S-spacing;
+
             @include T() {
               padding: 0 $XXL-spacing;
             }
+
             @include PC() {
               padding: 0 $XXXL-spacing;
             }
-            p {
-              font-size: $PC-text;
-            }
+
+            p {}
           }
+
           .prodMarquee {
-            border-top: 1px solid #b3b3b3;
-            border-bottom: 2px solid #b3b3b3;
-            background-image: url("@/assets/images/home/Grid.svg");
-            height: 250px;
+            border-top: 0px solid #ddd;
+            border-bottom: 1px solid #ccc;
+            // background-image: url("@/assets/images/home/Grid.svg");
+            background-image: linear-gradient(90deg,
+            #ddd 1px,
+                transparent 1px),
+              linear-gradient(180deg, #ddd 1px, transparent 1px);
+            background-size: 32px 32px, 32px 32px, cover;
+            background-repeat: repeat, repeat, no-repeat;
+            padding: 0px;
+            height: 320px;
+
             .marqueeAnimation {
               display: flex;
               align-items: center;
               justify-content: center;
-              animation: marquee 15s linear infinite;
+              animation: marquee2 15s linear infinite;
+
+              @include T() {
+                animation: marquee2 18s linear infinite;
+
+              }
+
+              // background-color: salmon;
               &:hover {
                 animation-play-state: paused;
               }
 
               .productCard {
-                transition: all 0.2s ease-in-out;
-                &:hover {
-                  scale: 1.1;
-                }
                 a {
-                  margin: 0 $S-spacing;
+                  // background-color: #3bb1b9;
+                  margin: 0 20px;
                   display: flex;
                   flex-direction: column;
                   align-items: center;
-                  transform: translateY(20px);
+                  transform: translateY(30px);
+
                   .productImg {
-                    border: 1px solid $black;
+                    border: 1.618px solid $black;
                     padding: $S-spacing;
                     background-color: $white-1;
-                    width: 150px;
-                    height: 150px;
+
                     img {
-                      width: 100%;
-                      height: 100%;
-                      object-fit: contain;
+                      width: 200px;
                     }
                   }
+
                   .productName {
-                    border: 1px solid $black;
-                    padding: $S-spacing;
-                    transform: translateY(-10px);
+                    border: 1.618px solid $black;
+                    padding: 16px;
+                    transform: translateY(-20px);
                     background-color: $green-1;
                     display: flex;
                     justify-content: center;
                     align-items: center;
-                    width: 120px;
+                    width: 175px;
+
                     p {
                       color: $black;
-                      font-size: $PC-text;
                       white-space: nowrap;
                       overflow: hidden;
                       text-overflow: ellipsis;
@@ -166,38 +207,49 @@ main {
             }
           }
         }
+
         .searchArea {
-          width: 90%;
+          width: 100%;
           display: flex;
           flex-direction: column;
           align-items: center;
           justify-content: center;
           background-color: $blue-1;
-          padding: $L-spacing 0;
+          padding: 3rem 0;
           border-radius: $PC-card-radius;
+          box-shadow: inset 0 0 0 4.236px #fff4;
+          margin-bottom: 60px;
+
           @include PC() {
             width: 100%;
           }
+
           .searchGroup {
             position: relative;
             display: flex;
             flex-direction: column;
-            gap: $S-spacing;
+            gap: 12px;
             align-items: center;
             justify-content: center;
+
             label {
-              font-size: $PC-h3;
+              @include H4;
+              line-height: 0;
             }
+
             input {
-              border: 1px solid $black;
+              border: 1.618px solid #0006;
               width: 200px;
-              height: 30px;
-              padding: $S-spacing;
+              height: 40px;
+              padding: 0 8px;
               border-radius: $input-radius;
+              @include text;
+
               @include PC() {
                 width: 300px;
               }
             }
+
             .searchResult {
               border-radius: $input-radius;
               padding: $S-spacing;
@@ -207,6 +259,7 @@ main {
               bottom: -100px;
               height: 100px;
               overflow-y: auto;
+
               p {
                 a {
                   font-size: $M-text;
@@ -221,73 +274,143 @@ main {
         }
       }
     }
+
     @keyframes marquee {
       0% {
         transform: translateX(0);
       }
+
       100% {
         transform: translateX(-100%);
       }
     }
+    @keyframes marquee2 {
+      0% {
+        transform: translateX(-100%);
+      }
+      100% {
+        transform: translateX(0%);
+      }
+    }
 
     //造型屋
-    #griddystyle-container {
-      background-color: $gray-1;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
+    #indexContainer_griddystyle {
       h1 {
         @include textStrokeEffect($black, $white-1, 6px);
       }
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      background-color: $gray-1;
+      overflow: visible;
+      width: 100%;
+
+      .wave-imagebox {
+        width: 100%;
+        position: relative;
+        .wave {
+          width: 240%;
+          position: absolute;
+          bottom: calc(100% + 4rem - 1px);
+          z-index: 20;
+
+          .pathLine {
+            fill: $blue-2;
+          }
+          .pathPan {
+            fill: $gray-1;
+          }
+          @include T(){
+            width: 200%;
+          }
+          @include PC(){
+            width: 120%;
+          }
+        }
+      }
+      .index_row {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: $L-spacing;
+
+      }
     }
+
     // 服務項目
-    .index_service {
+    #indexContainer_service {
       width: 100%;
       // background-color: $blue-2;
       background-color: $orange-1;
-      padding: $XL-spacing 0;
+      .wave-imagebox {
+        width: 100%;
+        position: relative;
+        .wave {
+          width: 240%;
+          position: absolute;
+          bottom: calc(100% + 4rem - 1px);
+          z-index: 20;
+
+          .pathLine {
+            fill: $green-2;
+          }
+          .pathPan {
+            fill: $orange-1;
+          }
+          @include T(){
+            width: 200%;
+          }
+          @include PC(){
+            width: 120%;
+          }
+        }
+      }
       .index_row {
         display: flex;
         gap: $M-spacing;
         flex-direction: column;
         justify-content: center;
         align-items: center;
+
         h1 {
           @include textStrokeEffect($black, $white-1, 6px);
         }
+
         span {
           font-size: 16px;
-          letter-spacing: 0.5px;
+          letter-spacing: .5px;
           background-color: $green-1;
           padding: 10px $M-spacing;
-          border: 1px solid $black;
+          border: 1.618px solid $black;
           color: $black;
         }
       }
+
       .serviceMarqueeContent {
         overflow: hidden;
         background-color: $white-1;
-        border: 3px solid $black;
-        border-radius: $S-button-radius;
+        border: 4.236px solid $black;
+        border-radius: 28px;
         padding: $XL-spacing 0;
         display: flex;
         // flex-direction: column;
         // gap: $L-spacing;
         width: 90%;
         gap: $M-spacing;
-        background: $white-1 url("/src/assets/images/home/Grid.svg") no-repeat
-          center;
+        background: $white-1 url("/src/assets/images/home/Grid.svg") no-repeat center;
+
         @include T() {
-          background: $white-1 url("/src/assets/images/home/Grid.svg") no-repeat
-            center;
+          background: $white-1 url("/src/assets/images/home/Grid.svg") no-repeat center;
           padding: $XXL-spacing 0;
           width: 90%;
         }
+
         @include PC() {
           width: 100%;
           max-width: $max-width;
         }
       }
+
       .marqueePic {
         display: flex;
         flex-direction: column;
@@ -296,9 +419,11 @@ main {
         animation: marquee 5s linear infinite;
         // gap: $M-spacing;
       }
+
       .marqueePic img {
         vertical-align: top;
         width: 260px;
+
         @include T() {
           width: 300px;
         }
@@ -306,9 +431,33 @@ main {
     }
 
     //預約方式
-    .index_reserve {
+    #indexContainer_reserve {
       background-color: $blue-1;
-      padding: $XL-spacing;
+      width: 100%;
+      .wave-imagebox {
+        width: 100%;
+        position: relative;
+        .wave {
+          width: 240%;
+          position: absolute;
+          bottom: calc(100% + 4rem - 1px);
+          z-index: 20;
+
+          .pathLine {
+            fill: $purple;
+          }
+          .pathPan {
+            fill: $blue-1;
+          }
+          @include T(){
+            width: 200%;
+          }
+          @include PC(){
+            width: 120%;
+          }
+        }
+      }
+
       .index_row {
         display: flex;
         flex-direction: column;
@@ -316,56 +465,68 @@ main {
         justify-content: center;
         gap: $XL-spacing;
       }
+
       h1 {
         @include textStrokeEffect($black, $white-1, 6px);
       }
+
       .reserveInfo {
         justify-content: center;
       }
+
       .reserveContent {
         display: flex;
         flex-wrap: wrap;
         justify-content: center;
         align-items: center;
         gap: $XL-spacing;
+
         @include T() {
           flex-wrap: nowrap;
           gap: $L-spacing;
         }
+
         @include PC() {
           flex-wrap: nowrap;
           gap: $XL-spacing;
         }
       }
+
       .reserveContent img {
         // width: 100%;
         vertical-align: top;
         width: 200px;
+
         @include PC() {
           width: 300px;
         }
       }
+
       span {
-        font-size: 16px;
-        letter-spacing: 0.5px;
+        @include text;
+        letter-spacing: .5px;
         color: $black;
       }
+
       [class*="reserveStep"] {
         position: relative;
       }
-      [class*="reserveStep"] > span {
+
+      [class*="reserveStep"]>span {
         background-color: $green-1;
         padding: $S-spacing $M-spacing;
-        border: 1px solid $blue-3;
+        border: 1.618px solid $black;
         // width: 200px;
         width: fit-content;
         text-align: center;
         position: absolute;
       }
+
       .reserveStep1 span {
         display: flex;
         flex-direction: column;
         transform: translateX(26px) translateY(-20px);
+
         @include T() {
           transform: translateX(75px) translateY(-20px);
         }
@@ -380,10 +541,13 @@ main {
         transform: translateX(26px) translateY(-20px);
         width: 100%;
         max-width: 150px;
+
         @include PC() {
           max-width: 250px;
         }
+
       }
+
       .reserveStep3 span {
         // width: 290px;
         display: flex;
@@ -393,71 +557,102 @@ main {
         transform: translateX(26px) translateY(-20px);
         width: 100%;
         max-width: 150px;
+
         @include PC() {
           max-width: 250px;
         }
       }
     }
-
-    // Griddy造型屋
-    .index_griddy {
-    }
-
     // 最新消息
-    .index_news {
+    #indexContainer_news {
       width: 100%;
       background-color: $orange-1;
+      .wave-imagebox {
+        width: 100%;
+        position: relative;
+        .wave {
+          width: 240%;
+          position: absolute;
+          bottom: calc(100% + 4rem - 1px);
+          z-index: 20;
+
+          .pathLine {
+            fill: $blue-2;
+          }
+          .pathPan {
+            fill: $orange-1;
+          }
+          @include T(){
+            width: 200%;
+          }
+          @include PC(){
+            width: 120%;
+          }
+        }
+      }
+
       .index_row {
         width: 100%;
+
         @include PC() {
           width: 80%;
           max-width: 1140px;
         }
       }
+
       h1 {
         @include textStrokeEffect($black, $white-1, 6px);
       }
+
       .news_card_content {
         display: flex;
         overflow: scroll;
         margin: $M-spacing 0;
         padding: 20px;
+
         @include PC() {
           overflow: visible;
           justify-content: center;
         }
+
         &::-webkit-scrollbar {
           display: none;
         }
+
         $cardWidth: 25vw;
+
         .newsCard {
           height: 340px;
           width: 80vw;
           margin: 10px;
+
           @include T() {
             width: 36vw;
           }
+
           @include PC() {
             width: calc($cardWidth - 80px);
           }
 
           .text {
             background-color: $white-1;
-            border-radius: 0 0 calc($M-button-radius - 2px)
-              calc($M-button-radius - 2px);
+            border-radius: 0 0 calc($M-button-radius - 2px) calc($M-button-radius - 2px);
+
             @include T() {
-              border-radius: 0 0 calc($S-button-radius - 2px)
-                calc($S-button-radius - 2px);
+              border-radius: 0 0 calc($S-button-radius - 2px) calc($S-button-radius - 2px);
             }
           }
         }
+
         .newsImg img {
           width: 100%;
         }
       }
+
       .news_button {
-        padding: $L-spacing 0 $XXL-spacing;
+        padding: $L-spacing 0 0;
       }
+
       button {
         display: block;
         margin: auto;
@@ -465,14 +660,37 @@ main {
     }
 
     // 一起遊樂 IG API
-    .index_insta {
-    }
+    .index_insta {}
 
     // Grid Island 關於我們
-    .index_about {
+    #indexContainer_about {
       padding-bottom: 15%;
       width: 100%;
       background-color: $green-2;
+      .wave-imagebox {
+        width: 100%;
+        position: relative;
+        .wave {
+          width: 240%;
+          position: absolute;
+          bottom: calc(100% + 4rem - 1px);
+          z-index: 20;
+
+          .pathLine {
+            fill: $green-1;
+          }
+          .pathPan {
+            fill: $green-2;
+          }
+          @include T(){
+            width: 200%;
+          }
+          @include PC(){
+            width: 120%;
+          }
+        }
+      }
+
       .index_row {
         width: 80%;
         display: flex;
@@ -480,76 +698,87 @@ main {
         align-items: center;
         // justify-content: center;
         gap: $L-spacing;
+
         @include PC() {
           width: 80%;
           max-width: 1140px;
         }
       }
+
       h1 {
         @include textStrokeEffect($black, $white-1, 6px);
       }
+
       .aboutContent {
         width: 100%;
         height: 320px;
-        background: $white-1
-          // url("/src/assets/images/home/homeAbout_BackgoundGrid.svg") no-repeat
+        background: $white-1 // url("/src/assets/images/home/homeAbout_BackgoundGrid.svg") no-repeat
           // left 0 bottom 140%/340%;
           url("/src/assets/images/home/Grid.svg") no-repeat center;
-        border: 3px solid $black;
+        border: 4.236px solid $black;
         display: flex;
         justify-content: center;
         align-items: center;
         flex-direction: column;
         border-radius: $S-button-radius;
+
         @include M() {
           height: auto;
           width: 100%;
-          background: $white-1
-            url("/src/assets/images/home/homeAbout_BackgoundGrid.svg") no-repeat
-            center/180%;
+          background: $white-1 url("/src/assets/images/home/homeAbout_BackgoundGrid.svg") no-repeat center/180%;
+
         }
+
         @include T() {
           width: 95%;
-          background: $white-1
-            url("/src/assets/images/home/homeAbout_BackgoundGrid.svg") no-repeat
-            left 0 bottom 15%/160%;
+          background: $white-1 url("/src/assets/images/home/homeAbout_BackgoundGrid.svg") no-repeat left 0 bottom 15%/160%;
         }
+
         @include PC() {
           max-width: 1100px;
           width: 98%;
-          background: $white-1
-            url("/src/assets/images/home/homeAbout_BackgoundGrid.svg") no-repeat
-            left 0 bottom 15%/100%;
+          background: $white-1 url("/src/assets/images/home/homeAbout_BackgoundGrid.svg") no-repeat left 0 bottom 15%/100%;
         }
+
         .aboutContentTxt {
           display: none;
           text-align: center;
           margin: $L-spacing $XXXL-spacing $L-spacing;
           font-size: $PC-h4;
           color: $black;
-          letter-spacing: 0.5px;
+          letter-spacing: .5px;
           font-weight: bold;
           padding: 0 $M-spacing;
+
           @include M() {
             margin: $L-spacing $L-spacing 0;
           }
+
           @include T() {
             display: flex;
             justify-content: center;
             align-items: center;
           }
+
           @include PC() {
             margin: $L-spacing $XXXL-spacing $S-spacing;
+
           }
+
         }
+
       }
+
       .imgWrapper {
         width: 100%;
         overflow-x: scroll;
+
         @include T() {
           overflow: hidden;
         }
+
       }
+
       .aboutContentImg {
         // padding:  0 0 0 190px;
         width: 800px;
@@ -557,22 +786,27 @@ main {
         justify-content: center;
         gap: $M-spacing;
         margin: $XL-spacing 0 $XL-spacing;
+
         &::-webkit-scrollbar {
           display: none;
         }
+
         @include T() {
           overflow-x: scroll;
           width: unset;
           margin-bottom: $XL-spacing;
           padding: 0 0 0 200px;
         }
+
         img {
           width: 260px;
           max-width: 100%;
           vertical-align: middle;
+
           @include M() {
             width: auto;
           }
+
           @include T() {
             max-width: 420px;
           }
@@ -580,6 +814,8 @@ main {
       }
     }
   }
-} //index
+}
+
+//index
 
 //main

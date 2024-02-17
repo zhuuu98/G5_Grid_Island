@@ -62,13 +62,15 @@
                 <div class="productPriceQuantityArea">
                   <div class="priceArea">
                     <div
+                      :class="{ productPrice: prodData.prod_discount_price }"
+                    >
+                      <h3>$ {{ prodData.prod_price }}</h3>
+                    </div>
+                    <div
                       v-if="prodData.prod_discount_price"
-                      class="productPrice"
+                      class="productDiscountPrice"
                     >
                       <h3>$ {{ prodData.prod_discount_price }}</h3>
-                    </div>
-                    <div class="productDiscountPrice">
-                      <h3>$ {{ prodData.prod_price }}</h3>
                     </div>
                   </div>
                   <div class="productQuantity">
@@ -108,14 +110,14 @@
             @click="selectTab(2)"
             :class="{ active: desc === 2 }"
           >
-            <span>產品規格</span>
+            <span>產品說明</span>
           </div>
         </div>
         <div class="productDescBackground">
           <div class="productDesc">
             <div class="productDescTitle">
               <h3 v-if="desc == 1">遊戲介紹</h3>
-              <h3 v-if="desc == 2">產品規格</h3>
+              <h3 v-if="desc == 2">產品說明</h3>
             </div>
             <div class="productDesc">
               <p v-if="desc == 1">{{ prodData.prod_intro }}</p>

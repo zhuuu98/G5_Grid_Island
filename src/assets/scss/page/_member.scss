@@ -93,6 +93,12 @@
                 background-color: $white-1;
                 border-radius:25px;
             }
+            .TimeAndPeople{
+                display: flex;
+                // flex-wrap: wrap;
+                align-items: center;
+            }
+
             .dateAndCancel{
                 display: flex;
                 justify-content: space-between;
@@ -107,9 +113,9 @@
             }
             .chooseTime{
                 display: flex;
-                flex-direction: column;
+                // flex-direction: column;
                 align-items: center;
-                border: 1px solid $blue-3;
+                // border: 1px solid $blue-3;
                 border-radius: $S-button-radius;
                 padding: 0 $S-spacing;
             }
@@ -154,6 +160,11 @@
                 background-color: $white-1;
                 border-radius: 25px;
             }
+            .TimeAndPeople{
+                display: flex;
+                // flex-wrap: wrap;
+                align-items: center;
+            }
             .dateAndCancel{
                 display: flex;
                 justify-content: space-between;
@@ -167,15 +178,20 @@
                 align-items: center;
             }
             .numPeople{
-                margin-left: 35px;
+                margin-left: 13%;
+                @include PC(){
+                    margin-left: 47%;
+                }
             }
             .chooseTime{
                 display: flex;
-                flex-direction: column;
+                // flex-direction: column;
                 align-items: center;
-                border: 1px solid $blue-3;
+                // border: 1px solid $blue-3;
                 border-radius: $S-button-radius;
                 padding: 0 $S-spacing;
+                // background-color: $btn-pri-bgc;
+                // color: $white-1;
             }
             .disabled {
                 opacity: 0.5;  /* 或其他禁用樣式 */
@@ -606,11 +622,11 @@
             }
             .PC_ContentTitle{
                 display: flex;
-                gap: $XL-spacing;
+                gap: 40px;
                 padding: $M-spacing;
             }
             .PC_ContentTitle p{
-                width: 60px;
+                width: fit-content;
                 text-align: center;
             }
             .PC_orderListText{
@@ -618,7 +634,7 @@
                 gap: $XL-spacing;
                 justify-content: space-around;
                 @include T(){
-                    gap: $L-spacing;
+                    gap: 60px;
                 }
                 @include PC(){
                     gap: $XL-spacing;
@@ -626,7 +642,7 @@
             }
             .PC_orderListText p{
                 text-align: center;
-                width: 60px;
+                width: fit-content;
             }
             .PC_orderSimple{
                 display: flex;
@@ -636,7 +652,7 @@
         
             }
             .PC_ContentTitle p:last-child{
-                width: 60px;
+                width: fit-content;
             }
             .PC_NameTotal{
                 display: flex;
@@ -671,7 +687,16 @@
                 flex-direction: column;
                 gap: $M-spacing;
             }
-        
+            .PC_OrderDataDetail{
+                display: flex;
+                padding: $M-spacing;
+                gap: 6%;
+                align-items: center;
+            }
+            .PC_OrderDataDetail img{
+                width: 100%;
+                max-width: 100px;
+            }
 
         }
     }

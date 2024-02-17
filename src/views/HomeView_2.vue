@@ -1,6 +1,6 @@
 <template>
 	<main>
-		<div class="index2" id="scroll-zone">
+		<div class="index2" id="scroll-zone" data-scroll>
 			<div id="test-container0" class="test-container">
 				<div class="test-box">
 					<h1>測試測試0</h1>
@@ -12,13 +12,11 @@
 					</div>
 					<button>最新消息</button>
 				</div>
-				<div class="waveBotton-imagebox">
-					<div v-html="waveBotton" class="waveBotton"></div>
-				</div>
 			</div>
+
 			<div class="test-container" id="test-container1">
-				<div class="waveTop-imagebox">
-					<div v-html="waveTop" class="waveTop"></div>
+				<div class="wave-imagebox">
+					<div v-html="wave" class="wave"></div>
 				</div>
 				<div class="test-box">
 					<h1>測試測試1</h1>
@@ -30,13 +28,13 @@
 					</div>
 					<button>最新消息</button>
 				</div>
-				<div class="waveBotton-imagebox">
+				<!-- <div class="waveBotton-imagebox">
 					<div v-html="waveBotton" class="waveBotton"></div>
-				</div>
+				</div> -->
 			</div>
 			<div class="test-container" id="test-container2">
-				<div class="waveTop-imagebox">
-					<div v-html="waveTop" class="waveTop"></div>
+				<div class="wave-imagebox">
+					<div v-html="wave" class="wave"></div>
 				</div>
 				<div class="test-box">
 					<h1>測試測試2</h1>
@@ -48,13 +46,13 @@
 					</div>
 					<button>最新消息</button>
 				</div>
-				<div class="waveBotton-imagebox">
+				<!-- <div class="waveBotton-imagebox">
 					<div v-html="waveBotton" class="waveBotton"></div>
-				</div>
+				</div> -->
 			</div>
 			<div class="test-container" id="test-container3">
-				<div class="waveTop-imagebox">
-					<div v-html="waveTop" class="waveTop"></div>
+				<div class="wave-imagebox">
+					<div v-html="wave" class="wave"></div>
 				</div>
 				<div class="test-box">
 					<h1>測試測試3</h1>
@@ -66,13 +64,13 @@
 					</div>
 					<button>最新消息</button>
 				</div>
-				<div class="waveBotton-imagebox">
+				<!-- <div class="waveBotton-imagebox">
 					<div v-html="waveBotton" class="waveBotton"></div>
-				</div>
+				</div> -->
 			</div>
 			<div class="test-container" id="test-container4">
-				<div class="waveTop-imagebox">
-					<div v-html="waveTop" class="waveTop"></div>
+				<div class="wave-imagebox">
+					<div v-html="wave" class="wave"></div>
 				</div>
 				<div class="test-box">
 					<h1>測試測試4</h1>
@@ -97,6 +95,10 @@
 	import { ScrollTrigger } from "gsap/ScrollTrigger";
 	import { waveTop } from "../policy/wave.js";
 	import { waveBotton } from "../policy/wave.js";
+	import { wave } from "../policy/wave.js";
+	import LocomotiveScroll from 'locomotive-scroll';
+	import 'locomotive-scroll/src/locomotive-scroll.scss';
+	// import  wave  from "../assets/images/wave/wave.svg?raw";
 
 
 	gsap.registerPlugin(ScrollTrigger);
@@ -111,32 +113,48 @@
 			return {
 				waveTop: waveTop,
 				waveBotton: waveBotton,
+				wave: wave,
 			}
 		},
 		mounted() {
+			this.initLocomotiveScroll();
 			this.initScrollAnimations();
 		},
 		methods: {
+			initLocomotiveScroll() {
+				const locomotiveScroll = new LocomotiveScroll({
+					el: document.querySelector('#scroll-zone'),
+					smooth: true,
+					lerp: .08,
+				});
+
+				locomotiveScroll.on("scroll", ScrollTrigger.update);
+
+				ScrollTrigger.scrollerProxy("#scroll-zone", {
+					scrollTop(value) {
+						return arguments.length ? locomotiveScroll.scrollTo(value, 0, 0) : locomotiveScroll.scroll.instance.scroll.y;
+					},
+					getBoundingClientRect() {
+						return { top: 0, left: 0, width: window.innerWidth, height: window.innerHeight };
+					},
+					pinType: document.querySelector("#scroll-zone").style.transform ? "transform" : "fixed",
+				});
+
+				ScrollTrigger.addEventListener("refresh", () => locomotiveScroll.update());
+				ScrollTrigger.refresh();
+			},
 			initScrollAnimations() {
 				gsap.utils.toArray(".test-container").forEach(container => {
-					const box = container.querySelector(".test-box");
-					gsap.fromTo(box, {
-						// y: 100 // 從100px的偏移開始
-					}, {
-						y: 0, // 沒有偏移
-						scrollTrigger: {
-							trigger: container,
-							start: "top top", // 當容器的頂部進入中心時開始
-							end: "+=100rem", // 當容器的底部離開頂部時結束
-							scrub: true, // 平滑過渡
-							pin: true,
-						}
+					ScrollTrigger.create({
+						trigger: container,
+						start: "top top",
+						pin: true,
+						pinSpacing: false,
+						scroller: "#scroll-zone",
 					});
 				});
 			}
-
-
-
 		},
+
 	};
 </script>

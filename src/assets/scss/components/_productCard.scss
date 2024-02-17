@@ -58,12 +58,11 @@
   .productPic {
     position: relative;
     height: 280px;
+    width: 280px;
     object-fit: cover;
     overflow: hidden;
     img {
       vertical-align: top;
-      width: 100%;
-      max-width: 280px;
       border-radius: $PC-card-radius $PC-card-radius 0 0;
     }
   }

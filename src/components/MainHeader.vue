@@ -23,10 +23,15 @@
 
               <li>
                 <RouterLink to="/login" class="nav_link ">
-                  <div class="nav_member"><img src="../assets/images/header/header-member.svg" alt="header-member">
+                  <div class="nav_member" v-if="userData && userData.mem_profile">
+                    <img :src="userData.mem_profile" alt="mem_profile">
+                  </div>
+                  <div class="nav_member" v-else>
+                    <img src="../assets/images/header/header-member.svg" alt="header-member">
                   </div>
                 </RouterLink>
               </li>
+
 
               <!-- 漢堡圖標 -->
               <li>
@@ -107,8 +112,9 @@
 
 <script>
 import { RouterLink } from "vue-router";
-import { computed } from 'vue';
-import { useRoute } from 'vue-router';
+import userStore from '@/stores/user'
+import { mapActions } from 'pinia';
+
 export default {
   components: {
     RouterLink,
@@ -118,6 +124,7 @@ export default {
       menuOpen: false, //漢堡開關
       subMenuOpen: false, //玩家社群子階層
       hamX: false,
+      userStoreData: userStore()
     };
   },
   computed: {
@@ -125,9 +132,14 @@ export default {
       return {
         'sticky-header': this.$route.path === '/' // 如果是首頁，添加 sticky-header
       };
-    }
+    },
+    // 登入的會員資料
+    userData() {
+      return this.userStoreData.userData || {}
+    },
   },
   methods: {
+    ...mapActions(userStore, ['updateUserData']),
     toggleMenu() {
       // 切換 menuOpen 的值
       this.menuOpen = !this.menuOpen;
@@ -146,6 +158,7 @@ export default {
     },
   },
   mounted() {
+    // 監聽路由切換
     this.$router.afterEach(() => {
       this.menuOpen = false; // 關閉漢堡選單
     });
@@ -156,6 +169,9 @@ export default {
       // 恢復卷軸
       document.body.classList.remove('body-overflow-hidden');
     });
+    //將登入的會員資料由json改為陣列
+    const userData = JSON.parse(localStorage.getItem("userDataStr"));
+    this.updateUserData(userData)
   },
 };
 </script>
