@@ -2,7 +2,159 @@
     width: 100%;
     background-color: $green-1;
     padding-bottom: 15%;
+    .memberAside{ //電腦側邊欄
+        .memAside{
+            position: relative;
+            display: flex;
+            justify-content: center;
+            border-radius: $PC-card-radius;
+            flex-direction: column;
+            gap: $M-spacing;
+            @include PC() {
+                position: relative;
+                // top: 100px;
+            }
+            .asideList{
+                border-radius: $PC-card-radius;
+                background-color: $white-1;
+                margin: 0 $S-spacing;
     
+                .asideListitem{
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+                    padding: $M-spacing $S-spacing 15px;
+                    position: relative;
+                    cursor: pointer;
+    
+                    &:first-child {
+                        padding-top: 30px;
+                    }
+    
+                    &:last-child {
+                        padding-bottom: 30px;
+                    }
+    
+                    img {
+                        width: 100%;
+                        height: auto;
+                        vertical-align: middle;
+                        @include T(){
+                            margin-left: 15px;
+                            
+                        }
+                        @include PC(){
+                            margin-left: 20px;
+    
+                        }
+                    }
+                    span {
+                        padding: 0px 15px 0 0;
+                        font-size: 16px;
+                        letter-spacing: $PC-btn-exsl-spacing;
+                        
+                        @include T(){
+                            font-size: 16px;
+                            text-wrap: nowrap;
+                            
+                        }
+                        @include PC(){
+                            padding: 0px 20px;
+                            font-size: 18px;
+                        }
+                    }
+                }
+            }        
+        }
+        .memID{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: calc($M-spacing / 2) $M-spacing ;
+            border-radius: $PC-card-radius;
+            background-color: $white-1;
+            cursor: pointer;
+            margin: 0 $S-spacing;
+            
+            @include T(){
+                justify-content: center;
+                flex-wrap: wrap;
+                
+            }
+            @include PC(){
+                justify-content: space-between;
+                flex-wrap: nowrap;
+                
+            }
+    
+            img{
+                vertical-align: top;
+                width: 100%;
+                border-radius: 50%;
+
+                @include T(){
+                    max-width: 120px;
+                    padding-top: 10px;
+                }
+                @include PC(){
+                    max-width: 140px;
+                    padding-top: 10px;
+                }
+            }
+    
+            &:hover{
+                background-color: $gray-1;
+            }
+    
+            h3 {
+                text-align: center;
+    
+                @include T(){
+                    margin-top: 10px;
+                    padding-bottom: 10px;
+                }
+                @include PC(){
+                    margin-top: 15px;
+                }
+    
+            }
+    
+        }
+        .memberContent{
+            // gap: $M-spacing;
+            justify-content: center;
+        }
+    
+    
+        .asideListitem:not(:last-child):after{
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 10%;
+            width: 80%;
+            height: 1px;        
+            border-top: 1.5px solid $blue-4;
+        }
+        .asideListitem:hover:not(:first-child):not(:last-child){
+            background-color: rgba($color: $gray-1, $alpha: 0.5);
+            border-radius: $S-button-radius;
+        }
+        .asideListitem:hover:first-child{
+            background-color: rgba($color: $gray-1, $alpha: 0.5);
+            border-radius:$PC-card-radius $PC-card-radius  $S-button-radius $S-button-radius;
+    
+        }
+        .asideListitem:hover:last-child{
+            background-color: rgba($color: $gray-1, $alpha: 0.5);
+            border-radius:  $S-button-radius $S-button-radius $PC-card-radius $PC-card-radius;
+        }
+        .asideListitem img{
+            width: 100%;
+            vertical-align: top;
+            max-width: 36px;
+        }
+    
+    }
     .hello{
         text-align: center;
         margin: $M-spacing;
@@ -705,32 +857,43 @@
         padding: $S-spacing;
     }
 
-    //手機板選單被選取時，縮小的icon
-    // .mobileList{
-    //     width: 100%;
-    //     max-width: 350px;
-    //     margin: 10% auto ;
-    //     display: flex;
-    //     gap: 20px;
-    //     background-color: $white-1;
-    //     padding: 10px;
-    //     border-radius: 8px;
+    //取消預約燈箱
+    .alertCancel_bg{
+        background-color: #0006;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        z-index: 991;
+    }
+    .alertCancel_main{
+        background-color: #fff;
+        max-width: 300px;
+        width: 90vw;
+        height: 43vh;
+        padding: 20px;
+        position: absolute;
+        top: 30%;
+        left: 10%;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        border-radius: 20px;
+        @include T() {
+            max-width: 600px;
+            width: 60vw;
+            height: 45vh;
+            left: 33%;
+        }
+        .alertCancel_content{
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
 
 
-    //     .mobileListContent{
-    //     width: 100%;
-    //     max-width: 50px;
-    //     background-color: $gray-1;
-    //     border: 1px solid $blue-3;
-    //     border-radius: 8px;
-    //     }
-    // }
-
-
-
-
-
-
+    }
 
 
 
