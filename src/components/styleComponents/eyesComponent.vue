@@ -1,7 +1,7 @@
 <template>
     <div class="componentsarea">
         <div id="eyes-staff-box">
-            <h3>眼睛造型</h3>
+            <h4>眼睛造型</h4>
             <ul class="eyes-options options-staff">
                 <button v-for="(eyesStaff, index) in eyesStaffs" :key="eyesStaff.staff"
                     @click="handleEyesStaffChange(eyesStaff.staff)">
@@ -11,7 +11,7 @@
 
         </div>
         <div id="eyes-color-box">
-            <h3>眼睛顏色</h3>
+            <h4>眼睛顏色</h4>
             <ul class="eyes-options options-colors">
                 <li v-for="eyesColor in eyesColors" :key="eyesColor" :style="{ backgroundColor: eyesColor }"
                     @click="handleEyesColorChange(eyesColor)" :class="{ selected: selectedEyesColor === eyesColor }">

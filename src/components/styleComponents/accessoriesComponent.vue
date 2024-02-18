@@ -1,7 +1,7 @@
 <template>
   <div class="componentsarea">
       <div id="accessories-staff-box">
-          <h3>配件</h3>
+          <h4>配件</h4>
           <ul class="accessories-options options-staff">
               <button v-for="(accessoriesStaff, index) in accessoriesStaffs" :key="accessoriesStaff.staff"
                   @click="handleAccessoriesStaffChange(accessoriesStaff.staff)">

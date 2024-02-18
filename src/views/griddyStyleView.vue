@@ -12,17 +12,16 @@
                             :selectedEarsColor="selectedEarsColor" :selectedAccessoriesStaff="selectedAccessoriesStaff"
                             :selectedBackgroundColor="selectedBackgroundColor" />
                     </div>
-                    
+
                 </div>
                 <div class="btnbox">
-                    <!-- 操作按鈕 (如果有的話) -->
-                    <button id="reset" @click="toggleZone" class="btn_secondary">
+                    <button id="reset" @click="toggleZone" class="btn_secondary" v-on:touchstart="">
                         隨機選擇
                     </button>
-                    <button id="random" @click="toggleZone" class="btn_secondary">
+                    <button id="random" @click="toggleZone" class="btn_secondary" v-on:touchstart="">
                         重置
                     </button>
-                    <button id="setphoto" @click="toggleZone" class="btn_secondary">
+                    <button id="setphoto" @click="toggleZone" class="btn_secondary" v-on:touchstart="">
                         確認送出
                     </button>
                 </div>
@@ -31,7 +30,7 @@
             <div class="stylearea">
                 <div class="tabs">
                     <button v-for="tab in tabs" :key="tab.name" :class="{ active: currentTab === tab.component }"
-                        @click="currentTab = tab.component">
+                        @click="selectTab(tab.component)">
                         {{ tab.title }}
                     </button>
                 </div>
@@ -58,8 +57,8 @@
                         :selectedEarsColor="selectedEarsColor" :selectedAccessoriesStaff="selectedAccessoriesStaff"
                         :selectedBackgroundColor="selectedBackgroundColor" />
                 </div>
-                <p>最棒的Griddy粉墨登場！</p>
-                <img v-if="griddyImage" :src="griddyImage" alt="Captured Griddy Content">
+                <span>最棒的Griddy粉墨登場！</span>
+                <!-- <img v-if="griddyImage" :src="griddyImage" alt="Captured Griddy Content"> -->
                 <button @click="griddyToImage">下載圖片</button>
                 <button id="goback" @click="toggleZone">回上頁</button>
             </div>
@@ -101,13 +100,21 @@
 
         setup() {
             const tabs = [
-                { name: 'tab1', title: '膚色', component: skinComponent },
-                { name: 'tab2', title: '眼睛', component: eyesComponent },
-                { name: 'tab3', title: '耳朵', component: earsComponent },
-                { name: 'tab4', title: '配件', component: accessoriesComponent },
-                { name: 'tab5', title: '背景', component: backgroundComponent },
+                { name: 'tab1', title: '膚色', component: 'skinComponent' },
+                { name: 'tab2', title: '眼睛', component: 'eyesComponent' },
+                { name: 'tab3', title: '耳朵', component: 'earsComponent' },
+                { name: 'tab4', title: '配件', component: 'accessoriesComponent' },
+                { name: 'tab5', title: '背景', component: 'backgroundComponent' },
             ];
             const currentTab = ref(tabs[0].component);  // 初始顯示第一張頁籤
+
+            const selectTab = (componentName) => {
+                currentTab.value = componentName;  // 更新當前標籤頁名稱
+                console.log('Tab selected:', componentName);
+                // 直接使用組件名稱進行比較
+                console.log('Is active class expected to be added?', currentTab.value === componentName);
+            };
+
             const selectedBodyColor = ref(bodyColors[0]);
             const selectedBellyColor = ref(bellyColors[3]);
             const selectedSpotColor = ref(spotColors[9]);
@@ -217,7 +224,7 @@
             return {
                 currentZone, toggleZone, tabs, currentTab, selectedBodyColor, selectedBellyColor, selectedSpotColor, selectedBellyColor,
                 selectedEyesColor, selectedEyesStaff, selectedEarsColor, selectedEarsStaff,
-                selectedAccessoriesStaff, selectedBackgroundColor,
+                selectedAccessoriesStaff, selectedBackgroundColor, selectTab,
                 griddyToImage,
                 handleBodyColorChange,
                 handleBellyColorChange,
@@ -229,9 +236,6 @@
                 handleAccessoriesStaffChange,
                 handleBackgroundColorChange
             };
-        },
-        methods: {
-
         },
     };
 </script>

@@ -125,7 +125,7 @@
 				const locomotiveScroll = new LocomotiveScroll({
 					el: document.querySelector('#scroll-zone'),
 					smooth: true,
-					lerp: .08,
+					lerp: .02,
 				});
 
 				locomotiveScroll.on("scroll", ScrollTrigger.update);
