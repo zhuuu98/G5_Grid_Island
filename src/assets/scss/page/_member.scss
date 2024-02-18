@@ -891,8 +891,21 @@
             flex-direction: column;
             gap: 10px;
         }
-
-
+        .cancelBtns{
+            display: flex;
+            flex-direction: column;
+            gap: $M-spacing;
+        }
+        .bookCancel{
+            border: 1px solid;
+            background-color: #fff0;
+            color: #000;
+            &:hover {
+                background-color: $black;
+                color: $white-1;
+            }
+          
+        }
     }
 
 

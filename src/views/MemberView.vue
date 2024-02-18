@@ -60,11 +60,43 @@
                             </div>
                             <button class="memberLookBook btn_lg_orange" @click="book">查看預約</button>
                         </div>
-                        <div class="memberBooklog" v-for="data in bookInfo">
+                        <div class="memberBooklog" v-for="(data,i) in bookInfo">
                             <div class="dateAndCancel">
                                 <p>{{ data.book_date }}</p>
                                 <button :class="{ 'btn_sm_1': true, 'disabled': isPastDate(data.book_date) }"
-                                    @click="alertCancelbox(data.book_date)">取消預約</button>
+                                    @click="alertCancelbox(data)" :disabled="isPastDate(data.book_date)">取消預約</button>
+                                    <!-- 取消預約燈箱 -->
+                                    <div class="alertCancel_bg" v-if="alertCancel">
+                                <div class="alertCancel_main">
+                                    <div class="alertCancel_content">
+                                        <button @click="closeAlert()">
+                                            <i class="fa-solid fa-xmark fa-2x" ></i>
+                                        </button>
+                                        
+                                        <p>您確定要取消
+                                        </p>
+
+                                        <p>{{ data.book_date }}</p>
+                                        <p>
+                                            {{
+                                            data.book_time +
+                                            data.book_start_time+`~`+data.book_end_time
+                                            }}
+                                        </p>
+                                        <p>人數：{{ data.book_people }}人</p>
+                                        <p>
+                                            這筆預約嗎？
+                                        </p>
+                                    </div>
+                                    <div class="cancelBtns">
+                                        <button class="bookCancel btn_sm_1">確定</button>
+                                        <button class=" btn_sm_1"
+                                        @click="closeAlert()">取消</button>
+                                    </div>
+                                    
+                                </div>
+                            </div>
+
                             </div>
                             <div class="TimeAndPeople">
                                 <p>時段：</p>
@@ -176,8 +208,8 @@
                             <div class="memberBooklog" v-for="data in bookInfo">
                                 <div class="dateAndCancel">
                                     <p>{{ data.book_date }}</p>
-                                    <button :class="{ 'btn_sm_1': true, 'disabled': isPastDate(data.book_date) }"
-                                        @click="alertCancel(data.book_date)">取消預約
+                                    <button :class="{ 'btn_sm_1': true, 'disabled': isPastDate(data.book_date) } "
+                                    @click="alertCancel()" :disabled="isPastDate(data.book_date)">取消預約
                                     </button>
                                     <!-- 取消預約燈箱-->
                                     <div class="alertCancel_bg" v-show="alertCancel">
@@ -198,9 +230,10 @@
                                                 </p>
                                             </div>
                                             <button>確定</button>
-                                            <button>取消</button>
+                                            <button @click="closeAlert()">取消</button>
 
                                         </div>
+
                                     </div>
 
                                 </div>
@@ -317,7 +350,7 @@
                     <div class="mobileBookDateCancel">
                         <p>{{ data.book_date }}</p>
                         <button :class="{ 'btn_sm_1': true, 'disabled': isPastDate(data.book_date) }"
-                            @click="alertCancelbox()">取消預約</button>
+                            @click="alertCancelbox()" :disabled="isPastDate(data.book_date)">取消預約</button>
                             <!-- 取消預約燈箱 -->
                             <div class="alertCancel_bg" v-if="alertCancel">
                                 <div class="alertCancel_main">
@@ -341,9 +374,9 @@
                                             這筆預約嗎？
                                         </p>
                                     </div>
-                                    <div class="cancelBtns">
+                                    <div class="cancelBtns ">
                                         <button>確定</button>
-                                        <button>取消</button>
+                                        <button @click="closeAlert()">取消</button>
                                     </div>
                                     
                                 </div>
@@ -386,6 +419,8 @@ export default {
             undoneOrder: 0,//未完成訂單
             completedOrder: 0,//已完成訂單
 
+            selectedBooking: null,
+
             userdata: {},
 
             //電腦側邊欄
@@ -407,7 +442,7 @@ export default {
             isChoosedBookData_PC: false,//電腦預約紀錄被選擇
             isChoosedIndex_PC: true,
 
-            alertCancel:true,//取消預約燈箱開關
+            alertCancel:false,//取消預約燈箱開關
         };
     },
     components: {
@@ -576,7 +611,7 @@ export default {
                 console.log("你沒登入欸")
             }
         },
-        alertCancelbox() {
+        alertCancelbox(data) {
             this.alertCancel=true
         },
         closeAlert(){
