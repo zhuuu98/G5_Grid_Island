@@ -64,9 +64,9 @@
                             <div class="dateAndCancel">
                                 <p>{{ data.book_date }}</p>
                                 <button :class="{ 'btn_sm_1': true, 'disabled': isPastDate(data.book_date) }"
-                                    @click="alertCancelbox(data)" :disabled="isPastDate(data.book_date)">取消預約</button>
+                                    @click="alertCancelbox(i)" :disabled="isPastDate(data.book_date)">取消預約</button>
                                     <!-- 取消預約燈箱 -->
-                                    <div class="alertCancel_bg" v-if="alertCancel">
+                            <div class="alertCancel_bg" v-if="alertCancel">
                                 <div class="alertCancel_main">
                                     <div class="alertCancel_content">
                                         <button @click="closeAlert()">
@@ -75,15 +75,14 @@
                                         
                                         <p>您確定要取消
                                         </p>
-
-                                        <p>{{ data.book_date }}</p>
+                                        <p>{{bookInfo[indexRecord].book_date}}</p>
                                         <p>
                                             {{
-                                            data.book_time +
-                                            data.book_start_time+`~`+data.book_end_time
+                                            bookInfo[indexRecord].book_time +
+                                            bookInfo[indexRecord].book_start_time+`~`+bookInfo[indexRecord].book_end_time
                                             }}
                                         </p>
-                                        <p>人數：{{ data.book_people }}人</p>
+                                        <p>人數：{{ bookInfo[indexRecord].book_people }}人</p>
                                         <p>
                                             這筆預約嗎？
                                         </p>
@@ -443,6 +442,8 @@ export default {
             isChoosedIndex_PC: true,
 
             alertCancel:false,//取消預約燈箱開關
+
+            indexRecord: -1,
         };
     },
     components: {
@@ -611,8 +612,9 @@ export default {
                 console.log("你沒登入欸")
             }
         },
-        alertCancelbox(data) {
+        alertCancelbox(i) {
             this.alertCancel=true
+            this.indexRecord = i
         },
         closeAlert(){
             this.alertCancel=false
