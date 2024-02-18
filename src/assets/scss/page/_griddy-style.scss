@@ -7,163 +7,267 @@
         margin: 0;
 
         #style-operate {
+            //操作區，含預覽、按鈕區
             display: flex;
             background-color: $white-1;
             width: calc(100% - 40px);
             margin: 0 auto 20px auto;
             align-items: end;
             flex-wrap: wrap;
-            border-radius: 8px;
-            outline: 2px solid black;
+            border-radius: 28px;
             gap: 20px;
             justify-content: center;
             box-sizing: border-box;
             padding: 20px;
 
+            @include T() {
+                // flex-wrap: nowrap;
+            }
+
+            .style-view {
+                //預覽區的容器
+                width: 100%;
+                background-color: $white-1;
+                display: flex;
+                align-items: start;
+                box-sizing: border-box;
+                gap: 20px;
+                align-items: end;
+                justify-content: center;
+
+                @include T() {
+                    width: 240px;
+                    justify-content: start;
+
+                }
+
+                .viewimagebox {
+                    //預覽區，蟲蟲圖
+                    width: 100%;
+                    height: 100%;
+                    width: 240px;
+                    height: 240px;
+                    outline: 1.618px solid #000;
+
+                    @include T() {}
+                }
+            }
+
             .btnbox {
+                //按鈕區，隨機選擇、重置、確認送出
                 display: flex;
                 flex-wrap: wrap;
                 justify-content: space-between;
-                background-color: #6af;
+                // background-color: #6af;
                 width: 100%;
-                gap: 20px;
-                @include text();
+                gap: 12px;
+                @include text;
+
+                @include T() {
+                    max-width: 400px;
+                }
+
                 #reset {
-                    width: calc(50% - 10px);
+                    width: calc(50% - 6px);
                     background-color: $white-1;
                     border: 1px solid $orange-2;
                     color: $orange-2;
-                    vertical-align: top;
+
+                    &:hover {
+                        background-color: darken($white-1, 5%);
+                    }
+
+                    &:active {
+                        background-color: darken($white-1, 5%);
+                    }
                 }
+
                 #random {
-                    width: calc(50% - 10px);
+                    width: calc(50% - 6px);
                     background-color: $white-1;
                     border: 1px solid $orange-2;
                     color: $orange-2;
-                    // padding: 8px 0;
-                    // border-radius: 8px
+
+                    &:hover {
+                        background-color: darken($white-1, 5%);
+                    }
+
+                    &:active {
+                        background-color: darken($white-1, 5%);
+                    }
                 }
+
                 #setphoto {
                     width: calc(100%);
-                    // @include btnColor($orange-2);
-                    // @include btnBasic();
-                    // padding: 8px 0;
-                    // border-radius: 8px
+
+                    &:active {
+                        background-color: $orange-1;
+                    }
                 }
             }
         }
     }
 
-    .style-view {
-        width: 100%;
+    #show-zone {
+        // 送出後的頁面，v-show
+        width: calc(100% - 40px);
+        height: 800px;
+        background-color: #fff;
         margin: auto;
-        background-color: $white-1;
-        display: flex;
-        align-items: start;
-        box-sizing: border-box;
-        padding: $M-spacing;
-        gap: 20px;
-        align-items: end;
-        justify-content: center;
-        flex-wrap: wrap;
-        background: #fa6;
+        border-radius: 28px;
+        padding: 20px 0;
 
-        .viewimagebox {
-            width: 100%;
-            height: 100%;
-            min-width: 240px;
-            min-height: 240px;
-            max-width: 240px;
-            max-height: 240px;
-            outline: 1px solid #000;
+        .final-show {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+
+            #finalimagebox {
+                // 送出後的預覽圖
+                position: relative;
+                min-width: 240px;
+                min-height: 240px;
+                max-width: 240px;
+                max-height: 240px;
+                outline: 1.618px solid #000;
+                margin: 20px auto;
+
+            }
+
+            span {
+                //最棒的Griddy粉墨登場！
+                font-family: noto;
+                font-size: 20px;
+                font-weight: bold;
+                letter-spacing: .05em;
+            }
         }
     }
-
-    .final-show {
-        padding-top: 20px;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 20px;
-
-        #finalimagebox {
-            position: relative;
-            min-width: 240px;
-            min-height: 240px;
-            max-width: 240px;
-            max-height: 240px;
-            outline: 1px solid #000;
-            margin: 20px auto;
-
-        }
-
-        p {
-            font-size: 20px;
-            font-weight: bold;
-            letter-spacing: 0.12em;
-        }
-    }
-
-    .tabs button {
-        padding: 10px;
-        cursor: pointer;
-    }
-
-    .tabs button.active {
-        font-weight: bold;
-    }
-
 
     .stylearea {
-        // 選擇區
+        // 下半部的選擇區，包含頁籤與部位組件
+
         width: calc(100% - 40px);
         height: 1000px;
         margin: auto;
-    }
 
-    .componentsarea {
-        //頁籤統一樣式
-        background-color: $white-1;
-        box-sizing: border-box;
-        padding: $M-spacing;
-    }
-
-
-    .options-colors li {
-        display: inline-block;
-        width: 40px;
-        height: 40px;
-        margin: 5px;
-        border: 2px solid transparent;
-        border-radius: 50%;
-        cursor: pointer;
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-    }
-
-    .options-staff {
-        display: flex;
-        column-gap: $M-spacing;
-        row-gap: $S-spacing;
-        flex-wrap: wrap;
-
-        button {
-            width: calc(33.3333% - 20px);
-            height: 40px;
-            border: 2px solid transparent;
-            cursor: pointer;
-            border: 1px solid #ccc;
-            border-radius: 8px;
+        .tabs {
+            display: flex;
+            justify-content: space-between;
+            margin: 0;
+            gap: 8px;
 
             @include T() {
-                width: calc(16.333333% - 16.333333px);
+                margin: 0 40px;
+                gap: 20px;
+                justify-content: center;
             }
 
+            @include PC() {
+                margin: auto;
+                gap: 20px;
+                justify-content: center;
+            }
+
+            button {
+                @include text;
+                flex-grow: 1;
+                padding: 8px 0;
+                width: auto;
+                cursor: pointer;
+                background-color: $gray-2;
+                color: #fff;
+                border: none;
+                border-radius: 12px 12px 0 0;
+
+                &:hover {
+                    background-color: $blue-2;
+                }
+
+                &:active {
+                    background-color: darken($blue-2, 10%);
+                }
+
+
+
+                @include T() {
+                    flex-grow: 1;
+                    border-radius: 16px 16px 0 0;
+                    padding: 12px 0;
+                }
+
+                @include PC() {
+                    flex-grow: 0;
+                    width: 160px;
+                }
+
+            }
+
+            .active {
+                background-color: $blue-2;
+            }
+        }
+
+        .componentsarea {
+            //頁籤內容統一樣式
+            background-color: $white-1;
+            box-sizing: border-box;
+            padding: $M-spacing;
+            border-radius: 0 0 28px 28px;
+
+            @include T() {
+                border-radius: 28px;
+            }
+        }
+
+        .options-colors {
+
+            li {
+                // 顏色選擇統一樣式
+                display: inline-block;
+                width: 40px;
+                height: 40px;
+                margin: 5px;
+                outline: 2px solid #0003;
+                border-radius: 50%;
+                cursor: pointer;
+                border: 1.618px solid #fff;
+            }
+
+            .active {
+                outline: 2px solid  $blue-2;
+                border: 1.618px solid #fff;
+            }
+        }
+
+        .options-staff {
+            display: flex;
+            column-gap: $M-spacing;
+            row-gap: $S-spacing;
+            flex-wrap: wrap;
+
+            button {
+                width: calc(33.3333% - 20px);
+                height: 40px;
+                border: 2px solid transparent;
+                cursor: pointer;
+                border: 1px solid #ccc;
+                border-radius: 8px;
+
+                @include T() {
+                    width: calc(16.333333% - 16.333333px);
+                }
+
+            }
         }
     }
 
-    .options-colors li.selected {
-        border: 1px solid#000;
-    }
+
+
+
+
+
 
     #mainSvg {
         position: relative;
@@ -175,11 +279,8 @@
         }
     }
 
-    #show-zone {
-        width: calc(100% - 40px);
-        height: 800px;
-        background-color: #fff;
-        margin: auto;
-    }
+
+
+
 
 }
