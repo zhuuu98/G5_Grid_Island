@@ -55,10 +55,8 @@
                 <h2>請選擇桌型</h2>
                 <div class="book_table_option">
                     <div class="book_options" v-for="table in tableType">
-                        <input type="radio" name="table" :value="table.value" :id="table.typeId" :disabled="table.disabled"
-                            v-model="tableChosen" @input="timeAble" required>
-                        <label :for="table.typeId" class="disable_choose" :disabled="table.disabled">{{ table.label
-                        }}</label>
+                        <input type="radio" name="table" :value="table.value" :id="table.typeId" :disabled="table.disabled"  v-model="tableChosen" @click="timeAble" required>
+                        <label :for="table.typeId" class="disable_choose" :disabled="table.disabled">{{ table.label }}</label>
                     </div>
                 </div>
             </div>
@@ -66,9 +64,8 @@
                 <h2>請選擇時段</h2>
                 <div class="book_time_option">
                     <div class="book_options" v-for="(time,index) in timePeriod">
-                        <input type="radio" name="time" :value="time.period" :id="time.timeId" :disabled="timeStatus"
-                            v-model="timeChosen" @input="timeSet(index)" required>
-                        <label :for="time.timeId" :disabled="timeStatus">{{ time.period }}<br>{{ time.timeFrom }}-{{ time.timeTo }}</label>
+                        <input type="radio" name="time" :value="time.period" :id="time.timeId" :disabled="time.disabled" v-model="timeChosen" @input="timeSet(index)" required>
+                        <label :for="time.timeId" :disabled="time.disabled">{{ time.period }}<br>{{ time.timeFrom }}-{{ time.timeTo }}</label>
                     </div>
                 </div>
             </div>
@@ -109,8 +106,6 @@ export default {
         return {
             showAlert: false,
             alertContent: [],
-            tableTypeStatus: true,
-            timeStatus: true,
             // v-model綁定
             dateChosen: '',
             tableChosen: '',
@@ -142,25 +137,29 @@ export default {
                 period: '上午',
                 timeFrom: '09:00',
                 timeTo: '12:00',
-                timeId: 'bookAM'
+                timeId: 'bookAM',
+                disabled: true
             }, {
                 value: '下午時段',
                 period: '下午',
                 timeFrom: '12:00',
                 timeTo: '15:00',
-                timeId: 'bookAF'
+                timeId: 'bookAF',
+                disabled: true
             }, {
                 value: '傍晚時段',
                 period: '傍晚',
                 timeFrom: '15:00',
                 timeTo: '18:00',
-                timeId: 'bookEVE'
+                timeId: 'bookEVE',
+                disabled: true
             }, {
                 value: '晚上時段',
                 period: '晚上',
                 timeFrom: '18:00',
                 timeTo: '21:00',
-                timeId: 'bookPM'
+                timeId: 'bookPM',
+                disabled: true
             }],
             //以下是日曆用
             dayNames: ["日", "一", "二", "三", "四", "五", "六"],
@@ -243,21 +242,15 @@ export default {
                 })
                 .then((res) =>{
                     this.bookingData = res.data.returnTables
-                    // console.log(res.data.returnTables)
-                    // console.log(this.bookingData)
-                    // console.log(this.bookingData[0])
-                    // console.log(this.bookingData[0].tables_type)
                 })
                 .catch((err) => {
                     console.log(err)}
                 );
         },
         tableAble() {
-            // console.log(typeof this.tableType[0].value)
             for(i=0; i<this.tableType.length; i++){
                 this.tableType[i].disabled = true
             }
-            let selectedDateTables = [];
             for(i=0; i<this.bookingData.length; i++){
                 let tablesTotal = this.bookingData[i].tables_total
                 let amBooked = this.bookingData[i].tables_am_booked
@@ -270,13 +263,35 @@ export default {
                     tablesTotal - eveBooked > 0 ||
                     tablesTotal - pmBooked > 0 )
                 ){
-                    selectedDateTables.push(this.bookingData[i].tables_type)
                     this.tableType[this.bookingData[i].tables_type -1].disabled = false
                 }
             }
         },
-        timeAble() {
-            this.timeStatus = false
+        timeAble(e) {
+            this.tableChosen = e.target.value
+            for(i=0; i<this.bookingData.length; i++){
+                let tablesDate = this.bookingData[i].tables_date
+                let tablesType = this.bookingData[i].tables_type
+                let tablesTotal = this.bookingData[i].tables_total
+                let amBooked = this.bookingData[i].tables_am_booked
+                let afBooked = this.bookingData[i].tables_af_booked
+                let eveBooked = this.bookingData[i].tables_eve_booked
+                let pmBooked = this.bookingData[i].tables_pm_booked
+                if(tablesDate == this.dateChosen && tablesType == this.tableChosen){
+                    if(tablesTotal - amBooked > 0){
+                        this.timePeriod[0].disabled = false
+                    }
+                    if(tablesTotal - afBooked > 0){
+                        this.timePeriod[1].disabled = false
+                    }
+                    if(tablesTotal - eveBooked > 0){
+                        this.timePeriod[2].disabled = false
+                    }
+                    if(tablesTotal - pmBooked > 0){
+                        this.timePeriod[3].disabled = false
+                    }
+                }
+            }
         },
         timeSet(index){
             this.chosentimeFrom = this.timePeriod[index].timeFrom
@@ -287,7 +302,6 @@ export default {
                 this.alertContent.push('請填寫完整預訂資訊') 
                 this.showAlert = true;
             } else {
-                //向後端傳送資料
                 axios({
                     method: 'post',
                     url: `${import.meta.env.VITE_API_URL}/writeBook.php`,
@@ -305,13 +319,13 @@ export default {
                 .then((res) =>{
                     let tableName = ''
                     switch (this.tableChosen){
-                        case '1' : 
+                        case 1 : 
                             tableName = '四人桌';
                             break;
-                        case '2' : 
+                        case 2 : 
                             tableName = '八人桌'
                             break;
-                        case '3' : 
+                        case 3 : 
                             tableName = '十二人桌'
                     }
                     this.alertContent.push(`預約成功！以下是您的預約資訊`, `選擇日期：${this.dateChosen}`, `選擇桌型：${tableName}`, `選擇時段：${this.timeChosen}`, `預定人數：${this.count}人`)
@@ -332,7 +346,7 @@ export default {
                 this.alertContent = [];
                 document.body.classList.remove('body-overflow-hidden');
             } else {
-                this.$router.push('/member') //跳回會員中心
+                this.$router.push('/member')
             }
         },
         // 以下是日曆用
@@ -404,45 +418,12 @@ export default {
                     }
                 }
                 if(hasFalse == false && !this.disableDate.includes(this.bookingData[i].tables_date)){
-                        this.disableDate.push(this.bookingData[i].tables_date)
-                    }
+                    this.disableDate.push(this.bookingData[i].tables_date)
+                }
             }
         },
-        isDateFull(num){
-            // if(bookingData)
-            // this.bookingData
-            // let date = `${new Date().getFullYear()}-${new Date().getMonth()+1}-${num}`
-            // let month = new Date().getMonth()+1
-            // if(month<10){
-            //     month = '0' + month
-            // }
-            // let date = `${new Date().getFullYear()}-${month}-17`
-            
-            // console.log(this.bookingData)
-            // console.log(date)
-            // console.log(this.bookingData[13].tables_date)
-            // if(this.bookingData[0].tables_date == date){
-            //     console.log(true)
-            // }else{
-            //     console.log(false)
-            // }
-            // for(i=0; i<this.bookingData.length; i++){
-            //     let tablesTotal = this.bookingData[i].tables_total
-            //     let amBooked = this.bookingData[i].tables_am_booked
-            //     let afBooked = this.bookingData[i].tables_af_booked
-            //     let eveBooked = this.bookingData[i].tables_eve_booked
-            //     let pmBooked = this.bookingData[i].tables_pm_booked
-            //     if(tablesTotal - amBooked == 0 && tablesTotal - afBooked == 0 && tablesTotal - eveBooked == 0 && tablesTotal - pmBooked == 0){
-            //         if(!this.disableDate.includes(this.bookingData[i].tables_date)){
-            //             this.disableDate.push(this.bookingData[i].tables_date)
-            //         }
-            //     }
-            // }
-            // if(this.bookingData[i].tables_date == ``)
-            // console.log(this.disableDate)
-        }
         // 以上是日曆用
-}
+    }
 }
 </script>
 <style lang="scss"></style>
