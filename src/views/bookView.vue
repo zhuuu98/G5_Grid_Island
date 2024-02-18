@@ -55,9 +55,9 @@
                 <h2>請選擇桌型</h2>
                 <div class="book_table_option">
                     <div class="book_options" v-for="table in tableType">
-                        <input type="radio" name="table" :value="table.value" :id="table.typeId" :disabled="tableTypeStatus"
+                        <input type="radio" name="table" :value="table.value" :id="table.typeId" :disabled="table.disabled"
                             v-model="tableChosen" @input="timeAble" required>
-                        <label :for="table.typeId" class="disable_choose" :disabled="tableTypeStatus">{{ table.label
+                        <label :for="table.typeId" class="disable_choose" :disabled="table.disabled">{{ table.label
                         }}</label>
                     </div>
                 </div>
@@ -122,17 +122,20 @@ export default {
             disableDate: [],
             count: 1,
             tableType: [{
-                value: '1',
+                value: 1,
                 label: '4人桌',
-                typeId: 'type_four'
+                typeId: 'type_four',
+                disabled: true
             }, {
-                value: '2',
+                value: 2,
                 label: '8人桌',
-                typeId: 'type_eight'
+                typeId: 'type_eight',
+                disabled: true
             }, {
-                value: '3',
+                value: 3,
                 label: '12人桌',
-                typeId: 'type_twelve'
+                typeId: 'type_twelve',
+                disabled: true
             }],
             timePeriod: [{
                 value: '上午時段',
@@ -164,9 +167,7 @@ export default {
             selectedMonth: new Date().getMonth(),
             selectedYear: new Date().getFullYear(),
             selectedDate: null,
-            // dateDisabled: false,
             // 以上是日曆用
-            bookState: 1,
             userData: {},
         }
     },
@@ -239,12 +240,8 @@ export default {
                     method: 'post',
                     url: `${import.meta.env.VITE_API_URL}/buildTables.php`,
                     headers: { "Content-Type": "multipart/form-data" },
-                    // data: {
-                    //     book_date: this.dateChosen,
-                    // }
                 })
                 .then((res) =>{
-                    // console.log('執行成功')
                     this.bookingData = res.data.returnTables
                     // console.log(res.data.returnTables)
                     // console.log(this.bookingData)
@@ -256,28 +253,27 @@ export default {
                 );
         },
         tableAble() {
-            console.log(this.dateChosen)
-            // let tablesTotal = this.bookingData[i].tables_total
-            // let amBooked = this.bookingData[i].tables_am_booked
-            // let afBooked = this.bookingData[i].tables_af_booked
-            // let eveBooked = this.bookingData[i].tables_eve_booked
-            // let pmBooked = this.bookingData[i].tables_pm_booked
-            // let selectedDateTables = [];
-            // for(i=0; i<this.bookingData.length; i++){
-            //     if(this.bookingData[i].tables_date == this.dateChosen && 
-            //         (tablesTotal - amBooked > 0 ||
-            //         tablesTotal - afBooked > 0 ||
-            //         tablesTotal - eveBooked > 0 ||
-            //         tablesTotal - pmBooked > 0 )
-            //     ){
-            //         selectedDateTables.push(this.bookingData[i].tables_type)
-            //         console.log(selectedDateTables)
-            //     }
-            // }
-            // // console.log(selectedDateTables)
-            
-            // console.log(this.bookingData[0].tables_type)
-            this.tableTypeStatus = false;
+            // console.log(typeof this.tableType[0].value)
+            for(i=0; i<this.tableType.length; i++){
+                this.tableType[i].disabled = true
+            }
+            let selectedDateTables = [];
+            for(i=0; i<this.bookingData.length; i++){
+                let tablesTotal = this.bookingData[i].tables_total
+                let amBooked = this.bookingData[i].tables_am_booked
+                let afBooked = this.bookingData[i].tables_af_booked
+                let eveBooked = this.bookingData[i].tables_eve_booked
+                let pmBooked = this.bookingData[i].tables_pm_booked
+                if(this.bookingData[i].tables_date == this.dateChosen && 
+                    (tablesTotal - amBooked > 0 ||
+                    tablesTotal - afBooked > 0 ||
+                    tablesTotal - eveBooked > 0 ||
+                    tablesTotal - pmBooked > 0 )
+                ){
+                    selectedDateTables.push(this.bookingData[i].tables_type)
+                    this.tableType[this.bookingData[i].tables_type -1].disabled = false
+                }
+            }
         },
         timeAble() {
             this.timeStatus = false
@@ -304,7 +300,6 @@ export default {
                         book_end_time: this.chosentimeTo,
                         book_people: this.count,
                         tables_type: this.tableChosen,
-                        book_state: this.bookState
                     }
                 })
                 .then((res) =>{
