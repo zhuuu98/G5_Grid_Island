@@ -60,41 +60,40 @@
                             </div>
                             <button class="memberLookBook btn_lg_orange" @click="book">查看預約</button>
                         </div>
-                        <div class="memberBooklog" v-for="(data,i) in bookInfo">
+                        <div class="memberBooklog" v-for="(data, i) in bookInfo">
                             <div class="dateAndCancel">
                                 <p>{{ data.book_date }}</p>
                                 <button :class="{ 'btn_sm_1': true, 'disabled': isPastDate(data.book_date) }"
                                     @click="alertCancelbox(i)" :disabled="isPastDate(data.book_date)">取消預約</button>
-                                    <!-- 取消預約燈箱 -->
-                            <div class="alertCancel_bg" v-if="alertCancel">
-                                <div class="alertCancel_main">
-                                    <div class="alertCancel_content">
-                                        <button @click="closeAlert()">
-                                            <i class="fa-solid fa-xmark fa-2x" ></i>
+                                <!-- 取消預約燈箱 -->
+                                <div class="alertCancel_bg" v-if="alertCancel && (indexRecord === i)">
+                                    <div class="alertCancel_main">
+                                        <button class="closeAlert" @click="closeAlert()">
+                                            <i class="fa-solid fa-xmark fa-2x"></i>
                                         </button>
-                                        
-                                        <p>您確定要取消
-                                        </p>
-                                        <p>{{bookInfo[indexRecord].book_date}}</p>
-                                        <p>
-                                            {{
-                                            bookInfo[indexRecord].book_time +
-                                            bookInfo[indexRecord].book_start_time+`~`+bookInfo[indexRecord].book_end_time
-                                            }}
-                                        </p>
-                                        <p>人數：{{ bookInfo[indexRecord].book_people }}人</p>
-                                        <p>
-                                            這筆預約嗎？
-                                        </p>
+                                        <div class="alertCancel_content">
+
+                                            <p>您確定要取消
+                                            </p>
+                                            <p>{{ data.book_date }}</p>
+                                            <p>
+                                                {{
+                                                    data.book_time +
+                                                    data.book_start_time + `~` + data.book_end_time
+                                                }}
+                                            </p>
+                                            <p>人數：{{ data.book_people }}人</p>
+                                            <p>
+                                                這筆預約嗎？
+                                            </p>
+                                        </div>
+                                        <div class="cancelBtns">
+                                            <button class="bookCancel btn_sm_1">確定</button>
+                                            <button class=" btn_sm_1" @click="closeAlert()">取消</button>
+                                        </div>
+
                                     </div>
-                                    <div class="cancelBtns">
-                                        <button class="bookCancel btn_sm_1">確定</button>
-                                        <button class=" btn_sm_1"
-                                        @click="closeAlert()">取消</button>
-                                    </div>
-                                    
                                 </div>
-                            </div>
 
                             </div>
                             <div class="TimeAndPeople">
@@ -121,36 +120,36 @@
                             <h3 class="pc-h4">會員資料修改</h3>
                         </div>
                         <!-- <form action="" class="dataContent" method="post" v-if="memberData[0]"> -->
-                        <form action="" class="dataContent" method="post" v-for="data in memberData">
+                        <form action="" class="dataContent" method="post" v-for="item in memberDataEdit">
                             <label for="memName">姓名</label>
-                            <input type="text" :placeholder="data.mem_name" id="memName" name="mem_name">
+                            <input type="text" v-model="item.mem_name" id="memName" name="mem_name">
 
                             <label for="memNickname">暱稱</label>
-                            <input type="text" :placeholder="data.mem_nickname" id="memNickname" name="mem_nickname">
+                            <input type="text" v-model="item.mem_nickname" id="memNickname" name="mem_nickname">
                             <label for="memEmail">電子信箱</label>
-                            <input type="email" :placeholder="data.mem_email" id="memEmail" name="mem_email" readonly
+                            <input type="email" v-model="item.mem_email" id="memEmail" name="mem_email" readonly
                                 class="email">
                             <label for="memTel">連絡電話</label>
-                            <input type="tel" :placeholder="data.mem_tel" id="memTel" name="mem_tel">
+                            <input type="tel" v-model="item.mem_tel" id="memTel" name="mem_tel">
                             <div class="inputGender">
                                 <span>性別</span>
                                 <div class="genderRadio">
                                     <input type="radio" id="female" name="mem_gender" value="0"
-                                        :checked="data.mem_gender == 0">
+                                        :checked="item.mem_gender == 0">
                                     <label for="female">女性</label>
                                     <input type="radio" id="male" name="mem_gender" value="1"
-                                        :checked="data.mem_gender == 1">
+                                        :checked="item.mem_gender == 1">
                                     <label for="male">男性</label>
                                     <input type="radio" id="they" name="mem_gender" value="2"
-                                        :checked="data.mem_gender == 2">
+                                        :checked="item.mem_gender == 2">
                                     <label for="they">其他</label>
                                 </div>
                             </div>
                             <label for="memBirth">生日</label>
-                            <input type="date" :value="data.mem_birthday" id="memBirth" name="mem_birth">
+                            <input type="date" v-model="item.mem_birthday" id="memBirth" name="mem_birth">
                             <label for="memAddr">收件地址</label>
-                            <input type="text" :placeholder="data.mem_addr" id="memAddr" name="mem_addr">
-                            <input type="submit" class="searchBtn" value="儲存設定">
+                            <input type="text" v-model="item.mem_addr" id="memAddr" name="mem_addr">
+                            <input type="button" class="searchBtn" value="儲存設定" @click=editMemberData()>
                         </form>
                     </div>
                 </div>
@@ -173,7 +172,7 @@
                                             <p>{{ items.ord_date }}</p>
                                             <p>{{ items.ord_id }}</p>
                                             <p>${{ items.ord_sum }}</p>
-                                            <p>{{ items.ord_state === 0 ? '未完成' : '已完成'  }}</p>
+                                            <p>{{ items.ord_state === 0 ? '未完成' : '已完成' }}</p>
                                         </div>
                                         <button class="btn_sm_1" @click="OpenList(index)">訂單明細</button>
 
@@ -204,23 +203,27 @@
                                     <h3 class="pc-h4">預約紀錄</h3>
                                 </div>
                             </div>
-                            <div class="memberBooklog" v-for="data in bookInfo">
+                            <div class="memberBooklog" v-for="(data, index) in bookInfo">
                                 <div class="dateAndCancel">
                                     <p>{{ data.book_date }}</p>
-                                    <button :class="{ 'btn_sm_1': true, 'disabled': isPastDate(data.book_date) } "
-                                    @click="alertCancel()" :disabled="isPastDate(data.book_date)">取消預約
+                                    <button :class="{ 'btn_sm_1': true, 'disabled': isPastDate(data.book_date) }"
+                                        @click="alertCancelbox(index)" :disabled="isPastDate(data.book_date)">取消預約
                                     </button>
-                                    <!-- 取消預約燈箱-->
-                                    <div class="alertCancel_bg" v-show="alertCancel">
+                                    <!-- 取消預約燈箱 -->
+                                    <div class="alertCancel_bg" v-if="alertCancel && (indexRecord === index)">
                                         <div class="alertCancel_main">
                                             <div class="alertCancel_content">
+                                                <button class="closeAlert" @click="closeAlert()">
+                                                    <i class="fa-solid fa-xmark fa-2x"></i>
+                                                </button>
+
                                                 <p>您確定要取消
                                                 </p>
                                                 <p>{{ data.book_date }}</p>
                                                 <p>
                                                     {{
-                                                    data.book_time +
-                                                    data.book_start_time+`~`+data.book_end_time
+                                                        data.book_time +
+                                                        data.book_start_time + `~` + data.book_end_time
                                                     }}
                                                 </p>
                                                 <p>人數：{{ data.book_people }}人</p>
@@ -228,11 +231,12 @@
                                                     這筆預約嗎？
                                                 </p>
                                             </div>
-                                            <button>確定</button>
-                                            <button @click="closeAlert()">取消</button>
+                                            <div class="cancelBtns">
+                                                <button class="bookCancel btn_sm_1">確定</button>
+                                                <button class=" btn_sm_1" @click="closeAlert()">取消</button>
+                                            </div>
 
                                         </div>
-
                                     </div>
 
                                 </div>
@@ -345,41 +349,40 @@
                     <img :src="getImageUrl(`member/memberAsideIcon_4.svg`)" alt="預約紀錄icon">
                     <h3 class="pc-h4">{{ mobileIcon[3] }}</h3>
                 </div>
-                <div class="bookDataContent" v-for="data in bookInfo">
+                <div class="bookDataContent" v-for="(data, index) in bookInfo">
                     <div class="mobileBookDateCancel">
                         <p>{{ data.book_date }}</p>
                         <button :class="{ 'btn_sm_1': true, 'disabled': isPastDate(data.book_date) }"
-                            @click="alertCancelbox()" :disabled="isPastDate(data.book_date)">取消預約</button>
-                            <!-- 取消預約燈箱 -->
-                            <div class="alertCancel_bg" v-if="alertCancel">
-                                <div class="alertCancel_main">
-                                    <div class="alertCancel_content">
-                                        <button @click="closeAlert()">
-                                            <i class="fa-solid fa-xmark fa-2x" ></i>
-                                        </button>
-                                        
-                                        <p>您確定要取消
-                                        </p>
+                            @click="alertCancelbox(index)" :disabled="isPastDate(data.book_date)">取消預約</button>
+                        <!-- 取消預約燈箱 -->
+                        <div class="alertCancel_bg" v-if="alertCancel && (indexRecord === index)">
+                            <div class="alertCancel_main">
+                                <div class="alertCancel_content">
+                                    <button class="closeAlert" @click="closeAlert()">
+                                        <i class="fa-solid fa-xmark fa-2x"></i>
+                                    </button>
 
-                                        <p>{{ data.book_date }}</p>
-                                        <p>
-                                            {{
+                                    <p>您確定要取消
+                                    </p>
+                                    <p>{{ data.book_date }}</p>
+                                    <p>
+                                        {{
                                             data.book_time +
-                                            data.book_start_time+`~`+data.book_end_time
-                                            }}
-                                        </p>
-                                        <p>人數：{{ data.book_people }}人</p>
-                                        <p>
-                                            這筆預約嗎？
-                                        </p>
-                                    </div>
-                                    <div class="cancelBtns ">
-                                        <button>確定</button>
-                                        <button @click="closeAlert()">取消</button>
-                                    </div>
-                                    
+                                            data.book_start_time + `~` + data.book_end_time
+                                        }}
+                                    </p>
+                                    <p>人數：{{ data.book_people }}人</p>
+                                    <p>
+                                        這筆預約嗎？
+                                    </p>
                                 </div>
+                                <div class="cancelBtns">
+                                    <button class="bookCancel btn_sm_1">確定</button>
+                                    <button class=" btn_sm_1" @click="closeAlert()">取消</button>
+                                </div>
+
                             </div>
+                        </div>
 
                     </div>
                     <div class="TimeAndPeople">
@@ -407,23 +410,24 @@
 import axios from 'axios';
 import MemberCard from "../components/MemberCard.vue";
 import PageTitle from "../components/PageTitle.vue";
+import { mapActions } from 'pinia';
+import userStore from '@/stores/user'
 export default {
     data() {
         return {
-
-            memberData: [],//會員資料
-            bookInfo: [],//預約資料
-            orderInfo: [],//訂單資料
-            orderListInfo: [],//訂單明細
+            memberData: {},//會員資料
+            memberDataEdit: {},//會員資料修改用
+            bookInfo: {},//預約資料
+            orderInfo: {},//訂單資料
+            orderListInfo: {},//訂單明細
             undoneOrder: 0,//未完成訂單
             completedOrder: 0,//已完成訂單
 
-            selectedBooking: null,
 
             userdata: {},
 
             //電腦側邊欄
-            AsideItem: ['Griddy造型屋','會員資料修改','訂單資訊','預約紀錄','報隊管理','會員登出'],
+            AsideItem: ['Griddy造型屋', '會員資料修改', '訂單資訊', '預約紀錄', '報隊管理', '會員登出'],
 
 
             mobileIcon: ['Griddy造型屋', '會員資料修改', '訂單資訊', '預約紀錄', '報隊管理', '會員登出'],//手機板ICON名字
@@ -441,7 +445,7 @@ export default {
             isChoosedBookData_PC: false,//電腦預約紀錄被選擇
             isChoosedIndex_PC: true,
 
-            alertCancel:false,//取消預約燈箱開關
+            alertCancel: false,//取消預約燈箱開關
 
             indexRecord: -1,
         };
@@ -462,8 +466,9 @@ export default {
             .then(res => {
                 // 成功接收後端返回的資料
                 // console.log(res.data.undoneOrder[0]['count(*)']);
-                // console.log(res.data.undoneOrder);
+                // console.log(res.data.memberData);
                 this.memberData = res.data.memberData;
+                this.memberDataEdit = JSON.parse(JSON.stringify(this.memberData));//這是深拷貝，要用深拷貝才不會互相影響陣列的值
                 this.bookInfo = res.data.bookInfo;
                 this.undoneOrder = res.data.undoneOrder;
                 this.completedOrder = res.data.completedOrder;
@@ -496,6 +501,7 @@ export default {
         this.userData = JSON.parse(localStorage.getItem("userDataStr"))
     },
     methods: {
+        ...mapActions(userStore, ['updateUserData']),
         isPastDate(date) {
             const today = new Date();
             const selectedDate = new Date(date);
@@ -515,11 +521,11 @@ export default {
 
 
         },
-        openList_PC(index){//電腦版選單
+        openList_PC(index) {//電腦版選單
             this.isChoosedEditData_PC = false
             this.isChoosedOrderData_PC = false
             this.isChoosedBookData_PC = false
-            this.isChoosedIndex_PC=true
+            this.isChoosedIndex_PC = true
 
             switch (index) {
                 case 0: //griddy
@@ -527,15 +533,15 @@ export default {
                     this.$emit("griddy-style");
                     break;
                 case 1: //會員資料修改
-                    this.isChoosedIndex_PC=!this.isChoosedIndex_PC
+                    this.isChoosedIndex_PC = !this.isChoosedIndex_PC
                     this.isChoosedEditData_PC = !this.isChoosedEditData_PC
                     break;
                 case 2: //訂單紀錄
-                    this.isChoosedIndex_PC=!this.isChoosedIndex_PC
+                    this.isChoosedIndex_PC = !this.isChoosedIndex_PC
                     this.isChoosedOrderData_PC = !this.isChoosedOrderData_PC
                     break;
                 case 3: //預約紀錄
-                    this.isChoosedIndex_PC=!this.isChoosedIndex_PC
+                    this.isChoosedIndex_PC = !this.isChoosedIndex_PC
                     this.isChoosedBookData_PC = !this.isChoosedBookData_PC
                     break;
                 case 5: //登出
@@ -543,10 +549,10 @@ export default {
                     localStorage.removeItem('userDataStr')
                     this.$router.push('/')
                     break;
-                }
-            },
+            }
+        },
 
-        
+
         handleButtonClick(index) { //手機板選單
             this.isChoosedEditData = false
             this.isChoosedOrderData = false
@@ -613,14 +619,38 @@ export default {
             }
         },
         alertCancelbox(i) {
-            this.alertCancel=true
+            this.alertCancel = true
             this.indexRecord = i
         },
-        closeAlert(){
-            this.alertCancel=false
-            console.log(this.alertCancel);
+        closeAlert() {
+            this.alertCancel = false
+            // console.log(this.memberData[0].mem_id);
         },
-
+        editMemberData() {//修改會員資料
+            axios({
+                method: 'post',
+                url: `${import.meta.env.VITE_API_URL}/updateMember.php`,
+                headers: { "Content-Type": "multipart/form-data" },
+                data: {
+                    mem_id: this.memberDataEdit[0].mem_id,
+                    mem_name: this.memberDataEdit[0].mem_name,
+                    mem_nickname: this.memberDataEdit[0].mem_nickname,
+                    mem_tel: this.memberDataEdit[0].mem_tel,
+                    mem_gender: this.memberDataEdit[0].mem_gender,
+                    mem_addr: this.memberDataEdit[0].mem_addr,
+                    mem_birthday: this.memberDataEdit[0].mem_birthday
+                }
+            })
+                .then((res) => {
+                    console.log(res.data);
+                    console.log(this.memberDataEdit[0])
+                    this.updateUserData(this.memberDataEdit[0])
+                    alert("已修改完成");
+                })
+                .catch((error) => {
+                    console.log(error);
+                });
+        },
     },
 
 };
