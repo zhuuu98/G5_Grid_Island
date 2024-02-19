@@ -1,20 +1,20 @@
 <template>
     <div class="componentsarea">
-        <div id="eyes-staff-box">
+        <div id="eyes-staff-box" class="staff-box">
             <h4>眼睛造型</h4>
             <ul class="eyes-options options-staff">
                 <button v-for="(eyesStaff, index) in eyesStaffs" :key="eyesStaff.staff"
-                    @click="handleEyesStaffChange(eyesStaff.staff)">
-                    {{ eyesStaff.label }}
+                    @click="handleEyesStaffChange(eyesStaff.staff)" :class="{ active: selectedEyesStaff === eyesStaff.staff }">
+                    {{ eyesStaff.name }}
                 </button>
             </ul>
 
         </div>
-        <div id="eyes-color-box">
+        <div id="eyes-colors-box" class="colors-box">
             <h4>眼睛顏色</h4>
             <ul class="eyes-options options-colors">
                 <li v-for="eyesColor in eyesColors" :key="eyesColor" :style="{ backgroundColor: eyesColor }"
-                    @click="handleEyesColorChange(eyesColor)" :class="{ selected: selectedEyesColor === eyesColor }">
+                    @click="handleEyesColorChange(eyesColor)" :class="{ active: selectedEyesColor === eyesColor }">
                 </li>
             </ul>
         </div>
@@ -36,49 +36,41 @@
 
     export default {
         name: 'eyesComponent',
+        props: {
+            currentTab: String, // 假設currentColor是一個字符串類型的prop
+            defaultEyesColor: String,
+            defaultEyesStaff: String,
+        },
         data() {
             return {
                 eyesStaffs: [
-                    { label: "粗框眼鏡", staff: eyesStaff1 },
-                    { label: "憨厚", staff: eyesStaff2 },
-                    { label: "不懷好意", staff: eyesStaff3 },
-                    { label: "哭哭", staff: eyesStaff4 },
-                    { label: "水汪汪", staff: eyesStaff5 },
-                    { label: "複眼", staff: eyesStaff6 },
-                    { label: "疲憊", staff: eyesStaff7 },
-                    { label: "舒眠", staff: eyesStaff8 },
-                    { label: "愛戀", staff: eyesStaff9 },
-                    { label: "少年", staff: eyesStaff10 },
-                ]
+                    { name: "粗框眼鏡", staff: eyesStaff1 },
+                    { name: "憨厚", staff: eyesStaff2 },
+                    { name: "不懷好意", staff: eyesStaff3 },
+                    { name: "哭哭", staff: eyesStaff4 },
+                    { name: "水汪汪", staff: eyesStaff5 },
+                    { name: "複眼", staff: eyesStaff6 },
+                    { name: "疲憊", staff: eyesStaff7 },
+                    { name: "舒眠", staff: eyesStaff8 },
+                    { name: "愛戀", staff: eyesStaff9 },
+                    { name: "少年", staff: eyesStaff10 },
+                ],
+                eyesColors: unifiedColors,
+                selectedEyesColor: this.defaultEyesColor, // 初始化時從props接收的值
+                selectedEyesStaff: this.defaultEyesStaff, // 初始化時從props接收的值
             };
         },
         methods: {
-            selectEyesStaff(selectedEyesStaff) {
-                this.$emit('eyes-staff-selected', selectedEyesStaff);
-            }
-        },
-
-        setup(props, context) {
-            // 使用reactive代替ref，创建一个反应性的state对象
-            const eyesState = reactive({
-                selectedeyesColor: props.currentColor
-            });
-            const eyesColors = unifiedColors;
-
-            // 更新選中的颜色
-            const handleEyesColorChange = (eyesColor) => {
-                context.emit('eyes-color-selected', eyesColor);
+            handleEyesColorChange(eyesColor) {
+                this.selectedEyesColor = eyesColor; // 更新選中的顏色
+                this.$emit('eyes-color-selected', eyesColor);
                 console.log("事件已發射，眼睛顏色：", eyesColor);
-            };
-
-            const handleEyesStaffChange = (eyesStaff) => {
-                context.emit('eyes-staff-selected', eyesStaff);
+            },
+            handleEyesStaffChange(eyesStaff) {
+                this.selectedEyesStaff = eyesStaff;
+                this.$emit('eyes-staff-selected', eyesStaff);
                 console.log("事件已發射，眼睛圖片碼：", eyesStaff);
-            };
-            return {
-                eyesColors, selectedEyesColor: eyesState.selectedEyesColor,
-                handleEyesColorChange, handleEyesStaffChange
-            };
+            },
         },
 
     };

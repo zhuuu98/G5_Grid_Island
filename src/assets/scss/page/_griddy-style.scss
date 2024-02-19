@@ -72,13 +72,17 @@
                     background-color: $white-1;
                     border: 1px solid $orange-2;
                     color: $orange-2;
+                    padding: 2px 0;
+                    border-radius: 8px;
 
                     &:hover {
                         background-color: darken($white-1, 5%);
                     }
-
                     &:active {
                         background-color: darken($white-1, 5%);
+                    }
+                    @include T() {
+                        padding: 8px 0;
                     }
                 }
 
@@ -87,6 +91,8 @@
                     background-color: $white-1;
                     border: 1px solid $orange-2;
                     color: $orange-2;
+                    padding: 2px 0;
+                    border-radius: 8px;
 
                     &:hover {
                         background-color: darken($white-1, 5%);
@@ -95,13 +101,28 @@
                     &:active {
                         background-color: darken($white-1, 5%);
                     }
+                    @include T() {
+                        padding: 8px 0;
+                    }
                 }
 
                 #setphoto {
                     width: calc(100%);
+                    background-color: $orange-2;
+                    border: 1px solid $orange-2;
+                    color: $white-1;
+                    padding: 2px 0;
+                    border-radius: 8px;
+                    @include T() {
+                        padding: 8px 0;
+                    }
+
+                    &:hover {
+                        background-color: darken($orange-2, 10%);
+                    }
 
                     &:active {
-                        background-color: $orange-1;
+                        background-color: darken($orange-2, 10%);
                     }
                 }
             }
@@ -173,7 +194,7 @@
             button {
                 @include text;
                 flex-grow: 1;
-                padding: 8px 0;
+                padding: 4px 0;
                 width: auto;
                 cursor: pointer;
                 background-color: $gray-2;
@@ -194,7 +215,7 @@
                 @include T() {
                     flex-grow: 1;
                     border-radius: 16px 16px 0 0;
-                    padding: 12px 0;
+                    padding: 10px 0;
                 }
 
                 @include PC() {
@@ -215,48 +236,124 @@
             box-sizing: border-box;
             padding: $M-spacing;
             border-radius: 0 0 28px 28px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
 
             @include T() {
                 border-radius: 28px;
+                padding: 40px;
             }
-        }
-
-        .options-colors {
-
-            li {
-                // 顏色選擇統一樣式
-                display: inline-block;
-                width: 40px;
-                height: 40px;
-                margin: 5px;
-                outline: 2px solid #0003;
-                border-radius: 50%;
-                cursor: pointer;
-                border: 1.618px solid #fff;
+            @include PC() {
+                padding: 40px 80px;
             }
 
-            .active {
-                outline: 2px solid  $blue-2;
-                border: 1.618px solid #fff;
+            .colors-box {
+                // background-color: salmon;
+                display: flex;
+                flex-direction: column;
+                gap: 4px;
+
+                .options-colors {
+                    // background-color: #fa0;
+                    display: flex;
+                    // width: 100%;
+                    width: calc(100% + 40px);
+                    transform: translateX(-20px);
+                    overflow-x: auto;
+                    justify-content: start;
+                    gap: 12px;
+                    box-sizing: border-box;
+                    padding: 3px 23px 3px 23px;
+
+
+                    @include T() {
+                        transform: translateX(0);
+                        width: 100%;
+                        overflow: visible;
+                        flex-wrap: wrap;
+                        gap: 16px;
+                        padding: 3px 3px 3px 3px;
+                    }
+
+                    li {
+                        box-shadow: inset 0 4px 3px #0002;
+                        // 顏色選擇統一樣式
+                        width: 48px;
+                        height: 48px;
+                        outline: 2px solid #0002;
+                        border-radius: 200px;
+                        cursor: pointer;
+                        border: 3px solid #fff;
+                        flex-shrink: 0;
+                        /* 防止 li 被压缩 */
+                        margin: 2px 0px 8px 0px;
+
+                        @include T() {}
+                    }
+
+                    .active {
+                        outline: 2.8px solid $blue-2;
+
+                    }
+                }
             }
-        }
 
-        .options-staff {
-            display: flex;
-            column-gap: $M-spacing;
-            row-gap: $S-spacing;
-            flex-wrap: wrap;
+            .staff-box {
+                // background-color: aqua;
+                display: flex;
+                flex-direction: column;
+                gap: 8px;
 
-            button {
-                width: calc(33.3333% - 20px);
-                height: 40px;
-                border: 2px solid transparent;
-                cursor: pointer;
-                border: 1px solid #ccc;
-                border-radius: 8px;
+                .options-staff {
+                    // 零件選擇統一樣式
+                    box-sizing: border-box;
+                    padding: 3px 23px 3px 23px;
+                    display: flex;
+                    column-gap: $M-spacing;
+                    row-gap: 20px;
+                    column-gap: 16px;
+                    flex-wrap: nowrap;
+                    // background-color: #fa0;
+                    overflow: auto;
+                    width: calc(100% + 40px);
+                    transform: translateX(-20px);
+                    @include T() {
+                        transform: translateX(0);
+                        width: 100%;
+                        overflow: visible;
+                        flex-wrap: wrap;
+                        gap: 16px;
+                        padding: 3px 3px 3px 3px;
+                    }
 
-                @include T() {
-                    width: calc(16.333333% - 16.333333px);
+                    button {
+                        @include text;
+                        color: #777;
+                        width: calc(25%);
+                        height: 40px;
+                        border: 0px solid transparent;
+                        cursor: pointer;
+                        outline: 1.618px solid #0002;
+                        border-radius: 12px;
+                        background-color: #fff;
+                        padding: 24px 0;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        flex-shrink: 0;
+                        margin: 2px 0px 8px 0px;
+
+                        @include T() {
+                            width: calc(25% - 12px);
+                        }
+                    }
+
+                    .active {
+                        outline: 2.8px solid $blue-2;
+                        color: #444;
+                        font-weight: 500;
+                    }
                 }
 
             }
