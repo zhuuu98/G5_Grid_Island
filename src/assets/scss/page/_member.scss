@@ -378,7 +378,7 @@
         align-items: center;
         background-color: $white-1;
         border-radius: $PC-card-radius;
-        padding: $S-spacing;
+        padding: 15px;
     }
     .mobileContent{
         display: flex;
@@ -392,6 +392,7 @@
         padding:$S-spacing $XS-spacing;
         width: 100%;
         max-width: 100px;
+        height: 100px;
         background-color: $gray-1;
         &:hover {
             border: 1px solid rgba($color: $gray-1, $alpha: 0);
@@ -411,6 +412,7 @@
     .mobileMember img{
         width: 100%;
         max-width: 100px;
+        border-radius: 50%;
         vertical-align: top;
     }
     .mobileMember{
@@ -627,6 +629,12 @@
         @include T(){
             display: none;
         }
+        .disabled {
+            opacity: 0.5;  /* 或其他禁用樣式 */
+            background-color: $gray-2;
+            cursor: not-allowed;
+        }
+
         
     }
     .bookDataTitle{
@@ -871,7 +879,7 @@
         background-color: #fff;
         max-width: 300px;
         width: 90vw;
-        height: 43vh;
+        height: 366px;
         padding: 20px;
         position: absolute;
         top: 30%;
@@ -883,12 +891,13 @@
         @include T() {
             max-width: 600px;
             width: 60vw;
-            height: 45vh;
             left: 33%;
         }
         .alertCancel_content{
             display: flex;
             flex-direction: column;
+            justify-content: center;
+            align-items: center;
             gap: 10px;
         }
         .cancelBtns{
@@ -904,7 +913,14 @@
                 background-color: $black;
                 color: $white-1;
             }
-          
+        }
+        .closeAlert{
+            align-self: flex-end;
+            width: fit-content;
+            height: fit-content;
+            background-color: transparent;
+            border: none;
+            cursor: pointer;        
         }
     }
 
