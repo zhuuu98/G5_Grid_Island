@@ -26,7 +26,7 @@
                   <div class="nav_member_login" v-if="userData && userData.mem_profile">
                     <!-- <img :src="userData.mem_profile" alt="mem_profile"> -->
                     <!-- <img :src="`https://tibamef2e.com/chd104/g5/image/mem/original.png`" :alt="會員頭貼"> -->
-                    <img class="header_login_profile" :src="`https://tibamef2e.com/chd104/g5/image/mem/${userData.mem_profile}`" alt="會員頭貼">
+                    <img class="header_login_profile" :src="`https://tibamef2e.com/chd104/g5/image/mem/${userData.mem_profile}`" alt="mem_profile">
                   </div>
                   <div class="nav_member" v-else>
                     <img src="../assets/images/header/header-member.svg" alt="header-member">
