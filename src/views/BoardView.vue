@@ -56,7 +56,7 @@
     <div class="light_box" v-show="board_light_box_open">
       <div class="overlay" @click="light_box_close"></div>
       <div class="box" v-if="userData && userData.mem_profile">
-        <form action="post" v-if="article_send_succ">
+        <form @submit.prevent="article_send_btn" v-if="article_send_succ">
           <h3 class="board_lb_title">我要發文</h3>
           <div>
             <!-- <p class="board_lb_subTitle">留言內容</p> -->
@@ -68,7 +68,7 @@
               <label for="check">我已確認文章內容不包含不當內文及攻擊字眼。</label>
             </div>
             <button class="btn_sm_1" v-if="!cb_submit" disabled>送出</button>
-            <button class="btn_sm_1" v-else @click="article_send_btn()">送出</button>
+            <button class="btn_sm_1" type="submit" v-else>送出</button>
           </div>
         </form>
         <div v-else>
@@ -233,8 +233,17 @@ export default {
     userData() {
       return this.userStoreData.userData || {}
     },
+    modifiedCardUnique() {
+      return this.card.reduce((acc, cur) => {
+        if (acc.findIndex(v => v.msg_id === cur.msg_id) === -1) {
+          acc.push(cur)
+        }
+
+        return acc
+      }, [])
+    },
     modifiedCard() {
-      return this.card.map(item => ({
+      return this.modifiedCardUnique.map(item => ({
         ...item,
         // re_amount: item.re.length,
       }));
