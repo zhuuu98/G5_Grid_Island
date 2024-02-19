@@ -163,24 +163,10 @@ export default {
     },
   },
   created() {
-    this.axiosGetData();
     this.fetchProd();
   },
   methods: {
     ...mapActions(cartStore, ["addCartData"]),
-    axiosGetData() {
-      const pageId = this.$route.params.id;
-      axios
-        .get("https://tibamef2e.com/chd103/g5/phps/ProductM.php")
-        .then((res) => {
-          const allProduct = res.data;
-          const result = allProduct.find((item) => {
-            return item.prod_id == pageId;
-          });
-          console.log(result);
-          this.respondData = result;
-        });
-    },
     fetchProd() {
       const pageId = this.$route.params.id;
       axios
@@ -190,7 +176,6 @@ export default {
           const result = allProduct.find((item) => {
             return item.prod_id == pageId;
           });
-          console.log(result);
           this.prodData = result;
         });
     },
