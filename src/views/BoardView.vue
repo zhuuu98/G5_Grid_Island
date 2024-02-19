@@ -113,8 +113,8 @@
             <option>不實資訊</option>
             <option value="lb_re_other">其他</option> -->
           </select>
-          <textarea cols="30" rows="10" v-show="open_re_text" placeholder="請敘述檢舉理由"
-            @keyup="updateReTextVisibility"></textarea>
+          <textarea cols="30" rows="10" v-show="open_re_text" placeholder="請敘述檢舉理由" @keyup="updateReTextVisibility"
+            v-model="re_text_other"></textarea>
           <button class="btn_sm_1" v-if="!re_submit_disable" disabled>送出</button>
           <button class="btn_sm_1" v-else @click.prevent="re_submit">送出</button>
         </form>
@@ -180,144 +180,6 @@ export default {
         //   msg: '有人看到我爸嗎？',
         //   re: []
         // },
-        // {
-        //   id: 3,
-        //   // id_img:'../../public/images/board/board_id_img.svg',
-        //   id_img_alt: 'board_id_img',
-        //   memId: '3酷B',
-        //   time: '2023/12/30 20:25',
-        //   msg: '使用同行，前往瑪莎多啦。',
-        //   re: [
-        //     {
-        //       id: 1,
-        //       // img:'../../public/images/board/board_id_img.svg',
-        //       alt: 'board_id_img',
-        //       memId: '酷喇皮卡',
-        //       time: '2023/12/30 20:25',
-        //       msg: '我快下船了。',
-        //     },
-        //     {
-        //       id: 2,
-        //       // img:'../../public/images/board/board_id_img.svg',
-        //       alt: 'board_id_img',
-        //       memId: '明人',
-        //       time: '2023/12/30 20:25',
-        //       msg: '樓上也有血輪眼？',
-        //     },
-        //     {
-        //       id: 3,
-        //       // img:'../../public/images/board/board_id_img.svg',
-        //       alt: 'board_id_img',
-        //       memId: '酷喇皮卡',
-        //       time: '2023/12/30 20:25',
-        //       msg: '我快下船了。',
-        //     },
-        //     {
-        //       id: 4,
-        //       // img:'../../public/images/board/board_id_img.svg',
-        //       alt: 'board_id_img',
-        //       memId: '明人',
-        //       time: '2023/12/30 20:25',
-        //       msg: '樓上也有血輪眼？',
-        //     }
-        //   ]
-        // },
-        // {
-        //   id: 4,
-        //   // id_img:'../../public/images/board/board_id_img.svg',
-        //   id_img_alt: 'board_id_img',
-        //   memId: '大傑',
-        //   time: '2023/12/30 20:25',
-        //   msg: '有人看到我爸嗎？',
-        //   re: [
-        //     {
-        //       id: 1,
-        //       // img:'../../public/images/board/board_id_img.svg',
-        //       alt: 'board_id_img',
-        //       memId: '灰傑克',
-        //       time: '2023/12/30 20:25',
-        //       msg: '皮諾渴，這個直接電死。',
-        //     },
-        //     {
-        //       id: 2,
-        //       // img:'../../public/images/board/board_id_img.svg',
-        //       alt: 'board_id_img',
-        //       memId: '皮諾渴',
-        //       time: '2023/12/30 20:25',
-        //       msg: '是的醫生！',
-        //     },
-        //     {
-        //       id: 3,
-        //       // img:'../../public/images/board/board_id_img.svg',
-        //       alt: 'board_id_img',
-        //       memId: '奇牙',
-        //       time: '2023/12/30 20:25',
-        //       msg: '我們一定會找到的。',
-        //     }
-        //   ]
-        // },
-        // {
-        //   id: 5,
-        //   // id_img:'../../public/images/board/board_id_img.svg',
-        //   id_img_alt: 'board_id_img',
-        //   memId: '酷B',
-        //   time: '2023/12/30 20:25',
-        //   msg: '使用同行，前往瑪莎多啦。',
-        //   re: [
-        //     {
-        //       id: 1,
-        //       // img:'../../public/images/board/board_id_img.svg',
-        //       alt: 'board_id_img',
-        //       memId: '酷喇皮卡',
-        //       time: '2023/12/30 20:25',
-        //       msg: '我快下船了。',
-        //     },
-        //     {
-        //       id: 2,
-        //       // img:'../../public/images/board/board_id_img.svg',
-        //       alt: 'board_id_img',
-        //       memId: '明人',
-        //       time: '2023/12/30 20:25',
-        //       msg: '樓上也有血輪眼？',
-        //     }
-        //   ]
-        // },
-        // {
-        //   id: 6,
-        //   // id_img:'../../public/images/board/board_id_img.svg',
-        //   id_img_alt: 'board_id_img',
-        //   memId: '酷B',
-        //   time: '2023/12/30 20:25',
-        //   msg: '使用同行，前往瑪莎多啦。',
-        //   re: [
-        //     {
-        //       id: 1,
-        //       // img:'../../public/images/board/board_id_img.svg',
-        //       alt: 'board_id_img',
-        //       memId: '酷喇皮卡',
-        //       time: '2023/12/30 20:25',
-        //       msg: '我快下船了。',
-        //     },
-        //     {
-        //       id: 2,
-        //       // img:'../../public/images/board/board_id_img.svg',
-        //       alt: 'board_id_img',
-        //       memId: '明人',
-        //       time: '2023/12/30 20:25',
-        //       msg: '樓上也有血輪眼？',
-        //     }
-        //   ]
-        // },
-        // {
-        //   id: 7,
-        //   // id_img:'../../public/images/board/board_id_img.svg',
-        //   id_img_alt: 'board_id_img',
-        //   memId: '酷B',
-        //   time: '2023/12/30 20:25',
-        //   msg: '使用同行，前往瑪莎多啦。',
-        //   re: [
-        //   ]
-        // },
       ],
       reports: [{
         reason: '-請選擇檢舉項目-',
@@ -326,22 +188,22 @@ export default {
         selected: true
       }, {
         reason: '廣告',
-        value: 'ad'
+        value: '廣告'
       }, {
         reason: '帶有攻擊性言論',
-        value: 'violent'
+        value: '帶有攻擊性言論'
       }, {
         reason: '暴力或危險組織',
-        value: 'danger'
+        value: '暴力或危險組織'
       }, {
         reason: '我就是不喜歡',
-        value: 'dislike'
+        value: '我就是不喜歡'
       }, {
         reason: '仇恨言論或象徵符號',
-        value: 'hate'
+        value: '仇恨言論或象徵符號'
       }, {
         reason: '不實資訊',
-        value: 'fake'
+        value: '不實資訊'
       }, {
         reason: '其他',
         value: 'lb_re_other'
@@ -360,6 +222,8 @@ export default {
       isReplyOpen: false,
       userStoreData: userStore(),
       run: false,
+      activeReportMsgId: -1,
+      re_text_other: ''
     };
   },
   created() {
@@ -394,6 +258,7 @@ export default {
   },
   methods: {
     ...mapActions(userStore, ['updateUserData']),
+    //頁面渲染
     getCard() {
       axios
         .post(`${import.meta.env.VITE_API_URL}/board.php`, {})
@@ -521,6 +386,27 @@ export default {
         }
         );
     },
+    //檢舉
+    reportArticle() {
+      axios({
+        method: 'post',
+        url: `${import.meta.env.VITE_API_URL}/boardReport.php`,
+        headers: { "Content-Type": "multipart/form-data" },
+        data: {
+          msg_id: this.activeReportMsgId,
+          report_reason: this.selectedOption === 'lb_re_other' ? this.re_text_other : this.selectedOption,
+          //msg_content: document.querySelector('.light_box textarea').value,
+        }
+      })
+        .then((res) => {
+          console.log(res.data);
+          console.log('修改成功');
+        })
+        .catch((err) => {
+          console.log(err)
+        }
+        );
+    },
     // 發文
     // 打開發文燈箱
     open_light_box() {
@@ -553,12 +439,15 @@ export default {
     // 檢舉
     // 打開檢舉燈箱
     open_light_box_report(msg_id) {
+      this.activeReportMsgId = msg_id
       this.re_submit_show = true;
       this.selectedOption = this.reports[0].value;
       this.re_submit_disable = false;
       this.open_re_text = false;
       this.board_light_box_report = true;
       document.body.classList.add('body-overflow-hidden');
+      this.re_text_other = ''
+
     },
     // 關閉檢舉燈箱
     light_box_re_close() {
@@ -582,6 +471,8 @@ export default {
     //送出檢舉彈窗
     re_submit() {
       this.re_submit_show = false;
+      this.reportArticle();
+
     },
     reload() {
       window.location.reload();
