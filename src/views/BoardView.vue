@@ -68,7 +68,7 @@
               <label for="check">我已確認文章內容不包含不當內文及攻擊字眼。</label>
             </div>
             <button class="btn_sm_1" v-if="!cb_submit" disabled>送出</button>
-            <button class="btn_sm_1" v-else @click="article_send_btn">送出</button>
+            <button class="btn_sm_1" v-else @click="article_send_btn()">送出</button>
           </div>
         </form>
         <div v-else>
@@ -429,6 +429,7 @@ export default {
       // console.log(this.item);
       axios({
         method: 'post',
+        // url: `${import.meta.env.VITE_API_URL}/boardArticle.php`,
         url: `${import.meta.env.VITE_API_URL}/boardArticle.php`,
         headers: { "Content-Type": "multipart/form-data" },
         data: {
@@ -470,8 +471,9 @@ export default {
         + '<div class="board_re_id_info"><div class="board_re_memId">' + this.userData.mem_name + '</div><div class="board_re_time">' + time + '</div></div></div>'
         + '<div class="board_re_msg"><p>' + re_text + '</p></div></div>';
 
-      //desktop.querySelector('.board_re_input input').value = '';
-      //mobile.querySelector('.board_re_input input').value = '';
+      // desktop.querySelector('.board_re_input input').value = '';
+      // mobile.querySelector('.board_re_input input').value = '';
+      // document.querySelector('.re_area').value = '';
 
 
       axios({
@@ -485,6 +487,7 @@ export default {
         }
       })
         .then((res) => {
+
           // console.log('修改成功')
           // 加留言
           if (window.innerWidth >= 768) {
@@ -510,6 +513,8 @@ export default {
             // return cardWithIdOne.re_amount += 1;
             cardWithIdOne.re_amount += 1;
           }
+
+
         })
         .catch((err) => {
           console.log(err)
@@ -542,8 +547,7 @@ export default {
     // 送出按鈕導向確認畫面
     article_send_btn() {
       this.article_send_succ = false;
-      this.postArticle;
-      // this.re_text;
+      this.postArticle();
     },
 
     // 檢舉
