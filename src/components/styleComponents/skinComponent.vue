@@ -1,6 +1,6 @@
 <template>
     <div class="componentsarea">
-        <div id="body-box">
+        <div id="body-colors-box" class="colors-box">
             <h4>軀幹</h4>
             <ul class="body-options options-colors">
                 <li v-for="bodyColor in bodyColors" :key="bodyColor" :style="{ backgroundColor: bodyColor }"
@@ -8,7 +8,7 @@
                 </li>
             </ul>
         </div>
-        <div id="belly-box">
+        <div id="belly-colors-box" class="colors-box">
             <h4>肚肚</h4>
             <ul class="belly-options options-colors">
                 <li v-for="bellyColor in bellyColors" :key="bellyColor" :style="{ backgroundColor: bellyColor }"
@@ -16,7 +16,7 @@
                 </li>
             </ul>
         </div>
-        <div id="spot-box">
+        <div id="spot-colors-box" class="colors-box">
             <h4>斑點</h4>
             <ul class="spot-options options-colors">
                 <li v-for="spotColor in spotColors" :key="spotColor" :style="{ backgroundColor: spotColor }"
@@ -33,16 +33,19 @@
     export default {
         name: 'SkinComponent',
         props: {
-            currentColor: String // 假設currentColor是一個字符串類型的prop
+            currentTab: String , // 假設currentColor是一個字符串類型的prop
+            defaultBodyColor: String,
+            defaultBellyColor: String,
+            defaultSpotColor: String,
         },
         data() {
             return {
-                selectedBodyColor: this.currentColor, // 初始化時從props接收的值
-                selectedBellyColor: this.currentColor,
-                selectedSpotColor: this.currentColor,
                 bodyColors: unifiedColors,
                 bellyColors: unifiedColors,
                 spotColors: unifiedColors,
+                selectedBodyColor: this.defaultBodyColor, // 初始化時從props接收的值
+                selectedBellyColor: this.defaultBellyColor,
+                selectedSpotColor: this.defaultSpotColor,
             };
         },
         methods: {
