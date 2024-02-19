@@ -27,7 +27,7 @@
           </div>
           <Carousel v-model="value" loop>
             <CarouselItem
-              v-for="(item, index) in prodDisData.slice(0, 3)"
+              v-for="(item, index) in prodResData.slice(0, 3)"
               :key="item.prod_id"
             >
               <div class="hotProductBody">
@@ -99,7 +99,6 @@
           </button>
           <div class="productSelect">
             <select class="select" v-model="sortMethod" @change="sort">
-              <option value="init">-請選擇-</option>
               <option value="priceAsc">價格由低至高</option>
               <option value="priceDesc">價格由高至低</option>
               <option value="idAsc">商品編號由低至高</option>
@@ -270,7 +269,7 @@ export default {
       search: "",
       prodResData: [],
       prodDisData: [],
-      sortMethod: "init",
+      sortMethod: "idAsc",
       value: 0,
       gameTypeTags: ["策略", "紙牌", "經營"],
       playerCountTags: ["2-4人", "5-8人", ">8人"],
