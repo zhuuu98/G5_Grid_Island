@@ -32,18 +32,19 @@
           <div class="board_area">
             <!-- 文章區一 -->
             <div class="board_card_col --desktop">
-              <BoardCard v-for="item in firstCol" :key="'area1-' + item.id" :item="item"
-                @open-report="open_light_box_report(item.id)" />
+              <!-- 抓到文章id、:item的item是抓card陣列 -->
+              <BoardCard v-for="item in firstCol" :key="'area1-' + item.msg_id" :item="item"
+                @open-report="open_light_box_report(item.msg_id)" @sent-reply="replyArticle" />
             </div>
             <!-- 文章區二 -->
             <div class="board_card_col --desktop">
-              <BoardCard v-for="item in secondCol" :key="'area2-' + item.id" :item="item"
-                @open-report="open_light_box_report(item.id)" />
+              <BoardCard v-for="item in secondCol" :key="'area2-' + item.msg_id" :item="item"
+                @open-report="open_light_box_report(item.msg_id)" @sent-reply="replyArticle" />
             </div>
             <!-- 文章區三 -->
             <div class="board_card_col --mobile">
-              <BoardCard v-for="item in modifiedCard" :key="'area3-' + item.id" :item="item"
-                @open-report="open_light_box_report(item.id)" />
+              <BoardCard v-for="item in modifiedCard" :key="'area3-' + item.msg_id" :item="item"
+                @open-report="open_light_box_report(item.msg_id)" @sent-reply="replyArticle" />
             </div>
 
           </div>
@@ -54,9 +55,9 @@
     <!-- 發文燈箱 -->
     <div class="light_box" v-show="board_light_box_open">
       <div class="overlay" @click="light_box_close"></div>
-      <div class="box">
+      <div class="box" v-if="userData && userData.mem_profile">
         <form action="post" v-if="article_send_succ">
-          <h3 class="board_lb_title ">我要發文</h3>
+          <h3 class="board_lb_title">我要發文</h3>
           <div>
             <!-- <p class="board_lb_subTitle">留言內容</p> -->
             <textarea name="" id="" cols="35" rows="10" placeholder="輸入文章內容..." @keyup="article_send"></textarea>
@@ -72,12 +73,25 @@
         </form>
         <div v-else>
           <h3>已成功送出文章！</h3>
-          <button class="btn_sm_1" @click="light_box_close">關閉</button>
+          <!-- <button class="btn_sm_1" @click="light_box_close">關閉</button> -->
+          <button class="btn_sm_1" @click="reload">關閉</button>
         </div>
+        <div class="board_close_light_box" @click="reload" v-if="run">
+          <font-awesome-icon :icon="['fas', 'xmark']" />
+        </div>
+        <div class="board_close_light_box" @click="light_box_close" v-else>
+          <font-awesome-icon :icon="['fas', 'xmark']" />
+        </div>
+      </div>
+
+      <div class="box" v-else>
+        <h3 class="board_lb_title ">登入後即可發文</h3>
+        <RouterLink to="/login" class="btn_sm_1 ">立即登入</RouterLink>
         <div class="board_close_light_box" @click="light_box_close">
           <font-awesome-icon :icon="['fas', 'xmark']" />
         </div>
       </div>
+
     </div>
 
     <!-- 檢舉燈箱 -->
@@ -121,6 +135,9 @@
 import axios from "axios";
 import PageTitle from "../components/PageTitle.vue";
 import BoardCard from "../components/BoardCard.vue";
+import userStore from '@/stores/user'
+import { mapActions } from 'pinia';
+
 
 export default {
   data() {
@@ -341,12 +358,17 @@ export default {
       re_submit_disable: false,
       re_submit_show: true,
       isReplyOpen: false,
+      userStoreData: userStore(),
+      run: false,
     };
   },
-  created(){
+  created() {
     this.getCard();
   },
   computed: {
+    userData() {
+      return this.userStoreData.userData || {}
+    },
     modifiedCard() {
       return this.card.map(item => ({
         ...item,
@@ -371,11 +393,12 @@ export default {
     window.removeEventListener('resize', this.handleResize);
   },
   methods: {
-    getCard(){
+    ...mapActions(userStore, ['updateUserData']),
+    getCard() {
       axios
         .post(`${import.meta.env.VITE_API_URL}/board.php`, {})
         .then((res) => {
-          console.log(res.data.board);
+          // console.log(res.data.board);
           this.card = res.data.board;
           //跑迴圈渲染子陣列
           for (let i = 0; i < this.card.length; i++) {
@@ -387,12 +410,12 @@ export default {
 
             // console.log(jsondata);
             //有留言才會計算有幾則留言
-            if(jsondata != null){
+            if (jsondata != null) {
               item.re_amount = jsondata.length;
-              console.log(jsondata.length);
-              for(let j = 0; j < jsondata.length; j++){
+              // console.log(jsondata.length);
+              for (let j = 0; j < jsondata.length; j++) {
                 let reitem = jsondata[j];
-                console.log(reitem.reply_time.split('.')[0]);
+                // console.log(reitem.reply_time.split('.')[0]);
                 // reitem.reply_time.split('.')
                 reitem.reply_time = reitem.reply_time.split('.')[0];
               }
@@ -401,12 +424,104 @@ export default {
         })
         .catch(error => console.error('發生錯誤:', error))
     },
+    //發文PHP
+    postArticle() {
+      // console.log(this.item);
+      axios({
+        method: 'post',
+        url: `${import.meta.env.VITE_API_URL}/boardArticle.php`,
+        headers: { "Content-Type": "multipart/form-data" },
+        data: {
+          mem_id: this.userData.mem_id,
+          msg_content: document.querySelector('.light_box textarea').value,
+        }
+      })
+        .then((res) => {
+          // console.log('修改成功');
+          this.run = true;
+        })
+        .catch((err) => {
+          console.log(err)
+        }
+        );
+    },
+    //回覆PHP
+    replyArticle(msg_id, re_text) {
+      // console.log(re_text);
+      // console.log(item);
+
+      let desktop = document.querySelector('.--desktop .card-' + msg_id);
+      let mobile = document.querySelector('.--mobile .card-' + msg_id);
+      let pic = document.querySelector('.header_login_profile').attributes.src.value;
+
+      let now = new Date();
+      // 從 Date 對象中獲取年、月、日、時、分、秒
+      let y = now.getFullYear(); // 年
+      let m = (now.getMonth() + 1).toString().padStart(2, '0'); // 月 (注意 JavaScript 中月份從 0 開始，所以需要加 1)
+      let d = now.getDate().toString().padStart(2, '0'); // 日
+      let h = now.getHours().toString().padStart(2, '0'); // 時
+      let min = now.getMinutes().toString().padStart(2, '0'); // 分
+      let s = now.getSeconds().toString().padStart(2, '0'); // 秒
+
+      let time = y + '-' + m + '-' + d + ' ' + h + ':' + min + ':' + s;
+
+      let html = '<div class="board_re_card"><div class="board_re_id">'
+        + '<div class="board_re_id_img"><img src="' + pic + '"></div>'
+        + '<div class="board_re_id_info"><div class="board_re_memId">' + this.userData.mem_name + '</div><div class="board_re_time">' + time + '</div></div></div>'
+        + '<div class="board_re_msg"><p>' + re_text + '</p></div></div>';
+
+      //desktop.querySelector('.board_re_input input').value = '';
+      //mobile.querySelector('.board_re_input input').value = '';
+
+
+      axios({
+        method: 'post',
+        url: `${import.meta.env.VITE_API_URL}/boardReply.php`,
+        headers: { "Content-Type": "multipart/form-data" },
+        data: {
+          mem_id: this.userData.mem_id,
+          msg_id: msg_id,
+          reply_content: re_text,
+        }
+      })
+        .then((res) => {
+          // console.log('修改成功')
+          // 加留言
+          if (window.innerWidth >= 768) {
+            desktop.querySelector('.board_re').insertAdjacentHTML('beforeend', html);
+          } else {
+            mobile.querySelector('.board_re').insertAdjacentHTML('beforeend', html);
+          }
+
+          // 加留言數
+          // 找到那個 id 的卡片
+          var cardWithIdOne = this.card.find(function (item) {
+            return item.msg_id == msg_id;
+          });
+
+          // console.log(cardWithIdOne.hasOwnProperty('re_amount'));
+          // console.log(cardWithIdOne);
+
+          // 如果找到了對應的卡片，則 re_amount 初始化為 1 
+          if (cardWithIdOne && !cardWithIdOne.hasOwnProperty('re_amount')) {
+            // return cardWithIdOne.re_amount = 1;
+            cardWithIdOne.re_amount = 1;
+          } else {// 如果找到了對應的卡片，則將 re_amount 加 1
+            // return cardWithIdOne.re_amount += 1;
+            cardWithIdOne.re_amount += 1;
+          }
+        })
+        .catch((err) => {
+          console.log(err)
+        }
+        );
+    },
     // 發文
     // 打開發文燈箱
     open_light_box() {
       this.article_send_succ = true;
       this.cb_check = false;
-      this.cb_submit = false
+      this.cb_submit = false;
       this.board_light_box_open = true;
       document.body.classList.add('body-overflow-hidden');
     },
@@ -427,12 +542,13 @@ export default {
     // 送出按鈕導向確認畫面
     article_send_btn() {
       this.article_send_succ = false;
+      this.postArticle;
+      // this.re_text;
     },
 
     // 檢舉
     // 打開檢舉燈箱
-    open_light_box_report(id) {
-      console.log(id)
+    open_light_box_report(msg_id) {
       this.re_submit_show = true;
       this.selectedOption = this.reports[0].value;
       this.re_submit_disable = false;
@@ -463,7 +579,16 @@ export default {
     re_submit() {
       this.re_submit_show = false;
     },
+    reload() {
+      window.location.reload();
+    },
 
+  },
+  mounted() {
+    //將登入的會員資料由json改為陣列
+    const userData = JSON.parse(localStorage.getItem("userDataStr"));
+    // console.log(userData);
+    this.updateUserData(userData)
   },
 
 };
