@@ -31,9 +31,9 @@
 		left: 0;
 		display: inline-block;
 		white-space: nowrap;
-		animation: marquee 600s linear infinite;
+		animation: marquee 500s linear infinite;
 		span {
-		padding: 0 60px;
+		padding: 0 30px;
 		letter-spacing: $PC-btn-exsl-spacing;
 		}
     }
