@@ -92,19 +92,19 @@ export default {
     },
     fetchNews() {
       let url = `${import.meta.env.VITE_API_URL}/getNews.php`;
-      console.log(`${import.meta.env.VITE_API_URL}/getNews.php`);
+      console.log(url);
       axios
-        .get(`${import.meta.env.VITE_API_URL}/getNews.php`, {})
+        .get(url, {})
         .then(res => {
           console.log(res.data.news);
           this.newsData = res.data.news;
         })
         .catch(error => console.error('發生錯誤:',error))
     },
-    getNewsURL(path) {
-      return new URL(`${import.meta.env.VITE_API_URL}/${path}`);
-      console.log(path);
-    }
+    // getNewsURL(path) {
+    //   return new URL(`${import.meta.env.VITE_API_URL}/${path}`);
+    //   console.log(path);
+    // }
   },
   mounted() {},
 };
