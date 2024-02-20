@@ -60,7 +60,7 @@
                       <span v-for="item in item.tags">{{ item }}</span>
                     </div>
                     <div class="hotproductIntro">
-                      {{ item.prod_breif }}
+                      {{ item.prod_brief }}
                     </div>
                     <div class="hotProductPrice">
                       <span :class="{ ordinaryPrice: item.prod_discount_price }"
