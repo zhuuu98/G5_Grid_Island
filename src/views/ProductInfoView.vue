@@ -56,7 +56,7 @@
                 <span v-for="item in prodData.tags">{{ item }}</span>
               </div>
               <div class="productBrief">
-                <p>{{ prodData.prod_breif }}</p>
+                <p>{{ prodData.prod_brief }}</p>
               </div>
               <div class="productPriceQuantity">
                 <div class="productPriceQuantityArea">
