@@ -353,6 +353,71 @@
         }
     
     }
+    //PC版報隊
+    .PC_Team{
+        padding: 20px;
+        border-radius: 40px;
+        background-color: $white-1;
+        display: none;
+        @include T(){
+            display: block;
+        }
+        .content {
+            background-color: $gray-1;
+            // padding: $M-spacing;
+            border-radius: 25px;
+            display: flex;
+            flex-direction: column;
+            padding: $M-spacing;
+            gap: 20px;
+        p{
+            font-size: 20px;
+        }
+        img{
+            width: 100%;
+            max-width: 36px;
+            vertical-align: top;
+    
+        }
+        .teamTitle{
+            display: flex;
+            justify-content: center;
+            padding: $M-spacing;
+        }
+        .my_TeamLog,.add_TeamLog{
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        .teamLog{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: $M-spacing;
+            background-color: $white-1;
+            border-radius:20px;
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        }
+
+
+    }
 
     //手機板
     .memberMobile{
@@ -669,6 +734,59 @@
         border-radius: $PC-card-radius;
         background-color: $white-1;
     }
+
+    //手機板報隊
+    .mobileTeam{
+        padding: 20px;
+        border-radius: $PC-card-radius;
+        background-color: $white-1;
+        margin: $M-spacing;
+
+        @include T(){
+            display: none;
+        }
+        .content {
+            background-color: $gray-1;
+            // padding: $M-spacing;
+            border-radius: 25px;
+            display: flex;
+            flex-direction: column;
+            padding: $M-spacing;
+            gap: 20px;
+        p{
+            font-size: 20px;
+        }
+        img{
+            width: 100%;
+            max-width: 36px;
+            vertical-align: top;
+
+        }
+        .teamTitle{
+            display: flex;
+            justify-content: center;
+            padding: $M-spacing;
+        }
+        .my_TeamLog,.add_TeamLog{
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        .teamLog{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: $M-spacing;
+            background-color: $white-1;
+            border-radius:20px;
+        }
+        }
+    
+    
+        
+    
+    }
+
     //電腦版會員資料修改
     .PC_EditData{
         padding: 20px;
