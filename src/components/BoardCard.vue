@@ -28,11 +28,10 @@
       </div>
       <div class="board_all_re" @click="toggleReply" v-if="item.re_amount > 0">
         共有 {{ item.re_amount }} 則回覆
-        <font-awesome-icon v-if="item.re_amount > 0" :class="{ 'board_rotate': item.isReplyOpen }"
-          icon="angle-down" />
+        <font-awesome-icon v-if="item.re_amount > 0" :class="{ 'board_rotate': item.isReplyOpen }" icon="angle-down" />
       </div>
       <div class="board_all_re" v-else style="cursor: default;">尚無回覆</div>
-      <div class="board_report" @click=" open_light_box_report">
+      <div class="board_report" @click="open_light_box_report">
         <font-awesome-icon :icon="['fas', 'circle-exclamation']" />
       </div>
     </div>

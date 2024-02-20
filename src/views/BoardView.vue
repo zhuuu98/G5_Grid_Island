@@ -83,10 +83,10 @@
           <font-awesome-icon :icon="['fas', 'xmark']" />
         </div>
       </div>
-
+      <!-- 未登入不可發文 -->
       <div class="box" v-else>
-        <h3 class="board_lb_title ">登入後即可發文</h3>
-        <RouterLink to="/login" class="btn_sm_1 ">立即登入</RouterLink>
+        <h3>登入後即可發文</h3>
+        <RouterLink to="/login" class="btn_secondary">立即登入</RouterLink>
         <div class="board_close_light_box" @click="light_box_close">
           <font-awesome-icon :icon="['fas', 'xmark']" />
         </div>
@@ -223,7 +223,7 @@ export default {
       userStoreData: userStore(),
       run: false,
       activeReportMsgId: -1,
-      re_text_other: ''
+      re_text_other: '',
     };
   },
   created() {
@@ -281,8 +281,6 @@ export default {
             let jsondata = JSON.parse(item.replies);
             //把陣列內容渲染到頁面上
             item.replies = jsondata;
-
-            // console.log(jsondata);
             //有留言才會計算有幾則留言
             if (jsondata != null) {
               item.re_amount = jsondata.length;
@@ -322,8 +320,11 @@ export default {
     },
     //回覆PHP
     replyArticle(msg_id, re_text) {
-      // console.log(re_text);
-      // console.log(item);
+      //有輸入回覆內容才可以送出
+      if (re_text.trim() === "") {
+        alert("請輸入留言內容");
+        return; // 如果為空，則不執行後續的動作
+      }
 
       let desktop = document.querySelector('.--desktop .card-' + msg_id);
       let mobile = document.querySelector('.--mobile .card-' + msg_id);
@@ -345,9 +346,10 @@ export default {
         + '<div class="board_re_id_info"><div class="board_re_memId">' + this.userData.mem_name + '</div><div class="board_re_time">' + time + '</div></div></div>'
         + '<div class="board_re_msg"><p>' + re_text + '</p></div></div>';
 
-      // desktop.querySelector('.board_re_input input').value = '';
+      // desktop.querySelector('board_re_input input').value = '';
       // mobile.querySelector('.board_re_input input').value = '';
       // document.querySelector('.re_area').value = '';
+
 
 
       axios({
@@ -362,7 +364,9 @@ export default {
       })
         .then((res) => {
 
-          // console.log('修改成功')
+          // 清空回覆內容
+          this.re_text = "";
+
           // 加留言
           if (window.innerWidth >= 768) {
             desktop.querySelector('.board_re').insertAdjacentHTML('beforeend', html);
@@ -387,8 +391,6 @@ export default {
             // return cardWithIdOne.re_amount += 1;
             cardWithIdOne.re_amount += 1;
           }
-
-
         })
         .catch((err) => {
           console.log(err)
@@ -455,14 +457,12 @@ export default {
       this.open_re_text = false;
       this.board_light_box_report = true;
       document.body.classList.add('body-overflow-hidden');
-      this.re_text_other = ''
-
+      this.re_text_other = '';
     },
     // 關閉檢舉燈箱
     light_box_re_close() {
       this.board_light_box_report = false;
       document.body.classList.remove('body-overflow-hidden');
-
     },
     // 判斷如果選擇其他必須輸入內容及勾選且不得為預設請選擇才可以送出
     updateReTextVisibility() {
