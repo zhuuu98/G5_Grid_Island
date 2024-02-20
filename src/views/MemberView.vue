@@ -63,8 +63,8 @@
                         <div class="memberBooklog" v-for="(data, i) in bookInfo">
                             <div class="dateAndCancel">
                                 <p>{{ data.book_date }}</p>
-                                <button :class="{ 'btn_sm_1': true, 'disabled': isPastDate(data.book_date) }"
-                                    @click="alertCancelbox(i)" :disabled="isPastDate(data.book_date)">取消預約</button>
+                                <button :class="{ 'btn_sm_1': true, 'disabled': isPastDate(data.book_date)|| data.book_state === 0 }"
+                                    @click="alertCancelbox(i)" :disabled="isPastDate(data.book_date)|| data.book_state === 0">{{ data.book_state === 0 ? '已經取消':'取消預約'}}</button>
                                 <!-- 取消預約燈箱 -->
                                 <div class="alertCancel_bg" v-if="alertCancel && (indexRecord === i)">
                                     <div class="alertCancel_main">
@@ -88,7 +88,7 @@
                                             </p>
                                         </div>
                                         <div class="cancelBtns">
-                                            <button class="bookCancel btn_sm_1">確定</button>
+                                            <button class="bookCancel btn_sm_1" @click="confirmCancel()">確定</button>
                                             <button class=" btn_sm_1" @click="closeAlert()">取消</button>
                                         </div>
 
@@ -206,9 +206,8 @@
                             <div class="memberBooklog" v-for="(data, index) in bookInfo">
                                 <div class="dateAndCancel">
                                     <p>{{ data.book_date }}</p>
-                                    <button :class="{ 'btn_sm_1': true, 'disabled': isPastDate(data.book_date) }"
-                                        @click="alertCancelbox(index)" :disabled="isPastDate(data.book_date)">取消預約
-                                    </button>
+                                    <button :class="{ 'btn_sm_1': true, 'disabled': isPastDate(data.book_date)|| data.book_state === 0 }"
+                                    @click="alertCancelbox(index)" :disabled="isPastDate(data.book_date)|| data.book_state === 0">{{ data.book_state === 0 ? '已經取消':'取消預約'}}</button>
                                     <!-- 取消預約燈箱 -->
                                     <div class="alertCancel_bg" v-if="alertCancel && (indexRecord === index)">
                                         <div class="alertCancel_main">
@@ -232,7 +231,7 @@
                                                 </p>
                                             </div>
                                             <div class="cancelBtns">
-                                                <button class="bookCancel btn_sm_1">確定</button>
+                                                <button class="bookCancel btn_sm_1" @click="confirmCancel()">確定</button>
                                                 <button class=" btn_sm_1" @click="closeAlert()">取消</button>
                                             </div>
 
@@ -254,6 +253,42 @@
                                 </div>
                             </div>
                         </div>
+                    </div>
+                </div>
+                <!-- PC報隊管理 -->
+                <div class="PC_Team col-T-7 col-PC-7" v-show="isChoosedTeam_PC">
+                    <div class="content">
+                        <div class="teamTitle">
+                            <img src="../assets/images/member/memberAsideIcon_5.svg" alt="報隊icon">
+                            <h3>報隊管理</h3>
+                        </div>
+                        <h4>我開的報隊</h4>
+                        <div class="my_TeamLog">
+                            <div class="teamLog">
+                                <p>阿瓦蟲 - 2023/12/31</p>
+                                <i class="fa-solid fa-plus"></i>
+                            </div>
+                            <div class="teamLog">
+                                <p>蟲蟲殺 - 2023/11/23</p>
+                                <i class="fa-solid fa-plus"></i>
+                            </div>
+                            <div class="teamLog">
+                                <p>格線島的奇幻冒險 - 2023/10/21</p>
+                                <i class="fa-solid fa-plus"></i>
+                            </div>
+                        </div>
+                        <h4>我參加的報隊</h4>
+                        <div class="add_TeamLog">
+                            <div class="teamLog">
+                                <p>蟲蟲殺 - 2023/11/23</p>
+                                <i class="fa-solid fa-plus"></i>
+                            </div>
+                            <div class="teamLog">
+                                <p>蟲蟲大亨 - 2023/10/11</p>
+                                <i class="fa-solid fa-plus"></i>
+                            </div>
+                        </div>
+
                     </div>
                 </div>
             </div>
@@ -281,15 +316,15 @@
                     <h3 class="pc-h4">會員資料修改</h3>
                 </div>
                 <!-- <form action="" class="content" v-if="memberData[0]"> -->
-                <form action="" class="content" v-for="data in memberData">
+                <form action="" class="content" v-for="data in memberDataEdit">
                     <label for="memName">姓名</label>
-                    <input type="text" :placeholder="data.mem_name" id="memName" name="mem_name">
+                    <input type="text" v-model="data.mem_name" id="memName" name="mem_name">
                     <label for="memNickname">暱稱</label>
-                    <input type="text" :placeholder="data.mem_nickname" name="mem_nickname">
+                    <input type="text" v-model="data.mem_nickname" name="mem_nickname">
                     <label for="memEmail">電子信箱</label>
-                    <input type="email" :placeholder="data.mem_email" id="memEmail" name="mem_email" readonly class="email">
+                    <input type="email" v-model="data.mem_email" id="memEmail" name="mem_email" readonly class="email">
                     <label for="memTel">連絡電話</label>
-                    <input type="tel" :placeholder="data.mem_tel" id="memTel" name="mem_tel">
+                    <input type="tel" v-model="data.mem_tel" id="memTel" name="mem_tel">
                     <div class="inputGender">
                         <span>性別</span>
                         <div class="genderRadio">
@@ -304,8 +339,8 @@
                     <label for="memBirth">生日</label>
                     <input type="date" :value="data.mem_birthday" id="memBirth" name="mem_birth">
                     <label for="memAddr">收件地址</label>
-                    <input type="text" :placeholder="data.mem_addr" id="memAddr" name="mem_addr">
-                    <input type="submit" class="searchBtn submit" value="儲存設定">
+                    <input type="text" v-model="data.mem_addr" id="memAddr" name="mem_addr">
+                    <input type="button" class="searchBtn submit" value="儲存設定" @click="editMemberData()">
                 </form>
             </div>
         </div>
@@ -352,8 +387,9 @@
                 <div class="bookDataContent" v-for="(data, index) in bookInfo">
                     <div class="mobileBookDateCancel">
                         <p>{{ data.book_date }}</p>
-                        <button :class="{ 'btn_sm_1': true, 'disabled': isPastDate(data.book_date) }"
-                            @click="alertCancelbox(index)" :disabled="isPastDate(data.book_date)">取消預約</button>
+                        <button :class="{ 'btn_sm_1': true, 'disabled': isPastDate(data.book_date)|| data.book_state === 0 }"
+                        @click="alertCancelbox(index)" :disabled="isPastDate(data.book_date)|| data.book_state === 0">{{ data.book_state === 0 ? '已經取消':'取消預約'}}
+                        </button>
                         <!-- 取消預約燈箱 -->
                         <div class="alertCancel_bg" v-if="alertCancel && (indexRecord === index)">
                             <div class="alertCancel_main">
@@ -377,7 +413,7 @@
                                     </p>
                                 </div>
                                 <div class="cancelBtns">
-                                    <button class="bookCancel btn_sm_1">確定</button>
+                                    <button class="bookCancel btn_sm_1" @click="confirmCancel()">確定</button>
                                     <button class=" btn_sm_1" @click="closeAlert()">取消</button>
                                 </div>
 
@@ -402,7 +438,41 @@
 
         </div>
         <!-- 手機板會員報隊管理 -->
+        <div class="mobileTeam" v-show="isChoosedTeam">
+            <div class="content">
+                <div class="teamTitle">
+                    <img src="../assets/images/member/memberAsideIcon_5.svg" alt="報隊icon">
+                    <h3>報隊管理</h3>
+                </div>
+                <h4>我開的報隊</h4>
+                <div class="my_TeamLog">
+                    <div class="teamLog">
+                        <p>阿瓦蟲 - 2023/12/31</p>
+                        <i class="fa-solid fa-plus"></i>
+                    </div>
+                    <div class="teamLog">
+                        <p>蟲蟲殺 - 2023/11/23</p>
+                        <i class="fa-solid fa-plus"></i>
+                    </div>
+                    <div class="teamLog">
+                        <p>格線島的奇幻冒險 - 2023/10/21</p>
+                        <i class="fa-solid fa-plus"></i>
+                    </div>
+                </div>
+                <h4>我參加的報隊</h4>
+                <div class="add_TeamLog">
+                    <div class="teamLog">
+                        <p>蟲蟲殺 - 2023/11/23</p>
+                        <i class="fa-solid fa-plus"></i>
+                    </div>
+                    <div class="teamLog">
+                        <p>蟲蟲大亨 - 2023/10/11</p>
+                        <i class="fa-solid fa-plus"></i>
+                    </div>
+                </div>
+            </div>
 
+        </div>
     </div>
 </template>
 
@@ -423,26 +493,32 @@ export default {
             undoneOrder: 0,//未完成訂單
             completedOrder: 0,//已完成訂單
 
+            cancelRecord:null,//記錄第幾筆預約的book_id
 
             userdata: {},
 
             //電腦側邊欄
             AsideItem: ['Griddy造型屋', '會員資料修改', '訂單資訊', '預約紀錄', '報隊管理', '會員登出'],
-
-
             mobileIcon: ['Griddy造型屋', '會員資料修改', '訂單資訊', '預約紀錄', '報隊管理', '會員登出'],//手機板ICON名字
 
             //訂單資訊
             orderTitle: ['訂單日期', '訂單編號', '總計', '訂單狀況'],
 
-            isChoosedEditData: false,//會員資料修改被選擇
-            isChoosedOrderData: false,//訂單紀錄被選擇
-            isChoosedBookData: false,//預約紀錄被選擇
-            openOrderList: false,
+
+            //開關區↓↓↓↓↓
+            openOrderList: false,//打開訂單明細
+
+            isChoosedEditData: false,//手機會員資料修改被選擇
+            isChoosedOrderData: false,//手機訂單紀錄被選擇
+            isChoosedBookData: false,//手機預約紀錄被選擇
+            isChoosedTeam: false,//手機報隊被選擇
+
 
             isChoosedEditData_PC: false,//電腦會員資料修改被選擇
             isChoosedOrderData_PC: false,//電腦訂單紀錄被選擇
             isChoosedBookData_PC: false,//電腦預約紀錄被選擇
+            isChoosedTeam_PC:false,//電腦報隊被選擇
+
             isChoosedIndex_PC: true,
 
             alertCancel: false,//取消預約燈箱開關
@@ -544,6 +620,10 @@ export default {
                     this.isChoosedIndex_PC = !this.isChoosedIndex_PC
                     this.isChoosedBookData_PC = !this.isChoosedBookData_PC
                     break;
+                case 4: //報隊管理
+                    this.isChoosedIndex_PC = !this.isChoosedIndex_PC
+                    this.isChoosedTeam_PC = !this.isChoosedTeam_PC
+                    break;
                 case 5: //登出
                     localStorage.removeItem('userToken')
                     localStorage.removeItem('userDataStr')
@@ -557,6 +637,7 @@ export default {
             this.isChoosedEditData = false
             this.isChoosedOrderData = false
             this.isChoosedBookData = false
+            this.isChoosedTeam = false
             this.mobileListIsChoosed = false
             switch (index) {
                 case 0: //griddy
@@ -574,7 +655,7 @@ export default {
                     this.isChoosedBookData = !this.isChoosedBookData
                     break;
                 case 4: //報隊管理
-
+                    this.isChoosedTeam = !this.isChoosedTeam
                     break;
                 case 5: //登出
                     localStorage.removeItem('userToken')
@@ -583,7 +664,6 @@ export default {
                     break;
 
             }
-            console.log(`Button at index ${index} clicked`);
         },
         changeMember() {
             this.isChoosedEditData_PC = true;
@@ -612,15 +692,18 @@ export default {
         isLogin() {
             const userToken = localStorage.getItem("userToken")
             // return userToken? true: false
-            if (userToken) {
-                console.log("已經登入")
-            } else {
-                console.log("你沒登入欸")
-            }
+            // if (userToken) {
+            //     console.log("已經登入")
+            // } else {
+            //     console.log("你沒登入欸")
+            // }
         },
         alertCancelbox(i) {
             this.alertCancel = true
             this.indexRecord = i
+            //用個變數存這筆被取消的訂單編號，然橫在回傳到後端?
+            this.cancelRecord = this.bookInfo[i].book_id
+            console.log(this.cancelRecord);
         },
         closeAlert() {
             this.alertCancel = false
@@ -650,6 +733,28 @@ export default {
                 .catch((error) => {
                     console.log(error);
                 });
+        },
+        confirmCancel(){
+            axios({
+                method: 'post',
+                url: `${import.meta.env.VITE_API_URL}/memCancelBook.php`,
+                headers: { "Content-Type": "multipart/form-data" },
+                data:{
+                    // book_state: this.bookInfo[0].book_state,
+                    book_id: this.cancelRecord
+                }
+            })
+            .then((res) => {
+                    console.log(res.data);
+                    console.log(this.bookInfo.book_state)
+                    alert("已修改完成");
+                    this.closeAlert();
+                    location.reload()
+                })
+                .catch((error) => {
+                    console.log(error);
+                });
+
         },
     },
 
