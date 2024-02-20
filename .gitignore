@@ -33,4 +33,4 @@ coverage
 # *.vite.config.js
 
 # env
-# .env
+.env

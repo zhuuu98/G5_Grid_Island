@@ -101,10 +101,6 @@ export default {
         })
         .catch(error => console.error('發生錯誤:',error))
     },
-    // getNewsURL(path) {
-    //   return new URL(`${import.meta.env.VITE_API_URL}/${path}`);
-    //   console.log(path);
-    // }
   },
   mounted() {},
 };
