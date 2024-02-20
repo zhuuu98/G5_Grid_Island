@@ -4,61 +4,7 @@
 
     <MainHeader />
     <!-- 跑馬燈 -->
-    <div class="cuppon" v-if="cuppon">
-      <div class="btn" @click="closeCuppon">
-        <font-awesome-icon :icon="['fas', 'times']" />
-      </div>
-      <div class="subContent">
-        <span
-          >1/31 - 2/20 全館線上商品熱銷中，立即輸入優惠碼: GridIsland2023
-          折抵🐛🐛🐛🐛🐛🐛🐛
-        </span>
-        <span
-          >1/31 - 2/20 全館線上商品熱銷中，立即輸入優惠碼: GridIsland2023
-          折抵🐛🐛🐛🐛🐛🐛🐛
-        </span>
-        <span
-          >1/31 - 2/20 全館線上商品熱銷中，立即輸入優惠碼: GridIsland2023
-          折抵🐛🐛🐛🐛🐛🐛🐛
-        </span>
-        <span
-          >1/31 - 2/20 全館線上商品熱銷中，立即輸入優惠碼: GridIsland2023
-          折抵🐛🐛🐛🐛🐛🐛🐛
-        </span>
-        <span
-          >1/31 - 2/20 全館線上商品熱銷中，立即輸入優惠碼: GridIsland2023
-          折抵🐛🐛🐛🐛🐛🐛🐛
-        </span>
-        <span
-          >1/31 - 2/20 全館線上商品熱銷中，立即輸入優惠碼: GridIsland2023
-          折抵🐛🐛🐛🐛🐛🐛🐛
-        </span>
-        <span
-          >1/31 - 2/20 全館線上商品熱銷中，立即輸入優惠碼: GridIsland2023
-          折抵🐛🐛🐛🐛🐛🐛🐛
-        </span>
-        <span
-          >1/31 - 2/20 全館線上商品熱銷中，立即輸入優惠碼: GridIsland2023
-          折抵🐛🐛🐛🐛🐛🐛🐛
-        </span>
-        <span
-          >1/31 - 2/20 全館線上商品熱銷中，立即輸入優惠碼: GridIsland2023
-          折抵🐛🐛🐛🐛🐛🐛🐛
-        </span>
-        <span
-          >1/31 - 2/20 全館線上商品熱銷中，立即輸入優惠碼: GridIsland2023
-          折抵🐛🐛🐛🐛🐛🐛🐛
-        </span>
-        <span
-          >1/31 - 2/20 全館線上商品熱銷中，立即輸入優惠碼: GridIsland2023
-          折抵🐛🐛🐛🐛🐛🐛🐛
-        </span>
-        <span
-          >1/31 - 2/20 全館線上商品熱銷中，立即輸入優惠碼: GridIsland2023
-          折抵🐛🐛🐛🐛🐛🐛🐛
-        </span>
-      </div>
-    </div>
+    <cuppon v-if="showCuppon" @closeTab="marqueeClose"/>
     <!-- 內容 -->
     <div class="index">
       <!-- 所有商品 -->
@@ -376,6 +322,7 @@ import MainHeader from "../components/MainHeader.vue";
 import headerWave from "../assets/images/header/headerWave.svg";
 import NewsCard from "../components/NewsCard.vue";
 import bannerComponent from "../components/Banner.vue";
+import cuppon from "../components/Cuppon.vue";
 
 export default {
   name: "HomeView",
@@ -383,6 +330,7 @@ export default {
     bannerComponent,
     MainHeader,
     NewsCard,
+    cuppon,
   },
   data() {
     return {
@@ -398,7 +346,7 @@ export default {
         "桌上遊戲遊玩與教學",
         "各式場地租借",
       ],
-      cuppon: true, //
+      showCuppon: true, //
     };
   },
   created() {
@@ -462,9 +410,9 @@ export default {
         this.searchResultDisplay = false;
       }, 100);
     },
-    closeCuppon() {
-      this.cuppon = false;
-    },
+    marqueeClose() {
+      this.showCuppon = false;
+    }
   },
 };
 </script>

@@ -1,7 +1,7 @@
 <template>
 	<main class="cuppon">
-		<div class="btn" @click="closeCuppon">
-			<font-awesome-icon :icon="['fas', 'times']" />
+		<div class="btn">
+			<font-awesome-icon :icon="['fas', 'times']"  @click="closeCuppon" />
 		</div>
 		<div class="subContent">
 			<span
@@ -48,9 +48,9 @@
 			>1/31 - 2/20 全館線上商品熱銷中，立即輸入優惠碼: GridIsland2023
 			折抵🐛🐛🐛🐛🐛🐛🐛
 			</span>
-			<span
+			<!-- <span
 			> {{ data.promo_detail }}
-			</span>
+			</span> -->
 		</div>
 	</main>
 </template>
@@ -76,6 +76,9 @@ export default {
 			.catch(error => {
 			console.error(error);
 			});
+		},
+		closeCuppon() {
+			this.$emit('closeTab');
 		}
 	},
 	mounted() {
