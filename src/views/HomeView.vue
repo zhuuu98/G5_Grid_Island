@@ -263,7 +263,7 @@
               :key="item.news_id"
               :newsTitle="item.news_title"
               :newsDate="item.news_date"
-              :imgUrl="`https://tibamef2e.com/chd103/g1/image/news/${item.news_img}`"
+              :imgUrl="`https://tibamef2e.com/chd104/g5/image/news/${item.news_image}`"
               :newsId="item.news_id"
             />
           </div>
@@ -334,7 +334,6 @@ export default {
   },
   data() {
     return {
-      respondData: [],
       latestData: [],
       productData: [],
       displayProdData: [],
@@ -346,11 +345,12 @@ export default {
         "桌上遊戲遊玩與教學",
         "各式場地租借",
       ],
-      showCuppon: true, //
+      showCuppon: true,
+      newsData: [],
     };
   },
   created() {
-    this.axiosGetData();
+    this.fetchNews();
     this.fetchProd();
   },
   methods: {
@@ -360,18 +360,17 @@ export default {
         event.preventDefault();
       }
     },
-    axiosGetData() {
+    fetchNews() {
+      let url = `${import.meta.env.VITE_API_URL}/getNews.php`;
+      console.log(url);
       axios
-        .get("https://tibamef2e.com/chd103/g1/phps/news_fetch.php")
-        .then((res) => {
-          this.respondData = res.data;
-          // 將數據按日期降序排序
-          // const sortedData = allData.sort((a, b) => new Date(b.date) - new Date(a.date));
-          // 取得日期最新的4筆資料
-          this.latestData = this.respondData.slice(0, 4);
-          // 在這裡處理latest4Data，例如打印出來或進行其他操作
-          // console.log('最新的4筆資料:', this.latestData);
-        });
+        .get(url, {})
+        .then(res => {
+          console.log(res.data.news);
+          this.newsData = res.data.news;
+          this.latestData = this.newsData.slice(0, 4);
+        })
+        .catch(error => console.error('發生錯誤:',error))
     },
     fetchProd() {
       axios
