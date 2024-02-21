@@ -407,6 +407,7 @@
 import axios from 'axios';
 import MemberCard from "../components/MemberCard.vue";
 import PageTitle from "../components/PageTitle.vue";
+import { getAuth, signOut } from "firebase/auth";
 export default {
     data() {
         return {
@@ -542,6 +543,10 @@ export default {
                     localStorage.removeItem('userToken')
                     localStorage.removeItem('userDataStr')
                     this.$router.push('/')
+                    const auth = getAuth();
+                    signOut(auth).then(() => {
+                    }).catch((error) => {
+                    });
                     break;
                 }
             },
@@ -574,10 +579,17 @@ export default {
                     localStorage.removeItem('userToken')
                     localStorage.removeItem('userDataStr')
                     this.$router.push('/')
+                    const auth = getAuth();
+                    signOut(auth).then(() => {
+                    // Sign-out successful.
+                        console.log('sign out')
+                    }).catch((error) => {
+                    // An error happened.
+                        console.log('??')
+                    });
                     break;
-
             }
-            console.log(`Button at index ${index} clicked`);
+            // console.log(`Button at index ${index} clicked`);
         },
         changeMember() {
             this.isChoosedEditData_PC = true;

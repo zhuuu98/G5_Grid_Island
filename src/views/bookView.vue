@@ -12,7 +12,6 @@
             <h4>請依序選擇日期、桌型、時段及人次。</h4>
             <h4>若日期、桌型或時段無法選擇，代表當日、該桌型、或該時段預約已額滿。</h4>
         </div>
-        <button @click="isDateFull()">click</button>
         <form action="" class="bookTableForm">
             <div class="book_date_select">
                 <h2>請選擇日期</h2>
@@ -80,7 +79,6 @@
                     </div>
                 </div>
             </div>
-            <!-- 預約按鈕 -->
             <div class="book_submit">
                 <input type="submit" class="btn_sm_1" id="" value="確認預約" @click.prevent="handleInput">
             </div>
@@ -248,6 +246,11 @@ export default {
                 );
         },
         tableAble() {
+            this.tableChosen = ''
+            this.timeChosen = ''
+            for(i=0; i<this.timePeriod.length; i++){
+                this.timePeriod[i].disabled = true
+            }
             for(i=0; i<this.tableType.length; i++){
                 this.tableType[i].disabled = true
             }
@@ -367,7 +370,6 @@ export default {
             }
         },
         selectDay(day) {
-            // set and emit selected date
             this.selectedDate = new Date(this.selectedYear, this.selectedMonth, day);
             this.$emit("dateSelected", this.selectedDate);
             this.dateChosen = this.selectedDate.toLocaleDateString("zh-Hans-CN", {
@@ -379,15 +381,19 @@ export default {
         isDisabled(num) {
             let restDay = 15 - (this.daysInLastMonth - this.today.getDate())
 
-            let month = new Date().getMonth()+1
+            let month = this.selectedMonth + 1
             if(month<10){
                 month = '0' + month
             }
+            if(num<10){
+                num = '0' + num
+            }
             let date = `${new Date().getFullYear()}-${month}-${num}`
+            // console.log(date)
             if(this.bookingData.length > 0){
                 let result;
                 for(i=0; i<this.disableDate.length; i++){
-                    if(this.disableDate == date){
+                    if(this.disableDate[i] == date){
                         result = true
                     }
                 }
@@ -400,6 +406,7 @@ export default {
                     ||
                     result
                 );
+                
             }
         },
         dateDisabled(){

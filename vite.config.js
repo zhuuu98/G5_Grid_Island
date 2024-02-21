@@ -17,6 +17,11 @@ export default defineConfig({
       "@": fileURLToPath(new URL("./src", import.meta.url)),
     },
   },
+  optimizeDeps: { //firebase
+    include: [
+      'firebase/auth',
+    ]
+  },
   server: {
     // host: '192.168.0.155' //請輸入自己的IP
     // host: '192.168.5.136'
