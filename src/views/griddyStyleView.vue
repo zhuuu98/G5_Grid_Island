@@ -36,19 +36,13 @@
                 </div>
                 <!-- 頁籤內容 -->
                 <div class="tab-content">
-                    <component :is="currentTab" 
-                        :default-body-color="selectedBodyColor"
-                        :default-belly-color="selectedBellyColor"
-                        :default-spot-color="selectedSpotColor"
-                        :default-eyes-color="selectedEyesColor"
-                        :default-eyes-staff="selectedEyesStaff"
-                        :default-ears-color="selectedEarsColor"
-                        :default-ears-staff="selectedEarsStaff"
+                    <component :is="currentTab" :default-body-color="selectedBodyColor"
+                        :default-belly-color="selectedBellyColor" :default-spot-color="selectedSpotColor"
+                        :default-eyes-color="selectedEyesColor" :default-eyes-staff="selectedEyesStaff"
+                        :default-ears-color="selectedEarsColor" :default-ears-staff="selectedEarsStaff"
                         :default-accessories-staff="selectedAccessoriesStaff"
-                        :default-background-color="selectedBackgroundColor"
-                        @body-color-selected="handleBodyColorChange"
-                        @belly-color-selected="handleBellyColorChange"
-                        @spot-color-selected="handleSpotColorChange"
+                        :default-background-color="selectedBackgroundColor" @body-color-selected="handleBodyColorChange"
+                        @belly-color-selected="handleBellyColorChange" @spot-color-selected="handleSpotColorChange"
                         @eyes-color-selected="handleEyesColorChange" @eyes-staff-selected="handleEyesStaffChange"
                         @ears-color-selected="handleEarsColorChange" @ears-staff-selected="handleEarsStaffChange"
                         @accessories-staff-selected="handleAccessoriesStaffChange"
@@ -69,8 +63,11 @@
                 </div>
                 <span>最棒的Griddy粉墨登場！</span>
                 <!-- <img v-if="griddyImage" :src="griddyImage" alt="Captured Griddy Content"> -->
-                <button @click="griddyToImage">下載圖片</button>
-                <button id="goback" @click="toggleZone">回上頁</button>
+                <div class="finalbtnbox">
+                    <button id="setPicture" @click="setProfilePicture">設為大頭貼</button>
+                    <button id="goback" @click="toggleZone">回上頁</button>
+                    <button id="download" @click="griddyToImage">下載圖片</button>
+                </div>
             </div>
         </div>
     </div>
@@ -133,41 +130,99 @@
             selectTab(componentName) {
                 this.currentTab = componentName;  // 更新當前標籤頁名稱
                 console.log('標籤選擇:', componentName);
+                // localStorage.removeItem('userId');
             },
             toggleZone() {
                 this.currentZone = this.currentZone === 'style-play-zone' ? 'show-zone' : 'style-play-zone';
             },
             griddyToImage() {
-        const elementToCapture = document.getElementById('finalimagebox');
-        const scale = 4; // 設置畫布分辨率增加的倍數，例如 2 表示 2x 分辨率
+                const elementToCapture = document.getElementById('finalimagebox');
+                const scale = 4; // 設置畫布分辨率增加的倍數，例如 2 表示 2x 分辨率
 
-        const options = {
-            scale: scale,
-            width: elementToCapture.offsetWidth,
-            height: elementToCapture.offsetHeight,
-            useCORS: true // 允許加載跨域圖片
-        };
+                const options = {
+                    scale: scale,
+                    width: elementToCapture.offsetWidth,
+                    height: elementToCapture.offsetHeight,
+                    useCORS: true // 允許加載跨域圖片
+                };
 
-        html2canvas(elementToCapture, options).then(canvas => {
-            const downloadLink = document.createElement('a');
-            const date = new Date();
-            const timestamp = date.getFullYear().toString() +
-                (date.getMonth() + 1).toString().padStart(2, '0') +
-                date.getDate().toString().padStart(2, '0') + '_' +
-                date.getHours().toString().padStart(2, '0') +
-                date.getMinutes().toString().padStart(2, '0') +
-                date.getSeconds().toString().padStart(2, '0');
-            const filename = `OMG${timestamp}.png`;
+                html2canvas(elementToCapture, options).then(canvas => {
+                    const downloadLink = document.createElement('a');
+                    const date = new Date();
+                    const timestamp = date.getFullYear().toString() +
+                        (date.getMonth() + 1).toString().padStart(2, '0') +
+                        date.getDate().toString().padStart(2, '0') + '_' +
+                        date.getHours().toString().padStart(2, '0') +
+                        date.getMinutes().toString().padStart(2, '0') +
+                        date.getSeconds().toString().padStart(2, '0');
+                    const filename = `OMG${timestamp}.png`;
 
-            downloadLink.href = canvas.toDataURL('image/png');
-            downloadLink.download = filename; // 圖片文件名
+                    downloadLink.href = canvas.toDataURL('image/png');
+                    downloadLink.download = filename; // 圖片文件名
 
-            // 模擬點擊鏈接以觸發下載
-            document.body.appendChild(downloadLink);
-            downloadLink.click();
-            document.body.removeChild(downloadLink);
-        });
-    },
+                    // 模擬點擊鏈接以觸發下載
+                    document.body.appendChild(downloadLink);
+                    downloadLink.click();
+                    document.body.removeChild(downloadLink);
+                });
+            },
+            setProfilePicture() {
+                const elementToCapture = document.getElementById('finalimagebox');
+                html2canvas(elementToCapture, { useCORS: true }).then(canvas => {
+                    const imageData = canvas.toDataURL('image/png');
+                    const userDataStr = localStorage.getItem('userDataStr'); // 从localStorage获取会员数据字符串
+
+                    if (!userDataStr) {
+                        alert('請先登入。'); // 如果userDataStr不存在，彈出提示
+                        return; // 關鍵：提早返回以防止繼續向下運行
+                    }
+
+                    const userData = JSON.parse(userDataStr); // 解析成JSON对象
+
+                    // 避免當userData或userData.mem_id為null時嘗試訪問屬性
+                    if (!userData || !userData.mem_id) {
+                        alert('請先登入。'); // 進ㄧ步檢查，彈出提示
+                        return; // 關鍵：提早返回
+                    }
+
+                    const memId = userData.mem_id; // 從用戶資訊中解構mem_id
+
+                    let formData = new FormData();
+                    formData.append('profile_pic', imageData); // 将base64图片数据转换成Blob并添加
+                    formData.append('user_id', memId); // 添加使用者ID
+
+                    this.uploadProfilePic(formData); // 调用下面定义的方法来处理上传
+                });
+            },
+            uploadProfilePic(formData) {
+                fetch(`${import.meta.env.VITE_API_URL}/uploadProfilePic.php`, {
+                    method: 'POST',
+                    body: formData,
+                })
+                
+                    .then(response => {
+                        if (!response.ok) {
+                            throw new Error('網絡響應非OK');
+                        }
+                        return response.json();
+                    })
+                    .then(data => {
+                        if (data.error) {
+                            console.error('上傳失敗:', data.msg);
+                        } else {
+                            console.log('上傳成功:', data.msg);
+                            // 在这里更新前端UI，例如显示上传成功消息或更新用户头像
+                        }
+                    })
+                    .catch(error => {
+                        console.error('上傳錯誤:', error);
+                        for (let [key, value] of formData.entries()) {
+                            console.log(`${key}: ${value}`);
+                        }
+                    });
+            },
+
+
             handleBodyColorChange(bodyColor) {
                 this.selectedBodyColor = bodyColor;
                 console.log("被選擇的軀幹顏色：", this.selectedBodyColor);
