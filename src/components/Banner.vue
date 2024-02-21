@@ -51,7 +51,7 @@
             <div id="prebookTag" class="itemTag">
                 <span>場地預約</span>
             </div>
-            <router-link to="/book">
+            <router-link to="/prebook">
                 <img :src="islandPrebook" id="islandPrebook-image" @mouseenter="showPrebookCard = true"
                     @mouseleave="showPrebookCard = false" />
             </router-link>
