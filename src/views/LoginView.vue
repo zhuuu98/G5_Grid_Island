@@ -67,12 +67,6 @@ export default {
                     if (res.data.code == 1) {
                         this.updateToken(res.data.session_id)
                         this.updateUserData(res.data.memInfo)
-<<<<<<< HEAD
-=======
-                        // this.$router.push('/member')
-                        // localStorage.setItem('userId', res.data.memInfo.mem_id); // 在这里存储用户ID
-
->>>>>>> morxddmac
                         const redirect = this.$route.query.redirect
                         if (this.$route.query.redirect) {
                             this.$router.push(redirect)
@@ -88,7 +82,6 @@ export default {
                 console.log(error);
             })
         },
-<<<<<<< HEAD
         async googleLogin(){
             const auth = getAuth();
             const googleProvider = new GoogleAuthProvider();
@@ -148,9 +141,6 @@ export default {
             // An error happened.
             });
         }
-=======
-
->>>>>>> morxddmac
     }
 }
 </script>
