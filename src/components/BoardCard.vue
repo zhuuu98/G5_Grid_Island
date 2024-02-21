@@ -36,8 +36,6 @@
       </div>
     </div>
     <!-- 留言區 -->
-    <!-- <div class="board_re" :class="{hide: !isOpen || item.re.length === 0}"> -->
-    <!-- <div class="board_re" :class="{ hide: !isOpen || item.re.length === 0, '--is-always-hide': item.re.length === 0 }"> -->
     <div class="board_re" :class="{ hide: !isOpen }">
       <div class="board_re_card" v-for="( reItem, reIndex ) in  item.replies " :key="reIndex">
         <div class="board_re_id">
@@ -80,9 +78,15 @@ export default {
     open_light_box_report() {
       this.$emit('open-report');
     },
+    //判斷是否登入，有登入才可以留言
     replyArticle() {
-      console.log(this.re_text);
-      this.$emit('sent-reply', this.item.msg_id, this.re_text);
+      const userToken = localStorage.getItem("userToken")
+      if (userToken) {
+        this.$emit('sent-reply', this.item.msg_id, this.re_text);
+        this.re_text = "";
+      } else {
+        alert('登入後即可回覆！');
+      }
     },
   },
 };

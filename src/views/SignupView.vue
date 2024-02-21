@@ -110,62 +110,7 @@ export default {
             this.alertContent = '';
             document.body.classList.remove('body-overflow-hidden');
         },
-        // register() {
-        //     //驗證姓名是否包含數字
-        //     let hasnum;
-        //     for (let i = 0; i < this.memName.length; i++) {
-        //         let char = this.memName.charAt(i);
-        //         if (char >= '0' && char <= '9') {
-        //             hasnum = true;
-        //             break;
-        //         }
-        //     }
-        //     //驗證姓名是否包含數字或為空值
-        //     if (this.memName == "" || hasnum == true) {
-        //         alert('請輸入正確姓名');
-        //         return;
-        //     }
-        //     //驗證密碼是否輸入一致
-        //     if (this.au4a83 !== this.au4a83again) {
-        //         alert('密碼不一致，請重新輸入')
-        //         return;
-        //     //驗證密碼是否大於八碼
-        //     } else if (this.au4a83.length < 8 && this.au4a83.length < 8) {
-        //         alert('密碼至少8個字')
-        //         return;
-        //     //驗證電子信箱是否為空值
-        //     } else if (this.memEmail == "") {
-        //         alert('請填寫電子信箱');
-        //         return;
-        //     }
-
-        //     else {
-        //         const bodyFormData = new FormData();
-        //         bodyFormData.append('mem_name', this.memName);
-        //         bodyFormData.append('mem_email', this.memEmail);
-        //         bodyFormData.append('mem_psw', this.au4a83);
-
-
-        //         apiInstance({
-        //             method: 'post',
-        //             url: `${import.meta.env.VITE_API_URL}/signup.php`,
-        //             headers: { "Content-Type": "multipart/form-data" },
-        //             data: bodyFormData
-        //         }).then(res => {
-        //             console.log(res);
-        //             if (res && res.data && res.data.msg === 'success') {
-        //                 alert("註冊成功，登入前往會員中心")
-        //                 setTimeout(() => {
-        //                 this.$router.replace('/login')
-        //                 }, 1000)
-        //             } else {
-        //                 alert('註冊失敗');
-        //             }
-        //         }).catch(error => {
-        //             console.log(error);
-        //         })
-        //     }
-        // }
+        //註冊
         register() {
             // 驗證姓名是否包含數字
             let hasNum = false;
@@ -215,7 +160,7 @@ export default {
             bodyFormData.append('mem_name', this.memName);
             bodyFormData.append('mem_email', this.memEmail);
             bodyFormData.append('mem_psw', this.au4a83);
-            
+
             apiInstance({
                 method: 'post',
                 url: `${import.meta.env.VITE_API_URL}/signup.php`,
@@ -229,16 +174,12 @@ export default {
                     // setTimeout(() => {
                     // }, 1000);
                 } else {
-                    alert('註冊失敗');
+                    alert('註冊失敗，請確認帳號是否重複申請。');
                 }
             }).catch(error => {
                 console.log(error);
             });
         }
-
-        // addMemToDb(){
-
-        // }
     },
 
 };

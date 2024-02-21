@@ -23,6 +23,11 @@ import { fas } from '@fortawesome/free-solid-svg-icons'
 import { far } from '@fortawesome/free-regular-svg-icons'
 import { fab } from '@fortawesome/free-brands-svg-icons'
 
+//AOS
+import AOS from 'aos';
+import 'aos/dist/aos.css'; //導入AOS CSS 樣式
+AOS.init();//初始化AOS
+
 // Add all icons to the library so you can use it in your page
 library.add(fas, far, fab)
 
