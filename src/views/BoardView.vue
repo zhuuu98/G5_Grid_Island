@@ -21,9 +21,9 @@
             </div>
             <div class="board_article">
               <div class="btn_lg_orange" @click="open_light_box">我要發文</div>
-              <select>
-                <option value="" selected>從新至舊</option>
-                <option value="">從舊至新</option>
+              <select id="select" v-model="sortMethod" @change="sort">
+                <option value="timeDesc" selected>從新至舊</option>
+                <option value="timeAsc">從舊至新</option>
               </select>
             </div>
           </div>
@@ -127,7 +127,6 @@
         </div>
       </div>
     </div>
-
   </div>
 </template>
 
@@ -137,8 +136,6 @@ import PageTitle from "../components/PageTitle.vue";
 import BoardCard from "../components/BoardCard.vue";
 import userStore from '@/stores/user'
 import { mapActions } from 'pinia';
-
-
 export default {
   data() {
     return {
@@ -208,6 +205,9 @@ export default {
         reason: '其他',
         value: 'lb_re_other'
       }],
+      //排序
+      sortMethod: "timeDesc",
+      resData: [],
       // 發文
       board_light_box_open: false,
       board_light_box_report: false,
@@ -245,7 +245,6 @@ export default {
     modifiedCard() {
       return this.modifiedCardUnique.map(item => ({
         ...item,
-        // re_amount: item.re.length,
       }));
     },
     firstCol() {
@@ -272,8 +271,8 @@ export default {
       axios
         .post(`${import.meta.env.VITE_API_URL}/board.php`, {})
         .then((res) => {
-          // console.log(res.data.board);
           this.card = res.data.board;
+          this.resData = res.data.board;
           //跑迴圈渲染子陣列
           for (let i = 0; i < this.card.length; i++) {
             let item = this.card[i];
@@ -363,17 +362,14 @@ export default {
         }
       })
         .then((res) => {
-
           // 清空回覆內容
           this.re_text = "";
-
           // 加留言
           if (window.innerWidth >= 768) {
             desktop.querySelector('.board_re').insertAdjacentHTML('beforeend', html);
           } else {
             mobile.querySelector('.board_re').insertAdjacentHTML('beforeend', html);
           }
-
           // 加留言數
           // 找到那個 id 的卡片
           var cardWithIdOne = this.card.find(function (item) {
@@ -476,17 +472,34 @@ export default {
         this.re_submit_disable = true;
       }
     },
-
     //送出檢舉彈窗
     re_submit() {
       this.re_submit_show = false;
       this.reportArticle();
-
+      //重整頁面
     },
     reload() {
       window.location.reload();
     },
-
+    //排序
+    sort() {
+      switch (this.sortMethod) {
+        case "timeAsc":
+          this.resData = this.resData.sort((a, b) => {
+            const timeA = a.msg_id;
+            const timeB = b.msg_id;
+            return timeA - timeB;
+          });
+          break;
+        case "timeDesc":
+          this.resData = this.resData.sort((a, b) => {
+            const timeA = a.msg_id;
+            const timeB = b.msg_id;
+            return timeB - timeA;
+          });
+          break;
+      }
+    },
   },
   mounted() {
     //將登入的會員資料由json改為陣列
@@ -494,7 +507,6 @@ export default {
     // console.log(userData);
     this.updateUserData(userData)
   },
-
 };
 </script>
 
