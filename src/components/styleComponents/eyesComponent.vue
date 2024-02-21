@@ -44,7 +44,7 @@
         data() {
             return {
                 eyesStaffs: [
-                    { name: "粗框眼鏡", staff: eyesStaff1 },
+                    { name: "眼鏡", staff: eyesStaff1 },
                     { name: "憨厚", staff: eyesStaff2 },
                     { name: "不懷好意", staff: eyesStaff3 },
                     { name: "哭哭", staff: eyesStaff4 },
