@@ -482,6 +482,7 @@ import MemberCard from "../components/MemberCard.vue";
 import PageTitle from "../components/PageTitle.vue";
 import { mapActions } from 'pinia';
 import userStore from '@/stores/user'
+import { getAuth, signOut } from "firebase/auth";
 export default {
     data() {
         return {
@@ -628,6 +629,10 @@ export default {
                     localStorage.removeItem('userToken')
                     localStorage.removeItem('userDataStr')
                     this.$router.push('/')
+                    const auth = getAuth();
+                    signOut(auth).then(() => {
+                    }).catch((error) => {
+                    });
                     break;
             }
         },
@@ -661,8 +666,15 @@ export default {
                     localStorage.removeItem('userToken')
                     localStorage.removeItem('userDataStr')
                     this.$router.push('/')
+                    const auth = getAuth();
+                    signOut(auth).then(() => {
+                    // Sign-out successful.
+                        console.log('sign out')
+                    }).catch((error) => {
+                    // An error happened.
+                        console.log('??')
+                    });
                     break;
-
             }
         },
         changeMember() {
