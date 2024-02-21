@@ -4,53 +4,11 @@
 			<font-awesome-icon :icon="['fas', 'times']"  @click="closeCuppon" />
 		</div>
 		<div class="subContent">
-			<span
-			>1/31 - 2/20 全館線上商品熱銷中，立即輸入優惠碼: GridIsland2023
-			折抵🐛🐛🐛🐛🐛🐛🐛
+			<!-- 重複 render 10次，並使用三元運算符-->
+			<span v-for="index in 10" :key="index"> 
+				{{ data.promos.length > 0 ? data.promos[0].promo_detail : '' }}
+				{{ data.promos.length > 0 ? data.promos[0].promo_code : '' }}
 			</span>
-			<span
-			>1/31 - 2/20 全館線上商品熱銷中，立即輸入優惠碼: GridIsland2023
-			折抵🐛🐛🐛🐛🐛🐛🐛
-			</span>
-			<span
-			>1/31 - 2/20 全館線上商品熱銷中，立即輸入優惠碼: GridIsland2023
-			折抵🐛🐛🐛🐛🐛🐛🐛
-			</span>
-			<span
-			>1/31 - 2/20 全館線上商品熱銷中，立即輸入優惠碼: GridIsland2023
-			折抵🐛🐛🐛🐛🐛🐛🐛
-			</span>
-			<span
-			>1/31 - 2/20 全館線上商品熱銷中，立即輸入優惠碼: GridIsland2023
-			折抵🐛🐛🐛🐛🐛🐛🐛
-			</span>
-			<span
-			>1/31 - 2/20 全館線上商品熱銷中，立即輸入優惠碼: GridIsland2023
-			折抵🐛🐛🐛🐛🐛🐛🐛
-			</span>
-			<span
-			>1/31 - 2/20 全館線上商品熱銷中，立即輸入優惠碼: GridIsland2023
-			折抵🐛🐛🐛🐛🐛🐛🐛
-			</span>
-			<span
-			>1/31 - 2/20 全館線上商品熱銷中，立即輸入優惠碼: GridIsland2023
-			折抵🐛🐛🐛🐛🐛🐛🐛
-			</span>
-			<span
-			>1/31 - 2/20 全館線上商品熱銷中，立即輸入優惠碼: GridIsland2023
-			折抵🐛🐛🐛🐛🐛🐛🐛
-			</span>
-			<span
-			>1/31 - 2/20 全館線上商品熱銷中，立即輸入優惠碼: GridIsland2023
-			折抵🐛🐛🐛🐛🐛🐛🐛
-			</span>
-			<span
-			>1/31 - 2/20 全館線上商品熱銷中，立即輸入優惠碼: GridIsland2023
-			折抵🐛🐛🐛🐛🐛🐛🐛
-			</span>
-			<!-- <span
-			> {{ data.promo_detail }}
-			</span> -->
 		</div>
 	</main>
 </template>
@@ -62,16 +20,20 @@ import axios from 'axios';
 export default {
 	data() {
 		return {
-			data: [],
+			data: {
+				promos:[
+				],
+			},
 		};
 	},
 	methods: {
 		getCode() {
-			let url = `${import.meta.env.VITE_API_URL}/getCode.php`;
+			let url = `${import.meta.env.VITE_API_URL}/getCupponCode.php`;
 			console.log(url);
 			axios.get(url, {})
 			.then(res => {
-			console.log(res.data);
+			this.data = res.data;
+			console.log(this.data);
 			})
 			.catch(error => {
 			console.error(error);
