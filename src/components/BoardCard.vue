@@ -76,11 +76,16 @@ export default {
       this.isOpen = !this.isOpen
     },
     open_light_box_report() {
-      this.$emit('open-report');
+      const userToken = localStorage.getItem("userToken");
+      if(userToken){
+        this.$emit('open-report');
+      }else{
+        alert('登入後即可檢舉！');
+      }
     },
     //判斷是否登入，有登入才可以留言
     replyArticle() {
-      const userToken = localStorage.getItem("userToken")
+      const userToken = localStorage.getItem("userToken");
       if (userToken) {
         this.$emit('sent-reply', this.item.msg_id, this.re_text);
         this.re_text = "";

@@ -16,10 +16,10 @@
           </div>
 
           <div class="about_gi_intro" data-aos="fade-left" data-aos-mirror="true" data-aos-delay="200"
-            data-aos-once="true" data-aos-duration="800" data-aos-offset="140">
+            data-aos-once="true" data-aos-duration="600" data-aos-offset="130">
             <!-- 手機版title -->
             <div class="about_gi_text_title_m">
-              <p>Grid Island</p>
+              <h2>Grid Island</h2>
             </div>
             <div class="about_gi_text">
               <div class="about_gi_text_title">
@@ -48,7 +48,7 @@
       <div class="about_en">
         <div class="about_row">
           <div class="about_en_section" data-aos="fade-right" data-aos-mirror="true" data-aos-delay="200"
-            data-aos-once="true" data-aos-duration="800">
+            data-aos-once="true" data-aos-duration="600" data-aos-offset="180">
             <!-- 輪播圖 -->
             <div class="about_en_imgs">
               <Carousel v-model="value" :autoplay="true" :autoplay-speed="2000" :dots="outside" :radius-dot="true"
@@ -113,10 +113,12 @@
           <div class="about_griddy_section">
 
             <div class="about_griddy_img">
-              <img src="../assets/images/about/about_card.png" class="rotate-image" alt="ocean_2">
+              <img src="../assets/images/about/about_card.png" class="rotate-image" alt="ocean_2" data-aos="flip-left"
+                data-aos-once="true" data-aos-duration="800" data-aos-offset="100">
             </div>
 
-            <div class="about_griddy_text">
+            <div class="about_griddy_text" data-aos="zoom-in" data-aos-once="true" data-aos-delay="400"
+              data-aos-duration="600" data-aos-offset="0">
               <div class="about_griddy_title">
                 <h3>Griddy</h3>
               </div>
@@ -143,8 +145,8 @@
       <!-- 店鋪資訊 -->
       <div class="about_info">
         <div class="about_row">
-          <div class="about_info_section" data-aos="fade-left" data-aos-mirror="true" data-aos-delay="500"
-            data-aos-once="true" data-aos-duration="800">
+          <div class="about_info_section" data-aos="fade-left" data-aos-once="true"
+            data-aos-duration="600" data-aos-offset="400">
             <div class="about_info_text">
               <div class="about_info_title">
                 <h3>店鋪資訊</h3>
