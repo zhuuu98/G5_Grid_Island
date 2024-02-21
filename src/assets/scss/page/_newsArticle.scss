@@ -73,8 +73,11 @@
       letter-spacing: $PC-btn-sl-spacing;
       order: 1;
       @include T() {
-        padding: 0 $XXL-spacing $M-spacing;
+        padding: 0 $XXL-spacing $L-spacing;
         order: unset;
+      }
+      @include PC() {
+        padding: 0 230px $L-spacing;
       }
     }
     .newsImg {
@@ -100,6 +103,9 @@
         padding: $M-spacing $XL-spacing;
         font-size: $PC-text;
       }
+      @include PC() {
+        padding: $M-spacing 230px;
+      }
     }
     .date {
       padding: 0 $M-spacing $S-spacing;
@@ -108,6 +114,9 @@
       letter-spacing: $PC-btn-exsl-spacing;
       @include T() {
         padding: $M-spacing $L-spacing;
+      }
+      @include PC() {
+        padding: $M-spacing 230px;
       }
     }
     .btn {
