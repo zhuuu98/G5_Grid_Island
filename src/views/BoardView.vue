@@ -59,7 +59,6 @@
         <form @submit.prevent="article_send_btn" v-if="article_send_succ">
           <h3 class="board_lb_title">我要發文</h3>
           <div>
-            <!-- <p class="board_lb_subTitle">留言內容</p> -->
             <textarea name="" id="" cols="35" rows="10" placeholder="輸入文章內容..." @keyup="article_send"></textarea>
           </div>
           <div class="board_light_box_send">
@@ -73,7 +72,6 @@
         </form>
         <div v-else>
           <h3>已成功送出文章！</h3>
-          <!-- <button class="btn_sm_1" @click="light_box_close">關閉</button> -->
           <button class="btn_sm_1" @click="reload">關閉</button>
         </div>
         <div class="board_close_light_box" @click="reload" v-if="run">

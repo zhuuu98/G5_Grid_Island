@@ -73,6 +73,7 @@ export default {
                         } else {
                             this.$router.push('/member')
                         }
+                        
                     } else {
                         alert('登入失敗，請檢查帳號密碼是否正確。')
                     }

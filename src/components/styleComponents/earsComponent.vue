@@ -49,8 +49,8 @@
                     { name: "犄角", staff: earsStaff4 },
                     { name: "獸耳", staff: earsStaff5 },
                     { name: "蓬鬆", staff: earsStaff6 },
-                    // { name: "搖滾", staff: earsStaff7 },
-                    // { name: "哥布林", staff: earsStaff8 },
+                    { name: "搖滾", staff: earsStaff7 },
+                    { name: "哥布林", staff: earsStaff8 },
                 ],
                 earsColors: unifiedColors,
                 selectedEarsColor: this.defaultEarsColor, // 初始化時從props接收的值
