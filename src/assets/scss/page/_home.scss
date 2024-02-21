@@ -386,9 +386,12 @@ main {
           margin: 10px;
           @include T() {
             width: 36vw;
+            width: calc($cardWidth - 20px);
           }
           @include PC() {
-            width: calc($cardWidth - 80px);
+            width: calc($cardWidth - 40px);
+            max-width: 305px;
+            height: 457.5px;
           }
 
           .text {
