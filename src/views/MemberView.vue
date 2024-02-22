@@ -9,8 +9,8 @@
                         <aside class="memAside ">
                             <!-- 會員暱稱 -->
                             <div class="memID" v-for="memID in memberData" @click="backToMemIndex">
-                                <!-- <img :src="`https://tibamef2e.com/chd104/g5/image/mem/${memID.mem_profile}`" alt="會員頭貼"> -->
-                                <img :src="fullImageUrl(memID)" alt="會員頭貼">
+                                <img :src="`https://tibamef2e.com/chd104/g5/image/mem/${memID.mem_profile}`" alt="會員頭貼">
+                                <!-- <img :src="fullImageUrl(memID)" alt="會員頭貼"> -->
 
                                 <h3 class="pc-h4" v-if="memberData[0].mem_nickname">{{ memID.mem_nickname }}</h3>
                                 <h3 class="pc-h4" v-else>{{ memID.mem_name }}</h3>
@@ -305,7 +305,8 @@
         <!-- 手機板選單 -->
         <div class="memberMobile container">
             <div class="mobileMember " v-for="item in memberData">
-                <img :src="fullImageUrl(memID)" alt="會員頭貼">
+                <!-- <img :src="fullImageUrl(memID)" alt="會員頭貼"> -->
+                <img :src="`https://tibamef2e.com/chd104/g5/image/mem/${item.mem_profile}`" alt="會員頭貼">
                 <p v-if="item.mem_nickname">{{ item.mem_nickname }}</p>
                 <p v-else>{{ item.mem_name }}</p>
             </div>
@@ -602,9 +603,9 @@
             this.userData = JSON.parse(localStorage.getItem("userDataStr"))
         },
         computed: {
-            fullImageUrl() {
-                return memID => `${import.meta.env.VITE_API_URL}/images/mem/${memID.mem_profile}`;
-            }
+            // fullImageUrl() {
+            //     return memID => `${import.meta.env.VITE_API_URL}/images/mem/${memID.mem_profile}`;
+            // }
         },
         methods: {
             ...mapActions(userStore, ['updateUserData']),
