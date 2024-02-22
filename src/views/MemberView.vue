@@ -619,6 +619,7 @@
                 this.isChoosedEditData_PC = false
                 this.isChoosedOrderData_PC = false
                 this.isChoosedBookData_PC = false
+                this.isChoosedTeam_PC = false
                 this.isChoosedIndex_PC = true
 
                 switch (index) {
