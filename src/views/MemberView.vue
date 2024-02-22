@@ -9,8 +9,8 @@
                         <aside class="memAside ">
                             <!-- 會員暱稱 -->
                             <div class="memID" v-for="memID in memberData" @click="backToMemIndex">
-                                <!-- <img :src="`https://tibamef2e.com/chd104/g5/image/mem/${memID.mem_profile}`" alt="會員頭貼"> -->
-                                <img :src="fullImageUrl(memID)" alt="會員頭貼">
+                                <img :src="`https://tibamef2e.com/chd104/g5/image/mem/${memID.mem_profile}`" alt="會員頭貼">
+                                <!-- <img :src="fullImageUrl(memID)" alt="會員頭貼"> -->
 
                                 <h3 class="pc-h4" v-if="memberData[0].mem_nickname">{{ memID.mem_nickname }}</h3>
                                 <h3 class="pc-h4" v-else>{{ memID.mem_name }}</h3>
@@ -139,14 +139,15 @@
                             <div class="inputGender">
                                 <span>性別</span>
                                 <div class="genderRadio">
-                                    <input type="radio" id="female" name="mem_gender" value="0"
-                                        :checked="item.mem_gender == 0">
+                                    <input type="radio" id="female" 
+                                    name="mem_gender" v-model="item.mem_gender"
+                                    value="0">
                                     <label for="female">女性</label>
-                                    <input type="radio" id="male" name="mem_gender" value="1"
-                                        :checked="item.mem_gender == 1">
+                                    <input type="radio" id="male" name="mem_gender" v-model="item.mem_gender"
+                                    value="1">
                                     <label for="male">男性</label>
-                                    <input type="radio" id="they" name="mem_gender" value="2"
-                                        :checked="item.mem_gender == 2">
+                                    <input type="radio" id="they" name="mem_gender" v-model="item.mem_gender"
+                                    value="2">
                                     <label for="they">其他</label>
                                 </div>
                             </div>
@@ -304,7 +305,8 @@
         <!-- 手機板選單 -->
         <div class="memberMobile container">
             <div class="mobileMember " v-for="item in memberData">
-                <img :src="fullImageUrl(memID)" alt="會員頭貼">
+                <!-- <img :src="fullImageUrl(memID)" alt="會員頭貼"> -->
+                <img :src="`https://tibamef2e.com/chd104/g5/image/mem/${item.mem_profile}`" alt="會員頭貼">
                 <p v-if="item.mem_nickname">{{ item.mem_nickname }}</p>
                 <p v-else>{{ item.mem_name }}</p>
             </div>
@@ -336,12 +338,23 @@
                     <div class="inputGender">
                         <span>性別</span>
                         <div class="genderRadio">
-                            <input type="radio" id="femaleMb" name="mem_gender" value="0"
-                                :checked="data.mem_gender == 0">
+                            <input type="radio" 
+                            id="femaleMb" 
+                            name="mem_gender" 
+                            value="0"
+                            v-model="data.mem_gender"
+                            >
                             <label for="femaleMb">女性</label>
-                            <input type="radio" id="maleMb" name="mem_gender" value="1" :checked="data.mem_gender == 1">
+                            <input type="radio" 
+                            id="maleMb" name="mem_gender" 
+                            value="1"
+                            v-model="data.mem_gender" >
                             <label for="maleMb">男性</label>
-                            <input type="radio" id="theyMb" name="mem_gender" value="2" :checked="data.mem_gender == 2">
+                            <input type="radio" 
+                            id="theyMb" 
+                            name="mem_gender" 
+                            value="2"
+                            v-model="data.mem_gender" >
                             <label for="theyMb">其他</label>
                         </div>
                     </div>
@@ -590,9 +603,9 @@
             this.userData = JSON.parse(localStorage.getItem("userDataStr"))
         },
         computed: {
-            fullImageUrl() {
-                return memID => `${import.meta.env.VITE_API_URL}/images/mem/${memID.mem_profile}`;
-            }
+            // fullImageUrl() {
+            //     return memID => `${import.meta.env.VITE_API_URL}/images/mem/${memID.mem_profile}`;
+            // }
         },
         methods: {
             ...mapActions(userStore, ['updateUserData']),
@@ -755,10 +768,10 @@
                     }
                 })
                     .then((res) => {
-                        console.log(res.data);
                         console.log(this.memberDataEdit[0])
                         this.updateUserData(this.memberDataEdit[0])
                         alert("已修改完成");
+                        location.reload()
                     })
                     .catch((error) => {
                         console.log(error);
