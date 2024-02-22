@@ -602,19 +602,11 @@
         mounted() {
             this.userData = JSON.parse(localStorage.getItem("userDataStr"))
         },
-<<<<<<< HEAD
-        // computed: {
-        //     fullImageUrl() {
-        //         return memID => `${import.meta.env.VITE_API_URL}/images/mem/${memID.mem_profile}`;
-        //     }
-        // },
-=======
         computed: {
             // fullImageUrl() {
             //     return memID => `${import.meta.env.VITE_API_URL}/images/mem/${memID.mem_profile}`;
             // }
         },
->>>>>>> 9f757f8ebc2060501522b0e50d804ef9b92affa6
         methods: {
             ...mapActions(userStore, ['updateUserData']),
             isPastDate(date) {
