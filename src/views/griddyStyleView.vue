@@ -68,6 +68,7 @@
                     <button id="goback" @click="toggleZone">回上頁</button>
                     <button id="download" @click="griddyToImage">下載圖片</button>
                 </div>
+                <SetMemPic ref="setMemPicModal"/>
             </div>
         </div>
     </div>
@@ -92,6 +93,7 @@
     import { backgroundColors } from "@/policy/color.js"
     import { unifiedColors } from "@/policy/color.js"
     import html2canvas from 'html2canvas';
+    import SetMemPic from '../components/SetMemPic.vue'; // 燈箱組件
 
 
     export default {
@@ -102,6 +104,7 @@
             earsComponent, //耳朵區
             accessoriesComponent, //配件區
             backgroundComponent, //背景顏色區
+            SetMemPic, // 燈箱
         },
         data() {
             return {
@@ -199,6 +202,8 @@
 
 
                     this.uploadProfilePic(formData); // 调用下面定义的方法来处理上传
+                    this.$refs.setMemPicModal.showModal();
+
                 });
 
             },
@@ -227,7 +232,7 @@
                             console.log('上傳成功:', data.msg); // "console.log" 會在控制台顯示成功訊息。
                             // "console.error" 和 "console.log" 都會在控制台顯示訊息，但"console.error" 通常用於錯誤訊息，會以紅色顯示，更容易讓開發者注意到錯誤。
                         }
-                        
+
                     })
                     .catch(error => { // 如果在發送請求或處理回應的過程中出現任何錯誤
                         console.error('上傳錯誤:', error); // 就在控制台顯示出錯的訊息
@@ -270,6 +275,9 @@
             handleBackgroundColorChange(backgroundColor) {
                 this.selectedBackgroundColor = backgroundColor;
                 console.log("被選擇的背景顏色：", this.selectedBackgroundColor);
+            },
+            showProfilePicModal() {
+                this.$refs.setMemPicModal.showModal();
             },
         }
     };

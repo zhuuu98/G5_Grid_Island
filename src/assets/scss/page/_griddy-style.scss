@@ -409,8 +409,54 @@
         }
     }
 
-
-
-
-
 }
+
+.modal-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); // 半透明黑色背景
+  
+    .modal-content {
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 5px;
+      width: 90%;
+      max-width: 400px;
+  
+      .close-button {
+        float: right;
+        font-size: 1.5rem;
+        line-height: 1rem;
+        cursor: pointer;
+      }
+  
+      p {
+        margin: 20px 0;
+      }
+  
+      .modal-actions {
+        display: flex;
+        justify-content: space-around; // 操作按鈕平均分布
+  
+        button {
+          padding: 10px 20px;
+          border: none;
+          border-radius: 5px;
+          cursor: pointer;
+          background-color: #007bff;
+          color: white;
+  
+          &:hover {
+            background-color: darken(#007bff, 10%); // 深藍色背景懸停效果
+          }
+        }
+      }
+    }
+  }
+  
