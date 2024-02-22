@@ -33,24 +33,9 @@
       navigateToMemberCenter() {
         this.closeModal();
         // 使用vue-router導航到會員中心的操作
-        this.$router.push('/member-center');
+        this.$router.push('/member');
       }
     }
   };
   </script>
-  
-  <style>
-  .modal-container {
-    /* 模態窗口背景樣式 */
-  }
-  .modal-content {
-    /* 模態內容區域樣式 */
-  }
-  .close-button {
-    /* 關閉按鈕樣式 */
-  }
-  .modal-actions {
-    /* 按鈕容器樣式 */
-  }
-  </style>
   
