@@ -8,7 +8,6 @@
             <form action="" class="login_form" methods="post">
                 <input type="email" placeholder="請輸入帳號" v-model="accName">
                 <input type="password" placeholder="請輸入密碼" v-model="au4a83">
-                <RouterLink to="#" class="login_forget_password">忘記密碼？</RouterLink>
 
                 <input type="submit" value="登入" class="signBtn" @click.prevent="login">
             </form>
@@ -17,14 +16,11 @@
             <div class="login_icon">
                 <i class="fa-brands fa-line fa-2xl"></i>
                 <i class="fa-brands fa-google fa-2xl" @click="googleLogin"></i>
-                <button @click="googleLogout">估狗登出</button>
             </div>
         </div>
     </div>
 </template>
 <script>
-// import axios from 'axios';
-import { ref } from 'vue'
 import { mapActions } from 'pinia';
 import userStore from '@/stores/user'
 import apiInstance from '@/plugins/auth'
@@ -36,20 +32,10 @@ export default {
         return {
             accName: 'griddy@griddy.com',
             au4a83: 'griddy123',
-            // callback:(response)=>{
-            //     console.log(response)
-            // }
-            googleAccessToken: null,
-            googleUserInfo: null,
-            userUid: null,
-            userName: null,
-            accountTypeID: null,
-            userEmail: null
         }
     },
     methods: {
         ...mapActions(userStore, ['updateToken', 'updateName', 'checkLogin', 'updateUserData']),
-
 
         login() {
             const bodyFormData = new FormData();
@@ -65,13 +51,14 @@ export default {
             }).then(res => {
                 if (res && res.data) {
                     if (res.data.code == 1) {
-                        this.updateToken(res.data.session_id)
+                        this.updateToken(true)
                         this.updateUserData(res.data.memInfo)
                         const redirect = this.$route.query.redirect
                         if (this.$route.query.redirect) {
                             this.$router.push(redirect)
                         } else {
-                            this.$router.push('/member')
+                            // this.$router.push('/member')
+                            this.$router.go(-1)
                         }
                     } else {
                         alert('登入失敗，請檢查帳號密碼是否正確。')
@@ -81,16 +68,12 @@ export default {
                 console.log(error);
             })
         },
-        async googleLogin(){
+        async googleLogin() {
             const auth = getAuth();
             const googleProvider = new GoogleAuthProvider();
             const result = await signInWithPopup(auth, googleProvider);
-            const userUid = result.user.uid;
             const userName = result.user.displayName;
             const userEmail = result.user.email
-            console.log(userUid)
-            console.log(userName)
-            console.log(userEmail)
 
             apiInstance({
                 method: 'post',
@@ -101,45 +84,18 @@ export default {
                     mem_name: userName
                 }
             }).then(res => {
-                // console.log(res);
-                // if (res && res.data) {
-                //     if (res.data.code == 1) {
-                //         // this.updateToken(res.data.session_id)
-                //         // this.updateUserData(res.data.memInfo)
-                //         // // this.$router.push('/member')
-                //         // const redirect = this.$route.query.redirect
-                //         // if (this.$route.query.redirect) {
-                //         //     this.$router.push(redirect)
-                //         // } else {
-                //         //     this.$router.push('/member')
-                //         // }
-                //         console.log('成功')
-                //     } else {
-                //         alert('登入失敗，請檢查帳號密碼是否正確。')
-                //     }
-                // }
-                // console.log(res.data)
                 this.updateToken(res.data.session_id)
                 this.updateUserData(res.data.memInfo)
                 const redirect = this.$route.query.redirect
                 if (this.$route.query.redirect) {
                     this.$router.push(redirect)
                 } else {
-                    this.$router.push('/member')
+                    this.$router.push('/')
                 }
             }).catch(error => {
                 console.log(error);
             })
         },
-        googleLogout(){
-            const auth = getAuth();
-            signOut(auth).then(() => {
-            // Sign-out successful.
-                console.log('sign out')
-            }).catch((error) => {
-            // An error happened.
-            });
-        }
     }
 }
 </script>
