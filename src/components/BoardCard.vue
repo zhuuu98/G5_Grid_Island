@@ -6,7 +6,8 @@
           <img :src="fullImageUrl(item.mem_profile)" alt="會員頭貼">
         </div>
         <div class="board_id_info">
-          <div class="board_memId">{{ item.mem_nickname == null || item.mem_nickname == "" ? item.mem_name : item.mem_nickname }}</div>
+          <div class="board_memId">{{ item.mem_nickname == null || item.mem_nickname == "" ? item.mem_name :
+            item.mem_nickname }}</div>
           <!-- <div class="board_memId" v-if="item.mem_nickname !== null">{{ item.mem_name }}</div>
           <div class="board_memId" v-else>{{ item.mem_nickname }}</div> -->
           <div class="board_time">{{ item.msg_datetime }}</div>
@@ -41,8 +42,11 @@
             <img :src="fullImageUrl(reItem.reply_memProfile)" alt="會員頭貼">
           </div>
           <div class="board_re_id_info">
-            <div class="board_re_memId" v-if="reItem.reply_nickName == null">{{ reItem.reply_memName }}</div>
-            <div class="board_re_memId" v-else>{{ reItem.reply_nickName }}</div>
+            <div class="board_memId">{{ reItem.reply_nickName == null || reItem.reply_nickName == "" ?
+              reItem.reply_memName : reItem.reply_nickName }}</div>
+
+            <!-- <div class="board_re_memId" v-if="reItem.reply_nickName == null || reItem.reply_nickName == '' ">{{ reItem.reply_memName }}</div>
+            <div class="board_re_memId" v-else>{{ reItem.reply_nickName }}</div> -->
             <div class="board_re_time">{{ reItem.reply_time }}</div>
           </div>
         </div>
