@@ -24,7 +24,7 @@
               <li>
                 <RouterLink to="/login" class="nav_link ">
                   <div class="nav_member_login" v-if="userData && userData.mem_profile">
-                    <img class="header_login_profile" :src="fullImageUrl(userData.mem_id)" alt="會員頭貼">
+                    <img class="header_login_profile" :src="fullImageUrl(userData.mem_profile)" alt="會員頭貼">
                   </div>
                   <div class="nav_member" v-else>
                     <img src="../assets/images/header/header-member.svg" alt="header-member">
@@ -151,7 +151,7 @@ export default {
     },
     //登入後更換大頭貼
     fullImageUrl(memProfile) {
-      return `${import.meta.env.VITE_API_URL}/images/mem/${memProfile}.png`;
+      return `${import.meta.env.VITE_API_URL}/images/mem/${memProfile}`;
     },
   },
   mounted() {
