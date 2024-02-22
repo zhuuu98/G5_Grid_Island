@@ -191,35 +191,46 @@
                     formData.append('profile_pic', imageData); // 将base64图片数据转换成Blob并添加
                     formData.append('user_id', memId); // 添加使用者ID
 
+                    for (let [key, value] of formData.entries()) {
+                        console.log(`${key}: ${value}`);
+                    }
+                    console.log(userDataStr);
+                    console.log(userData);
+
+
                     this.uploadProfilePic(formData); // 调用下面定义的方法来处理上传
                 });
+
             },
+            // 這個函數用來上傳圖片到網站上
             uploadProfilePic(formData) {
-                
+                // 使用fetch發送請求到指定的網址，並上傳一些資料
                 fetch(`${import.meta.env.VITE_API_URL}/uploadProfilePic.php`, {
-                    method: 'POST',
-                    body: formData,
+                    method: 'POST', // 表示這是一個"POST"請求，用來上傳資料
+                    body: formData, // 把準備好的圖片資料發送出去
                 })
-                
                     .then(response => {
+                        // .then()是用來處理伺服器回應的。當伺服器回應後，這裡的代碼就會執行。
+
                         if (!response.ok) {
-                            throw new Error('網絡響應非OK');
+                            // response.ok是一個布林值，如果伺服器回應的狀態碼是200-299之間，它就是true，表示"一切OK"
+                            throw new Error('網絡響應非OK'); // 如果不是OK，就報錯
                         }
-                        return response.json();
+                        return response.json(); // 如果一切OK，就把伺服器回應的內容轉換成JavaScript對象，方便我們使用
                     })
                     .then(data => {
-                        if (data.error) {
-                            console.error('上傳失敗:', data.msg);
-                        } else {
-                            console.log('上傳成功:', data.msg);
-                            // 在这里更新前端UI，例如显示上传成功消息或更新用户头像
+                        // "data" 是上一步轉換成JavaScript物件的伺服器回應內容。
+                        // "data.error" 不是原生語法，而是伺服器設計者決定的一種方式，用來告訴我們請求是否在伺服器那邊處理成功。
+                        if (data.error) { // 如果有錯誤
+                            console.error('上傳失敗:', data.msg); // "console.error" 會在控制台顯示錯誤訊息。
+                        } else { // 如果沒有錯誤
+                            console.log('上傳成功:', data.msg); // "console.log" 會在控制台顯示成功訊息。
+                            // "console.error" 和 "console.log" 都會在控制台顯示訊息，但"console.error" 通常用於錯誤訊息，會以紅色顯示，更容易讓開發者注意到錯誤。
                         }
+                        
                     })
-                    .catch(error => {
-                        console.error('上傳錯誤:', error);
-                        for (let [key, value] of formData.entries()) {
-                            console.log(`${key}: ${value}`);
-                        }
+                    .catch(error => { // 如果在發送請求或處理回應的過程中出現任何錯誤
+                        console.error('上傳錯誤:', error); // 就在控制台顯示出錯的訊息
                     });
             },
 
