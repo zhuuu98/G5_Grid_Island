@@ -92,7 +92,8 @@
     <!-- 檢舉燈箱 -->
     <div class="board_lb_re" v-show="board_light_box_report">
       <div class="board_lb_re_overlay" @click="light_box_re_close"></div>
-      <div class="board_lb_re_box">
+
+      <div class="board_lb_re_box" v-if="userData && userData.mem_profile">
         <form action="" v-if="re_submit_show">
           <div class="board_lb_re_title">
             <h4>請問您要檢舉的項目是...</h4>
@@ -114,6 +115,15 @@
           <font-awesome-icon :icon="['fas', 'xmark']" />
         </div>
       </div>
+
+      <div class="board_lb_re_box" v-else>
+        <!-- <h4>登入後即可檢舉</h4> -->
+        <h4>請先登入Grid Island！</h4>
+        <div class="board_close_light_box" @click="light_box_re_close">
+          <font-awesome-icon :icon="['fas', 'xmark']" />
+        </div>
+      </div>
+
     </div>
   </div>
 </template>
@@ -127,50 +137,12 @@ import { mapActions } from 'pinia';
 export default {
   data() {
     return {
-      card: [
-        // {
-        //   id: 1,
-        //   m_id: 1,
-        //   // id_img:'/images/board/board_id_img.svg',
-        //   id_img_alt: 'board_id_img',
-        //   memId: '1啊人家家就笨壓',
-        //   time: '2023/12/30 20:25',
-        //   msg: '在遊戲貪婪之島中，只要在問答大賽中答對最多問題，就能獲得統治者的祝福。',
-        //   // re_amount:2,
-        //   re: [
-        //     {
-        //       id: 1,
-        //       img: '/images/board/board_id_img.svg',
-        //       alt: 'board_id_img',
-        //       memId: '萵金',
-        //       time: '2023/12/30 20:25',
-        //       msg: '一般人會忘掉這種事嗎？只要喊出"book"就可以叫出卡冊，裡面存放所有目前收集到的卡片，可以取出卡片使用。',
-        //     },
-        //     {
-        //       id: 2,
-        //       img: '/images/board/board_id_img.svg',
-        //       alt: 'board_id_img',
-        //       memId: '金',
-        //       time: '2023/12/30 20:25',
-        //       msg: '你是一般人嗎？',
-        //     }
-        //   ]
-        // },
-        // {
-        //   id: 2,
-        //   // id_img:'../../public/images/board/board_id_img.svg',
-        //   id_img_alt: 'board_id_img',
-        //   memId: '2大傑',
-        //   time: '2023/12/30 20:25',
-        //   msg: '有人看到我爸嗎？',
-        //   re: []
-        // },
-      ],
+      card: [],
       reports: [{
         reason: '-請選擇檢舉項目-',
         value: '',
         disabled: true,
-        selected: true
+        selected: true,
       }, {
         reason: '廣告',
         value: '廣告'

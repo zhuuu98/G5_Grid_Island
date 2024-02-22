@@ -6,8 +6,9 @@
           <img :src="fullImageUrl(item.mem_profile)" alt="會員頭貼">
         </div>
         <div class="board_id_info">
-          <div class="board_memId" v-if="item.mem_nickname == null">{{ item.mem_name }}</div>
-          <div class="board_memId" v-else>{{ item.mem_nickname }}</div>
+          <div class="board_memId">{{ item.mem_nickname == null || item.mem_nickname == "" ? item.mem_name : item.mem_nickname }}</div>
+          <!-- <div class="board_memId" v-if="item.mem_nickname !== null">{{ item.mem_name }}</div>
+          <div class="board_memId" v-else>{{ item.mem_nickname }}</div> -->
           <div class="board_time">{{ item.msg_datetime }}</div>
         </div>
       </div>
@@ -54,7 +55,6 @@
 </template>
   
 <script>
-import axios from "axios";
 export default {
   props: {
     item: Object,
@@ -71,12 +71,7 @@ export default {
       this.isOpen = !this.isOpen
     },
     open_light_box_report() {
-      const userToken = localStorage.getItem("userToken");
-      if (userToken) {
-        this.$emit('open-report');
-      } else {
-        alert('登入後即可檢舉！');
-      }
+      this.$emit('open-report');
     },
     //判斷是否登入，有登入才可以留言
     replyArticle() {
