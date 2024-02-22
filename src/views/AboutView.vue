@@ -51,8 +51,10 @@
             data-aos-once="true" data-aos-duration="600" data-aos-offset="180">
             <!-- 輪播圖 -->
             <div class="about_en_imgs">
-              <Carousel v-model="value" :autoplay="true" :autoplay-speed="2000" :dots="outside" :radius-dot="true"
-                :trigger="click" :arrow="false">
+              <Carousel v-model="value" :autoplay="true" :autoplay-speed="2000" :radius-dot="true">
+                <!-- :dots="outside"  -->
+                <!-- :trigger="click"  -->
+                <!-- :arrow="false" -->
                 <!-- 輪播圖一 -->
                 <CarouselItem>
                   <div class="about_demo-carousel">
@@ -145,8 +147,8 @@
       <!-- 店鋪資訊 -->
       <div class="about_info">
         <div class="about_row">
-          <div class="about_info_section" data-aos="fade-left" data-aos-once="true"
-            data-aos-duration="600" data-aos-offset="400">
+          <div class="about_info_section" data-aos="fade-left" data-aos-once="true" data-aos-duration="600"
+            data-aos-offset="400">
             <div class="about_info_text">
               <div class="about_info_title">
                 <h3>店鋪資訊</h3>

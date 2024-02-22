@@ -195,6 +195,7 @@
                 });
             },
             uploadProfilePic(formData) {
+                
                 fetch(`${import.meta.env.VITE_API_URL}/uploadProfilePic.php`, {
                     method: 'POST',
                     body: formData,

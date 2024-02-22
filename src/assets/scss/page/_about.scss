@@ -124,6 +124,8 @@
       >div{
         border-radius: 28px;
         overflow: hidden;
+        width: 98%;
+        margin: auto;
         &:first-child{
           max-height: 400px;
           margin-bottom: 20px;
@@ -157,7 +159,8 @@
         padding: 100px 0;
         display: flex;
         >div{
-          width: 50%;
+          margin: auto;
+          width: 48%;
           height: 540px;
           // 輪播圖
           &:first-child{
