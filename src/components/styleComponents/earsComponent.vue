@@ -4,7 +4,8 @@
             <h4>耳朵造型</h4>
             <ul class="ears-options options-staff">
                 <button v-for="(earsStaff, index) in earsStaffs" :key="earsStaff.staff"
-                    @click="handleEarsStaffChange(earsStaff.staff)" :class="{ active: selectedEarsStaff === earsStaff.staff }">
+                    @click="handleEarsStaffChange(earsStaff.staff)"
+                    :class="{ active: selectedEarsStaff === earsStaff.staff }">
                     {{ earsStaff.name }}
                 </button>
             </ul>
@@ -69,5 +70,14 @@
                 console.log("事件已發射，耳朵圖片碼：", earsStaff);
             },
         },
+        watch: {
+            defaultEarsColor(newVal) {
+                this.selectedEarsColor = newVal;
+            },
+            defaultEarsStaff(newVal) {
+                this.selectedEarsStaff = newVal;
+            }
+        }
+
     };
 </script>

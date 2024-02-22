@@ -4,7 +4,8 @@
             <h4>眼睛造型</h4>
             <ul class="eyes-options options-staff">
                 <button v-for="(eyesStaff, index) in eyesStaffs" :key="eyesStaff.staff"
-                    @click="handleEyesStaffChange(eyesStaff.staff)" :class="{ active: selectedEyesStaff === eyesStaff.staff }">
+                    @click="handleEyesStaffChange(eyesStaff.staff)"
+                    :class="{ active: selectedEyesStaff === eyesStaff.staff }">
                     {{ eyesStaff.name }}
                 </button>
             </ul>
@@ -72,6 +73,15 @@
                 console.log("事件已發射，眼睛圖片碼：", eyesStaff);
             },
         },
+        watch: {
+            defaultEyesColor(newVal) {
+                this.selectedEyesColor = newVal;
+            },
+            defaultEyesStaff(newVal) {
+                this.selectedEyesStaff = newVal;
+            }
+        }
+
 
     };
 </script>

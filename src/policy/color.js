@@ -265,7 +265,6 @@ fill="COLOR_PLACEHOLDER"/>
 <path d="M233.75 193.23C239.4 190.7 244.17 191.89 247.68 192.93" stroke="black" stroke-width="3" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
 <path d="M337.72 150.76C338.05 149.86 340.27 146.33 342.05 145.49" stroke="black" stroke-width="3" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
 </svg>
-
 `;
 export const eyesStaff11 = ``;
 export const eyesStaff12 = ``;
@@ -430,7 +429,9 @@ export const earsStaffs = [
     earsStaff3, 
     earsStaff4, 
     earsStaff5, 
-    earsStaff6
+    earsStaff6,
+    earsStaff7,
+    earsStaff8,
 ];
 
 export const accessoriesStaff1 =`<svg width="100%" height="100%" viewBox="0 0 450 450" fill="none" xmlns="http://www.w3.org/2000/svg">

@@ -15,10 +15,10 @@
 
                 </div>
                 <div class="btnbox">
-                    <button id="reset" @click="toggleZone" v-on:touchstart="">
+                    <button id="reset" @click="selectRandomOption" v-on:touchstart="">
                         隨機選擇
                     </button>
-                    <button id="random" @click="toggleZone" v-on:touchstart="">
+                    <button id="random" @click="resetOptions" v-on:touchstart="">
                         重置
                     </button>
                     <button id="setphoto" @click="toggleZone" v-on:touchstart="">
@@ -68,7 +68,7 @@
                     <button id="goback" @click="toggleZone">回上頁</button>
                     <button id="download" @click="griddyToImage">下載圖片</button>
                 </div>
-                <SetMemPic ref="setMemPicModal"/>
+                <SetMemPic ref="setMemPicModal" />
             </div>
         </div>
     </div>
@@ -116,6 +116,11 @@
                     { name: 'tab5', title: '背景', component: 'backgroundComponent' },
                 ],
                 currentTab: 'skinComponent', // 使用字符串替代 ref
+                unifiedColors: unifiedColors,
+                eyesStaffs: eyesStaffs,
+                earsStaffs: earsStaffs,
+                accessoriesStaffs: accessoriesStaffs,
+
                 selectedBodyColor: unifiedColors[0],
                 selectedBellyColor: unifiedColors[3],
                 selectedSpotColor: unifiedColors[8],
@@ -238,7 +243,9 @@
                         console.error('上傳錯誤:', error); // 就在控制台顯示出錯的訊息
                     });
             },
-
+            showProfilePicModal() {
+                this.$refs.setMemPicModal.showModal();
+            },
 
             handleBodyColorChange(bodyColor) {
                 this.selectedBodyColor = bodyColor;
@@ -276,9 +283,56 @@
                 this.selectedBackgroundColor = backgroundColor;
                 console.log("被選擇的背景顏色：", this.selectedBackgroundColor);
             },
-            showProfilePicModal() {
-                this.$refs.setMemPicModal.showModal();
+
+            selectRandomOption() {
+                // 為身體顏色選擇一個隨機選項
+                this.selectedBodyColor = this.unifiedColors[Math.floor(Math.random() * this.unifiedColors.length)];
+
+                // 為肚子顏色選擇一個隨機選項
+                this.selectedBellyColor = this.unifiedColors[Math.floor(Math.random() * this.unifiedColors.length)];
+
+                // 為斑點顏色選擇一個隨機選項
+                this.selectedSpotColor = this.unifiedColors[Math.floor(Math.random() * this.unifiedColors.length)];
+
+                // 為眼睛部件選擇一個隨機選項
+                this.selectedEyesStaff = this.eyesStaffs[Math.floor(Math.random() * this.eyesStaffs.length)];
+
+                // 為眼睛顏色選擇一個隨機選項
+                this.selectedEyesColor = this.unifiedColors[Math.floor(Math.random() * this.unifiedColors.length)];
+
+                // 為耳朵部件選擇一個隨機選項
+                this.selectedEarsStaff = this.earsStaffs[Math.floor(Math.random() * this.earsStaffs.length)];
+
+                // 為耳朵顏色選擇一個隨機選項
+                this.selectedEarsColor = this.unifiedColors[Math.floor(Math.random() * this.unifiedColors.length)];
+
+                // 為配件部件選擇一個隨機選項
+                this.selectedAccessoriesStaff = this.accessoriesStaffs[Math.floor(Math.random() * this.accessoriesStaffs.length)];
+
+                // 為背景顏色選擇一個隨機選項
+                this.selectedBackgroundColor = this.unifiedColors[Math.floor(Math.random() * this.unifiedColors.length)];
             },
+            resetOptions() {
+                // 重置所有選項到預設值
+                this.selectedBodyColor = this.unifiedColors[0];
+                this.selectedBellyColor = this.unifiedColors[3];
+                this.selectedSpotColor = this.unifiedColors[8];
+                this.selectedEyesColor = this.unifiedColors[8];
+                this.selectedEarsColor = this.unifiedColors[0];
+                this.selectedBackgroundColor = this.unifiedColors[18];
+                
+
+                // 如果有部件選項也需要重置，可以類似地添加這裡
+                this.selectedEyesStaff = this.eyesStaffs[0];
+                this.selectedEarsStaff = this.earsStaffs[0];
+                this.selectedAccessoriesStaff = this.accessoriesStaffs[0];
+                // 確保更新所有相關的部件選項
+            }
+
+
+
+
+
         }
     };
 </script>
