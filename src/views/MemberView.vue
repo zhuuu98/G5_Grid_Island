@@ -304,7 +304,7 @@
         <!-- 手機板選單 -->
         <div class="memberMobile container">
             <div class="mobileMember " v-for="item in memberData">
-                <img :src="`https://tibamef2e.com/chd104/g5/image/mem/${item.mem_profile}`" alt="會員頭貼">
+                <img :src="fullImageUrl(memID)" alt="會員頭貼">
                 <p v-if="item.mem_nickname">{{ item.mem_nickname }}</p>
                 <p v-else>{{ item.mem_name }}</p>
             </div>
