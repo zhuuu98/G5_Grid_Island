@@ -1,7 +1,6 @@
 <template>
   <div class="board">
     <PageTitle :pageTitle="'玩家社群'" />
-    <!-- <div class="banner"></div> -->
     <div class="container">
       <div class="row">
         <div class="col-PC-10 col-T-10 col-10">
@@ -46,7 +45,6 @@
               <BoardCard v-for="item in modifiedCard" :key="'area3-' + item.msg_id" :item="item"
                 @open-report="open_light_box_report(item.msg_id)" @sent-reply="replyArticle" />
             </div>
-
           </div>
         </div>
       </div>
@@ -89,7 +87,6 @@
           <font-awesome-icon :icon="['fas', 'xmark']" />
         </div>
       </div>
-
     </div>
 
     <!-- 檢舉燈箱 -->
@@ -103,13 +100,6 @@
           <select id="re_option" v-model="selectedOption" @change="updateReTextVisibility">
             <option v-for="(report, index) in reports" :key="index" :value="report.value" :disabled="report.disabled"
               :selected="report.selected">{{ report.reason }}</option>
-            <!-- <option>廣告</option>
-            <option>帶有攻擊性言論</option>
-            <option>暴力或危險組織</option>
-            <option>我就是不喜歡</option>
-            <option>仇恨言論或象徵符號</option>
-            <option>不實資訊</option>
-            <option value="lb_re_other">其他</option> -->
           </select>
           <textarea cols="30" rows="10" v-show="open_re_text" placeholder="請敘述檢舉理由" @keyup="updateReTextVisibility"
             v-model="re_text_other"></textarea>
@@ -229,16 +219,15 @@ export default {
   },
   computed: {
     userData() {
-      return this.userStoreData.userData || {}
+      return this.userStoreData.userData || {};
     },
     modifiedCardUnique() {
       return this.card.reduce((acc, cur) => {
         if (acc.findIndex(v => v.msg_id === cur.msg_id) === -1) {
           acc.push(cur)
         }
-
         return acc
-      }, [])
+      }, []);
     },
     modifiedCard() {
       return this.modifiedCardUnique.map(item => ({
@@ -281,11 +270,8 @@ export default {
             //有留言才會計算有幾則留言
             if (jsondata != null) {
               item.re_amount = jsondata.length;
-              // console.log(jsondata.length);
               for (let j = 0; j < jsondata.length; j++) {
                 let reitem = jsondata[j];
-                // console.log(reitem.reply_time.split('.')[0]);
-                // reitem.reply_time.split('.')
                 reitem.reply_time = reitem.reply_time.split('.')[0];
               }
             }
@@ -295,10 +281,8 @@ export default {
     },
     //發文PHP
     postArticle() {
-      // console.log(this.item);
       axios({
         method: 'post',
-        // url: `${import.meta.env.VITE_API_URL}/boardArticle.php`,
         url: `${import.meta.env.VITE_API_URL}/boardArticle.php`,
         headers: { "Content-Type": "multipart/form-data" },
         data: {
@@ -307,7 +291,6 @@ export default {
         }
       })
         .then((res) => {
-          // console.log('修改成功');
           this.run = true;
         })
         .catch((err) => {
@@ -337,17 +320,14 @@ export default {
       let s = now.getSeconds().toString().padStart(2, '0'); // 秒
 
       let time = y + '-' + m + '-' + d + ' ' + h + ':' + min + ':' + s;
+      let memId = this.userData.mem_nickname ? this.userData.mem_nickname : this.userData.mem_name;
+      console.log(memId);
 
       let html = '<div class="board_re_card"><div class="board_re_id">'
         + '<div class="board_re_id_img"><img src="' + pic + '"></div>'
-        + '<div class="board_re_id_info"><div class="board_re_memId">' + this.userData.mem_name + '</div><div class="board_re_time">' + time + '</div></div></div>'
+        + '<div class="board_re_id_info"><div class="board_re_memId">' + memId
+        + '</div><div class="board_re_time">' + time + '</div></div></div>'
         + '<div class="board_re_msg"><p>' + re_text + '</p></div></div>';
-
-      // desktop.querySelector('board_re_input input').value = '';
-      // mobile.querySelector('.board_re_input input').value = '';
-      // document.querySelector('.re_area').value = '';
-
-
 
       axios({
         method: 'post',
@@ -373,16 +353,10 @@ export default {
           var cardWithIdOne = this.card.find(function (item) {
             return item.msg_id == msg_id;
           });
-
-          // console.log(cardWithIdOne.hasOwnProperty('re_amount'));
-          // console.log(cardWithIdOne);
-
           // 如果找到了對應的卡片，則 re_amount 初始化為 1 
           if (cardWithIdOne && !cardWithIdOne.hasOwnProperty('re_amount')) {
-            // return cardWithIdOne.re_amount = 1;
             cardWithIdOne.re_amount = 1;
           } else {// 如果找到了對應的卡片，則將 re_amount 加 1
-            // return cardWithIdOne.re_amount += 1;
             cardWithIdOne.re_amount += 1;
           }
         })
@@ -400,7 +374,6 @@ export default {
         data: {
           msg_id: this.activeReportMsgId,
           report_reason: this.selectedOption === 'lb_re_other' ? this.re_text_other : this.selectedOption,
-          //msg_content: document.querySelector('.light_box textarea').value,
         }
       })
         .then((res) => {
@@ -423,7 +396,6 @@ export default {
     },
     // 發文燈箱關閉
     light_box_close() {
-      // this.board_light_box_open = false;
       this.board_light_box_open = false;
       document.body.classList.remove('body-overflow-hidden');
     },
@@ -502,7 +474,6 @@ export default {
   mounted() {
     //將登入的會員資料由json改為陣列
     const userData = JSON.parse(localStorage.getItem("userDataStr"));
-    // console.log(userData);
     this.updateUserData(userData)
   },
 };

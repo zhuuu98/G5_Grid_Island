@@ -3,9 +3,7 @@
     <div class="board_info">
       <div class="board_id">
         <div class="board_id_img">
-          <!-- < img : src =" item.mem_profile" alt="id_img_alt"> -->
-          <!-- <img src="/images/board/board_id_img.svg" :alt="item.id_img_alt"> -->
-          <img :src="`https://tibamef2e.com/chd104/g5/image/mem/${item.mem_profile}`" alt=" mem_profile ">
+          <img :src="fullImageUrl(item.mem_profile)" alt="會員頭貼">
         </div>
         <div class="board_id_info">
           <div class="board_memId" v-if="item.mem_nickname == null">{{ item.mem_name }}</div>
@@ -18,7 +16,6 @@
       </div>
       <div class="board_re_type">
         <div class="reply_subtitle">回覆留言</div>
-        <!-- <input type="text" placeholder="輸入回覆內容..."> -->
         <div class="board_re_input">
           <input type="text" placeholder="輸入回覆內容..." v-model="re_text" class="re_area">
           <div class="board_re_send" @click="replyArticle">
@@ -40,9 +37,7 @@
       <div class="board_re_card" v-for="( reItem, reIndex ) in  item.replies " :key="reIndex">
         <div class="board_re_id">
           <div class="board_re_id_img">
-            <!-- <img src="/images/board/board_id_img.svg" :alt="item.id_img_alt"> -->
-            <!-- <img :src="reItem.reply_memProfile" :alt="reItem.alt"> -->
-            <img :src="`https://tibamef2e.com/chd104/g5/image/mem/${reItem.reply_memProfile}`" alt=" mem_profile ">
+            <img :src="fullImageUrl(reItem.reply_memProfile)" alt="會員頭貼">
           </div>
           <div class="board_re_id_info">
             <div class="board_re_memId" v-if="reItem.reply_nickName == null">{{ reItem.reply_memName }}</div>
@@ -77,9 +72,9 @@ export default {
     },
     open_light_box_report() {
       const userToken = localStorage.getItem("userToken");
-      if(userToken){
+      if (userToken) {
         this.$emit('open-report');
-      }else{
+      } else {
         alert('登入後即可檢舉！');
       }
     },
@@ -92,6 +87,9 @@ export default {
       } else {
         alert('登入後即可回覆！');
       }
+    },
+    fullImageUrl(memProfile) {
+      return `${import.meta.env.VITE_API_URL}/images/mem/${memProfile}`;
     },
   },
 };
