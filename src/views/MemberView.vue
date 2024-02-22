@@ -139,14 +139,15 @@
                             <div class="inputGender">
                                 <span>性別</span>
                                 <div class="genderRadio">
-                                    <input type="radio" id="female" name="mem_gender" value="0"
-                                        :checked="item.mem_gender == 0">
+                                    <input type="radio" id="female" 
+                                    name="mem_gender" v-model="item.mem_gender"
+                                    value="0">
                                     <label for="female">女性</label>
-                                    <input type="radio" id="male" name="mem_gender" value="1"
-                                        :checked="item.mem_gender == 1">
+                                    <input type="radio" id="male" name="mem_gender" v-model="item.mem_gender"
+                                    value="1">
                                     <label for="male">男性</label>
-                                    <input type="radio" id="they" name="mem_gender" value="2"
-                                        :checked="item.mem_gender == 2">
+                                    <input type="radio" id="they" name="mem_gender" v-model="item.mem_gender"
+                                    value="2">
                                     <label for="they">其他</label>
                                 </div>
                             </div>
@@ -337,12 +338,23 @@
                     <div class="inputGender">
                         <span>性別</span>
                         <div class="genderRadio">
-                            <input type="radio" id="femaleMb" name="mem_gender" value="0"
-                                :checked="data.mem_gender == 0">
+                            <input type="radio" 
+                            id="femaleMb" 
+                            name="mem_gender" 
+                            value="0"
+                            v-model="data.mem_gender"
+                            >
                             <label for="femaleMb">女性</label>
-                            <input type="radio" id="maleMb" name="mem_gender" value="1" :checked="data.mem_gender == 1">
+                            <input type="radio" 
+                            id="maleMb" name="mem_gender" 
+                            value="1"
+                            v-model="data.mem_gender" >
                             <label for="maleMb">男性</label>
-                            <input type="radio" id="theyMb" name="mem_gender" value="2" :checked="data.mem_gender == 2">
+                            <input type="radio" 
+                            id="theyMb" 
+                            name="mem_gender" 
+                            value="2"
+                            v-model="data.mem_gender" >
                             <label for="theyMb">其他</label>
                         </div>
                     </div>
@@ -590,11 +602,19 @@
         mounted() {
             this.userData = JSON.parse(localStorage.getItem("userDataStr"))
         },
+<<<<<<< HEAD
         // computed: {
         //     fullImageUrl() {
         //         return memID => `${import.meta.env.VITE_API_URL}/images/mem/${memID.mem_profile}`;
         //     }
         // },
+=======
+        computed: {
+            // fullImageUrl() {
+            //     return memID => `${import.meta.env.VITE_API_URL}/images/mem/${memID.mem_profile}`;
+            // }
+        },
+>>>>>>> 9f757f8ebc2060501522b0e50d804ef9b92affa6
         methods: {
             ...mapActions(userStore, ['updateUserData']),
             isPastDate(date) {
@@ -756,10 +776,10 @@
                     }
                 })
                     .then((res) => {
-                        console.log(res.data);
                         console.log(this.memberDataEdit[0])
                         this.updateUserData(this.memberDataEdit[0])
                         alert("已修改完成");
+                        location.reload()
                     })
                     .catch((error) => {
                         console.log(error);
