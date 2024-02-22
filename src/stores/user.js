@@ -20,22 +20,22 @@ export default defineStore("userStore", {
           this.token = ''
           localStorage.removeItem('userToken')
       }
-  },
-  updateUserData(val) {
-      this.userData = val
-      const userDataStr = JSON.stringify(this.userData)
-      localStorage.setItem('userDataStr', userDataStr)
-  },
-  checkLogin(){
-      const storageToken = localStorage.getItem('userToken')
-      if(this.token){
-          return this.token
-      }else if(storageToken){
-          this.token = storageToken
-          return storageToken
-      }else{
-          return ''
-      }
-  },
+    },
+    updateUserData(val) {
+        this.userData = val
+        const userDataStr = JSON.stringify(this.userData)
+        localStorage.setItem('userDataStr', userDataStr)
+    },
+    checkLogin(){
+        const storageToken = localStorage.getItem('userToken')
+        if(this.token){
+            return this.token
+        }else if(storageToken){
+            this.token = storageToken
+            return storageToken
+        }else{
+            return ''
+        }
+    },
   },
 });
