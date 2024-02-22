@@ -26,7 +26,11 @@
                   <div class="nav_member_login" v-if="userData && userData.mem_profile">
                     <!-- <img :src="userData.mem_profile" alt="mem_profile"> -->
                     <!-- <img :src="`https://tibamef2e.com/chd104/g5/image/mem/original.png`" :alt="會員頭貼"> -->
-                    <img class="header_login_profile" :src="`https://tibamef2e.com/chd104/g5/image/mem/${userData.mem_profile}`" alt="mem_profile">
+                    <!-- <img class="header_login_profile" :src="`https://tibamef2e.com/chd104/g5/image/mem/${userData.mem_profile}`" alt="mem_profile"> -->
+                    <!-- <img class="header_login_profile"
+                      :src="`${import.meta.env.VITE_API_URL}/images/mem/${userData.mem_id}.png`" alt="mem_profile"> -->
+                    <!-- <img :src="fullImageUrl(userData.mem_profile)" alt="會員頭貼"> -->
+                    <img :src="fullImageUrl(userData.mem_id)" alt="會員頭貼">
                   </div>
                   <div class="nav_member" v-else>
                     <img src="../assets/images/header/header-member.svg" alt="header-member">
@@ -150,6 +154,10 @@ export default {
     },
     toggleSubMenuOpen() {
       this.subMenuOpen = !this.subMenuOpen;
+    },
+    //登入後更換大頭貼
+    fullImageUrl(memProfile) {
+      return `${import.meta.env.VITE_API_URL}/images/mem/${memProfile}.png`;
     },
   },
   mounted() {
