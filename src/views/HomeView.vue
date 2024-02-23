@@ -197,27 +197,31 @@
         </div>
       </div>
 
-      <div class="home_ocean">
-        <img src="/images/home/home_ocean_2.svg" alt="home_ocean_2" />
-      </div>
-
       <!-- 預約方式 -->
-      <div class="index_reserve">
-        <div class="index_row container">
-          <!-- 寫這邊 -->
+      <!-- <div class="indexContainer" id="indexContainer_griddystyle"> -->
+      <div class="indexContainer" id="indexContainer_reserve">
+        <div class="wave-imagebox">
+          <div v-html="wave" class="wave"></div>
+        </div>
+        <div class="index_row">
+          <!-- 預約方式內容 -->
           <h1 data-stroke="預約方式">預約方式</h1>
-          <div class="reserveInfo row">
-            <div class="reserveContent col-6 col-T-10 col-PC-10">
+
+
+          <div class="reserveInfo">
+            <!-- <div class="reserveContent col-6 col-T-10 col-PC-10"> -->
+
+            <div class="reserveContent">
               <!-- <img v-for="num in 3" :src="getImageUrl(`home/reserveInfo_${num}.png`)" alt="預約方式"> -->
-              <div class="reserveStep1">
+              <div class="reserveStep1 reserveStep">
                 <img src="../assets/images/home/reserveInfo_1.png" alt="" />
                 <span>確認預約須知</span>
               </div>
-              <div class="reserveStep2">
+              <div class="reserveStep2 reserveStep">
                 <img src="../assets/images/home/reserveInfo_2.png" alt="" />
                 <span>選擇人數、日期、時段</span>
               </div>
-              <div class="reserveStep3">
+              <div class="reserveStep3 reserveStep">
                 <img src="../assets/images/home/reserveInfo_3.png" alt="" />
                 <span>選擇桌號，預約完成！</span>
               </div>
@@ -226,7 +230,7 @@
           <button class="btn_lg" @click="goBook()">預約場地</button>
         </div>
       </div>
-      
+
       <!-- 最新消息 -->
       <div class="index_news">
         <div class="index_row">

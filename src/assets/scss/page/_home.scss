@@ -370,7 +370,7 @@
             max-width: $max-width;
           }
 
-          
+
 
           .serviceMarqueeContent {
             // 跑馬燈區
@@ -392,9 +392,9 @@
             background-size: 28px 28px, 28px 28px, cover;
             background-repeat: repeat, repeat, no-repeat;
             height: 336px;
-            
-            
-            
+
+
+
 
             @include T() {
               padding: 3rem 0;
@@ -430,7 +430,7 @@
         align-items: center;
         justify-content: center;
         animation: marquee 5s linear infinite;
-        
+
 
         // gap: $M-spacing;
       }
@@ -447,113 +447,164 @@
     }
 
     //預約方式
-    .index_reserve {
+    #indexContainer_reserve {
+      width: 100%;
       background-color: $blue-1;
-      padding: $XL-spacing;
+      position: relative;
 
-      .index_row {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        gap: $XL-spacing;
+      .wave-imagebox {
+        width: 100%;
+        position: absolute;
+        bottom: calc(100% - 2px);
+        overflow: hidden;
+
+        .wave {
+          width: 240%;
+          z-index: 20;
+
+          .pathLine {
+            fill: $purple;
+          }
+
+          .pathPan {
+            fill: $blue-1;
+          }
+
+          @include T() {
+            width: 200%;
+          }
+
+          @include PC() {
+            width: 120%;
+          }
+        }
       }
 
+      .index_row {
       h1 {
         @include textStrokeEffect($black, $white-1, 6px);
       }
 
       .reserveInfo {
+
         justify-content: center;
-      }
-
-      .reserveContent {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-        align-items: center;
-        gap: $XL-spacing;
-
-        @include T() {
-          flex-wrap: nowrap;
-          gap: $L-spacing;
-        }
-
-        @include PC() {
-          flex-wrap: nowrap;
-          gap: $XL-spacing;
-        }
-      }
-
-      .reserveContent img {
-        // width: 100%;
-        vertical-align: top;
-        width: 200px;
-
-        @include PC() {
-          width: 300px;
-        }
-      }
-
-      span {
-        font-size: 16px;
-        letter-spacing: 0.5px;
-        color: $black;
-      }
-
-      [class*="reserveStep"] {
-        position: relative;
-      }
-
-      [class*="reserveStep"]>span {
-        background-color: $green-1;
-        padding: $S-spacing $M-spacing;
-        border: 1px solid $blue-3;
-        // width: 200px;
-        width: fit-content;
-        text-align: center;
-        position: absolute;
-      }
-
-      .reserveStep1 span {
-        display: flex;
-        flex-direction: column;
-        transform: translateX(26px) translateY(-20px);
-
-        @include T() {
-          transform: translateX(75px) translateY(-20px);
-        }
-      }
-
-      .reserveStep2 span {
-        // width: 290px;
-        display: flex;
-        flex-wrap: wrap;
-        flex-direction: column;
-        justify-content: center;
-        transform: translateX(26px) translateY(-20px);
+        // background-color: #3bb1b9;
         width: 100%;
-        max-width: 150px;
 
-        @include PC() {
-          max-width: 250px;
+        .reserveContent {
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+          width: auto;
+          gap: 40px; //
+          // background-color: #fa0;
+
+          @include T() {
+            flex-direction: row;
+            justify-content: space-between;
+
+          }
+
+          .reserveStep {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: calc(100% - 120px);
+            max-width: 200px;
+
+            @include T() {
+              max-width: 240px;
+            }
+
+            img {
+              width: 100%;
+      
+            }
+            span {
+              //綠標
+              border: 1.618px solid $black;
+              padding: 12px;
+              transform: translateY(-20px);
+              background-color: $green-1;
+              display: flex;
+              align-items: center;
+              width: 180px;
+              white-space: nowrap;
+              overflow: hidden;
+              text-overflow: ellipsis;
+              text-align: center;
+              justify-content: center;
+              @include text();
+              @include T(){
+                width: 196px;
+              };
+            }
+          }
+
+
         }
       }
 
-      .reserveStep3 span {
-        // width: 290px;
-        display: flex;
-        flex-wrap: wrap;
-        flex-direction: column;
-        justify-content: center;
-        transform: translateX(26px) translateY(-20px);
-        width: 100%;
-        max-width: 150px;
 
-        @include PC() {
-          max-width: 250px;
-        }
-      }
+      
+
+      
+
+      // [class*="reserveStep"] {
+      //   position: relative;
+      // }
+
+      // [class*="reserveStep"]>span {
+      //   background-color: $green-1;
+      //   padding: $S-spacing $M-spacing;
+      //   border: 1px solid $blue-3;
+      //   // width: 200px;
+      //   width: fit-content;
+      //   text-align: center;
+      //   position: absolute;
+      // }
+
+      // .reserveStep1 span {
+      //   display: flex;
+      //   flex-direction: column;
+      //   transform: translateX(26px) translateY(-20px);
+
+      //   @include T() {
+      //     transform: translateX(75px) translateY(-20px);
+      //   }
+      // }
+
+      // .reserveStep2 span {
+      //   // width: 290px;
+      //   display: flex;
+      //   flex-wrap: wrap;
+      //   flex-direction: column;
+      //   justify-content: center;
+      //   transform: translateX(26px) translateY(-20px);
+      //   width: 100%;
+      //   max-width: 150px;
+
+      //   @include PC() {
+      //     max-width: 250px;
+      //   }
+      // }
+
+      // .reserveStep3 span {
+      //   // width: 290px;
+      //   display: flex;
+      //   flex-wrap: wrap;
+      //   flex-direction: column;
+      //   justify-content: center;
+      //   transform: translateX(26px) translateY(-20px);
+      //   width: 100%;
+      //   max-width: 150px;
+
+      //   @include PC() {
+      //     max-width: 250px;
+      //   }
+      // }
+    }
     }
 
     // Griddy造型屋
