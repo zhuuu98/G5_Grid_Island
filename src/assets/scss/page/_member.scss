@@ -331,8 +331,9 @@
             }
             .numPeople{
                 margin-left: 13%;
-                @include PC(){
-                    margin-left: 47%;
+
+                @include T(){
+                    margin-left: auto;
                 }
             }
             .chooseTime{
@@ -633,7 +634,7 @@
         background-color: $white-1;
         border-radius: $M-button-radius;
         padding:$M-spacing ;
-        gap:$M-spacing ;
+        gap:$L-spacing ;
 
 
     }
@@ -651,7 +652,25 @@
     }
     .OrderDataDetail{
         display: flex;
+        flex-direction: row;
+        align-items: center;
+        gap: 20px;
+        position: relative;
+    }
+    .OrderDataDetail::before{
+        content: ""; /* 必须有 content 属性 */
+        display: block; /* 使其成为块级元素，以便可以设置宽度和高度 */
+        width: 100%; /* 底线宽度与元素相同 */
+        height: 1px; /* 底线的高度 */
+        background-color: rgba($color: $blue-4, $alpha: 0.5); /* 底线的颜色 */
+        position: absolute; /* 绝对定位，根据父元素定位 */
+        top: -15%;; /* 底线位于父元素底部 */
+        left: 0; /* 底线与父元素左侧对齐 */
+    }
+    .detailText{
+        display: flex;
         flex-direction: column;
+        gap: 5px;
     }
     .OrderDataDetail img{
         width: 100%;
@@ -900,32 +919,37 @@
             }
             .PC_ContentTitle{
                 display: flex;
-                gap: 40px;
+                gap: 30px;
                 padding: $M-spacing;
             }
             .PC_ContentTitle p{
-                width: fit-content;
+                width: 4.25em;
                 text-align: center;
             }
             .PC_orderListText{
                 display: flex;
                 gap: $XL-spacing;
                 justify-content: space-around;
+                align-items: center;
                 @include T(){
-                    gap: 60px;
+                    gap: 0px;
                 }
                 @include PC(){
-                    gap: $XL-spacing;
+                    // gap: $XL-spacing;
                 }
             }
-            .PC_orderListText p{
+            .PC_orderListText p:first-child{
                 text-align: center;
-                width: fit-content;
+                width: 6em;
+            }
+            .PC_orderListText p:not(:first-child){
+                text-align: center;
+                width: 5.75em;
             }
             .PC_orderSimple{
                 display: flex;
                 justify-content: space-between;
-                margin: $M-spacing;
+                padding: $M-spacing;
                 align-items: center;
         
             }
@@ -970,10 +994,22 @@
                 padding: $M-spacing;
                 gap: 6%;
                 align-items: center;
+                position: relative;
+            }
+            .PC_OrderDataDetail::before{
+                content: ""; 
+                display: block; 
+                width: 95%; 
+                height: 1px; 
+                background-color: rgba($color: $blue-4, $alpha: 0.5); 
+                position: absolute; 
+                top: 0%; 
+                left: 2.5%; 
             }
             .PC_OrderDataDetail img{
                 width: 100%;
                 max-width: 100px;
+                border-radius: 8px;
             }
 
         }
@@ -1009,7 +1045,12 @@
         @include T() {
             max-width: 600px;
             width: 60vw;
-            left: 33%;
+            left: 25%;
+        }
+        @include PC() {
+            max-width: 600px;
+            width: 60vw;
+            left: 35%;
         }
         .alertCancel_content{
             display: flex;
