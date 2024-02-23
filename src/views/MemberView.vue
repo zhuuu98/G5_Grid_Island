@@ -37,8 +37,8 @@
                     <!-- <h3 v-if="memberData[0]" class="hello">
                         您好，{{ memberData[0].mem_nickname }}，歡迎入島遊玩！</h3> -->
                     <h3 class="hello" v-for="nickname in memberData">
-                        <p v-if="nickname.mem_nickname">您好，{{ nickname.mem_nickname }}，歡迎入島遊玩！</p>
-                        <p v-else>您好，{{ nickname.mem_name }}，歡迎入島遊玩！</p>
+                        <h3 v-if="nickname.mem_nickname">您好，{{ nickname.mem_nickname }}，歡迎入島遊玩！</h3>
+                        <h3 v-else>您好，{{ nickname.mem_name }}，歡迎入島遊玩！</h3>
                     </h3>
 
                     <!-- 訂單資訊 -->
@@ -88,7 +88,7 @@
                                             <p>
                                                 {{
                                                     data.book_time +
-                                                    data.book_start_time + `~` + data.book_end_time
+                                                    formatTime(data.book_start_time) + `~` + formatTime(data.book_end_time)
                                                 }}
                                             </p>
                                             <p>人數：{{ data.book_people }}人</p>
@@ -109,7 +109,8 @@
                                 <p>時段：</p>
                                 <div class="selectedTime">
                                     <div class="chooseTime">
-                                        <p>{{ data.book_time }}{{ data.book_start_time }}~{{ data.book_end_time }}</p>
+                                        <p>{{ data.book_time }}{{ formatTime(data.book_start_time) }}~{{
+                                            formatTime(data.book_end_time) }}</p>
 
                                     </div>
                                 </div>
@@ -131,10 +132,7 @@
                         <!-- <form action="" class="dataContent" method="post" v-if="memberData[0]"> -->
                         <form action="" class="dataContent" method="post" v-for="item in memberDataEdit">
                             <label for="memName">姓名</label>
-                            <input type="text" 
-                            v-model="item.mem_name" id="memName" 
-                            name="mem_name"
-                            >
+                            <input type="text" v-model="item.mem_name" id="memName" name="mem_name">
 
                             <label for="memNickname">暱稱</label>
                             <input type="text" v-model="item.mem_nickname" id="memNickname" name="mem_nickname">
@@ -142,12 +140,8 @@
                             <input type="email" v-model="item.mem_email" id="memEmail" name="mem_email" readonly
                                 class="email">
                             <label for="memTel">連絡電話</label>
-                            <input type="tel" 
-                            v-model="item.mem_tel" id="memTel" 
-                            name="mem_tel"
-                            
-                            pattern="[0-9]{10}" 
-                            title="必須為十位數字">
+                            <input type="tel" v-model="item.mem_tel" id="memTel" name="mem_tel" pattern="[0-9]{10}"
+                                title="必須為十位數字">
                             <div class="inputGender">
                                 <span>性別</span>
                                 <div class="genderRadio">
@@ -239,7 +233,7 @@
                                                 <p>
                                                     {{
                                                         data.book_time +
-                                                        data.book_start_time + `~` + data.book_end_time
+                                                        formatTime(data.book_start_time) + `~` + formatTime(data.book_end_time)
                                                     }}
                                                 </p>
                                                 <p>人數：{{ data.book_people }}人</p>
@@ -261,7 +255,8 @@
                                     <div class="selectedTime">
                                         <div class="chooseTime">
                                             <p>{{ data.book_time }}</p>
-                                            <p>{{ data.book_start_time }}~{{ data.book_end_time }}</p>
+                                            <p>{{ formatTime(data.book_start_time) }}~{{ formatTime(data.book_end_time) }}
+                                            </p>
                                         </div>
                                     </div>
                                     <div class="numPeople">
@@ -315,8 +310,8 @@
             <div class="mobileMember " v-for="item in memberData">
                 <!-- <img :src="`https://tibamef2e.com/chd104/g5/image/mem/${item.mem_profile}`" alt="會員頭貼"> -->
                 <img :src="fullImageUrl(item.mem_profile)" alt="會員頭貼">
-                <p v-if="item.mem_nickname">{{ item.mem_nickname }}</p>
-                <p v-else>{{ item.mem_name }}</p>
+                <h3 v-if="item.mem_nickname">{{ item.mem_nickname }}</h3>
+                <h3 v-else>{{ item.mem_name }}</h3>
             </div>
             <div class="memberMainMobile ">
                 <button class="mobileContent" v-for="(iconName, index) in mobileIcon" @click="handleButtonClick(index)">
@@ -376,19 +371,23 @@
                                 <div class="orderListText">
                                     <p>{{ items.ord_date }}</p>
                                     <p>{{ items.ord_id }}</p>
-                                    <p>${{ items.ord_pay }}</p>
+                                    <p>${{ items.ord_sum }}</p>
                                     <p>{{ items.ord_state === 0 ? '未完成' : '已完成' }}</p>
                                 </div>
                                 <button class="btn_sm_1" @click="OpenList(index)">訂單明細</button>
                             </div>
                             <div class="OrderDataDetail" v-for="(prod, prodIndex) in items.orderListInfo"
-                                v-show="prod.openOrderList">
-                                <img :src="`https://tibamef2e.com/chd104/g5/image/prod/${prod.prod_img1}`"
-                                    :alt="prod.prod_name">
-                                <p>{{ prod.prod_name }}</p>
-                                <p>${{ prod.ord_item_price }}</p>
-                                <p>{{ prod.ord_item_qty }}個</p>
-                                <p>${{ prod.ord_item_total }}</p>
+                                v-show="items.openOrderList">
+                                <div class="detailPic">
+                                    <img :src="`https://tibamef2e.com/chd104/g5/image/prod/${prod.prod_img1}`"
+                                        :alt="prod.prod_name">
+                                </div>
+                                <div class="detailText">
+                                    <p>{{ prod.prod_name }}</p>
+                                    <p>${{ prod.ord_item_price }}</p>
+                                    <p>{{ prod.ord_item_qty }}個</p>
+                                    <p>${{ prod.ord_item_total }}</p>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -407,7 +406,8 @@
                         <p>{{ data.book_date }}</p>
                         <button
                             :class="{ 'btn_sm_1': true, 'disabled': isPastDate(data.book_date) || data.book_state === 0 }"
-                            @click="alertCancelbox(index)" :disabled="isPastDate(data.book_date) || data.book_state === 0">{{
+                            @click="alertCancelbox(index)"
+                            :disabled="isPastDate(data.book_date) || data.book_state === 0">{{
                                 data.book_state === 0 ?
                                 '已經取消' : '取消預約' }}
                         </button>
@@ -425,7 +425,7 @@
                                     <p>
                                         {{
                                             data.book_time +
-                                            data.book_start_time + `~` + data.book_end_time
+                                            formatTime(data.book_start_time) + `~` + formatTime(data.book_end_time)
                                         }}
                                     </p>
                                     <p>人數：{{ data.book_people }}人</p>
@@ -746,12 +746,12 @@ export default {
             // console.log(this.memberData[0].mem_id);
         },
         editMemberData() {//修改會員資料
-            if(!this.memberDataEdit[0].mem_name){
+            if (!this.memberDataEdit[0].mem_name) {
                 alert('請輸入姓名');
                 document.getElementById("memName").focus()
                 return
             }
-            if (this.memberDataEdit[0].mem_tel.length!==10) {
+            if (this.memberDataEdit[0].mem_tel.length !== 10) {
                 alert('電話需十碼');
                 document.getElementById("memTel").focus()
                 return
@@ -805,9 +805,13 @@ export default {
         fullImageUrl(memProfile) {
             return `${import.meta.env.VITE_API_URL}/images/mem/${memProfile}`;
         },
-        checkEditData(){//檢查修改會員資料的正確性
-            const memName=this.memberDataEdit[0].mem_name;
-            const memTel=this.memberDataEdit[0].mem_tel;
+        checkEditData() {//檢查修改會員資料的正確性
+            const memName = this.memberDataEdit[0].mem_name;
+            const memTel = this.memberDataEdit[0].mem_tel;
+        },
+        formatTime(time) {
+            let date = new Date("1970-01-01 " + time);
+            return date.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit', hour12: false });
         },
     },
 
