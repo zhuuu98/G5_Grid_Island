@@ -92,7 +92,6 @@
     <!-- 檢舉燈箱 -->
     <div class="board_lb_re" v-show="board_light_box_report">
       <div class="board_lb_re_overlay" @click="light_box_re_close"></div>
-
       <div class="board_lb_re_box" v-if="userData && userData.mem_profile">
         <form action="" v-if="re_submit_show">
           <div class="board_lb_re_title">
@@ -115,7 +114,6 @@
           <font-awesome-icon :icon="['fas', 'xmark']" />
         </div>
       </div>
-
       <div class="board_lb_re_box" v-else>
         <!-- <h4>登入後即可檢舉</h4> -->
         <h4>請先登入Grid Island！</h4>
@@ -123,7 +121,6 @@
           <font-awesome-icon :icon="['fas', 'xmark']" />
         </div>
       </div>
-
     </div>
   </div>
 </template>
@@ -285,7 +282,7 @@ export default {
       let now = new Date();
       // 從 Date 對象中獲取年、月、日、時、分、秒
       let y = now.getFullYear(); // 年
-      let m = (now.getMonth() + 1).toString().padStart(2, '0'); // 月 (注意 JavaScript 中月份從 0 開始，所以需要加 1)
+      let m = (now.getMonth() + 1).toString().padStart(2, '0'); // 月 (JavaScript 中月份從 0 開始，所以需要加 1)
       let d = now.getDate().toString().padStart(2, '0'); // 日
       let h = now.getHours().toString().padStart(2, '0'); // 時
       let min = now.getMinutes().toString().padStart(2, '0'); // 分
@@ -293,7 +290,6 @@ export default {
 
       let time = y + '-' + m + '-' + d + ' ' + h + ':' + min + ':' + s;
       let memId = this.userData.mem_nickname ? this.userData.mem_nickname : this.userData.mem_name;
-      console.log(memId);
 
       let html = '<div class="board_re_card"><div class="board_re_id">'
         + '<div class="board_re_id_img"><img src="' + pic + '"></div>'
@@ -405,7 +401,6 @@ export default {
     // 判斷如果選擇其他必須輸入內容及勾選且不得為預設請選擇才可以送出
     updateReTextVisibility() {
       this.open_re_text = this.selectedOption === "lb_re_other";
-
       if ((this.selectedOption === "lb_re_other" && document.querySelector('.board_lb_re_box textarea').value == '') || this.selectedOption == "") {
         this.re_submit_disable = false;
       } else if (this.selectedOption === "lb_re_other" && document.querySelector('.board_lb_re_box textarea').value != '') {

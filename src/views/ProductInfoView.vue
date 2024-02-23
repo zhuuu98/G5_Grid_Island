@@ -25,9 +25,8 @@
             <div class="productPicArea">
               <div class="productMainPic">
                 <img
-                  :src="`https://tibamef2e.com/chd104/g5/image/prod/${
-                    prodData['prod_img' + mainPic]
-                  }`"
+                  :src="`http://localhost/image/prod/${
+                  prodData['prod_img' + mainPic]}`"
                   :alt="prodData.prod_name"
                 />
               </div>
@@ -39,7 +38,7 @@
                 >
                   <img
                     v-if="prodData['prod_img' + num]"
-                    :src="`https://tibamef2e.com/chd104/g5/image/prod/${
+                    :src="`http://localhost/image/prod/${
                       prodData['prod_img' + num]
                     }`"
                     :alt="prodData.prod_name"

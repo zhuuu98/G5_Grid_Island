@@ -166,7 +166,7 @@
         <button
           class="bookBtn"
           type="button"
-          @click="submitOrder"
+          @click="sendOrdertoDB"
           :class="{ disableBtn: optionSelect }"
         >
           送出訂單

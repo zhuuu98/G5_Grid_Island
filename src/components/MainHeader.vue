@@ -24,6 +24,7 @@
               <li>
                 <RouterLink to="/login" class="nav_link ">
                   <div class="nav_member_login" v-if="userData && userData.mem_profile">
+                    <!-- <img :src="mem_profile" alt="profile"> -->
                     <img class="header_login_profile" :src="fullImageUrl(userData.mem_profile)" alt="會員頭貼">
                   </div>
                   <div class="nav_member" v-else>
@@ -104,6 +105,7 @@
 </template>
 
 <script>
+import axios from "axios";
 import { RouterLink } from "vue-router";
 import userStore from '@/stores/user'
 import { mapActions } from 'pinia';
@@ -133,6 +135,19 @@ export default {
   },
   methods: {
     ...mapActions(userStore, ['updateUserData']),
+
+
+    getProfile() {
+      axios
+        .post(`${import.meta.env.VITE_API_URL}/headerProfile.php`, {})
+        .then(res => {
+          // console.log(res.data);
+          this.reData = res.data.Report;
+        })
+        .catch(error => console.error('發生錯誤:', error))
+    },
+
+
     toggleMenu() {
       // 切換 menuOpen 的值
       this.menuOpen = !this.menuOpen;
