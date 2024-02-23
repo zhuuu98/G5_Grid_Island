@@ -154,9 +154,12 @@ header {
         height: 100%;
         margin-bottom: 20px;
         @include PC(){
+          // overflow-y: hidden;
+          overflow-y: overlay;
+          // overflow: hidden;
           // margin-bottom: 0px;
-          // max-width: 1106px;
-          // max-height: 486px;
+          max-width: 1106px;
+          min-height: 541px;
 
         }
       }
