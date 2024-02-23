@@ -23,7 +23,6 @@
             </div>
             <div class="about_gi_text">
               <div class="about_gi_text_title">
-                <!-- <h3>Grid Island</h3> -->
                 <h3>Grid Island</h3>
               </div>
               <div class="about_gi_text_content">
@@ -39,13 +38,11 @@
         </div>
       </div>
 
-      <!-- ocean1 -->
-      <div class="ocean_1 about_ocean">
-        <img src="../../src/assets/images/about/about-ocean-1.svg" alt="about_ocean1">
-      </div>
-
       <!-- 環境介紹 -->
       <div class="about_en">
+        <div class="wave-imagebox">
+          <div v-html="wave" class="wave"></div>
+        </div>
         <div class="about_row">
           <div class="about_en_section" data-aos="fade-right" data-aos-mirror="true" data-aos-delay="200"
             data-aos-once="true" data-aos-duration="600" data-aos-offset="180">
@@ -105,12 +102,11 @@
         </div>
       </div>
 
-      <div class="ocean_2 about_ocean">
-        <img src="../../src/assets/images/about/about-ocean-2.svg" alt="ocean_2">
-      </div>
-
       <!-- griddy介紹 -->
       <div class="about_griddy">
+        <div class="wave-imagebox">
+          <div v-html="wave" class="wave"></div>
+        </div>
         <div class="about_row">
           <div class="about_griddy_section">
             <div class="about_griddy_img">
@@ -137,13 +133,11 @@
           </div>
         </div>
       </div>
-
-      <div class="ocean_3 about_ocean">
-        <img src="../../src/assets/images/about/about-ocean-3.svg" alt="ocean_3">
-      </div>
-
       <!-- 店鋪資訊 -->
       <div class="about_info">
+        <div class="wave-imagebox">
+          <div v-html="wave" class="wave"></div>
+        </div>
         <div class="about_row">
           <div class="about_info_section" data-aos="fade-left" data-aos-once="true" data-aos-duration="600"
             data-aos-offset="400">
@@ -174,18 +168,20 @@
 import "leaflet/dist/leaflet.css";
 import L from 'leaflet'
 import PageTitle from "../components/PageTitle.vue";
+import { wave } from "../policy/wave.js";
 export default {
   data() {
     return {
       zoom: 19,
       value: 0,
+      wave: wave,
       setting: {
         autoplay: false,
         autoplaySpeed: 2000,
         dots: 'inside',
         radiusDot: false,
         trigger: 'click',
-        arrow: 'hover'
+        arrow: 'hover',
       }
     };
   },
@@ -193,7 +189,7 @@ export default {
     PageTitle,
   },
   methods: {
-    // 取得leftlet marker圖片的路徑函式
+    // 取得leaflet marker圖片的路徑函式
     getMarkerSrc(imgName) {
       return new URL(`../assets/images/about/${imgName}`, import.meta.url).href
     },

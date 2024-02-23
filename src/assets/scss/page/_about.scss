@@ -90,7 +90,6 @@
             text-align: justify;
             color: $black;
             line-height: 165%; /* 22.5px */
-
             @include T(){
               font-size: $PC-text;
             }
@@ -110,9 +109,33 @@
       }
     }
   // 環境介紹
+
   &_en{
     width: 100%;
     background-color: $green-2;
+    position: relative;
+    .wave-imagebox {
+      width: 100%;
+      position: absolute;
+      bottom: calc(100% - 2px);
+      overflow: hidden;
+      .wave {
+        width: 240%;
+        z-index: 20;
+        .pathLine {
+          fill: $purple;
+        }
+        .pathPan {
+          fill: $green-2;
+        }
+        @include T() {
+          width: 200%;
+        }
+        @include PC() {
+          width: 120%;
+        }
+      }
+    }
     &_section{
       margin: 60px auto;
       >div{
@@ -227,8 +250,31 @@
     background-color: $blue-2;
     padding: 60px 0px;
     width: 100%;
+    position: relative;
     @include PC(){
       padding: 80px 0px;
+    }
+    .wave-imagebox {
+      width: 100%;
+      position: absolute;
+      bottom: calc(100% - 2px);
+      overflow: hidden;
+      .wave {
+        width: 240%;
+        z-index: 20;
+        .pathLine {
+          fill: $yellow;
+        }
+        .pathPan {
+          fill: $blue-2;
+        }
+        @include T() {
+          width: 200%;
+        }
+        @include PC() {
+          width: 120%;
+        }
+      }
     }
     .about_griddy_section{
       margin: auto;
@@ -239,8 +285,8 @@
         >div{
           width: 50%;
           margin: auto;
-        }
-      }
+        } 
+      } 
       .about_griddy_img {
         transform: rotate(-15deg); /* 將圖片順時針旋轉10度 */
         width: 55%;
@@ -316,8 +362,31 @@
     background-color: $green-1;
     padding: 60px 0px 90px 0px;
     width: 100%;
+    position: relative;
       @include PC(){
       padding: 80px 0px 160px 0px;
+      }
+      .wave-imagebox {
+        width: 100%;
+        position: absolute;
+        bottom: calc(100% - 2px);
+        overflow: hidden;
+        .wave {
+          width: 240%;
+          z-index: 20;
+          .pathLine {
+            fill: $orange-1;
+          }
+          .pathPan {
+            fill: $green-1;
+          }
+          @include T() {
+            width: 200%;
+          }
+          @include PC() {
+            width: 120%;
+          }
+        }
       }
     &_section{
       @include T(){
@@ -384,14 +453,6 @@
           z-index: 100!important;
         }
       }
-    }
-  }
-  .about_ocean{
-    width: 100vw;
-    outline: none;
-    vertical-align: bottom;
-    img{
-      width: 100%;
     }
   }
 } //about
