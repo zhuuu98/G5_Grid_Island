@@ -241,8 +241,7 @@ export default {
                         userData.mem_profile = data.newProfilePicPath;
 
                         this.userStoreData.updateUserData({ ...userData })
-                        console.log(userData)
-                        console.log(this.userStoreData.userData)
+
                         // 将更新后的用户数据保存回localStorage
                         // localStorage.setItem('userDataStr', JSON.stringify(userData));
 
