@@ -229,19 +229,30 @@
                         return response.json(); // 如果一切OK，就把伺服器回應的內容轉換成JavaScript對象，方便我們使用
                     })
                     .then(data => {
-                        // "data" 是上一步轉換成JavaScript物件的伺服器回應內容。
-                        // "data.error" 不是原生語法，而是伺服器設計者決定的一種方式，用來告訴我們請求是否在伺服器那邊處理成功。
-                        if (data.error) { // 如果有錯誤
-                            console.error('上傳失敗:', data.msg); // "console.error" 會在控制台顯示錯誤訊息。
-                        } else { // 如果沒有錯誤
-                            console.log('上傳成功:', data.msg); // "console.log" 會在控制台顯示成功訊息。
-                            // "console.error" 和 "console.log" 都會在控制台顯示訊息，但"console.error" 通常用於錯誤訊息，會以紅色顯示，更容易讓開發者注意到錯誤。
-                        }
+                        if (!data.error) {
+                            console.log('上传成功:', data.msg);
 
+                            // 从localStorage获取当前用户数据
+                            let userDataStr = localStorage.getItem('userDataStr');
+                            let userData = JSON.parse(userDataStr);
+
+                            // 更新userData中的mem_profile为后端返回的新大头贴路径
+                            userData.mem_profile = data.newProfilePicPath;
+
+                            // 将更新后的用户数据保存回localStorage
+                            localStorage.setItem('userDataStr', JSON.stringify(userData));
+
+                            // 这里可以添加其他逻辑，比如更新页面上显示的大头贴图片等
+                        } else {
+                            console.error('上传失败:', data.msg);
+                        }
                     })
                     .catch(error => { // 如果在發送請求或處理回應的過程中出現任何錯誤
                         console.error('上傳錯誤:', error); // 就在控制台顯示出錯的訊息
                     });
+            },
+            fullImageUrl(memProfile) {
+                return `${import.meta.env.VITE_API_URL}/images/mem/${memProfile}`;
             },
             showProfilePicModal() {
                 this.$refs.setMemPicModal.showModal();
@@ -320,7 +331,7 @@
                 this.selectedEyesColor = this.unifiedColors[8];
                 this.selectedEarsColor = this.unifiedColors[0];
                 this.selectedBackgroundColor = this.unifiedColors[18];
-                
+
 
                 // 如果有部件選項也需要重置，可以類似地添加這裡
                 this.selectedEyesStaff = this.eyesStaffs[0];
