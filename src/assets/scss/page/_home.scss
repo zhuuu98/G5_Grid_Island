@@ -34,7 +34,7 @@
       .index_row {
         outline: 2px solid red;
         padding: 0 0;
-        margin: 4rem auto  12rem auto;
+        margin: 4rem auto 12rem auto;
         display: flex;
         gap: 2rem;
         flex-direction: column;
@@ -68,7 +68,6 @@
 
           @include T() {
             padding: 3rem 0;
-
             max-width: $max-width;
           }
 
@@ -99,7 +98,6 @@
               linear-gradient(180deg, #ddd 1px, transparent 1px);
             background-size: 28px 28px, 28px 28px, cover;
             background-repeat: repeat, repeat, no-repeat;
-            padding: 0px;
             height: 280px;
 
 
@@ -164,7 +162,7 @@
 
                     p {
                       color: $black;
-                      font-size: $PC-text;
+                      @include H4();
                       white-space: nowrap;
                       overflow: hidden;
                       text-overflow: ellipsis;
@@ -228,9 +226,9 @@
               &::-webkit-scrollbar {
                 display: none;
               }
+
               p {
                 a {
-                  font-size: $M-text;
                   color: $white-1;
                   white-space: nowrap;
                   overflow: hidden;
@@ -276,7 +274,7 @@
         position: absolute;
         bottom: calc(100% - 2px);
         overflow: hidden;
-        
+
         .wave {
           width: 240%;
           z-index: 20;
@@ -303,10 +301,12 @@
         h1 {
           @include textStrokeEffect($black, $white-1, 6px);
         }
-        #griddystyle-contentbox{
+
+        #griddystyle-contentbox {
           width: 100%;
         }
-        span{
+
+        span {
           letter-spacing: .1em;
         }
       }
@@ -318,12 +318,13 @@
       // background-color: $blue-2;
       background-color: $orange-1;
       position: relative;
+
       .wave-imagebox {
         width: 100%;
         position: absolute;
         bottom: calc(100% - 2px);
         overflow: hidden;
-        
+
         .wave {
           width: 240%;
           z-index: 20;
@@ -345,41 +346,78 @@
           }
         }
       }
+
       .index_row {
         h1 {
           @include textStrokeEffect($black, $white-1, 6px);
         }
 
-        span {
-          font-size: 16px;
-          letter-spacing: 0.5px;
-          background-color: $green-1;
-          padding: 10px $M-spacing;
-          border: 1px solid $black;
-          color: $black;
-        }
-        .serviceMarqueeContent { // 白色區塊
-          overflow: hidden;
+
+        .servicebackground {
+          //白塊
+          width: 100%;
           background-color: $white-1;
-          border: 3px solid $black;
-          border-radius: $S-button-radius;
-          padding: $XL-spacing 0;
+          border: 3.2px solid $black;
+          border-radius: 28px;
+          padding: 2rem 0;
           display: flex;
-          // flex-direction: column;
-          // gap: $L-spacing;
-          width: 90%;
+          flex-direction: column;
           gap: $M-spacing;
-          background: $white-1 url("/src/assets/images/home/Grid.svg") no-repeat center;
-  
+          overflow: hidden;
+
           @include T() {
-            background: $white-1 url("/src/assets/images/home/Grid.svg") no-repeat center;
-            padding: $XXL-spacing 0;
-            width: 90%;
-          }
-  
-          @include PC() {
-            width: 100%;
+            padding: 3rem 0;
             max-width: $max-width;
+          }
+
+          
+
+          .serviceMarqueeContent {
+            // 跑馬燈區
+            overflow: hidden;
+            background-color: $white-1;
+            display: flex;
+            gap: $M-spacing;
+            width: 100%;
+            background-color: $white-1;
+            padding: 0;
+            display: flex;
+
+            border-top: 0px solid #ddd;
+            border-bottom: 1px solid #ccc;
+            background-image: linear-gradient(90deg,
+                #ddd 1px,
+                transparent 1px),
+              linear-gradient(180deg, #ddd 1px, transparent 1px);
+            background-size: 28px 28px, 28px 28px, cover;
+            background-repeat: repeat, repeat, no-repeat;
+            height: 336px;
+            
+            
+            
+
+            @include T() {
+              padding: 3rem 0;
+              max-width: $max-width;
+            }
+
+            span {
+              //綠標
+              border: 1.618px solid $black;
+              padding: 12px;
+              transform: translateY(-16px);
+              background-color: $green-1;
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              width: 160px;
+              white-space: nowrap;
+              overflow: hidden;
+              text-overflow: ellipsis;
+              @include text();
+
+            }
+
           }
         }
       }
@@ -392,12 +430,15 @@
         align-items: center;
         justify-content: center;
         animation: marquee 5s linear infinite;
+        
+
         // gap: $M-spacing;
       }
 
       .marqueePic img {
         vertical-align: top;
         width: 260px;
+        transform: translateY(20px);
 
         @include T() {
           width: 300px;

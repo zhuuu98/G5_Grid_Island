@@ -22,6 +22,7 @@
           <!-- 區塊內容 -->
           <h1 data-stroke="所有商品">所有商品</h1>
 
+          <!-- 白色區塊 -->
           <div class="prodBackground">
             <div class="prodBreif">
               <p>
@@ -138,53 +139,57 @@
           <h1 data-stroke="服務項目">服務項目</h1>
 
           <!-- 白色區塊 -->
-          <div class="serviceMarqueeContent">
-            <div class="marqueePic">
-              <img src="../assets/images/home/servicePic_1.svg" alt="首頁服務項目" />
-              <div class="marqueeText">
-                <span>桌遊販售</span>
+          <div class="servicebackground">
+
+            <!-- 跑馬燈區 -->
+            <div class="serviceMarqueeContent">
+              <div class="marqueePic">
+                <img src="../assets/images/home/servicePic_1.svg" alt="首頁服務項目" />
+                <div class="marqueeText">
+                  <span>桌遊販售</span>
+                </div>
               </div>
-            </div>
-            <div class="marqueePic">
-              <img src="../assets/images/home/servicePic_2.svg" alt="首頁服務項目" />
-              <div class="marqueeText">
-                <span>精釀啤酒與飲料</span>
+              <div class="marqueePic">
+                <img src="../assets/images/home/servicePic_2.svg" alt="首頁服務項目" />
+                <div class="marqueeText">
+                  <span>精釀啤酒與飲料</span>
+                </div>
               </div>
-            </div>
-            <div class="marqueePic">
-              <img src="../assets/images/home/servicePic_3.svg" alt="首頁服務項目" />
-              <div class="marqueeText">
-                <span>桌上遊戲遊玩與教學</span>
+              <div class="marqueePic">
+                <img src="../assets/images/home/servicePic_3.svg" alt="首頁服務項目" />
+                <div class="marqueeText">
+                  <span>桌上遊戲遊玩與教學</span>
+                </div>
               </div>
-            </div>
-            <div class="marqueePic">
-              <img src="../assets/images/home/servicePic_4.svg" alt="首頁服務項目" />
-              <div class="marqueeText">
-                <span>各式場地租借</span>
+              <div class="marqueePic">
+                <img src="../assets/images/home/servicePic_4.svg" alt="首頁服務項目" />
+                <div class="marqueeText">
+                  <span>各式場地租借</span>
+                </div>
               </div>
-            </div>
-            <div class="marqueePic">
-              <img src="../assets/images/home/servicePic_1.svg" alt="首頁服務項目" />
-              <div class="marqueeText">
-                <span>桌遊販售</span>
+              <div class="marqueePic">
+                <img src="../assets/images/home/servicePic_1.svg" alt="首頁服務項目" />
+                <div class="marqueeText">
+                  <span>桌遊販售</span>
+                </div>
               </div>
-            </div>
-            <div class="marqueePic">
-              <img src="../assets/images/home/servicePic_2.svg" alt="首頁服務項目" />
-              <div class="marqueeText">
-                <span>桌遊販售</span>
+              <div class="marqueePic">
+                <img src="../assets/images/home/servicePic_2.svg" alt="首頁服務項目" />
+                <div class="marqueeText">
+                  <span>桌遊販售</span>
+                </div>
               </div>
-            </div>
-            <div class="marqueePic">
-              <img src="../assets/images/home/servicePic_3.svg" alt="首頁服務項目" />
-              <div class="marqueeText">
-                <span>桌遊遊玩教學</span>
+              <div class="marqueePic">
+                <img src="../assets/images/home/servicePic_3.svg" alt="首頁服務項目" />
+                <div class="marqueeText">
+                  <span>桌遊遊玩教學</span>
+                </div>
               </div>
-            </div>
-            <div class="marqueePic">
-              <img src="../assets/images/home/servicePic_4.svg" alt="首頁服務項目" />
-              <div class="marqueeText">
-                <span>各式場地租借</span>
+              <div class="marqueePic">
+                <img src="../assets/images/home/servicePic_4.svg" alt="首頁服務項目" />
+                <div class="marqueeText">
+                  <span>各式場地租借</span>
+                </div>
               </div>
             </div>
           </div>
@@ -221,16 +226,7 @@
           <button class="btn_lg" @click="goBook()">預約場地</button>
         </div>
       </div>
-
-      <!-- Griddy造型屋 -->
-      <!-- <div class="index_griddy">
-		  <div class="index_row"></div>
-		</div> -->
-
-      <div class="home_ocean">
-        <img src="/images/home/home_ocean_temp.svg" alt="home_ocean_temp" />
-      </div>
-
+      
       <!-- 最新消息 -->
       <div class="index_news">
         <div class="index_row">
