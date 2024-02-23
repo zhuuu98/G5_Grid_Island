@@ -61,13 +61,15 @@
         }
         select{
           width: 130px;
-          height: 40px;
-          border: 2px solid $black;
-          border-radius: 20px;
-          padding: 8px;
+          height: 30px;
+          border: 1.618px solid $black;
+          // border-radius: 20px;
+          border-radius: 12px;
+          padding: 4px 8px;
           font-size: $M-text;
           outline: none;
           background-color: $white-1;
+          color: #444;
           cursor: pointer;
           option{
             font-size: $M-text;
