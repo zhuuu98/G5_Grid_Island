@@ -29,6 +29,7 @@
         <span>{{ formattedDate }}</span>
       </div>
       <div class="btn">
+        <font-awesome-icon :icon="['fas', 'arrow-up-from-bracket']" />
         <button class="btn_lg_orange" @click="shareOnFacebook">分享到Facebook</button>
       </div>
     </div>
