@@ -131,7 +131,10 @@
                         <!-- <form action="" class="dataContent" method="post" v-if="memberData[0]"> -->
                         <form action="" class="dataContent" method="post" v-for="item in memberDataEdit">
                             <label for="memName">姓名</label>
-                            <input type="text" v-model="item.mem_name" id="memName" name="mem_name">
+                            <input type="text" 
+                            v-model="item.mem_name" id="memName" 
+                            name="mem_name"
+                            >
 
                             <label for="memNickname">暱稱</label>
                             <input type="text" v-model="item.mem_nickname" id="memNickname" name="mem_nickname">
@@ -139,7 +142,12 @@
                             <input type="email" v-model="item.mem_email" id="memEmail" name="mem_email" readonly
                                 class="email">
                             <label for="memTel">連絡電話</label>
-                            <input type="tel" v-model="item.mem_tel" id="memTel" name="mem_tel">
+                            <input type="tel" 
+                            v-model="item.mem_tel" id="memTel" 
+                            name="mem_tel"
+                            
+                            pattern="[0-9]{10}" 
+                            title="必須為十位數字">
                             <div class="inputGender">
                                 <span>性別</span>
                                 <div class="genderRadio">
@@ -738,6 +746,17 @@ export default {
             // console.log(this.memberData[0].mem_id);
         },
         editMemberData() {//修改會員資料
+            if(!this.memberDataEdit[0].mem_name){
+                alert('請輸入姓名');
+                document.getElementById("memName").focus()
+                return
+            }
+            if (this.memberDataEdit[0].mem_tel.length!==10) {
+                alert('電話需十碼');
+                document.getElementById("memTel").focus()
+                return
+            }
+
             axios({
                 method: 'post',
                 url: `${import.meta.env.VITE_API_URL}/updateMember.php`,
@@ -753,7 +772,6 @@ export default {
                 }
             })
                 .then((res) => {
-                    console.log(this.memberDataEdit[0])
                     this.updateUserData(this.memberDataEdit[0])
                     alert("已修改完成");
                     location.reload()
@@ -762,7 +780,7 @@ export default {
                     console.log(error);
                 });
         },
-        confirmCancel() {
+        confirmCancel() {//確定取消預約
             axios({
                 method: 'post',
                 url: `${import.meta.env.VITE_API_URL}/memCancelBook.php`,
@@ -775,7 +793,7 @@ export default {
                 .then((res) => {
                     console.log(res.data);
                     console.log(this.bookInfo.book_state)
-                    alert("已修改完成");
+                    alert("已成功取消");
                     this.closeAlert();
                     location.reload()
                 })
@@ -786,6 +804,10 @@ export default {
         },
         fullImageUrl(memProfile) {
             return `${import.meta.env.VITE_API_URL}/images/mem/${memProfile}`;
+        },
+        checkEditData(){//檢查修改會員資料的正確性
+            const memName=this.memberDataEdit[0].mem_name;
+            const memTel=this.memberDataEdit[0].mem_tel;
         },
     },
 
