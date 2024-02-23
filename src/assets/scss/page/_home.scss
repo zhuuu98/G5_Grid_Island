@@ -157,6 +157,9 @@ main {
               bottom: -100px;
               height: 100px;
               overflow-y: auto;
+              &::-webkit-scrollbar {
+                display: none;
+              }
               p {
                 a {
                   font-size: $M-text;
