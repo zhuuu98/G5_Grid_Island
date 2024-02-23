@@ -24,9 +24,8 @@
               <li>
                 <RouterLink to="/login" class="nav_link ">
                   <div class="nav_member_login" v-if="userData && userData.mem_profile">
-                    <!-- <img :src="userData.mem_profile" alt="mem_profile"> -->
-                    <!-- <img :src="`https://tibamef2e.com/chd104/g5/image/mem/original.png`" :alt="會員頭貼"> -->
-                    <img class="header_login_profile" :src="`https://tibamef2e.com/chd104/g5/image/mem/${userData.mem_profile}`" alt="mem_profile">
+                    <!-- <img :src="mem_profile" alt="profile"> -->
+                    <img class="header_login_profile" :src="fullImageUrl(userData.mem_profile)" alt="會員頭貼">
                   </div>
                   <div class="nav_member" v-else>
                     <img src="../assets/images/header/header-member.svg" alt="header-member">
@@ -51,59 +50,52 @@
           <!-- 選單內容 -->
           <div v-if="menuOpen" class="ham_menu">
 
-            <!-- 漢堡內圖標 -->
-            <li class="inside_ham_btn">
-              <button @click="toggleMenu" class="ham_btn2">
-                <div :class="{ 'active-line1': menuOpen }" class="ham_btn2_line1"></div>
-
-                <div :class="{ 'active-line3': menuOpen }" class="ham_btn2_line3"></div>
-              </button>
-            </li>
-
-            <RouterLink to="/" class="ham_logo">
-              <img src="../assets/images/header/gdidlogobox.svg" alt="gdidlogobox">
-            </RouterLink>
-
-            <!-- 選單項目 -->
-            <div class="ham_links">
-              <RouterLink to="/prebook" class="ham_link ham_prebook">預約場地</RouterLink>
-              <div class="ham_hover_prebook ham_hover">Reservation</div>
-
-              <RouterLink to="/product" class="ham_link ham_products">所有商品</RouterLink>
-              <div class="ham_hover_products ham_hover">Products</div>
-
-              <RouterLink to="/news" class="ham_link ham_news">最新消息</RouterLink>
-              <div class="ham_hover_news ham_hover">NEWS</div>
-
-              <!-- 玩家社群，含子階層 -->
-              <div class="ham_comm" @click="toggleSubMenuOpen">
-                <div class="ham_link ham_comm">玩家社群
-                  <font-awesome-icon :icon="['fas', 'angle-right']" class="ham_angle_right" />
-                </div>
-                <div class="ham_hover_comm ham_hover">Community</div>
-
-                <ul class="submenu" v-show="subMenuOpen">
-                  <li class="ham_sub_bug">
-                    <img src="../assets/images//header/griddy_orange.png" alt="am_sub_bug" class="running">
-                  </li>
-                  <div>
-                    <li class="ham_sub_comm">
-                      <RouterLink to="/board">留言區</RouterLink>
-                    </li>
-                    <li class="ham_sub_comm">
-                      <RouterLink to="/team">報隊區</RouterLink>
-                    </li>
+            <div class="ham_menu_bg">
+              <!-- 漢堡內圖標 -->
+              <li class="inside_ham_btn">
+                <button @click="toggleMenu" class="ham_btn2">
+                  <div :class="{ 'active-line1': menuOpen }" class="ham_btn2_line1"></div>
+                  <div :class="{ 'active-line3': menuOpen }" class="ham_btn2_line3"></div>
+                </button>
+              </li>
+              <RouterLink to="/" class="ham_logo">
+                <img src="../assets/images/header/gdidlogobox.svg" alt="gdidlogobox">
+              </RouterLink>
+              <!-- 選單項目 -->
+              <div class="ham_links">
+                <RouterLink to="/prebook" class="ham_link ham_prebook">預約場地</RouterLink>
+                <div class="ham_hover_prebook ham_hover">Reservation</div>
+                <RouterLink to="/product" class="ham_link ham_products">所有商品</RouterLink>
+                <div class="ham_hover_products ham_hover">Products</div>
+                <RouterLink to="/news" class="ham_link ham_news">最新消息</RouterLink>
+                <div class="ham_hover_news ham_hover">NEWS</div>
+                <!-- 玩家社群，含子階層 -->
+                <div class="ham_comm" @click="toggleSubMenuOpen">
+                  <div class="ham_link ham_comm">玩家社群
+                    <font-awesome-icon :icon="['fas', 'angle-right']" class="ham_angle_right" />
                   </div>
-                </ul>
+                  <div class="ham_hover_comm ham_hover">Community</div>
+                  <ul class="submenu" v-show="subMenuOpen">
+                    <li class="ham_sub_bug">
+                      <img src="../assets/images//header/griddy_orange.png" alt="am_sub_bug" class="running">
+                    </li>
+                    <div>
+                      <li class="ham_sub_comm">
+                        <RouterLink to="/board">留言區</RouterLink>
+                      </li>
+                      <li class="ham_sub_comm">
+                        <RouterLink to="/team">報隊區</RouterLink>
+                      </li>
+                    </div>
+                  </ul>
+                </div>
+                <RouterLink to="/about" class="ham_link ham_about">關於我們</RouterLink>
+                <div class="ham_hover_about ham_hover">About Us</div>
+                <RouterLink to="/cart" class="ham_link ham_cart">購物車</RouterLink>
+                <div class="ham_hover_cart ham_hover">Cart</div>
+                <RouterLink to="/member" class="ham_link ham_member">會員中心</RouterLink>
+                <div class="ham_hover_member ham_hover">Member</div>
               </div>
-              <RouterLink to="/about" class="ham_link ham_about">關於我們</RouterLink>
-              <div class="ham_hover_about ham_hover">About Us</div>
-
-              <RouterLink to="/cart" class="ham_link ham_cart">購物車</RouterLink>
-              <div class="ham_hover_cart ham_hover">Cart</div>
-
-              <RouterLink to="/member" class="ham_link ham_member">會員中心</RouterLink>
-              <div class="ham_hover_member ham_hover">Member</div>
             </div>
           </div>
         </transition>
@@ -113,6 +105,7 @@
 </template>
 
 <script>
+import axios from "axios";
 import { RouterLink } from "vue-router";
 import userStore from '@/stores/user'
 import { mapActions } from 'pinia';
@@ -142,6 +135,19 @@ export default {
   },
   methods: {
     ...mapActions(userStore, ['updateUserData']),
+
+
+    getProfile() {
+      axios
+        .post(`${import.meta.env.VITE_API_URL}/headerProfile.php`, {})
+        .then(res => {
+          // console.log(res.data);
+          this.reData = res.data.Report;
+        })
+        .catch(error => console.error('發生錯誤:', error))
+    },
+
+
     toggleMenu() {
       // 切換 menuOpen 的值
       this.menuOpen = !this.menuOpen;
@@ -158,6 +164,10 @@ export default {
     toggleSubMenuOpen() {
       this.subMenuOpen = !this.subMenuOpen;
     },
+    //登入後更換大頭貼
+    fullImageUrl(memProfile) {
+      return `${import.meta.env.VITE_API_URL}/images/mem/${memProfile}`;
+    },
   },
   mounted() {
     // 監聽路由切換
@@ -173,7 +183,7 @@ export default {
     });
     //將登入的會員資料由json改為陣列
     const userData = JSON.parse(localStorage.getItem("userDataStr"));
-    this.updateUserData(userData)
+    this.updateUserData(userData);
   },
 };
 </script>

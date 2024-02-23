@@ -127,8 +127,6 @@
       </section>
     </div>
   </main>
-  <!-- 如果這邊可以理解的話可以把prebookView的.vue和route刪掉 -->
-  <PreBook v-if="prebookModel" @close="prebookModel = false" />
 </template>
 
 <script>

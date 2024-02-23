@@ -51,8 +51,10 @@
             data-aos-once="true" data-aos-duration="600" data-aos-offset="180">
             <!-- 輪播圖 -->
             <div class="about_en_imgs">
-              <Carousel v-model="value" :autoplay="true" :autoplay-speed="2000" :dots="outside" :radius-dot="true"
-                :trigger="click" :arrow="false">
+              <Carousel v-model="value" :autoplay="true" :autoplay-speed="2000" :radius-dot="true">
+                <!-- :dots="outside"  -->
+                <!-- :trigger="click"  -->
+                <!-- :arrow="false" -->
                 <!-- 輪播圖一 -->
                 <CarouselItem>
                   <div class="about_demo-carousel">
@@ -111,12 +113,10 @@
       <div class="about_griddy">
         <div class="about_row">
           <div class="about_griddy_section">
-
             <div class="about_griddy_img">
               <img src="../assets/images/about/about_card.png" class="rotate-image" alt="ocean_2" data-aos="flip-left"
                 data-aos-once="true" data-aos-duration="800" data-aos-offset="100">
             </div>
-
             <div class="about_griddy_text" data-aos="zoom-in" data-aos-once="true" data-aos-delay="400"
               data-aos-duration="600" data-aos-offset="0">
               <div class="about_griddy_title">
@@ -145,26 +145,23 @@
       <!-- 店鋪資訊 -->
       <div class="about_info">
         <div class="about_row">
-          <div class="about_info_section" data-aos="fade-left" data-aos-once="true"
-            data-aos-duration="600" data-aos-offset="400">
+          <div class="about_info_section" data-aos="fade-left" data-aos-once="true" data-aos-duration="600"
+            data-aos-offset="400">
             <div class="about_info_text">
               <div class="about_info_title">
                 <h3>店鋪資訊</h3>
               </div>
               <div class="about_info_content">
                 <p>
-                  Grid Island 座落在桃園市中壢區復興路46號9樓，是一個充滿活力的桌遊天堂。<br>
-                  營業時間自周一至周日，早上9點至晚上9點，絕對是發揮你遊戲技巧的最佳去處。無論是和好友輕鬆一局，還是舉辦派對聚會，我們都是你的最佳選擇。<br>
+                  Grid Island 座落在桃園市中壢區復興路46號9樓，是一個充滿活力的桌遊天堂。<br><br>
+                  營業時間自周一至周日，早上9點至晚上9點，絕對是發揮你遊戲技巧的最佳去處。無論是和好友輕鬆一局，還是舉辦派對聚會，我們都是你的最佳選擇。<br><br>
                   有任何疑問或特殊需求，請隨時撥打我們的專線<br>
                   03-4251108，我們隨時為您服務。
                 </p>
               </div>
             </div>
             <div class="about_info_map">
-              <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3617.2490359444596!2d121.22244777538359!3d24.957640341361998!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x346823ea50c732a5%3A0x1b5e6ee66e9fec49!2z57ev6IKyVGliYU1l6ZmE6Kit5Lit5aOi6IG36KiT5Lit5b-D!5e0!3m2!1szh-TW!2stw!4v1706431161266!5m2!1szh-TW!2stw"
-                allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-              <!-- width="600" height="450" style="border:0; -->
+              <div id="shopMap"></div>
             </div>
           </div>
         </div>
@@ -174,11 +171,13 @@
 </template>
 
 <script>
-// import axios from "axios";
+import "leaflet/dist/leaflet.css";
+import L from 'leaflet'
 import PageTitle from "../components/PageTitle.vue";
 export default {
   data() {
     return {
+      zoom: 19,
       value: 0,
       setting: {
         autoplay: false,
@@ -192,6 +191,29 @@ export default {
   },
   components: {
     PageTitle,
+  },
+  methods: {
+    // 取得leftlet marker圖片的路徑函式
+    getMarkerSrc(imgName) {
+      return new URL(`../assets/images/about/${imgName}`, import.meta.url).href
+    },
+  },
+  mounted() {
+    //leftlet
+    const map = L.map('shopMap').setView([24.957672860339283, 121.22503247550222], 16)
+    const blackIcon = new L.Icon({
+      iconUrl: this.getMarkerSrc('marker.png'),
+      iconSize: [70, 70],
+      iconAnchor: [12, 41],
+      popupAnchor: [1, -34],
+      shadowSize: [41, 41]
+    })
+    L.tileLayer('https://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png', {
+      maxZoom: 19,
+      attribution: ''
+    }).addTo(map);
+    var marker = new L.marker([24.957672860339283, 121.22503247550222], { icon: blackIcon }).addTo(map);
+    marker.bindPopup("<b>Grid Island 格線島</b><br>桃園市中壢區復興路46號8樓").openPopup();
   },
 };
 </script>

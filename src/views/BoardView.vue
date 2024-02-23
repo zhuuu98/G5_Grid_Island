@@ -1,7 +1,6 @@
 <template>
   <div class="board">
     <PageTitle :pageTitle="'玩家社群'" />
-    <!-- <div class="banner"></div> -->
     <div class="container">
       <div class="row">
         <div class="col-PC-10 col-T-10 col-10">
@@ -46,7 +45,6 @@
               <BoardCard v-for="item in modifiedCard" :key="'area3-' + item.msg_id" :item="item"
                 @open-report="open_light_box_report(item.msg_id)" @sent-reply="replyArticle" />
             </div>
-
           </div>
         </div>
       </div>
@@ -89,13 +87,12 @@
           <font-awesome-icon :icon="['fas', 'xmark']" />
         </div>
       </div>
-
     </div>
 
     <!-- 檢舉燈箱 -->
     <div class="board_lb_re" v-show="board_light_box_report">
       <div class="board_lb_re_overlay" @click="light_box_re_close"></div>
-      <div class="board_lb_re_box">
+      <div class="board_lb_re_box" v-if="userData && userData.mem_profile">
         <form action="" v-if="re_submit_show">
           <div class="board_lb_re_title">
             <h4>請問您要檢舉的項目是...</h4>
@@ -103,13 +100,6 @@
           <select id="re_option" v-model="selectedOption" @change="updateReTextVisibility">
             <option v-for="(report, index) in reports" :key="index" :value="report.value" :disabled="report.disabled"
               :selected="report.selected">{{ report.reason }}</option>
-            <!-- <option>廣告</option>
-            <option>帶有攻擊性言論</option>
-            <option>暴力或危險組織</option>
-            <option>我就是不喜歡</option>
-            <option>仇恨言論或象徵符號</option>
-            <option>不實資訊</option>
-            <option value="lb_re_other">其他</option> -->
           </select>
           <textarea cols="30" rows="10" v-show="open_re_text" placeholder="請敘述檢舉理由" @keyup="updateReTextVisibility"
             v-model="re_text_other"></textarea>
@@ -120,6 +110,13 @@
           <h4>已成功檢舉，謝謝您！</h4>
           <button @click="light_box_re_close" class="btn_sm_1">關閉</button>
         </div>
+        <div class="board_close_light_box" @click="light_box_re_close">
+          <font-awesome-icon :icon="['fas', 'xmark']" />
+        </div>
+      </div>
+      <div class="board_lb_re_box" v-else>
+        <!-- <h4>登入後即可檢舉</h4> -->
+        <h4>請先登入Grid Island！</h4>
         <div class="board_close_light_box" @click="light_box_re_close">
           <font-awesome-icon :icon="['fas', 'xmark']" />
         </div>
@@ -137,50 +134,12 @@ import { mapActions } from 'pinia';
 export default {
   data() {
     return {
-      card: [
-        // {
-        //   id: 1,
-        //   m_id: 1,
-        //   // id_img:'/images/board/board_id_img.svg',
-        //   id_img_alt: 'board_id_img',
-        //   memId: '1啊人家家就笨壓',
-        //   time: '2023/12/30 20:25',
-        //   msg: '在遊戲貪婪之島中，只要在問答大賽中答對最多問題，就能獲得統治者的祝福。',
-        //   // re_amount:2,
-        //   re: [
-        //     {
-        //       id: 1,
-        //       img: '/images/board/board_id_img.svg',
-        //       alt: 'board_id_img',
-        //       memId: '萵金',
-        //       time: '2023/12/30 20:25',
-        //       msg: '一般人會忘掉這種事嗎？只要喊出"book"就可以叫出卡冊，裡面存放所有目前收集到的卡片，可以取出卡片使用。',
-        //     },
-        //     {
-        //       id: 2,
-        //       img: '/images/board/board_id_img.svg',
-        //       alt: 'board_id_img',
-        //       memId: '金',
-        //       time: '2023/12/30 20:25',
-        //       msg: '你是一般人嗎？',
-        //     }
-        //   ]
-        // },
-        // {
-        //   id: 2,
-        //   // id_img:'../../public/images/board/board_id_img.svg',
-        //   id_img_alt: 'board_id_img',
-        //   memId: '2大傑',
-        //   time: '2023/12/30 20:25',
-        //   msg: '有人看到我爸嗎？',
-        //   re: []
-        // },
-      ],
+      card: [],
       reports: [{
         reason: '-請選擇檢舉項目-',
         value: '',
         disabled: true,
-        selected: true
+        selected: true,
       }, {
         reason: '廣告',
         value: '廣告'
@@ -229,16 +188,15 @@ export default {
   },
   computed: {
     userData() {
-      return this.userStoreData.userData || {}
+      return this.userStoreData.userData || {};
     },
     modifiedCardUnique() {
       return this.card.reduce((acc, cur) => {
         if (acc.findIndex(v => v.msg_id === cur.msg_id) === -1) {
           acc.push(cur)
         }
-
         return acc
-      }, [])
+      }, []);
     },
     modifiedCard() {
       return this.modifiedCardUnique.map(item => ({
@@ -281,11 +239,8 @@ export default {
             //有留言才會計算有幾則留言
             if (jsondata != null) {
               item.re_amount = jsondata.length;
-              // console.log(jsondata.length);
               for (let j = 0; j < jsondata.length; j++) {
                 let reitem = jsondata[j];
-                // console.log(reitem.reply_time.split('.')[0]);
-                // reitem.reply_time.split('.')
                 reitem.reply_time = reitem.reply_time.split('.')[0];
               }
             }
@@ -295,10 +250,8 @@ export default {
     },
     //發文PHP
     postArticle() {
-      // console.log(this.item);
       axios({
         method: 'post',
-        // url: `${import.meta.env.VITE_API_URL}/boardArticle.php`,
         url: `${import.meta.env.VITE_API_URL}/boardArticle.php`,
         headers: { "Content-Type": "multipart/form-data" },
         data: {
@@ -307,7 +260,6 @@ export default {
         }
       })
         .then((res) => {
-          // console.log('修改成功');
           this.run = true;
         })
         .catch((err) => {
@@ -330,24 +282,20 @@ export default {
       let now = new Date();
       // 從 Date 對象中獲取年、月、日、時、分、秒
       let y = now.getFullYear(); // 年
-      let m = (now.getMonth() + 1).toString().padStart(2, '0'); // 月 (注意 JavaScript 中月份從 0 開始，所以需要加 1)
+      let m = (now.getMonth() + 1).toString().padStart(2, '0'); // 月 (JavaScript 中月份從 0 開始，所以需要加 1)
       let d = now.getDate().toString().padStart(2, '0'); // 日
       let h = now.getHours().toString().padStart(2, '0'); // 時
       let min = now.getMinutes().toString().padStart(2, '0'); // 分
       let s = now.getSeconds().toString().padStart(2, '0'); // 秒
 
       let time = y + '-' + m + '-' + d + ' ' + h + ':' + min + ':' + s;
+      let memId = this.userData.mem_nickname ? this.userData.mem_nickname : this.userData.mem_name;
 
       let html = '<div class="board_re_card"><div class="board_re_id">'
         + '<div class="board_re_id_img"><img src="' + pic + '"></div>'
-        + '<div class="board_re_id_info"><div class="board_re_memId">' + this.userData.mem_name + '</div><div class="board_re_time">' + time + '</div></div></div>'
+        + '<div class="board_re_id_info"><div class="board_re_memId">' + memId
+        + '</div><div class="board_re_time">' + time + '</div></div></div>'
         + '<div class="board_re_msg"><p>' + re_text + '</p></div></div>';
-
-      // desktop.querySelector('board_re_input input').value = '';
-      // mobile.querySelector('.board_re_input input').value = '';
-      // document.querySelector('.re_area').value = '';
-
-
 
       axios({
         method: 'post',
@@ -373,16 +321,10 @@ export default {
           var cardWithIdOne = this.card.find(function (item) {
             return item.msg_id == msg_id;
           });
-
-          // console.log(cardWithIdOne.hasOwnProperty('re_amount'));
-          // console.log(cardWithIdOne);
-
           // 如果找到了對應的卡片，則 re_amount 初始化為 1 
           if (cardWithIdOne && !cardWithIdOne.hasOwnProperty('re_amount')) {
-            // return cardWithIdOne.re_amount = 1;
             cardWithIdOne.re_amount = 1;
           } else {// 如果找到了對應的卡片，則將 re_amount 加 1
-            // return cardWithIdOne.re_amount += 1;
             cardWithIdOne.re_amount += 1;
           }
         })
@@ -400,7 +342,6 @@ export default {
         data: {
           msg_id: this.activeReportMsgId,
           report_reason: this.selectedOption === 'lb_re_other' ? this.re_text_other : this.selectedOption,
-          //msg_content: document.querySelector('.light_box textarea').value,
         }
       })
         .then((res) => {
@@ -423,7 +364,6 @@ export default {
     },
     // 發文燈箱關閉
     light_box_close() {
-      // this.board_light_box_open = false;
       this.board_light_box_open = false;
       document.body.classList.remove('body-overflow-hidden');
     },
@@ -461,7 +401,6 @@ export default {
     // 判斷如果選擇其他必須輸入內容及勾選且不得為預設請選擇才可以送出
     updateReTextVisibility() {
       this.open_re_text = this.selectedOption === "lb_re_other";
-
       if ((this.selectedOption === "lb_re_other" && document.querySelector('.board_lb_re_box textarea').value == '') || this.selectedOption == "") {
         this.re_submit_disable = false;
       } else if (this.selectedOption === "lb_re_other" && document.querySelector('.board_lb_re_box textarea').value != '') {
@@ -502,7 +441,6 @@ export default {
   mounted() {
     //將登入的會員資料由json改為陣列
     const userData = JSON.parse(localStorage.getItem("userDataStr"));
-    // console.log(userData);
     this.updateUserData(userData)
   },
 };

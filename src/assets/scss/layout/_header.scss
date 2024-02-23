@@ -20,14 +20,12 @@ header {
         height: 45px;
       }
     }
-
     .header_icons {
       display: flex;
       padding-right: 20px;
       font-size: 16px;
       letter-spacing: 2px;
       align-items: center;
-      // background-color: #9e6fcd;
       ul {
         justify-content: center;
         display: flex;
@@ -45,12 +43,10 @@ header {
             color: $black;
             .nav_member_login{
               overflow: hidden;
+              width: 28px;
               height: 28px;
               border-radius: 50%;
-              .header_login_profile{
-                width: 100%;
-                vertical-align: top;
-              }
+              box-sizing: border-box;
             }
             img{
               vertical-align: top;
@@ -76,12 +72,7 @@ header {
         justify-content: space-between;
         width: 18px;
         cursor: pointer;
-        // z-index: 990;
         outline: none;
-        // border: 1px solid red;
-        @include PC(){
-          // z-index: 1;
-        }
         // 漢堡線
         .ham_btn_line1 {
           /* 初始樣式 */
@@ -119,7 +110,6 @@ header {
           }
         }
         .active-line2 {
-          // opacity: 0;
           height: 0;
         }
         .active-line3 {
@@ -128,7 +118,7 @@ header {
           @include PC(){
             transform: translateY(0) rotate(0deg);
           }
-          }
+        }
       }
     }
 
@@ -143,25 +133,38 @@ header {
       top: 0;
       position: fixed;
       z-index: 950;
-      background-color: $white-2;
-      border: 16px solid $blue-1;
-      border-top: 60px solid $blue-1;
+      background-color: $blue-1;
+      border-top: 80px solid $blue-1;
       box-sizing: border-box;
-      padding: 20px;
       gap: 20px;
       font-size: $PC-h4;
-      //還沒成功的彈跳效果
-      // animation: bounceIn 1s cubic-bezier(.8,-0.3,.7,.1);
-      // animation: bounceIn 1s cubic-bezier(.68, -0.55, 0.27, 1.55);
       @include T(){
-        padding: 40px;
+        border-top: 70px solid $blue-1;
+        // padding: 20px;
       }
       @include PC(){
-        padding: 60px 80px;
+        border-top: 70px solid $blue-1;
+      }
+      .ham_menu_bg{
+        padding: 20px;
+        border-radius: 28px;
+        background-color: $white-1;
+        margin: auto;
+        width: 90%;
+        height: 100%;
+        margin-bottom: 20px;
+        @include PC(){
+          // overflow-y: hidden;
+          overflow-y: overlay;
+          // overflow: hidden;
+          // margin-bottom: 0px;
+          max-width: 1106px;
+          min-height: 541px;
+
+        }
       }
       // 選單內漢堡線
       .inside_ham_btn{
-        // display: none;
         position: absolute;
         top:-38px;
         right: 12px;
@@ -169,8 +172,14 @@ header {
         width: 18px;
         cursor: pointer;
         z-index: 990;
+        top: -57px;
+        right: 27px;
+        @include T(){
+          top: -28px;
+        }
         @include PC(){
-          right: 28px;
+          top: -48px;
+          right: 45px;
         }
         .ham_btn2{
           border: none;
@@ -186,8 +195,7 @@ header {
           outline: none;
           &:hover{
             .ham_btn2_line1, .ham_btn2_line3{
-              box-shadow: rgba(14, 30, 37, 0.12) 0px 0px 2px 0px, rgba(14, 30, 37, 0.32) 0px 0px 4px 0px;
-
+              background-color: $orange-2;
             }
           }
           .ham_btn2_line1 {
@@ -196,6 +204,7 @@ header {
             width: 21px;
             height: 2px;
             border-radius: 5px;
+
           }
           .ham_btn2_line3 {
             transform: translateY(-7.8px) rotate(-45deg);
@@ -215,10 +224,16 @@ header {
         transform: translateX(-50%);
         width: 130px;
         img{
-        vertical-align: bottom;
-        margin: auto;
-        width: 100%;
-        border: none;
+          vertical-align: bottom;
+          margin: auto;
+          width: 100%;
+          border: none;
+        }
+        @include T(){
+          top: -55px;
+        }
+        @include PC(){
+          top: -58px;
         }
       }
 
@@ -232,6 +247,7 @@ header {
           display: flex;
           text-align: center;
           // background-color: #9e6fcd;
+          z-index: 10;
           &:hover{
             background-color: $green-1;
             font-weight: bold;
@@ -252,13 +268,15 @@ header {
           .ham_hover{
             @include HeaderHover;
             position: absolute;
-            bottom: -25px;
-            right: 0px;
+            // bottom: -25px;
+            bottom: 20px;
+            right: 100px;
             display: none;
-            z-index: -1;
+            z-index: 1;
           }
           // prebook hover效果
           .ham_prebook{
+            transition: all .3s;
             &:hover{
               +.ham_hover_prebook{
                 display: block;
@@ -268,6 +286,7 @@ header {
           }
           // news hover效果
           .ham_news{
+            transition: all .3s;
             &:hover{
               +.ham_hover_news{
                 display: block;
@@ -277,6 +296,7 @@ header {
           }
           // products hover效果
           .ham_products{
+            transition: all .3s;
             &:hover{
               +.ham_hover_products{
                 display: block;
@@ -286,6 +306,7 @@ header {
           }
           // comm hover效果
           .ham_comm{
+            transition: all .3s;
             &:hover{
               +.ham_hover_comm{
                 display: block;
@@ -295,6 +316,7 @@ header {
           }
           // about hover效果
           .ham_about{
+            transition: all .3s;
             &:hover{
               +.ham_hover_about{
                 display: block;
@@ -304,6 +326,7 @@ header {
           }
           // cart hover效果
           .ham_cart{
+            transition: all .3s;
             &:hover{
               +.ham_hover_cart{
                 display: block;
@@ -313,6 +336,7 @@ header {
           }
           // member hover效果
           .ham_member{
+            transition: all .3s;
             &:hover{
               +.ham_hover_member{
                 display: block;
@@ -322,7 +346,7 @@ header {
           }
         }
           
-        .ham_comm{
+        .ham_comm{  
           display: flex;
           cursor: pointer;
           align-items: center;
@@ -370,16 +394,13 @@ header {
   } //wrapper
 } //header
 
-
-
-// 滑動動畫
 /* 滑入效果  */
 @keyframes slideInFromTop {
   from {
-    transform: translateY(-100%); /* 初始位置在上方屏幕外 */
+    transform: translateY(-100%); /* 初始位置在上方螢幕外 */
   }
   to {
-    transform: translateY(0); /* 最終位置在屏幕內 */
+    transform: translateY(0); /* 最終位置在螢幕內 */
   }
 }
 
@@ -414,50 +435,7 @@ header {
   }
 }
 
-
 /* 樣式修改：在開啟燈箱時禁止滾動頁面 */
 .body-overflow-hidden {
   overflow: hidden;
 }
-
-// 讓header sticky，在首頁用js加上這個類
-.sticky-header {
-  // display: none;
-}
-
-
-
-
-
-
-
-// 封存
-
-/* 還沒成功的彈跳點 */
-// @keyframes bounceIn {
-//   0%{
-//     top: 0px;
-//   }
-//   25%{
-//     top: 200px;
-//   }
-//   35%{
-//     top: 100%;
-//   }
-//   50%{
-//     top: 80%;
-//   }
-//   75%{
-//     top: 100%;
-//     }
-//   90%{
-//     top: 20%;
-//   }
-//   100%{
-//     top: 100%;
-//   }
-// }
-
-
-
-

@@ -29,11 +29,11 @@
 
 <script>
     import { unifiedColors } from "@/policy/color.js";
-    
+
     export default {
         name: 'SkinComponent',
         props: {
-            currentTab: String , // 假設currentColor是一個字符串類型的prop
+            currentTab: String, // 假設currentColor是一個字符串類型的prop
             defaultBodyColor: String,
             defaultBellyColor: String,
             defaultSpotColor: String,
@@ -65,6 +65,17 @@
                 console.log("事件已發射，斑點顏色：", spotColor);
             },
         },
+        watch: {
+            defaultBodyColor(newVal) {
+                this.selectedBodyColor = newVal;
+            },
+            defaultBellyColor(newVal) {
+                this.selectedBellyColor = newVal;
+            },
+            defaultSpotColor(newVal) {
+                this.selectedSpotColor = newVal;
+            },
+        }
+
     };
-    </script>
-    
+</script>

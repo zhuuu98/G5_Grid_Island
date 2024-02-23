@@ -4,7 +4,8 @@
             <h4>配件</h4>
             <ul class="accessories-options options-staff">
                 <button v-for="(accessoriesStaff, index) in accessoriesStaffs" :key="accessoriesStaff.staff"
-                    @click="handleAccessoriesStaffChange(accessoriesStaff.staff)" :class="{ active: selectedAccessoriesStaff === accessoriesStaff.staff }">
+                    @click="handleAccessoriesStaffChange(accessoriesStaff.staff)"
+                    :class="{ active: selectedAccessoriesStaff === accessoriesStaff.staff }">
                     {{ accessoriesStaff.name }}
                 </button>
             </ul>
@@ -43,11 +44,17 @@
             };
         },
         methods: {
-            handleAccessoriesStaffChange (accessoriesStaff){
+            handleAccessoriesStaffChange(accessoriesStaff) {
                 this.selectedAccessoriesStaff = accessoriesStaff;
                 this.$emit('accessories-staff-selected', accessoriesStaff);
                 console.log("事件已發射，配件圖片碼：", accessoriesStaff);
             }
         },
+        watch: {
+            defaultAccessoriesStaff(newVal) {
+                this.selectedAccessoriesStaff = newVal;
+            }
+        }
+
     };
 </script>
