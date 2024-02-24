@@ -123,6 +123,9 @@
       margin: auto;
       order: 3;
       padding: $XXL-spacing 0 0;
+      .svg-inline--fa {
+        width: 20px;
+      }
       button {
         width: 250px;
         // height: 45px;
