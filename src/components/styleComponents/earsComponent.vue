@@ -32,6 +32,7 @@
     import { earsStaff6 } from "@/policy/color.js"
     import { earsStaff7 } from "@/policy/color.js"
     import { earsStaff8 } from "@/policy/color.js"
+    import { earsStaff9 } from "@/policy/color.js"
     import { unifiedColors } from "@/policy/color.js";
 
     export default {
@@ -50,8 +51,9 @@
                     { name: "犄角", staff: earsStaff4 },
                     { name: "獸耳", staff: earsStaff5 },
                     { name: "蓬鬆", staff: earsStaff6 },
-                    { name: "搖滾", staff: earsStaff7 },
+                    { name: "龐克", staff: earsStaff7 },
                     { name: "光滑", staff: earsStaff8 },
+                    { name: "創造物", staff: earsStaff9 },
                 ],
                 earsColors: unifiedColors,
                 selectedEarsColor: this.defaultEarsColor, // 初始化時從props接收的值
