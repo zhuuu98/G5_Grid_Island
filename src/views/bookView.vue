@@ -304,6 +304,7 @@ export default {
             if (this.dateChosen == '' || this.tableChosen == '' || this.timeChosen == '') {
                 this.alertContent.push('請填寫完整預訂資訊') 
                 this.showAlert = true;
+                document.body.classList.add('body-overflow-hidden');
             } else {
                 axios({
                     method: 'post',
@@ -332,6 +333,7 @@ export default {
                             tableName = '十二人桌'
                     }
                     this.alertContent.push(`預約成功！以下是您的預約資訊`, `選擇日期：${this.dateChosen}`, `選擇桌型：${tableName}`, `選擇時段：${this.timeChosen}`, `預定人數：${this.count}人`)
+                    document.body.classList.add('body-overflow-hidden');
                     this.showAlert = true;
                     this.dateChosen = '';
                     this.tableChosen = '';
