@@ -322,6 +322,11 @@ body {
         justify-content: end;
         padding: $M-spacing $XXL-spacing $XL-spacing $XXL-spacing;
         column-gap: $S-spacing;
+        .svg-inline--fa {
+          width: 8px;
+          margin-top: 8px;
+        }
+
         .pageBtncursor {
           cursor: pointer;
         }

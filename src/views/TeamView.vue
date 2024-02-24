@@ -33,16 +33,17 @@
               <!-- 身分區 -->
               <div class="team_card_id">
                 <div class="team_card_img">
-                  <!-- <img :src="item.id_img" :alt="item.id_img_alt"> -->
-                  <img src="/images/board/board_id_img.svg" alt="board_id_img">
+                  <img src="../assets/images/team/team_id_img.png" alt="team_id_img">
                 </div>
                 <div class="team_card_id_info">
                   <div class="team_card_name">
-                    <h4>{{ item.memName }}</h4>
+                    <div>{{ item.memName }}</div>
                   </div>
-                  <div class="team_card_memId">
-                    <p>#{{ item.memId }}</p>
-                  </div>
+                  <!-- <div class="team_card_memId"> -->
+                  <!-- <p>{{ item.date }}</p>
+                    <p>{{ item.time }}</p> -->
+                  <!-- <p>#{{ item.memId }}</p> -->
+                  <!-- </div> -->
                 </div>
               </div>
               <!-- 時間 -->
@@ -84,7 +85,6 @@
         <form action="post" v-if="article_send_succ">
           <h3 class="team_lb_title">我要組隊</h3>
           <div>
-            <!-- <p class="team_lb_subTitle">組隊宣言</p> -->
             <textarea name="" id="" cols="35" rows="10" placeholder="輸入組隊宣言..." @keyup="article_send"></textarea>
           </div>
           <div class="team_light_box_send">
@@ -111,7 +111,6 @@
       <div class="overlay" @click="team_join_lb_close"></div>
       <div class="box">
 
-        <!-- <form action="post" v-if="join_succ"> -->
         <form action="post" v-if="join_succ">
           <h3 class="team_join_lb_title">是否確認報隊？</h3>
 
@@ -132,6 +131,15 @@
       </div>
     </div>
 
+    <div class="griddy_ani" v-show="fight">
+      <div class="left_griddy griddy">
+        <img src="../assets/images/team/left_griddy.png" alt="left_griddy">
+      </div>
+      <div class="right_griddy griddy">
+        <img src="../assets/images/team/right_griddy.png" alt="right_griddy">
+      </div>
+    </div>
+
 
 
 
@@ -143,7 +151,6 @@
 
 
 <script>
-// import axios from "axios";
 import PageTitle from "../components/PageTitle.vue";
 export default {
   data() {
@@ -151,8 +158,6 @@ export default {
       card: [
         {
           id: 1,
-          // id_img:'./src/assets/images/team/team_id_img.svg',
-          id_img_alt: 'team_id_img',
           memName: '窩金',
           memId: '202312300001',
           date: '2023/3/9',
@@ -162,8 +167,6 @@ export default {
         },
         {
           id: 2,
-          // id_img:'./src/assets/images/team/team_id_img.svg',
-          id_img_alt: 'team_id_img',
           memName: '甘舒',
           memId: '202312300002',
           date: '2023/3/11',
@@ -173,8 +176,6 @@ export default {
         },
         {
           id: 3,
-          // id_img:'./src/assets/images/team/team_id_img.svg',
-          id_img_alt: 'team_id_img',
           memName: '金',
           memId: '202312300003',
           date: '2023/3/12',
@@ -184,8 +185,6 @@ export default {
         },
         {
           id: 4,
-          // id_img:'./src/assets/images/team/team_id_img.svg',
-          id_img_alt: 'team_id_img',
           memName: '大傑',
           memId: '202312300004',
           date: '2023/3/12',
@@ -195,8 +194,6 @@ export default {
         },
         {
           id: 5,
-          // id_img:'./src/assets/images/team/team_id_img.svg',
-          id_img_alt: 'team_id_img',
           memName: '酷逼',
           memId: '202312300005',
           date: '2023/3/15',
@@ -206,8 +203,6 @@ export default {
         },
         {
           id: 6,
-          // id_img:'./src/assets/images/team/team_id_img.svg',
-          id_img_alt: 'team_id_img',
           memName: '奇牙',
           memId: '202312300005',
           date: '2023/3/17',
@@ -217,8 +212,6 @@ export default {
         },
         {
           id: 7,
-          // id_img:'./src/assets/images/team/team_id_img.svg',
-          id_img_alt: 'team_id_img',
           memName: '灰傑克',
           memId: '202312300007',
           date: '2023/3/21',
@@ -228,8 +221,6 @@ export default {
         },
         {
           id: 8,
-          // id_img:'./src/assets/images/team/team_id_img.svg',
-          id_img_alt: 'team_id_img',
           memName: '皮諾渴',
           memId: '202312300008',
           date: '2023/3/24',
@@ -239,8 +230,6 @@ export default {
         },
         {
           id: 9,
-          // id_img:'./src/assets/images/team/team_id_img.svg',
-          id_img_alt: 'team_id_img',
           memName: '明人',
           memId: '202312300009',
           date: '2023/3/24',
@@ -250,8 +239,6 @@ export default {
         },
         {
           id: 10,
-          // id_img:'./src/assets/images/team/team_id_img.svg',
-          id_img_alt: 'team_id_img',
           memName: '酷喇皮卡',
           memId: '202312300010',
           date: '2023/3/25',
@@ -261,8 +248,6 @@ export default {
         },
         {
           id: 11,
-          // id_img:'./src/assets/images/team/team_id_img.svg',
-          id_img_alt: 'team_id_img',
           memName: '大傑',
           memId: '202312300011',
           date: '2023/3/26',
@@ -272,8 +257,6 @@ export default {
         },
         {
           id: 12,
-          // id_img:'./src/assets/images/team/team_id_img.svg',
-          id_img_alt: 'team_id_img',
           memName: '啊人家家就笨壓',
           memId: '202312300012',
           date: '2023/3/28',
@@ -283,8 +266,6 @@ export default {
         },
         {
           id: 13,
-          // id_img:'./src/assets/images/team/team_id_img.svg',
-          id_img_alt: 'team_id_img',
           memName: '那美',
           memId: '202312300013',
           date: '2023/3/29',
@@ -294,8 +275,6 @@ export default {
         },
         {
           id: 14,
-          // id_img:'./src/assets/images/team/team_id_img.svg',
-          id_img_alt: 'team_id_img',
           memName: '海綿小寶',
           memId: '202312300014',
           date: '2023/3/29',
@@ -313,16 +292,13 @@ export default {
       // 報團
       team_join_lb: false,
       join_succ: true,
+      //動畫
+      fight: false,
     };
-  },
-  computed: {
-
   },
   components: {
     PageTitle,
   },
-  created() { },
-  mounted() { },
   methods: {
     // 發文燈箱
     // 打開發文燈箱
@@ -360,6 +336,7 @@ export default {
     },
     join_send_btn() {
       this.join_succ = false;
+      this.fight = true;
     },
   },
 };
