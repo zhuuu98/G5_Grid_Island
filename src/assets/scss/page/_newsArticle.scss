@@ -119,17 +119,68 @@
         padding: $M-spacing 230px;
       }
     }
-    .btn {
-      margin: auto;
+    .bottomArea {
       order: 3;
-      padding: $XXL-spacing 0 0;
+      display: flex;
+    }
+    .category {
+      p {
+        padding: 4px 10px;
+        border-radius: $M-button-radius; 
+        background-color: $gray-1;
+        margin: auto;
+        color: $blue-4;
+      }
+      margin-right: auto;
+      padding: 72.67px $L-spacing 0;
+      @include M() {
+        padding: 72.67px $L-spacing 0;
+      }
+      @include T() {
+        padding: 72.67px 60px 0;
+      }
+      @include PC() {
+        padding: 72.67px 230px 0;
+      }
+    }
+    .btn {
+      padding: 0 $L-spacing $M-spacing 0;
+      margin-left: auto;
+      @include T() {
+        padding: 0 60px $M-spacing 0;
+      }
+      @include PC() {
+        padding: 0 230px $M-spacing 0;
+      }
+
+      .tableDiv {
+        width: 145.22px;
+        height: 72.67px;
+      }
+      table {
+        border-collapse: collapse;
+        border-radius: 8px;
+        background-color: #fff;
+        box-shadow:0px 2px 8px 0 rgba($color: $blue-4, $alpha: .15);
+      }
+      td {
+        padding: 5px 12px 7px;
+        p {
+          cursor: pointer;
+        }
+      }
+      .copy {
+        border-bottom: 1px solid $gray-1;
+      }
       .svg-inline--fa {
-        width: 20px;
+        padding: 9px 0 0;
+        width: 19px;
+      cursor: pointer;
       }
-      button {
-        width: 250px;
-        // height: 45px;
-      }
+    }
+    .shareBtn {
+      display: flex;
+      justify-content: flex-end;
     }
   }
 }

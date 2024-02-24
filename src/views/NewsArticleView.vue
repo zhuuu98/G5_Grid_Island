@@ -28,9 +28,29 @@
       <div class="date">
         <span>{{ formattedDate }}</span>
       </div>
-      <div class="btn">
-        <font-awesome-icon :icon="['fas', 'arrow-up-from-bracket']" />
-        <button class="btn_lg_orange" @click="shareOnFacebook">分享到Facebook</button>
+      <div class="bottomArea">
+        <div class="category" title="消息分類">
+          <router-link to="/news">
+            <p>{{ newsData.news_category }}</p>
+          </router-link>
+        </div>
+        <div class="btn">
+          <div v-show="!share" class="tableDiv"></div>
+          <table v-show="share">
+            <th></th>
+            <tbody>
+              <tr>
+                <td class="copy"><p @click="copyLink" >複製文章網址</p></td>
+              </tr>
+              <tr>
+                <td><p @click="shareOnFacebook">分享到Facebook</p></td>
+              </tr>
+            </tbody>
+          </table>
+          <div class="shareBtn" @click="showShareList">
+            <font-awesome-icon :icon="['fas', 'arrow-up-from-bracket']" />
+          </div>
+        </div>
       </div>
     </div>
   </main>
@@ -39,7 +59,7 @@
 <script>
 import axios from "axios";
 import PageTitle from "../components/PageTitle.vue";
-
+import Clipboard from 'clipboard';
 export default {
   data() {
     return {
@@ -51,6 +71,9 @@ export default {
         news_id: null,
       },
       pageId: null,
+      share: false,
+      clipboard: null,
+      copyText:`https://tibamef2e.com/chd104/g5/front/newsArticle/${this.$route.params.id}`,
     };
   },
   components: {
@@ -64,10 +87,15 @@ export default {
   created() {
     this.fetchNews();
     this.pageId = this.$route.params.id; // 將路由參數賦值給 pageId
-
   },
   methods: {
-
+    copyLink() {
+      this.clipboard.onClick({ delegateTarget: this.$el.querySelector('.copy') });
+      alert('已複製到剪貼板');
+    },
+    showShareList() {
+      this.share = !this.share;
+    },
     shareOnFacebook() {
       // 檢查 netData 是否存在並且有 news_id 屬性
       if (this.netData && this.netData.news_id) {
@@ -88,11 +116,11 @@ export default {
             const result = allNews.find((item) => {
               return item.news_id == this.pageId;
             });
-            console.log(result);
+            // console.log(result);
             this.newsData = result;
             this.singleNews = result;
           })
-          .catch(error => console.error('發生錯誤:',error))
+          // .catch(error => console.error('發生錯誤:',error))
     }
   },
     computed: {
@@ -101,6 +129,19 @@ export default {
       return date.toISOString().split('T')[0];
     },
   },
-  mounted() {},
+  mounted() {
+    this.clipboard = new Clipboard(this.$el.querySelector('.copy'), {
+      text: () => this.copyText
+    });
+
+    this.clipboard.on('success', (e) => {
+      // console.log('已複製到剪貼板');
+      e.clearSelection();
+    });
+
+    this.clipboard.on('error', (e) => {
+      // console.error('複製失敗');
+    });
+  },
 };
 </script>
