@@ -7,9 +7,13 @@
                     <!-- 傳遞顏色到SVG組件 -->
                     <div class="viewimagebox">
                         <originalGriddySrc :selectedSpotColor="selectedSpotColor" :selectedBodyColor="selectedBodyColor"
-                            :selectedBellyColor="selectedBellyColor" :selectedEyesStaff="selectedEyesStaff"
-                            :selectedEyesColor="selectedEyesColor" :selectedEarsStaff="selectedEarsStaff"
-                            :selectedEarsColor="selectedEarsColor" :selectedAccessoriesStaff="selectedAccessoriesStaff"
+                            :selectedBellyColor="selectedBellyColor" 
+                            :selectedEyesStaff="selectedEyesStaff"
+                            :selectedEyesColor="selectedEyesColor" 
+                            :selectedEarsStaff="selectedEarsStaff"
+                            :selectedEarsColor="selectedEarsColor" 
+                            :selectedAccessoriesStaff="selectedAccessoriesStaff"
+                            :selectedAccessoriesColor="selectedAccessoriesColor"
                             :selectedBackgroundColor="selectedBackgroundColor" />
                     </div>
 
@@ -40,12 +44,18 @@
                         :default-belly-color="selectedBellyColor" :default-spot-color="selectedSpotColor"
                         :default-eyes-color="selectedEyesColor" :default-eyes-staff="selectedEyesStaff"
                         :default-ears-color="selectedEarsColor" :default-ears-staff="selectedEarsStaff"
+                        :default-accessories-color="selectedAccessoriesColor"
                         :default-accessories-staff="selectedAccessoriesStaff"
-                        :default-background-color="selectedBackgroundColor" @body-color-selected="handleBodyColorChange"
-                        @belly-color-selected="handleBellyColorChange" @spot-color-selected="handleSpotColorChange"
-                        @eyes-color-selected="handleEyesColorChange" @eyes-staff-selected="handleEyesStaffChange"
-                        @ears-color-selected="handleEarsColorChange" @ears-staff-selected="handleEarsStaffChange"
+                        :default-background-color="selectedBackgroundColor" 
+                        @body-color-selected="handleBodyColorChange"
+                        @belly-color-selected="handleBellyColorChange" 
+                        @spot-color-selected="handleSpotColorChange"
+                        @eyes-color-selected="handleEyesColorChange" 
+                        @eyes-staff-selected="handleEyesStaffChange"
+                        @ears-color-selected="handleEarsColorChange" 
+                        @ears-staff-selected="handleEarsStaffChange"
                         @accessories-staff-selected="handleAccessoriesStaffChange"
+                        @accessories-color-selected="handleAccessoriesColorChange"
                         @background-color-selected="handleBackgroundColorChange">
                     </component>
                 </div>
@@ -57,8 +67,11 @@
                 <div id="finalimagebox">
                     <originalGriddySrc :selectedSpotColor="selectedSpotColor" :selectedBodyColor="selectedBodyColor"
                         :selectedBellyColor="selectedBellyColor" :selectedEyesStaff="selectedEyesStaff"
-                        :selectedEyesColor="selectedEyesColor" :selectedEarsStaff="selectedEarsStaff"
-                        :selectedEarsColor="selectedEarsColor" :selectedAccessoriesStaff="selectedAccessoriesStaff"
+                        :selectedEyesColor="selectedEyesColor" 
+                        :selectedEarsStaff="selectedEarsStaff"
+                        :selectedEarsColor="selectedEarsColor" 
+                        :selectedAccessoriesStaff="selectedAccessoriesStaff"
+                        :selectedAccessoriesColor="selectedAccessoriesColor"
                         :selectedBackgroundColor="selectedBackgroundColor" />
                 </div>
                 <span>最棒的Griddy粉墨登場！</span>
@@ -82,15 +95,11 @@ import accessoriesComponent from '../components/styleComponents/accessoriesCompo
 import backgroundComponent from '../components/styleComponents/backgroundComponent.vue';
 import originalGriddySrc from '../components/styleComponents/noneGriddy.vue';
 import skinComponent from '../components/styleComponents/skinComponent.vue';
-import { bodyColors } from "@/policy/color.js"
-import { bellyColors } from "@/policy/color.js"
-import { spotColors } from "@/policy/color.js"
-import { eyesColors } from "@/policy/color.js"
+
 import { eyesStaffs } from "@/policy/color.js"
-import { earsColors } from "@/policy/color.js"
 import { earsStaffs } from "@/policy/color.js"
 import { accessoriesStaffs } from "@/policy/color.js"
-import { backgroundColors } from "@/policy/color.js"
+
 import { unifiedColors } from "@/policy/color.js"
 import html2canvas from 'html2canvas';
 import SetMemPic from '../components/SetMemPic.vue'; // 燈箱組件
@@ -129,6 +138,7 @@ export default {
             selectedEarsStaff: earsStaffs[0],
             selectedEarsColor: unifiedColors[0],
             selectedAccessoriesStaff: accessoriesStaffs[0],
+            selectedAccessoriesColor: unifiedColors[13],
             selectedBackgroundColor: unifiedColors[18],
             currentZone: 'style-play-zone',
             griddyImage: null, // 存储转换后的图像
@@ -293,6 +303,10 @@ export default {
             this.selectedAccessoriesStaff = accessoriesStaff;
             console.log("被選擇的配件零件：", this.selectedAccessoriesStaff);
         },
+        handleAccessoriesColorChange(accessoriesColor) {
+            this.selectedAccessoriesColor = accessoriesColor;
+            console.log("被選擇的配件顏色：", this.selectedAccessoriesColor);
+        },
         handleBackgroundColorChange(backgroundColor) {
             this.selectedBackgroundColor = backgroundColor;
             console.log("被選擇的背景顏色：", this.selectedBackgroundColor);
@@ -323,6 +337,9 @@ export default {
             // 為配件部件選擇一個隨機選項
             this.selectedAccessoriesStaff = this.accessoriesStaffs[Math.floor(Math.random() * this.accessoriesStaffs.length)];
 
+            // 為配件顏色選擇一個隨機選項
+            this.selectedAccessoriesColor = this.unifiedColors[Math.floor(Math.random() * this.unifiedColors.length)];
+
             // 為背景顏色選擇一個隨機選項
             this.selectedBackgroundColor = this.unifiedColors[Math.floor(Math.random() * this.unifiedColors.length)];
         },
@@ -333,6 +350,7 @@ export default {
             this.selectedSpotColor = this.unifiedColors[8];
             this.selectedEyesColor = this.unifiedColors[8];
             this.selectedEarsColor = this.unifiedColors[0];
+            this.selectedAccessoriesColor = this.unifiedColors[13];
             this.selectedBackgroundColor = this.unifiedColors[18];
 
 
@@ -342,11 +360,6 @@ export default {
             this.selectedAccessoriesStaff = this.accessoriesStaffs[0];
             // 確保更新所有相關的部件選項
         }
-
-
-
-
-
     }
 };
 </script>
