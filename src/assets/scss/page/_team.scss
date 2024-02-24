@@ -51,37 +51,37 @@
             }
         }
         .team_article{
-            flex-direction: column;
-            align-items: flex-end;
-            width: 100%;
-            margin: 16px 0px auto;
+        flex-direction: column;
+        align-items: flex-end;
+        width: 100%;
+        margin: 16px 0px auto;
+        display: flex;
+            .btn_lg_orange{
             display: flex;
-                .btn_lg_orange{
-                display: flex;
-                margin-bottom: 8px;
-                }
-                select{
-                width: 130px;
-                height: 40px;
-                border: 2px solid $black;
-                border-radius: 20px;
-                padding: 8px;
-                font-size: $M-text;
-                outline: none;
-                background-color: $white-1;
-                cursor: pointer;
-                    option{
-                        font-size: $M-text;
-                        padding: 8px;
-                        margin: 4px;
-                    }
+            margin-bottom: 8px;
+            }
+            select{
+            width: 130px;
+            height: 30px;
+            border: 1.618px solid #444;
+            border-radius: 12px;
+            padding: 4px 8px;
+            font-size: $M-text;
+            outline: none;
+            color: #444;
+            background-color: $white-1;
+            cursor: pointer;
+                option{
+                    font-size: $M-text;
+                    padding: 8px;
+                    margin: 4px;
                 }
             }
+        }
     }
     // 卡片區
     .main{
         width: 100%;
-    
         @include T(){
             display: flex;
             flex-wrap: wrap;
@@ -107,29 +107,36 @@
             .team_card_id{
                 display: flex;
                 .team_card_img{
-                    width: 70px;
+                    width: 40px;
+                    overflow: hidden;
                     img{
+                        border-radius: 50%;
                         width: 100%;
                         vertical-align: bottom;
                     }
                 }
                 .team_card_id_info{
                     width: 100%;
-                    padding: 3px 0px 0px 16px;
-                    // margin-left: 8px;
-                    // background-color: #ccc;
+                    padding-left: 8px;
                     .team_card_name{
-                        h4{
-                            font-size: $M-h3;
-                            color: $black;
+                        color: $black;
+                        div{
+                            font-size: $M-h3; 
+                            @include T(){ 
+                            font-size: $PC-h4;
+                            } 
+                            @include PC(){
+                            font-size: $PC-h3;
+                            }
                         }
                     }
-                    .team_card_memId{
-                        p{
-                            font-size: $M-text;
-                            color: $black;
-                        }
-                    }
+                    // .team_card_memId{
+                    //     background-color: #ff7a00;
+                    //     p{
+                    //         font-size: $M-text;
+                    //         color: $black;
+                    //     }
+                    // }
                 }
             }
             .team_card_time{
@@ -140,7 +147,6 @@
                     color: $black;
                     letter-spacing: 1px;
                 }
-
             }
             .team_card_tag_area{
                 display: flex;
@@ -370,6 +376,22 @@
                 
             }
         }
+        }
+    }
+
+    .griddy_ani{
+        .griddy{
+            position: fixed;
+            width: 300px;
+        }
+        .left_griddy{
+            top: 20vh;
+            left: 0;
+
+        }
+        .right_griddy{
+            top: 20vh;
+            right: 0;
         }
     }
 

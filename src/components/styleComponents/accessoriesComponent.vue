@@ -21,6 +21,7 @@
     import { accessoriesStaff4 } from "@/policy/color.js"
     import { accessoriesStaff5 } from "@/policy/color.js"
     import { accessoriesStaff6 } from "@/policy/color.js"
+    import { accessoriesStaff7 } from "@/policy/color.js"
 
     export default {
         name: 'accessoriesComponent',
@@ -37,6 +38,7 @@
                     { name: "鬍鬚", staff: accessoriesStaff4 },
                     { name: "芬芳", staff: accessoriesStaff5 },
                     { name: "大手大腳", staff: accessoriesStaff6 },
+                    { name: "經典造型", staff: accessoriesStaff7 },
 
                 ],
                 selectedAccessoriesStaff: this.defaultAccessoriesStaff, // 初始化時從props接收的值
