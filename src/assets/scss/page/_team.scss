@@ -380,44 +380,45 @@
     }
 
     .griddy_ani{
-        position: fixed;
-        z-index: 1000;
-        top: 0;
-        left: 0;
-        bottom: 0;
-        right: 0;
-        overflow: hidden;
-        .overlay{
-            position: absolute;
-            width: 100%;
-            height: 100vh;
-            // background: #000;
-            // opacity: .8;
-            // z-index: 100;
-        }
-        .griddy{
+        display: none;
+        @include PC(){
+            display: block;
             position: fixed;
-            width: 250px;
-            z-index: 900;
-            top: 40vh;
-        }
-        .left_griddy{
+            z-index: 1000;
+            top: 0;
             left: 0;
-            animation: moveRight 1.5s forwards;
-        }
-        .right_griddy{
+            bottom: 0;
             right: 0;
-            animation: moveLeft 1.5s forwards;
-        }
-        .fight_icon{
-            position: fixed;
-            z-index: 900;
-            width: 80px;
-            top: 70px;
-            left: 50%;
-            transform: translateX(-40%);
-            opacity: 0;
-            animation: fadeIn .4s .8s forwards;
+            overflow: hidden;
+            .overlay{
+                position: absolute;
+                width: 100%;
+                height: 100vh;
+            }
+            .griddy{
+                position: fixed;
+                width: 250px;
+                z-index: 900;
+                top: 40vh;
+            }
+            .left_griddy{
+                left: 0;
+                animation: moveRight 1.5s forwards;
+            }
+            .right_griddy{
+                right: 0;
+                animation: moveLeft 1.5s forwards;
+            }
+            .fight_icon{
+                position: fixed;
+                z-index: 900;
+                width: 80px;
+                top: 70px;
+                left: 50%;
+                transform: translateX(-40%);
+                opacity: 0;
+                animation: fadeIn .4s .8s forwards;
+            }
         }
     }
 
