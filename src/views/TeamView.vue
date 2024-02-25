@@ -132,11 +132,18 @@
     </div>
 
     <div class="griddy_ani" v-show="fight">
+
       <div class="left_griddy griddy">
         <img src="../assets/images/team/left_griddy.png" alt="left_griddy">
       </div>
+      <div class="fight_icon">
+        <img src="../assets/images/team/flash.png" alt="fight_icon">
+      </div>
       <div class="right_griddy griddy">
         <img src="../assets/images/team/right_griddy.png" alt="right_griddy">
+      </div>
+      <div class="overlay" @click="team_fight_close">
+        <img src="../assets/images/team/bg.jpg" alt="">
       </div>
     </div>
 
@@ -337,6 +344,11 @@ export default {
     join_send_btn() {
       this.join_succ = false;
       this.fight = true;
+      setTimeout(this.team_fight_close, 2050);
+    },
+    //報隊動畫
+    team_fight_close() {
+      this.fight = false;
     },
   },
 };

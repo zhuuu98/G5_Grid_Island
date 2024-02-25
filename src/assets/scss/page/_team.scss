@@ -380,22 +380,46 @@
     }
 
     .griddy_ani{
+        position: fixed;
+        z-index: 1000;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        overflow: hidden;
+        .overlay{
+            position: absolute;
+            width: 100%;
+            height: 100vh;
+            // background: #000;
+            // opacity: .8;
+            // z-index: 100;
+        }
         .griddy{
             position: fixed;
-            width: 300px;
+            width: 250px;
+            z-index: 900;
+            top: 40vh;
         }
         .left_griddy{
-            top: 20vh;
             left: 0;
-
+            animation: moveRight 1.5s forwards;
         }
         .right_griddy{
-            top: 20vh;
             right: 0;
+            animation: moveLeft 1.5s forwards;
+        }
+        .fight_icon{
+            position: fixed;
+            z-index: 900;
+            width: 80px;
+            top: 70px;
+            left: 50%;
+            transform: translateX(-40%);
+            opacity: 0;
+            animation: fadeIn .4s .8s forwards;
         }
     }
-
-
 
     [disabled]{
         cursor: no-drop;
@@ -403,3 +427,34 @@
 
 
 } //team
+
+@keyframes moveRight {
+    100%{
+        transform: translate(350px, -90px);
+    }
+}
+@keyframes moveLeft {
+    100%{
+        transform: translate(-355px, -95px);
+    }
+}
+@keyframes fadeIn {
+    0%{
+        opacity: 0; 
+        width: 80px;
+    }
+    25%{
+        opacity: 1;
+        width: 100px;
+        
+    }
+    50%{
+        opacity: 1;
+        width: 80px;
+
+    }
+    100%{ 
+        opacity: 1;
+        width: 170px; 
+    } 
+} 

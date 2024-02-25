@@ -7,8 +7,8 @@
         </div>
         <div class="board_id_info">
           <div class="board_memId">
-            {{ item.mem_nickname == null || item.mem_nickname == "" ? item.mem_name :item.mem_nickname }}
-            </div>
+            {{ item.mem_nickname == null || item.mem_nickname == "" ? item.mem_name : item.mem_nickname }}
+          </div>
           <div class="board_time">{{ item.msg_datetime }}</div>
         </div>
       </div>
@@ -41,9 +41,10 @@
             <img :src="fullImageUrl(reItem.reply_memProfile)" alt="會員頭貼">
           </div>
           <div class="board_re_id_info">
-            <div class="board_memId">
-              {{ reItem.reply_nickName == null || reItem.reply_nickName == "" ?reItem.reply_memName : reItem.reply_nickName }}
-            </div>
+            <P class="board_memId">
+              {{ reItem.reply_nickName == null || reItem.reply_nickName == "" ? reItem.reply_memName :
+                reItem.reply_nickName }}
+            </P>
             <div class="board_re_time">{{ reItem.reply_time }}</div>
           </div>
         </div>
