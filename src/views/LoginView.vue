@@ -35,7 +35,6 @@ import userStore from '@/stores/user'
 import apiInstance from '@/plugins/auth'
 import firebaseConfig from '../firebaseConfig';
 import { getAuth, signInWithPopup, GoogleAuthProvider, signOut } from "firebase/auth";
-import axios from 'axios';
 
 export default {
     data() {
@@ -166,34 +165,61 @@ export default {
                 "content-type": "application/x-www-form-urlencoded",
                 body: urlencoded
             })
-            .then(response => response.json())
-            .then(result => {
-                if (!result.error) {
-                    this.line_idToken = result.id_token
-                    this.line_accessToken = result.access_token
+                .then(response => response.json())
+                .then(result => {
+                    if (!result.error) {
+                        this.line_idToken = result.id_token
+                        this.line_accessToken = result.access_token
 
-                    const idParams = {
-                        id_token: result.id_token,
-                        client_id: this.line_channel_id,
-                        access_token: result.access_token
+                        const idParams = {
+                            id_token: result.id_token,
+                            client_id: this.line_channel_id,
+                            access_token: result.access_token
+                        }
+
+                        let idUrlencoded = new URLSearchParams(idParams);
+                        let getEmailUrl = 'https://api.line.me/oauth2/v2.1/verify'
+                        fetch(getEmailUrl, {
+                            method: "post",
+                            "content-type": "application/x-www-form-urlencoded",
+                            body: idUrlencoded,
+                        })
+                        .then(response => response.json())
+                        .then(result => {
+                            const userEmail = result.email
+                            const userName = result.name
+
+                            apiInstance({
+                                method: 'post',
+                                url: `${import.meta.env.VITE_API_URL}/googleLogin.php`,
+                                headers: { "Content-Type": "multipart/form-data" },
+                                data: {
+                                    mem_account: userEmail,
+                                    mem_name: userName
+                                }
+                            }).then(res => {
+                                if (res.data.memInfo.mem_state == 0) {
+                                    this.alertContent.push('登入失敗，請聯繫客服人員。')
+                                    this.showAlert = true;
+                                    document.body.classList.add('body-overflow-hidden');
+                                } else {
+                                    this.updateToken(true)
+                                    this.updateUserData(res.data.memInfo)
+                                    const redirect = this.$route.query.redirect
+                                    if (this.$route.query.redirect) {
+                                        this.$router.push(redirect)
+                                    } else {
+                                        this.$router.go(-3)
+                                    }
+                                }
+                            }).catch(error => {
+                                console.log(error);
+                            })
+                        })
+                        .catch(error => console.log(error))
                     }
-
-                    let idUrlencoded = new URLSearchParams(idParams);
-                    let getEmailUrl = 'https://api.line.me/oauth2/v2.1/verify'
-                    fetch(getEmailUrl, {
-                        method: "post",
-                        "content-type": "application/x-www-form-urlencoded",
-                        body: idUrlencoded,
-                    })
-                    .then(response => response.json())
-                    .then(result => {
-                        console.log(result.name)
-                        console.log(result.email)
-                    })
-                    .catch(error => console.log(error))
-                }
-            })
-            .catch(error => console.log(error))
+                })
+                .catch(error => console.log(error))
         }
     }
 }

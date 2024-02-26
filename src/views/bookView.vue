@@ -80,7 +80,7 @@
                 </div>
             </div>
             <div class="book_submit">
-                <input type="submit" class="btn_sm_1" id="" value="確認預約" @click.prevent="handleInput">
+                <input type="submit" class="btn_lg" value="確認預約" @click.prevent="handleInput">
             </div>
         </form>
         <!-- 燈箱 -->
@@ -160,7 +160,7 @@ export default {
                 disabled: true
             }],
             //以下是日曆用
-            dayNames: ["日", "一", "二", "三", "四", "五", "六"],
+            dayNames: ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"],
             selectedMonth: new Date().getMonth(),
             selectedYear: new Date().getFullYear(),
             selectedDate: null,
