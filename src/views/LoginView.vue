@@ -209,7 +209,7 @@ export default {
                                     if (this.$route.query.redirect) {
                                         this.$router.push(redirect)
                                     } else {
-                                        this.$router.go(-3)
+                                        this.$router.push('/')
                                     }
                                 }
                             }).catch(error => {
