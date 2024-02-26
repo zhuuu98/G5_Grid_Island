@@ -521,7 +521,9 @@
         padding: 10px;
         border-radius: 30px;
         margin: $M-spacing;
-        
+        @include T(){
+                display: none;
+            }
         .wrapper {
             display: flex;
             flex-direction: column;
@@ -529,9 +531,7 @@
             background-color: $gray-1;
             border-radius: 20px;
             margin: 5px;
-            @include T(){
-                display: none;
-            }
+            
         }
         .title{
             display: flex;

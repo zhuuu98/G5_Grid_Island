@@ -350,7 +350,7 @@
                         </div>
                     </div>
                     <label for="memBirth">生日</label>
-                    <input type="date" :value="data.mem_birthday" id="memBirth" name="mem_birth">
+                    <input type="date" v-model="data.mem_birthday" id="memBirth" name="mem_birth">
                     <label for="memAddr">收件地址</label>
                     <input type="text" v-model="data.mem_addr" id="memAddr" name="mem_addr">
                     <input type="button" class="searchBtn submit" value="儲存設定" @click="editMemberData()">
