@@ -139,6 +139,7 @@
       <div class="fight_icon">
         <img src="../assets/images/team/flash.png" alt="fight_icon">
       </div>
+      <div class="fight_text">報隊成功</div>
       <div class="right_griddy griddy">
         <img src="../assets/images/team/right_griddy.png" alt="right_griddy">
       </div>

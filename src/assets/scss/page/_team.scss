@@ -380,8 +380,8 @@
     }
 
     .griddy_ani{
-        display: none;
-        @include PC(){
+        // display: none;
+        // @include PC(){
             display: block;
             position: fixed;
             z-index: 1000;
@@ -397,7 +397,8 @@
             }
             .griddy{
                 position: fixed;
-                width: 250px;
+                // width: 250px;
+                width: 19.5%;
                 z-index: 900;
                 top: 40vh;
             }
@@ -412,50 +413,102 @@
             .fight_icon{
                 position: fixed;
                 z-index: 900;
-                width: 80px;
+                // width: 80px;
+                width: 6.3%;
                 top: 70px;
                 left: 50%;
                 transform: translateX(-40%);
                 opacity: 0;
-                animation: fadeIn .4s .8s forwards;
+                animation: fadeIn .45s .8s forwards;
             }
-        }
-    }
+            .fight_text{
+                position: fixed;
+                top: 55%;
+                left: 50%;
+                transform: translateX(-50%);
+                z-index: 950;
+                color: $white-1;
+                font-family: Zen Maru Gothic;
+                font-size: 800%;
+                opacity: 0;
+                animation: textFadeIn .45s .8s forwards;
+                @media screen and (max-width: 1200px) {
+                    font-size: 700%;
+                }
+            // } 
+        } 
+    } 
 
     [disabled]{
         cursor: no-drop;
     }
-
-
 } //team
 
 @keyframes moveRight {
     100%{
-        transform: translate(350px, -90px);
+        transform: translate(140.2%, -30%);
     }
 }
 @keyframes moveLeft {
     100%{
-        transform: translate(-355px, -95px);
+        transform: translate(-140.2%, -30%);
     }
 }
 @keyframes fadeIn {
     0%{
         opacity: 0; 
-        width: 80px;
+        // width: 80px;
+        width: 8%;
     }
     25%{
         opacity: 1;
-        width: 100px;
-        
+        // width: 100px;
+        width: 13%;
     }
     50%{
         opacity: 1;
-        width: 80px;
-
+        // width: 80px;
+        width: 8%;
     }
     100%{ 
         opacity: 1;
-        width: 170px; 
+        // width: 170px; 
+        width: 15%;
     } 
 } 
+@keyframes textFadeIn {
+    0%{
+        opacity: 0; 
+    }
+    25%{
+        opacity: .5;
+        font-size: 900%;
+    }
+    50%{
+        opacity: .7;
+        font-size: 800%;
+    }
+    100%{ 
+        opacity: 1;
+        font-size: 1100%;
+    } 
+} 
+@media screen and (max-width: 1200px) {
+    @keyframes textFadeIn {
+        0%{
+            opacity: 0; 
+        }
+        25%{
+            opacity: .5;
+            font-size: 800%;
+        }
+        50%{
+            opacity: .7;
+            font-size: 700%;
+        }
+        100%{ 
+            opacity: 1;
+            font-size: 900%;
+        } 
+    }
+}
