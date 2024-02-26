@@ -771,7 +771,8 @@
 
       .imgWrapper {
         width: 100%;
-        overflow-x: scroll;
+        // overflow-x: scroll;
+        overflow-x: hidden;
 
         @include T() {
           overflow: hidden;
