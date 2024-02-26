@@ -32,7 +32,7 @@
             >
               <div class="hotProductBody">
                 <div class="top">
-                  <p>Top {{ index + 1 }}</p>
+                  <h3>Top {{ index + 1 }}</h3>
                 </div>
                 <div class="hotProductGroup">
                   <router-link
