@@ -21,13 +21,19 @@
         background-color: $black;
         color: $white-1;
         width: 90%;
-        max-width: 400px;
+        max-width: 467px;
         margin: $XXL-spacing auto;
         border-radius: $Mob-card-radius;
         padding: $M-spacing;
         text-align: center;
         @include PC() {
             margin: $XXXL-spacing auto $XXL-spacing;
+        }
+        h4{
+            margin: $S-spacing 0;
+            @include PC() {
+                margin: $M-spacing 0;
+            }
         }
     }
     form{
@@ -46,7 +52,7 @@
         border-radius: $input-radius;
         background-color: $bgc-1;
         color: $blue-4;
-        max-width: 600px;
+        max-width: 450px;
         width: 90%;
         margin: auto;
         display: flex;
@@ -74,6 +80,7 @@
                 align-items: center;
                 font-size: $M-h4;
                 gap: 2rem;
+                font-size: 18px;
             }
         }
         $buttonWidth: 30px;
@@ -97,6 +104,7 @@
             $buttonWidth: 30px;
             $buttonPCWidth: 40px;
             button{
+                font-size: 16px;
                 display: block;
                 margin: 2px auto;
                 width: $buttonWidth;
@@ -139,23 +147,27 @@
             flex-direction: row;
         }
     }
+    .book_options{
+        display: flex;
+        justify-content: center;
+    }
     .book_table_option .book_options label{
         display: block;
         width: 120px;
-        height: 40px;
         padding: $S-spacing $M-spacing;
         background-color: $white-1;
         border-radius: $input-radius;
         cursor: pointer;
+        font-size: 16px;
     }
     .book_time_option .book_options label{
         display: block;
-        width: 120px;
-        height: 60px;
+        width: 140px;
         padding: $S-spacing $M-spacing;
         background-color: $white-1;
         border-radius: $input-radius;
         cursor: pointer;
+        font-size: 16px;
     }
     .book_options input{
         display: none;
@@ -212,7 +224,10 @@
         display: flex;
         text-align: center;
         max-width: 50px;
-        padding-left: 20px;
+        padding-left: 16px;
+        @include T(){
+            padding-left: 20px;
+        }
     }
     .book_submit{
         margin:$M-spacing auto $XXXL-spacing;
