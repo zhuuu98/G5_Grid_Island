@@ -153,7 +153,6 @@
                         margin: 0px 8px 8px 0px;
                         padding: 4px 12px;
                         border-radius: 8px;
-                        
                     }
                 }
             }
@@ -228,12 +227,12 @@
                 margin: auto;
                 border: 1px solid $gray-2;
                 width: 100%;
-            @include T(){
-                width: 100%;
-            }
-            @include PC(){
-                width: 100%;
-            }
+                @include T(){
+                    width: 100%;
+                }
+                @include PC(){
+                    width: 100%;
+                }
             }
             .team_light_box_send{
                 display: flex;
@@ -275,16 +274,16 @@
                 color: $red;
                 }
         }
-        >div{
-            h3{
-                text-align: center;
-                margin: 20px auto 60px auto;
+            >div{
+                h3{
+                    text-align: center;
+                    margin: 20px auto 60px auto;
+                }
+                button{
+                    margin: auto;
+                    display: flex;
+                }
             }
-            button{
-                margin: auto;
-                display: flex;
-            }
-        }
         }
     }
 
@@ -312,12 +311,12 @@
             transform: translate(-50%,-50%);
             padding: 30px;
             width: 340px;
-        @include T(){
-            width: 400px;
-        }
-        @include PC(){
-            width: 500px;
-        }
+            @include T(){
+                width: 400px;
+            }
+            @include PC(){
+                width: 500px;
+            }
         form{
             h3{
                 letter-spacing: 1px;

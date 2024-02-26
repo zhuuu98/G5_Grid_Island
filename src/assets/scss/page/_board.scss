@@ -205,7 +205,8 @@
     justify-content: flex-end;
     svg{
       width: 14px;
-      
+      transition: transform 0.3s;
+      transform-origin: center;
     }
   }
   &_report{
@@ -365,13 +366,10 @@
     a{
       width: 140px;
       margin: auto;
-      // margin: 0;
-      // padding: 0;
       align-items: center;
       justify-content: center;
       align-content: center;
       display: flex;
-      // display: block;
       text-align: center;
     }
     svg{
@@ -419,7 +417,6 @@
   .board_lb_re_box{
     z-index: 1000;
     background-color: $yellow;
-    // border: 10px solid $orange-2;
     border: 10px solid $red;
     border-radius: 20px;
     position: fixed;
@@ -440,8 +437,6 @@
       .board_lb_re_title{
         margin: 8px;
         text-align: center;
-        // background-color: #e3993e;
-        // margin: auto;
         p{
           font-size: $M-h4;
           color: $black;
@@ -526,4 +521,8 @@
 
 .--is-always-hide{
   cursor: default;
+}
+
+.board_rotate {
+  transform: rotate(180deg);
 }
