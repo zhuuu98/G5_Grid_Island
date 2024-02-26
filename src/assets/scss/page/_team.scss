@@ -130,13 +130,6 @@
                             }
                         }
                     }
-                    // .team_card_memId{
-                    //     background-color: #ff7a00;
-                    //     p{
-                    //         font-size: $M-text;
-                    //         color: $black;
-                    //     }
-                    // }
                 }
             }
             .team_card_time{
@@ -380,62 +373,65 @@
     }
 
     .griddy_ani{
-        // display: none;
-        // @include PC(){
-            display: block;
-            position: fixed;
-            z-index: 1000;
-            top: 0;
-            left: 0;
-            bottom: 0;
-            right: 0;
-            overflow: hidden;
-            .overlay{
-                position: absolute;
+        display: block;
+        position: fixed;
+        z-index: 1000;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        overflow: hidden;
+        .overlay{
+            position: absolute;
+            width: 100%;
+            height: 100vh;
+            img{
                 width: 100%;
-                height: 100vh;
+                height: 100%;
+                vertical-align: top;
             }
-            .griddy{
-                position: fixed;
-                // width: 250px;
-                width: 19.5%;
-                z-index: 900;
-                top: 40vh;
-            }
-            .left_griddy{
-                left: 0;
-                animation: moveRight 1.5s forwards;
-            }
-            .right_griddy{
-                right: 0;
-                animation: moveLeft 1.5s forwards;
-            }
-            .fight_icon{
-                position: fixed;
-                z-index: 900;
-                // width: 80px;
-                width: 6.3%;
+        }
+        .griddy{
+            position: fixed;
+            width: 19.5%;
+            z-index: 900;
+            top: 40vh;
+        }
+        .left_griddy{
+            left: 0;
+            animation: moveRight 1.5s forwards;
+        }
+        .right_griddy{
+            right: 0;
+            animation: moveLeft 1.5s forwards;
+        }
+        .fight_icon{
+            position: fixed;
+            z-index: 900;
+            top: 30%;
+            transform: translateX(-40%);
+            left: 50%;
+            opacity: 0;
+            animation: fadeIn .45s .8s forwards;
+            @include PC(){
                 top: 70px;
-                left: 50%;
-                transform: translateX(-40%);
-                opacity: 0;
-                animation: fadeIn .45s .8s forwards;
             }
-            .fight_text{
-                position: fixed;
+        }
+        .fight_text{
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 950;
+            color: $white-1;
+            font-family: Zen Maru Gothic;
+            opacity: 0;
+            animation: textFadeIn .45s .8s forwards;
+            @include PC(){
                 top: 55%;
-                left: 50%;
-                transform: translateX(-50%);
-                z-index: 950;
-                color: $white-1;
-                font-family: Zen Maru Gothic;
-                font-size: 800%;
-                opacity: 0;
-                animation: textFadeIn .45s .8s forwards;
-                @media screen and (max-width: 1200px) {
-                    font-size: 700%;
-                }
-            // } 
+            }
+            @media screen and (max-width: 1200px) {
+            }
         } 
     } 
 
@@ -457,22 +453,18 @@
 @keyframes fadeIn {
     0%{
         opacity: 0; 
-        // width: 80px;
         width: 8%;
     }
     25%{
         opacity: 1;
-        // width: 100px;
         width: 13%;
     }
     50%{
         opacity: 1;
-        // width: 80px;
         width: 8%;
     }
     100%{ 
         opacity: 1;
-        // width: 170px; 
         width: 15%;
     } 
 } 
@@ -509,6 +501,25 @@
         100%{ 
             opacity: 1;
             font-size: 900%;
+        } 
+    }
+}
+@media screen and (max-width: 768px) {
+    @keyframes textFadeIn {
+        0%{
+            opacity: 0; 
+        }
+        25%{
+            opacity: .5;
+            font-size: 35px;
+        }
+        50%{
+            opacity: .7;
+            font-size: 25px;
+        }
+        100%{ 
+            opacity: 1;
+            font-size: 45px;
         } 
     }
 }
