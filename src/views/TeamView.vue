@@ -39,11 +39,6 @@
                   <div class="team_card_name">
                     <div>{{ item.memName }}</div>
                   </div>
-                  <!-- <div class="team_card_memId"> -->
-                  <!-- <p>{{ item.date }}</p>
-                    <p>{{ item.time }}</p> -->
-                  <!-- <p>#{{ item.memId }}</p> -->
-                  <!-- </div> -->
                 </div>
               </div>
               <!-- 時間 -->
@@ -67,13 +62,8 @@
                   我要加入
                 </div>
               </div>
-
             </div>
           </div>
-
-
-
-
         </div>
       </div>
     </div>
@@ -110,45 +100,41 @@
     <div class="join_light_box" v-show="team_join_lb">
       <div class="overlay" @click="team_join_lb_close"></div>
       <div class="box">
-
         <form action="post" v-if="join_succ">
           <h3 class="team_join_lb_title">是否確認報隊？</h3>
-
           <div class="team_light_box_send">
             <button class="btn_default" @click.prevent="team_join_lb_close">取消</button>
             <button class="btn_default" @click="join_send_btn">確認</button>
           </div>
         </form>
-
         <div v-else>
           <h4>已成功向團主報團！</h4>
           <button class="btn_default" @click="team_join_lb_close">關閉</button>
         </div>
-
         <div class="team_close_light_box" @click="team_join_lb_close">
           <font-awesome-icon :icon="['fas', 'xmark']" />
         </div>
       </div>
     </div>
 
+    <!-- 報隊動畫 -->
     <div class="griddy_ani" v-show="fight">
       <div class="left_griddy griddy">
         <img src="../assets/images/team/left_griddy.png" alt="left_griddy">
       </div>
+      <div class="fight_icon">
+        <img src="../assets/images/team/flash.png" alt="fight_icon">
+      </div>
+      <div class="fight_text">報隊成功</div>
       <div class="right_griddy griddy">
         <img src="../assets/images/team/right_griddy.png" alt="right_griddy">
       </div>
+      <div class="overlay" @click="team_fight_close">
+        <img src="../assets/images/team/bg.jpg" alt="fight_bg">
+      </div>
     </div>
-
-
-
-
-
-
   </div>
 </template>
-
-
 
 <script>
 import PageTitle from "../components/PageTitle.vue";
@@ -337,6 +323,11 @@ export default {
     join_send_btn() {
       this.join_succ = false;
       this.fight = true;
+      setTimeout(this.team_fight_close, 2050);
+    },
+    //報隊動畫
+    team_fight_close() {
+      this.fight = false;
     },
   },
 };

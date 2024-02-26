@@ -81,7 +81,7 @@ body {
       }
     }
     .hotProductBackground {
-      padding: $XXL-spacing 0 $XL-spacing 0;
+      padding: $L-spacing 0 ;
       color: $black;
       .hotProduct {
         // max-width: $max-width;
@@ -92,7 +92,7 @@ body {
           font-size: $PC-h3;
           justify-content: center;
           align-items: center;
-          margin: 20px;
+          margin: 20px 20px 0 20px;
         }
         .ivu-carousel-arrow-hover {
           background-color: $white-1;
@@ -106,15 +106,18 @@ body {
           }
         }
         .hotProductBody {
-          width: 100%;
-          margin: $L-spacing 0;
+          width: 75%;
+          margin: $L-spacing auto;
+          padding: 20px;
+          background-color: wheat;
+          border-radius: 28px;
           .top {
             font-size: $PC-h3;
             text-align: center;
-            margin: $L-spacing 0;
+            margin: 10px 0;
           }
           .hotProductGroup {
-            gap: $XL-spacing;
+            // gap: $XL-spacing;
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -126,7 +129,7 @@ body {
               max-width: 350px;
               display: flex;
               flex-direction: column;
-              gap: $L-spacing;
+              gap: $M-spacing;
 
               a {
                 h3 {
@@ -141,7 +144,7 @@ body {
                   display: flex;
                   justify-content: center;
                   align-items: center;
-                  width: 100px;
+                  // width: 100px;
                   padding: $S-spacing $M-spacing;
                   background-color: $white-1;
                   border-radius: 10px;
@@ -235,7 +238,7 @@ body {
         margin: auto;
       }
       .productCatBackground {
-        background-color: $black;
+        background-color: $blue-3;
         border-radius: $PC-card-radius;
         padding: $M-spacing $L-spacing;
         display: flex;
@@ -256,7 +259,7 @@ body {
           flex-direction: column;
           .catTitle {
             background-color: $gray-1;
-            border-radius: 100px;
+            border-radius: 16px;
             padding: $S-spacing;
             display: flex;
             justify-content: center;
@@ -369,15 +372,22 @@ body {
             display: flex;
             justify-content: end;
             #select {
-              width: 150px;
-              height: 50px;
-              font-size: $PC-text;
-              padding: 10px;
-              border-radius: 4px; /* 設定圓角 */
-              background-color: #fff; /* 設定背景顏色 */
+              width: 180px;
+              height: 30px;
+              border: 1.618px solid #444;
+              border-radius: 12px;
+              padding: 4px 8px;
+              font-size: $M-text;
               outline: none;
+              background-color: $white-1;
+              color: #444;
               cursor: pointer;
-            }
+              option{
+                font-size: $M-text;
+                padding: 8px;
+                margin: 4px;
+              }
+                }
           }
         }
         .productItem {

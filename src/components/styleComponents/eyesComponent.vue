@@ -54,7 +54,7 @@
                     { name: "疲憊", staff: eyesStaff7 },
                     { name: "舒眠", staff: eyesStaff8 },
                     { name: "愛戀", staff: eyesStaff9 },
-                    { name: "少年", staff: eyesStaff10 },
+                    { name: "復古", staff: eyesStaff10 },
                 ],
                 eyesColors: unifiedColors,
                 selectedEyesColor: this.defaultEyesColor, // 初始化時從props接收的值

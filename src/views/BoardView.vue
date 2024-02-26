@@ -293,8 +293,8 @@ export default {
 
       let html = '<div class="board_re_card"><div class="board_re_id">'
         + '<div class="board_re_id_img"><img src="' + pic + '"></div>'
-        + '<div class="board_re_id_info"><div class="board_re_memId">' + memId
-        + '</div><div class="board_re_time">' + time + '</div></div></div>'
+        + '<div class="board_re_id_info"><P class="board_re_memId">' + memId
+        + '</P><div class="board_re_time">' + time + '</div></div></div>'
         + '<div class="board_re_msg"><p>' + re_text + '</p></div></div>';
 
       axios({
