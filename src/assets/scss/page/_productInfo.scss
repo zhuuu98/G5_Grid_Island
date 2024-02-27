@@ -130,8 +130,15 @@
               width: 100%;
               overflow-x: auto;
               justify-content: center;
+              .transparent {
+                border: 2px solid transparent;
+              }
+              .selected {
+                border: 2px solid black;
+              }
               .productPic {
                 cursor: pointer;
+
                 img {
                   vertical-align: top;
                   width: 100px;
