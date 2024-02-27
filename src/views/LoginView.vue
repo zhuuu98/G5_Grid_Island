@@ -47,7 +47,7 @@ export default {
             showAlert: false,
             line_channel_id: '2003767814',    // Line Channel ID
             line_channel_secret: '5afb1c4a45fa1728f965b4f29c28952d',// Line Channel Secret
-            line_redirect_uri: 'http://localhost:5173/login',  // Line developer Callback URL
+            line_redirect_uri: 'https://tibamef2e.com/chd104/g5/front/login',  // Line developer Callback URL
             line_idToken: '',
             line_accessToken: '',
             showPsw: false

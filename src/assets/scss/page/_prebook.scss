@@ -93,7 +93,12 @@
         margin: $M-spacing 0;
 
     }
-
+    .title{
+        margin: $M-spacing 0;
+    }
+    .title_last{
+        margin-top: $L-spacing;
+    }
     .preCheck {
         display: flex;
         gap: 8px;
