@@ -14,7 +14,7 @@
               <BreadcrumbItem to="/about">關於我們</BreadcrumbItem>
             </Breadcrumb>
           </div>
-
+          <!-- intro -->
           <div class="about_gi_intro" data-aos="fade-left" data-aos-mirror="true" data-aos-delay="200"
             data-aos-once="true" data-aos-duration="600" data-aos-offset="130">
             <!-- 手機版title -->
@@ -49,9 +49,6 @@
             <!-- 輪播圖 -->
             <div class="about_en_imgs">
               <Carousel v-model="value" :autoplay="true" :autoplay-speed="2000" :radius-dot="true">
-                <!-- :dots="outside"  -->
-                <!-- :trigger="click"  -->
-                <!-- :arrow="false" -->
                 <!-- 輪播圖一 -->
                 <CarouselItem>
                   <div class="about_demo-carousel">
