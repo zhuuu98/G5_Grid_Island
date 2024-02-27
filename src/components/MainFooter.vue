@@ -19,8 +19,9 @@
             <a href="https://www.instagram.com/tibame_wiedu/">
               <font-awesome-icon class="logo" :icon="['fab', 'instagram']" />
             </a>
-            <a href="https://www.youtube.com/channel/UClhecf7eOGHwbKW5e7l_pTA">
-              <font-awesome-icon class="logo youtube" :icon="['fab', 'youtube']" />
+            <a href="https://lin.ee/QTMDl9i">
+              <!-- <font-awesome-icon class="logo youtube" :icon="['fab', 'youtube']" /> -->
+              <font-awesome-icon class="logo line"  :icon="['fab', 'line']" />
             </a>
           </div>
         </div>

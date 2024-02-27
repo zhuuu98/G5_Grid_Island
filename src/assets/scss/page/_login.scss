@@ -55,7 +55,8 @@
       }
 
       input[type="email"],
-      input[type="password"] {
+      input[type="password"],
+      input[type="text"] {
         border-radius: $input-radius;
         height: 40px;
         margin-top: 20px;
@@ -67,7 +68,6 @@
         margin-top: 100px;
       }
       input:focus{
-        outline: 1px solid $orange-1;
         border: none;
         &::placeholder{
           color: transparent;
@@ -92,7 +92,12 @@
       }
     }
   }
-
+  .pswEye{
+    width: 20px;
+    position: absolute;
+    top: 46.5%;
+    right: 20%
+  }
   .alert_bg {
     background-color: #0006;
     position: fixed;
