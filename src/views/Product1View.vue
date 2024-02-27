@@ -229,7 +229,7 @@
             @click="nextPrevPage('prev')"
             v-if="currentPage != 1"
           >
-          <font-awesome-icon :icon="['fas', 'chevron-left']" />
+            <font-awesome-icon :icon="['fas', 'chevron-left']" />
           </button>
           <button
             class="pageBtn"
@@ -248,7 +248,7 @@
             @click="nextPrevPage('next')"
             v-if="currentPage != totalPages"
           >
-          <font-awesome-icon :icon="['fas', 'chevron-right']" />
+            <font-awesome-icon :icon="['fas', 'chevron-right']" />
           </button>
         </div>
       </div>
