@@ -109,7 +109,7 @@
                                 <p>時段：</p>
                                 <div class="selectedTime">
                                     <div class="chooseTime">
-                                        <p>{{ data.book_time }}{{ formatTime(data.book_start_time) }}~{{
+                                        <p>{{ data.book_time }}　　時間：{{ formatTime(data.book_start_time) }}~{{
                                             formatTime(data.book_end_time) }}</p>
 
                                     </div>
@@ -180,7 +180,7 @@
                                             <p>{{ items.ord_date }}</p>
                                             <p>{{ items.ord_id }}</p>
                                             <p>${{ items.ord_sum }}</p>
-                                            <p>{{ items.ord_state === 0 ? '未完成' : '已完成' }}</p>
+                                            <p>{{ items.ord_state == 0 ? '未完成' : '已完成' }}</p>
                                         </div>
                                         <button class="btn_sm_1" @click="OpenList(index)">訂單明細</button>
 
@@ -255,7 +255,7 @@
                                     <div class="selectedTime">
                                         <div class="chooseTime">
                                             <p>{{ data.book_time }}</p>
-                                            <p>{{ formatTime(data.book_start_time) }}~{{ formatTime(data.book_end_time) }}
+                                            <p>　　時間：{{ formatTime(data.book_start_time) }}~{{ formatTime(data.book_end_time) }}
                                             </p>
                                         </div>
                                     </div>
@@ -372,7 +372,7 @@
                                     <p>{{ items.ord_date }}</p>
                                     <p>{{ items.ord_id }}</p>
                                     <p>${{ items.ord_sum }}</p>
-                                    <p>{{ items.ord_state === 0 ? '未完成' : '已完成' }}</p>
+                                    <p>{{ items.ord_state == 0 ? '未完成' : '已完成' }}</p>
                                 </div>
                                 <button class="btn_sm_1" @click="OpenList(index)">訂單明細</button>
                             </div>
@@ -443,10 +443,10 @@
 
                     </div>
                     <div class="TimeAndPeople">
-                        <p>時段：</p>
+                        <p>時段：{{ data.book_time }}</p>
                         <div class="selectedTime">
                             <div class="chooseTime">
-                                <p>{{ data.book_time }}{{ data.book_start_time }}~{{ data.book_end_time }}</p>
+                                <p>時間：{{ formatTime(data.book_start_time) }}~{{ formatTime(data.book_end_time) }}</p>
 
                             </div>
                         </div>

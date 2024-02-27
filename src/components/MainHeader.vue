@@ -5,7 +5,7 @@
       <div class="wrapper">
         <div class="logo_box">
           <RouterLink to="/" class="nav_link">
-            <img src="../assets/images/header/gdidlogobox.svg" alt="header_logo">
+            <img src="../assets/images/header/gdidlogobox.png" alt="header_logo">
           </RouterLink>
         </div>
         <div class="header_icons">
@@ -14,17 +14,14 @@
               <li>
                 <RouterLink to="/prebook" class="nav_link">預約場地</RouterLink>
               </li>
-
               <li>
                 <RouterLink to="/cart" class="nav_link">
                   <div class="nav_cart"><img src="../assets/images/header/header-cart.svg" alt="header-cart"></div>
                 </RouterLink>
               </li>
-
               <li>
                 <RouterLink to="/login" class="nav_link ">
                   <div class="nav_member_login" v-if="userData && userData.mem_profile">
-                    <!-- <img :src="mem_profile" alt="profile"> -->
                     <img class="header_login_profile" :src="fullImageUrl(userData.mem_profile)" alt="會員頭貼">
                   </div>
                   <div class="nav_member" v-else>
@@ -32,8 +29,6 @@
                   </div>
                 </RouterLink>
               </li>
-
-
               <!-- 漢堡圖標 -->
               <li>
                 <button @click="toggleMenu" class="ham_btn">
@@ -43,13 +38,11 @@
                 </button>
               </li>
             </ul>
-
           </nav>
         </div>
         <transition name="ham_menu">
           <!-- 選單內容 -->
           <div v-if="menuOpen" class="ham_menu">
-
             <div class="ham_menu_bg">
               <!-- 漢堡內圖標 -->
               <li class="inside_ham_btn">
@@ -59,7 +52,7 @@
                 </button>
               </li>
               <RouterLink to="/" class="ham_logo">
-                <img src="../assets/images/header/gdidlogobox.svg" alt="gdidlogobox">
+                <img src="../assets/images/header/gdidlogobox.png" alt="gdidlogobox">
               </RouterLink>
               <!-- 選單項目 -->
               <div class="ham_links">
@@ -109,7 +102,6 @@ import axios from "axios";
 import { RouterLink } from "vue-router";
 import userStore from '@/stores/user'
 import { mapActions } from 'pinia';
-
 export default {
   components: {
     RouterLink,
@@ -135,8 +127,6 @@ export default {
   },
   methods: {
     ...mapActions(userStore, ['updateUserData']),
-
-
     getProfile() {
       axios
         .post(`${import.meta.env.VITE_API_URL}/headerProfile.php`, {})
@@ -146,8 +136,6 @@ export default {
         })
         .catch(error => console.error('發生錯誤:', error))
     },
-
-
     toggleMenu() {
       // 切換 menuOpen 的值
       this.menuOpen = !this.menuOpen;
