@@ -25,7 +25,7 @@
         margin: $XXL-spacing auto;
         border-radius: $Mob-card-radius;
         padding: $M-spacing;
-        text-align: center;
+        text-align: left;
         @include PC() {
             margin: $XXXL-spacing auto $XXL-spacing;
         }

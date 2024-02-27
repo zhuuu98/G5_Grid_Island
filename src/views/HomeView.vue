@@ -371,11 +371,11 @@
               </div>
               <div class="reserveStep2 reserveStep">
                 <img src="../assets/images/home/reserveInfo_2.png" alt="" />
-                <span>選擇人數、日期、時段</span>
+                <span>選擇日期、桌型、時段</span>
               </div>
               <div class="reserveStep3 reserveStep">
                 <img src="../assets/images/home/reserveInfo_3.png" alt="" />
-                <span>選擇桌號，預約完成！</span>
+                <span>選擇人數，預約完成！</span>
               </div>
             </div>
           </div>
