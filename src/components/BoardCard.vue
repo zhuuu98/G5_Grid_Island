@@ -18,7 +18,7 @@
       <div class="board_re_type">
         <div class="reply_subtitle">回覆留言</div>
         <div class="board_re_input">
-          <input type="text" placeholder="輸入回覆內容..." v-model="re_text" class="re_area">
+          <input type="text" placeholder="輸入回覆內容..." v-model="re_text" class="re_area" @keyup.enter="replyArticle">
           <div class="board_re_send" @click="replyArticle">
             <font-awesome-icon :icon="['fas', 'circle-up']" />
           </div>
