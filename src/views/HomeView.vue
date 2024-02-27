@@ -115,11 +115,125 @@
 
           <div id="griddystyle-contentbox">
             <!-- 使用模板字串動態生成每行的 ID -->
-            <div v-for="(row, rowIndex) in griddyPicsChunks" :key="`row-${rowIndex}`"
+            <!-- <div v-for="(row, rowIndex) in griddyPicsChunks" :key="`row-${rowIndex}`"
               :id="`griddyPic-row${rowIndex + 1}`" class="griddyPic-row">
               <div class="imagebox" v-for="(pic, picIndex) in row" :key="`pic-${picIndex}`">
                 <img :src="pic" alt="">
 
+              </div>
+            </div> -->
+            <div class="griddyPic-row" id="griddyPic-row1">
+              <div class="imagebox">
+                <img src="../assets/images/home/griddyPic/1.png" alt="">
+              </div>
+              <div class="imagebox">
+                <img src="../assets/images/home/griddyPic/2.png" alt="">
+              </div>
+              <div class="imagebox">
+                <img src="../assets/images/home/griddyPic/3.png" alt="">
+              </div>
+              <div class="imagebox">
+                <img src="../assets/images/home/griddyPic/4.png" alt="">
+              </div>
+              <div class="imagebox">
+                <img src="../assets/images/home/griddyPic/5.png" alt="">
+              </div>
+              <div class="imagebox">
+                <img src="../assets/images/home/griddyPic/6.png" alt="">
+              </div>
+              <div class="imagebox">
+                <img src="../assets/images/home/griddyPic/7.png" alt="">
+              </div>
+              <div class="imagebox">
+                <img src="../assets/images/home/griddyPic/8.png" alt="">
+              </div>
+              <div class="imagebox">
+                <img src="../assets/images/home/griddyPic/9.png" alt="">
+              </div>
+              <div class="imagebox">
+                <img src="../assets/images/home/griddyPic/10.png" alt="">
+              </div>
+              <div class="imagebox">
+                <img src="../assets/images/home/griddyPic/11.png" alt="">
+              </div>
+              <div class="imagebox">
+                <img src="../assets/images/home/griddyPic/12.png" alt="">
+              </div>
+            </div>
+            <div class="griddyPic-row" id="griddyPic-row2">
+              <div class="imagebox">
+                <img src="../assets/images/home/griddyPic/13.png" alt="">
+              </div>
+              <div class="imagebox">
+                <img src="../assets/images/home/griddyPic/14.png" alt="">
+              </div>
+              <div class="imagebox">
+                <img src="../assets/images/home/griddyPic/15.png" alt="">
+              </div>
+              <div class="imagebox">
+                <img src="../assets/images/home/griddyPic/16.png" alt="">
+              </div>
+              <div class="imagebox">
+                <img src="../assets/images/home/griddyPic/17.png" alt="">
+              </div>
+              <div class="imagebox">
+                <img src="../assets/images/home/griddyPic/18.png" alt="">
+              </div>
+              <div class="imagebox">
+                <img src="../assets/images/home/griddyPic/19.png" alt="">
+              </div>
+              <div class="imagebox">
+                <img src="../assets/images/home/griddyPic/20.png" alt="">
+              </div>
+              <div class="imagebox">
+                <img src="../assets/images/home/griddyPic/21.png" alt="">
+              </div>
+              <div class="imagebox">
+                <img src="../assets/images/home/griddyPic/22.png" alt="">
+              </div>
+              <div class="imagebox">
+                <img src="../assets/images/home/griddyPic/23.png" alt="">
+              </div>
+              <div class="imagebox">
+                <img src="../assets/images/home/griddyPic/24.png" alt="">
+              </div>
+            </div>
+            <div class="griddyPic-row" id="griddyPic-row3">
+              <div class="imagebox">
+                <img src="../assets/images/home/griddyPic/25.png" alt="">
+              </div>
+              <div class="imagebox">
+                <img src="../assets/images/home/griddyPic/26.png" alt="">
+              </div>
+              <div class="imagebox">
+                <img src="../assets/images/home/griddyPic/27.png" alt="">
+              </div>
+              <div class="imagebox">
+                <img src="../assets/images/home/griddyPic/28.png" alt="">
+              </div>
+              <div class="imagebox">
+                <img src="../assets/images/home/griddyPic/29.png" alt="">
+              </div>
+              <div class="imagebox">
+                <img src="../assets/images/home/griddyPic/30.png" alt="">
+              </div>
+              <div class="imagebox">
+                <img src="../assets/images/home/griddyPic/31.png" alt="">
+              </div>
+              <div class="imagebox">
+                <img src="../assets/images/home/griddyPic/32.png" alt="">
+              </div>
+              <div class="imagebox">
+                <img src="../assets/images/home/griddyPic/33.png" alt="">
+              </div>
+              <div class="imagebox">
+                <img src="../assets/images/home/griddyPic/34.png" alt="">
+              </div>
+              <div class="imagebox">
+                <img src="../assets/images/home/griddyPic/35.png" alt="">
+              </div>
+              <div class="imagebox">
+                <img src="../assets/images/home/griddyPic/36.png" alt="">
               </div>
             </div>
           </div>
@@ -127,7 +241,7 @@
 
           <div id="griddystyle-btnbox">
             <button class="btn_lg" @click="goGriddyStyle">
-              設計<span>Griddy！</span>
+              設計<span>Griddy</span>
             </button>
           </div>
         </div>
@@ -328,8 +442,8 @@
         showCuppon: true,
         newsData: [],
         wave: wave,
-        griddyPics: [], // 存儲後端返回的圖片數據
-        totalPicsNeeded: 36, // 希望展示的图片总数
+        // griddyPics: [], // 存儲後端返回的圖片數據
+        // totalPicsNeeded: 36, // 希望展示的图片总数
       };
     },
     created() {
@@ -340,86 +454,86 @@
       // this.initLocomotiveScroll();
       this.setupGriddyPicAnimation();
       // this.griddyAnimations();
-      this.fetchGriddyPicData();
+      // this.fetchGriddyPicData();
     },
-    computed: {
-      griddyPicsChunks() {
-        const picsPerRow = 12; // 每行圖片數量，可根據需求調整
-        return this.griddyPics.reduce((acc, pic, index) => {
-          const rowIndex = Math.floor(index / picsPerRow);
-          if (!acc[rowIndex]) {
-            acc[rowIndex] = [];
-          }
-          acc[rowIndex].push(pic);
-          return acc;
-        }, []);
-      },
-    },
+    // computed: {
+    //   griddyPicsChunks() {
+    //     const picsPerRow = 12; // 每行圖片數量，可根據需求調整
+    //     return this.griddyPics.reduce((acc, pic, index) => {
+    //       const rowIndex = Math.floor(index / picsPerRow);
+    //       if (!acc[rowIndex]) {
+    //         acc[rowIndex] = [];
+    //       }
+    //       acc[rowIndex].push(pic);
+    //       return acc;
+    //     }, []);
+    //   },
+    // },
     methods: {
-      fetchGriddyPicData() {
-        const apiUrl = import.meta.env.VITE_API_URL;
-        fetch(`${import.meta.env.VITE_API_URL}/getGriddyPic.php`, {
-          method: 'GET',
-          headers: {
-            'Content-Type': 'application/json',
-          }
-        })
-          .then(response => response.json())
-          .then(data => {
-            const numberOfDefaultPicsNeeded = this.totalPicsNeeded - data.data.length;
-            const updatedData = data.data.map(picRelativePath => `${apiUrl}/${picRelativePath}`);
-            const defaultPics = this.getDefaultPics(numberOfDefaultPicsNeeded);
+      // fetchGriddyPicData() {
+      //   const apiUrl = import.meta.env.VITE_API_URL;
+      //   fetch(`${import.meta.env.VITE_API_URL}/getGriddyPic.php`, {
+      //     method: 'GET',
+      //     headers: {
+      //       'Content-Type': 'application/json',
+      //     }
+      //   })
+      //     .then(response => response.json())
+      //     .then(data => {
+      //       const numberOfDefaultPicsNeeded = this.totalPicsNeeded - data.data.length;
+      //       const updatedData = data.data.map(picRelativePath => `${apiUrl}/${picRelativePath}`);
+      //       const defaultPics = this.getDefaultPics(numberOfDefaultPicsNeeded);
 
-            this.griddyPics = [...updatedData, ...defaultPics];
-            this.$nextTick(() => {
-              this.setupGriddyPicAnimation();
-            });
-          })
-          .catch(error => console.error('请求失败:', error));
-      },
-      getDefaultPics(numberOfPics) {
-        // 假设 defaultPicsArray 是一个包含大量默认图片 URL 的数组
-        const defaultPicsArray = [
-          'src/assets/images/home/griddyPic/1.png',
-          'src/assets/images/home/griddyPic/2.png',
-          'src/assets/images/home/griddyPic/3.png',
-          'src/assets/images/home/griddyPic/4.png',
-          'src/assets/images/home/griddyPic/5.png',
-          'src/assets/images/home/griddyPic/6.png',
-          'src/assets/images/home/griddyPic/7.png',
-          'src/assets/images/home/griddyPic/8.png',
-          'src/assets/images/home/griddyPic/9.png',
-          'src/assets/images/home/griddyPic/10.png',
-          'src/assets/images/home/griddyPic/11.png',
-          'src/assets/images/home/griddyPic/12.png',
-          'src/assets/images/home/griddyPic/13.png',
-          'src/assets/images/home/griddyPic/14.png',
-          'src/assets/images/home/griddyPic/15.png',
-          'src/assets/images/home/griddyPic/16.png',
-          'src/assets/images/home/griddyPic/17.png',
-          'src/assets/images/home/griddyPic/18.png',
-          'src/assets/images/home/griddyPic/19.png',
-          'src/assets/images/home/griddyPic/20.png',
-          'src/assets/images/home/griddyPic/21.png',
-          'src/assets/images/home/griddyPic/22.png',
-          'src/assets/images/home/griddyPic/23.png',
-          'src/assets/images/home/griddyPic/24.png',
-          'src/assets/images/home/griddyPic/25.png',
-          'src/assets/images/home/griddyPic/26.png',
-          'src/assets/images/home/griddyPic/27.png',
-          'src/assets/images/home/griddyPic/28.png',
-          'src/assets/images/home/griddyPic/29.png',
-          'src/assets/images/home/griddyPic/30.png',
-          'src/assets/images/home/griddyPic/31.png',
-          'src/assets/images/home/griddyPic/32.png',
-          'src/assets/images/home/griddyPic/33.png',
-          'src/assets/images/home/griddyPic/34.png',
-          'src/assets/images/home/griddyPic/35.png',
-          'src/assets/images/home/griddyPic/36.png',
-          // 确保这个数组有足够的默认图片
-        ];
-        return defaultPicsArray.slice(0, numberOfPics);
-      },
+      //       this.griddyPics = [...updatedData, ...defaultPics];
+      //       this.$nextTick(() => {
+      //         this.setupGriddyPicAnimation();
+      //       });
+      //     })
+      //     .catch(error => console.error('请求失败:', error));
+      // },
+      // getDefaultPics(numberOfPics) {
+      //   // 假设 defaultPicsArray 是一个包含大量默认图片 URL 的数组
+      //   const defaultPicsArray = [
+      //     'src/assets/images/home/griddyPic/1.png',
+      //     'src/assets/images/home/griddyPic/2.png',
+      //     'src/assets/images/home/griddyPic/3.png',
+      //     'src/assets/images/home/griddyPic/4.png',
+      //     'src/assets/images/home/griddyPic/5.png',
+      //     'src/assets/images/home/griddyPic/6.png',
+      //     'src/assets/images/home/griddyPic/7.png',
+      //     'src/assets/images/home/griddyPic/8.png',
+      //     'src/assets/images/home/griddyPic/9.png',
+      //     'src/assets/images/home/griddyPic/10.png',
+      //     'src/assets/images/home/griddyPic/11.png',
+      //     'src/assets/images/home/griddyPic/12.png',
+      //     'src/assets/images/home/griddyPic/13.png',
+      //     'src/assets/images/home/griddyPic/14.png',
+      //     'src/assets/images/home/griddyPic/15.png',
+      //     'src/assets/images/home/griddyPic/16.png',
+      //     'src/assets/images/home/griddyPic/17.png',
+      //     'src/assets/images/home/griddyPic/18.png',
+      //     'src/assets/images/home/griddyPic/19.png',
+      //     'src/assets/images/home/griddyPic/20.png',
+      //     'src/assets/images/home/griddyPic/21.png',
+      //     'src/assets/images/home/griddyPic/22.png',
+      //     'src/assets/images/home/griddyPic/23.png',
+      //     'src/assets/images/home/griddyPic/24.png',
+      //     'src/assets/images/home/griddyPic/25.png',
+      //     'src/assets/images/home/griddyPic/26.png',
+      //     'src/assets/images/home/griddyPic/27.png',
+      //     'src/assets/images/home/griddyPic/28.png',
+      //     'src/assets/images/home/griddyPic/29.png',
+      //     'src/assets/images/home/griddyPic/30.png',
+      //     'src/assets/images/home/griddyPic/31.png',
+      //     'src/assets/images/home/griddyPic/32.png',
+      //     'src/assets/images/home/griddyPic/33.png',
+      //     'src/assets/images/home/griddyPic/34.png',
+      //     'src/assets/images/home/griddyPic/35.png',
+      //     'src/assets/images/home/griddyPic/36.png',
+      //     // 确保这个数组有足够的默认图片
+      //   ];
+      //   return defaultPicsArray.slice(0, numberOfPics);
+      // },
 
 
       setupGriddyPicAnimation() {
