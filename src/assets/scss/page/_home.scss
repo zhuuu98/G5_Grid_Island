@@ -666,6 +666,7 @@
 
     // 最新消息
     #indexContainer_news {
+      // display: none;
       width: 100%;
       background-color: $orange-1;
       position: relative;
@@ -699,19 +700,24 @@
       }
 
       .index_row {
+        overflow:hidden;
+        overflow-x: auto;
+        width: 100%;
         @include PC() {
           max-width: 1400px;
         }
       }
-
+      
       h1 {
         @include textStrokeEffect($black, $white-1, 6px);
       }
-
+      
       .news_card_content {
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        scroll-behavior: smooth;
         display: flex;
-        overflow: scroll;
-        margin: 0 0;
+        scroll-behavior: smooth;
         padding: 20px;
 
         @include PC() {
@@ -876,10 +882,9 @@
 
       .imgWrapper {
         width: 100%;
-        // overflow-x: scroll;
-        overflow-x: hidden;
-
+        overflow-y: hidden;
         @include T() {
+          // overflow-y: hidden;
           overflow: hidden;
         }
       }
@@ -891,6 +896,9 @@
         justify-content: center;
         gap: $M-spacing;
         margin: $XL-spacing 0 $XL-spacing;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        scroll-behavior: smooth;
 
         &::-webkit-scrollbar {
           display: none;
@@ -907,6 +915,7 @@
           width: 260px;
           max-width: 100%;
           vertical-align: middle;
+          scroll-snap-align: center;        
 
           @include M() {
             width: auto;
