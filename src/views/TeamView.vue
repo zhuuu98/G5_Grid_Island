@@ -20,9 +20,9 @@
             </div>
             <div class="team_article">
               <div class="btn_lg_orange" @click="open_light_box">我要組隊</div>
-              <select>
-                <option value="" selected>從新至舊</option>
-                <option value="">從舊至新</option>
+              <select id="select" v-model="sortMethod" @change="sort">
+                <option value="timeAsc">從近至遠</option>
+                <option value="timeDesc">從遠至近</option>
               </select>
             </div>
           </div>
@@ -280,6 +280,9 @@ export default {
       join_succ: true,
       //動畫
       fight: false,
+      //排序
+      sortMethod: "timeAsc",
+      resData: [],
     };
   },
   components: {
@@ -328,6 +331,25 @@ export default {
     //報隊動畫
     team_fight_close() {
       this.fight = false;
+    },
+    //排序
+    sort() {
+      switch (this.sortMethod) {
+        case "timeAsc":
+          this.card = this.card.sort((a, b) => {
+            const timeA = a.id;
+            const timeB = b.id;
+            return timeA - timeB;
+          });
+          break;
+        case "timeDesc":
+          this.card = this.card.sort((a, b) => {
+            const timeA = a.id;
+            const timeB = b.id;
+            return timeB - timeA;
+          });
+          break;
+      }
     },
   },
 };
