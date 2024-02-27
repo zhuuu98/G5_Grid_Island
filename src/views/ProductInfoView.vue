@@ -37,8 +37,9 @@
               <div class="productPicList">
                 <div
                   v-for="num in 3"
-                  class="productPic"
+                  class="productPic transparent"
                   @click="changeMainPic(num)"
+                  :class="{ selected: mainPic == num }"
                 >
                   <!-- :src="`http://localhost/image/prod/${
                       prodData['prod_img' + num]
