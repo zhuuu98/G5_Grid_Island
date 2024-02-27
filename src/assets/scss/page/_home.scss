@@ -7,7 +7,7 @@
   }
 
   @include PC() {
-    max-width: 1140px;
+    max-width: 1400px;
   }
 }
 
@@ -32,14 +32,18 @@
       }
 
       .index_row {
-        outline: 2px solid red;
+        // outline: 2px solid red;
         padding: 0 0;
-        margin: 4rem auto 12rem auto;
+        margin: 4rem auto 6rem auto;
         display: flex;
         gap: 2rem;
         flex-direction: column;
         justify-content: center;
         align-items: center;
+
+        @include T() {
+          margin: 4rem auto 12rem auto;
+        }
       }
     }
 
@@ -52,6 +56,8 @@
         h1 {
           @include textStrokeEffect($black, $white-1, 6px);
         }
+
+
 
         .prodBackground {
           // 白塊
@@ -302,6 +308,9 @@
           @include textStrokeEffect($black, $white-1, 6px);
         }
 
+        width: 100%;
+        overflow: hidden;
+
         #griddystyle-contentbox {
           width: 100%;
         }
@@ -309,6 +318,54 @@
         span {
           letter-spacing: .1em;
         }
+      }
+
+      #griddystyle-contentbox {
+        // background-color: #ffffff;
+        width: 100%;
+        height: 400px;
+        // overflow: hidden;
+        // transform: rotate(-10deg);
+
+        @include T() {
+          height: 600px;
+        }
+
+        #griddyPic-row1 {
+          transform: translateX(-800px) rotate(4deg);
+        }
+        #griddyPic-row2 {
+          transform: translateX(0px) rotate(-2.5deg);
+        }
+        #griddyPic-row3 {
+          transform: translateX(-800px) rotate(2.5deg);
+        }
+        
+        .griddyPic-row {
+          width: 100%;
+          /* 根據需要調整高度 */
+          display: flex;
+        
+          
+          .imagebox {
+            width: 120px;
+            flex-shrink: 0;
+            border-top: 2px solid #fff;
+            border-bottom: 2px solid #fff;
+            border-left: 1px solid #fff;
+            border-right: 1px solid #fff;
+            @include T() {
+              width: 200px;
+            }
+
+            img {
+              width: 100%;
+              display: block;
+            }
+          }
+
+        }
+
       }
     }
 
@@ -481,146 +538,169 @@
       }
 
       .index_row {
-      h1 {
-        @include textStrokeEffect($black, $white-1, 6px);
-      }
+        h1 {
+          @include textStrokeEffect($black, $white-1, 6px);
+        }
 
-      .reserveInfo {
+        .reserveInfo {
 
-        justify-content: center;
-        // background-color: #3bb1b9;
-        width: 100%;
-
-        .reserveContent {
-          display: flex;
-          flex-direction: column;
           justify-content: center;
-          align-items: center;
-          width: auto;
-          gap: 40px; //
-          // background-color: #fa0;
+          // background-color: #3bb1b9;
+          width: 100%;
 
-          @include T() {
-            flex-direction: row;
-            justify-content: space-between;
-
-          }
-
-          .reserveStep {
+          .reserveContent {
             display: flex;
             flex-direction: column;
+            justify-content: center;
             align-items: center;
-            width: calc(100% - 120px);
-            max-width: 200px;
+            width: auto;
+            gap: 40px; //
+            // background-color: #fa0;
 
             @include T() {
-              max-width: 240px;
+              flex-direction: row;
+              justify-content: space-between;
+
             }
 
-            img {
-              width: 100%;
-      
-            }
-            span {
-              //綠標
-              border: 1.618px solid $black;
-              padding: 12px;
-              transform: translateY(-20px);
-              background-color: $green-1;
+            .reserveStep {
               display: flex;
+              flex-direction: column;
               align-items: center;
-              width: 180px;
-              white-space: nowrap;
-              overflow: hidden;
-              text-overflow: ellipsis;
-              text-align: center;
-              justify-content: center;
-              @include text();
-              @include T(){
-                width: 196px;
-              };
+              width: calc(100% - 120px);
+              max-width: 200px;
+
+              @include T() {
+                max-width: 240px;
+              }
+
+              img {
+                width: 100%;
+
+              }
+
+              span {
+                //綠標
+                border: 1.618px solid $black;
+                padding: 12px;
+                transform: translateY(-20px);
+                background-color: $green-1;
+                display: flex;
+                align-items: center;
+                width: 180px;
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                text-align: center;
+                justify-content: center;
+                @include text();
+
+                @include T() {
+                  width: 196px;
+                }
+
+                ;
+              }
             }
+
+
+          }
+        }
+
+        // [class*="reserveStep"] {
+        //   position: relative;
+        // }
+
+        // [class*="reserveStep"]>span {
+        //   background-color: $green-1;
+        //   padding: $S-spacing $M-spacing;
+        //   border: 1px solid $blue-3;
+        //   // width: 200px;
+        //   width: fit-content;
+        //   text-align: center;
+        //   position: absolute;
+        // }
+
+        // .reserveStep1 span {
+        //   display: flex;
+        //   flex-direction: column;
+        //   transform: translateX(26px) translateY(-20px);
+
+        //   @include T() {
+        //     transform: translateX(75px) translateY(-20px);
+        //   }
+        // }
+
+        // .reserveStep2 span {
+        //   // width: 290px;
+        //   display: flex;
+        //   flex-wrap: wrap;
+        //   flex-direction: column;
+        //   justify-content: center;
+        //   transform: translateX(26px) translateY(-20px);
+        //   width: 100%;
+        //   max-width: 150px;
+
+        //   @include PC() {
+        //     max-width: 250px;
+        //   }
+        // }
+
+        // .reserveStep3 span {
+        //   // width: 290px;
+        //   display: flex;
+        //   flex-wrap: wrap;
+        //   flex-direction: column;
+        //   justify-content: center;
+        //   transform: translateX(26px) translateY(-20px);
+        //   width: 100%;
+        //   max-width: 150px;
+
+        //   @include PC() {
+        //     max-width: 250px;
+        //   }
+        // }
+      }
+    }
+
+
+    // 最新消息
+    #indexContainer_news {
+      width: 100%;
+      background-color: $orange-1;
+      position: relative;
+
+      .wave-imagebox {
+        width: 100%;
+        position: absolute;
+        bottom: calc(100% - 2px);
+        overflow: hidden;
+
+        .wave {
+          width: 240%;
+          z-index: 20;
+
+          .pathLine {
+            fill: $blue-2;
           }
 
+          .pathPan {
+            fill: $orange-1;
+          }
 
+          @include T() {
+            width: 200%;
+          }
+
+          @include PC() {
+            width: 120%;
+          }
         }
       }
 
-
-      
-
-      
-
-      // [class*="reserveStep"] {
-      //   position: relative;
-      // }
-
-      // [class*="reserveStep"]>span {
-      //   background-color: $green-1;
-      //   padding: $S-spacing $M-spacing;
-      //   border: 1px solid $blue-3;
-      //   // width: 200px;
-      //   width: fit-content;
-      //   text-align: center;
-      //   position: absolute;
-      // }
-
-      // .reserveStep1 span {
-      //   display: flex;
-      //   flex-direction: column;
-      //   transform: translateX(26px) translateY(-20px);
-
-      //   @include T() {
-      //     transform: translateX(75px) translateY(-20px);
-      //   }
-      // }
-
-      // .reserveStep2 span {
-      //   // width: 290px;
-      //   display: flex;
-      //   flex-wrap: wrap;
-      //   flex-direction: column;
-      //   justify-content: center;
-      //   transform: translateX(26px) translateY(-20px);
-      //   width: 100%;
-      //   max-width: 150px;
-
-      //   @include PC() {
-      //     max-width: 250px;
-      //   }
-      // }
-
-      // .reserveStep3 span {
-      //   // width: 290px;
-      //   display: flex;
-      //   flex-wrap: wrap;
-      //   flex-direction: column;
-      //   justify-content: center;
-      //   transform: translateX(26px) translateY(-20px);
-      //   width: 100%;
-      //   max-width: 150px;
-
-      //   @include PC() {
-      //     max-width: 250px;
-      //   }
-      // }
-    }
-    }
-
-    // Griddy造型屋
-    .index_griddy {}
-
-    // 最新消息
-    .index_news {
-      width: 100%;
-      background-color: $orange-1;
-
       .index_row {
-        width: 100%;
-
         @include PC() {
-          width: 80%;
-          max-width: 1140px;
+          max-width: 1400px;
         }
       }
 
@@ -631,7 +711,7 @@
       .news_card_content {
         display: flex;
         overflow: scroll;
-        margin: $M-spacing 0;
+        margin: 0 0;
         padding: 20px;
 
         @include PC() {
@@ -676,9 +756,7 @@
         }
       }
 
-      .news_button {
-        padding: $L-spacing 0 $XXL-spacing;
-      }
+      .news_button {}
 
       button {
         display: block;
@@ -690,26 +768,55 @@
     .index_insta {}
 
     // Grid Island 關於我們
-    .index_about {
-      padding-bottom: 15%;
+    #indexContainer_about {
       width: 100%;
       background-color: $green-2;
+      position: relative;
+
+      .wave-imagebox {
+        width: 100%;
+        position: absolute;
+        bottom: calc(100% - 2px);
+        overflow: hidden;
+
+        .wave {
+          width: 240%;
+          z-index: 20;
+
+          .pathLine {
+            fill: $green-1;
+          }
+
+          .pathPan {
+            fill: $green-2;
+          }
+
+          @include T() {
+            width: 200%;
+          }
+
+          @include PC() {
+            width: 120%;
+          }
+        }
+      }
 
       .index_row {
-        width: 80%;
         display: flex;
         flex-direction: column;
         align-items: center;
         // justify-content: center;
         gap: $L-spacing;
 
-        @include PC() {
-          width: 80%;
+        @include T() {
+          margin: 4rem auto 12rem auto;
           max-width: 1140px;
         }
       }
 
-      h1 {
+      span {
+        @include H1;
+        font-weight: 900;
         @include textStrokeEffect($black, $white-1, 6px);
       }
 
@@ -733,13 +840,11 @@
         }
 
         @include T() {
-          width: 95%;
           background: $white-1 url("/src/assets/images/home/homeAbout_BackgoundGrid.svg") no-repeat left 0 bottom 15%/160%;
         }
 
         @include PC() {
           max-width: 1100px;
-          width: 98%;
           background: $white-1 url("/src/assets/images/home/homeAbout_BackgoundGrid.svg") no-repeat left 0 bottom 15%/100%;
         }
 
