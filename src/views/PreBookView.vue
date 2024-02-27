@@ -8,8 +8,8 @@
             </Breadcrumb>
         </div>
         <div class="preBook">
-            <h3 class="preTitle">預約前請詳閱以下事項</h3>
-            <h3>{{ bookFee.title }}</h3>
+            <h4 class="preTitle">預約前請詳閱以下事項</h4>
+            <h4 class="title">{{ bookFee.title }}</h4>
             <p v-for="paragraph in bookFee.content">{{ paragraph }}</p>
             <div class="fee_detail">
                 <div class="fee_detail_grid" v-for="item in feeDetails">
@@ -27,9 +27,9 @@
                     </div>
                 </div>
             </div>
-            <h3>{{ bookDirection.title }}</h3>
+            <h4 class="title">{{ bookDirection.title }}</h4>
             <p v-for="paragraph in bookDirection.content">{{ paragraph }}</p>
-            <h3>{{ bookNotice.title }}</h3>
+            <h4 class="title title_last">{{ bookNotice.title }}</h4>
             <p v-for="paragraph in bookNotice.content">{{ paragraph }}</p>
         </div>
         <div class="preCheck">
@@ -38,7 +38,7 @@
             </label>
         </div>
         <div class="preBtn">
-            <button class="btn_sm_1" @click="goReserve()" >前往預約</button>
+            <button class="btn_lg" @click="goReserve()" >前往預約</button>
         </div>
 
         <div class="alert_bg" v-show="showAlert">

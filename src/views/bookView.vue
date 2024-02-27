@@ -14,7 +14,7 @@
         </div>
         <form action="" class="bookTableForm">
             <div class="book_date_select">
-                <h2>請選擇日期</h2>
+                <h3>請選擇日期</h3>
                 <input type="date" v-model="dateChosen" @input="tableAble" required="required">
             </div>
 
@@ -51,7 +51,7 @@
             <!--以上是月曆-->
 
             <div class="book_table_select">
-                <h2>請選擇桌型</h2>
+                <h3>請選擇桌型</h3>
                 <div class="book_table_option">
                     <div class="book_options" v-for="table in tableType">
                         <input type="radio" name="table" :value="table.value" :id="table.typeId" :disabled="table.disabled"  v-model="tableChosen" @click="timeAble" required>
@@ -60,7 +60,7 @@
                 </div>
             </div>
             <div class="book_time_select">
-                <h2>請選擇時段</h2>
+                <h3>請選擇時段</h3>
                 <div class="book_time_option">
                     <div class="book_options" v-for="(time,index) in timePeriod">
                         <input type="radio" name="time" :value="time.period" :id="time.timeId" :disabled="time.disabled" v-model="timeChosen" @input="timeSet(index)" required>
@@ -69,7 +69,7 @@
                 </div>
             </div>
             <div class="book_select_NumOfPeo">
-                <h2>預定人數</h2>
+                <h3>預定人數</h3>
                 <div class="bookPeople">
                     <p>人數</p>
                     <div class="minusPlus">

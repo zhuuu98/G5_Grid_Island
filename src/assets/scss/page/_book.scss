@@ -2,7 +2,7 @@
 .book{
     background-color: $bgc-2;
     padding-bottom: 100px;
-    h2{
+    h3{
         text-align: center;
         letter-spacing: 2px;
     }
@@ -78,7 +78,6 @@
                 gap: $S-spacing;
                 justify-content: center;
                 align-items: center;
-                font-size: $M-h4;
                 gap: 2rem;
                 font-size: 18px;
             }
@@ -104,7 +103,6 @@
             $buttonWidth: 30px;
             $buttonPCWidth: 40px;
             button{
-                font-size: 16px;
                 display: block;
                 margin: 2px auto;
                 width: $buttonWidth;
@@ -128,6 +126,7 @@
             }
             @include T() {
                 button{
+                    font-size: 16px;
                     width: $buttonPCWidth;
                     height: $buttonPCWidth;
                 }
@@ -158,16 +157,21 @@
         background-color: $white-1;
         border-radius: $input-radius;
         cursor: pointer;
-        font-size: 16px;
+        @include T() {
+            font-size: 16px;
+        }
     }
     .book_time_option .book_options label{
         display: block;
-        width: 140px;
+        width: 120px;
         padding: $S-spacing $M-spacing;
         background-color: $white-1;
         border-radius: $input-radius;
         cursor: pointer;
-        font-size: 16px;
+        @include T() {
+            width: 140px;
+            font-size: 16px;
+        }
     }
     .book_options input{
         display: none;
