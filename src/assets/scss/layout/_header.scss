@@ -11,13 +11,16 @@ header {
     .logo_box {
       display: flex;
       margin: 4px 0px 4px 5px;
+      background-color: #ccc;
       @include PC(){
         margin: 4px 0px 4px 20px;
       }
       img {
         margin: 5px;
         vertical-align: bottom;
-        height: 45px;
+        // width: 13%;
+        // height: 50px;
+        width: 112px; 
       }
     }
     .header_icons {
@@ -140,7 +143,6 @@ header {
       font-size: $PC-h4;
       @include T(){
         border-top: 70px solid $blue-1;
-        // padding: 20px;
       }
       @include PC(){
         border-top: 70px solid $blue-1;
@@ -154,13 +156,9 @@ header {
         height: 100%;
         margin-bottom: 20px;
         @include PC(){
-          // overflow-y: hidden;
           overflow-y: overlay;
-          // overflow: hidden;
-          // margin-bottom: 0px;
           max-width: 1106px;
           min-height: 541px;
-
         }
       }
       // 選單內漢堡線
@@ -204,7 +202,6 @@ header {
             width: 21px;
             height: 2px;
             border-radius: 5px;
-
           }
           .ham_btn2_line3 {
             transform: translateY(-7.8px) rotate(-45deg);
@@ -246,7 +243,6 @@ header {
           color: $blue-2;
           display: flex;
           text-align: center;
-          // background-color: #9e6fcd;
           z-index: 10;
           &:hover{
             background-color: $green-1;
@@ -268,7 +264,6 @@ header {
           .ham_hover{
             @include HeaderHover;
             position: absolute;
-            // bottom: -25px;
             bottom: 20px;
             right: 100px;
             display: none;
@@ -390,9 +385,9 @@ header {
         }
       }
       
-    }//ham_menu
-  } //wrapper
-} //header
+    }
+  } 
+} 
 
 /* 滑入效果  */
 @keyframes slideInFromTop {
