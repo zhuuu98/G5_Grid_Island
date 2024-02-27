@@ -129,6 +129,7 @@
               column-gap: $S-spacing;
               width: 100%;
               overflow-x: auto;
+              justify-content: center;
               .productPic {
                 cursor: pointer;
                 img {

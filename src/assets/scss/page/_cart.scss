@@ -82,6 +82,11 @@
         padding: $S-spacing;
 
         .cartItemTitle {
+          @include PC() {
+            h2 {
+              font-size: 10px;
+            }
+          }
           h3 {
             font-size: $M-h3;
           }
