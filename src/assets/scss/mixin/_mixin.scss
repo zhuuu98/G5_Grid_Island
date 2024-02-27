@@ -106,7 +106,6 @@
 }
 
 // RWD
-//原則上是由小寫到大，但有寫反的可以用這個補救。
 @mixin M(){
   @media all and (min-width: $M) {
     //Mobile 480px;
