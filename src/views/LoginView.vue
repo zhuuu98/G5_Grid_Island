@@ -5,12 +5,14 @@
             <h2>會員登入</h2>
             <form action="" class="login_form" methods="post">
                 <input type="email" placeholder="請輸入帳號" v-model="accName">
-                <input type="password" placeholder="請輸入密碼" v-model="au4a83">
-
-                <input type="submit" value="登入" class="signBtn" @click.prevent="login">
+                <input :type="showPsw ? 'text' : 'password'" placeholder="請輸入密碼" v-model="au4a83">
+                <input type="submit" value="登入" class="signBtn" @click.prevent="login" @keyup.enter="login">
             </form>
             <p class="login_signUp_text">還不是會員嗎？<RouterLink to="./Signup">點我註冊</RouterLink>
             </p>
+            <!-- @click="isPswShowed" -->
+            <font-awesome-icon v-show="!showPsw" @mousedown="showPsw = !showPsw" :icon="['fas', 'eye']" class="pswEye"/>
+            <font-awesome-icon v-show="showPsw"  @mouseup="showPsw = !showPsw" @mouseleave="showPsw = false" :icon="['fas', 'eye-slash']" class="pswEye" />
             <div class="login_icon">
                 <i class="fa-brands fa-line fa-2xl" @click="lineLogin"></i>
                 <i class="fa-brands fa-google fa-2xl" @click="googleLogin"></i>
@@ -47,7 +49,8 @@ export default {
             line_channel_secret: '5afb1c4a45fa1728f965b4f29c28952d',// Line Channel Secret
             line_redirect_uri: 'http://localhost:5173/login',  // Line developer Callback URL
             line_idToken: '',
-            line_accessToken: ''
+            line_accessToken: '',
+            showPsw: false
         }
     },
     created() {
@@ -220,6 +223,9 @@ export default {
                     }
                 })
                 .catch(error => console.log(error))
+        },
+        isPswShowed(){
+            this.showPsw = !this.showPsw
         }
     }
 }
