@@ -14,7 +14,7 @@
       <div class="cartContent">
         <div class="cartItemContent">
           <div class="cartItemTitle">
-            <h2>購物車</h2>
+            <h3>購物車</h3>
           </div>
           <div class="cartItemArea">
             <div class="cartItemBlock" v-for="item in cartData" :key="item.id">
@@ -62,7 +62,7 @@
         <div class="buyingSelectArea" v-show="cartData.length != 0">
           <div class="discountCode">
             <div class="discountCodeTitle">
-              <h3>輸入折扣碼</h3>
+              <h4>輸入折扣碼</h4>
             </div>
 
             <div class="discountCodeInputBtn">
@@ -82,7 +82,7 @@
           </div>
           <div class="deliveryMethod">
             <div class="deliveryMethodTitle">
-              <h3>配送方式</h3>
+              <h4>配送方式</h4>
             </div>
             <div class="deliveryWarning" v-show="showWarning">
               <p>*請選擇一個有效的選項</p>
