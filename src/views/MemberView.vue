@@ -70,10 +70,10 @@
                             <div class="dateAndCancel">
                                 <p>{{ data.book_date }}</p>
                                 <button
-                                    :class="{ 'btn_sm_1': true, 'disabled': isPastDate(data.book_date) || data.book_state === 0 }"
+                                    :class="{ 'btn_sm_1': true, 'disabled': isPastDate(data.book_date) || data.book_state == 0 }"
                                     @click="alertCancelbox(i)"
-                                    :disabled="isPastDate(data.book_date) || data.book_state === 0">{{ data.book_state
-                                        === 0 ? '已經取消' : '取消預約' }}</button>
+                                    :disabled="isPastDate(data.book_date) || data.book_state == 0">{{ data.book_state
+                                        == 0 ? '已經取消' : '取消預約' }}</button>
                                 <!-- 取消預約燈箱 -->
                                 <div class="alertCancel_bg" v-if="alertCancel && (indexRecord === i)">
                                     <div class="alertCancel_main">
@@ -82,7 +82,7 @@
                                         </button>
                                         <div class="alertCancel_content">
 
-                                            <p>您確定要取消
+                                            <p>您確定要取消這筆預約嗎？
                                             </p>
                                             <p>{{ data.book_date }}</p>
                                             <p>
@@ -92,13 +92,10 @@
                                                 }}
                                             </p>
                                             <p>人數：{{ data.book_people }}人</p>
-                                            <p>
-                                                這筆預約嗎？
-                                            </p>
                                         </div>
                                         <div class="cancelBtns">
-                                            <button class="bookCancel btn_sm_1" @click="confirmCancel()">確定</button>
-                                            <button class=" btn_sm_1" @click="closeAlert()">取消</button>
+                                            <button class="bookCancel btn_sm_1" @click="confirmCancel()">確定取消</button>
+                                            <button class=" btn_sm_1" @click="closeAlert()">不取消</button>
                                         </div>
 
                                     </div>
@@ -109,7 +106,7 @@
                                 <p>時段：</p>
                                 <div class="selectedTime">
                                     <div class="chooseTime">
-                                        <p>{{ data.book_time }}{{ formatTime(data.book_start_time) }}~{{
+                                        <p>{{ data.book_time }}　　時間：{{ formatTime(data.book_start_time) }}~{{
                                             formatTime(data.book_end_time) }}</p>
 
                                     </div>
@@ -180,7 +177,7 @@
                                             <p>{{ items.ord_date }}</p>
                                             <p>{{ items.ord_id }}</p>
                                             <p>${{ items.ord_sum }}</p>
-                                            <p>{{ items.ord_state === 0 ? '未完成' : '已完成' }}</p>
+                                            <p>{{ items.ord_state == 0 ? '未完成' : '已完成' }}</p>
                                         </div>
                                         <button class="btn_sm_1" @click="OpenList(index)">訂單明細</button>
 
@@ -215,10 +212,10 @@
                                 <div class="dateAndCancel">
                                     <p>{{ data.book_date }}</p>
                                     <button
-                                        :class="{ 'btn_sm_1': true, 'disabled': isPastDate(data.book_date) || data.book_state === 0 }"
+                                        :class="{ 'btn_sm_1': true, 'disabled': isPastDate(data.book_date) || data.book_state == 0 }"
                                         @click="alertCancelbox(index)"
-                                        :disabled="isPastDate(data.book_date) || data.book_state === 0">{{
-                                            data.book_state === 0 ? '已經取消' : '取消預約' }}</button>
+                                        :disabled="isPastDate(data.book_date) || data.book_state == 0">{{
+                                            data.book_state == 0 ? '已經取消' : '取消預約' }}</button>
                                     <!-- 取消預約燈箱 -->
                                     <div class="alertCancel_bg" v-if="alertCancel && (indexRecord === index)">
                                         <div class="alertCancel_main">
@@ -227,7 +224,7 @@
                                                     <i class="fa-solid fa-xmark fa-2x"></i>
                                                 </button>
 
-                                                <p>您確定要取消
+                                                <p>您確定要取消這筆預約嗎？
                                                 </p>
                                                 <p>{{ data.book_date }}</p>
                                                 <p>
@@ -237,13 +234,11 @@
                                                     }}
                                                 </p>
                                                 <p>人數：{{ data.book_people }}人</p>
-                                                <p>
-                                                    這筆預約嗎？
-                                                </p>
+                                                
                                             </div>
                                             <div class="cancelBtns">
-                                                <button class="bookCancel btn_sm_1" @click="confirmCancel()">確定</button>
-                                                <button class=" btn_sm_1" @click="closeAlert()">取消</button>
+                                                <button class="bookCancel btn_sm_1" @click="confirmCancel()">確定取消</button>
+                                                <button class=" btn_sm_1" @click="closeAlert()">不取消</button>
                                             </div>
 
                                         </div>
@@ -255,7 +250,7 @@
                                     <div class="selectedTime">
                                         <div class="chooseTime">
                                             <p>{{ data.book_time }}</p>
-                                            <p>{{ formatTime(data.book_start_time) }}~{{ formatTime(data.book_end_time) }}
+                                            <p>　　時間：{{ formatTime(data.book_start_time) }}~{{ formatTime(data.book_end_time) }}
                                             </p>
                                         </div>
                                     </div>
@@ -372,7 +367,7 @@
                                     <p>{{ items.ord_date }}</p>
                                     <p>{{ items.ord_id }}</p>
                                     <p>${{ items.ord_sum }}</p>
-                                    <p>{{ items.ord_state === 0 ? '未完成' : '已完成' }}</p>
+                                    <p>{{ items.ord_state == 0 ? '未完成' : '已完成' }}</p>
                                 </div>
                                 <button class="btn_sm_1" @click="OpenList(index)">訂單明細</button>
                             </div>
@@ -405,10 +400,10 @@
                     <div class="mobileBookDateCancel">
                         <p>{{ data.book_date }}</p>
                         <button
-                            :class="{ 'btn_sm_1': true, 'disabled': isPastDate(data.book_date) || data.book_state === 0 }"
+                            :class="{ 'btn_sm_1': true, 'disabled': isPastDate(data.book_date) || data.book_state == 0 }"
                             @click="alertCancelbox(index)"
-                            :disabled="isPastDate(data.book_date) || data.book_state === 0">{{
-                                data.book_state === 0 ?
+                            :disabled="isPastDate(data.book_date) || data.book_state == 0">{{
+                                data.book_state == 0 ?
                                 '已經取消' : '取消預約' }}
                         </button>
                         <!-- 取消預約燈箱 -->
@@ -419,7 +414,7 @@
                                         <i class="fa-solid fa-xmark fa-2x"></i>
                                     </button>
 
-                                    <p>您確定要取消
+                                    <p>您確定要取消這筆預約嗎？
                                     </p>
                                     <p>{{ data.book_date }}</p>
                                     <p>
@@ -429,13 +424,11 @@
                                         }}
                                     </p>
                                     <p>人數：{{ data.book_people }}人</p>
-                                    <p>
-                                        這筆預約嗎？
-                                    </p>
+                                    
                                 </div>
                                 <div class="cancelBtns">
-                                    <button class="bookCancel btn_sm_1" @click="confirmCancel()">確定</button>
-                                    <button class=" btn_sm_1" @click="closeAlert()">取消</button>
+                                    <button class="bookCancel btn_sm_1" @click="confirmCancel()">確定取消</button>
+                                    <button class=" btn_sm_1" @click="closeAlert()">不取消</button>
                                 </div>
 
                             </div>
@@ -443,10 +436,10 @@
 
                     </div>
                     <div class="TimeAndPeople">
-                        <p>時段：</p>
+                        <p>時段：{{ data.book_time }}</p>
                         <div class="selectedTime">
                             <div class="chooseTime">
-                                <p>{{ data.book_time }}{{ data.book_start_time }}~{{ data.book_end_time }}</p>
+                                <p>時間：{{ formatTime(data.book_start_time) }}~{{ formatTime(data.book_end_time) }}</p>
 
                             </div>
                         </div>

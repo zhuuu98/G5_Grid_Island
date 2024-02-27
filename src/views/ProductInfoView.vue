@@ -25,25 +25,29 @@
             <div class="productPicArea">
               <div class="productMainPic">
                 <!-- :src="`http://localhost/image/prod/${prodData['prod_img' + mainPic]}`" -->
-                :src="
-          <!-- `https://tibamef2e.com/chd104/g5/image/news/${newsData.news_image}`" -->
+
+                <!-- `https://tibamef2e.com/chd104/g5/image/news/${newsData.news_image}`" -->
                 <img
-                  :src="`https://tibamef2e.com/chd104/g5/image/prod/${prodData['prod_img' + mainPic]}`"
+                  :src="`https://tibamef2e.com/chd104/g5/image/prod/${
+                    prodData['prod_img' + mainPic]
+                  }`"
                   :alt="prodData.prod_name"
                 />
               </div>
               <div class="productPicList">
                 <div
                   v-for="num in 3"
-                  class="productPic"
+                  class="productPic transparent"
                   @click="changeMainPic(num)"
+                  :class="{ selected: mainPic == num }"
                 >
-                <!-- :src="`http://localhost/image/prod/${
+                  <!-- :src="`http://localhost/image/prod/${
                       prodData['prod_img' + num]
                     }`" -->
                   <img
                     v-if="prodData['prod_img' + num]"
-                    :src="`https://tibamef2e.com/chd104/g5/image/prod/${prodData['prod_img' + num]
+                    :src="`https://tibamef2e.com/chd104/g5/image/prod/${
+                      prodData['prod_img' + num]
                     }`"
                     :alt="prodData.prod_name"
                   />

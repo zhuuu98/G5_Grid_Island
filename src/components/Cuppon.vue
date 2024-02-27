@@ -6,8 +6,10 @@
 		<div class="subContent">
 			<!-- 重複 render 10次，並使用三元運算符-->
 			<span v-for="index in 10" :key="index"> 
-				{{ data.promos.length > 0 ? data.promos[0].promo_detail : '' }}
-				{{ data.promos.length > 0 ? data.promos[0].promo_code : '' }}
+				<!-- <div class="showCuppon">
+					{{ promos[0].promo_detail }}
+				</div> -->
+				{{ promos[0].promo_detail }}
 			</span>
 		</div>
 	</main>
@@ -20,10 +22,7 @@ import axios from 'axios';
 export default {
 	data() {
 		return {
-			data: {
-				promos:[
-				],
-			},
+			promos:{},
 		};
 	},
 	methods: {
@@ -32,8 +31,8 @@ export default {
 			console.log(url);
 			axios.get(url, {})
 			.then(res => {
-			this.data = res.data;
-			console.log(this.data);
+			this.promos = res.data.promos;
+			console.log(this.promos);
 			})
 			.catch(error => {
 			console.error(error);

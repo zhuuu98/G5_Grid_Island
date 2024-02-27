@@ -379,7 +379,6 @@ export default {
       this.article_send_succ = false;
       this.postArticle();
     },
-
     // 檢舉
     // 打開檢舉燈箱
     open_light_box_report(msg_id) {
