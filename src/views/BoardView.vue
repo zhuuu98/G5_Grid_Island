@@ -115,7 +115,6 @@
         </div>
       </div>
       <div class="board_lb_re_box" v-else>
-        <!-- <h4>登入後即可檢舉</h4> -->
         <h4>請先登入Grid Island！</h4>
         <div class="board_close_light_box" @click="light_box_re_close">
           <font-awesome-icon :icon="['fas', 'xmark']" />

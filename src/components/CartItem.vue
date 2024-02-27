@@ -23,17 +23,17 @@
                 params: { id: itemId },
               }"
             >
-              <h3>{{ itemName }}</h3>
+              <h4>{{ itemName }}</h4>
             </router-link>
           </div>
 
           <div class="cartItemPriceQuantity">
             <div class="cartItemPrice">
               <div class="cartItemDiscountPrice" v-if="itemDiscountPrice">
-                <h3>{{ itemDiscountPrice }}</h3>
+                <h4>{{ itemDiscountPrice }}</h4>
               </div>
               <div class="cartItemPrice">
-                <h3>$ {{ itemPrice }}</h3>
+                <h4>$ {{ itemPrice }}</h4>
               </div>
             </div>
             <div class="cartItemQuantity">
