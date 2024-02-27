@@ -332,13 +332,15 @@
         }
 
         #griddyPic-row1 {
-          transform: translateX(-800px) rotate(4deg);
+          transform: translateX(0px) rotate(4deg);
+          flex-direction: row-reverse;
         }
         #griddyPic-row2 {
           transform: translateX(0px) rotate(-2.5deg);
         }
         #griddyPic-row3 {
-          transform: translateX(-800px) rotate(2.5deg);
+          transform: translateX(0px) rotate(2.5deg);
+          flex-direction: row-reverse;
         }
         
         .griddyPic-row {
