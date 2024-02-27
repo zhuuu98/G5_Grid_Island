@@ -133,7 +133,6 @@
           <h1 data-stroke="Griddy 造型屋">Griddy 造型屋</h1>
 
           <div id="griddystyle-contentbox">
-<<<<<<< HEAD
             <div class="griddyPic-row" id="griddyPic-row1">
               <div class="imagebox">
                 <img src="../assets/images/home/griddyPic/1.png" alt="" />
@@ -246,18 +245,9 @@
               </div>
               <div class="imagebox">
                 <img src="../assets/images/home/griddyPic/12.png" alt="" />
-=======
-            <!-- 使用模板字串動態生成每行的 ID -->
-            <div v-for="(row, rowIndex) in griddyPicsChunks" :key="`row-${rowIndex}`"
-              :id="`griddyPic-row${rowIndex + 1}`" class="griddyPic-row">
-              <div class="imagebox" v-for="(pic, picIndex) in row" :key="`pic-${picIndex}`">
-                <img :src="pic" alt="">
-
->>>>>>> morxddmac
               </div>
             </div>
           </div>
-
 
           <div id="griddystyle-btnbox">
             <button class="btn_lg" @click="goGriddyStyle">
@@ -466,7 +456,6 @@ import "aos/dist/aos.css";
 
 gsap.registerPlugin(ScrollTrigger);
 
-<<<<<<< HEAD
 export default {
   name: "HomeView",
   components: {
@@ -574,238 +563,6 @@ export default {
       // 检查事件的目标是否是您想阻止拖拽的图像
       if (event.target.tagName === "IMG") {
         event.preventDefault();
-=======
-  export default {
-    name: "HomeView",
-    components: {
-      bannerComponent,
-      MainHeader,
-      NewsCard,
-      cuppon,
-    },
-    data() {
-      return {
-        latestData: [],
-        productData: [],
-        displayProdData: [],
-        gameSearch: "",
-        searchResultDisplay: false,
-        serviceText: [
-          "桌遊販售",
-          "精釀啤酒與飲料",
-          "桌上遊戲遊玩與教學",
-          "各式場地租借",
-        ],
-        showCuppon: true,
-        newsData: [],
-        wave: wave,
-        griddyPics: [], // 存儲後端返回的圖片數據
-        totalPicsNeeded: 36, // 希望展示的图片总数
-      };
-    },
-    created() {
-      this.fetchNews();
-      this.fetchProd();
-    },
-    mounted() {
-      // this.initLocomotiveScroll();
-      this.setupGriddyPicAnimation();
-      // this.griddyAnimations();
-      this.fetchGriddyPicData();
-    },
-    computed: {
-      griddyPicsChunks() {
-        const picsPerRow = 12; // 每行圖片數量，可根據需求調整
-        return this.griddyPics.reduce((acc, pic, index) => {
-          const rowIndex = Math.floor(index / picsPerRow);
-          if (!acc[rowIndex]) {
-            acc[rowIndex] = [];
-          }
-          acc[rowIndex].push(pic);
-          return acc;
-        }, []);
-      },
-    },
-    methods: {
-      fetchGriddyPicData() {
-        const apiUrl = import.meta.env.VITE_API_URL;
-        fetch(`${import.meta.env.VITE_API_URL}/getGriddyPic.php`, {
-          method: 'GET',
-          headers: {
-            'Content-Type': 'application/json',
-          }
-        })
-          .then(response => response.json())
-          .then(data => {
-            const numberOfDefaultPicsNeeded = this.totalPicsNeeded - data.data.length;
-            const updatedData = data.data.map(picRelativePath => `${apiUrl}/${picRelativePath}`);
-            const defaultPics = this.getDefaultPics(numberOfDefaultPicsNeeded);
-
-            this.griddyPics = [...updatedData, ...defaultPics];
-            this.$nextTick(() => {
-              this.setupGriddyPicAnimation();
-            });
-          })
-          .catch(error => console.error('请求失败:', error));
-      },
-      getDefaultPics(numberOfPics) {
-        // 假设 defaultPicsArray 是一个包含大量默认图片 URL 的数组
-        const defaultPicsArray = [
-          'src/assets/images/home/griddyPic/1.png',
-          'src/assets/images/home/griddyPic/2.png',
-          'src/assets/images/home/griddyPic/3.png',
-          'src/assets/images/home/griddyPic/4.png',
-          'src/assets/images/home/griddyPic/5.png',
-          'src/assets/images/home/griddyPic/6.png',
-          'src/assets/images/home/griddyPic/7.png',
-          'src/assets/images/home/griddyPic/8.png',
-          'src/assets/images/home/griddyPic/9.png',
-          'src/assets/images/home/griddyPic/10.png',
-          'src/assets/images/home/griddyPic/11.png',
-          'src/assets/images/home/griddyPic/12.png',
-          'src/assets/images/home/griddyPic/13.png',
-          'src/assets/images/home/griddyPic/14.png',
-          'src/assets/images/home/griddyPic/15.png',
-          'src/assets/images/home/griddyPic/16.png',
-          'src/assets/images/home/griddyPic/17.png',
-          'src/assets/images/home/griddyPic/18.png',
-          'src/assets/images/home/griddyPic/19.png',
-          'src/assets/images/home/griddyPic/20.png',
-          'src/assets/images/home/griddyPic/21.png',
-          'src/assets/images/home/griddyPic/22.png',
-          'src/assets/images/home/griddyPic/23.png',
-          'src/assets/images/home/griddyPic/24.png',
-          'src/assets/images/home/griddyPic/25.png',
-          'src/assets/images/home/griddyPic/26.png',
-          'src/assets/images/home/griddyPic/27.png',
-          'src/assets/images/home/griddyPic/28.png',
-          'src/assets/images/home/griddyPic/29.png',
-          'src/assets/images/home/griddyPic/30.png',
-          'src/assets/images/home/griddyPic/31.png',
-          'src/assets/images/home/griddyPic/32.png',
-          'src/assets/images/home/griddyPic/33.png',
-          'src/assets/images/home/griddyPic/34.png',
-          'src/assets/images/home/griddyPic/35.png',
-          'src/assets/images/home/griddyPic/36.png',
-          // 确保这个数组有足够的默认图片
-        ];
-        return defaultPicsArray.slice(0, numberOfPics);
-      },
-
-
-      setupGriddyPicAnimation() {
-        // #griddyPic-row1 的動畫設置
-        gsap.to("#griddyPic-row1", {
-          x: 420, // 向左移動
-          ease: "none",
-          scrollTrigger: {
-            trigger: "#griddyPic-row1",
-            start: "top bottom",
-            end: "bottom top",
-            scrub: true,
-            // markers: true,
-            duration: 1,
-
-          },
-        });
-
-        // #griddyPic-row2 的動畫設置，反向移動
-        gsap.to("#griddyPic-row2", {
-          x: -600, // 向右移動，反方向
-          ease: "none",
-          scrollTrigger: {
-            trigger: "#griddyPic-row2",
-            start: "top bottom",
-            end: "bottom top",
-            scrub: true,
-            // markers: true,
-            duration: 1,
-
-          },
-        });
-
-        // #griddyPic-row3 的動畫設置
-        gsap.to("#griddyPic-row3", {
-          x: 1000, // 向左移動
-          ease: "none",
-          scrollTrigger: {
-            trigger: "#griddyPic-row3",
-            start: "top bottom",
-            end: "bottom top",
-            scrub: true,
-            // markers: true,
-            duration: 1,
-          },
-        });
-      },
-
-
-
-
-
-
-      preventDrag(event) {
-        // 检查事件的目标是否是您想阻止拖拽的图像
-        if (event.target.tagName === "IMG") {
-          event.preventDefault();
-        }
-      },
-      fetchNews() {
-        let url = `${import.meta.env.VITE_API_URL}/getNews.php`;
-        console.log(url);
-        axios
-          .get(url, {})
-          .then(res => {
-            console.log(res.data.news);
-            this.newsData = res.data.news;
-            this.latestData = this.newsData.slice(0, 4);
-          })
-          .catch(error => console.error('發生錯誤:', error))
-      },
-      fetchProd() {
-        axios
-          .post(`${import.meta.env.VITE_API_URL}/getProduct.php`)
-          .then((res) => {
-            this.productData = res.data.products;
-          });
-      },
-      goNews() {
-        this.$router.push("/news");
-      },
-      getImageUrl(paths) {
-        //取得圖片路徑
-        return new URL(`../assets/images/${paths}`, import.meta.url).href;
-      },
-      goBook() {
-        this.$router.push("/PreBook");
-      },
-      toProduct() {
-        this.$router.push("/product");
-      },
-      goAbout() {
-        this.$router.push("/About");
-      },
-      goGriddyStyle() {
-        this.$router.push("/griddy-style");
-      },
-
-      handleSearch() {
-        this.displayProdData = this.productData.filter((item) => {
-          return item.prod_name.includes(this.gameSearch);
-        });
-        if (this.gameSearch == "") {
-          this.displayProdData = [];
-        }
-      },
-      searchResultClose() {
-        setTimeout(() => {
-          // 关闭搜索建议列表的逻辑
-          this.searchResultDisplay = false;
-        }, 100);
-      },
-      marqueeClose() {
-        this.showCuppon = false;
->>>>>>> morxddmac
       }
     },
     fetchNews() {
