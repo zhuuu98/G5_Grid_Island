@@ -52,7 +52,7 @@
                 </button>
               </li>
               <RouterLink to="/" class="ham_logo">
-                <img src="../assets/images/header/gdidlogobox.svg" alt="gdidlogobox">
+                <img src="../assets/images/header/gdidlogobox.png" alt="gdidlogobox">
               </RouterLink>
               <!-- 選單項目 -->
               <div class="ham_links">

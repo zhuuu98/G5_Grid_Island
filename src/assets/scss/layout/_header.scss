@@ -11,15 +11,12 @@ header {
     .logo_box {
       display: flex;
       margin: 4px 0px 4px 5px;
-      background-color: #ccc;
       @include PC(){
         margin: 4px 0px 4px 20px;
       }
       img {
         margin: 5px;
         vertical-align: bottom;
-        // width: 13%;
-        // height: 50px;
         width: 112px; 
       }
     }
