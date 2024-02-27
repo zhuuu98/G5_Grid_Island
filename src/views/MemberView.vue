@@ -180,7 +180,7 @@
                                             <p>{{ items.ord_date }}</p>
                                             <p>{{ items.ord_id }}</p>
                                             <p>${{ items.ord_sum }}</p>
-                                            <p>{{ items.ord_state === 0 ? '未完成' : '已完成' }}</p>
+                                            <p>{{ items.ord_state == 0 ? '未完成' : '已完成' }}</p>
                                         </div>
                                         <button class="btn_sm_1" @click="OpenList(index)">訂單明細</button>
 
@@ -372,7 +372,7 @@
                                     <p>{{ items.ord_date }}</p>
                                     <p>{{ items.ord_id }}</p>
                                     <p>${{ items.ord_sum }}</p>
-                                    <p>{{ items.ord_state === 0 ? '未完成' : '已完成' }}</p>
+                                    <p>{{ items.ord_state == 0 ? '未完成' : '已完成' }}</p>
                                 </div>
                                 <button class="btn_sm_1" @click="OpenList(index)">訂單明細</button>
                             </div>
