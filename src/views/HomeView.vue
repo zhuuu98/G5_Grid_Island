@@ -112,8 +112,8 @@
         </div>
         <div class="index_row">
           <h1 data-stroke="Griddy 造型屋">Griddy 造型屋</h1>
-          <div id="griddystyle-contentbox">
 
+          <div id="griddystyle-contentbox">
             <div class="griddyPic-row" id="griddyPic-row1">
               <div class="imagebox">
                 <img src="../assets/images/home/griddyPic/1.png" alt="">
@@ -227,6 +227,7 @@
               <div class="imagebox">
                 <img src="../assets/images/home/griddyPic/12.png" alt="">
               </div>
+
             </div>
 
           </div>
@@ -434,6 +435,7 @@
         showCuppon: true,
         newsData: [],
         wave: wave,
+        griddyPics: [] // 存儲後端返回的圖片數據
 
       };
     },
@@ -447,11 +449,35 @@
       // this.griddyAnimations();
     },
     methods: {
+      fetchGriddyPicData() {
+      fetch(`${import.meta.env.VITE_API_URL}/getGriddyPic.php`, {
+        method: 'GET', // 或 'POST', 根據您的需求
+        headers: {
+          'Content-Type': 'application/json',
+          // 如果需要的話，添加其他頭部信息
+        }
+      })
+      .then(response => {
+        if (!response.ok) {
+          throw new Error('網路請求失敗');
+        }
+        return response.json();
+      })
+      .then(data => {
+        this.imgUrls = data.data; // 假設返回的數據結構是 { error: false, msg: "", data: [...] }
+      })
+      .catch(error => {
+        console.error('請求失敗:', error);
+      });
+    },
 
+
+
+      
       setupGriddyPicAnimation() {
         // #griddyPic-row1 的動畫設置
         gsap.to("#griddyPic-row1", {
-          x: 50, // 向左移動
+          x: 420, // 向左移動
           ease: "none",
           scrollTrigger: {
             trigger: "#griddyPic-row1",
@@ -489,7 +515,7 @@
             end: "bottom top",
             scrub: true,
             markers: true,
-            duration: 0.5,
+            duration: 1,
           },
         });
       },
