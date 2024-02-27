@@ -32,7 +32,7 @@
               </div>
             </div>
             <div class="about_gi_img">
-              <img src="../assets/images/about/about_intro.svg" alt="about_intro">
+              <img src="../assets/images/about/about_intro.png" alt="about_intro">
             </div>
           </div>
         </div>
