@@ -114,6 +114,121 @@
           <h1 data-stroke="Griddy 造型屋">Griddy 造型屋</h1>
           <div id="griddystyle-contentbox">
 
+            <div class="griddyPic-row" id="griddyPic-row1">
+              <div class="imagebox">
+                <img src="../assets/images/home/griddyPic/1.png" alt="">
+              </div>
+              <div class="imagebox">
+                <img src="../assets/images/home/griddyPic/2.png" alt="">
+              </div>
+              <div class="imagebox">
+                <img src="../assets/images/home/griddyPic/3.png" alt="">
+              </div>
+              <div class="imagebox">
+                <img src="../assets/images/home/griddyPic/4.png" alt="">
+              </div>
+              <div class="imagebox">
+                <img src="../assets/images/home/griddyPic/5.png" alt="">
+              </div>
+              <div class="imagebox">
+                <img src="../assets/images/home/griddyPic/6.png" alt="">
+              </div>
+              <div class="imagebox">
+                <img src="../assets/images/home/griddyPic/7.png" alt="">
+              </div>
+              <div class="imagebox">
+                <img src="../assets/images/home/griddyPic/8.png" alt="">
+              </div>
+              <div class="imagebox">
+                <img src="../assets/images/home/griddyPic/9.png" alt="">
+              </div>
+              <div class="imagebox">
+                <img src="../assets/images/home/griddyPic/10.png" alt="">
+              </div>
+              <div class="imagebox">
+                <img src="../assets/images/home/griddyPic/11.png" alt="">
+              </div>
+              <div class="imagebox">
+                <img src="../assets/images/home/griddyPic/12.png" alt="">
+              </div>
+            </div>
+            <div class="griddyPic-row" id="griddyPic-row2">
+              <div class="imagebox">
+                <img src="../assets/images/home/griddyPic/1.png" alt="">
+              </div>
+              <div class="imagebox">
+                <img src="../assets/images/home/griddyPic/2.png" alt="">
+              </div>
+              <div class="imagebox">
+                <img src="../assets/images/home/griddyPic/3.png" alt="">
+              </div>
+              <div class="imagebox">
+                <img src="../assets/images/home/griddyPic/4.png" alt="">
+              </div>
+              <div class="imagebox">
+                <img src="../assets/images/home/griddyPic/5.png" alt="">
+              </div>
+              <div class="imagebox">
+                <img src="../assets/images/home/griddyPic/6.png" alt="">
+              </div>
+              <div class="imagebox">
+                <img src="../assets/images/home/griddyPic/7.png" alt="">
+              </div>
+              <div class="imagebox">
+                <img src="../assets/images/home/griddyPic/8.png" alt="">
+              </div>
+              <div class="imagebox">
+                <img src="../assets/images/home/griddyPic/9.png" alt="">
+              </div>
+              <div class="imagebox">
+                <img src="../assets/images/home/griddyPic/10.png" alt="">
+              </div>
+              <div class="imagebox">
+                <img src="../assets/images/home/griddyPic/11.png" alt="">
+              </div>
+              <div class="imagebox">
+                <img src="../assets/images/home/griddyPic/12.png" alt="">
+              </div>
+            </div>
+            <div class="griddyPic-row" id="griddyPic-row3">
+              <div class="imagebox">
+                <img src="../assets/images/home/griddyPic/1.png" alt="">
+              </div>
+              <div class="imagebox">
+                <img src="../assets/images/home/griddyPic/2.png" alt="">
+              </div>
+              <div class="imagebox">
+                <img src="../assets/images/home/griddyPic/3.png" alt="">
+              </div>
+              <div class="imagebox">
+                <img src="../assets/images/home/griddyPic/4.png" alt="">
+              </div>
+              <div class="imagebox">
+                <img src="../assets/images/home/griddyPic/5.png" alt="">
+              </div>
+              <div class="imagebox">
+                <img src="../assets/images/home/griddyPic/6.png" alt="">
+              </div>
+              <div class="imagebox">
+                <img src="../assets/images/home/griddyPic/7.png" alt="">
+              </div>
+              <div class="imagebox">
+                <img src="../assets/images/home/griddyPic/8.png" alt="">
+              </div>
+              <div class="imagebox">
+                <img src="../assets/images/home/griddyPic/9.png" alt="">
+              </div>
+              <div class="imagebox">
+                <img src="../assets/images/home/griddyPic/10.png" alt="">
+              </div>
+              <div class="imagebox">
+                <img src="../assets/images/home/griddyPic/11.png" alt="">
+              </div>
+              <div class="imagebox">
+                <img src="../assets/images/home/griddyPic/12.png" alt="">
+              </div>
+            </div>
+
           </div>
 
           <div id="griddystyle-btnbox">
@@ -232,7 +347,10 @@
       </div>
 
       <!-- 最新消息 -->
-      <div class="index_news">
+      <div class="indexContainer" id="indexContainer_news">
+        <div class="wave-imagebox">
+          <div v-html="wave" class="wave"></div>
+        </div>
         <div class="index_row">
           <h1 data-stroke="最新消息">最新消息</h1>
           <div class="news_card_content">
@@ -246,22 +364,14 @@
         </div>
       </div>
 
-      <!-- 一起遊樂 IG API -->
-      <!-- <div class="index_insta">
-		  <div class="index_row"> -->
-      <!-- 寫這邊 -->
-      <!-- </div>
-		</div> -->
-
-      <div class="home_ocean">
-        <img src="/images/home/home_ocean_temp2.svg" alt="home_ocean_temp2" />
-      </div>
-
       <!-- Grid Island 關於我們 -->
-      <div class="index_about">
+      <div class="indexContainer" id="indexContainer_about">
+        <div class="wave-imagebox">
+          <div v-html="wave" class="wave"></div>
+        </div>
         <div class="index_row">
           <!-- 寫這邊 -->
-          <h1 data-stroke="Grid Island">Grid Island</h1>
+          <span data-stroke="Grid Island">Grid Island</span>
           <!-- 中間圖片的外框 -->
           <div class="aboutContent">
             <!-- 桌機板的文字 -->
@@ -293,8 +403,12 @@
   import bannerComponent from "../components/Banner.vue";
   import cuppon from "../components/Cuppon.vue";
   import { wave } from "../policy/wave.js";
-  import { gsap } from "gsap";
-  import { ScrollTrigger } from "gsap/ScrollTrigger";
+  import gsap from "gsap";
+  import ScrollTrigger from "gsap/ScrollTrigger";
+  import AOS from 'aos';
+  import 'aos/dist/aos.css';
+
+  gsap.registerPlugin(ScrollTrigger);
 
   export default {
     name: "HomeView",
@@ -320,13 +434,71 @@
         showCuppon: true,
         newsData: [],
         wave: wave,
+
       };
     },
     created() {
       this.fetchNews();
       this.fetchProd();
     },
+    mounted() {
+      // this.initLocomotiveScroll();
+      this.setupGriddyPicAnimation();
+      // this.griddyAnimations();
+    },
     methods: {
+
+      setupGriddyPicAnimation() {
+        // #griddyPic-row1 的動畫設置
+        gsap.to("#griddyPic-row1", {
+          x: 50, // 向左移動
+          ease: "none",
+          scrollTrigger: {
+            trigger: "#griddyPic-row1",
+            start: "top bottom",
+            end: "bottom top",
+            scrub: true,
+            markers: true,
+            duration: 1,
+
+          },
+        });
+
+        // #griddyPic-row2 的動畫設置，反向移動
+        gsap.to("#griddyPic-row2", {
+          x: -600, // 向右移動，反方向
+          ease: "none",
+          scrollTrigger: {
+            trigger: "#griddyPic-row2",
+            start: "top bottom",
+            end: "bottom top",
+            scrub: true,
+            markers: true,
+            duration: 1,
+
+          },
+        });
+
+        // #griddyPic-row3 的動畫設置
+        gsap.to("#griddyPic-row3", {
+          x: 1000, // 向左移動
+          ease: "none",
+          scrollTrigger: {
+            trigger: "#griddyPic-row3",
+            start: "top bottom",
+            end: "bottom top",
+            scrub: true,
+            markers: true,
+            duration: 0.5,
+          },
+        });
+      },
+
+
+
+
+
+
       preventDrag(event) {
         // 检查事件的目标是否是您想阻止拖拽的图像
         if (event.target.tagName === "IMG") {
