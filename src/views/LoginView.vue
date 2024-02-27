@@ -41,8 +41,8 @@ import { getAuth, signInWithPopup, GoogleAuthProvider, signOut } from "firebase/
 export default {
     data() {
         return {
-            accName: 'griddy@griddy.com',
-            au4a83: 'griddy123',
+            accName: '',
+            au4a83: '',
             alertContent: [],
             showAlert: false,
             line_channel_id: '2003767814',    // Line Channel ID
