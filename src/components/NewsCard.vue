@@ -15,7 +15,14 @@
       <div class="title">
         <h4>{{ newsTitle }}</h4>
       </div>
-      <div>{{ formattedDate }}</div>
+      <div class="info">
+        <div class="date">
+          <p>{{ formattedDate }}</p>
+        </div>
+        <div class="category">
+          <p>{{ newsCategory }}</p>
+        </div>
+      </div>
     </div>
   </div>
   </router-link>
@@ -28,7 +35,7 @@ export default {
       value: 0,
     };
   },
-  props: ["imgUrl", "newsTitle", "newsDate", "newsId"],
+  props: ["imgUrl", "newsTitle", "newsDate", "newsId","newsCategory"],
   methods: {
   },
   computed: {

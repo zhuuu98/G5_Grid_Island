@@ -59,23 +59,17 @@
     flex-direction: column;
     flex:1;
     justify-content: space-between;
-    padding: $S-spacing $S-spacing  $S-spacing;
+    padding: $S-spacing $S-spacing 5px;
     color: $blue-4;
     width: 70%;
     @include T() {
-      padding: $M-spacing $M-spacing  $M-spacing;
-
+      padding: $M-spacing;
     }
-
-
     .title {
       width: 100%;
-      // text-wrap: nowrap;
       text-overflow: ellipsis;
       overflow: hidden;
-
       @include T() {
-        text-wrap: unset;
       }
       h4 {
         display: -webkit-box;
@@ -83,24 +77,42 @@
       -webkit-box-orient: vertical;
         text-overflow: ellipsis;
         overflow: hidden;
-
+        font-size: 16px !important;
+        @include T() {
+          font-size: 20px !important;
+        }
       }
     }
-
     .textContent {
       display: none;
       @include T(){
         display: block;
         letter-spacing: $PC-btn-exsl-spacing;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        // text-wrap: nowrap;
+      }
+      span {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: -webkit-box;
+        -webkit-line-clamp: 3;
+        -webkit-box-orient: vertical;
       }
     }
-
-    .date {
+    .info {
+      display: flex;
     }
-
-
+    .date {
+      margin-top: auto;
+      margin-bottom: auto;
+    }
+    .category {
+      margin-left: auto;
+      border-radius: $M-button-radius; 
+      background-color: $gray-1;
+      color: $blue-4;
+      padding: 4px 10px;
+    }
   }
-
-
-
 }

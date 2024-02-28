@@ -65,10 +65,43 @@
       }
       h4 {
         display: -webkit-box;
-      -webkit-line-clamp: 2;
-      -webkit-box-orient: vertical;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
         text-overflow: ellipsis;
         overflow: hidden;
+        font-size: 16px !important;
+        @include T() {
+          font-size: 20px !important;
+        }
+      }
+    }
+    .info {
+      display: flex;
+    }
+    .date {
+      font-size: 16px !important;
+      margin-top: auto;
+      margin-bottom: auto;
+      @include T() {
+        font-size: unset;
+      }
+    }
+    .category {
+      margin-left: auto;
+      border-radius: $M-button-radius; 
+      background-color: $gray-1;
+      color: $blue-4;
+      padding: 4px 10px;
+      p {
+        font-size: 14px !important;
+        @include T() {
+          font-size: 16px !important;
+        }
+      }
+      @include T() {
+      margin-right: 10px;
+      font-size: unset;
+      font-size: unset;
       }
     }
   }

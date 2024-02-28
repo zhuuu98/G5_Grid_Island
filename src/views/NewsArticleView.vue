@@ -12,43 +12,45 @@
     </transition>
     <div class="newsImg"></div>
 
-    <div class="content">
-      <div class="title">
-        <h2>{{ newsData.news_title }}</h2>
-      </div>
-      <div class="newsImg">
-        <img
-          :src="
-          `https://tibamef2e.com/chd104/g5/image/news/${newsData.news_image}`"
-        />
-      </div>
-      <div class="textContent">
-        <span>{{ newsData.news_content }}</span>
-      </div>
-      <div class="date">
-        <span>{{ formattedDate }}</span>
-      </div>
-      <div class="bottomArea">
-        <div class="category" title="消息分類">
-          <router-link to="/news">
-            <p>{{ newsData.news_category }}</p>
-          </router-link>
+      <div class="content">
+        <div class="articleContent">
+        <div class="title">
+          <h2>{{ newsData.news_title }}</h2>
         </div>
-        <div class="btn">
-          <div v-show="!share" class="tableDiv"></div>
-          <table v-show="share">
-            <th></th>
-            <tbody>
-              <tr>
-                <td class="copy" ref="copy"><p @click="copyLink" >複製文章網址</p></td>
-              </tr>
-              <tr>
-                <td><p @click="shareOnFacebook">分享到Facebook</p></td>
-              </tr>
-            </tbody>
-          </table>
-          <div class="shareBtn" @click="showShareList">
-            <font-awesome-icon :icon="['fas', 'arrow-up-from-bracket']" />
+        <div class="newsImg">
+          <img
+            :src="
+            `https://tibamef2e.com/chd104/g5/image/news/${newsData.news_image}`"
+          />
+        </div>
+        <div class="textContent">
+          <span>{{ newsData.news_content }}</span>
+        </div>
+        <div class="date">
+          <span>{{ formattedDate }}</span>
+        </div>
+        <div class="bottomArea">
+          <div class="category" title="消息分類">
+            <router-link to="/news">
+              <p>{{ newsData.news_category }}</p>
+            </router-link>
+          </div>
+          <div class="btn">
+            <div v-show="!share" class="tableDiv"></div>
+            <table v-show="share">
+              <th></th>
+              <tbody>
+                <tr>
+                  <td class="copy" ref="copy"><p @click="setCopyTextAndCopyLink">複製文章網址</p></td>
+                </tr>
+                <tr>
+                  <td><p @click="shareOnFacebook">分享到Facebook</p></td>
+                </tr>
+              </tbody>
+            </table>
+            <div class="shareBtn" @click="showShareList">
+              <font-awesome-icon :icon="['fas', 'arrow-up-from-bracket']" />
+            </div>
           </div>
         </div>
       </div>
@@ -74,7 +76,7 @@ export default {
       pageId: null,
       share: false,
       clipboard: null,
-      copyText:`https://tibamef2e.com/chd104/g5/front/newsArticle/${this.$route.params.id}`,
+      copyText:``,
     };
   },
   components: {
@@ -90,9 +92,17 @@ export default {
     this.pageId = this.$route.params.id; // 將路由參數賦值給 pageId
   },
   methods: {
+    setCopyTextAndCopyLink() {
+      this.copyText = `https://tibamef2e.com/chd104/g5/front/newsArticle/${this.$route.params.id}`;
+      this.copyLink();
+    },
     copyLink() {
-      this.clipboard.click({ delegateTarget: this.$refs.copy});
+      if (this.clipboard && this.$refs.copy) {
+      this.clipboard.click({ delegateTarget: this.$refs.copy });
       alert('已複製到剪貼板');
+    }
+      // this.clipboard.click({ delegateTarget: this.$refs.copy});
+      // alert('已複製到剪貼板');
     },
     showShareList() {
       this.share = !this.share;
@@ -143,6 +153,11 @@ export default {
     this.clipboard.on('error', (e) => {
       console.error('複製失敗');
     });
+  },
+  beforeUnmount() {
+    if (this.clipboard) {
+      this.clipboard.destroy();
+    }
   },
 };
 </script>
