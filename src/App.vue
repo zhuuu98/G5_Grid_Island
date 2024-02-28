@@ -35,7 +35,7 @@ export default {
   <RouterView v-slot="{ Component, route }">
     <MainHeader v-if="route.meta.showHeader !== false" />
     <component :is="Component" />
-    <ChatBot />
+    <ChatBot v-if="route.meta.showChatBot !== false" />
     <MainFooter/>
   </RouterView>
 </template>
