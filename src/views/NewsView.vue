@@ -19,10 +19,10 @@
 
     <div class="content">
       <div class="btn">
-        <div class="thBtn" @click="romoveListClassName">
+        <div class="thBtn" @click="addListClassName">
           <font-awesome-icon :icon="['fas', 'th']" />
         </div>
-        <div class="listBtn" @click="addListClassName">
+        <div class="listBtn" @click="removeListClassName">
           <font-awesome-icon :icon="['fas', 'th-list']" />
         </div>
       </div>
@@ -36,9 +36,9 @@
           :imgUrl="`https://tibamef2e.com/chd104/g5/image/news/${item.news_image}`"
           :newsId="item.news_id"
           :newsContent="item.news_content"
-          :class="{ noneShow: noneShow }"
+          :newsCategory="item.news_category"
+          :class="{ noneShow: !noneShow }"
         />
-        
         <NewsRow
           v-for="(item, index) in newsData"
           :key="item.news_id"
@@ -47,7 +47,8 @@
           :imgUrl="`https://tibamef2e.com/chd104/g5/image/news/${item.news_image}`"
           :newsId="item.news_id"
           :newsContent="item.news_content"
-          :class="{ noneShow: !noneShow }"
+          :newsCategory="item.news_category"
+          :class="{ noneShow: noneShow }"
         />
       </div>
     </div>
@@ -87,7 +88,7 @@ export default {
     addListClassName() {
       this.noneShow = true;
     },
-    romoveListClassName() {
+    removeListClassName() {
       this.noneShow = false;
     },
     fetchNews() {
