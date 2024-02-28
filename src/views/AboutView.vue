@@ -14,7 +14,7 @@
               <BreadcrumbItem to="/about">關於我們</BreadcrumbItem>
             </Breadcrumb>
           </div>
-
+          <!-- intro -->
           <div class="about_gi_intro" data-aos="fade-left" data-aos-mirror="true" data-aos-delay="200"
             data-aos-once="true" data-aos-duration="600" data-aos-offset="130">
             <!-- 手機版title -->
@@ -49,9 +49,6 @@
             <!-- 輪播圖 -->
             <div class="about_en_imgs">
               <Carousel v-model="value" :autoplay="true" :autoplay-speed="2000" :radius-dot="true">
-                <!-- :dots="outside"  -->
-                <!-- :trigger="click"  -->
-                <!-- :arrow="false" -->
                 <!-- 輪播圖一 -->
                 <CarouselItem>
                   <div class="about_demo-carousel">
@@ -121,7 +118,7 @@
               <div class="about_griddy_content">
                 <p>
                   這是Grid Island的可愛吉祥物 -
-                  <br>Griddy(小蟲)！<br>活潑好動的他總是迎接每一位遊客，帶來歡樂和笑容。他是我們店裡的快樂使者，喜歡玩遊戲、結交新朋友。與小蟲一起，遊戲永遠充滿驚喜和趣味！
+                  Griddy(小蟲)！<br>活潑好動的他總是迎接每一位遊客，帶來歡樂和笑容。他是我們店裡的快樂使者，喜歡玩遊戲、結交新朋友。與小蟲一起，遊戲永遠充滿驚喜和趣味！
                 </p>
               </div>
               <div class="btn_lg">
@@ -139,7 +136,7 @@
           <div v-html="wave" class="wave"></div>
         </div>
         <div class="about_row">
-          <div class="about_info_section" data-aos="fade-left" data-aos-once="true" data-aos-duration="600"
+          <div class="about_info_section" data-aos="fade-up" data-aos-once="true" data-aos-duration="600"
             data-aos-offset="400">
             <div class="about_info_text">
               <div class="about_info_title">
@@ -199,7 +196,7 @@ export default {
     const map = L.map('shopMap').setView([24.957672860339283, 121.22503247550222], 16)
     const blackIcon = new L.Icon({
       iconUrl: this.getMarkerSrc('marker.png'),
-      iconSize: [70, 70],
+      iconSize: [80, 80],
       iconAnchor: [12, 41],
       popupAnchor: [1, -34],
       shadowSize: [41, 41]

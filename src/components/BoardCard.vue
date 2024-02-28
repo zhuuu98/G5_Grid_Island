@@ -9,7 +9,7 @@
           <div class="board_memId">
             {{ item.mem_nickname == null || item.mem_nickname == "" ? item.mem_name : item.mem_nickname }}
           </div>
-          <div class="board_time">{{ item.msg_datetime }}</div>
+          <div class="board_time">{{ item.msg_datetime.slice(0, 16) }}</div>
         </div>
       </div>
       <div class="board_msg">
@@ -45,7 +45,7 @@
               {{ reItem.reply_nickName == null || reItem.reply_nickName == "" ? reItem.reply_memName :
                 reItem.reply_nickName }}
             </p>
-            <div class="board_re_time">{{ reItem.reply_time }}</div>
+            <div class="board_re_time">{{ reItem.reply_time.slice(0, 16) }}</div>
           </div>
         </div>
         <div class="board_re_msg">

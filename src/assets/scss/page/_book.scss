@@ -25,7 +25,7 @@
         margin: $XXL-spacing auto;
         border-radius: $Mob-card-radius;
         padding: $M-spacing;
-        text-align: center;
+        text-align: left;
         @include PC() {
             margin: $XXXL-spacing auto $XXL-spacing;
         }
@@ -221,6 +221,7 @@
         height: 30px;
         font-size: $PC-h3;
         line-height: 0;
+        cursor: pointer;
     }
     .minusPlus input[type="number"]{
         background-color: $white-1;
@@ -228,10 +229,7 @@
         display: flex;
         text-align: center;
         max-width: 50px;
-        padding-left: 16px;
-        @include T(){
-            padding-left: 20px;
-        }
+        padding-left: 15%;
     }
     .book_submit{
         margin:$M-spacing auto $XXXL-spacing;
@@ -269,10 +267,17 @@
             border-radius: $PC-card-radius;
         }
 
-        @include PC() {
+        @include T() {
             width: 40vw;
             left: 30%;
             border-radius: $PC-card-radius;
+            max-width: 600px;
+        }
+        @include PC() {
+            width: 30vw;
+            left: 35%;
+            border-radius: $PC-card-radius;
+            max-width: 600px;
         }
 
 
@@ -291,9 +296,8 @@
             justify-content: center;
             height: calc(#{$alertBoxHeight} - 1.5* #{$alertCrossHeight});
         }
-        p {
-            text-align: center;
-            font-size: $PC-h4;
+        .content {
+            font-size: 20px;
             height: 32px;
             margin-top: 4px;
             align-self: center;
