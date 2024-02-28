@@ -138,7 +138,7 @@ export default {
             selectedEarsStaff: earsStaffs[0],
             selectedEarsColor: unifiedColors[0],
             selectedAccessoriesStaff: accessoriesStaffs[0],
-            selectedAccessoriesColor: unifiedColors[13],
+            selectedAccessoriesColor: unifiedColors[7],
             selectedBackgroundColor: unifiedColors[18],
             currentZone: 'style-play-zone',
             griddyImage: null, // 存储转换后的图像
@@ -350,7 +350,7 @@ export default {
             this.selectedSpotColor = this.unifiedColors[8];
             this.selectedEyesColor = this.unifiedColors[8];
             this.selectedEarsColor = this.unifiedColors[0];
-            this.selectedAccessoriesColor = this.unifiedColors[13];
+            this.selectedAccessoriesColor = this.unifiedColors[7];
             this.selectedBackgroundColor = this.unifiedColors[18];
 
 

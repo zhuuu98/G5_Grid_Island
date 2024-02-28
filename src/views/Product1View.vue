@@ -78,12 +78,10 @@
         </div>
       </section>
     </section>
-    <section class="wave">
-      <div class="waveImg">
-        <img src="@/assets/images/product/productWave.svg" alt="wave" />
-      </div>
-    </section>
     <section class="productList" ref="productListContainer">
+      <div class="wave-imagebox">
+        <div v-html="wave" class="wave"></div>
+      </div>
       <div class="searchCatBar">
         <div class="searchBar">
           <input
@@ -260,6 +258,7 @@
 import axios from "axios";
 import ProductCard from "../components/ProductCard.vue";
 import PageTitle from "../components/PageTitle.vue";
+import { wave } from "../policy/wave.js";
 // 引入stores
 import { mapState, mapActions } from "pinia";
 import cartStore from "@/stores/cart";
@@ -281,6 +280,7 @@ export default {
       itemsPerPage: 6,
       currentPage: 1,
       checkboxValue: [],
+      wave: wave,
     };
   },
   components: {

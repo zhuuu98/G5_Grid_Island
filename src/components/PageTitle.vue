@@ -12,12 +12,17 @@
 </template>
 
 <script>
-export default {
-  data() {
-    return {};
-  },
-  props: ["pageTitle"],
-  methods: {},
-  mounted() {},
-};
+  import { wave } from "../policy/wave.js";
+  export default {
+
+    data() {
+      return {
+        
+      };
+    },
+    props: ["pageTitle"],
+    methods: {},
+    mounted() { },
+    
+  };
 </script>
