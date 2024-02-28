@@ -9,10 +9,12 @@
     .team_breadcrumb {
         padding-left: 20px;
         margin-top: 50px;
-        // margin: 50px 0px 16px 0px;
         @include T() {
         margin-top: 100px;
         }
+    }
+    .noLinkBread{
+    color: rgb(81, 90, 110);
     }
 
     // 牙齒區

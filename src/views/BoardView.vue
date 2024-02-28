@@ -8,7 +8,7 @@
           <div class="board_breadcrumb">
             <Breadcrumb separator="<b class='breadcrumb-separator'>></b>">
               <BreadcrumbItem to="/">首頁</BreadcrumbItem>
-              <BreadcrumbItem to="/board">玩家社群</BreadcrumbItem>
+              <BreadcrumbItem class="noLinkBread">玩家社群</BreadcrumbItem>
               <BreadcrumbItem to="/board">留言區</BreadcrumbItem>
             </Breadcrumb>
           </div>
@@ -285,9 +285,8 @@ export default {
       let d = now.getDate().toString().padStart(2, '0'); // 日
       let h = now.getHours().toString().padStart(2, '0'); // 時
       let min = now.getMinutes().toString().padStart(2, '0'); // 分
-      let s = now.getSeconds().toString().padStart(2, '0'); // 秒
 
-      let time = y + '-' + m + '-' + d + ' ' + h + ':' + min + ':' + s;
+      let time = y + '-' + m + '-' + d + ' ' + h + ':' + min;
       let memId = this.userData.mem_nickname ? this.userData.mem_nickname : this.userData.mem_name;
 
       let html = '<div class="board_re_card"><div class="board_re_id">'
@@ -344,7 +343,6 @@ export default {
         }
       })
         .then((res) => {
-          console.log(res.data);
           console.log('修改成功');
         })
         .catch((err) => {

@@ -9,7 +9,7 @@
 				<!-- <div class="showCuppon">
 					{{ promos[0].promo_detail }}
 				</div> -->
-				{{ promos[0].promo_detail }}
+				<!-- {{ promos[0].promo_detail }} -->
 			</span>
 		</div>
 	</main>

@@ -380,18 +380,30 @@
         <div class="index_row">
           <!-- 寫這邊 -->
           <span data-stroke="Grid Island">Grid Island</span>
-          <!-- 中間圖片的外框 -->
-          <div class="aboutContent">
+          <!-- 白塊 -->
+          <div id="aboutContent">
             <!-- 桌機板的文字 -->
-            <div class="aboutContentTxt">
+            <div id="aboutText">
               <p>
-                我們精選了3000種桌上遊戲，涵蓋了從熱門到冷門的各種類型。即使您不熟悉遊戲規則，也無需擔心，因為我們會親自指導您如何遊玩，一起加入桌遊的行列吧！
+                　　我們精選了3000種桌上遊戲，涵蓋了從熱門到冷門的各種類型。即使您不熟悉遊戲規則，也無需擔心，因為我們會親自指導您如何遊玩，一起加入桌遊的行列吧！
               </p>
             </div>
             <!-- 放圖片的地方 -->
-            <div class="imgWrapper">
-              <div class="aboutContentImg">
-                <img v-for="num in 3" :src="getImageUrl(`home/homeAbout_${num}.svg`)" alt="首頁關於我們" />
+            <div id="about-scroll">
+              <div class="about-imagebox">
+                <img :src="getImageUrl(`home/homeAbout_1.jpg`)" alt="">
+              </div>
+              <div class="about-imagebox">
+                <img :src="getImageUrl(`home/homeAbout_2.jpg`)" alt="">
+              </div>
+              <div class="about-imagebox">
+                <img :src="getImageUrl(`home/homeAbout_3.jpg`)" alt="">
+              </div>
+              <div class="about-imagebox">
+                <img :src="getImageUrl(`home/homeAbout_4.jpg`)" alt="">
+              </div>
+              <div class="about-imagebox">
+                <img :src="getImageUrl(`home/homeAbout_5.jpg`)" alt="">
               </div>
             </div>
           </div>
@@ -442,8 +454,6 @@
         showCuppon: true,
         newsData: [],
         wave: wave,
-        // griddyPics: [], // 存儲後端返回的圖片數據
-        // totalPicsNeeded: 36, // 希望展示的图片总数
       };
     },
     created() {
@@ -451,90 +461,26 @@
       this.fetchProd();
     },
     mounted() {
-      // this.initLocomotiveScroll();
       this.setupGriddyPicAnimation();
-      // this.griddyAnimations();
-      // this.fetchGriddyPicData();
+      // this.setupAboutPicAnimation();
     },
-    // computed: {
-    //   griddyPicsChunks() {
-    //     const picsPerRow = 12; // 每行圖片數量，可根據需求調整
-    //     return this.griddyPics.reduce((acc, pic, index) => {
-    //       const rowIndex = Math.floor(index / picsPerRow);
-    //       if (!acc[rowIndex]) {
-    //         acc[rowIndex] = [];
-    //       }
-    //       acc[rowIndex].push(pic);
-    //       return acc;
-    //     }, []);
-    //   },
-    // },
+
     methods: {
-      // fetchGriddyPicData() {
-      //   const apiUrl = import.meta.env.VITE_API_URL;
-      //   fetch(`${import.meta.env.VITE_API_URL}/getGriddyPic.php`, {
-      //     method: 'GET',
-      //     headers: {
-      //       'Content-Type': 'application/json',
+      // setupAboutPicAnimation() {
+      //   gsap.to(".about-imagebox", {
+      //     x: -1480, // 移动的总距离
+      //     ease: "none",
+      //     scrollTrigger: {
+      //       trigger: "#aboutContent",
+      //       start: "center bottom",
+      //       end: "bottom bottom-=100",
+      //       // pin: "#indexContainer_about",
+      //       pinSpacing: false,
+      //       scrub: 1,
+      //       markers: true,
       //     }
-      //   })
-      //     .then(response => response.json())
-      //     .then(data => {
-      //       const numberOfDefaultPicsNeeded = this.totalPicsNeeded - data.data.length;
-      //       const updatedData = data.data.map(picRelativePath => `${apiUrl}/${picRelativePath}`);
-      //       const defaultPics = this.getDefaultPics(numberOfDefaultPicsNeeded);
-
-      //       this.griddyPics = [...updatedData, ...defaultPics];
-      //       this.$nextTick(() => {
-      //         this.setupGriddyPicAnimation();
-      //       });
-      //     })
-      //     .catch(error => console.error('请求失败:', error));
+      //   });
       // },
-      // getDefaultPics(numberOfPics) {
-      //   // 假设 defaultPicsArray 是一个包含大量默认图片 URL 的数组
-      //   const defaultPicsArray = [
-      //     'src/assets/images/home/griddyPic/1.png',
-      //     'src/assets/images/home/griddyPic/2.png',
-      //     'src/assets/images/home/griddyPic/3.png',
-      //     'src/assets/images/home/griddyPic/4.png',
-      //     'src/assets/images/home/griddyPic/5.png',
-      //     'src/assets/images/home/griddyPic/6.png',
-      //     'src/assets/images/home/griddyPic/7.png',
-      //     'src/assets/images/home/griddyPic/8.png',
-      //     'src/assets/images/home/griddyPic/9.png',
-      //     'src/assets/images/home/griddyPic/10.png',
-      //     'src/assets/images/home/griddyPic/11.png',
-      //     'src/assets/images/home/griddyPic/12.png',
-      //     'src/assets/images/home/griddyPic/13.png',
-      //     'src/assets/images/home/griddyPic/14.png',
-      //     'src/assets/images/home/griddyPic/15.png',
-      //     'src/assets/images/home/griddyPic/16.png',
-      //     'src/assets/images/home/griddyPic/17.png',
-      //     'src/assets/images/home/griddyPic/18.png',
-      //     'src/assets/images/home/griddyPic/19.png',
-      //     'src/assets/images/home/griddyPic/20.png',
-      //     'src/assets/images/home/griddyPic/21.png',
-      //     'src/assets/images/home/griddyPic/22.png',
-      //     'src/assets/images/home/griddyPic/23.png',
-      //     'src/assets/images/home/griddyPic/24.png',
-      //     'src/assets/images/home/griddyPic/25.png',
-      //     'src/assets/images/home/griddyPic/26.png',
-      //     'src/assets/images/home/griddyPic/27.png',
-      //     'src/assets/images/home/griddyPic/28.png',
-      //     'src/assets/images/home/griddyPic/29.png',
-      //     'src/assets/images/home/griddyPic/30.png',
-      //     'src/assets/images/home/griddyPic/31.png',
-      //     'src/assets/images/home/griddyPic/32.png',
-      //     'src/assets/images/home/griddyPic/33.png',
-      //     'src/assets/images/home/griddyPic/34.png',
-      //     'src/assets/images/home/griddyPic/35.png',
-      //     'src/assets/images/home/griddyPic/36.png',
-      //     // 确保这个数组有足够的默认图片
-      //   ];
-      //   return defaultPicsArray.slice(0, numberOfPics);
-      // },
-
 
       setupGriddyPicAnimation() {
         // #griddyPic-row1 的動畫設置

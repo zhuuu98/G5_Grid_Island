@@ -335,20 +335,22 @@
           transform: translateX(0px) rotate(4deg);
           flex-direction: row-reverse;
         }
+
         #griddyPic-row2 {
           transform: translateX(0px) rotate(-2.5deg);
         }
+
         #griddyPic-row3 {
           transform: translateX(0px) rotate(2.5deg);
           flex-direction: row-reverse;
         }
-        
+
         .griddyPic-row {
           width: 100%;
           /* 根據需要調整高度 */
           display: flex;
-        
-          
+
+
           .imagebox {
             width: 120px;
             flex-shrink: 0;
@@ -356,6 +358,7 @@
             border-bottom: 2px solid #fff;
             border-left: 1px solid #fff;
             border-right: 1px solid #fff;
+
             @include T() {
               width: 200px;
             }
@@ -702,18 +705,19 @@
       }
 
       .index_row {
-        overflow:hidden;
+        overflow: hidden;
         overflow-x: auto;
         width: 100%;
+
         @include PC() {
           max-width: 1400px;
         }
       }
-      
+
       h1 {
         @include textStrokeEffect($black, $white-1, 6px);
       }
-      
+
       .news_card_content {
         overflow-x: auto;
         scroll-snap-type: x mandatory;
@@ -810,11 +814,6 @@
       }
 
       .index_row {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        // justify-content: center;
-        gap: $L-spacing;
 
         @include T() {
           margin: 4rem auto 12rem auto;
@@ -828,106 +827,73 @@
         @include textStrokeEffect($black, $white-1, 6px);
       }
 
-      .aboutContent {
+      #aboutContent {
+        //白塊
         width: 100%;
-        height: 320px;
-        background: $white-1 // url("/src/assets/images/home/homeAbout_BackgoundGrid.svg") no-repeat
-          // left 0 bottom 140%/340%;
-          url("/src/assets/images/home/Grid.svg") no-repeat center;
-        border: 3px solid $black;
+        background-color: $white-1;
+        border: 3.2px solid $black;
+        border-radius: 28px;
+        padding: 2rem 0;
         display: flex;
-        justify-content: center;
-        align-items: center;
         flex-direction: column;
-        border-radius: $S-button-radius;
+        gap: $M-spacing;
+        overflow: hidden;
 
-        @include M() {
-          height: auto;
-          width: 100%;
-          background: $white-1 url("/src/assets/images/home/homeAbout_BackgoundGrid.svg") no-repeat center/180%;
-        }
 
-        @include T() {
-          background: $white-1 url("/src/assets/images/home/homeAbout_BackgoundGrid.svg") no-repeat left 0 bottom 15%/160%;
-        }
 
-        @include PC() {
-          max-width: 1100px;
-          background: $white-1 url("/src/assets/images/home/homeAbout_BackgoundGrid.svg") no-repeat left 0 bottom 15%/100%;
-        }
-
-        .aboutContentTxt {
-          display: none;
-          text-align: center;
-          margin: $L-spacing $XXXL-spacing $L-spacing;
-          font-size: $PC-h4;
+        #aboutText {
+          // background-color: #3bb1b9;
+          text-align: start;
           color: $black;
           letter-spacing: 0.5px;
           font-weight: bold;
           padding: 0 $M-spacing;
 
-          @include M() {
-            margin: $L-spacing $L-spacing 0;
-          }
-
-          @include T() {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-          }
-
-          @include PC() {
-            margin: $L-spacing $XXXL-spacing $S-spacing;
-          }
         }
       }
 
-      .imgWrapper {
+      #about-scroll {
+        //捲動區，暫定灰格子看換不會一起捲，若會，改
         width: 100%;
-        overflow-y: hidden;
-        @include T() {
-          // overflow-y: hidden;
-          overflow: hidden;
-        }
-      }
-
-      .aboutContentImg {
-        // padding:  0 0 0 190px;
-        width: 800px;
+        border-top: 0px solid #ddd;
+        border-bottom: 1px solid #ccc;
+        // background-image: url("@/assets/images/home/Grid.svg");
+        background-image: linear-gradient(90deg,
+            #ddd 1px,
+            transparent 1px),
+          linear-gradient(180deg, #ddd 1px, transparent 1px);
+        background-size: 28px 28px, 28px 28px, cover;
+        background-repeat: repeat, repeat, no-repeat;
+        box-sizing: border-box;
+        padding: 28px;
         display: flex;
-        justify-content: center;
-        gap: $M-spacing;
-        margin: $XL-spacing 0 $XL-spacing;
+        gap: 28px;
         overflow-x: auto;
-        scroll-snap-type: x mandatory;
-        scroll-behavior: smooth;
 
-        &::-webkit-scrollbar {
-          display: none;
-        }
+        .about-imagebox {
+          height: 196px;
+          display: flex;
+          justify-content: center;
+          gap: $M-spacing;
+          aspect-ratio: 3/2;
+          overflow: hidden;
+          flex-shrink: 0;
+          border: 1.618px solid #000;
 
-        @include T() {
-          overflow-x: scroll;
-          width: unset;
-          margin-bottom: $XL-spacing;
-          padding: 0 0 0 200px;
-        }
-
-        img {
-          width: 260px;
-          max-width: 100%;
-          vertical-align: middle;
-          scroll-snap-align: center;        
-
-          @include M() {
-            width: auto;
+          @include T(){
+            height: 280px;
           }
-
-          @include T() {
-            max-width: 420px;
+          
+          img {
+            height: 100%;
+            width: 100%;
+            display: block;
+            object-fit: cover;
+            
           }
         }
       }
+
     }
   }
 }

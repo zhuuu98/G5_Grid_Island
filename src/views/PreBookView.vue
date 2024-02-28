@@ -41,12 +41,14 @@
             <button class="btn_lg" @click="goReserve()" >前往預約</button>
         </div>
 
-        <div class="alert_bg" v-show="showAlert">
+        <div class="alert_bg" v-show="showAlert" @click.self="closeAlert">
             <div class="alert_main">
                 <button @click="closeAlert">
                     <i class="fa-solid fa-xmark fa-2x"></i>
                 </button>
-                <p>{{ alertContent }}</p>
+                <div class="alert_main_content">
+                    <div class="content">請勾選同意預約須知</div>
+                </div>
             </div>
         </div>
     </div>
@@ -57,11 +59,10 @@
         data() {
             return {
                 ischecked: false,
-                alertContent: '請同意預約須知',
                 showAlert: false,
                 bookFee: {
                     title: '收費方式',
-                    content: ['預約時段分為上午、下午及晚上，以人數計費，費用有平假日之分，請參下表。', '時段說明：上午(09:00-12:00)、下午(12:00-15:00及15:00-18:00)、晚上(18:00-21:00)。', '本店提供餐點及飲料，全面禁止攜帶外食。', '3歲以下不另行收費，請勿使用桌遊；12歲以下，須由大人陪同入場。', '提供包場服務，請直接洽詢客服人員。', '若需取消預約，請於預約開始12小時前取消，預約兩次未到將停權六個月。']
+                    content: ['預約時段分為上午、下午及晚上，以人數計費，費用有平假日之分，請參下表。', '時段說明：上午(09:00-12:00)、下午(12:00-15:00)、傍晚(15:00-18:00)、晚上(18:00-21:00)。', '本店提供餐點及飲料，全面禁止攜帶外食。', '3歲以下不另行收費，請勿使用桌遊；12歲以下，須由大人陪同入場。', '提供包場服務，請直接洽詢客服人員。', '若需取消預約，請於預約開始12小時前取消，預約兩次未到將停權六個月。']
                 },
                 bookDirection: {
                     title: '預約方式',

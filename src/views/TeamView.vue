@@ -8,7 +8,7 @@
           <div class="team_breadcrumb">
             <Breadcrumb separator="<b class='breadcrumb-separator'>></b>">
               <BreadcrumbItem to="/">首頁</BreadcrumbItem>
-              <BreadcrumbItem to="/board">玩家社群</BreadcrumbItem>
+              <BreadcrumbItem class="noLinkBread">玩家社群</BreadcrumbItem>
               <BreadcrumbItem to="/board">報隊區</BreadcrumbItem>
             </Breadcrumb>
           </div>
