@@ -111,8 +111,7 @@ $alertBoxHeight: 40vh;
 $alertCrossHeight: 50px;
 
 .alert_main {
-    background-color: hsl(0, 0%, 100%);
-    // max-width: 300px;
+    background-color: #fff;
     width: 90vw;
     display: flex;
     flex-direction: column;
@@ -129,11 +128,20 @@ $alertCrossHeight: 50px;
         left: 20%;
         border-radius: $PC-card-radius;
     }
-    @include PC() {
+
+    @include T() {
         width: 40vw;
         left: 30%;
         border-radius: $PC-card-radius;
+        max-width: 600px;
     }
+    @include PC() {
+        width: 30vw;
+        left: 35%;
+        border-radius: $PC-card-radius;
+        max-width: 600px;
+    }
+
 
     button {
         align-self: flex-end;
@@ -150,13 +158,11 @@ $alertCrossHeight: 50px;
         justify-content: center;
         height: calc(#{$alertBoxHeight} - 1.5* #{$alertCrossHeight});
     }
-    p {
-        text-align: center;
-        font-size: $PC-h4;
+    .content {
+        font-size: 20px;
         height: 32px;
         margin-top: 4px;
         align-self: center;
     }
-
-}
+  }
 }

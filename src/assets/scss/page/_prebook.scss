@@ -103,19 +103,13 @@
         display: flex;
         gap: 8px;
         justify-content: center;
-        margin: $M-spacing 0;
-        // input[type="checkbox"] {
-        // display: inline-block;
-        // background-color: #aaa;
-        // padding: 3px 6px;
-        // border: 1px solid gray;
-        // color: #444;
-        // user-select: none; /* 防止文字被滑鼠選取反白 */
-        // }
-        // input[type="checkbox"]:checked {
-        //     color: yellow;
-        //     background-color: #444;
-        // }
+        margin: $L-spacing 0;
+        input[type="checkbox"]{
+            cursor: pointer;
+        }
+        label{
+            cursor: pointer;
+        }
     }
 
     .preBtn {
@@ -133,7 +127,7 @@
         height: 100vh;
         z-index: 991;
     }
-
+    
     $alertBoxHeight: 40vh;
     $alertCrossHeight: 50px;
 
@@ -149,16 +143,24 @@
         border-radius: $Mob-card-radius;
         user-select: none;
 
-        @include T() {
+        @include M() {
+            max-width: 600px;
             width: 60vw;
             left: 20%;
             border-radius: $PC-card-radius;
         }
 
-        @include PC() {
+        @include T() {
             width: 40vw;
             left: 30%;
             border-radius: $PC-card-radius;
+            max-width: 600px;
+        }
+        @include PC() {
+            width: 30vw;
+            left: 35%;
+            border-radius: $PC-card-radius;
+            max-width: 600px;
         }
 
 
@@ -170,16 +172,20 @@
             border: none;
             cursor: pointer;
         }
-
-        p {
-            // border-top: 1px solid;
-            text-align: center;
-            vertical-align: middle;
-            font-size: $PC-h3;
-            justify-self: center;
-            height: calc(#{$alertBoxHeight} - #{$alertCrossHeight});
-            line-height: calc(#{$alertBoxHeight} / 1.6);
+        .alert_main_content{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: calc(#{$alertBoxHeight} - 1.5* #{$alertCrossHeight});
         }
+        .content {
+            font-size: 20px;
+            height: 32px;
+            margin-top: 4px;
+            align-self: center;
+        }
+
     }
 
     .body-overflow-hidden {
