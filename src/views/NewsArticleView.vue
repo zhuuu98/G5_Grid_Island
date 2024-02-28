@@ -40,7 +40,7 @@
             <th></th>
             <tbody>
               <tr>
-                <td class="copy"><p @click="copyLink" >複製文章網址</p></td>
+                <td class="copy" ref="copy"><p @click="copyLink" >複製文章網址</p></td>
               </tr>
               <tr>
                 <td><p @click="shareOnFacebook">分享到Facebook</p></td>
@@ -60,6 +60,7 @@
 import axios from "axios";
 import PageTitle from "../components/PageTitle.vue";
 import Clipboard from 'clipboard';
+
 export default {
   data() {
     return {
@@ -90,7 +91,7 @@ export default {
   },
   methods: {
     copyLink() {
-      this.clipboard.onClick({ delegateTarget: this.$el.querySelector('.copy') });
+      this.clipboard.click({ delegateTarget: this.$refs.copy});
       alert('已複製到剪貼板');
     },
     showShareList() {
@@ -130,17 +131,17 @@ export default {
     },
   },
   mounted() {
-    this.clipboard = new Clipboard(this.$el.querySelector('.copy'), {
+    this.clipboard = new Clipboard(this.$refs.copy, {
       text: () => this.copyText
     });
 
     this.clipboard.on('success', (e) => {
-      // console.log('已複製到剪貼板');
+      console.log('已複製到剪貼板');
       e.clearSelection();
     });
 
     this.clipboard.on('error', (e) => {
-      // console.error('複製失敗');
+      console.error('複製失敗');
     });
   },
 };
