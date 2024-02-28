@@ -8,7 +8,7 @@
     <MainHeader />
 
     <!-- 跑馬燈 -->
-    <cuppon v-if="showCuppon" @closeTab="marqueeClose" />
+    <!-- <cuppon v-if="showCuppon" @closeTab="marqueeClose" /> -->
 
     <!-- ⬇ 各個區塊內容 ⬇ -->
     <div class="index">
