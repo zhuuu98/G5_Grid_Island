@@ -84,13 +84,13 @@
             </div>
         </form>
         <!-- 燈箱 -->
-        <div class="alert_bg" v-show="showAlert">
+        <div class="alert_bg" v-show="showAlert" @click.self="closeAlert">
             <div class="alert_main">
                 <button @click="closeAlert">
                     <i class="fa-solid fa-xmark fa-2x"></i>
                 </button>
                 <div class="alert_main_content">
-                    <p v-for="content in alertContent">{{ content }}</p>
+                    <div class="content" v-for="content in alertContent">{{ content }}</div>
                 </div>
             </div>
         </div>
