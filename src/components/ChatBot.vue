@@ -4,7 +4,7 @@
         <div class="chatContent" v-if="openChatContent">
             <div class="contentTop">
                 <div class="imagebox">
-                    <img src="../assets/images/chatbot/chatbot_btn3.png" alt="線上客服">
+                    <img src="../assets/images/chatbot/chatbot_btn3.webp" alt="線上客服">
                 </div>
             </div>
             <div class="contentBody" ref="chatContent">
@@ -27,7 +27,7 @@
 
         <div class="openChat" @click="openChat">
             <div class="imagebox">
-                <img src="../assets/images/chatbot/chatbot_btn3.png" alt="線上客服" class="openChatBtn">
+                <img src="../assets/images/chatbot/chatbot_btn3.webp" alt="線上客服" class="openChatBtn">
             </div>
             <span>線上客服</span>
         </div>
