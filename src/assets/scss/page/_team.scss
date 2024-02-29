@@ -4,7 +4,6 @@
     .col-PC-10, .col-T-10, .col-12{
         margin: auto;
     }
-
     // 麵包屑
     .team_breadcrumb {
         padding-left: 20px;
@@ -158,7 +157,6 @@
                     }
                 }
             }
-
             .team_card_article{
                 width: 100%;
                 margin-bottom: 60px;
@@ -180,7 +178,6 @@
             }
         }
     }
-
     // 發文燈箱
     .light_box{
         position: fixed;
@@ -288,7 +285,6 @@
             }
         }
     }
-
     .join_light_box{
         position: fixed;
         z-index: 1000;
@@ -372,7 +368,6 @@
         }
         }
     }
-
     .griddy_ani{
         display: block;
         position: fixed;
@@ -397,14 +392,17 @@
             width: 19.5%;
             z-index: 900;
             top: 40vh;
+            img{
+                width: 150%;
+            }
         }
         .left_griddy{
             left: 0;
-            animation: moveRight 1.5s forwards;
+            animation: moveRight 1.5s ease forwards;
         }
         .right_griddy{
             right: 0;
-            animation: moveLeft 1.5s forwards;
+            animation: moveLeft 1.5s ease forwards;
         }
         .fight_icon{
             position: fixed;
@@ -443,12 +441,12 @@
 
 @keyframes moveRight {
     100%{
-        transform: translate(140.2%, -30%);
+        transform: translate(115%, -30%);
     }
 }
 @keyframes moveLeft {
     100%{
-        transform: translate(-140.2%, -30%);
+        transform: translate(-165%, -30%);
     }
 }
 @keyframes fadeIn {
@@ -506,6 +504,25 @@
     }
 }
 @media screen and (max-width: 768px) {
+    @keyframes moveRight {
+        0%{
+            opacity: 0; 
+        }
+        25%{
+            opacity: .5;
+            font-size: 35px;
+        }
+        50%{
+            opacity: .7;
+            font-size: 25px;
+        }
+        100%{ 
+            opacity: 1;
+            font-size: 45px;
+        } 
+    }
+}
+@media screen and (max-width: 768px) {
     @keyframes textFadeIn {
         0%{
             opacity: 0; 
@@ -522,5 +539,15 @@
             opacity: 1;
             font-size: 45px;
         } 
+    }
+    @keyframes moveRight {
+        100%{
+            transform: translate(115%, 0%);
+        }
+    }
+    @keyframes moveLeft {
+        100%{
+            transform: translate(-165%, 0%);
+        }
     }
 }
