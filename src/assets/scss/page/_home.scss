@@ -729,6 +729,7 @@
         padding: 20px 0;
         justify-content: space-around;
         overflow-x: auto;
+
         a:hover img{
             width: 105%;
             height: 105%;
@@ -768,21 +769,16 @@
           display: none;
         }
         .newsCard {
-
+          scroll-snap-align: center;
         }
       }
-
-      .news_button {}
-
       button {
         display: block;
         margin: auto;
       }
     }
-
     // 一起遊樂 IG API
     .index_insta {}
-
     // Grid Island 關於我們
     #indexContainer_about {
       width: 100%;
@@ -871,7 +867,11 @@
         display: flex;
         gap: 28px;
         overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        scroll-behavior: smooth;
+        overflow-x: auto;
         .about-imagebox {
+          scroll-snap-align: center;
           height: 196px;
           display: flex;
           justify-content: center;

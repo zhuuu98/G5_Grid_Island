@@ -8,7 +8,7 @@
     <MainHeader />
 
     <!-- 跑馬燈 -->
-    <!-- <cuppon v-if="showCuppon" @closeTab="marqueeClose" /> -->
+    <cuppon v-if="showCuppon" @closeTab="marqueeClose" />
 
     <!-- ⬇ 各個區塊內容 ⬇ -->
     <div class="index">
@@ -392,7 +392,6 @@
               </p>
             </div>
             <!-- 放圖片的地方 -->
-              <div class="scroll">
                 <div id="about-scroll">
                   <div class="about-imagebox">
                     <img :src="getImageUrl(`home/homeAbout_1.jpg`)" alt="">
@@ -410,7 +409,6 @@
                     <img :src="getImageUrl(`home/homeAbout_5.jpg`)" alt="">
                   </div>
                 </div>
-              </div>
           </div>
           <button class="btn_lg" @click="goAbout()">關於我們</button>
         </div>
