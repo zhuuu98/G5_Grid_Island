@@ -149,6 +149,7 @@ const router = createRouter({
       meta: {
         title: "造型屋",
         showChatBot: false,
+        showBackToTop: false,
       },
       component: () => import("../views/griddyStyleView.vue"),
     },
