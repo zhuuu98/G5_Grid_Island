@@ -95,8 +95,12 @@
   .pswEye{
     width: 20px;
     position: absolute;
-    top: 46.5%;
-    right: 20%
+    top: 47.5%;
+    right: 20%;
+    display: none;
+    @include PC() {
+      display: block;
+    }
   }
   .alert_bg {
     background-color: #0006;
