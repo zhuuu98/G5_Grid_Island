@@ -338,8 +338,7 @@ export default {
     join_send_btn() {
       this.join_succ = false;
       this.fight = true;
-      console.log(this.leftRandomNumber);
-      console.log(this.rightRandomNumber);
+      setTimeout(this.team_fight_close, 2050);
     },
     //報隊動畫
     team_fight_close() {
