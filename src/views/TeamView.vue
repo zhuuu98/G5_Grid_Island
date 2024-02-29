@@ -26,7 +26,6 @@
               </select>
             </div>
           </div>
-
           <div class="main">
             <!-- 卡片區 -->
             <div class="team_card" v-for="item in card" :key="item.id">
@@ -67,7 +66,6 @@
         </div>
       </div>
     </div>
-
     <!-- 發文燈箱 -->
     <div class="light_box" v-show="team_lb">
       <div class="overlay" @click="team_lb_close"></div>
@@ -95,8 +93,7 @@
         </div>
       </div>
     </div>
-
-    <!-- 報團燈箱 -->
+    <!-- 報隊燈箱 -->
     <div class="join_light_box" v-show="team_join_lb">
       <div class="overlay" @click="team_join_lb_close"></div>
       <div class="box">
@@ -104,7 +101,7 @@
           <h3 class="team_join_lb_title">是否確認報隊？</h3>
           <div class="team_light_box_send">
             <button class="btn_default" @click.prevent="team_join_lb_close">取消</button>
-            <button class="btn_default" @click="join_send_btn">確認</button>
+            <button class="btn_default" @click.prevent="join_send_btn">確認</button>
           </div>
         </form>
         <div v-else>
@@ -116,18 +113,17 @@
         </div>
       </div>
     </div>
-
     <!-- 報隊動畫 -->
     <div class="griddy_ani" v-show="fight">
       <div class="left_griddy griddy">
-        <img src="../assets/images/team/left_griddy.png" alt="left_griddy">
+        <img :src="leftSelectImage()" alt="left_griddy">
       </div>
       <div class="fight_icon">
         <img src="../assets/images/team/flash.png" alt="fight_icon">
       </div>
       <div class="fight_text">報隊成功</div>
       <div class="right_griddy griddy">
-        <img src="../assets/images/team/right_griddy.png" alt="right_griddy">
+        <img :src="rightSelectImage()" alt="right_griddy">
       </div>
       <div class="overlay" @click="team_fight_close">
         <img src="../assets/images/team/bg.jpg" alt="fight_bg">
@@ -268,8 +264,8 @@ export default {
           tags: ['仙境奇蹟', '2人', '新手友善'],
           article: '踏入仙境，一同體驗奇蹟的魔法！這是一場2到7人的奇幻遊戲，無論你是新手還是老玩家，都歡迎加入這場令人陶醉的冒險之旅！',
         },
-
       ],
+      randomNumber: null,
       // 發文
       team_lb: false,
       article_send_succ: true,
@@ -289,6 +285,22 @@ export default {
     PageTitle,
   },
   methods: {
+    leftGenerateRandomNumber() {
+      // 生成随機亂數
+      this.leftRandomNumber = Math.floor(Math.random() * 9) + 1;
+    },
+    rightGenerateRandomNumber() {
+      // 生成随機亂數
+      this.rightRandomNumber = Math.floor(Math.random() * 9) + 1;
+    },
+    leftSelectImage() {
+      this.leftGenerateRandomNumber();
+      return new URL(`../assets/images/team/left${this.leftRandomNumber}.png`, import.meta.url).href;
+    },
+    rightSelectImage() {
+      this.rightGenerateRandomNumber();
+      return new URL(`../assets/images/team/right${this.rightRandomNumber}.png`, import.meta.url).href;
+    },
     // 發文燈箱
     // 打開發文燈箱
     open_light_box() {
