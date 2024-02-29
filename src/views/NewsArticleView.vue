@@ -105,7 +105,7 @@ export default {
       this.share = !this.share;
     },
     shareOnFacebook() {
-      console.log('分享連結:', `https://tibamef2e.com/chd104/g5/front/newsArticle/${this.newsData.news_id}`);      
+      // console.log('分享連結:', `https://tibamef2e.com/chd104/g5/front/newsArticle/${this.newsData.news_id}`);      
       // 檢查 netData 是否存在並且有 news_id 屬性
       if (this.newsData && this.newsData.news_id) {
         // 使用 Facebook SDK 的功能
@@ -114,13 +114,13 @@ export default {
           href: `https://tibamef2e.com/chd104/g5/front/newsArticle/${this.newsData.news_id}`,
         }, function(response) {
           if (response && !response.error_message) {
-            console.log('分享成功');
+            // console.log('分享成功');
           } else {
-            console.log('分享失敗或取消');
+            // console.log('分享失敗或取消');
           }
         });
       } else {
-        console.log("連結無效");
+        // console.log("連結無效");
       }
     },
     fetchNews() {
