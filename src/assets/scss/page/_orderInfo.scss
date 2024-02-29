@@ -84,8 +84,9 @@
           text-wrap: nowrap;
           text-overflow: ellipsis;
           overflow: hidden;
-          
-          h3, h4 {
+
+          h3,
+          h4 {
             overflow: hidden;
             text-overflow: ellipsis;
             color: $blue-4;
@@ -136,6 +137,8 @@
 
     img {
       width: 80px;
+      height: 100px;
+      object-fit: contain;
     }
   }
   .prod_img {

@@ -1,0 +1,25 @@
+.backToTop{
+    .openChat {
+        cursor: pointer;
+        max-width: 35px;
+        position: fixed;
+        bottom: 20%;
+        right: 6%;
+        z-index: 948;
+        transition: all .2s ease;
+        &:hover {
+            transform: rotate(360deg);
+        }
+        @include PC{        
+            bottom: 28%;
+            right: 4%;
+
+        }
+    }
+    .goTopText{
+        font-size: 10px;
+        width: fit-content;
+        display: block;
+        margin: auto;
+    }
+}
