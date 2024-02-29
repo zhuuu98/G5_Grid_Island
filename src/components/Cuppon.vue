@@ -1,16 +1,14 @@
 <template>
-	<main class="cuppon">
+	<main class="cuppon" v-if="this.promos.length > 0">
 		<div class="btn">
 			<font-awesome-icon :icon="['fas', 'times']"  @click="closeCuppon" />
 		</div>
-		<div class="subContent">
-			<!-- 重複 render 10次，並使用三元運算符-->
-			<span v-for="index in 10" :key="index"> 
-				<!-- <div class="showCuppon">
-					{{ promos[0].promo_detail }}
-				</div> -->
-				<!-- {{ promos[0].promo_detail }} -->
-			</span>
+		<div class="subContent" >
+			<div v-for="num in 10" :key="num">
+				<span  v-for="(detail,index) in promos" :key="index" >
+					{{ detail.promo_detail + detail.promo_code}}
+				</span>
+			</div>
 		</div>
 	</main>
 </template>
@@ -32,7 +30,7 @@ export default {
 			axios.get(url, {})
 			.then(res => {
 			this.promos = res.data.promos;
-			console.log(this.promos);
+			// console.log(this.promos);
 			})
 			.catch(error => {
 			console.error(error);
