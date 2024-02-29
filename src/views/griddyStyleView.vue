@@ -77,9 +77,9 @@
                 <span>最棒的Griddy粉墨登場！</span>
                 <!-- <img v-if="griddyImage" :src="griddyImage" alt="Captured Griddy Content"> -->
                 <div class="finalbtnbox">
-                    <button id="setPicture" @click="setProfilePicture">設為大頭貼</button>
-                    <button id="goback" @click="toggleZone">回上頁</button>
-                    <button id="download" @click="griddyToImage">下載圖片</button>
+                    <button id="setPicture" @click="setProfilePicture" v-on:touchstart="">設為大頭貼</button>
+                    <button id="goback" @click="toggleZone" v-on:touchstart="">回上頁</button>
+                    <button id="download" @click="griddyToImage" v-on:touchstart="">下載圖片</button>
                 </div>
                 <SetMemPic ref="setMemPicModal" />
             </div>

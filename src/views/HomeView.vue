@@ -365,8 +365,7 @@
             <div class="news_card_content">
               <NewsCard v-for="(item, index) in latestData" :key="item.news_id" :newsTitle="item.news_title"
                 :newsDate="item.news_date" :imgUrl="`https://tibamef2e.com/chd104/g5/image/news/${item.news_image}`"
-                :newsId="item.news_id"
-                :newsCategory="item.news_category" />
+                :newsId="item.news_id" :newsCategory="item.news_category" />
             </div>
           </div>
           <div class="news_button">
@@ -392,28 +391,31 @@
               </p>
             </div>
             <!-- 放圖片的地方 -->
-                <div id="about-scroll">
-                  <div class="about-imagebox">
-                    <img :src="getImageUrl(`home/homeAbout_1.jpg`)" alt="">
-                  </div>
-                  <div class="about-imagebox">
-                    <img :src="getImageUrl(`home/homeAbout_2.jpg`)" alt="">
-                  </div>
-                  <div class="about-imagebox">
-                    <img :src="getImageUrl(`home/homeAbout_3.jpg`)" alt="">
-                  </div>
-                  <div class="about-imagebox">
-                    <img :src="getImageUrl(`home/homeAbout_4.jpg`)" alt="">
-                  </div>
-                  <div class="about-imagebox">
-                    <img :src="getImageUrl(`home/homeAbout_5.jpg`)" alt="">
-                  </div>
-                </div>
+            <div id="about-scroll">
+              <div class="about-imagebox">
+                <img :src="getImageUrl(`home/homeAbout_1.jpg`)" alt="">
+              </div>
+              <div class="about-imagebox">
+                <img :src="getImageUrl(`home/homeAbout_2.jpg`)" alt="">
+              </div>
+              <div class="about-imagebox">
+                <img :src="getImageUrl(`home/homeAbout_3.jpg`)" alt="">
+              </div>
+              <div class="about-imagebox">
+                <img :src="getImageUrl(`home/homeAbout_4.jpg`)" alt="">
+              </div>
+              <div class="about-imagebox">
+                <img :src="getImageUrl(`home/homeAbout_5.jpg`)" alt="">
+              </div>
+            </div>
           </div>
           <button class="btn_lg" @click="goAbout()">關於我們</button>
         </div>
       </div>
     </div>
+
+    <ChatBot id="chatbot" class="homeChatBot"  />
+
   </main>
 </template>
 
@@ -430,6 +432,7 @@
   import ScrollTrigger from "gsap/ScrollTrigger";
   import AOS from 'aos';
   import 'aos/dist/aos.css';
+  import ChatBot from "../components/ChatBot.vue";
 
   gsap.registerPlugin(ScrollTrigger);
 
@@ -440,6 +443,7 @@
       MainHeader,
       NewsCard,
       cuppon,
+      ChatBot, // 在組件中註冊，使其可在此模板中使用
     },
     data() {
       return {
@@ -457,6 +461,7 @@
         showCuppon: true,
         newsData: [],
         wave: wave,
+        showChatBot: false,
       };
     },
     created() {
@@ -466,25 +471,25 @@
     mounted() {
       this.setupGriddyPicAnimation();
       // this.setupAboutPicAnimation();
+      window.addEventListener('scroll', this.handleScroll);
+
+    },
+    beforeDestroy() {
+      // 在組件銷毀前移除滾動事件監聽器
+      window.removeEventListener('scroll', this.handleScroll);
     },
 
     methods: {
-      // setupAboutPicAnimation() {
-      //   gsap.to(".about-imagebox", {
-      //     x: -1480, // 移动的总距离
-      //     ease: "none",
-      //     scrollTrigger: {
-      //       trigger: "#aboutContent",
-      //       start: "center bottom",
-      //       end: "bottom bottom-=100",
-      //       // pin: "#indexContainer_about",
-      //       pinSpacing: false,
-      //       scrub: 1,
-      //       markers: true,
-      //     }
-      //   });
-      // },
-
+      handleScroll() {
+        const scrollPosition = window.scrollY || document.documentElement.scrollTop;
+        this.showChatBot = scrollPosition > 600;
+        const chatbot = document.getElementById('chatbot');
+        if (this.showChatBot) {
+          chatbot.classList.add('show');
+        } else {
+          chatbot.classList.remove('show');
+        }
+      },
       setupGriddyPicAnimation() {
         // #griddyPic-row1 的動畫設置
         gsap.to("#griddyPic-row1", {

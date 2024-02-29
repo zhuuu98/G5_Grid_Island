@@ -80,7 +80,7 @@
                 justify-content: space-between;
                 // background-color: #6af;
                 width: 100%;
-                gap: 12px;
+                gap: 8px;
                 @include text;
 
                 @include T() {
@@ -89,7 +89,7 @@
                 }
 
                 #reset {
-                    width: calc(50% - 6px);
+                    width: calc(50% - 4px);
                     background-color: $white-1;
                     border: 1px solid $orange-2;
                     color: $orange-2;
@@ -97,18 +97,18 @@
                     border-radius: 8px;
 
                     &:hover {
-                        background-color: darken($white-1, 5%);
+                        background-color: darken($white-1, 4%);
                     }
                     &:active {
-                        background-color: darken($white-1, 5%);
+                        background-color: darken($white-1, 4%);
                     }
                     @include T() {
-                        padding: 8px 0;
+                        padding: 6px 0;
                     }
                 }
 
                 #random {
-                    width: calc(50% - 6px);
+                    width: calc(50% - 4px);
                     background-color: $white-1;
                     border: 1px solid $orange-2;
                     color: $orange-2;
@@ -116,14 +116,14 @@
                     border-radius: 8px;
 
                     &:hover {
-                        background-color: darken($white-1, 5%);
+                        background-color: darken($white-1, 4%);
                     }
 
                     &:active {
-                        background-color: darken($white-1, 5%);
+                        background-color: darken($white-1, 4%);
                     }
                     @include T() {
-                        padding: 8px 0;
+                        padding: 6px 0;
                     }
                 }
 
@@ -193,22 +193,65 @@
         
                 #setPicture{
                     width: calc(100%);
-                    padding: 4px 0;
+                    padding: 2px 0;
+                    border-radius: 8px;
+                    background-color: $orange-2;
+                    border: 1px solid $orange-2;
+                    cursor: pointer;
+                    @include text;
+                    color: #fff;
+
+                    &:hover {
+                        background-color: darken($orange-2, 5%);
+                    }
+                    &:active {
+                        background-color: darken($orange-2, 5%);
+                    }
+                    @include T() {
+                        padding: 8px 0;
+                    }
 
                 }
                 #download {
                     width: calc(50% - 4px);
-                    padding: 4px 0;
+                    padding: 2px 0;
+                    border-radius: 8px;
+                    background-color: $white-2;
+                    border: 1px solid #999;
+                    color: #999;
+                    cursor: pointer;
+                    @include text;
 
+                    &:hover {
+                        background-color: darken($white-2, 4%);
+                    }
+                    &:active {
+                        background-color: darken($white-2, 4%);
+                    }
+                    @include T() {
+                        padding: 6px 0;
+                    }
                 }
                 #goback {
                     width: calc(50% - 4px);
-                    padding: 4px 0;
+                    padding: 2px 0;
+                    border-radius: 8px;
+                    background-color: $white-2;
+                    border: 1px solid #999;
+                    color: #999;
+                    cursor: pointer;
+                    @include text;
 
-
+                    &:hover {
+                        background-color: darken($white-2, 4%);
+                    }
+                    &:active {
+                        background-color: darken($white-2, 4%);
+                    }
+                    @include T() {
+                        padding: 6px 0;
+                    }
                 }
-
-
             }
         }
     }

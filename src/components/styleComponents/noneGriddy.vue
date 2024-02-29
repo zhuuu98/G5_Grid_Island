@@ -143,7 +143,9 @@
                 let svgWithColor = props.selectedAccessoriesStaff.replace(/COLOR_PLACEHOLDER/g, props.selectedAccessoriesColor);
                 // 然後替換 BODY_PLACEHOLDER
                 let svgWithBodyColor = svgWithColor.replace(/BODY_PLACEHOLDER/g, props.selectedBodyColor);
-                return svgWithBodyColor; // 返回處理後的 SVG 代碼
+                // 最後替換 BACKGROUND_PLACEHOLDER
+                let svgWithBackgroundColor = svgWithBodyColor.replace(/BACKGROUND_PLACEHOLDER/g, props.selectedBackgroundColor);
+                return svgWithBackgroundColor; // 返回處理後的 SVG 代碼
             });
 
 

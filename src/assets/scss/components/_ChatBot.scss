@@ -50,6 +50,7 @@
             padding: .1rem 0;
             border-radius: 80px;
             color: #fff;
+            z-index: 200;
         }
 
         @include PC() {
@@ -228,4 +229,53 @@
 
 
 
+}
+
+
+.homeChatBot {
+    display: flex;
+    gap: $S-spacing;
+    //聊天機器人開關按鈕
+
+
+    .openChat {
+        cursor: pointer;
+        width: 100%;
+        max-width: 80px;
+        position: fixed;
+        // bottom: 2%;
+        // right: 2%;
+        // z-index: 948;
+        z-index: 248;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        filter: drop-shadow(0 .16rem .24rem #0005);
+        transition: transform 0.5s ease;
+        transform: translateY(200%);
+
+        /* 初始狀態，將按鈕放在視窗之外 */
+        .imagebox {
+            img {
+                transition: transform 0.5s ease;
+                transform: rotate(-180deg);
+                /* 初始狀態：隱藏且旋轉 */
+
+            }
+        }
+    }
+}
+
+.show {
+    .openChat {
+        transform: translateY(0);
+        /* 最終狀態，將按鈕移回視窗內 */
+
+        .imagebox {
+            img {
+                transform: rotate(0deg);
+                /* 初始狀態：隱藏且旋轉 */
+            }
+        }
+    }
 }

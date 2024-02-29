@@ -34,6 +34,7 @@
     import { accessoriesStaff6 } from "@/policy/color.js"
     import { accessoriesStaff7 } from "@/policy/color.js"
     import { accessoriesStaff8 } from "@/policy/color.js"
+    import { accessoriesStaff9 } from "@/policy/color.js"
 
     import { unifiedColors } from "@/policy/color.js";
 
@@ -55,6 +56,7 @@
                     { name: "大手大腳", staff: accessoriesStaff6, canChangeColor: false },
                     { name: "經典造型", staff: accessoriesStaff7, canChangeColor: true }, // 可以更改顏色
                     { name: "爪", staff: accessoriesStaff8, canChangeColor: true }, // 可以更改顏色
+                    { name: "幽體", staff: accessoriesStaff9, canChangeColor: false },
 
                 ],
                 accessoriesColors: unifiedColors,

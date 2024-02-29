@@ -37,7 +37,8 @@ export default {
   <RouterView v-slot="{ Component, route }">
     <MainHeader v-if="route.meta.showHeader !== false" />
     <component :is="Component" />
-    <ChatBot v-if="route.meta.showChatBot !== false" />
+    <!-- <ChatBot v-if="route.meta.showChatBot !== false" /> -->
+    <ChatBot :class="{ 'home-chatbot-style': route.name === 'home' }" v-if="route.meta.showChatBot !== false" />
     <BackToTop v-if="route.meta.showBackToTop !== false" />
     <MainFooter/>
   </RouterView>
