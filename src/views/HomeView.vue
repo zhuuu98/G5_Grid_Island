@@ -361,10 +361,13 @@
         </div>
         <div class="index_row">
           <h1 data-stroke="最新消息">最新消息</h1>
-          <div class="news_card_content">
-            <NewsCard v-for="(item, index) in latestData" :key="item.news_id" :newsTitle="item.news_title"
-              :newsDate="item.news_date" :imgUrl="`https://tibamef2e.com/chd104/g5/image/news/${item.news_image}`"
-              :newsId="item.news_id" />
+          <div class="content">
+            <div class="news_card_content">
+              <NewsCard v-for="(item, index) in latestData" :key="item.news_id" :newsTitle="item.news_title"
+                :newsDate="item.news_date" :imgUrl="`https://tibamef2e.com/chd104/g5/image/news/${item.news_image}`"
+                :newsId="item.news_id"
+                :newsCategory="item.news_category" />
+            </div>
           </div>
           <div class="news_button">
             <button class="btn_lg" @click="goNews()">所有最新消息</button>
@@ -385,27 +388,29 @@
             <!-- 桌機板的文字 -->
             <div id="aboutText">
               <p>
-                　　我們精選了3000種桌上遊戲，涵蓋了從熱門到冷門的各種類型。即使您不熟悉遊戲規則，也無需擔心，因為我們會親自指導您如何遊玩，一起加入桌遊的行列吧！
+                在這裡，您可以找到四人桌、八人桌和十二人包廂，適合各種大小的團體聚會。超過200款遊戲等著您來挑選，涵蓋策略、派對、家庭等各式各樣的遊戲，讓您盡情享受遊戲的樂趣。
               </p>
             </div>
             <!-- 放圖片的地方 -->
-            <div id="about-scroll">
-              <div class="about-imagebox">
-                <img :src="getImageUrl(`home/homeAbout_1.jpg`)" alt="">
+              <div class="scroll">
+                <div id="about-scroll">
+                  <div class="about-imagebox">
+                    <img :src="getImageUrl(`home/homeAbout_1.jpg`)" alt="">
+                  </div>
+                  <div class="about-imagebox">
+                    <img :src="getImageUrl(`home/homeAbout_2.jpg`)" alt="">
+                  </div>
+                  <div class="about-imagebox">
+                    <img :src="getImageUrl(`home/homeAbout_3.jpg`)" alt="">
+                  </div>
+                  <div class="about-imagebox">
+                    <img :src="getImageUrl(`home/homeAbout_4.jpg`)" alt="">
+                  </div>
+                  <div class="about-imagebox">
+                    <img :src="getImageUrl(`home/homeAbout_5.jpg`)" alt="">
+                  </div>
+                </div>
               </div>
-              <div class="about-imagebox">
-                <img :src="getImageUrl(`home/homeAbout_2.jpg`)" alt="">
-              </div>
-              <div class="about-imagebox">
-                <img :src="getImageUrl(`home/homeAbout_3.jpg`)" alt="">
-              </div>
-              <div class="about-imagebox">
-                <img :src="getImageUrl(`home/homeAbout_4.jpg`)" alt="">
-              </div>
-              <div class="about-imagebox">
-                <img :src="getImageUrl(`home/homeAbout_5.jpg`)" alt="">
-              </div>
-            </div>
           </div>
           <button class="btn_lg" @click="goAbout()">關於我們</button>
         </div>
