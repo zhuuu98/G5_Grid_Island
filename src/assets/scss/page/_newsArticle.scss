@@ -1,4 +1,9 @@
 .newsArticle {
+  
+  @include T() {
+    background-color: $orange-1;
+
+  }
   .loadingMask {
     z-index: 1000;
     background-color: $black;
@@ -56,16 +61,33 @@
       }
     }
   }
+  .articleContent {
+    display: flex;
+    flex-direction: column;
+    @include T() {
+      background-color: #fff;
+      border-radius: 40px;
+      // padding-bottom: 40px;
+    }
+  }
   .content {
-    margin-top: $M-spacing;
-    margin-bottom: $XL-spacing;
+    padding-top: $M-spacing;
+    padding-bottom: $XL-spacing;
     display: flex;
     flex-direction: column;
     max-width: $max-width;
     @include T() {
       padding: 0 $XL-spacing;
       max-width: 1500px;
-      margin: $L-spacing auto $XXXL-spacing;
+      margin:0 auto 0;
+      padding-top: $L-spacing;
+      padding-bottom: $XXXL-spacing;
+      margin-left: 20px;
+      margin-right: 20px;
+    }
+    @include PC() {
+      margin-left: 40px;
+      margin-right: 40px;
     }
     .title {
       margin: auto;
@@ -77,7 +99,7 @@
         order: unset;
       }
       @include PC() {
-        padding: 0 230px $L-spacing;
+        padding: $L-spacing 230px $M-spacing;
       }
     }
     .newsImg {
@@ -85,9 +107,10 @@
       max-width: 600px;
       min-width: 300px;
       margin: auto;
-      height: auto;
-      
+      height: auto;      
       img {
+        border-radius: 30px ;
+        overflow: hidden;
         width: 100%;
       }
       @include T() {

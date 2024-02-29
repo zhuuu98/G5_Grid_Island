@@ -1,31 +1,68 @@
-
-
-.chatbot{
+.chatbot {
     display: flex;
     gap: $S-spacing;
     //聊天機器人開關按鈕
-    .openChatBtn{
+
+    .openChat {
         cursor: pointer;
-        border: 0px solid;
-        background-color: rgba(255, 255, 255, 0);
-        border-radius: 100%;
-        width:100%;
+        width: 100%;
         max-width: 80px;
         position: fixed;
-        bottom: 10%;
-        right: 1%;
+        bottom: 2%;
+        right: 2%;
         z-index: 948;
-    
-    @include PC() {
-    
-        //PC 1024px
-        max-width: 100px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        filter: drop-shadow(0 .16rem .24rem #0005);
+
+        .imagebox {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            border-radius: 200px;
+            aspect-ratio: 1/1;
+            overflow: hidden;
+            outline: 2px solid #fff;
+            // border: 2px solid #000;
+
+
+            img {
+                width: 150%;
+                height: 150%;
+                margin-top: -6%;
+                margin-left: -2%;
+
+
+            }
         }
-        
+
+        span {
+            font-size: 14px;
+            letter-spacing: .02rem;
+            font-family: "Noto", sans-serif;
+            background-color: $blue-2;
+            outline: 1px solid #fff;
+            width: 100%;
+            text-align: center;
+            margin-top: -.6rem;
+            padding: .1rem 0;
+            border-radius: 80px;
+            color: #fff;
+        }
+
+        @include PC() {
+            bottom: 10%;
+            //PC 1024px
+            max-width: 80px;
+        }
+
     }
 
-    .chatContent{
+    .chatContent {
         background-color: $blue-1;
+        background-image: linear-gradient($blue-2, $blue-1 50%, $blue-1 100%);
         width: 100%;
         max-width: 300px;
         // height: 100%;
@@ -35,61 +72,90 @@
         bottom: 5%;
         right: 9%;
         z-index: 948;
-
+        outline: 1.618px solid #fff;
+        filter: drop-shadow(0 .16rem .24rem #0005);
+        overflow: hidden;
+        background-image: linear-gradient(90deg,
+                rgba(255, 255, 255, 0.1) 1px,
+                transparent 1px),
+            linear-gradient(180deg, rgba(255, 255, 255, 0.1) 1px, transparent 1px),
+            linear-gradient($blue-2, $blue-1 50%, $blue-1 100%);
+        background-size: 28px 28px, 28px 28px, cover;
+        background-repeat: repeat, repeat, no-repeat;
     }
-    .contentTop{
+
+    .contentTop {
         background-color: $blue-3;
         border-radius: $PC-card-radius $PC-card-radius 0 0;
         display: flex;
         justify-content: center;
         position: sticky;
         top: 0;
+
+        .imagebox {
+            width: 4rem;
+            height: 4rem;
+            aspect-ratio: 1/1;
+            border-radius: 800px;
+            border: 2px solid #fff;
+            overflow: hidden;
+            margin: $S-spacing $M-spacing ;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            img {
+                width: 160%;
+                height: 160%;
+
+            }
+        }
     }
-    .contentTop img{
-        vertical-align: top;
-        width: 100%;
-        max-width: 90px;
-        margin: $S-spacing $M-spacing ;    
-    }
-    .contentChoose{
+
+
+    .contentChoose {
         background-color: $blue-3;
-        border-radius:0 0 $PC-card-radius $PC-card-radius ;
+        border-radius: 0 0 $PC-card-radius $PC-card-radius ;
         padding: $M-spacing;
         display: flex;
         flex-direction: column;
         // justify-content: center;
         // align-items: center;
-        
+
         // gap: $S-spacing;
         // overflow-y: scroll;
         // height: 200px;
     }
+
     //聊天內容
-    .contentBody{
+    .contentBody {
         overflow-y: scroll;
         height: 250px;
     }
+
     //左邊
-    .chatLeft{
+    .chatLeft {
         width: fit-content;
         max-width: 80%;
         background-color: $white-1;
         color: $blue-4;
         margin: $S-spacing;
-        padding:  $S-spacing;
+        padding: $S-spacing;
         border-radius: $input-radius;
     }
+
     //右邊
-    .chatRight{
+    .chatRight {
         width: fit-content;
         max-width: 80%;
         display: flex;
-        margin:$S-spacing $S-spacing $S-spacing auto;
+        margin: $S-spacing $S-spacing $S-spacing auto;
         background-color: $green-2;
         color: $white-1;
-        padding:  $S-spacing;
+        padding: $S-spacing;
         border-radius: $input-radius;
     }
+
     //按鈕
     // .contentChoose button{
     //     width: 250px;
@@ -101,21 +167,22 @@
     //     background-color: $blue-3;
     //     color: $white-1;
     // }
-    .contentChoose button:hover{
+    .contentChoose button:hover {
         background-color: $white-1;
         color: $blue-3;
 
     }
-    .FirstChoose{
+
+    .FirstChoose {
         display: flex;
         flex-wrap: wrap;
         justify-content: center;
         gap: 10px;
 
-        button{
+        button {
             width: 250px;
             max-width: 95%;
-            padding:  $S-spacing ;
+            padding: $S-spacing ;
             border: 1px solid $white-1;
             border-radius: $PC-card-radius;
             cursor: pointer;
@@ -123,17 +190,19 @@
             color: $white-1;
         }
     }
-    .SecondDiv{
+
+    .SecondDiv {
         display: flex;
         flex-direction: column;
         flex-wrap: wrap;
         justify-content: flex-start;
         align-items: flex-start;
         gap: $S-spacing;
-        button{
+
+        button {
             width: fit-content;
             max-width: 100%;
-            padding:  $S-spacing ;
+            padding: $S-spacing ;
             border: 1px solid $white-1;
             border-radius: 16px;
             cursor: pointer;
@@ -142,11 +211,12 @@
 
         }
     }
-    .reChoose{
+
+    .reChoose {
         margin: $S-spacing 0;
         width: fit-content;
         max-width: 100%;
-        padding:  $S-spacing ;
+        padding: $S-spacing ;
         border: 1px solid $white-1;
         border-radius: 16px;
         cursor: pointer;
@@ -154,7 +224,7 @@
         color: $white-1;
 
     }
-    
+
 
 
 

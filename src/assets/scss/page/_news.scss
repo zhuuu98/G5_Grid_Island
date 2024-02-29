@@ -69,9 +69,14 @@
     .btn {
       display: flex;
       justify-content: flex-end;
-      padding: 20px 40px 20px 0;
       gap: 10px;
-
+      padding: 20px 20px 20px 0;
+      @include T() {
+      padding: 20px 100px 20px 0;
+      }
+      @include PC() {
+        padding: 20px 155px 20px 0;
+      }
       .thBtn {
         width: 40px;
         &:hover {

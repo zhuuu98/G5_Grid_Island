@@ -5,13 +5,13 @@
             <h2>會員登入</h2>
             <form action="" class="login_form" methods="post">
                 <input type="email" placeholder="請輸入帳號" v-model="accName">
-                <input :type="showPsw ? 'text' : 'password'" placeholder="請輸入密碼" v-model="au4a83">
+                <input :type="showPsw ? 'text' : 'password'" placeholder="請輸入密碼" v-model="au4a83" @input="changeEyeState">
                 <input type="submit" value="登入" class="signBtn" @click.prevent="login" @keyup.enter="login">
             </form>
             <p class="login_signUp_text">還不是會員嗎？<RouterLink to="./Signup">點我註冊</RouterLink>
             </p>
             <!-- @click="isPswShowed" -->
-            <font-awesome-icon v-show="!showPsw" @mousedown="showPsw = !showPsw" :icon="['fas', 'eye']" class="pswEye"/>
+            <font-awesome-icon v-show="!showPsw && isPswInput" @mousedown="showPsw = !showPsw" :icon="['fas', 'eye']" class="pswEye"/>
             <font-awesome-icon v-show="showPsw"  @mouseup="showPsw = !showPsw" @mouseleave="showPsw = false" :icon="['fas', 'eye-slash']" class="pswEye" />
             <div class="login_icon">
                 <i class="fa-brands fa-line fa-2xl" @click="lineLogin"></i>
@@ -50,7 +50,8 @@ export default {
             line_redirect_uri: 'https://tibamef2e.com/chd104/g5/front/login',  // Line developer Callback URL
             line_idToken: '',
             line_accessToken: '',
-            showPsw: false
+            showPsw: false,
+            isPswInput: false
         }
     },
     created() {
@@ -60,7 +61,13 @@ export default {
     },
     methods: {
         ...mapActions(userStore, ['updateToken', 'updateName', 'checkLogin', 'updateUserData']),
-
+        changeEyeState(){
+            if(this.au4a83){
+                this.isPswInput = true
+            }else{
+                this.isPswInput = false
+            }
+        },
         login() {
             if (this.accName == "" || this.au4a83 == "") {
                 document.body.classList.add('body-overflow-hidden');

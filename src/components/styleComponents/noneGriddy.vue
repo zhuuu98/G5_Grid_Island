@@ -124,9 +124,11 @@
         },
         setup(props) {
             const dynamicEyesSvg = computed(() => {
-                // 使用 props.selectedEyesStaff 和 props.selectedEyesColor
-                // 确保 SVG 字符串中有 'COLOR_PLACEHOLDER' 这样的占位符
-                return props.selectedEyesStaff.replace(/COLOR_PLACEHOLDER/g, props.selectedEyesColor);
+                // 首先替换 COLOR_PLACEHOLDER 为耳朵的颜色
+                let svgWithColor = props.selectedEyesStaff.replace(/COLOR_PLACEHOLDER/g, props.selectedEyesColor);
+                // 然后替换 BODY_PLACEHOLDER 为主体的颜色，如果您的眼睛SVG中需要替换主体颜色
+                let svgWithBodyColor = svgWithColor.replace(/BODY_PLACEHOLDER/g, props.selectedBodyColor);
+                return svgWithBodyColor; // 返回处理后的 SVG 代码
             });
             const dynamicEarsSvg = computed(() => {
                 // 首先替换 COLOR_PLACEHOLDER 为耳朵的颜色

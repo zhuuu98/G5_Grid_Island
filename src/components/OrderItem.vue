@@ -14,11 +14,11 @@
         <div class="orderItemArea">
           <div class="name">
             <router-link :to="{ name: 'productInfo', params: { id: productId },}">
-            <h2>{{ productTitle }}</h2>
+            <h4>{{ productTitle }}</h4>
             </router-link>
           </div>
           <div class="price">
-            <h2>$ {{ productPrice }}</h2>
+            <h3>$ {{ productPrice }}</h3>
           </div>
         </div>
       </div>

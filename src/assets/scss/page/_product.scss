@@ -181,20 +181,42 @@ body {
       }
     }
   }
-  .wave {
-    .waveImg {
-      width: 100%;
-      img {
-        width: 100%;
-        vertical-align: top;
-      }
-    }
-  }
+
   .productList {
     transform: translateY(-1px);
-    background-color: $yellow;
+    background-color: $gray-1;
     width: 100%;
     padding: $XL-spacing 0 $XL-spacing 0;
+    position: relative;
+    margin-top: 4rem;
+
+    .wave-imagebox {
+      width: 100%;
+      position: absolute;
+      bottom: calc(100% - 2px);
+      overflow: hidden;
+      
+      .wave {
+        width: 240%;
+        z-index: 20;
+
+        .pathTop {
+          fill: $orange-1;
+        }
+        .pathLine {
+          fill: $blue-2;
+        }
+        .pathPan {
+          fill: $gray-1;
+        }
+        @include T() {
+          width: 200%;
+        }
+        @include PC() {
+          width: 120%;
+        }
+      }
+    }
     .gap {
       width: 100%;
       height: $M-spacing;
