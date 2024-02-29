@@ -779,7 +779,9 @@ export default {
                 url: `${import.meta.env.VITE_API_URL}/memCancelBook.php`,
                 headers: { "Content-Type": "multipart/form-data" },
                 data: {
-                    // book_state: this.bookInfo[0].book_state,
+                    book_state: this.bookInfo[0].book_state,
+                    book_date: this.bookInfo[0].book_date,
+                    tables_type: this.bookInfo[0].tables_type,
                     book_id: this.cancelRecord
                 }
             })
