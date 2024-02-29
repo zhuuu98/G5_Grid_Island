@@ -4,6 +4,7 @@ import { RouterView } from "vue-router";
 import MainHeader from "./components/MainHeader.vue";
 import MainFooter from "./components/MainFooter.vue";
 import ChatBot from "./components/ChatBot.vue";
+import BackToTop from "./components/BackToTop.vue";
 
 export default {
   data() {
@@ -20,6 +21,7 @@ export default {
     RouterView,
     MainFooter,
     ChatBot,
+    BackToTop,
   },
   mounted() {},
 };
@@ -36,6 +38,7 @@ export default {
     <MainHeader v-if="route.meta.showHeader !== false" />
     <component :is="Component" />
     <ChatBot v-if="route.meta.showChatBot !== false" />
+    <BackToTop />
     <MainFooter/>
   </RouterView>
 </template>
