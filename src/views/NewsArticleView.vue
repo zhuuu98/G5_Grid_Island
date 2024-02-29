@@ -66,10 +66,7 @@ import Clipboard from 'clipboard';
 export default {
   data() {
     return {
-      netData: {
-        news_id: null,
-      },
-      newsData: [],
+      newsData: {},
       singleNews: {
         news_id: null,
       },
@@ -108,12 +105,19 @@ export default {
       this.share = !this.share;
     },
     shareOnFacebook() {
+      console.log('分享連結:', `https://tibamef2e.com/chd104/g5/front/newsArticle/${this.newsData.news_id}`);      
       // 檢查 netData 是否存在並且有 news_id 屬性
-      if (this.netData && this.netData.news_id) {
+      if (this.newsData && this.newsData.news_id) {
         // 使用 Facebook SDK 的功能
         FB.ui({
           method: "share",
-          href: `https://tibamef2e.com/chd104/g5/front/newsArticle/${this.netData.news_id}`,
+          href: `https://tibamef2e.com/chd104/g5/front/newsArticle/${this.newsData.news_id}`,
+        }, function(response) {
+          if (response && !response.error_message) {
+            console.log('分享成功');
+          } else {
+            console.log('分享失敗或取消');
+          }
         });
       } else {
         console.log("連結無效");
@@ -153,6 +157,30 @@ export default {
     this.clipboard.on('error', (e) => {
       console.error('複製失敗');
     });
+    window.fbAsyncInit = function() {
+        FB.init({
+          appId: '965775104890616',
+          xfbml: true,
+          version: 'v19.0'
+        });
+      };
+    // window.fbAsyncInit = function () {
+    //   FB.init({
+    //     appId: '965775104890616',
+    //     xfbml: true,
+    //     version: 'v19.0'
+    //   });
+    //   FB.AppEvents.logPageView();
+    // };
+
+    // // 在這裡動態載入 Facebook SDK 腳本
+    // (function (d, s, id) {
+    //   var js, fjs = d.getElementsByTagName(s)[0];
+    //   if (d.getElementById(id)) return;
+    //   js = d.createElement(s); js.id = id;
+    //   js.src = "https://connect.facebook.net/en_US/sdk.js";
+    //   fjs.parentNode.insertBefore(js, fjs);
+    // }(document, 'script', 'facebook-jssdk'));
   },
   beforeUnmount() {
     if (this.clipboard) {

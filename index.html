@@ -16,7 +16,7 @@
     crossorigin="anonymous" referrerpolicy="no-referrer" />
 
   <!-- fb sdk的初始化程式碼 -->
-  <!-- <script>
+  <script>
       window.fbAsyncInit = function() {
         FB.init({
           appId: '847063827431136',
@@ -24,25 +24,26 @@
           version: 'v19.0'
         });
       };
-    </script> -->
-  <script>
-    window.fbAsyncInit = function () {
-      FB.init({
-        appId: '847063827431136',
-        xfbml: true,
-        version: 'v19.0'
-      });
-      FB.AppEvents.logPageView();
-    };
 
-    (function (d, s, id) {
-      var js, fjs = d.getElementsByTagName(s)[0];
-      if (d.getElementById(id)) { return; }
-      js = d.createElement(s); js.id = id;
-      js.src = "https://connect.facebook.net/zh_Hant/sdk.js";
-      fjs.parentNode.insertBefore(js, fjs);
-    }(document, 'script', 'facebook-jssdk'));
-  </script>
+
+    //   window.fbAsyncInit = function () {
+    //   FB.init({
+    //     appId: '965775104890616',
+    //     xfbml: true,
+    //     version: 'v19.0'
+    //   });
+    //   FB.AppEvents.logPageView();
+    // };
+
+    // 在這裡動態載入 Facebook SDK 腳本
+    // (function (d, s, id) {
+    //   var js, fjs = d.getElementsByTagName(s)[0];
+    //   if (d.getElementById(id)) return;
+    //   js = d.createElement(s); js.id = id;
+    //   js.src = "https://connect.facebook.net/en_US/sdk.js";
+    //   fjs.parentNode.insertBefore(js, fjs);
+    // }(document, 'script', 'facebook-jssdk'));
+    </script>
 
   <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js"></script>
 </head>
