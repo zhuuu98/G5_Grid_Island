@@ -200,7 +200,6 @@
         <div class="productListContent">
           <div class="productSelect" v-if="!nodata">
             <select id="select" v-model="sortMethod" @change="sort">
-              <option value="init">-請選擇-</option>
               <option value="priceAsc">價格由低至高</option>
               <option value="priceDesc">價格由高至低</option>
               <option value="idAsc">商品由舊至新</option>

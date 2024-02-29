@@ -1028,9 +1028,11 @@
                 left: 2.5%; 
             }
             .PC_OrderDataDetail img{
-                width: 100%;
-                max-width: 100px;
+                
+                width: 100px;
+                height: 100px;
                 border-radius: 8px;
+                object-fit: cover;
             }
 
         }

@@ -11,6 +11,7 @@ body {
 .product {
   box-sizing: border-box;
   position: relative;
+  background-color: $orange-1;
   .loadingMask {
     z-index: 1000;
     background-color: $black;

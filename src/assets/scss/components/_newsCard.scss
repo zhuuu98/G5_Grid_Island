@@ -1,11 +1,13 @@
 .newsCard {
   border-radius: $M-button-radius;
   width: 166.5px;
+  // width: 170px;
   border: 2px solid $blue-4;
   height: 251px;
   display: flex;
   flex-direction: column;
   background-color: $white-1;
+  margin: 0 6px;
   .thList {
     background-color: #fa0;
     display: flex;
@@ -13,36 +15,42 @@
   }
   @include T(){
     border-radius: $S-button-radius;
-    width: 305px;
-    height: 457px;
+    width: 200px;
+    height: 300px;
     position: relative;
+    margin: 0 4px;
+  }
+
+  @include PC(){
+    margin: 0 10px;
+    // width: 305px;
+    // height: 457px;
+    width: 250px;
+    height: 360px;
   }
   .newsImg {
-    overflow: hidden;
     border-radius: 18px 18px 0 0;
     height: 60%;
     object-fit: cover;
     border-bottom: 2px solid $blue-4;
+    overflow: hidden;
+    aspect-ratio: 4/3;
     @include T(){
       width: 100%;
       border-radius: 5px 5px 0 0;
     }
     img {
-      height: 120%;
-      width: auto;
+      height: 100%;
+      width: 100%;
       vertical-align: middle;
+      display: block;
+      object-fit: cover;
       @include T(){
         width: 100%;
         object-position: 0;
         height: 100%;
         object-fit: cover;
         transition: all .5s;
-      }
-      &:hover {
-        @include T(){
-          width: 110%;
-          height: 105%;
-        }
       }
     }
   }
@@ -53,9 +61,6 @@
     justify-content: space-between;
     padding: $S-spacing $S-spacing  $S-spacing;
     color: $blue-4;
-    @include T() {
-      padding: $M-spacing $S-spacing  $M-spacing;
-    }
     .title {
       width: 100%;
       text-overflow: ellipsis;
