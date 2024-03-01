@@ -31,7 +31,9 @@
           />
         </div>
         <div class="textContent">
-          <span>{{ newsData.news_content }}</span>
+          <span>
+            {{ newsData.news_content }}
+          </span>
         </div>
           <div class="date">
             <p class="dates">{{ formattedDate }}</p>

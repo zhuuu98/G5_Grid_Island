@@ -103,7 +103,7 @@
     }
     .title {
       margin: auto;
-      padding: $S-spacing $M-spacing $S-spacing;
+      padding: $S-spacing 30px $S-spacing;
       letter-spacing: $PC-btn-sl-spacing;
       order: 1;
       @include T() {
@@ -132,7 +132,7 @@
     .textContent {
       order: 2;
       letter-spacing: $PC-btn-esl-spacing;
-      padding: $M-spacing $L-spacing 0;
+      padding: $M-spacing 30px 0;
       font-size: $PC-text;
       @include T() {
         padding: $M-spacing $XL-spacing;
@@ -144,7 +144,7 @@
     }
     .date {
       display: flex;
-      padding: 0 $M-spacing $S-spacing;
+      padding: 0 35px $S-spacing;
       order: 1;
       margin-left: auto;
       letter-spacing: $PC-btn-exsl-spacing;
@@ -160,7 +160,7 @@
         padding: $M-spacing $L-spacing;
       }
       @include PC() {
-        padding: $M-spacing 230px;
+        padding: $M-spacing 240px;
       }
     }
     .bottomArea {
