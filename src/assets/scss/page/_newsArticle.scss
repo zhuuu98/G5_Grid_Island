@@ -61,37 +61,49 @@
       }
     }
   }
+  .breadcrumb {
+    position: relative;
+    max-width: $max-width;
+    margin: auto;
+    padding: 0 $L-spacing;
+    top: 15px;
+    @include T() {
+      padding: 0 $XL-spacing;
+      top: 30px;
+    }
+    @include PC() {
+      padding: 0;
+      top: 50px;
+    }
+  }
   .articleContent {
     display: flex;
     flex-direction: column;
     @include T() {
       background-color: #fff;
-      border-radius: 40px;
+      border-radius: 28px;
       // padding-bottom: 40px;
     }
   }
   .content {
-    padding-top: $M-spacing;
-    padding-bottom: $XL-spacing;
+    padding: $M-spacing 0 $XL-spacing;
     display: flex;
     flex-direction: column;
     max-width: $max-width;
     @include T() {
-      padding: 0 $XL-spacing;
+      padding: 80px 0 $XXXL-spacing;
       max-width: 1500px;
       margin:0 auto 0;
-      padding-top: $L-spacing;
-      padding-bottom: $XXXL-spacing;
       margin-left: 20px;
       margin-right: 20px;
     }
     @include PC() {
-      margin-left: 40px;
-      margin-right: 40px;
+      margin-left: 30px;
+      margin-right: 30px;
     }
     .title {
       margin: auto;
-      padding: $S-spacing $M-spacing $S-spacing;
+      padding: $S-spacing 30px $S-spacing;
       letter-spacing: $PC-btn-sl-spacing;
       order: 1;
       @include T() {
@@ -109,7 +121,7 @@
       margin: auto;
       height: auto;      
       img {
-        border-radius: 30px ;
+        border-radius: 14px ;
         overflow: hidden;
         width: 100%;
       }
@@ -120,7 +132,7 @@
     .textContent {
       order: 2;
       letter-spacing: $PC-btn-esl-spacing;
-      padding: $M-spacing $L-spacing 0;
+      padding: $M-spacing 30px 0;
       font-size: $PC-text;
       @include T() {
         padding: $M-spacing $XL-spacing;
@@ -131,15 +143,24 @@
       }
     }
     .date {
-      padding: 0 $M-spacing $S-spacing;
+      display: flex;
+      padding: 0 35px $S-spacing;
       order: 1;
       margin-left: auto;
       letter-spacing: $PC-btn-exsl-spacing;
+      .dates {
+        margin-top: auto;
+        margin-bottom: auto;
+        padding-left: 10px;
+        @include T() {
+          padding-left: 20px;
+        }
+      }
       @include T() {
         padding: $M-spacing $L-spacing;
       }
       @include PC() {
-        padding: $M-spacing 230px;
+        padding: $M-spacing 240px;
       }
     }
     .bottomArea {
@@ -147,6 +168,7 @@
       display: flex;
     }
     .category {
+      order: -1;
       p {
         padding: 4px 10px;
         border-radius: $M-button-radius; 
@@ -155,15 +177,15 @@
         color: $blue-4;
       }
       margin-right: auto;
-      padding: 72.67px $L-spacing 0;
+      // padding: 72.67px $L-spacing 0;
       @include M() {
-        padding: 72.67px $L-spacing 0;
+        // padding: 72.67px $L-spacing 0;
       }
       @include T() {
-        padding: 72.67px 60px 0;
+        // padding: 72.67px 60px 0;
       }
       @include PC() {
-        padding: 72.67px 230px 0;
+        // padding: 72.67px 230px 0;
       }
     }
     .btn {

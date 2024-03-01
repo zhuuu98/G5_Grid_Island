@@ -10,11 +10,16 @@
         </div>
       </div>
     </transition>
-
     <div class="newsTitle">
       <h1>
         <PageTitle :pageTitle="'最新消息'" />
       </h1>
+    </div>
+    <div class="breadcrumb">
+      <Breadcrumb separator="<b class='breadcrumb-separator'>></b>">
+        <BreadcrumbItem to="/">首頁</BreadcrumbItem>
+        <BreadcrumbItem to="/news">最新消息</BreadcrumbItem>
+      </Breadcrumb>
     </div>
 
     <div class="content">

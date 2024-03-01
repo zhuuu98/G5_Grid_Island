@@ -57,6 +57,16 @@
       }
     }
   }
+  .breadcrumb {
+    position: relative;
+    max-width: $max-width;
+    width: 90%;
+    margin: auto;
+    top: 50px;
+    @include PC() {
+      top: 100px;
+    }
+  }
   .content {
     margin-top: $XXL-spacing;
     padding-bottom: $XXXL-spacing;
