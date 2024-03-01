@@ -20,6 +20,7 @@
           :productStatus="item.count"
         >
         </OrderItem>
+        <h4 class="noCartData" v-if="noCartData" >你沒有買東西就到這一頁是不是想搞事</h4>
       </div>
     </transition>
 
@@ -47,6 +48,9 @@
               </td>
               <td class="prod_status">{{ item.count }}</td>
               <td class="prod_price">$ {{ item.price }}</td>
+            </tr>
+            <tr v-if="noCartData">
+              <th class="tableNoCartData" colspan="100">你沒有買東西就到這一頁是不是想搞事</th>
             </tr>
           </tbody>
         </table>
@@ -220,6 +224,9 @@ export default {
       "discountAmount",
       "totalPrice",
     ]),
+    noCartData(){
+      return this.cartData.length == 0;
+    },
     totalPriceCount() {
       return this.subTotalAmount + this.deliveryAmount - this.discountAmount;
     },
@@ -233,7 +240,8 @@ export default {
         this.memName == "" ||
         this.memAddr == "" ||
         this.memEmail == "" ||
-        this.memTel == ""
+        this.memTel == "" ||
+        this.cartData.length == 0
       );
     },
   },

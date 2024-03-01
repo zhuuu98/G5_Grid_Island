@@ -104,7 +104,15 @@
       transform: translate(-40px, 50px);
     }
   }
-
+  .noCartData{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    @include T(){
+      display: none;
+    }
+  }
   table {
     display: none;
     border-collapse: collapse;
@@ -117,6 +125,12 @@
     }
     @include PC() {
       max-width: $max-width;
+    }
+    .tableNoCartData{
+      font-size: 28px;
+      font-weight: bold;
+      text-align: center;
+      
     }
   }
 
