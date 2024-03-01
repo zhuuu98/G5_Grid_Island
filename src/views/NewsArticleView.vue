@@ -10,6 +10,13 @@
         </div>
       </div>
     </transition>
+    <div class="breadcrumb">
+      <Breadcrumb separator="<b class='breadcrumb-separator'>></b>">
+        <BreadcrumbItem to="/">首頁</BreadcrumbItem>
+        <BreadcrumbItem to="/news">最新消息</BreadcrumbItem>
+        <BreadcrumbItem>{{ newsData.news_title }}</BreadcrumbItem>
+      </Breadcrumb>
+    </div>
     <div class="newsImg"></div>
 
       <div class="content">
