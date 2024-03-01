@@ -33,15 +33,15 @@
         <div class="textContent">
           <span>{{ newsData.news_content }}</span>
         </div>
-        <div class="date">
-          <span>{{ formattedDate }}</span>
-        </div>
-        <div class="bottomArea">
-          <div class="category" title="消息分類">
-            <router-link to="/news">
-              <p>{{ newsData.news_category }}</p>
-            </router-link>
+          <div class="date">
+            <p class="dates">{{ formattedDate }}</p>
+            <div class="category" title="消息分類">
+              <router-link to="/news">
+                <p>{{ newsData.news_category }}</p>
+              </router-link>
           </div>
+          </div>
+        <div class="bottomArea">
           <div class="btn">
             <div v-show="!share" class="tableDiv"></div>
             <table v-show="share">

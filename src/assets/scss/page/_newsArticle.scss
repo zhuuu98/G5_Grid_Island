@@ -143,10 +143,19 @@
       }
     }
     .date {
+      display: flex;
       padding: 0 $M-spacing $S-spacing;
       order: 1;
       margin-left: auto;
       letter-spacing: $PC-btn-exsl-spacing;
+      .dates {
+        margin-top: auto;
+        margin-bottom: auto;
+        padding-left: 10px;
+        @include T() {
+          padding-left: 20px;
+        }
+      }
       @include T() {
         padding: $M-spacing $L-spacing;
       }
@@ -159,6 +168,7 @@
       display: flex;
     }
     .category {
+      order: -1;
       p {
         padding: 4px 10px;
         border-radius: $M-button-radius; 
@@ -167,15 +177,15 @@
         color: $blue-4;
       }
       margin-right: auto;
-      padding: 72.67px $L-spacing 0;
+      // padding: 72.67px $L-spacing 0;
       @include M() {
-        padding: 72.67px $L-spacing 0;
+        // padding: 72.67px $L-spacing 0;
       }
       @include T() {
-        padding: 72.67px 60px 0;
+        // padding: 72.67px 60px 0;
       }
       @include PC() {
-        padding: 72.67px 230px 0;
+        // padding: 72.67px 230px 0;
       }
     }
     .btn {
