@@ -14,7 +14,7 @@ const router = createRouter({
         showHeader: false, //打開這個即可不顯示header
         customHeaderPosition: true, // 新增標記
         showChatBot: false, // 確保只有在需要顯示客服按鈕的頁面設置此項
-
+        showBackToTop: false,
       },
     },
 

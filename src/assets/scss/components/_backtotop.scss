@@ -1,4 +1,5 @@
 .backToTop{
+    // display: none;
     .openChat {
         cursor: pointer;
         max-width: 35px;
@@ -13,13 +14,46 @@
         @include PC{        
             bottom: 28%;
             right: 4%;
-
         }
     }
-    .goTopText{
-        font-size: 10px;
-        width: fit-content;
-        display: block;
-        margin: auto;
+}
+.homeTop {
+    // display: none;
+    .openChat {
+        cursor: pointer;
+        max-width: 35px;
+        position: fixed;
+        // bottom: 20%;
+        // right: 6%;
+        // z-index: 948;
+        // transition: all .2s ease;
+        z-index: 240;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        filter: drop-shadow(0 .16rem .24rem #0005);
+        transition:transform .6s ease-out;
+        transform: translateY(600%);
+        img {
+            transition:transform .6s ease-out;
+            transform: rotate(-720deg);
+        }
+        // &:hover {
+        //     transform: rotate(360deg);
+        // // }
+        // @include PC{        
+        //     bottom: 28%;
+        //     right: 4%;
+        // }
+    }    
+}
+.show {
+    // display: block;
+    .openChat {
+        transform: translateY(0);
+        img {
+            transform: rotate(0deg);
+            /* 初始狀態：隱藏且旋轉 */
+        }
     }
 }
