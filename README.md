@@ -1,5 +1,7 @@
 # Grid_Island 桌遊店官網專案
 
+#### Grid Island 既象徵桌遊板上的網格,也有島嶼的寓意。在這片島嶼上,我們希望每位探險者都能找到屬於自己的遊戲格,並且透過社群建立關係！
+
 此專案為六人團隊專案實作，桌遊店家的官方網站，主要功能為預約場地、線上商店、留言社群。<br>
 使用技術為Vue3、CSS3、SCSS、JavaScript、aos、Bootstrap、iView-Design、calendar、ajax、axios、MySql、PHP...等等。
 
