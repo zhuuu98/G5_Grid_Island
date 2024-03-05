@@ -415,6 +415,7 @@
     </div>
 
     <ChatBot id="chatbot" class="homeChatBot"  />
+    <backToTop id="top" class="homeTop"  />
 
   </main>
 </template>
@@ -433,6 +434,7 @@
   import AOS from 'aos';
   import 'aos/dist/aos.css';
   import ChatBot from "../components/ChatBot.vue";
+  import backToTop from "../components/BackToTop.vue";
 
   gsap.registerPlugin(ScrollTrigger);
 
@@ -444,6 +446,7 @@
       NewsCard,
       cuppon,
       ChatBot, // 在組件中註冊，使其可在此模板中使用
+      backToTop,
     },
     data() {
       return {
@@ -462,6 +465,7 @@
         newsData: [],
         wave: wave,
         showChatBot: false,
+        showBackToTop: false,
       };
     },
     created() {
@@ -472,11 +476,12 @@
       this.setupGriddyPicAnimation();
       // this.setupAboutPicAnimation();
       window.addEventListener('scroll', this.handleScroll);
-
+      window.addEventListener('scroll', this.handleScroll2);
     },
     beforeDestroy() {
       // 在組件銷毀前移除滾動事件監聽器
       window.removeEventListener('scroll', this.handleScroll);
+      window.removeEventListener('scroll', this.handleScroll2);
     },
 
     methods: {
@@ -484,6 +489,16 @@
         const scrollPosition = window.scrollY || document.documentElement.scrollTop;
         this.showChatBot = scrollPosition > 600;
         const chatbot = document.getElementById('chatbot');
+        if (this.showChatBot) {
+          chatbot.classList.add('show');
+        } else {
+          chatbot.classList.remove('show');
+        }
+      },
+      handleScroll2() {
+        const scrollPosition = window.scrollY || document.documentElement.scrollTop;
+        this.showChatBot = scrollPosition > 600;
+        const chatbot = document.getElementById('top');
         if (this.showChatBot) {
           chatbot.classList.add('show');
         } else {
