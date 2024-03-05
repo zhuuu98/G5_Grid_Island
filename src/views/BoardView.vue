@@ -220,7 +220,7 @@ export default {
     window.removeEventListener('resize', this.handleResize);
   },
   methods: {
-    ...mapActions(userStore, ['updateUserData']),
+    ...mapActions(userStore, ['updateUserData']), //pinia固定用法
     //頁面渲染
     getCard() {
       axios

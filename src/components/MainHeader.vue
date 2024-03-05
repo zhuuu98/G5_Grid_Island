@@ -111,6 +111,7 @@ export default {
       menuOpen: false, //漢堡開關
       subMenuOpen: false, //玩家社群子階層
       hamX: false,
+      //引入pinia後，把pinia拿出來創建一個實例
       userStoreData: userStore()
     };
   },
@@ -126,7 +127,8 @@ export default {
     },
   },
   methods: {
-    ...mapActions(userStore, ['updateUserData']),
+    ...mapActions(userStore, ['updateUserData']), //pinia的固定用法，引入別頁寫好的pinia的函式
+    //mapActions是引用pinia裡的函式，mapState是引入key的名稱，在頁面上用key名稱.value就可以叫出key的值
     getProfile() {
       axios
         .post(`${import.meta.env.VITE_API_URL}/headerProfile.php`, {})
@@ -170,8 +172,9 @@ export default {
       document.body.classList.remove('body-overflow-hidden');
     });
     //將登入的會員資料由json改為陣列
-    const userData = JSON.parse(localStorage.getItem("userDataStr"));
-    this.updateUserData(userData);
+    const userData = JSON.parse(localStorage.getItem("userDataStr")); 
+    //宣告userData為，從localstorage叫出userDataStr的字串，用JSON.parse把JSON轉成js看得懂的陣列或物件
+    this.updateUserData(userData); //從pinia叫出來的函式，更新pinia
   },
 };
 </script>
