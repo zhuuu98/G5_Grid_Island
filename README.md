@@ -20,7 +20,7 @@
 3. 想`討論遊戲、揪團的玩家`可以在玩家社群發文、留言以及報隊。
 
 ### 專案架構
-本專案為「前後台分離」、「前後端分離」
+本專案為「前後台分離」、「前後端分離」。
 
 ### 聯絡我們
 <a href="https://github.com/zhuuu98/G5_Grid_Island/graphs/contributors">
