@@ -22,6 +22,13 @@
 ### 專案架構
 本專案為「前後台分離」、「前後端分離」
 
+### 聯絡我們
+<a href="https://github.com/zhuuu98/G5_Grid_Island/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=zhuuu98/G5_Grid_Island" />
+</a>  
+<br><br>
+
+
 
 
 This template should help get you started developing with Vue 3 in Vite.
